@@ -7,9 +7,9 @@ using UnityEngine;
 public class Hero_Character_Class : MonoBehaviour
 {
     [SerializeField]
-    public int mana;
+    public int mana;  //Related Functions - useMana, enoughMana, regenMana
     public int maxMana;
-    public int magic;
+    public int magic;  //Related Functions - increaseMagic, decreaseMagic
 
     // Start is called before the first frame update
     void Start()
@@ -74,4 +74,19 @@ public class Hero_Character_Class : MonoBehaviour
         UnityEngine.Debug.Log("Regenerated " + amount + " Mana. Current Mana is: " + mana);
         return;
     }
+
+    //Increases the character's magic value
+    //Input - Amount of magic to increase by
+
+    void increaseMagic(int amount){
+        magic += amount;
+    }
+
+    //Decreases the character's magic value
+    //Input - Amount of magic to decrease by
+
+    void decreaseMagic(int amount){
+        magic -= amount;
+    }
+
 }
