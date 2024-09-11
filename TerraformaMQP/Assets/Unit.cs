@@ -50,14 +50,14 @@ public class Unit : MonoBehaviour
     }
 
     //Recolors when mouse is hovering over a unit
-    private void OnMouseEnter() {
+    public void mouseEnter() {
         Debug.Log("Mouse Entered");
         renderer.material.color = Color.blue;
         charHover = true;
     }
 
     //Resets when mouse has stopped hovering over a unit
-    private void OnMouseExit() {
+    public void mouseExit() {
         Debug.Log("Mouse Exited");
         renderer.material.color = Color.white;
         charHover = false;

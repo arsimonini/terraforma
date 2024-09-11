@@ -135,8 +135,6 @@ GameObject:
   - component: {fileID: 452000243}
   - component: {fileID: 452000242}
   - component: {fileID: 452000245}
-  - component: {fileID: 452000247}
-  - component: {fileID: 452000246}
   m_Layer: 0
   m_Name: Unit Model
   m_TagString: Untagged
@@ -239,54 +237,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 452000240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 503e4a087c8dd4bcfab532dc301c2721, type: 3}
+  m_Script: {fileID: 11500000, guid: b43e3686d760bf246b366e4fe8f67687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileX: 0
-  tileY: 0
-  charSelected: 0
-  charHover: 0
-  camera: {fileID: 960158207}
-  renderer: {fileID: 452000243}
---- !u!114 &452000246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452000240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f240c9c904af85a47902bf15d2327347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mana: 0
-  maxMana: 0
-  magic: 0
---- !u!114 &452000247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452000240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eef314c587c8e24aa38801bf961afa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 0
-  attack: 0
-  movementSpeed: 0
-  resistence: 0
-  defense: 0
-  speed: 0
-  criticalChance: 0
-  accuracy: 0
-  actionsLeft: 0
-  totalActions: 0
-  turnEnded: 0
+  Unit: {fileID: 1208350126}
 --- !u!1 &960158205
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +373,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208350126}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 503e4a087c8dd4bcfab532dc301c2721, type: 3}
   m_Name: 
@@ -474,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4c13301e5684cbc96c04c978d6c04a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedUnit: {fileID: 452000240}
+  selectedUnit: {fileID: 1208350126}
   tileTypes:
   - name: Grass
     tileVisualPrefab: {fileID: 5589415869077225197, guid: 0e3d7416a877b4d1792beb3be8aa77f9, type: 3}
