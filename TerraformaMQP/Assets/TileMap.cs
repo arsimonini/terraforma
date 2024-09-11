@@ -121,13 +121,18 @@ public class TileMap : MonoBehaviour
     public void MoveSelectedUnitTo(int x, int y) {
 
         //TEST - replace with actual movement implementation
-        generatePathTo(x,y);
-        Debug.Log(currentPath.Count);
 
-        //selectedUnit.GetComponent<Unit>().tileX = currentPath[1].x;
-        //selectedUnit.GetComponent<Unit>().tileY = currentPath[1].y;
-        //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
+        if(selectedUnit.GetComponent<Unit>().charSelected) {
 
+            generatePathTo(x,y);
+            Debug.Log(currentPath.Count);
+
+            selectedUnit.GetComponent<Unit>().charSelected = false;
+
+            //selectedUnit.GetComponent<Unit>().tileX = currentPath[1].x;
+            //selectedUnit.GetComponent<Unit>().tileY = currentPath[1].y;
+            //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
+        }
 
     }
 
@@ -211,6 +216,12 @@ public class TileMap : MonoBehaviour
 
         return tileTypes[tiles[x, y]].isWalkable;
     }
+
+    // public void selectedChar() {
+    //     if(Input.GetMouseButtonDown(0)) {
+    //         selectedUnit.setCharSelected(true);
+    //     }
+    // }
 
     
     public float costToEnterTile(int x, int y) {
