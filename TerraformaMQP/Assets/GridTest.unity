@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 452000244}
   - component: {fileID: 452000243}
   - component: {fileID: 452000242}
+  - component: {fileID: 452000245}
   m_Layer: 0
   m_Name: Unit Model
   m_TagString: Untagged
@@ -227,6 +228,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452000240}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &452000245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452000240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503e4a087c8dd4bcfab532dc301c2721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileX: 0
+  tileY: 0
+  charSelected: 0
+  charHover: 0
+  camera: {fileID: 960158207}
+  renderer: {fileID: 452000243}
 --- !u!1 &960158205
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +350,7 @@ GameObject:
   - component: {fileID: 1208350128}
   m_Layer: 0
   m_Name: Unit
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,13 +378,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208350126}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 503e4a087c8dd4bcfab532dc301c2721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tileX: 0
   tileY: 0
+  charSelected: 0
+  charHover: 0
+  camera: {fileID: 960158207}
+  renderer: {fileID: 452000243}
 --- !u!1 &1297737936
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4c13301e5684cbc96c04c978d6c04a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedUnit: {fileID: 1208350126}
+  selectedUnit: {fileID: 452000240}
   tileTypes:
   - name: Grass
     tileVisualPrefab: {fileID: 5589415869077225197, guid: 0e3d7416a877b4d1792beb3be8aa77f9, type: 3}

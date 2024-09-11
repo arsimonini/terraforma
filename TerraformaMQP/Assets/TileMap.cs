@@ -27,19 +27,25 @@ public class TileMap : MonoBehaviour
         float speed = 2;
         float step = speed * Time.deltaTime;
 
-        if (currentPath.Count > 0) {
-            int x = currentPath[0].x;
-            int y = currentPath[0].y;
-            Vector3 nextPos = TileCoordToWorldCoord(x,y);
-            if (nextPos != selectedUnit.transform.position){
-                selectedUnit.transform.position = Vector3.MoveTowards(selectedUnit.transform.position, nextPos, step);
-            }
-            else {
-                selectedUnit.GetComponent<Unit>().tileX = x;
-                selectedUnit.GetComponent<Unit>().tileY = y;
-                currentPath.RemoveAt(0);
+        if (currentPath != null) {
+            if (currentPath.Count > 0)
+            {
+                int x = currentPath[0].x;
+                int y = currentPath[0].y;
+                Vector3 nextPos = TileCoordToWorldCoord(x, y);
+                if (nextPos != selectedUnit.transform.position)
+                {
+                    selectedUnit.transform.position = Vector3.MoveTowards(selectedUnit.transform.position, nextPos, step);
+                }
+                else
+                {
+                    selectedUnit.GetComponent<Unit>().tileX = x;
+                    selectedUnit.GetComponent<Unit>().tileY = y;
+                    currentPath.RemoveAt(0);
+                }
             }
         }
+
         
 
     }
@@ -121,13 +127,18 @@ public class TileMap : MonoBehaviour
     public void MoveSelectedUnitTo(int x, int y) {
 
         //TEST - replace with actual movement implementation
-        generatePathTo(x,y);
-        Debug.Log(currentPath.Count);
 
-        //selectedUnit.GetComponent<Unit>().tileX = currentPath[1].x;
-        //selectedUnit.GetComponent<Unit>().tileY = currentPath[1].y;
-        //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
+        if(selectedUnit.GetComponent<Unit>().charSelected) {
 
+            generatePathTo(x,y);
+            Debug.Log(currentPath.Count);
+
+            selectedUnit.GetComponent<Unit>().charSelected = false;
+
+            //selectedUnit.GetComponent<Unit>().tileX = currentPath[1].x;
+            //selectedUnit.GetComponent<Unit>().tileY = currentPath[1].y;
+            //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
+        }
 
     }
 
@@ -211,6 +222,12 @@ public class TileMap : MonoBehaviour
 
         return tileTypes[tiles[x, y]].isWalkable;
     }
+
+    // public void selectedChar() {
+    //     if(Input.GetMouseButtonDown(0)) {
+    //         selectedUnit.setCharSelected(true);
+    //     }
+    // }
 
     
     public float costToEnterTile(int x, int y) {
