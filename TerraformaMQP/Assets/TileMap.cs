@@ -27,19 +27,25 @@ public class TileMap : MonoBehaviour
         float speed = 2;
         float step = speed * Time.deltaTime;
 
-        if (currentPath.Count > 0) {
-            int x = currentPath[0].x;
-            int y = currentPath[0].y;
-            Vector3 nextPos = TileCoordToWorldCoord(x,y);
-            if (nextPos != selectedUnit.transform.position){
-                selectedUnit.transform.position = Vector3.MoveTowards(selectedUnit.transform.position, nextPos, step);
-            }
-            else {
-                selectedUnit.GetComponent<Unit>().tileX = x;
-                selectedUnit.GetComponent<Unit>().tileY = y;
-                currentPath.RemoveAt(0);
+        if (currentPath != null) {
+            if (currentPath.Count > 0)
+            {
+                int x = currentPath[0].x;
+                int y = currentPath[0].y;
+                Vector3 nextPos = TileCoordToWorldCoord(x, y);
+                if (nextPos != selectedUnit.transform.position)
+                {
+                    selectedUnit.transform.position = Vector3.MoveTowards(selectedUnit.transform.position, nextPos, step);
+                }
+                else
+                {
+                    selectedUnit.GetComponent<Unit>().tileX = x;
+                    selectedUnit.GetComponent<Unit>().tileY = y;
+                    currentPath.RemoveAt(0);
+                }
             }
         }
+
         
 
     }
