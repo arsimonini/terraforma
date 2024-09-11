@@ -17,11 +17,12 @@ public class Basic_Character_Class : MonoBehaviour
     public int accuracy;  //Related Functions - increaseAccuracy, decreaseAccuracy
     public int actionsLeft;  //Related Functions - useAction, resetActions
     public int totalActions;
+    public bool turnEnded = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        UnityEngine.Debug.Log("Here");
+        
     }
 
     // Update is called once per frame
@@ -34,8 +35,7 @@ public class Basic_Character_Class : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             this.takeMagicDamage(1);
-        }
-        
+        }  
         
     }
 

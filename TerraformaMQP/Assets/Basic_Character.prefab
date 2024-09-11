@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  maxHealth: 0
   attack: 0
   movementSpeed: 0
   resistence: 0
@@ -126,5 +127,7 @@ MonoBehaviour:
   speed: 0
   criticalChance: 0
   accuracy: 0
-  actions: 0
-  statuses: []
+  actionsLeft: 0
+  totalActions: 0
+  isSelected: 0
+  turnEnded: 0
