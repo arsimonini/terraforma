@@ -120,3 +120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TileX: 0
   TileY: 0
+  map: {fileID: 0}
+  statsToEffect:
+  - attack
+  - speed
+  effectAmounts: fbfffffffbffffff

@@ -41,6 +41,10 @@ public class TileMap : MonoBehaviour
                 {
                     selectedUnit.GetComponent<Unit>().tileX = x;
                     selectedUnit.GetComponent<Unit>().tileY = y;
+                    //Used to apply buff/debuff to the player based on tile type stepped on
+                    selectedUnit.GetComponent<Unit>().tile = tileTypes[tiles[x, y]];
+                    StatusEffect newEffect = new StatusEffect();
+                    newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, selectedUnit);
                     currentPath.RemoveAt(0);
                 }
             }

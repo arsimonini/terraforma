@@ -121,3 +121,6 @@ MonoBehaviour:
   TileX: 0
   TileY: 0
   map: {fileID: 0}
+  statsToEffect:
+  - speed
+  effectAmounts: feffffff

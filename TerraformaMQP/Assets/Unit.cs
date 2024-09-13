@@ -7,6 +7,7 @@ public class Unit : MonoBehaviour
 
     public int tileX = 0;
     public int tileY = 0;
+    public TileType tile;
 
     public bool charSelected = false;
     public bool charHover  = false;
@@ -15,6 +16,7 @@ public class Unit : MonoBehaviour
 
     public Camera camera;
     public Renderer renderer;
+
 
     public void SetTile(int x, int y) {
 
@@ -43,7 +45,7 @@ public class Unit : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyUp("escape")) {
+        if(Input.GetKeyUp("escape") && charSelected == true) {
             charSelected = false;
             Debug.Log("Character UnSelected");
         }

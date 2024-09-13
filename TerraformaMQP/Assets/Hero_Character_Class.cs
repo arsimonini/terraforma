@@ -8,14 +8,9 @@ public class Hero_Character_Class : MonoBehaviour
 {
     [SerializeField]
     public int mana;  //Related Functions - useMana, enoughMana, regenMana
-    public int maxMana;
-    public int magic;  //Related Functions - increaseMagic, decreaseMagic
+    public stat maxMana;
+    public stat magic;  //Related Functions - increaseMagic, decreaseMagic
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -65,9 +60,9 @@ public class Hero_Character_Class : MonoBehaviour
 
     void regenMana(int amount){
         mana = mana + amount;
-        if (mana > maxMana)
+        if (mana > maxMana.moddedValue)
         {
-            mana = maxMana;
+            mana = maxMana.moddedValue;
             UnityEngine.Debug.Log("At Maximum Mana");
             return;
         }
@@ -79,14 +74,14 @@ public class Hero_Character_Class : MonoBehaviour
     //Input - Amount of magic to increase by
 
     void increaseMagic(int amount){
-        magic += amount;
+        magic.moddedValue += amount;
     }
 
     //Decreases the character's magic value
     //Input - Amount of magic to decrease by
 
     void decreaseMagic(int amount){
-        magic -= amount;
+        magic.moddedValue -= amount;
     }
 
 }
