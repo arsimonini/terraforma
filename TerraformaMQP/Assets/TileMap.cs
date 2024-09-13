@@ -44,15 +44,39 @@ public class TileMap : MonoBehaviour
                     //Used to apply buff/debuff to the player based on tile type stepped on
                     selectedUnit.GetComponent<Unit>().tile = tileTypes[tiles[x, y]];
                     StatusEffect newEffect = new StatusEffect();
-                    newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, selectedUnit);
+                    newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, selectedUnit, tileTypes[tiles[x, y]].name + "Effect");
                     currentPath.RemoveAt(0);
                 }
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            StatusEffect newEffect = new StatusEffect();
+            List<string> stats = new List<string>();
+            stats.Add("attack");
+            List<int> amounts = new List<int>();
+            amounts.Add(-10);
+            newEffect.initializeStatusEffect(2, stats, "Cripple", amounts, selectedUnit, "Cripple", true, this.gameObject);
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            StatusEffect newEffect = new StatusEffect();
+            List<string> stats = new List<string>();
+            stats.Add("speed");
+            List<int> amounts = new List<int>();
+            amounts.Add(-5);
+            newEffect.initializeStatusEffect(5, stats, "Slow", amounts, selectedUnit, "Slow", true, this.gameObject);
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            this.gameObject.GetComponent<StatusEffectController>().playerTeamEffectsAdvance();
+        }
+
         
 
     }
+
 
     void GenerateMapData() {
         //allocate map tiles

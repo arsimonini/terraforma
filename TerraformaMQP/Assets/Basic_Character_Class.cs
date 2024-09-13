@@ -24,6 +24,8 @@ public class Basic_Character_Class : MonoBehaviour
     public stat actionsLeft;  //Related Functions - useAction, resetActions
     public stat totalActions;
 
+    public StatusEffect testEffect;  //FOR TESTING PURPOSES ----- REQUIRED TO TEST APPLYING AND REMOVING A STATUS EFFECT INSIDE THIS CLASS
+
 
 
     
@@ -38,14 +40,37 @@ public class Basic_Character_Class : MonoBehaviour
     void Update()
     {
         //FOR TESTING PURPOSES ----- ALLOWS THE CHARACTER TO TAKE PHYSICAL DAMAGE WHEN P IS PRESSED AND MAGIC DAMAGE WHEN M IS PRESSED
+        /*
         if (Input.GetKeyDown(KeyCode.P)) {
             this.takePhysicalDamage(1);
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
             this.takeMagicDamage(1, "Fire");
-        } 
-        
+        }
+        */
+
+        //FOR TESTING PURPOSES ----- APPLIES A BUFF TO THE CHARACTER WITH THE B KEY AND THEN REMOVES IT WITH THE N KEY ---- REQUIRES THE TESTEFFECT VARIABLE
+        /*
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            StatusEffect newEffect = new StatusEffect();
+            List<string> stats = new List<string>();
+            stats.Add("attack");
+            List<int> amounts = new List<int>();
+            amounts.Add(-10);
+            newEffect.initializeStatusEffect(10, stats, "Cripple", amounts, this.gameObject);
+            testEffect = newEffect;
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            removeStatus(testEffect, false);
+            testEffect = null;
+        }
+        */
+
+
+
     }
 
     //Deals Physical Damage to the character and checks if it reduces the health total below 0. Reduces the Damage value by the amount of Defense the character has

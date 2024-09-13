@@ -8,6 +8,7 @@ public class Unit : MonoBehaviour
     public int tileX = 0;
     public int tileY = 0;
     public TileType tile;
+    public TileMap map;
 
     public bool charSelected = false;
     public bool charHover  = false;
@@ -38,6 +39,7 @@ public class Unit : MonoBehaviour
                     if(hitInfo.collider.gameObject.GetComponent<Unit>());
                     {
                         charSelected = true;
+                        map.selectedUnit = this.gameObject;
                         Debug.Log("Clicked on Unit");
 
                     }
