@@ -77,6 +77,7 @@ public class TileMap : MonoBehaviour
             amounts.Add(-5);
             newEffect.initializeStatusEffect(2, stats, "Cripple", amounts, selectedUnit, "Cripple", true, this.gameObject);
         }
+        */
         if (Input.GetKeyDown(KeyCode.N))
         {
             StatusEffect newEffect = new StatusEffect();
@@ -86,11 +87,13 @@ public class TileMap : MonoBehaviour
             amounts.Add(-5);
             newEffect.initializeStatusEffect(5, stats, "Slow", amounts, selectedUnit, "Slow", true, this.gameObject);
         }
+        /*
         if (Input.GetKeyDown(KeyCode.M))
         {
             this.gameObject.GetComponent<StatusEffectController>().playerTeamEffectsAdvance();
         }
         */
+        
 
         
 

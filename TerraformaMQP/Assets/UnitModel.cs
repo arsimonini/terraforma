@@ -18,4 +18,9 @@ public class UnitModel : MonoBehaviour
     {
         Unit.GetComponent<Unit>().mouseExit();
     }
+
+    private void OnMouseDown()
+    {
+        Unit.GetComponent<Hero_Character_Class>().mouseDown();
+    }
 }

@@ -10,6 +10,15 @@ public class Hero_Character_Class : MonoBehaviour
     public int mana;  //Related Functions - useMana, enoughMana, regenMana
     public stat maxMana;
     public stat magic;  //Related Functions - increaseMagic, decreaseMagic
+    public List<Basic_Spell_Class> spellList;
+
+    void Start()
+    {
+        if (this.gameObject.GetComponent<SpellList>() != null)
+        {
+            spellList = this.gameObject.GetComponent<SpellList>().spellList;
+        }
+    }
 
 
     // Update is called once per frame
@@ -82,6 +91,19 @@ public class Hero_Character_Class : MonoBehaviour
 
     void decreaseMagic(int amount){
         magic.moddedValue -= amount;
+    }
+
+    public void mouseDown()
+    {
+        UnityEngine.Debug.Log("here");
+        if (spellList != null)
+        {
+            for (int i = 0; i < spellList.Count; i++)
+            {
+                UnityEngine.Debug.Log(spellList[i].name);
+            }
+        }
+
     }
 
 }

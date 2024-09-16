@@ -76,7 +76,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Deals Physical Damage to the character and checks if it reduces the health total below 0. Reduces the Damage value by the amount of Defense the character has
     //Input - Amount of Physical Damage Taken
 
-    void takePhysicalDamage(int damage){
+    public void takePhysicalDamage(int damage){
         health.value = health.value - (damage - defense.moddedValue);
         UnityEngine.Debug.Log("Took " +  (damage - defense.moddedValue) + " physical damage");
         checkHealth();
@@ -86,7 +86,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Deals Magic Damage to the character and checks if it reduces the health total below 0. Reduces the Damage value by the amount of Resistence the character has
     //Input - Amount of Magic Damage Taken
 
-    void takeMagicDamage(int damage, string magicType){
+    public void takeMagicDamage(int damage, string magicType){
         health.value = health.value - (damage - resistence.moddedValue);
         UnityEngine.Debug.Log("Took " + (damage - resistence.moddedValue) + " magic damage");
         checkHealth();
@@ -401,6 +401,8 @@ public class Basic_Character_Class : MonoBehaviour
             effects.Remove(effect);
         }
     }
+
+
 
 
 }

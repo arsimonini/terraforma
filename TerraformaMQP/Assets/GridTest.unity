@@ -464,8 +464,9 @@ GameObject:
   - component: {fileID: 1208350128}
   - component: {fileID: 1208350130}
   - component: {fileID: 1208350129}
+  - component: {fileID: 1208350131}
   m_Layer: 0
-  m_Name: Unit
+  m_Name: Lancin
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -530,6 +531,7 @@ MonoBehaviour:
   magic:
     value: 0
     moddedValue: 0
+  spellList: []
 --- !u!114 &1208350130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,6 +581,20 @@ MonoBehaviour:
     value: 0
     moddedValue: 0
   testEffect: {fileID: 0}
+--- !u!114 &1208350131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208350126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60060481a77192648a64793a574fd2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellList:
+  - {fileID: 11400000, guid: c92a33e8dd119c44482b3bbbd2291f7c, type: 2}
 --- !u!1 &1212209478
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +633,7 @@ MonoBehaviour:
   magic:
     value: 0
     moddedValue: 0
+  spellList: []
 --- !u!114 &1212209480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -839,6 +856,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTeamEffects: []
   enemyTeamEffects: []
+--- !u!1 &1356950528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1356950530}
+  - component: {fileID: 1356950529}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1356950529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356950528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 192d3d6d38df738499f9e840f938c4d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusEffectController: {fileID: 1297737939}
+  enemyTeamList:
+  - {fileID: 1212209480}
+  playerTeamList:
+  - {fileID: 1208350130}
+  round: 0
+  phase: 0
+--- !u!4 &1356950530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356950528}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.2959836, y: 5.1773434, z: -1.7711301}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1898405302
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,3 +1010,4 @@ SceneRoots:
   - {fileID: 1297737937}
   - {fileID: 1208350127}
   - {fileID: 1212209482}
+  - {fileID: 1356950530}
