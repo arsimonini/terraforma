@@ -13,7 +13,7 @@ public class Basic_Character_Class : MonoBehaviour
     public StatusEffect tileEffect;
 
     public stat health;  //Related Functions - takePhysicalDamage, takeMagicDamage, increaseHealth, decreaseHealth, checkHealth
-    public stat maxHealth;
+    public stat maxHealth;  //Related Functions - increaseMaxHealth, decreaseMaxHealth
     public stat attack;  //Related Functions - increaseAttack, decreaseAttack
     public stat movementSpeed;  //Related Functions - increaseMoveSpeed, decreaseMoveSpeed
     public stat resistence;  //Related Functions - increaseResistence, decreaseResistence
@@ -215,7 +215,7 @@ public class Basic_Character_Class : MonoBehaviour
 
     void deriveCritChance() {
         //Need formula for changing critical chance based on accuracy
-        criticalChance.moddedValue = accuracy.moddedValue / 100;
+        //criticalChance.moddedValue = accuracy.moddedValue / 100;
     }
 
     //Increases the character's accuracy value
@@ -248,6 +248,36 @@ public class Basic_Character_Class : MonoBehaviour
         actionsLeft.moddedValue = totalActions.moddedValue; 
     }
 
+    //Increases the characters max health value
+    //Input - Amount of health to increase by
+
+    void increaseMaxHealth(int amount){
+        maxHealth.moddedValue += amount;
+    }
+
+    //Decreases the character's max health value
+    //Input - Amount of health to decrease by
+
+    void decreaseMaxHealth(int amount){
+        maxHealth.moddedValue -= amount;
+    }
+
+    //Increases the character's total actions value
+    //Input - Amount to increase the total actions by
+
+    void increaseTotalActions(int amount)
+    {
+        totalActions.moddedValue += amount;
+    }
+
+    //Decreases the character's total actions value
+    //Input - Amount to decrease the total actions by
+
+    void decreaseTotalActions(int amount)
+    {
+        totalActions.moddedValue -= amount;
+    }
+
     //Adds a status effect to the character
     //Input - Effect to add, If the effect is coming from a tile or Buff/Debuff
 
@@ -268,6 +298,35 @@ public class Basic_Character_Class : MonoBehaviour
                 case "speed":
                     increaseSpeed(effect.amount[i]);
                     break;
+
+                case "maxHealth":
+                    increaseMaxHealth(effect.amount[i]);
+                    break;
+
+                case "movementSpeed":
+                    increaseMoveSpeed(effect.amount[i]);
+                    break;
+
+                case "resistence":
+                    increaseResistence(effect.amount[i]);
+                    break;
+
+                case "defense":
+                    increaseDefense(effect.amount[i]);
+                    break;
+
+                case "criticalChance":
+                    increaseCritChance(effect.amount[i]);
+                    break;
+
+                case "accuracy":
+                    increaseAccuracy(effect.amount[i]);
+                    break;
+
+                case "totalActions":
+                    increaseTotalActions(effect.amount[i]);
+                    break;
+
             }
         }
         if (fromTile == false)
@@ -306,6 +365,35 @@ public class Basic_Character_Class : MonoBehaviour
                 case "speed":
                     decreaseSpeed(effect.amount[i]);
                     break;
+
+                case "maxHealth":
+                    decreaseMaxHealth(effect.amount[i]);
+                    break;
+
+                case "movementSpeed":
+                    decreaseMoveSpeed(effect.amount[i]);
+                    break;
+
+                case "resistence":
+                    decreaseResistence(effect.amount[i]);
+                    break;
+
+                case "defense":
+                    decreaseDefense(effect.amount[i]);
+                    break;
+
+                case "criticalChance":
+                    decreaseCritChance(effect.amount[i]);
+                    break;
+
+                case "accuracy":
+                    decreaseAccuracy(effect.amount[i]);
+                    break;
+
+                case "totalActions":
+                    decreaseTotalActions(effect.amount[i]);
+                    break;
+
             }
         }
         if (fromTile == false)

@@ -50,13 +50,31 @@ public class TileMap : MonoBehaviour
             }
         }
 
+        // FOR TESTING PURPOSES ----- CAN BE UNCOMMENTED TO APPLY A DEBUFF TO THE SELECTED CHARACTER BY PRESSING B OR N, PRESSING M WILL ADVANCE EVERY EFFECT IN THE PLAYER TEAM EFFECTS LIST
+        /*
         if (Input.GetKeyDown(KeyCode.B))
         {
             StatusEffect newEffect = new StatusEffect();
             List<string> stats = new List<string>();
             stats.Add("attack");
+            stats.Add("speed");
+            stats.Add("maxHealth");
+            stats.Add("movementSpeed");
+            stats.Add("resistence");
+            stats.Add("defense");
+            stats.Add("criticalChance");
+            stats.Add("accuracy");
+            stats.Add("totalActions");
             List<int> amounts = new List<int>();
             amounts.Add(-10);
+            amounts.Add(-10);
+            amounts.Add(-10);
+            amounts.Add(-10);
+            amounts.Add(-10);
+            amounts.Add(-10);
+            amounts.Add(-10);
+            amounts.Add(-10);
+            amounts.Add(-5);
             newEffect.initializeStatusEffect(2, stats, "Cripple", amounts, selectedUnit, "Cripple", true, this.gameObject);
         }
         if (Input.GetKeyDown(KeyCode.N))
@@ -72,6 +90,7 @@ public class TileMap : MonoBehaviour
         {
             this.gameObject.GetComponent<StatusEffectController>().playerTeamEffectsAdvance();
         }
+        */
 
         
 
