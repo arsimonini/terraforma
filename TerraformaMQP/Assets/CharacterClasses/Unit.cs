@@ -58,8 +58,11 @@ public class Unit : MonoBehaviour
 
     //Recolors when mouse is hovering over a unit
     public void mouseEnter() {
+        if (charSelected == false)
+        {
+            renderer.material.color = Color.blue;
+        }
         UnityEngine.Debug.Log("Mouse Entered");
-        renderer.material.color = Color.blue;
         charHover = true;
     }
 

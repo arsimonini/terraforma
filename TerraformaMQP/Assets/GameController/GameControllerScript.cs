@@ -22,13 +22,18 @@ public class GameControllerScript : MonoBehaviour
 
     void Update()
     {
+
+        if (map.selectedUnit == null)
+        {
+            selectedCharacter = null;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
-                if (hit.collider.gameObject.GetComponent<UnitModel>() != null)
+                if (hit.collider.gameObject.GetComponent<UnitModel>() != null && phase == 0)
                 {
                     selectedCharacter = hit.collider.gameObject;
                     selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Basic_Character_Class>().displayStats();
@@ -38,14 +43,14 @@ public class GameControllerScript : MonoBehaviour
                 }
             }
         }
-        if (Input.GetMouseButtonDown(1) && selectedCharacter != null)
+        if (Input.GetMouseButtonDown(1) && selectedCharacter != null && phase == 0)
         {
             selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().charSelected = false;
             selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().renderer.material.color = Color.white;
             map.selectedUnit = null;
             selectedCharacter = null;
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null)
+        if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0)
         {
             selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().charSelected = false;
             selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().renderer.material.color = Color.white;
@@ -62,6 +67,8 @@ public class GameControllerScript : MonoBehaviour
                     //End Turn Stuff
                     UnityEngine.Debug.Log("Switching to Phase 1");
                     phase++;
+                    map.selectedUnit = null;
+                    selectedCharacter = null;
                 }
                 break;
 

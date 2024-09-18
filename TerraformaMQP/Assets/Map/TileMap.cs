@@ -63,9 +63,7 @@ public class TileMap : MonoBehaviour
             }
             else
             {
-                selectedUnit.gameObject.GetComponent<Unit>().renderer.material.color = Color.white;
                 currentPath = null;
-                selectedUnit = null;
             }
         }
 
@@ -204,7 +202,7 @@ public class TileMap : MonoBehaviour
                 generatePathTo(x, y);
                 UnityEngine.Debug.Log(currentPath.Count);
 
-                selectedUnit.GetComponent<Unit>().charSelected = false;
+                //selectedUnit.GetComponent<Unit>().charSelected = false;
 
                 //selectedUnit.GetComponent<Unit>().tileX = currentPath[1].x;
                 //selectedUnit.GetComponent<Unit>().tileY = currentPath[1].y;
