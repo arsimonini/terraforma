@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class TileMap : MonoBehaviour
@@ -10,6 +12,8 @@ public class TileMap : MonoBehaviour
     public TileType[] tileTypes;
     int[,] tiles;
     Node[,] graph;
+
+    public bool movingEnemy = false;
 
     int mapSizeX = 10;
     int mapSizeY = 10;
@@ -27,7 +31,11 @@ public class TileMap : MonoBehaviour
         float speed = 2;
         float step = speed * Time.deltaTime;
 
-        if (currentPath != null) {
+        if (currentPath != null){
+            if (selectedUnit.GetComponent<Enemy_Character_Class>())
+            {
+                movingEnemy = true;
+            }
             if (currentPath.Count > 0)
             {
                 int x = currentPath[0].x;
@@ -47,6 +55,17 @@ public class TileMap : MonoBehaviour
                     newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, selectedUnit, tileTypes[tiles[x, y]].name + "Effect");
                     currentPath.RemoveAt(0);
                 }
+            }
+            else if (movingEnemy == true)
+            {
+                movingEnemy = false;
+                currentPath = null;
+            }
+            else
+            {
+                selectedUnit.gameObject.GetComponent<Unit>().renderer.material.color = Color.white;
+                currentPath = null;
+                selectedUnit = null;
             }
         }
 
@@ -177,17 +196,20 @@ public class TileMap : MonoBehaviour
     public void MoveSelectedUnitTo(int x, int y) {
 
         //TEST - replace with actual movement implementation
+        if (selectedUnit != null)
+        {
+            if (selectedUnit.GetComponent<Unit>().charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
+            {
 
-        if(selectedUnit.GetComponent<Unit>().charSelected) {
+                generatePathTo(x, y);
+                UnityEngine.Debug.Log(currentPath.Count);
 
-            generatePathTo(x,y);
-            Debug.Log(currentPath.Count);
+                selectedUnit.GetComponent<Unit>().charSelected = false;
 
-            selectedUnit.GetComponent<Unit>().charSelected = false;
-
-            //selectedUnit.GetComponent<Unit>().tileX = currentPath[1].x;
-            //selectedUnit.GetComponent<Unit>().tileY = currentPath[1].y;
-            //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
+                //selectedUnit.GetComponent<Unit>().tileX = currentPath[1].x;
+                //selectedUnit.GetComponent<Unit>().tileY = currentPath[1].y;
+                //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
+            }
         }
 
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.Runtime.Serialization;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Basic_Character_Class : MonoBehaviour
@@ -401,6 +402,18 @@ public class Basic_Character_Class : MonoBehaviour
             effects.Remove(effect);
         }
     }
+
+    public void attackCharacter(GameObject target, int damageAmount)
+    {
+        target.GetComponent<Basic_Character_Class>().takePhysicalDamage(damageAmount);
+    }
+
+    public void displayStats()
+    {
+        UnityEngine.Debug.Log("Stats screen will be displayed now");
+    }
+
+
 
 
 

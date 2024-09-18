@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
@@ -23,11 +24,12 @@ public class Unit : MonoBehaviour
 
     }
 
-    // void Start() {
+    //void Start() {
     //     renderer = GetComponent<Renderer>();
-    // }
+    //}
 
     void Update() {
+        /*
         if(charHover) {
             if(Input.GetMouseButtonDown(0)) {
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
@@ -46,25 +48,29 @@ public class Unit : MonoBehaviour
                 }
             }
         }
+        */
 
         if(Input.GetKeyUp("escape") && charSelected == true) {
             charSelected = false;
-            Debug.Log("Character UnSelected");
+            UnityEngine.Debug.Log("Character UnSelected");
         }
     }
 
     //Recolors when mouse is hovering over a unit
     public void mouseEnter() {
-        Debug.Log("Mouse Entered");
+        UnityEngine.Debug.Log("Mouse Entered");
         renderer.material.color = Color.blue;
         charHover = true;
     }
 
     //Resets when mouse has stopped hovering over a unit
     public void mouseExit() {
-        Debug.Log("Mouse Exited");
-        renderer.material.color = Color.white;
+        if (charSelected == false) 
+        {
+            renderer.material.color = Color.white;
+        }
         charHover = false;
+        UnityEngine.Debug.Log("Mouse Exited");
     }
 
 }
