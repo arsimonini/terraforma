@@ -32,12 +32,12 @@ public class TileMap : MonoBehaviour
         float step = speed * Time.deltaTime;
 
         if (currentPath != null){
-            if (selectedUnit.GetComponent<Enemy_Character_Class>())
-            {
-                movingEnemy = true;
-            }
             if (currentPath.Count > 0)
             {
+                if (selectedUnit.GetComponent<Enemy_Character_Class>())
+                {
+                    movingEnemy = true;
+                }
                 int x = currentPath[0].x;
                 int y = currentPath[0].y;
                 Vector3 nextPos = TileCoordToWorldCoord(x, y);

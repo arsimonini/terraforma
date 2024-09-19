@@ -427,7 +427,7 @@ public class Basic_Character_Class : MonoBehaviour
     }
 
     //Recolors when mouse is hovering over a unit
-    public void mouseEnter()
+    public void OnMouseEnter()
     {
         if (charSelected == false)
         {
@@ -438,7 +438,7 @@ public class Basic_Character_Class : MonoBehaviour
     }
 
     //Resets when mouse has stopped hovering over a unit
-    public void mouseExit()
+    public void OnMouseExit()
     {
         if (charSelected == false)
         {
