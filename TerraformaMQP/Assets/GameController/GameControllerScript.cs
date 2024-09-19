@@ -37,23 +37,23 @@ public class GameControllerScript : MonoBehaviour
                 {
                     selectedCharacter = hit.collider.gameObject;
                     selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Basic_Character_Class>().displayStats();
-                    selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().charSelected = true;
-                    selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().renderer.material.color = Color.red;
+                    selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Basic_Character_Class>().charSelected = true;
+                    selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Basic_Character_Class>().renderer.material.color = Color.red;
                     map.selectedUnit = selectedCharacter.GetComponent<UnitModel>().Unit;
                 }
             }
         }
         if (Input.GetMouseButtonDown(1) && selectedCharacter != null && phase == 0)
         {
-            selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().charSelected = false;
-            selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().renderer.material.color = Color.white;
+            selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Basic_Character_Class>().charSelected = false;
+            selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Basic_Character_Class>().renderer.material.color = Color.white;
             map.selectedUnit = null;
             selectedCharacter = null;
         }
         if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0)
         {
-            selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().charSelected = false;
-            selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().renderer.material.color = Color.white;
+            selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Basic_Character_Class>().charSelected = false;
+            selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Basic_Character_Class>().renderer.material.color = Color.white;
             map.selectedUnit = null;
             selectedCharacter = null;
         }

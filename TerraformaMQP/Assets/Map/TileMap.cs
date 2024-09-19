@@ -47,10 +47,10 @@ public class TileMap : MonoBehaviour
                 }
                 else
                 {
-                    selectedUnit.GetComponent<Unit>().tileX = x;
-                    selectedUnit.GetComponent<Unit>().tileY = y;
+                    selectedUnit.GetComponent<Basic_Character_Class>().tileX = x;
+                    selectedUnit.GetComponent<Basic_Character_Class>().tileY = y;
                     //Used to apply buff/debuff to the player based on tile type stepped on
-                    selectedUnit.GetComponent<Unit>().tile = tileTypes[tiles[x, y]];
+                    selectedUnit.GetComponent<Basic_Character_Class>().tile = tileTypes[tiles[x, y]];
                     StatusEffect newEffect = new StatusEffect();
                     newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, selectedUnit, tileTypes[tiles[x, y]].name + "Effect");
                     currentPath.RemoveAt(0);
@@ -196,16 +196,16 @@ public class TileMap : MonoBehaviour
         //TEST - replace with actual movement implementation
         if (selectedUnit != null)
         {
-            if (selectedUnit.GetComponent<Unit>().charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
+            if (selectedUnit.GetComponent<Basic_Character_Class>().charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
             {
 
                 generatePathTo(x, y);
                 UnityEngine.Debug.Log(currentPath.Count);
 
-                //selectedUnit.GetComponent<Unit>().charSelected = false;
+                //selectedUnit.GetComponent<Basic_Character_Class>().charSelected = false;
 
-                //selectedUnit.GetComponent<Unit>().tileX = currentPath[1].x;
-                //selectedUnit.GetComponent<Unit>().tileY = currentPath[1].y;
+                //selectedUnit.GetComponent<Basic_Character_Class>().tileX = currentPath[1].x;
+                //selectedUnit.GetComponent<Basic_Character_Class>().tileY = currentPath[1].y;
                 //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
             }
         }
@@ -214,18 +214,18 @@ public class TileMap : MonoBehaviour
 
     public void generatePathTo(int x, int y){
 
-        if (selectedUnit.GetComponent<Unit>().tileX == x && selectedUnit.GetComponent<Unit>().tileY == y){
+        if (selectedUnit.GetComponent<Basic_Character_Class>().tileX == x && selectedUnit.GetComponent<Basic_Character_Class>().tileY == y){
             currentPath = new List<Node>();
-            selectedUnit.GetComponent<Unit>().path = currentPath;
+            selectedUnit.GetComponent<Basic_Character_Class>().path = currentPath;
             return;
         }
 
-        selectedUnit.GetComponent<Unit>().path = null;
+        selectedUnit.GetComponent<Basic_Character_Class>().path = null;
         currentPath = null;
 
         Dictionary<Node, float> dist = new Dictionary<Node, float>();
         Dictionary<Node, Node> prev = new Dictionary<Node, Node>();
-        Node source = graph[selectedUnit.GetComponent<Unit>().tileX, selectedUnit.GetComponent<Unit>().tileY];
+        Node source = graph[selectedUnit.GetComponent<Basic_Character_Class>().tileX, selectedUnit.GetComponent<Basic_Character_Class>().tileY];
         Node target = graph[x, y];
         dist[source] = 0;
         prev[source] = null;
@@ -282,7 +282,7 @@ public class TileMap : MonoBehaviour
         
         currentPath.Reverse();
 
-        selectedUnit.GetComponent<Unit>().path = currentPath;
+        selectedUnit.GetComponent<Basic_Character_Class>().path = currentPath;
 
     }
 

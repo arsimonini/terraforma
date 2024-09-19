@@ -11,7 +11,7 @@ public class Enemy_Character_Class : MonoBehaviour
     {
         System.Random rand = new System.Random();
         UnityEngine.Debug.Log("Taking turn");
-        this.gameObject.GetComponent<Unit>().map.MoveSelectedUnitTo(rand.Next(1, 9), rand.Next(1, 9));
+        this.gameObject.GetComponent<Basic_Character_Class>().map.MoveSelectedUnitTo(rand.Next(1, 9), rand.Next(1, 9));
 
     }
 

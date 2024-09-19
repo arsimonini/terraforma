@@ -27,9 +27,22 @@ public class Basic_Character_Class : MonoBehaviour
 
     public StatusEffect testEffect;  //FOR TESTING PURPOSES ----- REQUIRED TO TEST APPLYING AND REMOVING A STATUS EFFECT INSIDE THIS CLASS
 
+    public int tileX = 0;
+    public int tileY = 0;
+    public TileType tile;
+    public TileMap map;
+
+    public bool charSelected = false;
+    public bool charHover = false;
+
+    public List<Node> path = null;
+
+    public Camera camera;
+    public Renderer renderer;
 
 
-    
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -413,7 +426,27 @@ public class Basic_Character_Class : MonoBehaviour
         UnityEngine.Debug.Log("Stats screen will be displayed now");
     }
 
+    //Recolors when mouse is hovering over a unit
+    public void mouseEnter()
+    {
+        if (charSelected == false)
+        {
+            renderer.material.color = Color.blue;
+        }
+        UnityEngine.Debug.Log("Mouse Entered");
+        charHover = true;
+    }
 
+    //Resets when mouse has stopped hovering over a unit
+    public void mouseExit()
+    {
+        if (charSelected == false)
+        {
+            renderer.material.color = Color.white;
+        }
+        charHover = false;
+        UnityEngine.Debug.Log("Mouse Exited");
+    }
 
 
 

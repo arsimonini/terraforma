@@ -10,13 +10,13 @@ public class UnitModel : MonoBehaviour
     //Recolors when mouse is hovering over a unit
     private void OnMouseEnter()
     {
-        Unit.GetComponent<Unit>().mouseEnter();
+        Unit.GetComponent<Basic_Character_Class>().mouseEnter();
     }
 
     //Resets when mouse has stopped hovering over a unit
     private void OnMouseExit()
     {
-        Unit.GetComponent<Unit>().mouseExit();
+        Unit.GetComponent<Basic_Character_Class>().mouseExit();
     }
 
     private void OnMouseDown()

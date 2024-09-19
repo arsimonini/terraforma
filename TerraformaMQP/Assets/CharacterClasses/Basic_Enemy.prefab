@@ -128,7 +128,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5872624535370657944}
-  - component: {fileID: 7701178550572814364}
   - component: {fileID: 9013816471796857688}
   - component: {fileID: 155035448722615107}
   - component: {fileID: 1256634130085921176}
@@ -155,30 +154,6 @@ Transform:
   - {fileID: 965245265435743937}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7701178550572814364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8337138388832264390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 503e4a087c8dd4bcfab532dc301c2721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileX: 0
-  tileY: 2
-  tile:
-    name: 
-    tileVisualPrefab: {fileID: 0}
-    cost: 1
-    isWalkable: 1
-  map: {fileID: 0}
-  charSelected: 0
-  charHover: 0
-  camera: {fileID: 0}
-  renderer: {fileID: 6107281361458061965}
 --- !u!114 &9013816471796857688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +203,18 @@ MonoBehaviour:
     value: 0
     moddedValue: 0
   testEffect: {fileID: 0}
+  tileX: 0
+  tileY: 0
+  tile:
+    name: 
+    tileVisualPrefab: {fileID: 0}
+    cost: 1
+    isWalkable: 1
+  map: {fileID: 0}
+  charSelected: 0
+  charHover: 0
+  camera: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!114 &155035448722615107
 MonoBehaviour:
   m_ObjectHideFlags: 0
