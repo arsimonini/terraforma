@@ -93,7 +93,7 @@ public class Hero_Character_Class : MonoBehaviour
         magic.moddedValue -= amount;
     }
 
-    public void mouseDown()
+    public void OnMouseDown()
     {
         UnityEngine.Debug.Log("here");
         if (spellList != null)
