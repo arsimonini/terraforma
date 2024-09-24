@@ -12,13 +12,12 @@ GameObject:
   - component: {fileID: 7562360335796329862}
   - component: {fileID: 2046855266562885014}
   - component: {fileID: 5847397842822274580}
-  - component: {fileID: 5920575326446208706}
   - component: {fileID: 7928607729415032659}
   - component: {fileID: 7585430571080152534}
   - component: {fileID: 8047284439058182590}
   m_Layer: 0
   m_Name: Lancin
-  m_TagString: Untagged
+  m_TagString: PlayerTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a98373b66511443bcb9dfe8d91aade27, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,19 +108,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5920575326446208706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8895871286598532798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b43e3686d760bf246b366e4fe8f67687, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Unit: {fileID: 0}
 --- !u!114 &7928607729415032659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,15 +156,19 @@ MonoBehaviour:
   totalActions:
     value: 0
     moddedValue: 0
+  attackReach: 1
   testEffect: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 0
   tileY: 0
-  tile:
+  tileType:
     name: 
     tileVisualPrefab: {fileID: 0}
     cost: 1
     isWalkable: 1
+  tile: {fileID: 0}
   map: {fileID: 0}
+  targeting: 0
   charSelected: 0
   charHover: 0
   camera: {fileID: 0}

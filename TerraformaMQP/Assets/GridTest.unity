@@ -282,6 +282,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+--- !u!1 &1062942246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+  m_PrefabInstance: {fileID: 7371227639451404204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1297737936
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,79 +333,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedUnit: {fileID: 0}
+  selectedUnitScript: {fileID: 0}
   tileTypes:
   - name: Grass
     tileVisualPrefab: {fileID: 5589415869077225197, guid: 0e3d7416a877b4d1792beb3be8aa77f9, type: 3}
     cost: 1
-    isWalkable: 1
   - name: Dirt
     tileVisualPrefab: {fileID: 4609658174146669432, guid: 7a123d4087b294f409d1a05d686ae271, type: 3}
     cost: 1
-    isWalkable: 1
   - name: Mud
     tileVisualPrefab: {fileID: 313383055986497203, guid: 7c010d1b6cd8245d999a68a01481397e, type: 3}
     cost: 3
-    isWalkable: 1
   - name: Ice
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
   - name: Stone
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
   - name: Wood Plank
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
   - name: Dense Forest
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
   - name: Light Forest
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
   - name: Shallow Water
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
   - name: Deep Water
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
   - name: Sand
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
   - name: Glass
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
   - name: Metal
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
   - name: Ashen
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
   - name: Mountain
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 0
   - name: Hill
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
   - name: Wall
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 0
   - name: White Void
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 0
   movingEnemy: 0
 --- !u!114 &1297737939
 MonoBehaviour:
@@ -447,18 +435,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusEffectController: {fileID: 1297737939}
   enemyTeamList:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1062942246}
+  - {fileID: 7830247837932230773}
   playerTeamList:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1924946471}
+  - {fileID: 1634555521}
   camera: {fileID: 960158207}
   round: 0
   phase: 0
   map: {fileID: 1297737938}
   movingEnemy: 0
   lockPlayer: 0
+  targeting: 0
   selectedCharacter: {fileID: 0}
+  characterScript: {fileID: 0}
 --- !u!4 &1356950530
 Transform:
   m_ObjectHideFlags: 0
@@ -474,6 +464,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1634555521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8895871286598532798, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+  m_PrefabInstance: {fileID: 1611724335496834716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1898405302
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,6 +563,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1924946471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7421672215106744178, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
+  m_PrefabInstance: {fileID: 7932843001477633356}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &965245265242189565
 Transform:
   m_ObjectHideFlags: 0
@@ -603,9 +603,33 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 960158207}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: actionsLeft.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: attack.moddedValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: totalActions.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: actionsLeft.moddedValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: totalActions.moddedValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8895871286598532798, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_Name
       value: Lancin
+      objectReference: {fileID: 0}
+    - target: {fileID: 8895871286598532798, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: m_TagString
+      value: PlayerTeam
       objectReference: {fileID: 0}
     - target: {fileID: 8979272379616217446, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_LocalPosition.x
@@ -718,15 +742,18 @@ MonoBehaviour:
   totalActions:
     value: 0
     moddedValue: 0
+  attackReach: 1
   testEffect: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 0
   tileY: 0
-  tile:
+  tileType:
     name: 
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
+  tile: {fileID: 0}
   map: {fileID: 1297737938}
+  targeting: 0
   charSelected: 0
   charHover: 0
   camera: {fileID: 960158207}
@@ -906,7 +933,7 @@ GameObject:
   - component: {fileID: 4251783165329250642}
   m_Layer: 0
   m_Name: BasicEnemy2
-  m_TagString: Untagged
+  m_TagString: EnemyTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -963,6 +990,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 7421672215106744178, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
+      propertyPath: m_TagString
+      value: PlayerTeam
+      objectReference: {fileID: 0}
     - target: {fileID: 8307509125131471017, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
       propertyPath: map
       value: 
@@ -997,8 +1028,8 @@ MonoBehaviour:
   effects: []
   tileEffect: {fileID: 0}
   health:
-    value: 0
-    moddedValue: 0
+    value: 10
+    moddedValue: 10
   maxHealth:
     value: 0
     moddedValue: 0
@@ -1029,15 +1060,18 @@ MonoBehaviour:
   totalActions:
     value: 0
     moddedValue: 0
+  attackReach: 1
   testEffect: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 0
   tileY: 0
-  tile:
+  tileType:
     name: 
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
+  tile: {fileID: 0}
   map: {fileID: 1297737938}
+  targeting: 0
   charSelected: 0
   charHover: 0
   camera: {fileID: 960158207}

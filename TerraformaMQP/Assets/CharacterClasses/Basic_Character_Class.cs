@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
@@ -24,13 +25,18 @@ public class Basic_Character_Class : MonoBehaviour
     public stat accuracy;  //Related Functions - increaseAccuracy, decreaseAccuracy
     public stat actionsLeft;  //Related Functions - useAction, resetActions
     public stat totalActions;
+    public int attackReach = 1;
 
     public StatusEffect testEffect;  //FOR TESTING PURPOSES ----- REQUIRED TO TEST APPLYING AND REMOVING A STATUS EFFECT INSIDE THIS CLASS
+    public Color color;
 
     public int tileX = 0;
     public int tileY = 0;
-    public TileType tile;
+    public TileType tileType;
+    public ClickableTile tile;
     public TileMap map;
+
+    public bool targeting = false;
 
     public bool charSelected = false;
     public bool charHover = false;
@@ -47,7 +53,7 @@ public class Basic_Character_Class : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        color = renderer.material.color;
     }
 
     // Update is called once per frame
@@ -82,6 +88,24 @@ public class Basic_Character_Class : MonoBehaviour
             testEffect = null;
         }
         */
+
+        if (charSelected == true && turnEnded == false)
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                renderer.material.color = Color.yellow;
+                UnityEngine.Debug.Log("Targeting an Attack");
+                targeting = true;
+                drawReach(attackReach);
+            }
+            else if (Input.GetKeyDown(KeyCode.M))
+            {
+
+            }
+            else if (Input.GetKeyDown(KeyCode.W)){
+
+            }
+        }
 
 
 
@@ -416,14 +440,38 @@ public class Basic_Character_Class : MonoBehaviour
         }
     }
 
-    public void attackCharacter(GameObject target, int damageAmount)
+    public bool attackCharacter(GameObject target, int damageAmount)
     {
         target.GetComponent<Basic_Character_Class>().takePhysicalDamage(damageAmount);
+        removeReach(attackReach);
+        targeting = false;
+        if (takeAction() == false)
+        {
+            renderer.material.color = Color.red;
+            return false;
+        }
+        return true;
+    }
+
+    public void endTurn()
+    {
+        actionsLeft.moddedValue = 0;
+        renderer.material.color = Color.gray;
+        turnEnded = true;
+        charSelected = false;
+    }
+
+    public void stopTargeting()
+    {
+        removeReach(attackReach);
+        targeting = false;
+        renderer.material.color = Color.red;
+        displayStats();
     }
 
     public void displayStats()
     {
-        UnityEngine.Debug.Log("Stats screen will be displayed now");
+        UnityEngine.Debug.Log("Press A to Attack, M to cast Magic, or W to Wait");
     }
 
     //Recolors when mouse is hovering over a unit
@@ -442,13 +490,79 @@ public class Basic_Character_Class : MonoBehaviour
     {
         if (charSelected == false)
         {
-            renderer.material.color = Color.white;
+            if (turnEnded == false)
+            {
+                renderer.material.color = color;
+            }
+            else
+            {
+                renderer.material.color = Color.gray;
+            }
         }
         charHover = false;
         UnityEngine.Debug.Log("Mouse Exited");
     }
 
+    private void drawReach(int reach)
+    {
+        map.drawReach(reach);
+    }
 
+    public void removeReach(int reach)
+    {
+        map.removeReach(reach);
+    }
+
+    public void selectCharacter()
+    {
+        if (gameObject.tag == "PlayerTeam")
+        {
+            charSelected = true;
+        }
+        displayStats();
+        renderer.material.color = Color.red;
+    }
+
+    public void deselectCharacter()
+    {
+        charSelected = false;
+        if (turnEnded == false)
+        {
+            renderer.material.color = color;
+        }
+        else
+        {
+            renderer.material.color = Color.gray;
+        }
+    }
+
+    public bool takeAction()
+    {
+        actionsLeft.moddedValue--;
+        if (actionsLeft.moddedValue <= 0)
+        {
+            deselectCharacter();
+            endTurn();
+            return true;
+        }
+        return false;
+    }
+
+    public bool withinReach(GameObject selectedTarget)
+    {
+        if (map.checkForTarget(selectedTarget, attackReach))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void resetTurn()
+    {
+        turnEnded = false;
+        renderer.material.color = color;
+        actionsLeft.moddedValue = actionsLeft.value;
+    }
 
 
 }

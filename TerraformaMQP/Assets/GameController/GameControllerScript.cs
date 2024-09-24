@@ -18,46 +18,86 @@ public class GameControllerScript : MonoBehaviour
     public bool movingEnemy = false;
     private int enemyCount = 0;
     public bool lockPlayer = false;
+    public bool targeting = false;
     public GameObject selectedCharacter;
+    public Basic_Character_Class characterScript;
 
     void Update()
     {
 
+        enemyTeamList.RemoveAll(x => !x);
+        playerTeamList.RemoveAll(x => !x);
+
+
+        if (selectedCharacter != null)
+        {
+            if (characterScript.targeting == true)
+            {
+                targeting = true;
+            }
+        }
+        /*
         if (map.selectedUnit == null)
         {
-            selectedCharacter = null;
+            updateSelectedObject(null);
         }
+        */
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
-                if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && phase == 0)
+                if (targeting == false)
                 {
-                    selectedCharacter = hit.collider.gameObject;
-                    selectedCharacter.GetComponent<Basic_Character_Class>().displayStats();
-                    selectedCharacter.GetComponent<Basic_Character_Class>().charSelected = true;
-                    selectedCharacter.GetComponent<Basic_Character_Class>().renderer.material.color = Color.red;
-                    map.selectedUnit = selectedCharacter;
+                    if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && phase == 0 && hit.collider.gameObject.tag == "PlayerTeam")
+                    {
+                        updateSelectedObject(hit.collider.gameObject);
+                        characterScript.selectCharacter();
+                        if (characterScript.turnEnded == false)
+                        {
+                            map.updateSelectedCharacter(selectedCharacter);
+                        }
+                    }
+                    else if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && hit.collider.gameObject.tag == "EnemyTeam")
+                    {
+                        //Executes when clicking on Enemy
+                    }
+                }
+                else if (targeting == true && hit.collider.gameObject.tag == "EnemyTeam" && characterScript.withinReach(hit.collider.gameObject) == true)
+                {
+                    if (characterScript.attackCharacter(hit.collider.gameObject, characterScript.attack.moddedValue))
+                    {
+                        updateSelectedObject(null);
+                        map.updateSelectedCharacter(null);
+                    }
+                    targeting = false;
+
+                }
+                else if (targeting == true)
+                {
+                    characterScript.stopTargeting();
                 }
             }
         }
         if (Input.GetMouseButtonDown(1) && selectedCharacter != null && phase == 0)
         {
-            selectedCharacter.GetComponent<Basic_Character_Class>().charSelected = false;
-            selectedCharacter.GetComponent<Basic_Character_Class>().renderer.material.color = Color.white;
-            map.selectedUnit = null;
+            characterScript.deselectCharacter();
+            map.updateSelectedCharacter(null);
             map.currentPath = null;
-            selectedCharacter = null;
+            updateSelectedObject(null);
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0)
+        if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0 && targeting == true)
         {
-            selectedCharacter.GetComponent<Basic_Character_Class>().charSelected = false;
-            selectedCharacter.GetComponent<Basic_Character_Class>().renderer.material.color = Color.white;
-            map.selectedUnit = null;
+            characterScript.stopTargeting();
+            targeting = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0)
+        {
+            characterScript.deselectCharacter();
+            map.updateSelectedCharacter(null);
             map.currentPath = null;
-            selectedCharacter = null;
+            updateSelectedObject(null);
         }
 
 
@@ -69,8 +109,12 @@ public class GameControllerScript : MonoBehaviour
                     //End Turn Stuff
                     UnityEngine.Debug.Log("Switching to Phase 1");
                     phase++;
-                    map.selectedUnit = null;
-                    selectedCharacter = null;
+                    map.updateSelectedCharacter(null);
+                    if (selectedCharacter != null)
+                    {
+                        characterScript.deselectCharacter();
+                    }
+                    updateSelectedObject(null);
                 }
                 break;
 
@@ -86,7 +130,7 @@ public class GameControllerScript : MonoBehaviour
                 {
                     if (movingEnemy == false)
                     {
-                        map.selectedUnit = enemyTeamList[enemyCount - 1];
+                        map.updateSelectedCharacter(enemyTeamList[enemyCount - 1]);
                         enemyTeamList[enemyCount - 1].GetComponent<Enemy_Character_Class>().takeTurn();
                         movingEnemy = true;
                     }
@@ -107,7 +151,32 @@ public class GameControllerScript : MonoBehaviour
                 statusEffectController.enemyTeamEffectsAdvance();
                 round++;
                 phase = 0;
+                map.updateSelectedCharacter(null);
+                resetPlayerTeamTurns();
                 break;
+        }
+    }
+
+    private void updateSelectedObject(GameObject newObject)
+    {
+        if (newObject != null)
+        {
+            selectedCharacter = newObject;
+            characterScript = newObject.GetComponent<Basic_Character_Class>();
+        }
+        else
+        {
+            selectedCharacter = null;
+            characterScript = null;
+        }
+
+    }
+
+    private void resetPlayerTeamTurns()
+    {
+        for (int i = 0; i < playerTeamList.Count; i++)
+        {
+            playerTeamList[i].GetComponent<Basic_Character_Class>().resetTurn();
         }
     }
 

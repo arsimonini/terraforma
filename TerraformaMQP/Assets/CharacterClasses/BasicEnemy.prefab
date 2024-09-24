@@ -12,14 +12,13 @@ GameObject:
   - component: {fileID: 9200814355679461005}
   - component: {fileID: 4792602670705032465}
   - component: {fileID: 1803627313196331527}
-  - component: {fileID: 7593733271122737829}
   - component: {fileID: 7448667868949999440}
   - component: {fileID: 3556103306998089025}
   - component: {fileID: 5631562467399002433}
   - component: {fileID: 8111968720976678732}
   m_Layer: 0
   m_Name: BasicEnemy
-  m_TagString: Untagged
+  m_TagString: EnemyTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,19 +109,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7593733271122737829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7009967892437524158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b43e3686d760bf246b366e4fe8f67687, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Unit: {fileID: 0}
 --- !u!114 &7448667868949999440
 MonoBehaviour:
   m_ObjectHideFlags: 0
