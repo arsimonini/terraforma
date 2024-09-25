@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Basic_Character_Class : MonoBehaviour
 {
@@ -59,7 +60,9 @@ public class Basic_Character_Class : MonoBehaviour
     void Start()
     {
         color = renderer.material.color;
-        nameplate.GetComponent<Nameplate>();
+        nameplate = nameplate.GetComponent<Nameplate>();
+
+        
     }
 
     // Update is called once per frame
@@ -482,10 +485,9 @@ public class Basic_Character_Class : MonoBehaviour
 
     public void displayNameplate(bool b)
     {
+        UnityEngine.Debug.Log("Why you no work?");
+        UnityEngine.Debug.Log(b);
         nameplate.SetActive(b);
-        // nameplate.displayName(name);
-        // nameplate.displayHealth(health);
-        // nameplate.displayMana(mana);
     }
 
     //Recolors when mouse is hovering over a unit
