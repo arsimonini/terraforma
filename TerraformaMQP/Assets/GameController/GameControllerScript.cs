@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class GameControllerScript : MonoBehaviour
@@ -35,6 +36,12 @@ public class GameControllerScript : MonoBehaviour
             {
                 targeting = true;
             }
+            if (characterScript.charSelected == false) 
+            {
+                characterScript.deselectCharacter();
+                updateSelectedObject(null);
+                map.updateSelectedCharacter(null);
+            }
         }
         /*
         if (map.selectedUnit == null)
@@ -66,16 +73,28 @@ public class GameControllerScript : MonoBehaviour
                 }
                 else if (targeting == true && hit.collider.gameObject.tag == "EnemyTeam" && characterScript.withinReach(hit.collider.gameObject) == true)
                 {
-                    if (characterScript.attackCharacter(hit.collider.gameObject, characterScript.attack.moddedValue))
+                    if (characterScript.attackType == "Attack")
                     {
-                        updateSelectedObject(null);
-                        map.updateSelectedCharacter(null);
+                        if (characterScript.attackCharacter(hit.collider.gameObject, characterScript.attack.moddedValue))
+                        {
+                            updateSelectedObject(null);
+                            map.updateSelectedCharacter(null);
+                        }
+                    }
+                    else if (characterScript.attackType == "Spell")
+                    {
+                        if (characterScript.castSpell(hit.collider.gameObject))
+                        {
+                            updateSelectedObject(null);
+                            map.updateSelectedCharacter(null);
+                        }
                     }
                     targeting = false;
 
                 }
                 else if (targeting == true)
                 {
+                    targeting = false;
                     characterScript.stopTargeting();
                 }
             }
@@ -109,12 +128,16 @@ public class GameControllerScript : MonoBehaviour
                     //End Turn Stuff
                     UnityEngine.Debug.Log("Switching to Phase 1");
                     phase++;
-                    map.updateSelectedCharacter(null);
                     if (selectedCharacter != null)
                     {
+                        UnityEngine.Debug.Log("Made it here");
                         characterScript.deselectCharacter();
+                        characterScript.stopTargeting();
                     }
+                    targeting = false;
+                    map.updateSelectedCharacter(null);
                     updateSelectedObject(null);
+                    endAllPlayerTurns();
                 }
                 break;
 
@@ -177,6 +200,14 @@ public class GameControllerScript : MonoBehaviour
         for (int i = 0; i < playerTeamList.Count; i++)
         {
             playerTeamList[i].GetComponent<Basic_Character_Class>().resetTurn();
+        }
+    }
+
+    private void endAllPlayerTurns()
+    {
+        for (int i = 0; i < playerTeamList.Count; i++)
+        {
+            playerTeamList[i].GetComponent<Basic_Character_Class>().endTurn();
         }
     }
 

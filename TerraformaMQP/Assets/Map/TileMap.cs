@@ -212,7 +212,7 @@ public class TileMap : MonoBehaviour
     public void MoveSelectedUnitTo(int x, int y) {
 
         //TEST - replace with actual movement implementation
-        if (selectedUnit != null)
+        if (selectedUnit != null && clickableTiles[x, y].isWalkable)
         {
             if (selectedUnitScript.targeting == true)
             {
@@ -371,6 +371,16 @@ public class TileMap : MonoBehaviour
         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + reach].endHighlight();
         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - reach].endHighlight();
 
+    }
+
+    public void drawSpellReach(int reach, Basic_Spell_Class spell)
+    {
+        //Draw spell reach
+    }
+
+    public void removeSpellReach(int reach)
+    {
+        //Remove spell reach
     }
 
     //Use this function when changing the selectedUnit variable
