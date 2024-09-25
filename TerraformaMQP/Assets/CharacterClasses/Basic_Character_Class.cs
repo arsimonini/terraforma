@@ -13,6 +13,7 @@ public class Basic_Character_Class : MonoBehaviour
     public bool turnEnded = false;
     public List<StatusEffect> effects; //Related Functions - addStatus, removeStatus
     public StatusEffect tileEffect;
+    
 
     public stat health;  //Related Functions - takePhysicalDamage, takeMagicDamage, increaseHealth, decreaseHealth, checkHealth
     public stat maxHealth;  //Related Functions - increaseMaxHealth, decreaseMaxHealth
@@ -46,6 +47,10 @@ public class Basic_Character_Class : MonoBehaviour
     public Camera camera;
     public Renderer renderer;
 
+    public GameObject nameplate;
+    
+    
+
 
 
 
@@ -54,6 +59,7 @@ public class Basic_Character_Class : MonoBehaviour
     void Start()
     {
         color = renderer.material.color;
+        nameplate.GetComponent<Nameplate>();
     }
 
     // Update is called once per frame
@@ -474,6 +480,14 @@ public class Basic_Character_Class : MonoBehaviour
         UnityEngine.Debug.Log("Press A to Attack, M to cast Magic, or W to Wait");
     }
 
+    public void displayNameplate(bool b)
+    {
+        nameplate.SetActive(b);
+        // nameplate.displayName(name);
+        // nameplate.displayHealth(health);
+        // nameplate.displayMana(mana);
+    }
+
     //Recolors when mouse is hovering over a unit
     public void OnMouseEnter()
     {
@@ -520,12 +534,14 @@ public class Basic_Character_Class : MonoBehaviour
             charSelected = true;
         }
         displayStats();
+        displayNameplate(true);
         renderer.material.color = Color.red;
     }
 
     public void deselectCharacter()
     {
         charSelected = false;
+        displayNameplate(false);
         if (turnEnded == false)
         {
             renderer.material.color = color;
