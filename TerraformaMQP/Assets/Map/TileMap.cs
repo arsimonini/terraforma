@@ -369,18 +369,18 @@ public class TileMap : MonoBehaviour
             return;
         }
 
-        if (selectedUnit.GetComponent<Unit>().tileX == x && selectedUnit.GetComponent<Unit>().tileY == y){
+        if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
             visualPath = new List<Node>();
-            selectedUnit.GetComponent<Unit>().path = currentPath;
+            selectedUnitScript.path = currentPath;
             return;
         }
 
-        selectedUnit.GetComponent<Unit>().path = null;
+        selectedUnitScript.path = null;
         visualPath = null;
 
         Dictionary<Node, float> dist = new Dictionary<Node, float>();
         Dictionary<Node, Node> prev = new Dictionary<Node, Node>();
-        Node source = graph[selectedUnit.GetComponent<Unit>().tileX, selectedUnit.GetComponent<Unit>().tileY];
+        Node source = graph[selectedUnitScript.tileX, selectedUnitScript.tileY];
         Node target = graph[x, y];
         dist[source] = 0;
         prev[source] = null;
@@ -437,7 +437,7 @@ public class TileMap : MonoBehaviour
         
         visualPath.Reverse();
 
-        selectedUnit.GetComponent<Unit>().path = currentPath;
+        selectedUnitScript.path = currentPath;
 
         showPath();
     }
