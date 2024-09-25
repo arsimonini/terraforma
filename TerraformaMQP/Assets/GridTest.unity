@@ -680,6 +680,14 @@ PrefabInstance:
       propertyPath: Unit
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7585430571080152534, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: magic.value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585430571080152534, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: magic.moddedValue
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: map
       value: 
@@ -688,6 +696,10 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 960158207}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: attack.value
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: actionsLeft.value
       value: 1
@@ -992,6 +1004,14 @@ PrefabInstance:
       propertyPath: renderer
       value: 
       objectReference: {fileID: 2692237842739551816}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: health.value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: health.moddedValue
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7593733271122737829, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: Unit
       value: 

@@ -83,7 +83,9 @@ public class GameControllerScript : MonoBehaviour
                     }
                     else if (characterScript.attackType == "Spell")
                     {
-                        if (characterScript.castSpell(hit.collider.gameObject))
+                        List<GameObject> targets = new List<GameObject>();
+                        targets.Add(hit.collider.gameObject);
+                        if (characterScript.castSpell(targets))
                         {
                             updateSelectedObject(null);
                             map.updateSelectedCharacter(null);

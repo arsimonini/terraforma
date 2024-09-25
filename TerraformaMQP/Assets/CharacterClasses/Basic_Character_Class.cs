@@ -457,9 +457,9 @@ public class Basic_Character_Class : MonoBehaviour
         return true;
     }
 
-    public bool castSpell(GameObject target)
+    public bool castSpell(List<GameObject> targets)
     {
-        gameObject.GetComponent<Hero_Character_Class>().castSpell(target);
+        gameObject.GetComponent<Hero_Character_Class>().castSpell(targets);
         stopTargeting();
         if (takeAction() == false)
         {
