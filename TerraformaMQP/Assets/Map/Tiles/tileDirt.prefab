@@ -124,3 +124,4 @@ MonoBehaviour:
   statsToEffect:
   - speed
   effectAmounts: feffffff
+  characterOnTile: {fileID: 0}

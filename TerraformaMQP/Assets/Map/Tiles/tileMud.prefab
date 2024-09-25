@@ -125,3 +125,4 @@ MonoBehaviour:
   - attack
   - speed
   effectAmounts: fbfffffffbffffff
+  characterOnTile: {fileID: 0}

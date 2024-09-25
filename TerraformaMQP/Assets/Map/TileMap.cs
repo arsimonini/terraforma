@@ -2,16 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
 using UnityEngine;
 
 public class TileMap : MonoBehaviour
 {
 
     public GameObject selectedUnit;
+    public Basic_Character_Class selectedUnitScript;
 
     public TileType[] tileTypes;
     int[,] tiles;
     Node[,] graph;
+    ClickableTile[,] clickableTiles;
 
     public bool movingEnemy = false;
 
@@ -36,12 +39,12 @@ public class TileMap : MonoBehaviour
         float step = speed * Time.deltaTime;
 
         if (currentPath != null){
-            if (selectedUnit.GetComponent<Enemy_Character_Class>())
-            {
-                movingEnemy = true;
-            }
             if (currentPath.Count > 0)
             {
+                if (selectedUnit.GetComponent<Enemy_Character_Class>())
+                {
+                    movingEnemy = true;
+                }
                 int x = currentPath[0].x;
                 int y = currentPath[0].y;
                 Vector3 nextPos = TileCoordToWorldCoord(x, y);
@@ -51,10 +54,21 @@ public class TileMap : MonoBehaviour
                 }
                 else
                 {
-                    selectedUnit.GetComponent<Unit>().tileX = x;
-                    selectedUnit.GetComponent<Unit>().tileY = y;
+
+                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].characterOnTile = null;
+                    //Makes the tile passable again when the unit moves off it
+                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = true;
+
+                    selectedUnitScript.tileX = x;
+                    selectedUnitScript.tileY = y;
                     //Used to apply buff/debuff to the player based on tile type stepped on
-                    selectedUnit.GetComponent<Unit>().tile = tileTypes[tiles[x, y]];
+                    selectedUnitScript.tileType = tileTypes[tiles[x, y]];
+                    selectedUnitScript.tile = clickableTiles[x, y];
+                    clickableTiles[x, y].characterOnTile = selectedUnit;
+
+                    //Makes the tile impassable when a character stands on it
+                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = false;
+                    
                     StatusEffect newEffect = new StatusEffect();
                     newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, selectedUnit, tileTypes[tiles[x, y]].name + "Effect");
                     currentPath.RemoveAt(0);
@@ -67,9 +81,7 @@ public class TileMap : MonoBehaviour
             }
             else
             {
-                selectedUnit.gameObject.GetComponent<Unit>().renderer.material.color = Color.white;
                 currentPath = null;
-                selectedUnit = null;
             }
         }
 
@@ -180,6 +192,9 @@ public class TileMap : MonoBehaviour
     }
 
     void GenerateMapVisual() {
+
+        clickableTiles = new ClickableTile[mapSizeX, mapSizeY];
+
         for (int x = 0; x < mapSizeX; x++) {
             for (int y = 0; y < mapSizeY; y++) {
                 TileType tt = tileTypes[tiles[x,y]];
@@ -189,6 +204,7 @@ public class TileMap : MonoBehaviour
                 ct.TileX = x;
                 ct.TileY = y;
                 ct.map = this;
+                clickableTiles[x, y] = ct;
             }
         }
     }
@@ -200,18 +216,22 @@ public class TileMap : MonoBehaviour
     public void MoveSelectedUnitTo(int x, int y) {
 
         //TEST - replace with actual movement implementation
-        if (selectedUnit != null)
+        if (selectedUnit != null && clickableTiles[x, y].isWalkable)
         {
-            if (selectedUnit.GetComponent<Unit>().charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
+            if (selectedUnitScript.targeting == true)
+            {
+                selectedUnitScript.targeting = false;
+            }
+            else if (selectedUnitScript.charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
             {
                 hidePath();
                 generatePathTo(x, y);
                 UnityEngine.Debug.Log(currentPath.Count);
 
-                selectedUnit.GetComponent<Unit>().charSelected = false;
+                //selectedUnitScript.charSelected = false;
 
-                //selectedUnit.GetComponent<Unit>().tileX = currentPath[1].x;
-                //selectedUnit.GetComponent<Unit>().tileY = currentPath[1].y;
+                //selectedUnitScript.tileX = currentPath[1].x;
+                //selectedUnitScript.tileY = currentPath[1].y;
                 //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
             }
         }
@@ -220,18 +240,18 @@ public class TileMap : MonoBehaviour
 
     public void generatePathTo(int x, int y){
 
-        if (selectedUnit.GetComponent<Unit>().tileX == x && selectedUnit.GetComponent<Unit>().tileY == y){
+        if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
             currentPath = new List<Node>();
-            selectedUnit.GetComponent<Unit>().path = currentPath;
+            selectedUnitScript.path = currentPath;
             return;
         }
 
-        selectedUnit.GetComponent<Unit>().path = null;
+        selectedUnitScript.path = null;
         currentPath = null;
 
         Dictionary<Node, float> dist = new Dictionary<Node, float>();
         Dictionary<Node, Node> prev = new Dictionary<Node, Node>();
-        Node source = graph[selectedUnit.GetComponent<Unit>().tileX, selectedUnit.GetComponent<Unit>().tileY];
+        Node source = graph[selectedUnitScript.tileX, selectedUnitScript.tileY];
         Node target = graph[x, y];
         dist[source] = 0;
         prev[source] = null;
@@ -288,7 +308,7 @@ public class TileMap : MonoBehaviour
         
         currentPath.Reverse();
 
-        selectedUnit.GetComponent<Unit>().path = currentPath;
+        selectedUnitScript.path = currentPath;
 
         //showPath();
     }
@@ -297,7 +317,7 @@ public class TileMap : MonoBehaviour
 
         //add section here for checking if space is occupied by other unit
 
-        return tileTypes[tiles[x, y]].isWalkable;
+        return clickableTiles[x, y].isWalkable;
     }
 
     // public void selectedChar() {
@@ -420,6 +440,93 @@ public class TileMap : MonoBehaviour
         selectedUnit.GetComponent<Unit>().path = currentPath;
 
         showPath();
+    }
+    //Current placeholder function that searches for nearby characters based on a character's reach (Ex. Reach of 1 will search the tiles immediately next to the character)
+    //Needs to be expanded depending on how ranged characters operate
+
+    public void drawReach(int reach)
+    {
+        //Checks to the right of player
+        if (clickableTiles[selectedUnitScript.tileX + reach, selectedUnitScript.tileY].characterOnTile != null && clickableTiles[selectedUnitScript.tileX + reach, selectedUnitScript.tileY].characterOnTile.gameObject.tag == "EnemyTeam")
+        {
+            clickableTiles[selectedUnitScript.tileX + reach, selectedUnitScript.tileY].highlight();
+        }
+        //Checks to the left of player
+        if (clickableTiles[selectedUnitScript.tileX - reach, selectedUnitScript.tileY].characterOnTile != null && clickableTiles[selectedUnitScript.tileX - reach, selectedUnitScript.tileY].characterOnTile.gameObject.tag == "EnemyTeam")
+        {
+            clickableTiles[selectedUnitScript.tileX - reach, selectedUnitScript.tileY].highlight();
+        }
+        //Checks above the player
+        if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + reach].characterOnTile != null && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + reach].characterOnTile.gameObject.tag == "EnemyTeam")
+        {
+            clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + reach].highlight();
+        }
+        //Checks below the player
+        if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - reach].characterOnTile != null && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - reach].characterOnTile.gameObject.tag == "EnemyTeam")
+        {
+            clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - reach].highlight();
+        }
+    }
+
+    //Current placeholder to set the tiles back to their original colors
+
+    public void removeReach(int reach)
+    {
+
+        clickableTiles[selectedUnitScript.tileX + reach, selectedUnitScript.tileY].endHighlight();
+        clickableTiles[selectedUnitScript.tileX - reach, selectedUnitScript.tileY].endHighlight();
+        clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + reach].endHighlight();
+        clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - reach].endHighlight();
+
+    }
+
+    public void drawSpellReach(int reach, Basic_Spell_Class spell)
+    {
+        //Draw spell reach
+    }
+
+    public void removeSpellReach(int reach)
+    {
+        //Remove spell reach
+    }
+
+    //Use this function when changing the selectedUnit variable
+    //Also sets the selectedUnitScript variable making references to it's script much easier
+    
+    public void updateSelectedCharacter(GameObject newCharacter)
+    {
+        if (newCharacter != null)
+        {
+            selectedUnit = newCharacter;
+            selectedUnitScript = selectedUnit.GetComponent<Basic_Character_Class>();
+        }
+        else
+        {
+            selectedUnit = null;
+            selectedUnitScript = null;
+        }
+    }
+
+    public bool checkForTarget(GameObject selectedTarget, int reach)
+    {
+        if (clickableTiles[selectedUnitScript.tileX + reach, selectedUnitScript.tileY].characterOnTile == selectedTarget)
+        {
+            UnityEngine.Debug.Log("Within Reach");
+            return true;
+        }
+        else if (clickableTiles[selectedUnitScript.tileX - reach, selectedUnitScript.tileY].characterOnTile == selectedTarget)
+        {
+            return true;
+        }
+        else if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + reach].characterOnTile == selectedTarget)
+        {
+            return true;
+        }
+        else if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - reach].characterOnTile == selectedTarget)
+        {
+            return true;
+        }
+        return false;
     }
 }
 

@@ -12,5 +12,10 @@ public class Basic_Spell_Class : ScriptableObject
     public string spellName;
     public string elementType;
     public GameObject spellPrefab;
+    public string description;
+    public bool targeted;
+    public int range;
+    public bool targetTiles;
+    public GameObject target;
 
 }
