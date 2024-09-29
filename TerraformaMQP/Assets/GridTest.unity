@@ -217,6 +217,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &551844915 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 602801705163475698, guid: 2a5e5fbdc43a54e90ba9d63bdc8bd079, type: 3}
+  m_PrefabInstance: {fileID: 2801682311408359863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &745544918 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4956917092823307801, guid: 2a5e5fbdc43a54e90ba9d63bdc8bd079, type: 3}
@@ -943,6 +954,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6429799893452831863, guid: 2a5e5fbdc43a54e90ba9d63bdc8bd079, type: 3}
+      propertyPath: pic
+      value: 
+      objectReference: {fileID: 1511141413}
+    - target: {fileID: 6429799893452831863, guid: 2a5e5fbdc43a54e90ba9d63bdc8bd079, type: 3}
       propertyPath: mana
       value: 
       objectReference: {fileID: 1609492630}
@@ -1014,6 +1029,18 @@ PrefabInstance:
       propertyPath: Unit
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7585430571080152534, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: mana
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585430571080152534, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: maxMana.value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585430571080152534, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: maxMana.moddedValue
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: map
       value: 
@@ -1031,13 +1058,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 960158207}
     - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8d40b31ee7e0f4d0a8f2ff5db21c443e, type: 3}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: char_img
       value: 
       objectReference: {fileID: 21300000, guid: 8d40b31ee7e0f4d0a8f2ff5db21c443e, type: 3}
     - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: nameplate
       value: 
       objectReference: {fileID: 35339768}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: health.value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: maxHealth.value
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: actionsLeft.value
       value: 1
@@ -1047,8 +1090,16 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: health.moddedValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: totalActions.value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: maxHealth.moddedValue
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: actionsLeft.moddedValue
@@ -1248,7 +1299,7 @@ PrefabInstance:
     - target: {fileID: 6429799893452831863, guid: 2a5e5fbdc43a54e90ba9d63bdc8bd079, type: 3}
       propertyPath: pic
       value: 
-      objectReference: {fileID: 1511141413}
+      objectReference: {fileID: 551844915}
     - target: {fileID: 6429799893452831863, guid: 2a5e5fbdc43a54e90ba9d63bdc8bd079, type: 3}
       propertyPath: mana
       value: 
@@ -1315,9 +1366,7 @@ MonoBehaviour:
   tileEffect: {fileID: 0}
   name: 
   char_img: {fileID: 0}
-  health:
-    value: 0
-    moddedValue: 0
+  health: 0
   maxHealth:
     value: 0
     moddedValue: 0
@@ -1522,7 +1571,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 960158207}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 70357dc2ed72e4325abbd77554514278, type: 3}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: char_img
       value: 
       objectReference: {fileID: 21300000, guid: 70357dc2ed72e4325abbd77554514278, type: 3}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
@@ -1533,6 +1590,14 @@ PrefabInstance:
       propertyPath: nameplate
       value: 
       objectReference: {fileID: 35339768}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: maxHealth.value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: maxHealth.moddedValue
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7593733271122737829, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: Unit
       value: 
@@ -1639,7 +1704,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 960158207}
     - target: {fileID: 8307509125131471017, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307509125131471017, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
       propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 42f53c59de0d144f0bf8fbfdac5d7cb7, type: 3}
+    - target: {fileID: 8307509125131471017, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
+      propertyPath: char_img
       value: 
       objectReference: {fileID: 21300000, guid: 42f53c59de0d144f0bf8fbfdac5d7cb7, type: 3}
     - target: {fileID: 8307509125131471017, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
@@ -1672,13 +1745,11 @@ MonoBehaviour:
   effects: []
   tileEffect: {fileID: 0}
   name: Basic Enemy
-  char_img: {fileID: 0}
-  health:
+  char_img: {fileID: 21300000, guid: 70357dc2ed72e4325abbd77554514278, type: 3}
+  health: 10
+  maxHealth:
     value: 10
     moddedValue: 10
-  maxHealth:
-    value: 0
-    moddedValue: 0
   attack:
     value: 0
     moddedValue: 0

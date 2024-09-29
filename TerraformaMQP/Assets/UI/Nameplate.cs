@@ -19,17 +19,18 @@ public class Nameplate : MonoBehaviour
     }
 
     public void displayImage(Sprite sp) {
+        UnityEngine.Debug.Log("Setting Sprite");
         pic.sprite = sp;
     }
 
-    public void displayHealth(stat newhealth, stat newmaxhealth) {
-        //health.value = dummy;
-        //health.maxValue = newmaxhealth;
+    public void displayHealth(int newhealth, stat newmaxhealth) {
+        health.maxValue = (float)newmaxhealth.moddedValue;
+        health.value = (float)newhealth;
     }
 
-        public void displayMana(stat newmana, stat newmaxmana) {
-        //mana.value = newmana;
-        //mana.maxValue = newmaxmana;
+    public void displayMana(int newmana, stat newmaxmana) {
+        mana.maxValue = newmaxmana.moddedValue;
+        mana.value = newmana;
     }
 
 

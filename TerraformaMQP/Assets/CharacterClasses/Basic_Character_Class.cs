@@ -18,7 +18,7 @@ public class Basic_Character_Class : MonoBehaviour
 
     public string name;
     public Sprite char_img;
-    public stat health;  //Related Functions - takePhysicalDamage, takeMagicDamage, increaseHealth, decreaseHealth, checkHealth
+    public int health;  //Related Functions - takePhysicalDamage, takeMagicDamage, increaseHealth, decreaseHealth, checkHealth
     public stat maxHealth;  //Related Functions - increaseMaxHealth, decreaseMaxHealth
     public stat attack;  //Related Functions - increaseAttack, decreaseAttack
     public stat movementSpeed;  //Related Functions - increaseMoveSpeed, decreaseMoveSpeed
@@ -72,7 +72,7 @@ public class Basic_Character_Class : MonoBehaviour
     void Update()
     {
         //FOR TESTING PURPOSES ----- ALLOWS THE CHARACTER TO TAKE PHYSICAL DAMAGE WHEN P IS PRESSED AND MAGIC DAMAGE WHEN M IS PRESSED
-        /*
+        
         if (Input.GetKeyDown(KeyCode.P)) {
             this.takePhysicalDamage(1);
         }
@@ -80,7 +80,7 @@ public class Basic_Character_Class : MonoBehaviour
         {
             this.takeMagicDamage(1, "Fire");
         }
-        */
+        
 
         //FOR TESTING PURPOSES ----- APPLIES A BUFF TO THE CHARACTER WITH THE B KEY AND THEN REMOVES IT WITH THE N KEY ---- REQUIRES THE TESTEFFECT VARIABLE
         /*
@@ -127,7 +127,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of Physical Damage Taken
 
     public void takePhysicalDamage(int damage){
-        health.value = health.value - (damage - defense.moddedValue);
+        health = health - (damage - defense.moddedValue);
         UnityEngine.Debug.Log("Took " +  (damage - defense.moddedValue) + " physical damage");
         checkHealth();
         return;
@@ -137,7 +137,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of Magic Damage Taken
 
     public void takeMagicDamage(int damage, string magicType){
-        health.value = health.value - (damage - resistence.moddedValue);
+        health = health - (damage - resistence.moddedValue);
         UnityEngine.Debug.Log("Took " + (damage - resistence.moddedValue) + " magic damage");
         checkHealth();
     }
@@ -146,9 +146,9 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of health to increase by
 
     void increaseHealth(int amount){
-        health.value = health.value + amount;
-        if (health.value > maxHealth.moddedValue) {
-            health.value = maxHealth.moddedValue;
+        health = health + amount;
+        if (health > maxHealth.moddedValue) {
+            health = maxHealth.moddedValue;
         }
     }
 
@@ -156,7 +156,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of health to decrease by
 
     void decreaseHealth(int amount){
-        health.value = health.value - amount;
+        health = health - amount;
         checkHealth();
     }
 
@@ -171,7 +171,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Checks if the Character's Health is below 0 and destroys it if so
 
     void checkHealth() {
-        if (health.value <= 0){
+        if (health <= 0){
             destroy();
         }
     }
@@ -488,9 +488,18 @@ public class Basic_Character_Class : MonoBehaviour
 
     public void displayNameplate(bool b)
     {
-       // UnityEngine.Debug.Log("Why you no work?");
-        //UnityEngine.Debug.Log(b);
-        //nameplate.displayHealth(health);
+        nameplate.displayName(name);
+        nameplate.displayImage(char_img);
+        nameplate.displayHealth(health, maxHealth);
+        if (gameObject.GetComponent<Hero_Character_Class>() != null)
+        {
+            nameplate.displayMana(gameObject.GetComponent<Hero_Character_Class>().mana, gameObject.GetComponent<Hero_Character_Class>().maxMana);
+            nameplate.mana.gameObject.SetActive(true);
+        }
+        else
+        {
+            nameplate.mana.gameObject.SetActive(false);
+        }
         np2.SetActive(b);
     }
 
@@ -539,14 +548,7 @@ public class Basic_Character_Class : MonoBehaviour
         {
             charSelected = true;
         }
-        displayNameplate(true);
-        nameplate.displayName(name);
-        nameplate.displayImage(char_img);
-        //nameplate.displayHealth(health, maxHealth);
-        //nameplate.displayMana(mana, maxMana);
-        displayStats();
-        
-        
+        displayNameplate(true);        
         renderer.material.color = Color.red;
     }
 
