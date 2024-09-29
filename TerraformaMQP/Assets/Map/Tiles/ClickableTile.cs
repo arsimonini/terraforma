@@ -23,7 +23,7 @@ public class ClickableTile : MonoBehaviour
     
     void Start() {
         tileRenderer = GetComponent<Renderer>();
-        originalColor = tileRenderer.material.color;
+        originalColor = tileRenderer.sharedMaterial.color;
         color = GetComponent<Renderer>().material.color;
     }
 

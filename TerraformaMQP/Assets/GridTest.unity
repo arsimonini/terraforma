@@ -389,6 +389,9 @@ MonoBehaviour:
   - name: White Void
     tileVisualPrefab: {fileID: 0}
     cost: 1
+  - name: tileFireGrass
+    tileVisualPrefab: {fileID: 5296307935300308040, guid: 74736fe0684ee464f96b181620a6b05b, type: 3}
+    cost: 1
   movingEnemy: 0
   circleArrowPrefab: {fileID: 3581929253024597637, guid: 2d1e38878fa5027489d87c4d02e8f416, type: 3}
 --- !u!114 &1297737939
@@ -441,6 +444,8 @@ MonoBehaviour:
   playerTeamList:
   - {fileID: 1924946471}
   - {fileID: 1634555521}
+  playerTeamTileEffects: []
+  enemyTeamTileEffects: []
   camera: {fileID: 960158207}
   round: 0
   phase: 0

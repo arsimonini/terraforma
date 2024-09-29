@@ -12,9 +12,9 @@ public class TileMap : MonoBehaviour
     public Basic_Character_Class selectedUnitScript;
 
     public TileType[] tileTypes;
-    int[,] tiles;
+    public int[,] tiles;
     Node[,] graph;
-    ClickableTile[,] clickableTiles;
+    public ClickableTile[,] clickableTiles;
 
     public bool movingEnemy = false;
 
