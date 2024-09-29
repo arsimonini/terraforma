@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Hero_Character_Class : MonoBehaviour
@@ -10,7 +12,9 @@ public class Hero_Character_Class : MonoBehaviour
     public int mana;  //Related Functions - useMana, enoughMana, regenMana
     public stat maxMana;
     public stat magic;  //Related Functions - increaseMagic, decreaseMagic
+    public bool pickingSpell = false;
     public List<Basic_Spell_Class> spellList;
+    public Basic_Spell_Class selectedSpell = null;
 
     void Start()
     {
@@ -35,6 +39,27 @@ public class Hero_Character_Class : MonoBehaviour
             regenMana(10);
         }
         
+        if (pickingSpell && Input.GetMouseButtonDown(0))
+        {
+            pickingSpell = false;
+            gameObject.GetComponent<Basic_Character_Class>().renderer.material.color = Color.red;
+
+        }
+        else if (pickingSpell)
+        {
+            gameObject.GetComponent<Basic_Character_Class>().renderer.material.color = Color.cyan;
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                gameObject.GetComponent<Basic_Character_Class>().beginTargetingSpell(spellList[0].range, spellList[0]);
+                selectedSpell = spellList[0];
+                pickingSpell = false;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && pickingSpell == true)
+        {
+            selectedSpell = null;
+            pickingSpell = false;
+        }
         
     }
 
@@ -103,6 +128,27 @@ public class Hero_Character_Class : MonoBehaviour
                 UnityEngine.Debug.Log(spellList[i].name);
             }
         }
+
+    }
+
+    public void openSpellBook()
+    {
+        pickingSpell = true;
+        UnityEngine.Debug.Log("Spellbook for " + gameObject.GetComponent<Basic_Character_Class>().name + " is open. Press the corresponding number to begin targeting the spell");
+        for(int i = 0; i < spellList.Count; i++)
+        {
+            UnityEngine.Debug.Log((i + 1) + ": " + spellList[i].name + ", " + spellList[i].description.Replace("{Damage Value}", magic.moddedValue.ToString()));
+        }
+    }
+
+    public void castSpell(GameObject target)
+    {
+
+        Basic_Spell_Class spellInstance = Instantiate(selectedSpell);
+        MonoBehaviour[] cast = spellInstance.spellPrefab.GetComponents<MonoBehaviour>();
+        cast[0].enabled = true;
+        cast[0].gameObject.SendMessage("castSpell",target);
+        
 
     }
 

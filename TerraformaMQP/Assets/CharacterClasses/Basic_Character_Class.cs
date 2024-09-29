@@ -30,6 +30,8 @@ public class Basic_Character_Class : MonoBehaviour
     public stat actionsLeft;  //Related Functions - useAction, resetActions
     public stat totalActions;
     public int attackReach = 1;
+    public int defaultReach = 1;
+    public string attackType = null;
 
     public StatusEffect testEffect;  //FOR TESTING PURPOSES ----- REQUIRED TO TEST APPLYING AND REMOVING A STATUS EFFECT INSIDE THIS CLASS
     public Color color;
@@ -105,17 +107,18 @@ public class Basic_Character_Class : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                renderer.material.color = Color.yellow;
-                UnityEngine.Debug.Log("Targeting an Attack");
-                targeting = true;
-                drawReach(attackReach);
+                attackType = "Attack";
+                beginTargeting(attackReach);
             }
             else if (Input.GetKeyDown(KeyCode.M))
             {
-
+                if (gameObject.GetComponent<Hero_Character_Class>())
+                {
+                    gameObject.GetComponent<Hero_Character_Class>().openSpellBook();
+                }
             }
             else if (Input.GetKeyDown(KeyCode.W)){
-
+                endTurn();
             }
         }
 
@@ -164,6 +167,8 @@ public class Basic_Character_Class : MonoBehaviour
 
     void destroy(){
         UnityEngine.Debug.Log("Destroyed");
+        tile.isWalkable = true;
+        tile.characterOnTile = null;
         Destroy(gameObject);
         return;
     }
@@ -455,8 +460,19 @@ public class Basic_Character_Class : MonoBehaviour
     public bool attackCharacter(GameObject target, int damageAmount)
     {
         target.GetComponent<Basic_Character_Class>().takePhysicalDamage(damageAmount);
-        removeReach(attackReach);
-        targeting = false;
+        stopTargeting();
+        if (takeAction() == false)
+        {
+            renderer.material.color = Color.red;
+            return false;
+        }
+        return true;
+    }
+
+    public bool castSpell(GameObject target)
+    {
+        gameObject.GetComponent<Hero_Character_Class>().castSpell(target);
+        stopTargeting();
         if (takeAction() == false)
         {
             renderer.material.color = Color.red;
@@ -471,14 +487,45 @@ public class Basic_Character_Class : MonoBehaviour
         renderer.material.color = Color.gray;
         turnEnded = true;
         charSelected = false;
+        if (gameObject.GetComponent<Hero_Character_Class>())
+        {
+            gameObject.GetComponent<Hero_Character_Class>().pickingSpell = false;
+        }
     }
 
     public void stopTargeting()
     {
+        if (attackType == "Spell")
+        {
+            gameObject.GetComponent<Hero_Character_Class>().selectedSpell = null;
+        }
+        attackType = null;
         removeReach(attackReach);
+        attackReach = defaultReach;
         targeting = false;
         renderer.material.color = Color.red;
         displayStats();
+    }
+
+    public void beginTargeting(int reach)
+    {
+        renderer.material.color = Color.yellow;
+        UnityEngine.Debug.Log("Targeting an Attack");
+        targeting = true;
+        drawReach(reach);
+    }
+
+    public void beginTargetingSpell(int reach, Basic_Spell_Class spell)
+    {
+        attackType = "Spell";
+        renderer.material.color = Color.magenta;
+        targeting = true;
+        attackReach = reach;
+        drawReach(reach);
+        if (spell.targetTiles)
+        {
+            drawSpellReach(reach, spell);
+        }
     }
 
     public void displayStats()
@@ -535,6 +582,11 @@ public class Basic_Character_Class : MonoBehaviour
     private void drawReach(int reach)
     {
         map.drawReach(reach);
+    }
+
+    private void drawSpellReach(int reach, Basic_Spell_Class spell)
+    {
+        map.drawSpellReach(reach, spell);
     }
 
     public void removeReach(int reach)

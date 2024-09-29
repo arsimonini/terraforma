@@ -15,4 +15,9 @@ MonoBehaviour:
   manaCost: 10
   spellName: Fireball
   elementType: Fire
-  spellPrefab: {fileID: 6515260569568966498, guid: fd7c37fc3ee2c36418f3bc82b604b395, type: 3}
+  spellPrefab: {fileID: 2394175536890139692, guid: ee9334e422503c840bb34dfedfb5be70, type: 3}
+  description: Deal 10 fire damage to an enemy and set their tile Ablaze
+  targeted: 1
+  range: 2
+  targetTiles: 0
+  target: {fileID: 0}

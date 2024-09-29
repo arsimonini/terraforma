@@ -23,6 +23,10 @@ public class TileMap : MonoBehaviour
 
     //Nodes along the path of shortest path
     public List<Node> currentPath = null;
+    public List<Node> visualPath = null;
+    public GameObject circleArrowPrefab;
+
+    //Sets color to tiles
 
     void Start() {
         GenerateMapData();
@@ -215,7 +219,7 @@ public class TileMap : MonoBehaviour
     public void MoveSelectedUnitTo(int x, int y) {
 
         //TEST - replace with actual movement implementation
-        if (selectedUnit != null)
+        if (selectedUnit != null && clickableTiles[x, y].isWalkable)
         {
             if (selectedUnitScript.targeting == true)
             {
@@ -223,7 +227,7 @@ public class TileMap : MonoBehaviour
             }
             else if (selectedUnitScript.charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
             {
-
+                hidePath();
                 generatePathTo(x, y);
                 UnityEngine.Debug.Log(currentPath.Count);
 
@@ -309,6 +313,7 @@ public class TileMap : MonoBehaviour
 
         selectedUnitScript.path = currentPath;
 
+        //showPath();
     }
 
     public bool unitCanEnterTile(int x, int y) {
@@ -337,6 +342,108 @@ public class TileMap : MonoBehaviour
         return dist;
     }
 
+    public void showPath() {
+        hidePath();
+ 
+        //Create path of CircleArrows
+        for (int i = 0; i < visualPath.Count; i++) {
+            GameObject ca = Instantiate(circleArrowPrefab);
+            ca.transform.position = new Vector3(visualPath[i].x,0.6f,visualPath[i].y);
+            ca.transform.localRotation = Quaternion.Euler(90f,0,0);
+            if (i != visualPath.Count - 1) {
+                ca.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            } else {
+                ca.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
+        }
+    }
+
+    public void hidePath() {
+        //Delete all instances of CircleArrow
+        GameObject[] existingArrows = GameObject.FindGameObjectsWithTag("CircleArrow");
+        foreach (GameObject arrow in existingArrows) {
+            Destroy(arrow);
+        }
+    }
+    public void visualPathTo(int x, int y){
+
+        if (circleArrowPrefab == null) {
+            UnityEngine.Debug.LogError("circleArrowPrefab has not been assigned in the Inspector!");
+            return;
+        }
+
+        if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
+            visualPath = new List<Node>();
+            selectedUnitScript.path = currentPath;
+            return;
+        }
+
+        selectedUnitScript.path = null;
+        visualPath = null;
+
+        Dictionary<Node, float> dist = new Dictionary<Node, float>();
+        Dictionary<Node, Node> prev = new Dictionary<Node, Node>();
+        Node source = graph[selectedUnitScript.tileX, selectedUnitScript.tileY];
+        Node target = graph[x, y];
+        dist[source] = 0;
+        prev[source] = null;
+
+        //unchecked nodes
+        List<Node> unvisited = new List<Node>();
+
+        foreach (Node n in graph){
+            //Initialize to infite distance
+            if (n != source){
+                dist[n] = Mathf.Infinity;
+                prev[n] = null;
+            }
+            unvisited.Add(n);
+        }
+
+        //if there is a node in unvisited list check it
+        while (unvisited.Count > 0){
+            //unvisited node with shortest distance
+            Node u = null;
+
+            foreach (Node possibleU in unvisited){
+                if (u == null || dist[possibleU] < dist[u]){
+                    u = possibleU;
+                }
+            }
+
+            if (u == target){
+                break;
+            }
+
+            unvisited.Remove(u);
+
+            foreach (Node n in u.neighbors){
+
+                float alt = dist[u] + costToEnterTile(n.x, n.y);
+                if (alt < dist[n]){
+                    dist[n] = alt;
+                    prev[n] = u;
+                }
+            }
+        }
+        if (prev[target] == null){
+            return;
+        }
+        visualPath = new List<Node>();
+        Node curr = target;
+
+        //step through current path and add it to chain
+        while (curr != null){
+            visualPath.Add(curr);
+            curr = prev[curr];
+        }
+        
+        visualPath.Reverse();
+
+        selectedUnitScript.path = currentPath;
+
+        showPath();
+    }
     //Current placeholder function that searches for nearby characters based on a character's reach (Ex. Reach of 1 will search the tiles immediately next to the character)
     //Needs to be expanded depending on how ranged characters operate
 
@@ -374,6 +481,16 @@ public class TileMap : MonoBehaviour
         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + reach].endHighlight();
         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - reach].endHighlight();
 
+    }
+
+    public void drawSpellReach(int reach, Basic_Spell_Class spell)
+    {
+        //Draw spell reach
+    }
+
+    public void removeSpellReach(int reach)
+    {
+        //Remove spell reach
     }
 
     //Use this function when changing the selectedUnit variable
@@ -414,5 +531,8 @@ public class TileMap : MonoBehaviour
         }
         return false;
     }
-
 }
+
+
+
+
