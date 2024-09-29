@@ -41,37 +41,40 @@ public class TileMap : MonoBehaviour
         if (currentPath != null){
             if (currentPath.Count > 0)
             {
-                if (selectedUnit.GetComponent<Enemy_Character_Class>())
+                if (selectedUnit != null)
                 {
-                    movingEnemy = true;
-                }
-                int x = currentPath[0].x;
-                int y = currentPath[0].y;
-                Vector3 nextPos = TileCoordToWorldCoord(x, y);
-                if (nextPos != selectedUnit.transform.position)
-                {
-                    selectedUnit.transform.position = Vector3.MoveTowards(selectedUnit.transform.position, nextPos, step);
-                }
-                else
-                {
+                    if (selectedUnit.GetComponent<Enemy_Character_Class>())
+                    {
+                        movingEnemy = true;
+                    }
+                    int x = currentPath[0].x;
+                    int y = currentPath[0].y;
+                    Vector3 nextPos = TileCoordToWorldCoord(x, y);
+                    if (nextPos != selectedUnit.transform.position)
+                    {
+                        selectedUnit.transform.position = Vector3.MoveTowards(selectedUnit.transform.position, nextPos, step);
+                    }
+                    else
+                    {
 
-                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].characterOnTile = null;
-                    //Makes the tile passable again when the unit moves off it
-                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = true;
+                        clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].characterOnTile = null;
+                        //Makes the tile passable again when the unit moves off it
+                        clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = true;
 
-                    selectedUnitScript.tileX = x;
-                    selectedUnitScript.tileY = y;
-                    //Used to apply buff/debuff to the player based on tile type stepped on
-                    selectedUnitScript.tileType = tileTypes[tiles[x, y]];
-                    selectedUnitScript.tile = clickableTiles[x, y];
-                    clickableTiles[x, y].characterOnTile = selectedUnit;
+                        selectedUnitScript.tileX = x;
+                        selectedUnitScript.tileY = y;
+                        //Used to apply buff/debuff to the player based on tile type stepped on
+                        selectedUnitScript.tileType = tileTypes[tiles[x, y]];
+                        selectedUnitScript.tile = clickableTiles[x, y];
+                        clickableTiles[x, y].characterOnTile = selectedUnit;
 
-                    //Makes the tile impassable when a character stands on it
-                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = false;
-                    
-                    StatusEffect newEffect = new StatusEffect();
-                    newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, selectedUnit, tileTypes[tiles[x, y]].name + "Effect");
-                    currentPath.RemoveAt(0);
+                        //Makes the tile impassable when a character stands on it
+                        clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = false;
+
+                        StatusEffect newEffect = new StatusEffect();
+                        newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, selectedUnit, tileTypes[tiles[x, y]].name + "Effect");
+                        currentPath.RemoveAt(0);
+                    }
                 }
             }
             else if (movingEnemy == true)
