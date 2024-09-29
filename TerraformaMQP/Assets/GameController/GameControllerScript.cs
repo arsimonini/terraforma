@@ -37,12 +37,6 @@ public class GameControllerScript : MonoBehaviour
             {
                 targeting = true;
             }
-            if (characterScript.charSelected == false) 
-            {
-                characterScript.deselectCharacter();
-                updateSelectedObject(null);
-                map.updateSelectedCharacter(null);
-            }
         }
         /*
         if (map.selectedUnit == null)
@@ -69,7 +63,7 @@ public class GameControllerScript : MonoBehaviour
                                 map.updateSelectedCharacter(selectedCharacter);
                             }
                         }
-                        else if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && hit.collider.gameObject.tag == "EnemyTeam")
+                        else if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && hit.collider.gameObject.tag == "EnemyTeam" && phase == 0)
                         {
                             updateSelectedObject(hit.collider.gameObject);
                             characterScript.selectCharacter();
