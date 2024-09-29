@@ -14,8 +14,10 @@ public class Basic_Character_Class : MonoBehaviour
     public bool turnEnded = false;
     public List<StatusEffect> effects; //Related Functions - addStatus, removeStatus
     public StatusEffect tileEffect;
-    
 
+
+    public string name;
+    public Sprite char_img;
     public stat health;  //Related Functions - takePhysicalDamage, takeMagicDamage, increaseHealth, decreaseHealth, checkHealth
     public stat maxHealth;  //Related Functions - increaseMaxHealth, decreaseMaxHealth
     public stat attack;  //Related Functions - increaseAttack, decreaseAttack
@@ -48,7 +50,8 @@ public class Basic_Character_Class : MonoBehaviour
     public Camera camera;
     public Renderer renderer;
 
-    public GameObject nameplate;
+    public Nameplate nameplate;
+    public GameObject np2;
     
     
 
@@ -60,7 +63,7 @@ public class Basic_Character_Class : MonoBehaviour
     void Start()
     {
         color = renderer.material.color;
-        nameplate = nameplate.GetComponent<Nameplate>();
+        //nameplate = transfrom.root.GetComponent<Nameplate>();
 
         
     }
@@ -485,9 +488,10 @@ public class Basic_Character_Class : MonoBehaviour
 
     public void displayNameplate(bool b)
     {
-        UnityEngine.Debug.Log("Why you no work?");
-        UnityEngine.Debug.Log(b);
-        nameplate.SetActive(b);
+       // UnityEngine.Debug.Log("Why you no work?");
+        //UnityEngine.Debug.Log(b);
+        //nameplate.displayHealth(health);
+        np2.SetActive(b);
     }
 
     //Recolors when mouse is hovering over a unit
@@ -535,8 +539,14 @@ public class Basic_Character_Class : MonoBehaviour
         {
             charSelected = true;
         }
-        displayStats();
         displayNameplate(true);
+        nameplate.displayName(name);
+        nameplate.displayImage(char_img);
+        //nameplate.displayHealth(health, maxHealth);
+        //nameplate.displayMana(mana, maxMana);
+        displayStats();
+        
+        
         renderer.material.color = Color.red;
     }
 
