@@ -74,7 +74,7 @@ public class Basic_Character_Class : MonoBehaviour
     void Update()
     {
         //FOR TESTING PURPOSES ----- ALLOWS THE CHARACTER TO TAKE PHYSICAL DAMAGE WHEN P IS PRESSED AND MAGIC DAMAGE WHEN M IS PRESSED
-        
+        /*
         if (Input.GetKeyDown(KeyCode.P)) {
             this.takePhysicalDamage(1);
         }
@@ -82,6 +82,7 @@ public class Basic_Character_Class : MonoBehaviour
         {
             this.takeMagicDamage(1, "Fire");
         }
+        */
         
 
         //FOR TESTING PURPOSES ----- APPLIES A BUFF TO THE CHARACTER WITH THE B KEY AND THEN REMOVES IT WITH THE N KEY ---- REQUIRES THE TESTEFFECT VARIABLE
@@ -500,7 +501,7 @@ public class Basic_Character_Class : MonoBehaviour
             gameObject.GetComponent<Hero_Character_Class>().selectedSpell = null;
         }
         attackType = null;
-        removeReach(attackReach);
+        removeReach();
         attackReach = defaultReach;
         targeting = false;
         renderer.material.color = Color.red;
@@ -512,7 +513,7 @@ public class Basic_Character_Class : MonoBehaviour
         renderer.material.color = Color.yellow;
         UnityEngine.Debug.Log("Targeting an Attack");
         targeting = true;
-        drawReach(reach);
+        drawReach(reach, false, false);
     }
 
     public void beginTargetingSpell(int reach, Basic_Spell_Class spell)
@@ -521,11 +522,7 @@ public class Basic_Character_Class : MonoBehaviour
         renderer.material.color = Color.magenta;
         targeting = true;
         attackReach = reach;
-        drawReach(reach);
-        if (spell.targetTiles)
-        {
-            drawSpellReach(reach, spell);
-        }
+        drawReach(reach, true, false);
     }
 
     public void displayStats()
@@ -579,19 +576,15 @@ public class Basic_Character_Class : MonoBehaviour
         UnityEngine.Debug.Log("Mouse Exited");
     }
 
-    private void drawReach(int reach)
+    private void drawReach(int reach, bool targetTiles, bool targetAllies)
     {
-        map.drawReach(reach);
+        map.drawReach(reach, targetTiles, targetAllies);
     }
 
-    private void drawSpellReach(int reach, Basic_Spell_Class spell)
-    {
-        map.drawSpellReach(reach, spell);
-    }
 
-    public void removeReach(int reach)
+    public void removeReach()
     {
-        map.removeReach(reach);
+        map.removeReach();
     }
 
     public void selectCharacter()
