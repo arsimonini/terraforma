@@ -30,6 +30,21 @@ public class TileMap : MonoBehaviour
         {"tileGrass", 0},
         {"tileDirt", 1},
         {"tileMud", 2},
+        {"tileIce", 3},
+        {"tileStone", 4},
+        {"tileWoodPlank", 5},
+        {"tileDenseForest", 6},
+        {"tileLightForest", 7},
+        {"tileShallowWater", 8},
+        {"tileDeepWater", 9},
+        {"tileSand", 10},
+        {"tileGlass", 11},
+        {"tileMetal", 12},
+        {"tileAshen", 13},
+        {"tileMountain", 14},
+        {"tileHill", 15},
+        {"tileWall", 16},
+        {"tileWhiteVoid", 17}
     };
 
     //Nodes along the path of shortest path
@@ -188,7 +203,7 @@ public class TileMap : MonoBehaviour
 
         UnityEngine.Debug.Log(bounds[3]);
         foreach (Transform tile in allObj) {
-            if (tile.name != "Tilemap") {
+            if (tileNames.ContainsKey(tile.name)) {
                 if (tile.position.x < bounds[0]) {
                     bounds[0] = tile.position.x;
                 }
@@ -224,7 +239,7 @@ public class TileMap : MonoBehaviour
         }
 
         foreach (Transform tile in allObj) {
-            if (tile.name != "Tilemap") {
+            if (tileNames.ContainsKey(tile.name)) {
                 //UnityEngine.Debug.Log((int)(tile.position.x-xOffset) + "," + (int)(tile.position.z-yOffset));
                 int x = (int)(tile.position.x-xOffset);
                 int y = (int)(tile.position.z-yOffset);
@@ -234,6 +249,7 @@ public class TileMap : MonoBehaviour
                 ct.TileX = x;//(int)tile.position.x;
                 ct.TileY = y;//(int)tile.position.z;
                 ct.map = this;
+                ct.isWalkable = tileTypes[tileNames[tile.name]].isWalkable;
                 clickableTiles[x, y] = ct;
 
                 UnityEngine.Debug.Log(clickableTiles[x, y].isWalkable);
