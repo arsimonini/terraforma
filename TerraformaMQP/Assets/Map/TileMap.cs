@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class TileMap : MonoBehaviour
 {
 
     public GameObject selectedUnit;
     public Basic_Character_Class selectedUnitScript;
+    public Tilemap tilemap;
 
     public TileType[] tileTypes;
     int[,] tiles;
@@ -21,13 +23,22 @@ public class TileMap : MonoBehaviour
     int mapSizeX = 10;
     int mapSizeY = 10;
 
+    float xOffset;
+    float yOffset;
+
+    Dictionary<string, int> tileNames = new Dictionary<string, int>(){
+        {"tileGrass", 0},
+        {"tileDirt", 1},
+        {"tileMud", 2},
+    };
+
     //Nodes along the path of shortest path
     public List<Node> currentPath = null;
 
     void Start() {
         GenerateMapData();
         GenerateGraph();
-        GenerateMapVisual();
+        //GenerateMapVisual();
     }
 
     void Update() {
@@ -43,7 +54,7 @@ public class TileMap : MonoBehaviour
                 }
                 int x = currentPath[0].x;
                 int y = currentPath[0].y;
-                Vector3 nextPos = TileCoordToWorldCoord(x, y);
+                Vector3 nextPos = TileCoordToWorldCoord(x+(int)xOffset, y+(int)yOffset);
                 if (nextPos != selectedUnit.transform.position)
                 {
                     selectedUnit.transform.position = Vector3.MoveTowards(selectedUnit.transform.position, nextPos, step);
@@ -131,7 +142,7 @@ public class TileMap : MonoBehaviour
     }
 
 
-    void GenerateMapData() {
+    void GenerateMapDataManual() {
         //allocate map tiles
         tiles = new int[mapSizeX, mapSizeY];
 
@@ -154,6 +165,73 @@ public class TileMap : MonoBehaviour
         tiles[4,3] = 1;
         tiles[5,3] = 1;
         tiles[3,4] = 1;
+        
+    }
+
+    void GenerateMapData() {
+        UnityEngine.Debug.Log(tilemap.GetUsedTilesCount());
+
+        Transform[] allObj = tilemap.GetComponentsInChildren<Transform>();
+
+        float[] bounds = new float[4];
+        bounds[0] = allObj[0].position.x;
+        bounds[1] = allObj[0].position.z;
+        bounds[2] = allObj[0].position.x;
+        bounds[3] = allObj[0].position.z;
+
+        UnityEngine.Debug.Log(bounds[3]);
+        foreach (Transform tile in allObj) {
+            if (tile.name != "Tilemap") {
+                if (tile.position.x < bounds[0]) {
+                    bounds[0] = tile.position.x;
+                }
+                if (tile.position.z < bounds[1]) {
+                    bounds[1] = tile.position.z;
+                }
+                if (tile.position.x > bounds[2]) {
+                    bounds[2] = tile.position.x;
+                }
+                if (tile.position.z > bounds[3]) {
+                    bounds[3] = tile.position.z;
+                }
+            }
+        }
+        UnityEngine.Debug.Log(bounds[0] + "," + bounds[1] + "," + bounds[2] + "," + bounds[3]);
+
+        xOffset = bounds[0];
+        yOffset = bounds[1];
+
+        mapSizeX = (int) (bounds[2] - bounds[0] + 1);
+        mapSizeY = (int) (bounds[3] - bounds[1] + 1);
+
+        //allocate map tiles
+        tiles = new int[mapSizeX, mapSizeY];
+        clickableTiles = new ClickableTile[mapSizeX, mapSizeY];
+
+        //initialize map tiles as void
+        for (int x = 0; x < mapSizeX; x++) {
+            for (int y = 0; y < mapSizeY; y++) {
+                tiles[x,y] = 17;
+                clickableTiles[x, y] = null;
+            }
+        }
+
+        foreach (Transform tile in allObj) {
+            if (tile.name != "Tilemap") {
+                //UnityEngine.Debug.Log((int)(tile.position.x-xOffset) + "," + (int)(tile.position.z-yOffset));
+                int x = (int)(tile.position.x-xOffset);
+                int y = (int)(tile.position.z-yOffset);
+                tiles[x, y] = tileNames[tile.name];
+
+                ClickableTile ct = tile.gameObject.GetComponent<ClickableTile>();
+                ct.TileX = x;//(int)tile.position.x;
+                ct.TileY = y;//(int)tile.position.z;
+                ct.map = this;
+                clickableTiles[x, y] = ct;
+
+                UnityEngine.Debug.Log(clickableTiles[x, y].isWalkable);
+            }
+        }
         
     }
 
@@ -211,6 +289,8 @@ public class TileMap : MonoBehaviour
 
     public void MoveSelectedUnitTo(int x, int y) {
 
+        UnityEngine.Debug.Log(x + "," + y);
+
         //TEST - replace with actual movement implementation
         if (selectedUnit != null && clickableTiles[x, y].isWalkable)
         {
@@ -236,7 +316,7 @@ public class TileMap : MonoBehaviour
 
     public void generatePathTo(int x, int y){
 
-        if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
+        if (selectedUnitScript.tileX-(int)xOffset == x && selectedUnitScript.tileY-(int)yOffset == y){
             currentPath = new List<Node>();
             selectedUnitScript.path = currentPath;
             return;
@@ -247,7 +327,7 @@ public class TileMap : MonoBehaviour
 
         Dictionary<Node, float> dist = new Dictionary<Node, float>();
         Dictionary<Node, Node> prev = new Dictionary<Node, Node>();
-        Node source = graph[selectedUnitScript.tileX, selectedUnitScript.tileY];
+        Node source = graph[selectedUnitScript.tileX-(int)xOffset, selectedUnitScript.tileY-(int)yOffset];
         Node target = graph[x, y];
         dist[source] = 0;
         prev[source] = null;
@@ -293,6 +373,7 @@ public class TileMap : MonoBehaviour
         if (prev[target] == null){
             return;
         }
+
         currentPath = new List<Node>();
         Node curr = target;
 
@@ -306,13 +387,17 @@ public class TileMap : MonoBehaviour
 
         selectedUnitScript.path = currentPath;
 
+
     }
 
     public bool unitCanEnterTile(int x, int y) {
 
         //add section here for checking if space is occupied by other unit
-
-        return clickableTiles[x, y].isWalkable;
+        bool walkable = false;
+        if (clickableTiles[x, y] != null) {
+            walkable = clickableTiles[x, y].isWalkable;
+        }
+        return walkable;
     }
 
     // public void selectedChar() {
