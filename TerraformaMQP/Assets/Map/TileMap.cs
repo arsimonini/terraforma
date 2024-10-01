@@ -17,6 +17,7 @@ public class TileMap : MonoBehaviour
     public ClickableTile[,] clickableTiles;
 
     public bool movingEnemy = false;
+    public bool moving = false;
 
     public List<ClickableTile> targetList = null;
 
@@ -40,6 +41,11 @@ public class TileMap : MonoBehaviour
         float speed = 2;
         float step = speed * Time.deltaTime;
 
+        if (selectedUnit != null && selectedUnitScript.targeting == true)
+        {
+            hidePath();
+        }
+
         if (currentPath != null){
             if (currentPath.Count > 0)
             {
@@ -49,6 +55,7 @@ public class TileMap : MonoBehaviour
                     {
                         movingEnemy = true;
                     }
+                    moving = true;
                     int x = currentPath[0].x;
                     int y = currentPath[0].y;
                     Vector3 nextPos = TileCoordToWorldCoord(x, y);
@@ -82,10 +89,12 @@ public class TileMap : MonoBehaviour
             else if (movingEnemy == true)
             {
                 movingEnemy = false;
+                moving = false;
                 currentPath = null;
             }
             else
             {
+                moving = false;
                 currentPath = null;
             }
         }

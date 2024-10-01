@@ -34,11 +34,21 @@ public class ClickableTile : MonoBehaviour
 
     void OnMouseEnter() {
 
-        Color highlightColor = originalColor * highlightMultiplier;
-        tileRenderer.material.color = highlightColor;
-        
-                //Highlight Path
-        if (map.selectedUnit != null) {
+        Color highlightColor;
+        if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this))
+        {
+            float darkerHighlight = highlightMultiplier + 0.1f;
+            highlightColor = originalColor * darkerHighlight;
+            tileRenderer.material.color = highlightColor;
+        }
+        else
+        {
+            highlightColor = originalColor * highlightMultiplier;
+            tileRenderer.material.color = highlightColor;
+        }
+
+        //Highlight Path
+        if (map.selectedUnit != null && map.selectedUnit.gameObject.tag != "EnemyTeam" && map.selectedUnitScript.turnEnded == false && map.selectedUnitScript.targeting == false && map.moving == false) {
             map.visualPathTo(TileX,TileY);
             //UnityEngine.Debug.Log(currentPath[0].x)
         }
@@ -46,22 +56,23 @@ public class ClickableTile : MonoBehaviour
 
     public void highlight()
     {
-        GetComponent<Renderer>().material.color = Color.red;
+        Color highlightColor = originalColor * highlightMultiplier;
+        tileRenderer.material.color = highlightColor;
     }
 
     public void endHighlight()
     {
+
         GetComponent<Renderer>().material.color = color;
     }
 
-
-
-
-
-
-
     void OnMouseExit() {
-        
+        if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this))
+        {
+            Color highlightColor = originalColor * highlightMultiplier;
+            tileRenderer.material.color = highlightColor;
+            return;
+        }
         tileRenderer.material.color = originalColor;
     }
 
