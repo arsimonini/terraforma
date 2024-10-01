@@ -600,6 +600,7 @@ public class Basic_Character_Class : MonoBehaviour
     public void deselectCharacter()
     {
         charSelected = false;
+        map.hidePath();
         displayNameplate(false);
         if (turnEnded == false)
         {

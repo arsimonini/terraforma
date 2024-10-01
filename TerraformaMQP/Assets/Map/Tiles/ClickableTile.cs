@@ -48,7 +48,7 @@ public class ClickableTile : MonoBehaviour
         }
 
         //Highlight Path
-        if (map.selectedUnit != null && map.selectedUnit.gameObject.tag != "EnemyTeam" && map.selectedUnitScript.turnEnded == false && map.selectedUnitScript.targeting == false && map.moving == false) {
+        if (map.selectedUnit != null && map.selectedUnit.gameObject.tag != "EnemyTeam" && map.selectedUnitScript.turnEnded == false && map.selectedUnitScript.targeting == false && map.moving == false && map.selectedUnit.GetComponent<Hero_Character_Class>() != null && map.selectedUnit.GetComponent<Hero_Character_Class>().pickingSpell == false) {
             map.visualPathTo(TileX,TileY);
             //UnityEngine.Debug.Log(currentPath[0].x)
         }

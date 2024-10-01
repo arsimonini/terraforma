@@ -136,6 +136,7 @@ public class Hero_Character_Class : MonoBehaviour
 
     public void openSpellBook()
     {
+        this.gameObject.GetComponent<Basic_Character_Class>().map.hidePath();
         pickingSpell = true;
         UnityEngine.Debug.Log("Spellbook for " + gameObject.GetComponent<Basic_Character_Class>().name + " is open. Press the corresponding number to begin targeting the spell");
         for(int i = 0; i < spellList.Count; i++)

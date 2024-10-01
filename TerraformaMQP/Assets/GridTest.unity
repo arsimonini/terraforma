@@ -543,6 +543,7 @@ MonoBehaviour:
     tileVisualPrefab: {fileID: 5296307935300308040, guid: 74736fe0684ee464f96b181620a6b05b, type: 3}
     cost: 1
   movingEnemy: 0
+  moving: 0
   targetList: []
   circleArrowPrefab: {fileID: 3581929253024597637, guid: 2d1e38878fa5027489d87c4d02e8f416, type: 3}
 --- !u!114 &1297737939
@@ -1145,6 +1146,10 @@ PrefabInstance:
       value: Lancin Bermane
       objectReference: {fileID: 0}
     - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: tileY
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: camera
       value: 
       objectReference: {fileID: 960158207}
@@ -1580,6 +1585,14 @@ PrefabInstance:
       value: Basic Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: tileX
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: tileY
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: camera
       value: 
       objectReference: {fileID: 960158207}
@@ -1793,7 +1806,7 @@ MonoBehaviour:
   attackType: 
   testEffect: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
-  tileX: 0
+  tileX: 5
   tileY: 0
   tileType:
     name: 
