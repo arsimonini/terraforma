@@ -10,8 +10,6 @@ public class TileType
 
     public int cost = 1;
 
-    public bool isWalkable  = true;
-
     void Start()
     {
 

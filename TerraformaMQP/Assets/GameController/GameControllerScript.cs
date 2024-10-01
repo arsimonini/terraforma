@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class GameControllerScript : MonoBehaviour
@@ -18,39 +19,104 @@ public class GameControllerScript : MonoBehaviour
     public bool movingEnemy = false;
     private int enemyCount = 0;
     public bool lockPlayer = false;
+    public bool targeting = false;
     public GameObject selectedCharacter;
+    public Basic_Character_Class characterScript;
 
     void Update()
     {
+
+        enemyTeamList.RemoveAll(x => !x);
+        playerTeamList.RemoveAll(x => !x);
+
+
+        if (selectedCharacter != null)
+        {
+            if (characterScript.targeting == true)
+            {
+                targeting = true;
+            }
+            if (characterScript.charSelected == false) 
+            {
+                characterScript.deselectCharacter();
+                updateSelectedObject(null);
+                map.updateSelectedCharacter(null);
+            }
+        }
+        /*
+        if (map.selectedUnit == null)
+        {
+            updateSelectedObject(null);
+        }
+        */
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
-                if (hit.collider.gameObject.GetComponent<UnitModel>() != null)
+                if (targeting == false)
                 {
-                    selectedCharacter = hit.collider.gameObject;
-                    selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Basic_Character_Class>().displayStats();
-                    selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().charSelected = true;
-                    selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().renderer.material.color = Color.red;
-                    map.selectedUnit = selectedCharacter.GetComponent<UnitModel>().Unit;
+                    if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && phase == 0 && hit.collider.gameObject.tag == "PlayerTeam")
+                    {
+                        updateSelectedObject(hit.collider.gameObject);
+                        characterScript.selectCharacter();
+                        if (characterScript.turnEnded == false)
+                        {
+                            map.updateSelectedCharacter(selectedCharacter);
+                        }
+                    }
+                    else if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && hit.collider.gameObject.tag == "EnemyTeam")
+                    {
+                        //Executes when clicking on Enemy
+                    }
+                }
+                else if (targeting == true && hit.collider.gameObject.tag == "EnemyTeam" && characterScript.withinReach(hit.collider.gameObject) == true)
+                {
+                    if (characterScript.attackType == "Attack")
+                    {
+                        if (characterScript.attackCharacter(hit.collider.gameObject, characterScript.attack.moddedValue))
+                        {
+                            updateSelectedObject(null);
+                            map.updateSelectedCharacter(null);
+                        }
+                    }
+                    else if (characterScript.attackType == "Spell")
+                    {
+                        if (characterScript.castSpell(hit.collider.gameObject))
+                        {
+                            updateSelectedObject(null);
+                            map.updateSelectedCharacter(null);
+                        }
+                    }
+                    targeting = false;
+
+                }
+                else if (targeting == true)
+                {
+                    targeting = false;
+                    characterScript.stopTargeting();
                 }
             }
         }
-        if (Input.GetMouseButtonDown(1) && selectedCharacter != null)
+        if (Input.GetMouseButtonDown(1) && selectedCharacter != null && phase == 0)
         {
-            selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().charSelected = false;
-            selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().renderer.material.color = Color.white;
-            map.selectedUnit = null;
-            selectedCharacter = null;
+            characterScript.deselectCharacter();
+            map.updateSelectedCharacter(null);
+            map.currentPath = null;
+            updateSelectedObject(null);
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null)
+        if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0 && targeting == true)
         {
-            selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().charSelected = false;
-            selectedCharacter.GetComponent<UnitModel>().Unit.GetComponent<Unit>().renderer.material.color = Color.white;
-            map.selectedUnit = null;
-            selectedCharacter = null;
+            characterScript.stopTargeting();
+            targeting = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0)
+        {
+            characterScript.deselectCharacter();
+            map.updateSelectedCharacter(null);
+            map.currentPath = null;
+            updateSelectedObject(null);
         }
 
 
@@ -62,6 +128,16 @@ public class GameControllerScript : MonoBehaviour
                     //End Turn Stuff
                     UnityEngine.Debug.Log("Switching to Phase 1");
                     phase++;
+                    if (selectedCharacter != null)
+                    {
+                        UnityEngine.Debug.Log("Made it here");
+                        characterScript.deselectCharacter();
+                        characterScript.stopTargeting();
+                    }
+                    targeting = false;
+                    map.updateSelectedCharacter(null);
+                    updateSelectedObject(null);
+                    endAllPlayerTurns();
                 }
                 break;
 
@@ -77,7 +153,7 @@ public class GameControllerScript : MonoBehaviour
                 {
                     if (movingEnemy == false)
                     {
-                        map.selectedUnit = enemyTeamList[enemyCount - 1];
+                        map.updateSelectedCharacter(enemyTeamList[enemyCount - 1]);
                         enemyTeamList[enemyCount - 1].GetComponent<Enemy_Character_Class>().takeTurn();
                         movingEnemy = true;
                     }
@@ -98,7 +174,40 @@ public class GameControllerScript : MonoBehaviour
                 statusEffectController.enemyTeamEffectsAdvance();
                 round++;
                 phase = 0;
+                map.updateSelectedCharacter(null);
+                resetPlayerTeamTurns();
                 break;
+        }
+    }
+
+    private void updateSelectedObject(GameObject newObject)
+    {
+        if (newObject != null)
+        {
+            selectedCharacter = newObject;
+            characterScript = newObject.GetComponent<Basic_Character_Class>();
+        }
+        else
+        {
+            selectedCharacter = null;
+            characterScript = null;
+        }
+
+    }
+
+    private void resetPlayerTeamTurns()
+    {
+        for (int i = 0; i < playerTeamList.Count; i++)
+        {
+            playerTeamList[i].GetComponent<Basic_Character_Class>().resetTurn();
+        }
+    }
+
+    private void endAllPlayerTurns()
+    {
+        for (int i = 0; i < playerTeamList.Count; i++)
+        {
+            playerTeamList[i].GetComponent<Basic_Character_Class>().endTurn();
         }
     }
 
