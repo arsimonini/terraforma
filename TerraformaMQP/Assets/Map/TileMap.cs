@@ -34,6 +34,10 @@ public class TileMap : MonoBehaviour
 
     //Nodes along the path of shortest path
     public List<Node> currentPath = null;
+    public List<Node> visualPath = null;
+    public GameObject circleArrowPrefab;
+
+    //Sets color to tiles
 
     void Start() {
         GenerateMapData();
@@ -48,37 +52,40 @@ public class TileMap : MonoBehaviour
         if (currentPath != null){
             if (currentPath.Count > 0)
             {
-                if (selectedUnit.GetComponent<Enemy_Character_Class>())
+                if (selectedUnit != null)
                 {
-                    movingEnemy = true;
-                }
-                int x = currentPath[0].x;
-                int y = currentPath[0].y;
-                Vector3 nextPos = TileCoordToWorldCoord(x+(int)xOffset, y+(int)yOffset);
-                if (nextPos != selectedUnit.transform.position)
-                {
-                    selectedUnit.transform.position = Vector3.MoveTowards(selectedUnit.transform.position, nextPos, step);
-                }
-                else
-                {
+                    if (selectedUnit.GetComponent<Enemy_Character_Class>())
+                    {
+                        movingEnemy = true;
+                    }
+                    int x = currentPath[0].x;
+                    int y = currentPath[0].y;
+                    Vector3 nextPos = TileCoordToWorldCoord(x+(int)xOffset, y+(int)yOffset);
+                    if (nextPos != selectedUnit.transform.position)
+                    {
+                        selectedUnit.transform.position = Vector3.MoveTowards(selectedUnit.transform.position, nextPos, step);
+                    }
+                    else
+                    {
 
-                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].characterOnTile = null;
-                    //Makes the tile passable again when the unit moves off it
-                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = true;
+                        clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].characterOnTile = null;
+                        //Makes the tile passable again when the unit moves off it
+                        clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = true;
 
-                    selectedUnitScript.tileX = x;
-                    selectedUnitScript.tileY = y;
-                    //Used to apply buff/debuff to the player based on tile type stepped on
-                    selectedUnitScript.tileType = tileTypes[tiles[x, y]];
-                    selectedUnitScript.tile = clickableTiles[x, y];
-                    clickableTiles[x, y].characterOnTile = selectedUnit;
+                        selectedUnitScript.tileX = x;
+                        selectedUnitScript.tileY = y;
+                        //Used to apply buff/debuff to the player based on tile type stepped on
+                        selectedUnitScript.tileType = tileTypes[tiles[x, y]];
+                        selectedUnitScript.tile = clickableTiles[x, y];
+                        clickableTiles[x, y].characterOnTile = selectedUnit;
 
-                    //Makes the tile impassable when a character stands on it
-                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = false;
-                    
-                    StatusEffect newEffect = new StatusEffect();
-                    newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, selectedUnit, tileTypes[tiles[x, y]].name + "Effect");
-                    currentPath.RemoveAt(0);
+                        //Makes the tile impassable when a character stands on it
+                        clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = false;
+
+                        StatusEffect newEffect = new StatusEffect();
+                        newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, selectedUnit, tileTypes[tiles[x, y]].name + "Effect");
+                        currentPath.RemoveAt(0);
+                    }
                 }
             }
             else if (movingEnemy == true)
@@ -300,7 +307,7 @@ public class TileMap : MonoBehaviour
             }
             else if (selectedUnitScript.charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
             {
-
+                hidePath();
                 generatePathTo(x, y);
                 UnityEngine.Debug.Log(currentPath.Count);
 
@@ -387,7 +394,7 @@ public class TileMap : MonoBehaviour
 
         selectedUnitScript.path = currentPath;
 
-
+        //showPath();
     }
 
     public bool unitCanEnterTile(int x, int y) {
@@ -419,6 +426,108 @@ public class TileMap : MonoBehaviour
         return dist;
     }
 
+    public void showPath() {
+        hidePath();
+ 
+        //Create path of CircleArrows
+        for (int i = 0; i < visualPath.Count; i++) {
+            GameObject ca = Instantiate(circleArrowPrefab);
+            ca.transform.position = new Vector3(visualPath[i].x,0.6f,visualPath[i].y);
+            ca.transform.localRotation = Quaternion.Euler(90f,0,0);
+            if (i != visualPath.Count - 1) {
+                ca.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            } else {
+                ca.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
+        }
+    }
+
+    public void hidePath() {
+        //Delete all instances of CircleArrow
+        GameObject[] existingArrows = GameObject.FindGameObjectsWithTag("CircleArrow");
+        foreach (GameObject arrow in existingArrows) {
+            Destroy(arrow);
+        }
+    }
+    public void visualPathTo(int x, int y){
+
+        if (circleArrowPrefab == null) {
+            UnityEngine.Debug.LogError("circleArrowPrefab has not been assigned in the Inspector!");
+            return;
+        }
+
+        if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
+            visualPath = new List<Node>();
+            selectedUnitScript.path = currentPath;
+            return;
+        }
+
+        selectedUnitScript.path = null;
+        visualPath = null;
+
+        Dictionary<Node, float> dist = new Dictionary<Node, float>();
+        Dictionary<Node, Node> prev = new Dictionary<Node, Node>();
+        Node source = graph[selectedUnitScript.tileX, selectedUnitScript.tileY];
+        Node target = graph[x, y];
+        dist[source] = 0;
+        prev[source] = null;
+
+        //unchecked nodes
+        List<Node> unvisited = new List<Node>();
+
+        foreach (Node n in graph){
+            //Initialize to infite distance
+            if (n != source){
+                dist[n] = Mathf.Infinity;
+                prev[n] = null;
+            }
+            unvisited.Add(n);
+        }
+
+        //if there is a node in unvisited list check it
+        while (unvisited.Count > 0){
+            //unvisited node with shortest distance
+            Node u = null;
+
+            foreach (Node possibleU in unvisited){
+                if (u == null || dist[possibleU] < dist[u]){
+                    u = possibleU;
+                }
+            }
+
+            if (u == target){
+                break;
+            }
+
+            unvisited.Remove(u);
+
+            foreach (Node n in u.neighbors){
+
+                float alt = dist[u] + costToEnterTile(n.x, n.y);
+                if (alt < dist[n]){
+                    dist[n] = alt;
+                    prev[n] = u;
+                }
+            }
+        }
+        if (prev[target] == null){
+            return;
+        }
+        visualPath = new List<Node>();
+        Node curr = target;
+
+        //step through current path and add it to chain
+        while (curr != null){
+            visualPath.Add(curr);
+            curr = prev[curr];
+        }
+        
+        visualPath.Reverse();
+
+        selectedUnitScript.path = currentPath;
+
+        showPath();
+    }
     //Current placeholder function that searches for nearby characters based on a character's reach (Ex. Reach of 1 will search the tiles immediately next to the character)
     //Needs to be expanded depending on how ranged characters operate
 
@@ -506,5 +615,8 @@ public class TileMap : MonoBehaviour
         }
         return false;
     }
-
 }
+
+
+
+
