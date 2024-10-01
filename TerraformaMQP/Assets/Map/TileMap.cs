@@ -432,7 +432,7 @@ public class TileMap : MonoBehaviour
         //Create path of CircleArrows
         for (int i = 0; i < visualPath.Count; i++) {
             GameObject ca = Instantiate(circleArrowPrefab);
-            ca.transform.position = new Vector3(visualPath[i].x,0.6f,visualPath[i].y);
+            ca.transform.position = new Vector3(visualPath[i].x+(int)xOffset,0.6f,visualPath[i].y+(int)yOffset);
             ca.transform.localRotation = Quaternion.Euler(90f,0,0);
             if (i != visualPath.Count - 1) {
                 ca.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
