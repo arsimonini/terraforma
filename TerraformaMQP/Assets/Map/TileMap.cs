@@ -350,7 +350,7 @@ public class TileMap : MonoBehaviour
 
     public void generatePathTo(int x, int y){
 
-        if (selectedUnitScript.tileX-(int)xOffset == x && selectedUnitScript.tileY-(int)yOffset == y){
+        if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
             currentPath = new List<Node>();
             selectedUnitScript.path = currentPath;
             return;
@@ -361,7 +361,7 @@ public class TileMap : MonoBehaviour
 
         Dictionary<Node, float> dist = new Dictionary<Node, float>();
         Dictionary<Node, Node> prev = new Dictionary<Node, Node>();
-        Node source = graph[selectedUnitScript.tileX-(int)xOffset, selectedUnitScript.tileY-(int)yOffset];
+        Node source = graph[selectedUnitScript.tileX, selectedUnitScript.tileY];
         Node target = graph[x, y];
         dist[source] = 0;
         prev[source] = null;
