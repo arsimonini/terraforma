@@ -104,9 +104,9 @@ public class Basic_Character_Class : MonoBehaviour
         }
         */
 
-        if (charSelected == true && turnEnded == false)
+        if (charSelected == true && turnEnded == false & map.moving == false)
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.N))
             {
                 attackType = "Attack";
                 beginTargeting(attackReach);
@@ -118,8 +118,9 @@ public class Basic_Character_Class : MonoBehaviour
                     gameObject.GetComponent<Hero_Character_Class>().openSpellBook();
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.W)){
+            else if (Input.GetKeyDown(KeyCode.B)){
                 endTurn();
+                map.hidePath();
             }
         }
 

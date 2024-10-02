@@ -32,7 +32,7 @@ public class Hero_Character_Class : MonoBehaviour
     void Update()
     {
         //FOR TESTING PURPOSES ------ REDUCES THE CURRENT MANA COUNT BY 10 WHEN A IS PRESSED AND INCREASES THE CURRENT MANA COUNT BY 10 WHEN S IS PRESSED
-        
+        /*
         if (Input.GetKeyDown(KeyCode.S))
         {
             useMana(10);
@@ -41,6 +41,7 @@ public class Hero_Character_Class : MonoBehaviour
         {
             regenMana(10);
         }
+        */
         
         if (pickingSpell && Input.GetMouseButtonDown(0))
         {
