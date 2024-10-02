@@ -13,6 +13,8 @@ public class GameControllerScript : MonoBehaviour
     public StatusEffectController statusEffectController;
     public List<GameObject> enemyTeamList;
     public List<GameObject> playerTeamList;
+    public List<GameObject> playerTeamTileEffects;
+    public List<GameObject> enemyTeamTileEffects;
     public Camera camera;
     public int round = 0;
     public int phase = 0;  //0 for player phase, 1 for enemy effects, 2 for enemy phase, 3 for player effects
@@ -96,7 +98,9 @@ public class GameControllerScript : MonoBehaviour
                     }
                     else if (characterScript.attackType == "Spell")
                     {
-                        if (characterScript.castSpell(hit.collider.gameObject))
+                        List<GameObject> targets = new List<GameObject>();
+                        targets.Add(hit.collider.gameObject);
+                        if (characterScript.castSpell(targets))
                         {
                             updateSelectedObject(null);
                             map.updateSelectedCharacter(null);

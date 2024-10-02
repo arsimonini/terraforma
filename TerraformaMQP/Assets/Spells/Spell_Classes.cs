@@ -18,4 +18,14 @@ public class Basic_Spell_Class : ScriptableObject
     public bool targetTiles;
     public GameObject target;
 
+
+
+}
+
+public interface Cast_Spell
+{
+    public void castSpell(List<GameObject> targets, GameObject caster)
+    {
+        UnityEngine.Debug.Log("Cast Spell");
+    }
 }

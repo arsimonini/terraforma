@@ -539,7 +539,12 @@ MonoBehaviour:
   - name: White Void
     tileVisualPrefab: {fileID: 0}
     cost: 1
+  - name: tileFireGrass
+    tileVisualPrefab: {fileID: 5296307935300308040, guid: 74736fe0684ee464f96b181620a6b05b, type: 3}
+    cost: 1
   movingEnemy: 0
+  moving: 0
+  targetList: []
   circleArrowPrefab: {fileID: 3581929253024597637, guid: 2d1e38878fa5027489d87c4d02e8f416, type: 3}
 --- !u!114 &1297737939
 MonoBehaviour:
@@ -591,6 +596,8 @@ MonoBehaviour:
   playerTeamList:
   - {fileID: 1924946471}
   - {fileID: 1634555521}
+  playerTeamTileEffects: []
+  enemyTeamTileEffects: []
   camera: {fileID: 960158207}
   round: 0
   phase: 0
@@ -619,39 +626,6 @@ Transform:
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2234551823787693878, guid: 2a5e5fbdc43a54e90ba9d63bdc8bd079, type: 3}
   m_PrefabInstance: {fileID: 2801682311408359863}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1461353127 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6854857513612582757, guid: 2a5e5fbdc43a54e90ba9d63bdc8bd079, type: 3}
-  m_PrefabInstance: {fileID: 2045335722}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1511141413 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 602801705163475698, guid: 2a5e5fbdc43a54e90ba9d63bdc8bd079, type: 3}
-  m_PrefabInstance: {fileID: 2045335722}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1609492630 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2234551823787693878, guid: 2a5e5fbdc43a54e90ba9d63bdc8bd079, type: 3}
-  m_PrefabInstance: {fileID: 2045335722}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -743,6 +717,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1461353127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6854857513612582757, guid: 2a5e5fbdc43a54e90ba9d63bdc8bd079, type: 3}
+  m_PrefabInstance: {fileID: 2045335722}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1511141413 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 602801705163475698, guid: 2a5e5fbdc43a54e90ba9d63bdc8bd079, type: 3}
+  m_PrefabInstance: {fileID: 2045335722}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1609492630 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2234551823787693878, guid: 2a5e5fbdc43a54e90ba9d63bdc8bd079, type: 3}
+  m_PrefabInstance: {fileID: 2045335722}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1634555521 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8895871286598532798, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
@@ -1139,6 +1146,10 @@ PrefabInstance:
       value: Lancin Bermane
       objectReference: {fileID: 0}
     - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: tileY
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: camera
       value: 
       objectReference: {fileID: 960158207}
@@ -1422,86 +1433,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a5e5fbdc43a54e90ba9d63bdc8bd079, type: 3}
---- !u!114 &4251783165329250642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7830247837932230773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4405e3c5166a04fbef27de6e26baad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4815723878242298050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7830247837932230773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eef314c587c8e24aa38801bf961afa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnEnded: 0
-  effects: []
-  tileEffect: {fileID: 0}
-  name: 
-  char_img: {fileID: 0}
-  health: 0
-  maxHealth:
-    value: 0
-    moddedValue: 0
-  attack:
-    value: 0
-    moddedValue: 0
-  movementSpeed:
-    value: 0
-    moddedValue: 0
-  resistence:
-    value: 0
-    moddedValue: 0
-  defense:
-    value: 0
-    moddedValue: 0
-  speed:
-    value: 0
-    moddedValue: 0
-  criticalChance:
-    value: 0
-    moddedValue: 0
-  accuracy:
-    value: 0
-    moddedValue: 0
-  actionsLeft:
-    value: 0
-    moddedValue: 0
-  totalActions:
-    value: 0
-    moddedValue: 0
-  attackReach: 1
-  defaultReach: 1
-  attackType: 
-  testEffect: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  tileX: 0
-  tileY: 0
-  tileType:
-    name: 
-    tileVisualPrefab: {fileID: 0}
-    cost: 1
-  tile: {fileID: 0}
-  map: {fileID: 1297737938}
-  targeting: 0
-  charSelected: 0
-  charHover: 0
-  camera: {fileID: 960158207}
-  renderer: {fileID: 6107281361265875633}
-  nameplate: {fileID: 3347623419480183641, guid: 95fbb5137e36b423497fe5e8106b2493, type: 3}
-  np2: {fileID: 0}
 --- !u!135 &5677094752945259411
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1654,6 +1585,14 @@ PrefabInstance:
       value: Basic Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: tileX
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: tileY
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: camera
       value: 
       objectReference: {fileID: 960158207}
@@ -1690,7 +1629,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 7593733271122737829, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1709,8 +1648,6 @@ GameObject:
   - component: {fileID: 5677094752945259411}
   - component: {fileID: 8233658884364249977}
   - component: {fileID: 6456627802691955008}
-  - component: {fileID: 4815723878242298050}
-  - component: {fileID: 4251783165329250642}
   m_Layer: 0
   m_Name: BasicEnemy2
   m_TagString: EnemyTeam
@@ -1869,7 +1806,7 @@ MonoBehaviour:
   attackType: 
   testEffect: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
-  tileX: 0
+  tileX: 5
   tileY: 0
   tileType:
     name: 

@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Hero_Character_Class : MonoBehaviour
 {
@@ -133,6 +136,7 @@ public class Hero_Character_Class : MonoBehaviour
 
     public void openSpellBook()
     {
+        this.gameObject.GetComponent<Basic_Character_Class>().map.hidePath();
         pickingSpell = true;
         UnityEngine.Debug.Log("Spellbook for " + gameObject.GetComponent<Basic_Character_Class>().name + " is open. Press the corresponding number to begin targeting the spell");
         for(int i = 0; i < spellList.Count; i++)
@@ -141,13 +145,11 @@ public class Hero_Character_Class : MonoBehaviour
         }
     }
 
-    public void castSpell(GameObject target)
+    public void castSpell(List<GameObject> targets)
     {
 
         Basic_Spell_Class spellInstance = Instantiate(selectedSpell);
-        MonoBehaviour[] cast = spellInstance.spellPrefab.GetComponents<MonoBehaviour>();
-        cast[0].enabled = true;
-        cast[0].gameObject.SendMessage("castSpell",target);
+        spellInstance.spellPrefab.GetComponent<Cast_Spell>().castSpell(targets, this.gameObject);
         
 
     }
