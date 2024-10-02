@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class TileMap : MonoBehaviour
 {
 
     public GameObject selectedUnit;
     public Basic_Character_Class selectedUnitScript;
+    public Tilemap tilemap;
 
     public TileType[] tileTypes;
     public int[,] tiles;
@@ -24,6 +26,30 @@ public class TileMap : MonoBehaviour
     int mapSizeX = 10;
     int mapSizeY = 10;
 
+    float xOffset;
+    float yOffset;
+
+    Dictionary<string, int> tileNames = new Dictionary<string, int>(){
+        {"tileGrass", 0},
+        {"tileDirt", 1},
+        {"tileMud", 2},
+        {"tileIce", 3},
+        {"tileStone", 4},
+        {"tileWoodPlank", 5},
+        {"tileDenseForest", 6},
+        {"tileLightForest", 7},
+        {"tileShallowWater", 8},
+        {"tileDeepWater", 9},
+        {"tileSand", 10},
+        {"tileGlass", 11},
+        {"tileMetal", 12},
+        {"tileAshen", 13},
+        {"tileMountain", 14},
+        {"tileHill", 15},
+        {"tileWall", 16},
+        {"tileWhiteVoid", 17}
+    };
+
     //Nodes along the path of shortest path
     public List<Node> currentPath = null;
     public List<Node> visualPath = null;
@@ -34,7 +60,7 @@ public class TileMap : MonoBehaviour
     void Start() {
         GenerateMapData();
         GenerateGraph();
-        GenerateMapVisual();
+        //GenerateMapVisual();
     }
 
     void Update() {
@@ -58,7 +84,7 @@ public class TileMap : MonoBehaviour
                     moving = true;
                     int x = currentPath[0].x;
                     int y = currentPath[0].y;
-                    Vector3 nextPos = TileCoordToWorldCoord(x, y);
+                    Vector3 nextPos = TileCoordToWorldCoord(x+(int)xOffset, y+(int)yOffset);
                     if (nextPos != selectedUnit.transform.position)
                     {
                         selectedUnit.transform.position = Vector3.MoveTowards(selectedUnit.transform.position, nextPos, step);
@@ -149,7 +175,7 @@ public class TileMap : MonoBehaviour
     }
 
 
-    void GenerateMapData() {
+    void GenerateMapDataManual() {
         //allocate map tiles
         tiles = new int[mapSizeX, mapSizeY];
 
@@ -172,6 +198,74 @@ public class TileMap : MonoBehaviour
         tiles[4,3] = 1;
         tiles[5,3] = 1;
         tiles[3,4] = 1;
+        
+    }
+
+    void GenerateMapData() {
+        UnityEngine.Debug.Log(tilemap.GetUsedTilesCount());
+
+        Transform[] allObj = tilemap.GetComponentsInChildren<Transform>();
+
+        float[] bounds = new float[4];
+        bounds[0] = allObj[0].position.x;
+        bounds[1] = allObj[0].position.z;
+        bounds[2] = allObj[0].position.x;
+        bounds[3] = allObj[0].position.z;
+
+        UnityEngine.Debug.Log(bounds[3]);
+        foreach (Transform tile in allObj) {
+            if (tileNames.ContainsKey(tile.name)) {
+                if (tile.position.x < bounds[0]) {
+                    bounds[0] = tile.position.x;
+                }
+                if (tile.position.z < bounds[1]) {
+                    bounds[1] = tile.position.z;
+                }
+                if (tile.position.x > bounds[2]) {
+                    bounds[2] = tile.position.x;
+                }
+                if (tile.position.z > bounds[3]) {
+                    bounds[3] = tile.position.z;
+                }
+            }
+        }
+        UnityEngine.Debug.Log(bounds[0] + "," + bounds[1] + "," + bounds[2] + "," + bounds[3]);
+
+        xOffset = bounds[0];
+        yOffset = bounds[1];
+
+        mapSizeX = (int) (bounds[2] - bounds[0] + 1);
+        mapSizeY = (int) (bounds[3] - bounds[1] + 1);
+
+        //allocate map tiles
+        tiles = new int[mapSizeX, mapSizeY];
+        clickableTiles = new ClickableTile[mapSizeX, mapSizeY];
+
+        //initialize map tiles as void
+        for (int x = 0; x < mapSizeX; x++) {
+            for (int y = 0; y < mapSizeY; y++) {
+                tiles[x,y] = 17;
+                clickableTiles[x, y] = null;
+            }
+        }
+
+        foreach (Transform tile in allObj) {
+            if (tileNames.ContainsKey(tile.name)) {
+                //UnityEngine.Debug.Log((int)(tile.position.x-xOffset) + "," + (int)(tile.position.z-yOffset));
+                int x = (int)(tile.position.x-xOffset);
+                int y = (int)(tile.position.z-yOffset);
+                tiles[x, y] = tileNames[tile.name];
+
+                ClickableTile ct = tile.gameObject.GetComponent<ClickableTile>();
+                ct.TileX = x;//(int)tile.position.x;
+                ct.TileY = y;//(int)tile.position.z;
+                ct.map = this;
+                ct.isWalkable = tileTypes[tileNames[tile.name]].isWalkable;
+                clickableTiles[x, y] = ct;
+
+                UnityEngine.Debug.Log(clickableTiles[x, y].isWalkable);
+            }
+        }
         
     }
 
@@ -228,6 +322,8 @@ public class TileMap : MonoBehaviour
     }
 
     public void MoveSelectedUnitTo(int x, int y) {
+
+        UnityEngine.Debug.Log(x + "," + y);
 
         //TEST - replace with actual movement implementation
         if (selectedUnit != null && clickableTiles[x, y].isWalkable)
@@ -311,6 +407,7 @@ public class TileMap : MonoBehaviour
         if (prev[target] == null){
             return;
         }
+
         currentPath = new List<Node>();
         Node curr = target;
 
@@ -330,8 +427,11 @@ public class TileMap : MonoBehaviour
     public bool unitCanEnterTile(int x, int y) {
 
         //add section here for checking if space is occupied by other unit
-
-        return clickableTiles[x, y].isWalkable;
+        bool walkable = false;
+        if (clickableTiles[x, y] != null) {
+            walkable = clickableTiles[x, y].isWalkable;
+        }
+        return walkable;
     }
 
     // public void selectedChar() {
@@ -359,7 +459,7 @@ public class TileMap : MonoBehaviour
         //Create path of CircleArrows
         for (int i = 0; i < visualPath.Count; i++) {
             GameObject ca = Instantiate(circleArrowPrefab);
-            ca.transform.position = new Vector3(visualPath[i].x,0.6f,visualPath[i].y);
+            ca.transform.position = new Vector3(visualPath[i].x+(int)xOffset,0.6f,visualPath[i].y+(int)yOffset);
             ca.transform.localRotation = Quaternion.Euler(90f,0,0);
             if (i != visualPath.Count - 1) {
                 ca.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
