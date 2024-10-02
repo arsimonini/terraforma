@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Basic_Character_Class : MonoBehaviour
 {
@@ -14,7 +15,10 @@ public class Basic_Character_Class : MonoBehaviour
     public List<StatusEffect> effects; //Related Functions - addStatus, removeStatus
     public StatusEffect tileEffect;
 
-    public stat health;  //Related Functions - takePhysicalDamage, takeMagicDamage, increaseHealth, decreaseHealth, checkHealth
+
+    public string name;
+    public Sprite char_img;
+    public int health;  //Related Functions - takePhysicalDamage, takeMagicDamage, increaseHealth, decreaseHealth, checkHealth
     public stat maxHealth;  //Related Functions - increaseMaxHealth, decreaseMaxHealth
     public stat attack;  //Related Functions - increaseAttack, decreaseAttack
     public stat movementSpeed;  //Related Functions - increaseMoveSpeed, decreaseMoveSpeed
@@ -48,6 +52,11 @@ public class Basic_Character_Class : MonoBehaviour
     public Camera camera;
     public Renderer renderer;
 
+    public Nameplate nameplate;
+    public GameObject np2;
+    
+    
+
 
 
 
@@ -56,6 +65,9 @@ public class Basic_Character_Class : MonoBehaviour
     void Start()
     {
         color = renderer.material.color;
+        //nameplate = transfrom.root.GetComponent<Nameplate>();
+
+        
     }
 
     // Update is called once per frame
@@ -71,6 +83,7 @@ public class Basic_Character_Class : MonoBehaviour
             this.takeMagicDamage(1, "Fire");
         }
         */
+        
 
         //FOR TESTING PURPOSES ----- APPLIES A BUFF TO THE CHARACTER WITH THE B KEY AND THEN REMOVES IT WITH THE N KEY ---- REQUIRES THE TESTEFFECT VARIABLE
         /*
@@ -118,7 +131,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of Physical Damage Taken
 
     public void takePhysicalDamage(int damage){
-        health.value = health.value - (damage - defense.moddedValue);
+        health = health - (damage - defense.moddedValue);
         UnityEngine.Debug.Log("Took " +  (damage - defense.moddedValue) + " physical damage");
         checkHealth();
         return;
@@ -128,7 +141,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of Magic Damage Taken
 
     public void takeMagicDamage(int damage, string magicType){
-        health.value = health.value - (damage - resistence.moddedValue);
+        health = health - (damage - resistence.moddedValue);
         UnityEngine.Debug.Log("Took " + (damage - resistence.moddedValue) + " magic damage");
         checkHealth();
     }
@@ -137,9 +150,9 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of health to increase by
 
     void increaseHealth(int amount){
-        health.value = health.value + amount;
-        if (health.value > maxHealth.moddedValue) {
-            health.value = maxHealth.moddedValue;
+        health = health + amount;
+        if (health > maxHealth.moddedValue) {
+            health = maxHealth.moddedValue;
         }
     }
 
@@ -147,7 +160,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of health to decrease by
 
     void decreaseHealth(int amount){
-        health.value = health.value - amount;
+        health = health - amount;
         checkHealth();
     }
 
@@ -164,7 +177,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Checks if the Character's Health is below 0 and destroys it if so
 
     void checkHealth() {
-        if (health.value <= 0){
+        if (health <= 0){
             destroy();
         }
     }
@@ -457,9 +470,9 @@ public class Basic_Character_Class : MonoBehaviour
         return true;
     }
 
-    public bool castSpell(GameObject target)
+    public bool castSpell(List<GameObject> targets)
     {
-        gameObject.GetComponent<Hero_Character_Class>().castSpell(target);
+        gameObject.GetComponent<Hero_Character_Class>().castSpell(targets);
         stopTargeting();
         if (takeAction() == false)
         {
@@ -488,7 +501,7 @@ public class Basic_Character_Class : MonoBehaviour
             gameObject.GetComponent<Hero_Character_Class>().selectedSpell = null;
         }
         attackType = null;
-        removeReach(attackReach);
+        removeReach();
         attackReach = defaultReach;
         targeting = false;
         renderer.material.color = Color.red;
@@ -500,7 +513,7 @@ public class Basic_Character_Class : MonoBehaviour
         renderer.material.color = Color.yellow;
         UnityEngine.Debug.Log("Targeting an Attack");
         targeting = true;
-        drawReach(reach);
+        drawReach(reach, false, false);
     }
 
     public void beginTargetingSpell(int reach, Basic_Spell_Class spell)
@@ -509,16 +522,29 @@ public class Basic_Character_Class : MonoBehaviour
         renderer.material.color = Color.magenta;
         targeting = true;
         attackReach = reach;
-        drawReach(reach);
-        if (spell.targetTiles)
-        {
-            drawSpellReach(reach, spell);
-        }
+        drawReach(reach, true, false);
     }
 
     public void displayStats()
     {
         UnityEngine.Debug.Log("Press A to Attack, M to cast Magic, or W to Wait");
+    }
+
+    public void displayNameplate(bool b)
+    {
+        nameplate.displayName(name);
+        nameplate.displayImage(char_img);
+        nameplate.displayHealth(health, maxHealth);
+        if (gameObject.GetComponent<Hero_Character_Class>() != null)
+        {
+            nameplate.displayMana(gameObject.GetComponent<Hero_Character_Class>().mana, gameObject.GetComponent<Hero_Character_Class>().maxMana);
+            nameplate.mana.gameObject.SetActive(true);
+        }
+        else
+        {
+            nameplate.mana.gameObject.SetActive(false);
+        }
+        np2.SetActive(b);
     }
 
     //Recolors when mouse is hovering over a unit
@@ -550,19 +576,15 @@ public class Basic_Character_Class : MonoBehaviour
         UnityEngine.Debug.Log("Mouse Exited");
     }
 
-    private void drawReach(int reach)
+    private void drawReach(int reach, bool targetTiles, bool targetAllies)
     {
-        map.drawReach(reach);
+        map.drawReach(reach, targetTiles, targetAllies);
     }
 
-    private void drawSpellReach(int reach, Basic_Spell_Class spell)
-    {
-        map.drawSpellReach(reach, spell);
-    }
 
-    public void removeReach(int reach)
+    public void removeReach()
     {
-        map.removeReach(reach);
+        map.removeReach();
     }
 
     public void selectCharacter()
@@ -571,13 +593,15 @@ public class Basic_Character_Class : MonoBehaviour
         {
             charSelected = true;
         }
-        displayStats();
+        displayNameplate(true);        
         renderer.material.color = Color.red;
     }
 
     public void deselectCharacter()
     {
         charSelected = false;
+        map.hidePath();
+        displayNameplate(false);
         if (turnEnded == false)
         {
             renderer.material.color = color;

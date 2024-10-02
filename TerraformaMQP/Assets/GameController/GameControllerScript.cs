@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class GameControllerScript : MonoBehaviour
     public StatusEffectController statusEffectController;
     public List<GameObject> enemyTeamList;
     public List<GameObject> playerTeamList;
+    public List<GameObject> playerTeamTileEffects;
+    public List<GameObject> enemyTeamTileEffects;
     public Camera camera;
     public int round = 0;
     public int phase = 0;  //0 for player phase, 1 for enemy effects, 2 for enemy phase, 3 for player effects
@@ -36,12 +39,6 @@ public class GameControllerScript : MonoBehaviour
             {
                 targeting = true;
             }
-            if (characterScript.charSelected == false) 
-            {
-                characterScript.deselectCharacter();
-                updateSelectedObject(null);
-                map.updateSelectedCharacter(null);
-            }
         }
         /*
         if (map.selectedUnit == null)
@@ -57,18 +54,36 @@ public class GameControllerScript : MonoBehaviour
             {
                 if (targeting == false)
                 {
-                    if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && phase == 0 && hit.collider.gameObject.tag == "PlayerTeam")
+                    if (selectedCharacter == null)
                     {
-                        updateSelectedObject(hit.collider.gameObject);
-                        characterScript.selectCharacter();
-                        if (characterScript.turnEnded == false)
+                        if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && phase == 0 && hit.collider.gameObject.tag == "PlayerTeam")
                         {
-                            map.updateSelectedCharacter(selectedCharacter);
+                            updateSelectedObject(hit.collider.gameObject);
+                            characterScript.selectCharacter();
+                            if (characterScript.turnEnded == false)
+                            {
+                                map.updateSelectedCharacter(selectedCharacter);
+                            }
+                        }
+                        else if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && hit.collider.gameObject.tag == "EnemyTeam" && phase == 0)
+                        {
+                            updateSelectedObject(hit.collider.gameObject);
+                            characterScript.selectCharacter();
                         }
                     }
-                    else if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && hit.collider.gameObject.tag == "EnemyTeam")
+                    else if (selectedCharacter != null && hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && phase == 0)
                     {
-                        //Executes when clicking on Enemy
+                        characterScript.deselectCharacter();
+                        map.updateSelectedCharacter(null);
+                        map.currentPath = null;
+                        updateSelectedObject(null);
+                    } 
+                    else if (selectedCharacter != null && (selectedCharacter.gameObject.tag == "EnemyTeam" || characterScript.turnEnded == true))
+                    {
+                        characterScript.deselectCharacter();
+                        map.updateSelectedCharacter(null);
+                        map.currentPath = null;
+                        updateSelectedObject(null);
                     }
                 }
                 else if (targeting == true && hit.collider.gameObject.tag == "EnemyTeam" && characterScript.withinReach(hit.collider.gameObject) == true)
@@ -83,7 +98,9 @@ public class GameControllerScript : MonoBehaviour
                     }
                     else if (characterScript.attackType == "Spell")
                     {
-                        if (characterScript.castSpell(hit.collider.gameObject))
+                        List<GameObject> targets = new List<GameObject>();
+                        targets.Add(hit.collider.gameObject);
+                        if (characterScript.castSpell(targets))
                         {
                             updateSelectedObject(null);
                             map.updateSelectedCharacter(null);

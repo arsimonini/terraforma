@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1803627313196331527}
   - component: {fileID: 7448667868949999440}
   - component: {fileID: 3556103306998089025}
-  - component: {fileID: 5631562467399002433}
   - component: {fileID: 8111968720976678732}
   m_Layer: 0
   m_Name: BasicEnemy
@@ -124,9 +123,9 @@ MonoBehaviour:
   turnEnded: 0
   effects: []
   tileEffect: {fileID: 0}
-  health:
-    value: 0
-    moddedValue: 0
+  name: 
+  char_img: {fileID: 0}
+  health: 0
   maxHealth:
     value: 0
     moddedValue: 0
@@ -157,19 +156,26 @@ MonoBehaviour:
   totalActions:
     value: 0
     moddedValue: 0
+  attackReach: 1
+  defaultReach: 1
+  attackType: 
   testEffect: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 0
   tileY: 0
-  tile:
+  tileType:
     name: 
     tileVisualPrefab: {fileID: 0}
     cost: 1
-    isWalkable: 1
+  tile: {fileID: 0}
   map: {fileID: 0}
+  targeting: 0
   charSelected: 0
   charHover: 0
   camera: {fileID: 0}
   renderer: {fileID: 0}
+  nameplate: {fileID: 0}
+  np2: {fileID: 0}
 --- !u!114 &3556103306998089025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,67 +188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4405e3c5166a04fbef27de6e26baad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5631562467399002433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7009967892437524158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eef314c587c8e24aa38801bf961afa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnEnded: 0
-  effects: []
-  tileEffect: {fileID: 0}
-  health:
-    value: 0
-    moddedValue: 0
-  maxHealth:
-    value: 0
-    moddedValue: 0
-  attack:
-    value: 0
-    moddedValue: 0
-  movementSpeed:
-    value: 0
-    moddedValue: 0
-  resistence:
-    value: 0
-    moddedValue: 0
-  defense:
-    value: 0
-    moddedValue: 0
-  speed:
-    value: 0
-    moddedValue: 0
-  criticalChance:
-    value: 0
-    moddedValue: 0
-  accuracy:
-    value: 0
-    moddedValue: 0
-  actionsLeft:
-    value: 0
-    moddedValue: 0
-  totalActions:
-    value: 0
-    moddedValue: 0
-  testEffect: {fileID: 0}
-  tileX: 0
-  tileY: 0
-  tile:
-    name: 
-    tileVisualPrefab: {fileID: 0}
-    cost: 1
-    isWalkable: 1
-  map: {fileID: 0}
-  charSelected: 0
-  charHover: 0
-  camera: {fileID: 0}
-  renderer: {fileID: 4792602670705032465}
 --- !u!114 &8111968720976678732
 MonoBehaviour:
   m_ObjectHideFlags: 0
