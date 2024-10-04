@@ -54,6 +54,8 @@ public class Basic_Character_Class : MonoBehaviour
 
     public Nameplate nameplate;
     public GameObject np2;
+
+    public GameObject atkMenu;
     
     
 
@@ -106,6 +108,7 @@ public class Basic_Character_Class : MonoBehaviour
 
         if (charSelected == true && turnEnded == false & map.moving == false)
         {
+            displayAttackMenu(true);
             if (Input.GetKeyDown(KeyCode.N))
             {
                 attackType = "Attack";
@@ -123,9 +126,7 @@ public class Basic_Character_Class : MonoBehaviour
                 map.hidePath();
             }
         }
-
-
-
+        displayAttackMenu(false);
     }
 
     //Deals Physical Damage to the character and checks if it reduces the health total below 0. Reduces the Damage value by the amount of Defense the character has
@@ -547,6 +548,13 @@ public class Basic_Character_Class : MonoBehaviour
         }
         np2.SetActive(b);
     }
+
+    public void displayAttackMenu(bool b)
+    {
+        atkMenu.SetActive(b);
+    }
+
+    
 
     //Recolors when mouse is hovering over a unit
     public void OnMouseEnter()
