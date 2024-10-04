@@ -62,9 +62,17 @@ public class Basic_Character_Class : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
+        while(map.mapCreated != true){
+            yield return null;
+        }
+        UnityEngine.Debug.Log("Character Created");
         color = renderer.material.color;
+        map.clickableTiles[tileX, tileY].characterOnTile = this.gameObject;
+        tile = map.clickableTiles[tileX, tileY];    
+        map.addTileEffect(tileX, tileY, this.gameObject);
+        map.clickableTiles[tileX, tileY].isWalkable = false;
         //nameplate = transfrom.root.GetComponent<Nameplate>();
 
         
@@ -111,7 +119,7 @@ public class Basic_Character_Class : MonoBehaviour
                 attackType = "Attack";
                 beginTargeting(attackReach);
             }
-            else if (Input.GetKeyDown(KeyCode.M))
+            else if (Input.GetKeyDown(KeyCode.M) && targeting == false)
             {
                 if (gameObject.GetComponent<Hero_Character_Class>())
                 {

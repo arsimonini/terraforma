@@ -23,6 +23,8 @@ public class TileMap : MonoBehaviour
 
     public List<ClickableTile> targetList = null;
 
+    public bool mapCreated = false;
+
     int mapSizeX = 10;
     int mapSizeY = 10;
 
@@ -58,9 +60,15 @@ public class TileMap : MonoBehaviour
     //Sets color to tiles
 
     void Start() {
+        createMap();
+        //GenerateMapVisual();
+    }
+
+    public void createMap(){
+        UnityEngine.Debug.Log("Map Created");
         GenerateMapData();
         GenerateGraph();
-        //GenerateMapVisual();
+        mapCreated = true;
     }
 
     void Update() {
@@ -106,8 +114,7 @@ public class TileMap : MonoBehaviour
                         //Makes the tile impassable when a character stands on it
                         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = false;
 
-                        StatusEffect newEffect = new StatusEffect();
-                        newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, selectedUnit, tileTypes[tiles[x, y]].name + "Effect");
+                        addTileEffect(x, y, selectedUnit);
                         currentPath.RemoveAt(0);
                     }
                 }
@@ -725,6 +732,11 @@ public class TileMap : MonoBehaviour
         }
         Destroy(previousTile.gameObject);
 
+    }
+
+    public void addTileEffect(int x, int y, GameObject unitToAffect){
+        StatusEffect newEffect = new StatusEffect();
+        newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, unitToAffect, tileTypes[tiles[x, y]].name + "Effect");
     }
 }
 
