@@ -446,7 +446,7 @@ public class TileMap : MonoBehaviour
         if (unitCanEnterTile(x, y) == false) {
             return Mathf.Infinity;
         }
-
+        UnityEngine.Debug.Log(x + ", " + y);
         TileType t = tileTypes[tiles[x, y]];
         float dist = t.cost;
 
