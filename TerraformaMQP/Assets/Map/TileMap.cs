@@ -12,6 +12,7 @@ public class TileMap : MonoBehaviour
     public GameObject selectedUnit;
     public Basic_Character_Class selectedUnitScript;
     public Tilemap tilemap;
+    public GameObject[] heroes;
 
     public TileType[] tileTypes;
     public int[,] tiles;
@@ -54,6 +55,8 @@ public class TileMap : MonoBehaviour
     public List<Node> currentPath = null;
     public List<Node> visualPath = null;
     public GameObject circleArrowPrefab;
+
+    int remainingSteps = 0;
 
     //Sets color to tiles
 
@@ -348,12 +351,12 @@ public class TileMap : MonoBehaviour
 
     }
 
-    public void generatePathTo(int x, int y){
+    public List<Node> generatePathTo(int x, int y){
 
         if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
             currentPath = new List<Node>();
             selectedUnitScript.path = currentPath;
-            return;
+            return null;
         }
 
         selectedUnitScript.path = null;
@@ -405,7 +408,7 @@ public class TileMap : MonoBehaviour
             }
         }
         if (prev[target] == null){
-            return;
+            return null;
         }
 
         currentPath = new List<Node>();
@@ -421,6 +424,7 @@ public class TileMap : MonoBehaviour
 
         selectedUnitScript.path = currentPath;
 
+        return currentPath;
         //showPath();
     }
 

@@ -4205,6 +4205,9 @@ MonoBehaviour:
   selectedUnit: {fileID: 0}
   selectedUnitScript: {fileID: 0}
   tilemap: {fileID: 1390268382}
+  heroes:
+  - {fileID: 1924946471}
+  - {fileID: 1634555521}
   tileTypes:
   - name: Grass
     tileVisualPrefab: {fileID: 5589415869077225197, guid: 0e3d7416a877b4d1792beb3be8aa77f9, type: 3}
