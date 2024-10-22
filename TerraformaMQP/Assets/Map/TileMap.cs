@@ -330,8 +330,6 @@ public class TileMap : MonoBehaviour
 
     public void MoveSelectedUnitTo(int x, int y) {
 
-        UnityEngine.Debug.Log(x + "," + y);
-
         //TEST - replace with actual movement implementation
         if (selectedUnit != null && clickableTiles[x, y].isWalkable)
         {
@@ -453,7 +451,6 @@ public class TileMap : MonoBehaviour
         if (unitCanEnterTile(x, y) == false) {
             return Mathf.Infinity;
         }
-        UnityEngine.Debug.Log(x + ", " + y);
         TileType t = tileTypes[tiles[x, y]];
         float dist = t.cost;
 
@@ -562,8 +559,6 @@ public class TileMap : MonoBehaviour
 
         showPath();
     }
-    //Current placeholder function that searches for nearby characters based on a character's reach (Ex. Reach of 1 will search the tiles immediately next to the character)
-    //Needs to be expanded depending on how ranged characters operate
 
     public void drawReach(int reach, bool targetTiles, bool targetAllies)
     {
@@ -585,6 +580,10 @@ public class TileMap : MonoBehaviour
                 {
                     if (targetTiles == true)
                     {
+                        clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
+                        targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j]);
+                    }
+                    else if (targetAllies == true && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile != null && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile.gameObject.tag == "PlayerTeam"){
                         clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
                         targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j]);
                     }
@@ -610,6 +609,10 @@ public class TileMap : MonoBehaviour
                         clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
                         targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j]);
                     }
+                    else if (targetAllies == true && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile != null && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile.gameObject.tag == "PlayerTeam"){
+                        clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
+                        targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j]);    
+                    }
                     else if (clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile != null && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile.gameObject.tag == "EnemyTeam")
                     {
                         clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
@@ -629,6 +632,10 @@ public class TileMap : MonoBehaviour
                     clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].highlight();
                     targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i]);
                 }
+                else if (targetAllies == true && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].characterOnTile != null && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].characterOnTile.gameObject.tag == "PlayerTeam"){
+                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].highlight();
+                    targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i]);
+                }
                 else if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].characterOnTile != null && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].characterOnTile.gameObject.tag == "EnemyTeam")
                 {
                     clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].highlight();
@@ -645,15 +652,15 @@ public class TileMap : MonoBehaviour
                     clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].highlight();
                     targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i]);
                 }
-                else
+                else if (targetAllies == true && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].characterOnTile != null && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].characterOnTile.gameObject.tag == "PlayerTeam"){
+                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].highlight();
+                    targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i]);
+                }
+                else if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].characterOnTile != null && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].characterOnTile.gameObject.tag == "EnemyTeam")
                 {
-                    if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].characterOnTile != null && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].characterOnTile.gameObject.tag == "EnemyTeam")
-                    {
                         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].highlight();
                         targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i]);
-                    }
                 }
-
             }
         }
 
@@ -731,7 +738,6 @@ public class TileMap : MonoBehaviour
             unitAffected.tileType = newTile.map.tileTypes[tileNumber];
         }
         Destroy(previousTile.gameObject);
-
     }
 
     public void addTileEffect(int x, int y, GameObject unitToAffect){

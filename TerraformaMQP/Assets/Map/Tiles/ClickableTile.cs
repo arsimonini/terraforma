@@ -20,6 +20,8 @@ public class ClickableTile : MonoBehaviour
     public List<int> effectAmounts;
     public GameObject characterOnTile = null;
     public Color color;
+
+    public List<TileEffect> effectsOnTile;
     
     void Start() {
         tileRenderer = GetComponent<Renderer>();
@@ -27,9 +29,7 @@ public class ClickableTile : MonoBehaviour
         color = GetComponent<Renderer>().material.color;
     }
 
-    void OnMouseUp() {
-        map.MoveSelectedUnitTo(TileX, TileY);
-    }
+
 
 
     void OnMouseEnter() {
@@ -74,6 +74,52 @@ public class ClickableTile : MonoBehaviour
             return;
         }
         tileRenderer.material.color = originalColor;
+    }
+
+    public void addEffectToTile(TileEffect effect){
+        effectsOnTile.Add(effect);
+        for (int i = 0; i < effect.statToEffect.Count; i++){
+            if (statsToEffect.Contains(effect.statToEffect[i])){
+                int statLoc = checkList(effect.statToEffect[i]);
+                effectAmounts[statLoc] += effect.amountToEffect[i];
+            }
+            else{
+                statsToEffect.Add(effect.statToEffect[i]);
+                effectAmounts.Add(effect.amountToEffect[i]);
+            }
+        }
+        if (characterOnTile!= null){
+            updateTileEffect();
+        }
+    }
+
+    public void removeEffectFromTile(TileEffect effect){
+        effectsOnTile.Remove(effect);
+        for (int i = 0; i < effect.statToEffect.Count; i++){
+            int statLoc = checkList(effect.statToEffect[i]);
+            effectAmounts[statLoc] -= effect.amountToEffect[i];
+            if (effectAmounts[statLoc] == 0){
+                effectAmounts.Remove(effectAmounts[statLoc]);
+                statsToEffect.Remove(statsToEffect[statLoc]);
+            }
+        }
+        if (characterOnTile!= null){
+            updateTileEffect();
+        }
+    }
+
+    public void updateTileEffect(){
+        StatusEffect newEffect = new StatusEffect();
+        newEffect.initializeTileEffect(statsToEffect, name, effectAmounts, characterOnTile, name + " Effect");
+    }
+
+    public int checkList(string statToEffect){
+        for (int i = 0; i < statsToEffect.Count; i++){
+            if (statsToEffect[i] == statToEffect){
+                return i;
+            }
+        }
+        return -99;
     }
 
 }

@@ -16,7 +16,10 @@ public class Basic_Spell_Class : ScriptableObject
     public bool targeted;
     public int range;
     public bool targetTiles;
+    public bool targetAllies;
     public GameObject target;
+    public int amountOfTargets;
+    public bool requireDifferentTargets;
 
 
 

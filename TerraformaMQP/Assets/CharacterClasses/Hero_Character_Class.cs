@@ -71,7 +71,7 @@ public class Hero_Character_Class : MonoBehaviour
     //Input - Amount of mana to use
     //Output - Returns True if the mana was reduced, returns False if not
 
-    bool useMana(int amount){
+    public bool useMana(int amount){
         if (enoughMana(amount))
         {
            mana = mana - amount;

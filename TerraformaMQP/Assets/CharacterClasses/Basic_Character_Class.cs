@@ -482,6 +482,7 @@ public class Basic_Character_Class : MonoBehaviour
     public bool castSpell(List<GameObject> targets)
     {
         gameObject.GetComponent<Hero_Character_Class>().castSpell(targets);
+        gameObject.GetComponent<Hero_Character_Class>().useMana(gameObject.GetComponent<Hero_Character_Class>().selectedSpell.manaCost);
         stopTargeting();
         if (takeAction() == false)
         {
@@ -531,7 +532,7 @@ public class Basic_Character_Class : MonoBehaviour
         renderer.material.color = Color.magenta;
         targeting = true;
         attackReach = reach;
-        drawReach(reach, true, false);
+        drawReach(reach, spell.targetTiles, spell.targetAllies);
     }
 
     public void displayStats()

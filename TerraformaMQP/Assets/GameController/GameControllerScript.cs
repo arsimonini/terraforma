@@ -13,25 +13,24 @@ public class GameControllerScript : MonoBehaviour
     public StatusEffectController statusEffectController;
     public List<GameObject> enemyTeamList;
     public List<GameObject> playerTeamList;
-    public List<GameObject> playerTeamTileEffects;
-    public List<GameObject> enemyTeamTileEffects;
     public Camera camera;
     public int round = 0;
     public int phase = 0;  //0 for player phase, 1 for enemy effects, 2 for enemy phase, 3 for player effects
     public TileMap map;
     public bool movingEnemy = false;
-    private int enemyCount = 0;
+    public int enemyCount = 0;
+    public int enemiesToMove = 0;
     public bool lockPlayer = false;
     public bool targeting = false;
     public GameObject selectedCharacter;
     public Basic_Character_Class characterScript;
+    public List<GameObject> targets = new List<GameObject>();
 
     void Update()
     {
 
         enemyTeamList.RemoveAll(x => !x);
         playerTeamList.RemoveAll(x => !x);
-
 
         if (selectedCharacter != null)
         {
@@ -85,6 +84,9 @@ public class GameControllerScript : MonoBehaviour
                         map.currentPath = null;
                         updateSelectedObject(null);
                     }
+                    else if(selectedCharacter != null && hit.collider.gameObject.GetComponent<ClickableTile>() != null){
+                        map.MoveSelectedUnitTo(hit.collider.gameObject.GetComponent<ClickableTile>().TileX, hit.collider.gameObject.GetComponent<ClickableTile>().TileY);
+                    }
                 }
                 else if (targeting == true && hit.collider.gameObject.tag == "EnemyTeam" && characterScript.withinReach(hit.collider.gameObject) == true)
                 {
@@ -98,21 +100,30 @@ public class GameControllerScript : MonoBehaviour
                     }
                     else if (characterScript.attackType == "Spell")
                     {
-                        List<GameObject> targets = new List<GameObject>();
-                        targets.Add(hit.collider.gameObject);
-                        if (characterScript.castSpell(targets))
-                        {
-                            updateSelectedObject(null);
-                            map.updateSelectedCharacter(null);
+                        if (targets == null || selectedCharacter.GetComponent<Hero_Character_Class>().selectedSpell.amountOfTargets > targets.Count){
+                            if (targets == null){
+                                targets = new List<GameObject>();
+                            }
+                            if (!targets.Contains(hit.collider.gameObject) || selectedCharacter.GetComponent<Hero_Character_Class>().selectedSpell.requireDifferentTargets == false){
+                                targets.Add(hit.collider.gameObject);
+                            }
+                            if (selectedCharacter.GetComponent<Hero_Character_Class>().selectedSpell.amountOfTargets == targets.Count){
+                                if (characterScript.castSpell(targets))
+                                {
+                                    updateSelectedObject(null);
+                                    map.updateSelectedCharacter(null);
+                                    stopTargeting();
+                                }
+                            }
                         }
+
                     }
                     targeting = false;
 
                 }
                 else if (targeting == true)
                 {
-                    targeting = false;
-                    characterScript.stopTargeting();
+                    stopTargeting();
                 }
             }
         }
@@ -122,14 +133,15 @@ public class GameControllerScript : MonoBehaviour
             map.updateSelectedCharacter(null);
             map.currentPath = null;
             updateSelectedObject(null);
+            stopTargeting();
         }
         if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0 && targeting == true)
         {
-            characterScript.stopTargeting();
-            targeting = false;
+            stopTargeting();
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0)
         {
+            stopTargeting();
             characterScript.deselectCharacter();
             map.updateSelectedCharacter(null);
             map.currentPath = null;
@@ -140,6 +152,7 @@ public class GameControllerScript : MonoBehaviour
         switch (phase)
         {
             case 0:
+                enemyCount = enemyTeamList.Count;
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     //End Turn Stuff
@@ -149,9 +162,8 @@ public class GameControllerScript : MonoBehaviour
                     {
                         UnityEngine.Debug.Log("Made it here");
                         characterScript.deselectCharacter();
-                        characterScript.stopTargeting();
                     }
-                    targeting = false;
+                    stopTargeting();
                     map.updateSelectedCharacter(null);
                     updateSelectedObject(null);
                     endAllPlayerTurns();
@@ -159,25 +171,35 @@ public class GameControllerScript : MonoBehaviour
                 break;
 
             case 1:
-                statusEffectController.playerTeamEffectsAdvance();
+                playerTeamEndOfTurnTileEffects();
+                statusEffectController.enemyTeamEffectsAdvance();
                 UnityEngine.Debug.Log("Switching to Phase 2");
+                enemyTeamStartOfTurnTileEffects();
+                enemyTeamList.RemoveAll(x => !x);
+                playerTeamList.RemoveAll(x => !x);
                 phase++;
+
+                break;
+            
+            case 2:
                 enemyCount = enemyTeamList.Count;
+                enemiesToMove = enemyCount;
+                phase++;
                 break;
 
-            case 2:
-                if (enemyCount > 0)
+            case 3:
+                if (enemiesToMove > 0)
                 {
                     if (movingEnemy == false)
                     {
-                        map.updateSelectedCharacter(enemyTeamList[enemyCount - 1]);
-                        enemyTeamList[enemyCount - 1].GetComponent<Enemy_Character_Class>().takeTurn();
+                        map.updateSelectedCharacter(enemyTeamList[enemiesToMove - 1]);
+                        enemyTeamList[enemiesToMove - 1].GetComponent<Enemy_Character_Class>().takeTurn();
                         movingEnemy = true;
                     }
                     else if (map.movingEnemy == false && movingEnemy == true)
                     {
                         movingEnemy = false;
-                        enemyCount--;
+                        enemiesToMove--;
                     }
                 }
                 else
@@ -186,12 +208,18 @@ public class GameControllerScript : MonoBehaviour
                 }
                 break;
 
-            case 3:
+            case 4:
+                enemyTeamEndOfTurnTileEffects();
+                statusEffectController.playerTeamEffectsAdvance();
+                map.updateSelectedCharacter(null);
+                playerTeamStartOfTurnTileEffects();
+                phase++;
+                break;
+
+            case 5:
                 UnityEngine.Debug.Log("End of round " + round + ". Switching to phase 0");
-                statusEffectController.enemyTeamEffectsAdvance();
                 round++;
                 phase = 0;
-                map.updateSelectedCharacter(null);
                 resetPlayerTeamTurns();
                 break;
         }
@@ -225,6 +253,54 @@ public class GameControllerScript : MonoBehaviour
         for (int i = 0; i < playerTeamList.Count; i++)
         {
             playerTeamList[i].GetComponent<Basic_Character_Class>().endTurn();
+        }
+    }
+
+    private void stopTargeting(){
+        targeting = false;
+        targets = null;
+        if (selectedCharacter != null){
+            characterScript.stopTargeting();
+        }
+    }
+
+    private void playerTeamStartOfTurnTileEffects(){
+        for (int i = 0; i < playerTeamList.Count; i++){
+            if (playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile != null && playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count != 0){
+                for (int j = 0; j < playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count; j++){
+                    playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performStartOfTurnEffect(playerTeamList[i].GetComponent<Basic_Character_Class>().tile);
+                }
+            }
+        }
+    }
+
+    private void playerTeamEndOfTurnTileEffects(){
+        for (int i = 0; i < playerTeamList.Count; i++){
+            if (playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile != null && playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count != 0){
+                for (int j = 0; j < playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count; j++){
+                    playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performEndOfTurnEffect(playerTeamList[i].GetComponent<Basic_Character_Class>().tile);
+                }
+            }
+        }
+    }
+
+    private void enemyTeamStartOfTurnTileEffects(){
+        for (int i = 0; i < enemyTeamList.Count; i++){
+            if (enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile != null && enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count != 0){
+                for (int j = 0; j < enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count; j++){
+                    enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performStartOfTurnEffect(enemyTeamList[i].GetComponent<Basic_Character_Class>().tile);
+                }
+            }
+        }
+    }
+
+    private void enemyTeamEndOfTurnTileEffects(){
+        for (int i = 0; i < enemyTeamList.Count; i++){
+            if (enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile != null && enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count != 0){
+                for (int j = 0; j < enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count; j++){
+                    enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performEndOfTurnEffect(enemyTeamList[i].GetComponent<Basic_Character_Class>().tile);
+                }
+            }
         }
     }
 
