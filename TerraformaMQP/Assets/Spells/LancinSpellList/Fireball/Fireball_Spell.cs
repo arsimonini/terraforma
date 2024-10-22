@@ -24,12 +24,8 @@ public class Fireball_Spell : MonoBehaviour, Cast_Spell
 
             ClickableTile targetTile = targets[i].GetComponent<Basic_Character_Class>().tile;
             TileEffect newEffect = Instantiate(BurningTileEffect);
-            newEffect.duration = 3;
-            newEffect.source = "Fireball";
+            newEffect.createTileEffect(true, targetTile, newSource: "Fireball", newDuration: 3);
             UnityEngine.Debug.Log(newEffect.duration);
-            newEffect.tile = targetTile;
-            newEffect.playerTeam = true;
-            newEffect.initializeTileEffect();
             targets[i].GetComponent<Basic_Character_Class>().takeMagicDamage(caster.GetComponent<Hero_Character_Class>().magic.moddedValue, "Fire");
 
         }

@@ -27,6 +27,27 @@ public class TileEffect : ScriptableObject
         }
     }
 
+    public void createTileEffect(bool newPlayerTeam, ClickableTile newTile, int newDuration = -1, List<string> newStatToEffect = null, List<int> newAmountToEffect = null, string newSource = null, string newName = null){
+        if (newDuration != -1){
+            duration = newDuration;
+        }
+        if (newStatToEffect != null){
+            statToEffect = newStatToEffect;
+        }
+        if (newAmountToEffect != null){
+            amountToEffect = newAmountToEffect;
+        }
+        if (newSource != null){
+            source = newSource;
+        }
+        if (newName != null){
+            name = newName;
+        }
+        tile = newTile;
+        playerTeam = newPlayerTeam;
+        initializeTileEffect();
+    }
+
     public void initializeTileEffect(){
         UnityEngine.Debug.Log("Created Tile Effect");
         if (playerTeam == true){
