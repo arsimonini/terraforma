@@ -19,5 +19,8 @@ MonoBehaviour:
   description: Deal 10 fire damage to an enemy and set their tile Ablaze
   targeted: 1
   range: 2
-  targetTiles: 0
+  targetTiles: 1
+  targetAllies: 0
   target: {fileID: 0}
+  amountOfTargets: 2
+  requireDifferentTargets: 1
