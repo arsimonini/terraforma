@@ -9,28 +9,29 @@ using UnityEngine.Tilemaps;
 public class TileMap : MonoBehaviour
 {
 
-    public GameObject selectedUnit;
-    public Basic_Character_Class selectedUnitScript;
-    public Tilemap tilemap;
+    public GameObject selectedUnit; //The currently selectedUnit, is null if there is no selected unit
+    public Basic_Character_Class selectedUnitScript; //The Basic Class script attached to the selectedUnit, is null if there is no selected unit
+    public Tilemap tilemap; //Reference to the tile map
 
-    public TileType[] tileTypes;
-    public int[,] tiles;
-    Node[,] graph;
-    public ClickableTile[,] clickableTiles;
+    public TileType[] tileTypes; //Array that contains a list of all the tiletypes
+    public int[,] tiles; //2D array of integers, the integer values correspond with a TileType in the tileTypes array. Ex. a 0 in the tiles array corresponds with the tileGrass TileType in the tileTypes array
+    Node[,] graph; //2D array of Nodes that represent the map
+    public ClickableTile[,] clickableTiles; //2D array that contains the instances of tiles contained within the map
 
-    public bool movingEnemy = false;
-    public bool moving = false;
+    public bool movingEnemy = false; //Variable that checks if the map is currently moving an enemy, true if so
+    public bool moving = false; //Variable that checks if the map is currently moving a unit, true if so
 
-    public List<ClickableTile> targetList = null;
+    public List<ClickableTile> targetList = null; //Used when targeting, contains all of the possible valid targets within range of the currently being targeted spell/attack, otherwise is null
 
-    public bool mapCreated = false;
+    public bool mapCreated = false; //If the map is fully created or not, used when instantiating the map upon level load to ensure the map is created before the units
 
-    int mapSizeX = 10;
-    int mapSizeY = 10;
+    int mapSizeX = 10; //The maximum X dimension
+    int mapSizeY = 10; //The maximum Y dimension
 
-    float xOffset;
-    float yOffset;
+    float xOffset; //An offset that can be set to account for maps not starting at location 0,0
+    float yOffset; //^
 
+    //A Dictionary the contains the tiles and their corresponding integer value used to find their type in the tileTypes array
     Dictionary<string, int> tileNames = new Dictionary<string, int>(){
         {"tileGrass", 0},
         {"tileDirt", 1},
@@ -53,19 +54,20 @@ public class TileMap : MonoBehaviour
     };
 
     //Nodes along the path of shortest path
-    public List<Node> currentPath = null;
-    public List<Node> visualPath = null;
-    public GameObject circleArrowPrefab;
+    public List<Node> currentPath = null; //A List of Nodes that is the current path the selected unit is moving along, null if no unit is moving
+    public List<Node> visualPath = null; //A List of Nodes that is the path to the currently hovered tile, null if the unit isn't trying to move or if no unit is selected
+    public GameObject circleArrowPrefab; //Reference to the arrowPrefab used to display the path
 
-    //Sets color to tiles
-
+    //Upon level load begin creating the map
     void Start() {
         createMap();
         //GenerateMapVisual();
     }
 
+    //Called when setting up the map
     public void createMap(){
         UnityEngine.Debug.Log("Map Created");
+        //Generates the map, then fills in the Graph with the created map, sets the mapCreated variable to true to allow the units to be created
         GenerateMapData();
         GenerateGraph();
         mapCreated = true;
@@ -75,16 +77,21 @@ public class TileMap : MonoBehaviour
         float speed = 2;
         float step = speed * Time.deltaTime;
 
+        //Checks if the selected unit is targeting an attack/spell
         if (selectedUnit != null && selectedUnitScript.targeting == true)
         {
+            //Hides the path
             hidePath();
         }
 
+        //Checks if the path isn't null, then checks if the path still has nodes left to traverse
         if (currentPath != null){
             if (currentPath.Count > 0)
             {
+                //Ensures that a unit is actually selected
                 if (selectedUnit != null)
                 {
+                    //Checks if the unit is an enemy, if so set's the moving enemy variable to true
                     if (selectedUnit.GetComponent<Enemy_Character_Class>())
                     {
                         movingEnemy = true;
@@ -93,10 +100,13 @@ public class TileMap : MonoBehaviour
                     int x = currentPath[0].x;
                     int y = currentPath[0].y;
                     Vector3 nextPos = TileCoordToWorldCoord(x+(int)xOffset, y+(int)yOffset);
+                    //Checks if the unit's position is equal to the position it is trying to move to
                     if (nextPos != selectedUnit.transform.position)
                     {
+                        //If not, the unit moves closer to the desired location
                         selectedUnit.transform.position = Vector3.MoveTowards(selectedUnit.transform.position, nextPos, step);
                     }
+                    //If the unit is at the desired location, the unit's tileX and tileY variables are updated
                     else
                     {
 
@@ -115,73 +125,25 @@ public class TileMap : MonoBehaviour
                         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = false;
 
                         addTileEffect(x, y, selectedUnit);
+                        //Removes the node the unit just travelled to from the path
                         currentPath.RemoveAt(0);
                     }
                 }
             }
-            else if (movingEnemy == true)
+            //If the current path has no nodes left, then the path has been fully traversed 
+            else
             {
+                //The moving variables are set to false and the currentPath becomes null
                 movingEnemy = false;
                 moving = false;
                 currentPath = null;
             }
-            else
-            {
-                moving = false;
-                currentPath = null;
-            }
-        }
-
-        // FOR TESTING PURPOSES ----- CAN BE UNCOMMENTED TO APPLY A DEBUFF TO THE SELECTED CHARACTER BY PRESSING B OR N, PRESSING M WILL ADVANCE EVERY EFFECT IN THE PLAYER TEAM EFFECTS LIST
-        /*
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            StatusEffect newEffect = new StatusEffect();
-            List<string> stats = new List<string>();
-            stats.Add("attack");
-            stats.Add("speed");
-            stats.Add("maxHealth");
-            stats.Add("movementSpeed");
-            stats.Add("resistence");
-            stats.Add("defense");
-            stats.Add("criticalChance");
-            stats.Add("accuracy");
-            stats.Add("totalActions");
-            List<int> amounts = new List<int>();
-            amounts.Add(-10);
-            amounts.Add(-10);
-            amounts.Add(-10);
-            amounts.Add(-10);
-            amounts.Add(-10);
-            amounts.Add(-10);
-            amounts.Add(-10);
-            amounts.Add(-10);
-            amounts.Add(-5);
-            newEffect.initializeStatusEffect(2, stats, "Cripple", amounts, selectedUnit, "Cripple", true, this.gameObject);
-        }
-        */
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            StatusEffect newEffect = new StatusEffect();
-            List<string> stats = new List<string>();
-            stats.Add("speed");
-            List<int> amounts = new List<int>();
-            amounts.Add(-5);
-            newEffect.initializeStatusEffect(5, stats, "Slow", amounts, selectedUnit, "Slow", true, this.gameObject);
-        }
-        /*
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            this.gameObject.GetComponent<StatusEffectController>().playerTeamEffectsAdvance();
-        }
-        */
-        
-
-        
+        }     
 
     }
 
 
+    //Used to manually generate a tile map by setting the tileTypes using a 2D array
     void GenerateMapDataManual() {
         //allocate map tiles
         tiles = new int[mapSizeX, mapSizeY];
@@ -560,20 +522,50 @@ public class TileMap : MonoBehaviour
         showPath();
     }
 
+
+    //Used to find possible targets and then highlight the tiles   ---WILL BE REWORKED AGAIN---
+    //Takes in the reach of the selected attack/spell, it's abiltiy to target tiles, and it's ability to target allies
+    /*
+    The targeting creates a diamond shape around the character. Ex. a character has a reach of 2
+    -----              --0--
+    -----              -000-
+    --X--     --->     00X00
+    -----              -000-
+    -----              --0--
+
+    To create this targeting, the reach is used along with a width variable to calculate how large of an area the character should be able to hit
+    It then starts moving right, starting from the bottom of the column and moving up
+    After finishing the right side, it then repeats for the left
+    At this point, all that remains is the the player is located on, so that is filled out, starting by moving up, then down
+    Here's how it draws out for a reach of 3:
+
+    -------     -------     -------     -------                                 -------     ---0---     ---0---
+    -------     ----0--     ----0--     ----0--                                 --0-0--     --000--     --000--
+    -------     ----0--     ----00-     ----00-   (Skipping ahead a few steps)  -00-00-     -00000-     -00000-
+    ---X--- ->  ---X0-- ->  ---X00- ->  ---X000        ------------------->     000X000 ->  000X000 ->  000X000
+    -------     ----0--     ----00-     ----00-                                 -00-00-     -00-00-     -00000-
+    -------     ----0--     ----0--     ----0--                                 --0-0--     --0-0--     --000--
+    -------     -------     -------     -------                                 -------     -------     ---0---
+
+    */
     public void drawReach(int reach, bool targetTiles, bool targetAllies)
     {
         int width = 1;
+        //Find the maximum width that needs to be checked
         for (int i = 2; i <= reach; ++i)
         {
             width += 2;
         }
+        //Find the partial width that'll be used to check half of the width at a time
         int partialWidth = (width - 1) / 2;
         int storeWidth = partialWidth;
 
         UnityEngine.Debug.Log(width);
         UnityEngine.Debug.Log(partialWidth);
+        //This for loop iterates through the columns that need to be checked for targeting, a reach of 3 means it will check through 3 columns, the width shrinking as it moves to a new column
         for (int i = 1; i < reach + 1; i++)
         {
+            //This for loop iterates up from the bottom 
             for (int j = partialWidth; j > ((-1 * partialWidth) - 1); --j)
             {
                 if (checkIndex(selectedUnitScript.tileX + i, selectedUnitScript.tileY + j) && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j] != null)
@@ -666,6 +658,8 @@ public class TileMap : MonoBehaviour
 
     }
 
+    //Checks if the x , y input is within the tile map
+    //If the  coords are in the map, true is returned, otherwise false is returned
     public bool checkIndex(int x, int y)
     {
         if (x >= 0 && x < clickableTiles.GetLength(0))
@@ -679,7 +673,7 @@ public class TileMap : MonoBehaviour
     }
 
     //Current placeholder to set the tiles back to their original colors
-
+    //Iterates over the list of possible targets and ends their highlight before resetting the targetList to empty
     public void removeReach()
     {
 
@@ -693,7 +687,6 @@ public class TileMap : MonoBehaviour
 
     //Use this function when changing the selectedUnit variable
     //Also sets the selectedUnitScript variable making references to it's script much easier
-    
     public void updateSelectedCharacter(GameObject newCharacter)
     {
         if (newCharacter != null)
@@ -708,28 +701,41 @@ public class TileMap : MonoBehaviour
         }
     }
 
+    //Checks the targetList for the inputted target ---REACH MAY NOT BE NEEDED HERE---
+    //Takes in a GameObject that will be the selectedTarget that is searched for
     public bool checkForTarget(GameObject selectedTarget, int reach)
     {
+        //Iterates over all entires in the targetList
         for (int i = 0; i < targetList.Count; ++i)
         {
+            //Checks if the selectedTarget is the current entry in the targetList or if it is the character on the entry
             if (targetList[i] == selectedTarget || (targetList[i].characterOnTile != null && targetList[i].characterOnTile == selectedTarget))
             {
+                //If the target is found return true
                 return true;
             }
         }
+        //If the target can't be found return false
         return false;
     }
 
+
+    //Swaps two different tiles on the map
+    //Takes in the previous tile and the new tile to switch to, as well as the integer value of the TileType in the tileTypes array
     public void swapTiles (ClickableTile previousTile, ClickableTile newTile, int tileNumber)
     {
+        //transfers the values of the previous tile to the new tile
         newTile.characterOnTile = previousTile.characterOnTile;
         newTile.map = this;
         newTile.TileX = previousTile.TileX;
         newTile.TileY = previousTile.TileY;
+        //Sets the tile arrays in the map to contain the new tile
         tiles[previousTile.TileX, previousTile.TileY] = tileNumber;
         clickableTiles[previousTile.TileX, previousTile.TileY] = newTile;
+        //Checks if there was a character on the previous tile
         if (previousTile.characterOnTile != null)
         {
+            //If so, also updates the character on the tile, adding the new effect and linking the character to the new tile
             Basic_Character_Class unitAffected = previousTile.characterOnTile.GetComponent<Basic_Character_Class>();
             unitAffected.tile = newTile;
             unitAffected.removeStatus(unitAffected.tileEffect, true);
@@ -737,10 +743,13 @@ public class TileMap : MonoBehaviour
             newEffect.initializeTileEffect(newTile.statsToEffect, newTile.name, newTile.effectAmounts, unitAffected.gameObject, newTile.name + "Effect");
             unitAffected.tileType = newTile.map.tileTypes[tileNumber];
         }
+        //Destroys the old tile
         Destroy(previousTile.gameObject);
     }
 
+    //Adds a status effect to a unit as they enter a tile, takes in the x, y location of the tile and the unit the effect will be applied to
     public void addTileEffect(int x, int y, GameObject unitToAffect){
+        //Creates the status effect and then applies it to the character
         StatusEffect newEffect = new StatusEffect();
         newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, unitToAffect, tileTypes[tiles[x, y]].name + "Effect");
     }
