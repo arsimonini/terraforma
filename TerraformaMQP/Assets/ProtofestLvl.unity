@@ -3757,6 +3757,7 @@ MonoBehaviour:
   startPos: {x: 0, y: 0, z: 0}
   tooFarHorizontal: 10
   tooFarVertical: 10
+  gc: {fileID: 1356950529}
   map: {fileID: 1297737938}
 --- !u!1001 &993967173
 PrefabInstance:
@@ -7803,13 +7804,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898405302}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.6830127, y: -0.18301266, z: 0.18301266, w: 0.6830127}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -30, z: 0}
 --- !u!1 &1900482504
 GameObject:
   m_ObjectHideFlags: 0
