@@ -119,4 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spread: 0
-  tileFireGrass: {fileID: 5296307935300308040, guid: 74736fe0684ee464f96b181620a6b05b, type: 3}
+  BurningTileEffect: {fileID: 11400000, guid: 172d136be4abc0741b5b34fd7f644684, type: 2}
