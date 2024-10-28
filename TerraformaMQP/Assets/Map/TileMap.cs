@@ -12,6 +12,7 @@ public class TileMap : MonoBehaviour
     public GameObject selectedUnit; //The currently selectedUnit, is null if there is no selected unit
     public Basic_Character_Class selectedUnitScript; //The Basic Class script attached to the selectedUnit, is null if there is no selected unit
     public Tilemap tilemap; //Reference to the tile map
+    public List<GameObject> heroes = new List<GameObject>(); //list of player controlled units
 
     public TileType[] tileTypes; //Array that contains a list of all the tiletypes
     public int[,] tiles; //2D array of integers, the integer values correspond with a TileType in the tileTypes array. Ex. a 0 in the tiles array corresponds with the tileGrass TileType in the tileTypes array
@@ -58,10 +59,27 @@ public class TileMap : MonoBehaviour
     public List<Node> visualPath = null; //A List of Nodes that is the path to the currently hovered tile, null if the unit isn't trying to move or if no unit is selected
     public GameObject circleArrowPrefab; //Reference to the arrowPrefab used to display the path
 
+    int remainingSteps = 0; //steps remaining before reaching movement limit
+
     //Upon level load begin creating the map
     void Start() {
         createMap();
         //GenerateMapVisual();
+        findHeroes();
+    }
+
+    //Called to create list of player controlled units
+    public void findHeroes() {
+        GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+        //UnityEngine.Debug.Log("Total objects: " + allObjects.Length);
+        string[] heroNames = {"Wold", "Lancin", "BasicCharacter"};
+        foreach (GameObject obj in allObjects) {
+            //UnityEngine.Debug.Log(obj.name.GetType());
+            if (Array.IndexOf(heroNames, obj.name) >= 0) {
+                heroes.Add(obj);
+            }
+        }
+
     }
 
     //Called when setting up the map
@@ -327,12 +345,12 @@ public class TileMap : MonoBehaviour
 
     }
 
-    public void generatePathTo(int x, int y){
+    public List<Node> generatePathTo(int x, int y){
 
         if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
             currentPath = new List<Node>();
             selectedUnitScript.path = currentPath;
-            return;
+            return null;
         }
 
         selectedUnitScript.path = null;
@@ -384,7 +402,7 @@ public class TileMap : MonoBehaviour
             }
         }
         if (prev[target] == null){
-            return;
+            return null;
         }
 
         currentPath = new List<Node>();
@@ -400,6 +418,7 @@ public class TileMap : MonoBehaviour
 
         selectedUnitScript.path = currentPath;
 
+        return currentPath;
         //showPath();
     }
 

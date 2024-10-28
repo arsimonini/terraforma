@@ -15,6 +15,27 @@ public class Enemy_Character_Class : MonoBehaviour
         //Moves the unit to a random location by calling the map's MoveSelectedUnitTo function
         this.gameObject.GetComponent<Basic_Character_Class>().map.MoveSelectedUnitTo(rand.Next(1, 9), rand.Next(1, 9));
 
+
+        //get list of all heroes in scene
+        GameObject[] heroes = this.gameObject.GetComponent<Basic_Character_Class>().map.heroes.ToArray(); 
+        int minSteps = 100;
+        GameObject target = null;
+        List<Node> pathToTarget = null;
+
+        foreach (GameObject hero in heroes) {
+            int tileX = hero.GetComponent<Basic_Character_Class>().tileX;
+            int tileY = hero.GetComponent<Basic_Character_Class>().tileY;
+            UnityEngine.Debug.Log("Hero: " + tileX + "," + tileY);
+            List<Node> path = this.gameObject.GetComponent<Basic_Character_Class>().map.generatePathTo(tileX, tileY);
+            if ((path != null) && (path.Count < minSteps)) {
+                minSteps = path.Count;
+                target = hero;
+                pathToTarget = path;
+            }
+            UnityEngine.Debug.Log("step count: " + path.Count);
+        }
+        UnityEngine.Debug.Log("minsteps: " + minSteps);
+
         //no target selected - all heroes very out of reach, target first in list
         if (target == null) {
             target = heroes[0];
