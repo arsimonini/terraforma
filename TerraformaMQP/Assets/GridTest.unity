@@ -8126,6 +8126,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: movementSpeed.value
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: maxHealth.moddedValue
       value: 10
       objectReference: {fileID: 0}
@@ -8283,7 +8287,7 @@ MonoBehaviour:
     value: 0
     moddedValue: 0
   movementSpeed:
-    value: 0
+    value: 4
     moddedValue: 0
   resistence:
     value: 0
