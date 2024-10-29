@@ -3130,7 +3130,11 @@ MonoBehaviour:
   startPos: {x: 0, y: 0, z: 0}
   tooFarHorizontal: 10
   tooFarVertical: 10
+  gc: {fileID: 1356950529}
   map: {fileID: 1297737938}
+  target: {x: 0, y: 0, z: 0}
+  targetIndex: -1
+  lUnits: []
 --- !u!4 &963208613 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 855938046233128327, guid: 7c010d1b6cd8245d999a68a01481397e, type: 3}
@@ -4285,6 +4289,7 @@ MonoBehaviour:
   movingEnemy: 0
   moving: 0
   targetList: []
+  mapCreated: 0
   circleArrowPrefab: {fileID: 3581929253024597637, guid: 2d1e38878fa5027489d87c4d02e8f416, type: 3}
 --- !u!114 &1297737939
 MonoBehaviour:
@@ -4300,6 +4305,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTeamEffects: []
   enemyTeamEffects: []
+  playerTeamTileEffects: []
+  enemyTeamTileEffects: []
 --- !u!4 &1303354770 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6454572113100923874, guid: 0e3d7416a877b4d1792beb3be8aa77f9, type: 3}
@@ -4475,17 +4482,17 @@ MonoBehaviour:
   playerTeamList:
   - {fileID: 1924946471}
   - {fileID: 1634555521}
-  playerTeamTileEffects: []
-  enemyTeamTileEffects: []
   camera: {fileID: 960158207}
   round: 0
   phase: 0
   map: {fileID: 1297737938}
   movingEnemy: 0
-  lockPlayer: 0
+  enemyCount: 0
+  enemiesToMove: 0
   targeting: 0
   selectedCharacter: {fileID: 0}
   characterScript: {fileID: 0}
+  targets: []
 --- !u!4 &1356950530
 Transform:
   m_ObjectHideFlags: 0
@@ -8306,7 +8313,6 @@ MonoBehaviour:
   attackReach: 1
   defaultReach: 1
   attackType: 
-  testEffect: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 5
   tileY: 0

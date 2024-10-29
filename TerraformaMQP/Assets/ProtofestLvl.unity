@@ -3759,6 +3759,9 @@ MonoBehaviour:
   tooFarVertical: 10
   gc: {fileID: 1356950529}
   map: {fileID: 1297737938}
+  target: {x: 0, y: 0, z: 0}
+  targetIndex: -1
+  lUnits: []
 --- !u!1001 &993967173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5587,7 +5590,6 @@ MonoBehaviour:
   movingEnemy: 0
   enemyCount: 0
   enemiesToMove: 0
-  lockPlayer: 0
   targeting: 0
   selectedCharacter: {fileID: 0}
   characterScript: {fileID: 0}
@@ -9829,7 +9831,6 @@ MonoBehaviour:
   attackReach: 1
   defaultReach: 1
   attackType: 
-  testEffect: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 7
   tileY: 2
