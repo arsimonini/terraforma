@@ -218,4 +218,3 @@ public class CamControl : MonoBehaviour
         return right;
     }
 }
-

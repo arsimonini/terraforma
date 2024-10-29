@@ -107,6 +107,7 @@ public class ClickableTile : MonoBehaviour
         if (characterOnTile!= null){
             updateTileEffect();
         }
+        effect.tileEffectPrefab.GetComponent<tileEffectActions>().react(effectsOnTile, this, effect);
     }
 
     //Removes an effect from the tile, functions almost exactly in the same way as the addEffectToTile
@@ -122,6 +123,9 @@ public class ClickableTile : MonoBehaviour
                 effectAmounts.Remove(effectAmounts[statLoc]);
                 statsToEffect.Remove(statsToEffect[statLoc]);
             }
+        }
+        if (effect.duration == 0){
+            effect.tileEffectPrefab.GetComponent<tileEffectActions>().endOfDurationEffect(this);
         }
         //If there is a character on the tile then it's tile effect is then updated to reflect the new stats
         if (characterOnTile!= null){

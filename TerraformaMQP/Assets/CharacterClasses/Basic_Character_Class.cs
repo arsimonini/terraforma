@@ -537,7 +537,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Sets targeting to true
         targeting = true;
         //Calls the drawReach function with the reach of the attack, the inability to target tiles, and the inability to target allies
-        drawReach(reach, false, false);
+        drawReach(reach, false, false, tile);
     }
 
     //Called when targeting a Spell
@@ -553,7 +553,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Sets the attackReach to the inputted reach
         attackReach = reach;
         //Calls the drawReach function with the reach of the spell, the spell's ability to target tiles, and the spell's ability to target allies
-        drawReach(reach, spell.targetTiles, spell.targetAllies);
+        drawReach(reach, spell.targetTiles, spell.targetAllies, tile);
     }
 
     //Called when selecting a unit, displays the current health and, if possible, the mana of the selected unit, along with their char_img
@@ -619,9 +619,9 @@ public class Basic_Character_Class : MonoBehaviour
     }
 
     //Calls the drawReach function within the map, passing the same variables from the parameters as arguments
-    private void drawReach(int reach, bool targetTiles, bool targetAllies)
+    private void drawReach(int reach, bool targetTiles, bool targetAllies, ClickableTile tile)
     {
-        map.drawReach(reach, targetTiles, targetAllies);
+        map.drawReach(reach, targetTiles, targetAllies, tile);
     }
 
     //Calls the removeReach function within the map

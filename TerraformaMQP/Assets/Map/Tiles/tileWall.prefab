@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8803834143422383284}
   - component: {fileID: 7179164943785927740}
   - component: {fileID: 2878664337902834670}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tileWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,8 +105,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.92032236, y: 1, z: 0.9261161}
+  m_Center: {x: -0.0077057183, y: 0, z: -0.013362825}
 --- !u!114 &2878664337902834670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   effectAmounts: feffffff
   characterOnTile: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  effectsOnTile: []
 --- !u!1 &9069269853647289291
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +142,7 @@ GameObject:
   - component: {fileID: 5980904706126317804}
   - component: {fileID: 5297732616798431037}
   - component: {fileID: 8517994062004051254}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
