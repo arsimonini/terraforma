@@ -315,7 +315,16 @@ public class TileMap : MonoBehaviour
 
     }
 
-    public void generatePathTo(int x, int y){
+    public float getPathLength(Dictionary<Node,float> dist) {
+        float len = 0f;
+
+        for (int i = 0; i < currentPath.Count-1; i++) {
+
+        }
+
+        return len;
+    }
+    public void generatePathTo(int x, int y, bool visual = false){
 
         if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
             currentPath = new List<Node>();
@@ -386,11 +395,56 @@ public class TileMap : MonoBehaviour
         
         currentPath.Reverse();
 
+        UnityEngine.Debug.Log("Path Count: " + currentPath.Count);
+        UnityEngine.Debug.Log("Movement: " + selectedUnitScript.movementSpeed.moddedValue);
+
+        if (selectedUnit != null) {
+            cutDownPath(selectedUnitScript.movementSpeed.moddedValue);
+        }
+
         selectedUnitScript.path = currentPath;
 
-        //showPath();
     }
 
+    //Despite its existing name, this does a little more than that
+    public void cutDownPath(int range, bool visual = false, bool cutDown = true) {    //This is recursive, so do take that into consideration
+        List<Node> l = currentPath;
+        if (visual) l = visualPath;
+
+        if (l.Count <= 0) {
+            return; //Nowhere to go 
+        }
+
+        //First calculate l's max range
+        float lCutoff = 0;//l.Count - 1;
+        //Loop through each node, adding it's tile's value to 
+        for (int i = 1; i < l.Count; i++) {
+            int nodeX = l[i].x;
+            int nodeY = l[i].y;
+            lCutoff += costToEnterTile(nodeX,nodeY);
+        }
+
+
+        if (visual) {
+            //If long enough, good enough. If not, red
+            if (range >= lCutoff) {
+                showPath(true);
+            } else {
+                showPath(false);
+            }
+
+            return;
+        }
+        
+        //If character movement isn't enough, cut down path by one layer and try again. Basically, this is so that the enemy will move in the direction they mean to go even if it's out of range
+        if (range < lCutoff) {
+
+            if (cutDown) {
+                l.RemoveAt(l.Count - 1);
+            }
+        }
+
+    }
     public bool unitCanEnterTile(int x, int y) {
 
         //add section here for checking if space is occupied by other unit
@@ -419,12 +473,19 @@ public class TileMap : MonoBehaviour
         return dist;
     }
 
-    public void showPath() {
+    public void showPath(bool blue = true) {
         hidePath();
  
         //Create path of CircleArrows
         for (int i = 0; i < visualPath.Count; i++) {
             GameObject ca = Instantiate(circleArrowPrefab);
+            
+            if (!blue) {
+                SpriteRenderer sr = ca.GetComponent<SpriteRenderer>();
+                Sprite nS = Resources.Load<Sprite>("spr_circle_red");
+                sr.sprite = nS;
+            }
+
             ca.transform.position = new Vector3(visualPath[i].x+(int)xOffset,0.6f,visualPath[i].y+(int)yOffset);
             ca.transform.localRotation = Quaternion.Euler(90f,0,0);
             if (i != visualPath.Count - 1) {
@@ -519,7 +580,10 @@ public class TileMap : MonoBehaviour
 
         selectedUnitScript.path = currentPath;
 
-        showPath();
+        if ((selectedUnit != null)) {
+            cutDownPath(selectedUnitScript.movementSpeed.moddedValue,true);
+        }
+        
     }
 
 
