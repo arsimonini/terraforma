@@ -104,8 +104,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.89012444, y: 1, z: 0.868003}
+  m_Center: {x: -0.0024325252, y: 0, z: -0.0022341758}
 --- !u!114 &-2369089285034672502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,9 +118,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db03f78879c864138af3e8170c0b6058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlightMultiplier: 1.2
   TileX: 0
   TileY: 0
   map: {fileID: 0}
+  isWalkable: 1
   statsToEffect: []
   effectAmounts: 
   characterOnTile: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  effectsOnTile: []

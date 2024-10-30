@@ -37,7 +37,7 @@ public class ClickableTile : MonoBehaviour
         //Highlight the tile upon hover
         Color highlightColor;
         //Check if the player currently has a unit targeting and this tile is withing the current target list
-        if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this))
+        if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this.gameObject))
         {
             //If so, set the highlight to be darker than normal
             float darkerHighlight = highlightMultiplier + 0.1f;
@@ -76,7 +76,7 @@ public class ClickableTile : MonoBehaviour
 
     void OnMouseExit() {
         //Checks if the tile is currently withing the map's target list
-        if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this))
+        if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this.gameObject))
         {
             //If so, the tile stays highlighted with the slightly lighter highlight
             Color highlightColor = originalColor * highlightMultiplier;
@@ -107,6 +107,7 @@ public class ClickableTile : MonoBehaviour
         if (characterOnTile!= null){
             updateTileEffect();
         }
+        effect.tileEffectPrefab.GetComponent<tileEffectActions>().react(effectsOnTile, this, effect);
     }
 
     //Removes an effect from the tile, functions almost exactly in the same way as the addEffectToTile
@@ -122,6 +123,9 @@ public class ClickableTile : MonoBehaviour
                 effectAmounts.Remove(effectAmounts[statLoc]);
                 statsToEffect.Remove(statsToEffect[statLoc]);
             }
+        }
+        if (effect.duration == 0){
+            effect.tileEffectPrefab.GetComponent<tileEffectActions>().endOfDurationEffect(this);
         }
         //If there is a character on the tile then it's tile effect is then updated to reflect the new stats
         if (characterOnTile!= null){
