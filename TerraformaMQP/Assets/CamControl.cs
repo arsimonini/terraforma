@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CamControl : MonoBehaviour
 {
+    float xAngle = 58;
     public Vector3 startPos;
     public float tooFarHorizontal = 10;
     public float tooFarVertical = 10;
@@ -27,6 +28,8 @@ public class CamControl : MonoBehaviour
     {
         startPos = transform.position;
         lUnits = new List<GameObject>(gc.playerTeamList);
+        xAngle = transform.eulerAngles.x;
+        Debug.Log(xAngle);
     }
 
     // Update is called once per frame
@@ -52,8 +55,16 @@ public class CamControl : MonoBehaviour
             GameObject unit = map.selectedUnit;
             Vector3 unitPos = unit.transform.position;
 
+            Vector3 fw = 4*getForward();
+
+            Vector3 newMove = speed*vInput*getForward()*Time.deltaTime + speed*hInput*getRight()*Time.deltaTime;
+            Vector3 newPos = transform.position + newMove;
+
+            if ((newPos.x > -5) && (newPos.x < tooFarHorizontal) && (newPos.z > -5) && (newPos.z < tooFarVertical)) {
+                transform.position = newPos;
+            }
             //Set restrictions
-            float northWall = unitPos.z+10;
+            /*float northWall = unitPos.z+10;
             float southWall = unitPos.z-10;
             float eastWall = unitPos.x+10;
             float westWall = unitPos.x-10;
@@ -75,7 +86,7 @@ public class CamControl : MonoBehaviour
                 transform.position = new Vector3(transform.position.x,transform.position.y,northWall);
             }
 
-            transform.position = transform.position + new Vector3(speed * hInput * Time.deltaTime, 0, speed * vInput * Time.deltaTime);    
+            transform.position = transform.position + new Vector3(speed * hInput * Time.deltaTime, 0, speed * vInput * Time.deltaTime);    */
         } else {
             checkRotation();
             checkSwitchTarget();
@@ -153,9 +164,9 @@ public class CamControl : MonoBehaviour
             rotationCount --;
 
             //Increment towards that
-            transform.Rotate(-58,0,0);
+            transform.Rotate(-xAngle,0,0);
             transform.Rotate(0,rotationDirection,0);
-            transform.Rotate(58,0,0); 
+            transform.Rotate(xAngle,0,0); 
 
             if (rotationCount == 0) {
                 rotationDirection = 0;
