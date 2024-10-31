@@ -29,6 +29,10 @@ public class TileMap : MonoBehaviour
     float xOffset;
     float yOffset;
 
+    //For Move Button
+    public bool moveButtonPressed = false;
+    public bool activelyMoving = false;
+
     Dictionary<string, int> tileNames = new Dictionary<string, int>(){
         {"tileGrass", 0},
         {"tileDirt", 1},
@@ -323,26 +327,33 @@ public class TileMap : MonoBehaviour
 
     public void MoveSelectedUnitTo(int x, int y) {
 
-        UnityEngine.Debug.Log(x + "," + y);
+        //checks if move UI was clicked before moving unit
+        if (moveButtonPressed == true) {
 
-        //TEST - replace with actual movement implementation
-        if (selectedUnit != null && clickableTiles[x, y].isWalkable)
-        {
-            if (selectedUnitScript.targeting == true)
+            setMoveButtonPressed(false);
+            moveButtonPressed = false;
+
+            UnityEngine.Debug.Log(x + "," + y);
+
+            //TEST - replace with actual movement implementation
+            if (selectedUnit != null && clickableTiles[x, y].isWalkable)
             {
-                selectedUnitScript.targeting = false;
-            }
-            else if (selectedUnitScript.charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
-            {
-                hidePath();
-                generatePathTo(x, y);
-                UnityEngine.Debug.Log(currentPath.Count);
+                if (selectedUnitScript.targeting == true)
+                {
+                    selectedUnitScript.targeting = false;
+                }
+                else if (selectedUnitScript.charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
+                {
+                    hidePath();
+                    generatePathTo(x, y);
+                    UnityEngine.Debug.Log(currentPath.Count);
 
-                //selectedUnitScript.charSelected = false;
+                    //selectedUnitScript.charSelected = false;
 
-                //selectedUnitScript.tileX = currentPath[1].x;
-                //selectedUnitScript.tileY = currentPath[1].y;
-                //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
+                    //selectedUnitScript.tileX = currentPath[1].x;
+                    //selectedUnitScript.tileY = currentPath[1].y;
+                    //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
+                }
             }
         }
 
@@ -454,17 +465,20 @@ public class TileMap : MonoBehaviour
     }
 
     public void showPath() {
-        hidePath();
- 
-        //Create path of CircleArrows
-        for (int i = 0; i < visualPath.Count; i++) {
-            GameObject ca = Instantiate(circleArrowPrefab);
-            ca.transform.position = new Vector3(visualPath[i].x+(int)xOffset,0.6f,visualPath[i].y+(int)yOffset);
-            ca.transform.localRotation = Quaternion.Euler(90f,0,0);
-            if (i != visualPath.Count - 1) {
-                ca.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-            } else {
-                ca.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        
+        if(moveButtonPressed == true){
+            hidePath();
+
+            //Create path of CircleArrows
+            for (int i = 0; i < visualPath.Count; i++) {
+                GameObject ca = Instantiate(circleArrowPrefab);
+                ca.transform.position = new Vector3(visualPath[i].x+(int)xOffset,0.6f,visualPath[i].y+(int)yOffset);
+                ca.transform.localRotation = Quaternion.Euler(90f,0,0);
+                if (i != visualPath.Count - 1) {
+                    ca.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                } else {
+                    ca.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                }
             }
         }
     }
@@ -726,8 +740,10 @@ public class TileMap : MonoBehaviour
         Destroy(previousTile.gameObject);
 
     }
+
+    public void setMoveButtonPressed(bool b) {
+        moveButtonPressed = b;
+    }
 }
-
-
 
 

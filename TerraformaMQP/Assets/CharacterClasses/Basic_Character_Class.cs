@@ -43,6 +43,7 @@ public class Basic_Character_Class : MonoBehaviour
     public TileMap map;
 
     public bool targeting = false;
+    public bool isMoving = false;
 
     public bool charSelected = false;
     public bool charHover = false;
@@ -106,7 +107,7 @@ public class Basic_Character_Class : MonoBehaviour
         }
         */
 
-        if (charSelected == true && turnEnded == false & map.moving == false)
+        if (charSelected == true && turnEnded == false & map.moving == false & map.moveButtonPressed == false)
         {
             displayAttackMenu(true);
             if (Input.GetKeyDown(KeyCode.N))
@@ -126,7 +127,11 @@ public class Basic_Character_Class : MonoBehaviour
                 map.hidePath();
             }
         }
-        displayAttackMenu(false);
+
+        if(map.moving == true) {
+            displayAttackMenu(false);
+        }
+        
     }
 
     //Deals Physical Damage to the character and checks if it reduces the health total below 0. Reduces the Damage value by the amount of Defense the character has
@@ -490,6 +495,8 @@ public class Basic_Character_Class : MonoBehaviour
         renderer.material.color = Color.gray;
         turnEnded = true;
         charSelected = false;
+        //Turns off attack menu
+        displayAttackMenu(false);
         if (gameObject.GetComponent<Hero_Character_Class>())
         {
             gameObject.GetComponent<Hero_Character_Class>().pickingSpell = false;
@@ -552,6 +559,9 @@ public class Basic_Character_Class : MonoBehaviour
     public void displayAttackMenu(bool b)
     {
         atkMenu.SetActive(b);
+        if(turnEnded == true && b == true) {
+            atkMenu.SetActive(false);
+        }
     }
 
     
@@ -611,6 +621,9 @@ public class Basic_Character_Class : MonoBehaviour
         charSelected = false;
         map.hidePath();
         displayNameplate(false);
+        displayAttackMenu(false);
+        map.setMoveButtonPressed(false);
+        isMoving = false;
         if (turnEnded == false)
         {
             renderer.material.color = color;
@@ -647,6 +660,16 @@ public class Basic_Character_Class : MonoBehaviour
         turnEnded = false;
         renderer.material.color = color;
         actionsLeft.moddedValue = actionsLeft.value;
+    }
+
+    public void moveButtonUI() {
+        map.setMoveButtonPressed(true);
+        displayAttackMenu(false);
+        isMoving = true;
+    }
+
+    public void attackButtonUI() {
+        beginTargeting(attackReach);
     }
 
 

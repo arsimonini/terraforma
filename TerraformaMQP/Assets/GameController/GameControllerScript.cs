@@ -23,6 +23,7 @@ public class GameControllerScript : MonoBehaviour
     private int enemyCount = 0;
     public bool lockPlayer = false;
     public bool targeting = false;
+    public bool moving = false;
     public GameObject selectedCharacter;
     public Basic_Character_Class characterScript;
 
@@ -38,6 +39,10 @@ public class GameControllerScript : MonoBehaviour
             if (characterScript.targeting == true)
             {
                 targeting = true;
+            }
+            if (characterScript.isMoving == true)
+            {
+                moving = true;
             }
         }
         /*
@@ -80,6 +85,17 @@ public class GameControllerScript : MonoBehaviour
                     } 
                     else if (selectedCharacter != null && (selectedCharacter.gameObject.tag == "EnemyTeam" || characterScript.turnEnded == true))
                     {
+                        characterScript.deselectCharacter();
+                        map.updateSelectedCharacter(null);
+                        map.currentPath = null;
+                        updateSelectedObject(null);
+                    }
+                    else if (selectedCharacter != null && hit.collider.gameObject.GetComponent<Basic_Character_Class>() == null && moving == false && hit.collider.gameObject.tag != "EnemyTeam" && hit.collider.gameObject.tag != "PlayerTeam" && phase == 0)
+                    {
+                        //when you click on a tile after clicking on a character (and you're not moving), it clicks off the character
+                        
+                        moving = false;
+                        characterScript.isMoving = false;
                         characterScript.deselectCharacter();
                         map.updateSelectedCharacter(null);
                         map.currentPath = null;
