@@ -87,7 +87,7 @@ public class Basic_Character_Class : MonoBehaviour
     void Update()
     {
 
-        if (charSelected == true && turnEnded == false & map.moving == false & map.moveButtonPressed == false)
+        if (charSelected == true && turnEnded == false & map.moving == false & map.moveButtonPressed == false && targeting == false)
         {
             displayAttackMenu(true);
             if (Input.GetKeyDown(KeyCode.N))
@@ -503,6 +503,7 @@ public class Basic_Character_Class : MonoBehaviour
     public void endTurn()
     {
         //Sets the current remaining actions to 0, changes the color to gray, sets the turnEnded variable to true, and deselects the character
+        deselectCharacter();
         actionsLeft.moddedValue = 0;
         renderer.material.color = Color.gray;
         turnEnded = true;
@@ -738,6 +739,8 @@ public class Basic_Character_Class : MonoBehaviour
     }
 
     public void attackButtonUI() {
+        attackType = "Attack";
+        displayAttackMenu(false);
         beginTargeting(attackReach);
     }
 

@@ -300,7 +300,7 @@ public class TileMap : MonoBehaviour
     public void MoveSelectedUnitTo(int x, int y) {
 
         //checks if move UI was clicked before moving unit
-        if (moveButtonPressed == true) {
+        if (moveButtonPressed == true || selectedUnit.GetComponent<Enemy_Character_Class>() != null) {
 
             setMoveButtonPressed(false);
             moveButtonPressed = false;
