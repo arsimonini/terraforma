@@ -13,6 +13,7 @@ public class TileEffect : ScriptableObject
     public ClickableTile tile; //A reference to the tile the effect is applied to
     public string name; //The name of the effect
     public bool playerTeam; //Whether the effect was applied by the player team or the enemy team. True if the player team, false if the enemy team
+    public int movementCostIncrease = 0; //Amount to increase the cost to move onto the tile by. If left at 0 doesn't have any effect
     public GameObject tileEffectPrefab; //Reference to the tileEffectPrefab
     
     //Reduces the duration of the effect by 1

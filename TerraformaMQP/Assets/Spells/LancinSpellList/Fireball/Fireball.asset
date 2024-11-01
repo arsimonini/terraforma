@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manaCost: 10
   spellName: Fireball
-  elementType: Fire
+  elementType: Earth
   spellPrefab: {fileID: 2394175536890139692, guid: ee9334e422503c840bb34dfedfb5be70, type: 3}
   description: Deal 10 fire damage to an enemy and set their tile Ablaze
   targeted: 1
@@ -24,3 +24,6 @@ MonoBehaviour:
   target: {fileID: 0}
   amountOfTargets: 2
   requireDifferentTargets: 1
+  targetEnemies: 0
+  hitOwnTile: 0
+  hitSelf: 0

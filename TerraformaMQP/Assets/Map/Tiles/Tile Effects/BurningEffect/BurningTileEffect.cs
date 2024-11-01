@@ -5,6 +5,9 @@ using UnityEngine;
 [SerializeField]
 public class BurningTileEffect : tileEffectActions
 {
+    public List<string> burnableTiles;
+    public List<string> reactableTiles;
+
     public override void performEndOfTurnEffect(ClickableTile tile){
         UnityEngine.Debug.Log("Proccing Burning");
         if (tile.GetComponent<ClickableTile>().characterOnTile != null){
@@ -12,6 +15,7 @@ public class BurningTileEffect : tileEffectActions
         }
     }
 
+    /*
     public override void react(List<TileEffect> effectsOnTile, ClickableTile tile, TileEffect thisEffect){
         UnityEngine.Debug.Log("We Overriding with this one");
         if (effectsOnTile != null){
@@ -32,11 +36,12 @@ public class BurningTileEffect : tileEffectActions
             }
         }
     }
+    */
 
     public override void endOfDurationEffect(ClickableTile tile){
         switch(tile.gameObject.name){
             case "tileGrass":
-                tile.map.swapTiles(tile, 1);
+                tile.map.swapTiles(tile, 1, true);
                 break;
         }
     }
