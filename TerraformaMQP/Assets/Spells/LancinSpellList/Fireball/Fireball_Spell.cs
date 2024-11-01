@@ -45,9 +45,11 @@ public class Fireball_Spell : MonoBehaviour, Cast_Spell
             else {
                 targetTile = targets[i].GetComponent<ClickableTile>();
             }
-            TileEffect newEffect = Instantiate(BurningTileEffect);
-            newEffect.createTileEffect(true, targetTile, newSource: "Fireball", newDuration: 3);
-            UnityEngine.Debug.Log(newEffect.duration);
+
+            //TileEffect newEffect = Instantiate(BurningTileEffect);
+            //newEffect.createTileEffect(true, targetTile, newSource: "Fireball", newDuration: 3);
+            targetTile.map.gameObject.GetComponent<ReactionController>().checkReaction(targetTile, caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Fireball", true);
+            //UnityEngine.Debug.Log(newEffect.duration);
         }
     }
 }

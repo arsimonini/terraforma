@@ -470,8 +470,11 @@ public class TileMap : MonoBehaviour
         if (unitCanEnterTile(x, y) == false) {
             return Mathf.Infinity;
         }
-        TileType t = tileTypes[tiles[x, y]];
-        float dist = t.cost;
+        int cost = clickableTiles[x, y].cost;
+        if (cost <= 0){
+            cost = 1;
+        }
+        float dist = cost;
 
         return dist;
     }
@@ -812,10 +815,11 @@ public class TileMap : MonoBehaviour
 
     //Swaps two different tiles on the map
     //Takes in the previous tile and the new tile to switch to, as well as the integer value of the TileType in the tileTypes array
-    public void swapTiles (ClickableTile previousTile, int tileNumber)
+    public ClickableTile swapTiles (ClickableTile previousTile, int tileNumber, bool transferEffects)
     {
         //transfers the values of the previous tile to the new tile
         GameObject newTilePrefab = Instantiate(tileTypes[tileNumber].tileVisualPrefab);
+        newTilePrefab.name = tileTypes[tileNumber].tileVisualPrefab.name;
         ClickableTile newTile = newTilePrefab.GetComponent<ClickableTile>();
         newTilePrefab.transform.position = previousTile.gameObject.transform.position;
         newTile.characterOnTile = previousTile.characterOnTile;
@@ -825,6 +829,11 @@ public class TileMap : MonoBehaviour
         //Sets the tile arrays in the map to contain the new tile
         tiles[previousTile.TileX, previousTile.TileY] = tileNumber;
         clickableTiles[previousTile.TileX, previousTile.TileY] = newTile;
+        if (transferEffects){
+            for (int i = 0; i < previousTile.effectsOnTile.Count; i++){
+                newTile.addEffectToTile(previousTile.effectsOnTile[i]);
+            }
+        }
         //Checks if there was a character on the previous tile
         if (previousTile.characterOnTile != null)
         {
@@ -838,6 +847,7 @@ public class TileMap : MonoBehaviour
         }
         //Destroys the old tile
         Destroy(previousTile.gameObject);
+        return newTile;
     }
 
     //Adds a status effect to a unit as they enter a tile, takes in the x, y location of the tile and the unit the effect will be applied to

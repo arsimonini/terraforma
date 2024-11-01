@@ -127,4 +127,5 @@ MonoBehaviour:
   effectAmounts: 
   characterOnTile: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  cost: 1
   effectsOnTile: []
