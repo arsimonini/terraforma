@@ -20,6 +20,7 @@ public class ClickableTile : MonoBehaviour
     public List<int> effectAmounts; //The amounts to change the listed stats when a character stands on the tile        [5, -2, 3]      Leads to increasing attack by 5, decreasing speed by 2, and increasing defense by 3
     public GameObject characterOnTile = null; //Reference to the character currently standing on the tile, null if no character is on the tile
     public Color color; //The color of the tile
+    public int cost;
 
     public List<TileEffect> effectsOnTile; //List of effects currently on the tile
     
@@ -103,11 +104,12 @@ public class ClickableTile : MonoBehaviour
                 effectAmounts.Add(effect.amountToEffect[i]);
             }
         }
+        cost += effect.movementCostIncrease;
         //If there is a character on the tile then it's tile effect is then updated to reflect the new stats
         if (characterOnTile!= null){
             updateTileEffect();
         }
-        effect.tileEffectPrefab.GetComponent<tileEffectActions>().react(effectsOnTile, this, effect);
+        //effect.tileEffectPrefab.GetComponent<tileEffectActions>().react(effectsOnTile, this, effect);
     }
 
     //Removes an effect from the tile, functions almost exactly in the same way as the addEffectToTile
@@ -127,6 +129,7 @@ public class ClickableTile : MonoBehaviour
         if (effect.duration == 0){
             effect.tileEffectPrefab.GetComponent<tileEffectActions>().endOfDurationEffect(this);
         }
+        cost -= effect.movementCostIncrease;
         //If there is a character on the tile then it's tile effect is then updated to reflect the new stats
         if (characterOnTile!= null){
             updateTileEffect();

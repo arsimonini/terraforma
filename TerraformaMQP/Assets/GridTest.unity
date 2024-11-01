@@ -6327,6 +6327,7 @@ GameObject:
   - component: {fileID: 1297737937}
   - component: {fileID: 1297737938}
   - component: {fileID: 1297737939}
+  - component: {fileID: 1297737940}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -6598,6 +6599,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302057567}
   m_CullTransparentMesh: 1
+--- !u!114 &1297737940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297737936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04bcb6f59956c644ba0aafd07f555066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileEffects:
+  - {fileID: 11400000, guid: 172d136be4abc0741b5b34fd7f644684, type: 2}
+  - {fileID: 11400000, guid: ec44c757fe2dc4f4284eddc7fa48ab44, type: 2}
+  - {fileID: 11400000, guid: 360567a08a87f4d4887237cb0e4f1875, type: 2}
+  tilePrefabs: []
 --- !u!4 &1303354770 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6454572113100923874, guid: 0e3d7416a877b4d1792beb3be8aa77f9, type: 3}
@@ -11843,7 +11861,7 @@ PrefabInstance:
       objectReference: {fileID: 3347623419480183641, guid: 95fbb5137e36b423497fe5e8106b2493, type: 3}
     - target: {fileID: 6571172650880656856, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.91
+      value: 3.9
       objectReference: {fileID: 0}
     - target: {fileID: 6571172650880656856, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11903,7 +11921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: tileX
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: tileY

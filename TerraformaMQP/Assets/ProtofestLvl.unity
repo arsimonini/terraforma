@@ -5288,6 +5288,7 @@ GameObject:
   - component: {fileID: 1297737937}
   - component: {fileID: 1297737938}
   - component: {fileID: 1297737939}
+  - component: {fileID: 1297737940}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -5423,6 +5424,23 @@ MonoBehaviour:
   enemyTeamEffects: []
   playerTeamTileEffects: []
   enemyTeamTileEffects: []
+--- !u!114 &1297737940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297737936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04bcb6f59956c644ba0aafd07f555066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileEffects:
+  - {fileID: 11400000, guid: 172d136be4abc0741b5b34fd7f644684, type: 2}
+  - {fileID: 11400000, guid: ec44c757fe2dc4f4284eddc7fa48ab44, type: 2}
+  - {fileID: 11400000, guid: 360567a08a87f4d4887237cb0e4f1875, type: 2}
+  tilePrefabs: []
 --- !u!1001 &1299232839
 PrefabInstance:
   m_ObjectHideFlags: 0
