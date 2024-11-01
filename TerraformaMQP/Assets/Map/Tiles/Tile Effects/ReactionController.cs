@@ -327,7 +327,7 @@ public class ReactionController : MonoBehaviour
         TileEffect newEffect;
         switch(damageType){
             case "Fire":
-                this.gameObject.GetComponent<TileMap>().swapTiles(tile, 2, true);
+                this.gameObject.GetComponent<TileMap>().swapTiles(tile, 1, true);
                 break;
 
             case "Water":

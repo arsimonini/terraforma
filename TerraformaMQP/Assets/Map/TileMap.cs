@@ -840,7 +840,7 @@ public class TileMap : MonoBehaviour
             //If so, also updates the character on the tile, adding the new effect and linking the character to the new tile
             Basic_Character_Class unitAffected = previousTile.characterOnTile.GetComponent<Basic_Character_Class>();
             unitAffected.tile = newTile;
-            unitAffected.removeStatus(unitAffected.tileEffect, true);
+            //unitAffected.removeStatus(unitAffected.tileEffect, true);
             StatusEffect newEffect = new StatusEffect();
             newEffect.initializeTileEffect(newTile.statsToEffect, newTile.name, newTile.effectAmounts, unitAffected.gameObject, newTile.name + "Effect");
             unitAffected.tileType = newTile.map.tileTypes[tileNumber];
