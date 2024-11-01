@@ -571,17 +571,26 @@ public class Basic_Character_Class : MonoBehaviour
         nameplate.displayName(name);
         nameplate.displayImage(char_img);
         nameplate.displayHealth(health, maxHealth);
+        nameplate.displayAtk(attack);
+        nameplate.displayDef(defense);
+        nameplate.displayRes(resistence);
+        nameplate.displayAcc(accuracy);
+        nameplate.displayCrit(criticalChance);
+        nameplate.displaySpd(speed);
         //Checks if the character is a Hero and has mana
         if (gameObject.GetComponent<Hero_Character_Class>() != null)
         {
             //If the character does have mana, it is also passed to the nameplate and the mana bar is set to active
             nameplate.displayMana(gameObject.GetComponent<Hero_Character_Class>().mana, gameObject.GetComponent<Hero_Character_Class>().maxMana);
             nameplate.mana.gameObject.SetActive(true);
+            nameplate.displayMag(gameObject.GetComponent<Hero_Character_Class>().magic);
+            nameplate.displayMagicArea(true);
         }
         else
         {
             //If the character doesn't have mana, the mana bar is just set to inactive
             nameplate.mana.gameObject.SetActive(false);
+            nameplate.displayMagicArea(false);
         }
         //Set the canvas to either active or inactive, depending on the inputted bool
         np2.SetActive(b);
@@ -601,10 +610,12 @@ public class Basic_Character_Class : MonoBehaviour
     public void OnMouseEnter()
     {
         //Checks if the unit is currently selected
-        if (charSelected == false)
+        if (charSelected == false && (map.selectedUnit == null || this.gameObject.tag != map.selectedUnit.tag))
         {
             //If not, the color is changed to the highlight color
             renderer.material.color = Color.blue;
+            //if unit is not selected, display a nameplate
+            displayNameplate(true);
         }
         UnityEngine.Debug.Log("Mouse Entered");
         //Set the hover variable to true
@@ -615,13 +626,15 @@ public class Basic_Character_Class : MonoBehaviour
     public void OnMouseExit()
     {
         //Checks if the unit is currently selected
-        if (charSelected == false)
+        if (charSelected == false && (map.selectedUnit == null || this.gameObject.tag != map.selectedUnit.tag))
         {
             //Checks if the unit's turn has been ended
             if (turnEnded == false)
             {
                 //If the unit's turn isn't over and isn't selected, reset the color to it's base
                 renderer.material.color = color;
+                //If the character is not selected, and the turn is not over turn off nameplate
+                displayNameplate(false);
             }
             else
             {

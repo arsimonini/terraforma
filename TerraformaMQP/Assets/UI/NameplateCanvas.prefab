@@ -758,6 +758,14 @@ MonoBehaviour:
   charName: {fileID: 0}
   health: {fileID: 0}
   mana: {fileID: 0}
+  pic: {fileID: 0}
+  atk: {fileID: 0}
+  res: {fileID: 0}
+  def: {fileID: 0}
+  spd: {fileID: 0}
+  crit: {fileID: 0}
+  acc: {fileID: 0}
+  mag: {fileID: 0}
 --- !u!1 &8531403735630927285
 GameObject:
   m_ObjectHideFlags: 0
