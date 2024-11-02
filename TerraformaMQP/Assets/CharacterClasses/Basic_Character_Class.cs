@@ -56,6 +56,7 @@ public class Basic_Character_Class : MonoBehaviour
     public GameObject np2;
 
     public GameObject atkMenu;
+    public GameObject spellList;
     
     
 
@@ -112,6 +113,7 @@ public class Basic_Character_Class : MonoBehaviour
 
         if(map.moving == true) {
             displayAttackMenu(false);
+            displaySpellList(false);
         }
         
     }
@@ -510,6 +512,7 @@ public class Basic_Character_Class : MonoBehaviour
         charSelected = false;
         //Turns off attack menu
         displayAttackMenu(false);
+        displaySpellList(false);
         if (gameObject.GetComponent<Hero_Character_Class>())
         {
             gameObject.GetComponent<Hero_Character_Class>().pickingSpell = false;
@@ -601,10 +604,18 @@ public class Basic_Character_Class : MonoBehaviour
         atkMenu.SetActive(b);
         if(turnEnded == true && b == true) {
             atkMenu.SetActive(false);
+            spellList.SetActive(false);
         }
     }
 
-    
+    public void displaySpellList(bool b)
+    {
+        spellList.SetActive(b);
+        if(turnEnded == true && b == true) {
+            spellList.SetActive(false);
+            atkMenu.SetActive(false);
+        }
+    }
 
     //Recolors when mouse is hovering over a unit
     public void OnMouseEnter()
@@ -691,6 +702,7 @@ public class Basic_Character_Class : MonoBehaviour
         map.hidePath();
         displayNameplate(false);
         displayAttackMenu(false);
+        displaySpellList(false);
         map.setMoveButtonPressed(false);
         isMoving = false;
         if (turnEnded == false)
@@ -756,6 +768,11 @@ public class Basic_Character_Class : MonoBehaviour
         displayAttackMenu(false);
         beginTargeting(attackReach);
     }
+
+    public void magicButtonUI() {
+        displaySpellList(true);
+    }
+
 
 
 }
