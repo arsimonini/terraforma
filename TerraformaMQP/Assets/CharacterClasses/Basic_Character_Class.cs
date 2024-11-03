@@ -604,15 +604,21 @@ public class Basic_Character_Class : MonoBehaviour
         atkMenu.SetActive(b);
         if(turnEnded == true && b == true) {
             atkMenu.SetActive(false);
-            spellList.SetActive(false);
+            if (spellList != null){
+                spellList.SetActive(false);
+            }
         }
     }
 
     public void displaySpellList(bool b)
     {
-        spellList.SetActive(b);
+        if (spellList != null){
+            spellList.SetActive(b);
+        }
         if(turnEnded == true && b == true) {
-            spellList.SetActive(false);
+            if (spellList != null){
+                spellList.SetActive(false);
+            }
             atkMenu.SetActive(false);
         }
     }
@@ -627,6 +633,10 @@ public class Basic_Character_Class : MonoBehaviour
             renderer.material.color = Color.blue;
             //if unit is not selected, display a nameplate
             displayNameplate(true);
+        }
+        if (this.gameObject.GetComponent<Enemy_Character_Class>() != null && map.movingEnemy == true){
+            displayNameplate(true);
+            renderer.material.color = Color.blue;
         }
         UnityEngine.Debug.Log("Mouse Entered");
         //Set the hover variable to true
@@ -651,7 +661,13 @@ public class Basic_Character_Class : MonoBehaviour
             {
                 //Otherwise set the color to gray
                 renderer.material.color = Color.gray;
+                displayNameplate(false);
+
             }
+        }
+        if (this.gameObject.GetComponent<Enemy_Character_Class>() != null && map.movingEnemy == true){
+            renderer.material.color = color;
+            displayNameplate(false);
         }
         //Set the hover variable to false
         charHover = false;
