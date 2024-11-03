@@ -109,11 +109,16 @@ public class Basic_Character_Class : MonoBehaviour
                 endTurn();
                 map.hidePath();
             }
+            updateCharStats();
         }
 
         if(map.moving == true) {
             displayAttackMenu(false);
             displaySpellList(false);
+        }
+
+        if(this.gameObject.tag == "EnemyTeam") {
+            updateCharStats();
         }
         
     }
@@ -789,6 +794,35 @@ public class Basic_Character_Class : MonoBehaviour
         displaySpellList(true);
     }
 
+    public void updateCharStats() {
+        //Sets the values of the nameplate
+        nameplate.displayName(name);
+        nameplate.displayImage(char_img);
+        nameplate.displayHealth(health, maxHealth);
+        nameplate.displayAtk(attack);
+        nameplate.displayDef(defense);
+        nameplate.displayRes(resistence);
+        nameplate.displayAcc(accuracy);
+        nameplate.displayCrit(criticalChance);
+        nameplate.displaySpd(speed);
+                //Checks if the character is a Hero and has mana
+        if (gameObject.GetComponent<Hero_Character_Class>() != null)
+        {
+            //If the character does have mana, it is also passed to the nameplate and the mana bar is set to active
+            nameplate.displayMana(gameObject.GetComponent<Hero_Character_Class>().mana, gameObject.GetComponent<Hero_Character_Class>().maxMana);
+            nameplate.mana.gameObject.SetActive(true);
+            nameplate.displayMag(gameObject.GetComponent<Hero_Character_Class>().magic);
+            nameplate.displayMagicArea(true);
+        }
+        else
+        {
+            //If the character doesn't have mana, the mana bar is just set to inactive
+            nameplate.mana.gameObject.SetActive(false);
+            nameplate.displayMagicArea(false);
+        }
+    }
+    
+
 
 
 }
@@ -805,3 +839,4 @@ public class stat
     public int moddedValue;
 
 }
+
