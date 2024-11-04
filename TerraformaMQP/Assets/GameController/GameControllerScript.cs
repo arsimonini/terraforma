@@ -196,6 +196,7 @@ public class GameControllerScript : MonoBehaviour
         Phase 4 --- Player Effect Phase, triggers all end of turn effects on the enemy units and advances their durations, triggers all start of turn effects on the player units
         Phase 5 --- Reset Phase, Resets the phase to 0 and starts a new round
         */
+        map.setPhase(phase);
         switch (phase)
         {
             //Player's turn
@@ -281,6 +282,16 @@ public class GameControllerScript : MonoBehaviour
                 round++;
                 phase = 0;
                 resetPlayerTeamTurns();
+                
+                //Resets the abilities for characters to move
+                for (int i = 0; i < playerTeamList.Count; i++) {
+                    playerTeamList[i].GetComponent<Basic_Character_Class>().hasWalked = false;
+                }
+
+                for (int i = 0; i < enemyTeamList.Count; i++) {
+                    enemyTeamList[i].GetComponent<Basic_Character_Class>().hasWalked = false;
+                }
+
                 break;
         }
     }

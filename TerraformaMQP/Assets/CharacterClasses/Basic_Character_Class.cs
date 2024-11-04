@@ -54,7 +54,7 @@ public class Basic_Character_Class : MonoBehaviour
     public Nameplate nameplate; //Reference to the nameplate script used to display the UI
     public GameObject np2; //Refernce to the actual GameObject for the canvas used to display the UI
     
-    
+    public bool hasWalked = false;
 
 
 

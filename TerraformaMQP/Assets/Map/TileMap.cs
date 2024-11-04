@@ -60,6 +60,8 @@ public class TileMap : MonoBehaviour
     public List<Node> visualPath = null; //A List of Nodes that is the path to the currently hovered tile, null if the unit isn't trying to move or if no unit is selected
     public GameObject circleArrowPrefab; //Reference to the arrowPrefab used to display the path
 
+    public int phase = 0; //Checks to see whether it is the player's turn or not. ONLY make this match what GameController's saying about the phase
+
     //Upon level load begin creating the map
     void Start() {
         createMap();
@@ -298,7 +300,7 @@ public class TileMap : MonoBehaviour
         //TEST - replace with actual movement implementation
         if (selectedUnit != null && clickableTiles[x, y].isWalkable)
         {
-            if (selectedUnitScript.targeting == true)
+            if (selectedUnitScript.targeting == true || selectedUnitScript.hasWalked)
             {
                 selectedUnitScript.targeting = false;
             }
@@ -306,7 +308,8 @@ public class TileMap : MonoBehaviour
             {
                 hidePath();
                 generatePathTo(x, y);
-                UnityEngine.Debug.Log(currentPath.Count);
+
+                //UnityEngine.Debug.Log(currentPath.Count);
 
                 //selectedUnitScript.charSelected = false;
 
@@ -402,19 +405,24 @@ public class TileMap : MonoBehaviour
         UnityEngine.Debug.Log("Movement: " + selectedUnitScript.movementSpeed.moddedValue);
 
         if (selectedUnit != null) {
-            cutDownPath(selectedUnitScript.movementSpeed.moddedValue);
+            cutDownPath(selectedUnitScript.movementSpeed.moddedValue, false, currentPath);
         }
 
         selectedUnitScript.path = currentPath;
+        //Disables them from walking again
+        if (currentPath.Count > 1) {
+            selectedUnitScript.hasWalked = true;
+        }
 
     }
 
     //Despite its existing name, this does a little more than that
-    public void cutDownPath(int range, bool visual = false, bool cutDown = true) {    //This is recursive, so do take that into consideration
-        List<Node> l = currentPath;
-        if (visual) l = visualPath;
+    public void cutDownPath(int range, bool visual = false, List<Node> path = null, bool cutDown = true) {    //This is recursive, so do take that into consideration
+        //List<Node> l = currentPath;
+        //if (visual) l = visualPath;
+        List<Node> l = path;
 
-        if (l.Count <= 0) {
+        if ((l == null) || (l.Count <= 0)) {
             return; //Nowhere to go 
         }
 
@@ -431,9 +439,10 @@ public class TileMap : MonoBehaviour
         if (visual) {
             //If long enough, good enough. If not, red
             if (range >= lCutoff) {
-                showPath(true);
+                showPath(l.Count);
             } else {
-                showPath(false);
+                l.RemoveAt(l.Count - 1);
+                cutDownPath(range,true,l);
             }
 
             return;
@@ -442,8 +451,11 @@ public class TileMap : MonoBehaviour
         //If character movement isn't enough, cut down path by one layer and try again. Basically, this is so that the enemy will move in the direction they mean to go even if it's out of range
         if (range < lCutoff) {
 
-            if (cutDown) {
+            if (phase != 0) {
                 l.RemoveAt(l.Count - 1);
+                cutDownPath(range,false,l);
+            } else {
+                l.Clear();//Clears the list
             }
         }
 
@@ -476,14 +488,14 @@ public class TileMap : MonoBehaviour
         return dist;
     }
 
-    public void showPath(bool blue = true) {
+    public void showPath(int blue = 999) {
         hidePath();
  
         //Create path of CircleArrows
         for (int i = 0; i < visualPath.Count; i++) {
             GameObject ca = Instantiate(circleArrowPrefab);
             
-            if (!blue) {
+            if (i >= blue) {
                 SpriteRenderer sr = ca.GetComponent<SpriteRenderer>();
                 Sprite nS = Resources.Load<Sprite>("spr_circle_red");
                 sr.sprite = nS;
@@ -506,7 +518,7 @@ public class TileMap : MonoBehaviour
             Destroy(arrow);
         }
     }
-    public void visualPathTo(int x, int y){
+    public void visualPathTo(int x, int y) {
 
         if (circleArrowPrefab == null) {
             UnityEngine.Debug.LogError("circleArrowPrefab has not been assigned in the Inspector!");
@@ -584,7 +596,9 @@ public class TileMap : MonoBehaviour
         selectedUnitScript.path = currentPath;
 
         if ((selectedUnit != null)) {
-            cutDownPath(selectedUnitScript.movementSpeed.moddedValue,true);
+            List<Node> bluePath = new List<Node>(visualPath);
+            //UnityEngine.Debug.Log("BluePath Count:" + bluePath.Count);
+            cutDownPath(selectedUnitScript.movementSpeed.moddedValue,true,bluePath);
         }
         
     }
@@ -845,6 +859,15 @@ public class TileMap : MonoBehaviour
         //Creates the status effect and then applies it to the character
         StatusEffect newEffect = new StatusEffect();
         newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, unitToAffect, tileTypes[tiles[x, y]].name + "Effect");
+    }
+
+    //Sets phase to match that of the gamecontroller
+    public void setPhase(int p = 0) {
+        //Resets all units having already walked
+        //if (phase != p) {  
+        //}
+
+        phase = p;
     }
 }
 

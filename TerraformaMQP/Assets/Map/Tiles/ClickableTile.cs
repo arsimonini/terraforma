@@ -53,7 +53,7 @@ public class ClickableTile : MonoBehaviour
 
         //Highlight Path
         //Checks if a unit is selected, the unit is not an enemy, the unit's turn hasn't ended, the unit isn't targeting or moving, and the player isn't picking a spell
-        if (map.selectedUnit != null && map.selectedUnit.gameObject.tag != "EnemyTeam" && map.selectedUnitScript.turnEnded == false && map.selectedUnitScript.targeting == false && map.moving == false && ((map.selectedUnit.GetComponent<Hero_Character_Class>() != null && map.selectedUnit.GetComponent<Hero_Character_Class>().pickingSpell == false) || map.selectedUnit.GetComponent<Hero_Character_Class>() == null)) {
+        if (map.selectedUnit != null && !map.selectedUnitScript.hasWalked && map.selectedUnit.gameObject.tag != "EnemyTeam" && map.selectedUnitScript.turnEnded == false && map.selectedUnitScript.targeting == false && map.moving == false && ((map.selectedUnit.GetComponent<Hero_Character_Class>() != null && map.selectedUnit.GetComponent<Hero_Character_Class>().pickingSpell == false) || map.selectedUnit.GetComponent<Hero_Character_Class>() == null)) {
             //Basically, if the unit is ready to move, then when hovering over a tile display the visual path to it
             map.visualPathTo(TileX,TileY);
         }
