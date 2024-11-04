@@ -5402,11 +5402,16 @@ MonoBehaviour:
     tileVisualPrefab: {fileID: 5296307935300308040, guid: 74736fe0684ee464f96b181620a6b05b, type: 3}
     isWalkable: 0
     cost: 1
+  - name: Wold Wall
+    tileVisualPrefab: {fileID: 4609658174146669432, guid: a9ab7a73a56972e47b2dccd0e2ef533c, type: 3}
+    isWalkable: 0
+    cost: 1
   movingEnemy: 0
   moving: 0
   targetList: []
   mapCreated: 0
   circleArrowPrefab: {fileID: 3581929253024597637, guid: 2d1e38878fa5027489d87c4d02e8f416, type: 3}
+  phase: 0
 --- !u!114 &1297737939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9856,6 +9861,7 @@ MonoBehaviour:
   renderer: {fileID: 6107281361265875633}
   nameplate: {fileID: 35339768}
   np2: {fileID: 35339767}
+  hasWalked: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
