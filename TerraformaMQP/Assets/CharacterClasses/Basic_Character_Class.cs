@@ -166,6 +166,7 @@ public class Basic_Character_Class : MonoBehaviour
         UnityEngine.Debug.Log("Destroyed");
         tile.isWalkable = true;
         tile.characterOnTile = null;
+        displayNameplate(false);
         Destroy(gameObject);
         return;
     }
@@ -472,6 +473,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Calls the takePhysicalDamage function on the target, passing in the damage amount
         if (target.GetComponent<Basic_Character_Class>() != null){
             target.GetComponent<Basic_Character_Class>().takePhysicalDamage(damageAmount);
+            target.GetComponent<Basic_Character_Class>().updateCharStats();
         }
         //Stops targeting
         stopTargeting();
