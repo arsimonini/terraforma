@@ -456,6 +456,7 @@ public class TileMap : MonoBehaviour
                 cutDownPath(range,false,l);
             } else {
                 l.Clear();//Clears the list
+                currentPath = null;
             }
         }
 
