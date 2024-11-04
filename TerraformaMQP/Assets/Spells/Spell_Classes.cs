@@ -23,6 +23,7 @@ public class Basic_Spell_Class : ScriptableObject
     public bool targetEnemies; //If the spell can target enemies, true if it can, false if not
     public bool hitOwnTile; //If the spell should hit the caster's tile if AOE, true if it should, false if not
     public bool hitSelf; //If the spell should be able to hith the caster, true if it should, false if not
+    public bool targetWalls; //If the spell should be able to target walls, true if so, false if not
 
 
 
