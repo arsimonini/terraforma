@@ -134,6 +134,7 @@ public class TileMap : MonoBehaviour
                         addTileEffect(x, y, selectedUnit);
                         //Removes the node the unit just travelled to from the path
                         currentPath.RemoveAt(0);
+                        selectedUnitScript.updateCharStats();
                     }
                 }
             }
