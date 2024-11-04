@@ -20,6 +20,10 @@ public class Basic_Spell_Class : ScriptableObject
     public GameObject target;
     public int amountOfTargets; //The amount of targets the spell can hit
     public bool requireDifferentTargets; //If the spell needs to be directed towards different targets or can hit the same target multiple times, true if it needs different targets, false if not or the spell only needs one target
+    public bool targetEnemies; //If the spell can target enemies, true if it can, false if not
+    public bool hitOwnTile; //If the spell should hit the caster's tile if AOE, true if it should, false if not
+    public bool hitSelf; //If the spell should be able to hith the caster, true if it should, false if not
+
 
 
 

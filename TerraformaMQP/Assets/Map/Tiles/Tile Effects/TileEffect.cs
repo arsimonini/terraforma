@@ -23,6 +23,7 @@ public class TileEffect : ScriptableObject
             return true;
         }
         else{
+            duration--;
             tile.removeEffectFromTile(this);
             return false;
         }
@@ -103,6 +104,16 @@ public class tileEffectActions : MonoBehaviour
     //Virtual function that an effect can override to have an effect when a unit steps onto the tile
     public virtual void performStepOnEffect(ClickableTile tile){
         UnityEngine.Debug.Log("Performing stepped on effect");
+    }
+
+    //Virtual function that causes the effect to react with any effects already on the tile
+    public virtual void react(List<TileEffect> effectsOnTile, ClickableTile tile, TileEffect thisEffect){
+        UnityEngine.Debug.Log("Performing Reactions");
+    }
+
+    //Virtual function that causes an effect when the duration of an effect runs out
+    public virtual void endOfDurationEffect(ClickableTile tile){
+        UnityEngine.Debug.Log("Performing end of duration effect");
     }
 }
 

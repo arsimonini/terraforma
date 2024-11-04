@@ -97,9 +97,19 @@ public class GameControllerScript : MonoBehaviour
                         map.MoveSelectedUnitTo(hit.collider.gameObject.GetComponent<ClickableTile>().TileX, hit.collider.gameObject.GetComponent<ClickableTile>().TileY);
                     }
                 }
+                else if (targeting == true && characterScript.attackType == "Spell" && selectedCharacter.GetComponent<Hero_Character_Class>().selectedSpell.targeted == false){
+                    List<GameObject> targets = map.targetList;
+                    if (characterScript.castSpell(targets))
+                        {
+                            //Deselects the character as their turn is over
+                            updateSelectedObject(null);
+                            map.updateSelectedCharacter(null);
+                            stopTargeting();
+                        }
+                }
                 //Arrive here if the player is targeting a spell or attack and left-clicked
                 //Check if the returned object from the above raycast returned is tagged on the enemy team and is within the spell/attack's reach
-                else if (targeting == true && hit.collider.gameObject.tag == "EnemyTeam" && characterScript.withinReach(hit.collider.gameObject) == true)
+                else if (targeting == true && (hit.collider.gameObject.tag == "EnemyTeam" || hit.collider.gameObject.tag == "PlayerTeam" || hit.collider.gameObject.GetComponent<ClickableTile>() != null) && characterScript.withinReach(hit.collider.gameObject) == true)
                 {
                     //Checks if the player is targeting an Attack
                     if (characterScript.attackType == "Attack")
