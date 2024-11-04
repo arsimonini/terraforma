@@ -505,8 +505,8 @@ public class TileMap : MonoBehaviour
         return dist;
     }
 
-    public void showPath(int blue = 999) {
-        if (moveButtonPressed){
+    public void showPath(int blue = 999) { //This displays the finalized visualpath created by visualpathTo
+        if (moveButtonPressed) {
             hidePath();
         }
  
@@ -536,6 +536,10 @@ public class TileMap : MonoBehaviour
         }
     }
     public void visualPathTo(int x, int y) {
+        if (!moveButtonPressed) {
+            
+            return;
+        }
 
         if (circleArrowPrefab == null) {
             UnityEngine.Debug.LogError("circleArrowPrefab has not been assigned in the Inspector!");
@@ -1003,6 +1007,8 @@ public class TileMap : MonoBehaviour
     public void setMoveButtonPressed(bool b) {
         moveButtonPressed = b;
     }
+
+
 }
 
 

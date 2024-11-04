@@ -31,15 +31,13 @@ public class ClickableTile : MonoBehaviour
         color = GetComponent<Renderer>().material.color;
     }
 
-
-
-
     void OnMouseEnter() {
+        map.hidePath();
+        
         //Highlight the tile upon hover
         Color highlightColor;
         //Check if the player currently has a unit targeting and this tile is withing the current target list
-        if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this.gameObject))
-        {
+        if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this.gameObject)) {
             //If so, set the highlight to be darker than normal
             float darkerHighlight = highlightMultiplier + 0.1f;
             highlightColor = originalColor * darkerHighlight;
