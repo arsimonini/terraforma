@@ -459,7 +459,9 @@ public class Basic_Character_Class : MonoBehaviour
     public bool attackCharacter(GameObject target, int damageAmount)
     {
         //Calls the takePhysicalDamage function on the target, passing in the damage amount
-        target.GetComponent<Basic_Character_Class>().takePhysicalDamage(damageAmount);
+        if (target.GetComponent<Basic_Character_Class>() != null){
+            target.GetComponent<Basic_Character_Class>().takePhysicalDamage(damageAmount);
+        }
         //Stops targeting
         stopTargeting();
         //Uses the action, and then checks if there are still actions remaining
@@ -537,7 +539,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Sets targeting to true
         targeting = true;
         //Calls the drawReach function with the reach of the attack, the inability to target tiles, and the inability to target allies
-        drawReach(reach, false, false, true, false, false, tile);
+        drawReach(reach, false, false, true, false, false, true, tile);
     }
 
     //Called when targeting a Spell
@@ -553,7 +555,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Sets the attackReach to the inputted reach
         attackReach = reach;
         //Calls the drawReach function with the reach of the spell, the spell's ability to target tiles, and the spell's ability to target allies
-        drawReach(reach, spell.targetTiles, spell.targetAllies, spell.targetEnemies, spell.hitOwnTile, spell.hitSelf, tile);
+        drawReach(reach, spell.targetTiles, spell.targetAllies, spell.targetEnemies, spell.hitOwnTile, spell.hitSelf, spell.targetWalls, tile);
     }
 
     //Called when selecting a unit, displays the current health and, if possible, the mana of the selected unit, along with their char_img
@@ -619,9 +621,9 @@ public class Basic_Character_Class : MonoBehaviour
     }
 
     //Calls the drawReach function within the map, passing the same variables from the parameters as arguments
-    private void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, bool hitOwnTile, bool hitSelf, ClickableTile tile)
+    private void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, bool hitOwnTile, bool hitSelf, bool targetWalls, ClickableTile tile)
     {
-        map.drawReach(reach, targetTiles, targetAllies, targetEnemies, tile);
+        map.drawReach(reach, targetTiles, targetAllies, targetEnemies, targetWalls, tile);
         if(!hitOwnTile){
             if (map.targetList.Contains(tile.gameObject)){
                 map.targetList.Remove(tile.gameObject);
@@ -699,6 +701,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Call the checkForTarget function in the map, using the selectedTarget parameter and the attackReach variable as the arguments
         if (map.checkForTarget(selectedTarget, attackReach))
         {
+            UnityEngine.Debug.Log("Target Found");
             //Return true if the target is found
             return true;
         }

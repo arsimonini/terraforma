@@ -618,7 +618,7 @@ public class TileMap : MonoBehaviour
     -------     -------     -------     -------                                 -------     -------     ---0---
 
     */
-    public void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, ClickableTile tile)
+    public void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, bool targetWalls, ClickableTile tile)
     {
         int width = 1;
         //Find the maximum width that needs to be checked
@@ -641,7 +641,10 @@ public class TileMap : MonoBehaviour
             {
                 if (checkIndex(selectedUnitScript.tileX + i, selectedUnitScript.tileY + j) && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j] != null)
                 {
-                    if(!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position, mask)){
+                    RaycastHit[] hits;
+                    hits = Physics.RaycastAll(newTile.transform.position, clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position - newTile.transform.position, Vector3.Distance(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position, newTile.transform.position), layerMask: mask);
+                    //!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position, mask)
+                    if(hits.Length == 0){
                         if (targetTiles == true)
                         {
                             clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
@@ -659,8 +662,9 @@ public class TileMap : MonoBehaviour
                             }
                         }
                     }
-                    else {
-                        UnityEngine.Debug.Log("Collided");
+                    else if (targetWalls && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.tag == "Wall" && hits.Length <= 1){
+                        clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
+                        targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);
                     }
                 }
             }
@@ -673,7 +677,10 @@ public class TileMap : MonoBehaviour
             {
                 if (checkIndex(selectedUnitScript.tileX + i, selectedUnitScript.tileY + j) && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j] != null)
                 {
-                    if (!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position, mask)){
+                    RaycastHit[] hits;
+                    hits = Physics.RaycastAll(newTile.transform.position, clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position - newTile.transform.position, Vector3.Distance(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position, newTile.transform.position), mask);
+                    //!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position, mask)
+                    if (hits.Length == 0){
                         if (targetTiles == true)
                         {
                             clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
@@ -691,6 +698,10 @@ public class TileMap : MonoBehaviour
                             }
                         }
                     }
+                    else if (targetWalls && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.tag == "Wall" && hits.Length <= 1){
+                        clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
+                        targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);                    
+                    }
                 }
             }
             partialWidth--;
@@ -699,7 +710,10 @@ public class TileMap : MonoBehaviour
         {
             if (checkIndex(selectedUnitScript.tileX, selectedUnitScript.tileY + i) && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i] != null)
             {
-                if (!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject.transform.position, mask)){
+                RaycastHit[] hits;
+                hits = Physics.RaycastAll(newTile.transform.position, clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject.transform.position - newTile.transform.position, Vector3.Distance(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject.transform.position, newTile.transform.position), mask);
+                //!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject.transform.position, mask)
+                if (hits.Length == 0){
                     if (targetTiles == true)
                     {
                         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].highlight();
@@ -717,13 +731,20 @@ public class TileMap : MonoBehaviour
                         }
                     }
                 }
+                else if (targetWalls && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject.tag == "Wall" && hits.Length <= 1){
+                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].highlight();
+                    targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject);
+                }
             }
         }
         for (int i = 1; i <= reach; i++)
         {
             if (checkIndex(selectedUnitScript.tileX, selectedUnitScript.tileY - i) && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i] != null)
             {
-                if (!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject.transform.position, mask)){
+                RaycastHit[] hits;
+                hits = Physics.RaycastAll(newTile.transform.position, clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject.transform.position - newTile.transform.position, Vector3.Distance(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject.transform.position, newTile.transform.position), mask);
+                //!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject.transform.position, mask)
+                if (hits.Length == 0){
                     if (targetTiles == true)
                     {
                         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].highlight();
@@ -740,6 +761,10 @@ public class TileMap : MonoBehaviour
                             targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].characterOnTile.gameObject);
                         }
                     }
+                }
+                else if (targetWalls && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject.tag == "Wall" && hits.Length <= 1){
+                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].highlight();
+                    targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject);
                 }
             }
         }
@@ -798,6 +823,7 @@ public class TileMap : MonoBehaviour
     //Takes in a GameObject that will be the selectedTarget that is searched for
     public bool checkForTarget(GameObject selectedTarget, int reach)
     {
+        UnityEngine.Debug.Log(selectedTarget);
         //Iterates over all entires in the targetList
         for (int i = 0; i < targetList.Count; ++i)
         {
