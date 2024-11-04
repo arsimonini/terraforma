@@ -410,7 +410,7 @@ public class TileMap : MonoBehaviour
 
         selectedUnitScript.path = currentPath;
         //Disables them from walking again
-        if (currentPath.Count > 1) {
+        if (currentPath != null && currentPath.Count > 1) {
             selectedUnitScript.hasWalked = true;
         }
 
