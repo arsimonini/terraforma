@@ -28,6 +28,10 @@ public class TileMap : MonoBehaviour
     int mapSizeX = 10; //The maximum X dimension
     int mapSizeY = 10; //The maximum Y dimension
 
+    //For Move Button
+    public bool moveButtonPressed = false;
+    public bool activelyMoving = false;
+
     float xOffset; //An offset that can be set to account for maps not starting at location 0,0
     float yOffset; //^
 
@@ -130,6 +134,7 @@ public class TileMap : MonoBehaviour
                         addTileEffect(x, y, selectedUnit);
                         //Removes the node the unit just travelled to from the path
                         currentPath.RemoveAt(0);
+                        selectedUnitScript.updateCharStats();
                     }
                 }
             }
@@ -295,24 +300,33 @@ public class TileMap : MonoBehaviour
 
     public void MoveSelectedUnitTo(int x, int y) {
 
-        //TEST - replace with actual movement implementation
-        if (selectedUnit != null && clickableTiles[x, y].isWalkable)
-        {
-            if (selectedUnitScript.targeting == true)
-            {
-                selectedUnitScript.targeting = false;
-            }
-            else if (selectedUnitScript.charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
-            {
-                hidePath();
-                generatePathTo(x, y);
-                UnityEngine.Debug.Log(currentPath.Count);
+        //checks if move UI was clicked before moving unit
+        if (moveButtonPressed == true || selectedUnit.GetComponent<Enemy_Character_Class>() != null) {
 
-                //selectedUnitScript.charSelected = false;
+            setMoveButtonPressed(false);
+            moveButtonPressed = false;
 
-                //selectedUnitScript.tileX = currentPath[1].x;
-                //selectedUnitScript.tileY = currentPath[1].y;
-                //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
+            UnityEngine.Debug.Log(x + "," + y);
+
+            //TEST - replace with actual movement implementation
+            if (selectedUnit != null && clickableTiles[x, y].isWalkable)
+            {
+                if (selectedUnitScript.targeting == true)
+                {
+                    selectedUnitScript.targeting = false;
+                }
+                else if (selectedUnitScript.charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
+                {
+                    hidePath();
+                    generatePathTo(x, y);
+                    UnityEngine.Debug.Log(currentPath.Count);
+
+                    //selectedUnitScript.charSelected = false;
+
+                    //selectedUnitScript.tileX = currentPath[1].x;
+                    //selectedUnitScript.tileY = currentPath[1].y;
+                    //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
+                }
             }
         }
 
@@ -480,24 +494,26 @@ public class TileMap : MonoBehaviour
     }
 
     public void showPath(bool blue = true) {
-        hidePath();
- 
-        //Create path of CircleArrows
-        for (int i = 0; i < visualPath.Count; i++) {
-            GameObject ca = Instantiate(circleArrowPrefab);
-            
-            if (!blue) {
-                SpriteRenderer sr = ca.GetComponent<SpriteRenderer>();
-                Sprite nS = Resources.Load<Sprite>("spr_circle_red");
-                sr.sprite = nS;
-            }
+        
+        if(moveButtonPressed == true){
+            hidePath();
 
-            ca.transform.position = new Vector3(visualPath[i].x+(int)xOffset,0.6f,visualPath[i].y+(int)yOffset);
-            ca.transform.localRotation = Quaternion.Euler(90f,0,0);
-            if (i != visualPath.Count - 1) {
-                ca.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-            } else {
-                ca.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            //Create path of CircleArrows
+            for (int i = 0; i < visualPath.Count; i++) {
+                GameObject ca = Instantiate(circleArrowPrefab);
+                if (!blue) {
+                    SpriteRenderer sr = ca.GetComponent<SpriteRenderer>();
+                    Sprite nS = Resources.Load<Sprite>("spr_circle_red");
+                    sr.sprite = nS;
+                }
+
+                ca.transform.position = new Vector3(visualPath[i].x+(int)xOffset,0.6f,visualPath[i].y+(int)yOffset);
+                ca.transform.localRotation = Quaternion.Euler(90f,0,0);
+                if (i != visualPath.Count - 1) {
+                    ca.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                } else {
+                    ca.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                }
             }
         }
     }
@@ -962,8 +978,10 @@ public class TileMap : MonoBehaviour
         StatusEffect newEffect = new StatusEffect();
         newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, unitToAffect, tileTypes[tiles[x, y]].name + "Effect");
     }
+
+    public void setMoveButtonPressed(bool b) {
+        moveButtonPressed = b;
+    }
 }
-
-
 
 

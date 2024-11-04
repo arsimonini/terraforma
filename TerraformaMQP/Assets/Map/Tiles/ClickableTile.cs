@@ -98,7 +98,7 @@ public class ClickableTile : MonoBehaviour
 
     void OnMouseExit() {
         //Checks if the tile is currently withing the map's target list
-        if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this.gameObject))
+        if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this.gameObject) || (characterOnTile != null && map.targetList.Contains(characterOnTile)))
         {
             //If so, the tile stays highlighted with the slightly lighter highlight
             highlight();
