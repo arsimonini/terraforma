@@ -58,7 +58,7 @@ public class Basic_Character_Class : MonoBehaviour
     public GameObject atkMenu;
     public GameObject spellList;
     
-    
+    public bool hasWalked = false;
 
 
 

@@ -5417,7 +5417,11 @@ MonoBehaviour:
     tileVisualPrefab: {fileID: 313383055986497203, guid: 7c010d1b6cd8245d999a68a01481397e, type: 3}
     isWalkable: 1
     cost: 2
-  - name: Ice
+  - name: Land Ice
+    tileVisualPrefab: {fileID: 0}
+    isWalkable: 1
+    cost: 1
+  - name: Water Ice
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
     cost: 1
@@ -5481,6 +5485,10 @@ MonoBehaviour:
     tileVisualPrefab: {fileID: 5296307935300308040, guid: 74736fe0684ee464f96b181620a6b05b, type: 3}
     isWalkable: 1
     cost: 1
+  - name: Wold Wall
+    tileVisualPrefab: {fileID: 4609658174146669432, guid: a9ab7a73a56972e47b2dccd0e2ef533c, type: 3}
+    isWalkable: 0
+    cost: 1
   movingEnemy: 0
   moving: 0
   targetList: []
@@ -5488,6 +5496,7 @@ MonoBehaviour:
   moveButtonPressed: 0
   activelyMoving: 0
   circleArrowPrefab: {fileID: 3581929253024597637, guid: 2d1e38878fa5027489d87c4d02e8f416, type: 3}
+  phase: 0
 --- !u!114 &1297737939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9463,7 +9472,7 @@ Transform:
   m_GameObject: {fileID: 7830247837932230773}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.91, y: 1, z: -0.12}
+  m_LocalPosition: {x: 5, y: 1, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9616,7 +9625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8979272379616217446, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.24
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8979272379616217446, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10071,7 +10080,7 @@ PrefabInstance:
       objectReference: {fileID: 3347623419480183641, guid: 95fbb5137e36b423497fe5e8106b2493, type: 3}
     - target: {fileID: 6571172650880656856, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.9
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6571172650880656856, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10170,8 +10179,16 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: movementSpeed.value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: maxHealth.moddedValue
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: movementSpeed.moddedValue
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7593733271122737829, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: Unit
@@ -10458,8 +10475,8 @@ MonoBehaviour:
     value: 0
     moddedValue: 0
   movementSpeed:
-    value: 0
-    moddedValue: 0
+    value: 5
+    moddedValue: 5
   resistence:
     value: 0
     moddedValue: 0
@@ -10504,6 +10521,7 @@ MonoBehaviour:
   np2: {fileID: 6651953118261588496}
   atkMenu: {fileID: 872314999}
   spellList: {fileID: 0}
+  hasWalked: 0
 --- !u!114 &8238293854779057181 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8398396629709489032, guid: 2bbc89aaddde54793a8b96299743ddf3, type: 3}

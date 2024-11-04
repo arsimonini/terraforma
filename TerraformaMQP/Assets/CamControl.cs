@@ -41,7 +41,11 @@ public class CamControl : MonoBehaviour
             //Vector3 forward = transform.forward;
             //Vector3 right = transform.right;
             checkRotation();
+
             target = new Vector3(map.selectedUnit.transform.position.x,transform.position.y,map.selectedUnit.transform.position.z);
+            
+            //if ((target.x != map.selectedUnit.x) && ())
+
             //float xChar = map.selectedUnit.transform.position.x;
             //float zChar = map.selectedUnit.transform.position.z;
             //easeToLocation(xChar,zChar);
@@ -124,6 +128,8 @@ public class CamControl : MonoBehaviour
     }
 
     void easeToLocation(float x,float z) {
+
+
         float inc = 16;
         //The higher the number, the more gradual the travel speed.
 
