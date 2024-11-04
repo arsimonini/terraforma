@@ -25,6 +25,16 @@ public class Basic_Spell_Class : ScriptableObject
     public bool hitSelf; //If the spell should be able to hith the caster, true if it should, false if not
     public bool targetWalls; //If the spell should be able to target walls, true if so, false if not
 
+    public bool hyperSpecificTargeting; //If the spell requires a very specific type of targeting, either a list of specific tiles, specific tiles with effects, etc.
+
+    //If the spell requires a specific list of tiles it can target
+    public bool needSpecificTiles;
+    public List<string> specificTiles;
+
+    //If the spell requires a specific list of tile effects that need to be on a tile to target it
+    public bool needSpecificTileEffects;
+    public List<string> specificTileEffects;
+
 
 
 

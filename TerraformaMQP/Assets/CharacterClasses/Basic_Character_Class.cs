@@ -539,7 +539,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Sets targeting to true
         targeting = true;
         //Calls the drawReach function with the reach of the attack, the inability to target tiles, and the inability to target allies
-        drawReach(reach, false, false, true, false, false, true, tile);
+        drawReach(reach, false, false, true, false, false, true, false, false, null, false, null, tile);
     }
 
     //Called when targeting a Spell
@@ -555,7 +555,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Sets the attackReach to the inputted reach
         attackReach = reach;
         //Calls the drawReach function with the reach of the spell, the spell's ability to target tiles, and the spell's ability to target allies
-        drawReach(reach, spell.targetTiles, spell.targetAllies, spell.targetEnemies, spell.hitOwnTile, spell.hitSelf, spell.targetWalls, tile);
+        drawReach(reach, spell.targetTiles, spell.targetAllies, spell.targetEnemies, spell.hitOwnTile, spell.hitSelf, spell.targetWalls, spell.hyperSpecificTargeting, spell.needSpecificTileEffects, spell.specificTileEffects, spell.needSpecificTiles, spell.specificTiles, tile);
     }
 
     //Called when selecting a unit, displays the current health and, if possible, the mana of the selected unit, along with their char_img
@@ -621,9 +621,9 @@ public class Basic_Character_Class : MonoBehaviour
     }
 
     //Calls the drawReach function within the map, passing the same variables from the parameters as arguments
-    private void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, bool hitOwnTile, bool hitSelf, bool targetWalls, ClickableTile tile)
+    private void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, bool hitOwnTile, bool hitSelf, bool targetWalls, bool hyperSpecificTargeting, bool needSpecificTileEffects, List<string> specificTileEffects, bool needSpecificTiles, List<string> specificTiles, ClickableTile tile)
     {
-        map.drawReach(reach, targetTiles, targetAllies, targetEnemies, targetWalls, tile);
+        map.drawReach(reach, targetTiles, targetAllies, targetEnemies, targetWalls, hyperSpecificTargeting, needSpecificTileEffects, specificTileEffects, needSpecificTiles, specificTiles, tile);
         if(!hitOwnTile){
             if (map.targetList.Contains(tile.gameObject)){
                 map.targetList.Remove(tile.gameObject);
