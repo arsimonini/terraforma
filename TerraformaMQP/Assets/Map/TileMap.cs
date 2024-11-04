@@ -28,6 +28,10 @@ public class TileMap : MonoBehaviour
     int mapSizeX = 10; //The maximum X dimension
     int mapSizeY = 10; //The maximum Y dimension
 
+    //For Move Button
+    public bool moveButtonPressed = false;
+    public bool activelyMoving = false;
+
     float xOffset; //An offset that can be set to account for maps not starting at location 0,0
     float yOffset; //^
 
@@ -132,6 +136,7 @@ public class TileMap : MonoBehaviour
                         addTileEffect(x, y, selectedUnit);
                         //Removes the node the unit just travelled to from the path
                         currentPath.RemoveAt(0);
+                        selectedUnitScript.updateCharStats();
                     }
                 }
             }
@@ -297,25 +302,33 @@ public class TileMap : MonoBehaviour
 
     public void MoveSelectedUnitTo(int x, int y) {
 
-        //TEST - replace with actual movement implementation
-        if (selectedUnit != null && clickableTiles[x, y].isWalkable)
-        {
-            if (selectedUnitScript.targeting == true || selectedUnitScript.hasWalked)
+        //checks if move UI was clicked before moving unit
+        if (moveButtonPressed == true || selectedUnit.GetComponent<Enemy_Character_Class>() != null) {
+
+            setMoveButtonPressed(false);
+            moveButtonPressed = false;
+
+            UnityEngine.Debug.Log(x + "," + y);
+
+            //TEST - replace with actual movement implementation
+            if (selectedUnit != null && clickableTiles[x, y].isWalkable)
             {
-                selectedUnitScript.targeting = false;
-            }
-            else if (selectedUnitScript.charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
-            {
-                hidePath();
-                generatePathTo(x, y);
+                if (selectedUnitScript.targeting == true || selectedUnitScript.hasWalked)
+                {
+                    selectedUnitScript.targeting = false;
+                }
+                else if (selectedUnitScript.charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
+                {
+                    hidePath();
+                    generatePathTo(x, y);
+                    UnityEngine.Debug.Log(currentPath.Count);
 
-                //UnityEngine.Debug.Log(currentPath.Count);
+                    //selectedUnitScript.charSelected = false;
 
-                //selectedUnitScript.charSelected = false;
-
-                //selectedUnitScript.tileX = currentPath[1].x;
-                //selectedUnitScript.tileY = currentPath[1].y;
-                //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
+                    //selectedUnitScript.tileX = currentPath[1].x;
+                    //selectedUnitScript.tileY = currentPath[1].y;
+                    //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
+                }
             }
         }
 
@@ -483,14 +496,19 @@ public class TileMap : MonoBehaviour
         if (unitCanEnterTile(x, y) == false) {
             return Mathf.Infinity;
         }
-        TileType t = tileTypes[tiles[x, y]];
-        float dist = t.cost;
+        int cost = clickableTiles[x, y].cost;
+        if (cost <= 0){
+            cost = 1;
+        }
+        float dist = cost;
 
         return dist;
     }
 
     public void showPath(int blue = 999) {
-        hidePath();
+        if (moveButtonPressed){
+            hidePath();
+        }
  
         //Create path of CircleArrows
         for (int i = 0; i < visualPath.Count; i++) {
@@ -502,12 +520,22 @@ public class TileMap : MonoBehaviour
                 sr.sprite = nS;
             }
 
-            ca.transform.position = new Vector3(visualPath[i].x+(int)xOffset,0.6f,visualPath[i].y+(int)yOffset);
-            ca.transform.localRotation = Quaternion.Euler(90f,0,0);
-            if (i != visualPath.Count - 1) {
-                ca.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-            } else {
-                ca.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            //Create path of CircleArrows
+            for (int i = 0; i < visualPath.Count; i++) {
+                GameObject ca = Instantiate(circleArrowPrefab);
+                if (!blue) {
+                    SpriteRenderer sr = ca.GetComponent<SpriteRenderer>();
+                    Sprite nS = Resources.Load<Sprite>("spr_circle_red");
+                    sr.sprite = nS;
+                }
+
+                ca.transform.position = new Vector3(visualPath[i].x+(int)xOffset,0.6f,visualPath[i].y+(int)yOffset);
+                ca.transform.localRotation = Quaternion.Euler(90f,0,0);
+                if (i != visualPath.Count - 1) {
+                    ca.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                } else {
+                    ca.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                }
             }
         }
     }
@@ -630,7 +658,7 @@ public class TileMap : MonoBehaviour
     -------     -------     -------     -------                                 -------     -------     ---0---
 
     */
-    public void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, ClickableTile tile)
+    public void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, bool targetWalls, bool hyperSpecificTargeting, bool needSpecificTileEffects, List<string> specificTileEffects, bool needSpecificTiles, List<string> specificTiles, ClickableTile tile)
     {
         int width = 1;
         //Find the maximum width that needs to be checked
@@ -653,7 +681,10 @@ public class TileMap : MonoBehaviour
             {
                 if (checkIndex(selectedUnitScript.tileX + i, selectedUnitScript.tileY + j) && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j] != null)
                 {
-                    if(!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position, mask)){
+                    RaycastHit[] hits;
+                    hits = Physics.RaycastAll(newTile.transform.position, clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position - newTile.transform.position, Vector3.Distance(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position, newTile.transform.position), layerMask: mask);
+                    //!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position, mask)
+                    if(hits.Length == 0){
                         if (targetTiles == true)
                         {
                             clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
@@ -670,9 +701,30 @@ public class TileMap : MonoBehaviour
                                 targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile.gameObject);
                             }
                         }
+                        if (hyperSpecificTargeting){
+                            if (needSpecificTiles){
+                                if (specificTiles.Contains(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.name)){
+                                    if (!targetList.Contains(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject)){
+                                        clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
+                                        targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);
+                                    }
+                                }
+                            }
+                            if (needSpecificTileEffects){
+                                for (int k = 0; k < clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].effectsOnTile.Count; k++){
+                                    if(specificTileEffects.Contains(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].effectsOnTile[k].name)){
+                                        if (!targetList.Contains(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject)){
+                                            clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
+                                            targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                    else {
-                        UnityEngine.Debug.Log("Collided");
+                    else if (targetWalls && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.tag == "Wall" && hits.Length <= 1){
+                        clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
+                        targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);
                     }
                 }
             }
@@ -685,7 +737,10 @@ public class TileMap : MonoBehaviour
             {
                 if (checkIndex(selectedUnitScript.tileX + i, selectedUnitScript.tileY + j) && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j] != null)
                 {
-                    if (!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position, mask)){
+                    RaycastHit[] hits;
+                    hits = Physics.RaycastAll(newTile.transform.position, clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position - newTile.transform.position, Vector3.Distance(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position, newTile.transform.position), mask);
+                    //!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.transform.position, mask)
+                    if (hits.Length == 0){
                         if (targetTiles == true)
                         {
                             clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
@@ -702,6 +757,30 @@ public class TileMap : MonoBehaviour
                                 targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile.gameObject);
                             }
                         }
+                        if (hyperSpecificTargeting){
+                            if (needSpecificTiles){
+                                if (specificTiles.Contains(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.name)){
+                                    if (!targetList.Contains(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject)){
+                                        clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
+                                        targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);
+                                    }
+                                }
+                            }
+                            if (needSpecificTileEffects){
+                                for (int k = 0; k < clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].effectsOnTile.Count; k++){
+                                    if(specificTileEffects.Contains(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].effectsOnTile[k].name)){
+                                        if (!targetList.Contains(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject)){
+                                            clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
+                                            targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if (targetWalls && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.tag == "Wall" && hits.Length <= 1){
+                        clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
+                        targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);                    
                     }
                 }
             }
@@ -711,7 +790,10 @@ public class TileMap : MonoBehaviour
         {
             if (checkIndex(selectedUnitScript.tileX, selectedUnitScript.tileY + i) && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i] != null)
             {
-                if (!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject.transform.position, mask)){
+                RaycastHit[] hits;
+                hits = Physics.RaycastAll(newTile.transform.position, clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject.transform.position - newTile.transform.position, Vector3.Distance(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject.transform.position, newTile.transform.position), mask);
+                //!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject.transform.position, mask)
+                if (hits.Length == 0){
                     if (targetTiles == true)
                     {
                         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].highlight();
@@ -728,6 +810,30 @@ public class TileMap : MonoBehaviour
                             targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].characterOnTile.gameObject);
                         }
                     }
+                    if (hyperSpecificTargeting){
+                        if (needSpecificTiles){
+                            if (specificTiles.Contains(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject.name)){
+                                if (!targetList.Contains(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject)){
+                                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].highlight();
+                                    targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject);
+                                }
+                            }
+                        }
+                        if (needSpecificTileEffects){
+                            for (int k = 0; k < clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].effectsOnTile.Count; k++){
+                                if(specificTileEffects.Contains(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].effectsOnTile[k].name)){
+                                    if (!targetList.Contains(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject)){
+                                        clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].highlight();
+                                        targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (targetWalls && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject.tag == "Wall" && hits.Length <= 1){
+                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].highlight();
+                    targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject);
                 }
             }
         }
@@ -735,7 +841,10 @@ public class TileMap : MonoBehaviour
         {
             if (checkIndex(selectedUnitScript.tileX, selectedUnitScript.tileY - i) && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i] != null)
             {
-                if (!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject.transform.position, mask)){
+                RaycastHit[] hits;
+                hits = Physics.RaycastAll(newTile.transform.position, clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject.transform.position - newTile.transform.position, Vector3.Distance(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject.transform.position, newTile.transform.position), mask);
+                //!Physics.Linecast(newTile.transform.position, clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject.transform.position, mask)
+                if (hits.Length == 0){
                     if (targetTiles == true)
                     {
                         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].highlight();
@@ -752,6 +861,30 @@ public class TileMap : MonoBehaviour
                             targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].characterOnTile.gameObject);
                         }
                     }
+                    if (hyperSpecificTargeting){
+                        if (needSpecificTiles){
+                            if (specificTiles.Contains(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject.name)){
+                                if (!targetList.Contains(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject)){
+                                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].highlight();
+                                    targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject);
+                                }
+                            }
+                        }
+                        if (needSpecificTileEffects){
+                            for (int k = 0; k < clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].effectsOnTile.Count; k++){
+                                if(specificTileEffects.Contains(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].effectsOnTile[k].name)){
+                                    if (!targetList.Contains(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject)){
+                                        clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].highlight();
+                                        targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (targetWalls && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject.tag == "Wall" && hits.Length <= 1){
+                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].highlight();
+                    targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject);
                 }
             }
         }
@@ -810,6 +943,7 @@ public class TileMap : MonoBehaviour
     //Takes in a GameObject that will be the selectedTarget that is searched for
     public bool checkForTarget(GameObject selectedTarget, int reach)
     {
+        UnityEngine.Debug.Log(selectedTarget);
         //Iterates over all entires in the targetList
         for (int i = 0; i < targetList.Count; ++i)
         {
@@ -827,10 +961,11 @@ public class TileMap : MonoBehaviour
 
     //Swaps two different tiles on the map
     //Takes in the previous tile and the new tile to switch to, as well as the integer value of the TileType in the tileTypes array
-    public void swapTiles (ClickableTile previousTile, int tileNumber)
+    public ClickableTile swapTiles (ClickableTile previousTile, int tileNumber, bool transferEffects)
     {
         //transfers the values of the previous tile to the new tile
         GameObject newTilePrefab = Instantiate(tileTypes[tileNumber].tileVisualPrefab);
+        newTilePrefab.name = tileTypes[tileNumber].tileVisualPrefab.name;
         ClickableTile newTile = newTilePrefab.GetComponent<ClickableTile>();
         newTilePrefab.transform.position = previousTile.gameObject.transform.position;
         newTile.characterOnTile = previousTile.characterOnTile;
@@ -840,19 +975,25 @@ public class TileMap : MonoBehaviour
         //Sets the tile arrays in the map to contain the new tile
         tiles[previousTile.TileX, previousTile.TileY] = tileNumber;
         clickableTiles[previousTile.TileX, previousTile.TileY] = newTile;
+        if (transferEffects){
+            for (int i = 0; i < previousTile.effectsOnTile.Count; i++){
+                newTile.addEffectToTile(previousTile.effectsOnTile[i]);
+            }
+        }
         //Checks if there was a character on the previous tile
         if (previousTile.characterOnTile != null)
         {
             //If so, also updates the character on the tile, adding the new effect and linking the character to the new tile
             Basic_Character_Class unitAffected = previousTile.characterOnTile.GetComponent<Basic_Character_Class>();
             unitAffected.tile = newTile;
-            unitAffected.removeStatus(unitAffected.tileEffect, true);
+            //unitAffected.removeStatus(unitAffected.tileEffect, true);
             StatusEffect newEffect = new StatusEffect();
             newEffect.initializeTileEffect(newTile.statsToEffect, newTile.name, newTile.effectAmounts, unitAffected.gameObject, newTile.name + "Effect");
             unitAffected.tileType = newTile.map.tileTypes[tileNumber];
         }
         //Destroys the old tile
         Destroy(previousTile.gameObject);
+        return newTile;
     }
 
     //Adds a status effect to a unit as they enter a tile, takes in the x, y location of the tile and the unit the effect will be applied to
@@ -870,8 +1011,10 @@ public class TileMap : MonoBehaviour
 
         phase = p;
     }
+    
+    public void setMoveButtonPressed(bool b) {
+        moveButtonPressed = b;
+    }
 }
-
-
 
 

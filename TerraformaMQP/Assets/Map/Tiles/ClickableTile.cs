@@ -20,6 +20,7 @@ public class ClickableTile : MonoBehaviour
     public List<int> effectAmounts; //The amounts to change the listed stats when a character stands on the tile        [5, -2, 3]      Leads to increasing attack by 5, decreasing speed by 2, and increasing defense by 3
     public GameObject characterOnTile = null; //Reference to the character currently standing on the tile, null if no character is on the tile
     public Color color; //The color of the tile
+    public int cost;
 
     public List<TileEffect> effectsOnTile; //List of effects currently on the tile
     
@@ -43,12 +44,22 @@ public class ClickableTile : MonoBehaviour
             float darkerHighlight = highlightMultiplier + 0.1f;
             highlightColor = originalColor * darkerHighlight;
             tileRenderer.material.color = highlightColor;
+            if (transform.childCount > 0){
+                foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
+                    rend.material.color = highlightColor;
+                }   
+            }
         }
         else
         {
             //Else, just do a normal highlight
             highlightColor = originalColor * highlightMultiplier;
             tileRenderer.material.color = highlightColor;
+            if (transform.childCount > 0){
+                foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
+                    rend.material.color = highlightColor;
+                }   
+            }
         }
 
         //Highlight Path
@@ -64,6 +75,11 @@ public class ClickableTile : MonoBehaviour
     {
         Color highlightColor = originalColor * highlightMultiplier;
         tileRenderer.material.color = highlightColor;
+        if (transform.childCount > 0){
+            foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
+                rend.material.color = highlightColor;
+            }
+        }
     }
 
     //Ends the highlight by returning the tile to the base color
@@ -71,20 +87,25 @@ public class ClickableTile : MonoBehaviour
     {
 
         GetComponent<Renderer>().material.color = color;
+        if (transform.childCount > 0){
+            foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
+                UnityEngine.Debug.Log("Here");
+                rend.material.color = color;
+            }
+        }
     }
 
 
     void OnMouseExit() {
         //Checks if the tile is currently withing the map's target list
-        if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this.gameObject))
+        if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this.gameObject) || (characterOnTile != null && map.targetList.Contains(characterOnTile)))
         {
             //If so, the tile stays highlighted with the slightly lighter highlight
-            Color highlightColor = originalColor * highlightMultiplier;
-            tileRenderer.material.color = highlightColor;
+            highlight();
             return;
         }
         //Else, the tile reverts back to its original color without a highlight
-        tileRenderer.material.color = originalColor;
+        endHighlight();
     }
 
     //Adds an effect to the tile
@@ -103,11 +124,12 @@ public class ClickableTile : MonoBehaviour
                 effectAmounts.Add(effect.amountToEffect[i]);
             }
         }
+        cost += effect.movementCostIncrease;
         //If there is a character on the tile then it's tile effect is then updated to reflect the new stats
         if (characterOnTile!= null){
             updateTileEffect();
         }
-        effect.tileEffectPrefab.GetComponent<tileEffectActions>().react(effectsOnTile, this, effect);
+        //effect.tileEffectPrefab.GetComponent<tileEffectActions>().react(effectsOnTile, this, effect);
     }
 
     //Removes an effect from the tile, functions almost exactly in the same way as the addEffectToTile
@@ -127,6 +149,7 @@ public class ClickableTile : MonoBehaviour
         if (effect.duration == 0){
             effect.tileEffectPrefab.GetComponent<tileEffectActions>().endOfDurationEffect(this);
         }
+        cost -= effect.movementCostIncrease;
         //If there is a character on the tile then it's tile effect is then updated to reflect the new stats
         if (characterOnTile!= null){
             updateTileEffect();
