@@ -26,6 +26,12 @@ public class GameControllerScript : MonoBehaviour
     public Basic_Character_Class characterScript; //Reference to the selected character's Basic_Character_Class script, use to access variables like health, attack, etc.
     public List<GameObject> targets = new List<GameObject>(); //A list of currently selected targets for spells/attacks, if the player hasn't selected a target or is not targeting at all, will be null
 
+    private LayerMask mask;
+
+    void Start(){
+        mask = LayerMask.GetMask("Default") | LayerMask.GetMask("BlockVisibility");
+    }
+
     void Update()
     {
         //Removes all null values from the list of remaining enemy and player units
@@ -52,7 +58,7 @@ public class GameControllerScript : MonoBehaviour
             //Creates a RayCast from the mouse's location, checking if it returns a hit
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 100.0f))
+            if (Physics.Raycast(ray, out hit, 100.0f, layerMask: mask))
             {
                 //Checks if the player is currently targeting anything
                 if (targeting == false)
@@ -129,7 +135,7 @@ public class GameControllerScript : MonoBehaviour
                 }
                 //Arrive here if the player is targeting a spell or attack and left-clicked
                 //Check if the returned object from the above raycast returned is tagged on the enemy team and is within the spell/attack's reach
-                else if (targeting == true && (hit.collider.gameObject.tag == "EnemyTeam" || hit.collider.gameObject.tag == "PlayerTeam" || hit.collider.gameObject.GetComponent<ClickableTile>() != null) && characterScript.withinReach(hit.collider.gameObject) == true)
+                else if (targeting == true && (hit.collider.gameObject.tag == "EnemyTeam" || hit.collider.gameObject.tag == "PlayerTeam" || hit.collider.gameObject.GetComponent<ClickableTile>() != null || hit.collider.gameObject.tag == "Wall") && characterScript.withinReach(hit.collider.gameObject) == true)
                 {
                     //Checks if the player is targeting an Attack
                     if (characterScript.attackType == "Attack")
@@ -159,6 +165,7 @@ public class GameControllerScript : MonoBehaviour
                             //Checks if the required amount of targets has been selected
                             if (selectedCharacter.GetComponent<Hero_Character_Class>().selectedSpell.amountOfTargets == targets.Count){
                                 //Tries to cast the spell by calling the castSpell function within the selected character's script
+                                UnityEngine.Debug.Log(targets[1]);
                                 if (characterScript.castSpell(targets))
                                 {
                                     //Deselects the character as their turn is over

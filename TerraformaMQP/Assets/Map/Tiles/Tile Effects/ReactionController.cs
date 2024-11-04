@@ -197,7 +197,7 @@ public class ReactionController : MonoBehaviour
         switch (damageType){
             case "Fire":
                 effectOnTile.duration += 2;
-                return true;
+                return false;
 
             case "Water":
                 tile.removeEffectFromTile(effectOnTile);

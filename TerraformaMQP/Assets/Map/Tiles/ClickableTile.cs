@@ -44,12 +44,22 @@ public class ClickableTile : MonoBehaviour
             float darkerHighlight = highlightMultiplier + 0.1f;
             highlightColor = originalColor * darkerHighlight;
             tileRenderer.material.color = highlightColor;
+            if (transform.childCount > 0){
+                foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
+                    rend.material.color = highlightColor;
+                }   
+            }
         }
         else
         {
             //Else, just do a normal highlight
             highlightColor = originalColor * highlightMultiplier;
             tileRenderer.material.color = highlightColor;
+            if (transform.childCount > 0){
+                foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
+                    rend.material.color = highlightColor;
+                }   
+            }
         }
 
         //Highlight Path
@@ -65,6 +75,11 @@ public class ClickableTile : MonoBehaviour
     {
         Color highlightColor = originalColor * highlightMultiplier;
         tileRenderer.material.color = highlightColor;
+        if (transform.childCount > 0){
+            foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
+                rend.material.color = highlightColor;
+            }
+        }
     }
 
     //Ends the highlight by returning the tile to the base color
@@ -72,6 +87,12 @@ public class ClickableTile : MonoBehaviour
     {
 
         GetComponent<Renderer>().material.color = color;
+        if (transform.childCount > 0){
+            foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
+                UnityEngine.Debug.Log("Here");
+                rend.material.color = color;
+            }
+        }
     }
 
 
@@ -80,12 +101,11 @@ public class ClickableTile : MonoBehaviour
         if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this.gameObject) || (characterOnTile != null && map.targetList.Contains(characterOnTile)))
         {
             //If so, the tile stays highlighted with the slightly lighter highlight
-            Color highlightColor = originalColor * highlightMultiplier;
-            tileRenderer.material.color = highlightColor;
+            highlight();
             return;
         }
         //Else, the tile reverts back to its original color without a highlight
-        tileRenderer.material.color = originalColor;
+        endHighlight();
     }
 
     //Adds an effect to the tile

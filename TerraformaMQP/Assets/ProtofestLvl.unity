@@ -6657,6 +6657,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tileWall
       objectReference: {fileID: 0}
+    - target: {fileID: 8517994062004051254, guid: f4c58aa48bf65439099745bb531160d3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
