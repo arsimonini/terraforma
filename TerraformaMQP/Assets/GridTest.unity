@@ -10448,7 +10448,7 @@ MonoBehaviour:
   turnEnded: 0
   effects: []
   tileEffect: {fileID: 0}
-  name: Basic Enemy
+  name: Basic Enemy 2
   char_img: {fileID: 21300000, guid: 70357dc2ed72e4325abbd77554514278, type: 3}
   health: 10
   maxHealth:

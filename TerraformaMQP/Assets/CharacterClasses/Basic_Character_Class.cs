@@ -118,7 +118,7 @@ public class Basic_Character_Class : MonoBehaviour
         }
 
         if(this.gameObject.tag == "EnemyTeam") {
-            updateCharStats();
+            //updateCharStats();
         }
         
     }
@@ -631,6 +631,12 @@ public class Basic_Character_Class : MonoBehaviour
     //Recolors when mouse is hovering over a unit
     public void OnMouseEnter()
     {
+
+        if (this.gameObject.GetComponent<Enemy_Character_Class>() != null && map.movingEnemy == true){
+            displayNameplate(true);
+            renderer.material.color = Color.blue;
+        }
+
         //Checks if the unit is currently selected
         if (charSelected == false && (map.selectedUnit == null || this.gameObject.tag != map.selectedUnit.tag))
         {
@@ -638,10 +644,6 @@ public class Basic_Character_Class : MonoBehaviour
             renderer.material.color = Color.blue;
             //if unit is not selected, display a nameplate
             displayNameplate(true);
-        }
-        if (this.gameObject.GetComponent<Enemy_Character_Class>() != null && map.movingEnemy == true){
-            displayNameplate(true);
-            renderer.material.color = Color.blue;
         }
         UnityEngine.Debug.Log("Mouse Entered");
         //Set the hover variable to true
@@ -673,6 +675,7 @@ public class Basic_Character_Class : MonoBehaviour
         if (this.gameObject.GetComponent<Enemy_Character_Class>() != null && map.movingEnemy == true){
             renderer.material.color = color;
             displayNameplate(false);
+            //updateCharStats();
         }
         //Set the hover variable to false
         charHover = false;
