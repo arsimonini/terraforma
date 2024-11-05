@@ -29,6 +29,9 @@ public class TileMap : MonoBehaviour
     int mapSizeX = 10; //The maximum X dimension
     int mapSizeY = 10; //The maximum Y dimension
 
+    public List<GameObject> aoeDisplayTiles = null;
+    public bool displayingAOE = false;
+
     //For Move Button
     public bool moveButtonPressed = false;
     public bool activelyMoving = false;
@@ -130,11 +133,12 @@ public class TileMap : MonoBehaviour
                     {
                         //If not, the unit moves closer to the desired location
                         selectedUnit.transform.position = Vector3.MoveTowards(selectedUnit.transform.position, nextPos, step);
+                        selectedUnitScript.OnMouseExit();
                     }
                     //If the unit is at the desired location, the unit's tileX and tileY variables are updated
                     else
                     {
-
+                        selectedUnitScript.tile.OnMouseExit();
                         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].characterOnTile = null;
                         //Makes the tile passable again when the unit moves off it
                         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = true;
@@ -531,21 +535,21 @@ public class TileMap : MonoBehaviour
         if (moveButtonPressed) {
             hidePath();
         }
- 
-        //Create path of CircleArrows
-        for (int i = 0; i < visualPath.Count; i++) {
-            GameObject ca = Instantiate(circleArrowPrefab);
+
+            //Create path of CircleArrows
+            for (int i = 0; i < visualPath.Count; i++) {
+                GameObject ca = Instantiate(circleArrowPrefab);
             if (i >= blue) {
-                SpriteRenderer sr = ca.GetComponent<SpriteRenderer>();
-                Sprite nS = Resources.Load<Sprite>("spr_circle_red");
-                sr.sprite = nS;
-            }
-            ca.transform.position = new Vector3(visualPath[i].x+(int)xOffset,0.6f,visualPath[i].y+(int)yOffset);
-            ca.transform.localRotation = Quaternion.Euler(90f,0,0);
-            if (i != visualPath.Count - 1) {
-                ca.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-            } else {
-                ca.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                    SpriteRenderer sr = ca.GetComponent<SpriteRenderer>();
+                    Sprite nS = Resources.Load<Sprite>("spr_circle_red");
+                    sr.sprite = nS;
+                }
+                ca.transform.position = new Vector3(visualPath[i].x+(int)xOffset,0.6f,visualPath[i].y+(int)yOffset);
+                ca.transform.localRotation = Quaternion.Euler(90f,0,0);
+                if (i != visualPath.Count - 1) {
+                    ca.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                } else {
+                    ca.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
         }
     }
@@ -941,6 +945,91 @@ public class TileMap : MonoBehaviour
         }
         targetList = new List<GameObject>();
 
+    }
+
+    public void displayAOE(string attackType, ClickableTile centerTile, int size = 0, bool square = false, ClickableTile targetersTile = null){
+        UnityEngine.Debug.Log("Display AOE");
+        displayingAOE = true;
+        aoeDisplayTiles = new List<GameObject>();
+        if (size == 0){
+            aoeDisplayTiles.Add(centerTile.gameObject);
+            centerTile.gameObject.transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = true;
+            centerTile.gameObject.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = true;
+            centerTile.gameObject.transform.Find("OutlineT").gameObject.GetComponent<MeshRenderer>().enabled = true;
+            centerTile.gameObject.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = true;
+        }
+        else if (square){
+            for (int i = 0; i < size; i++){
+                if (checkIndex(centerTile.TileX + i, centerTile.TileY + size) && clickableTiles[centerTile.TileX + i, centerTile.TileY + size].gameObject.name != "tileWall" && checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + i, centerTile.TileY + size].gameObject.transform.position)){
+                    clickableTiles[centerTile.TileX + i, centerTile.TileY + size].gameObject.transform.Find("OutlineT").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + i, centerTile.TileY + size].gameObject);
+                }
+            }
+            if (checkIndex(centerTile.TileX + size, centerTile.TileY + size) && clickableTiles[centerTile.TileX + size, centerTile.TileY + size].gameObject.name != "tileWall" && checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + size, centerTile.TileY + size].gameObject.transform.position)){
+                clickableTiles[centerTile.TileX + size, centerTile.TileY + size].gameObject.transform.Find("OutlineT").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                clickableTiles[centerTile.TileX + size, centerTile.TileY + size].gameObject.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + size, centerTile.TileY + size].gameObject);
+            }
+            for (int i = 0; i < size * 2; i++){
+                if (checkIndex(centerTile.TileX + size, centerTile.TileY + size - i) && clickableTiles[centerTile.TileX + size, centerTile.TileY + size - i].gameObject.name != "tileWall"  && checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + size, centerTile.TileY + size - i].gameObject.transform.position)){
+                    clickableTiles[centerTile.TileX + size, centerTile.TileY + size - i].gameObject.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + size, centerTile.TileY + size - i].gameObject);
+                }
+            }
+            if (checkIndex(centerTile.TileX + size, centerTile.TileY - size) && clickableTiles[centerTile.TileX + size, centerTile.TileY - size].gameObject.name != "tileWall" && checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + size, centerTile.TileY - size].gameObject.transform.position)){
+                clickableTiles[centerTile.TileX + size, centerTile.TileY - size].gameObject.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                clickableTiles[centerTile.TileX + size, centerTile.TileY - size].gameObject.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + size, centerTile.TileY - size].gameObject);
+            }
+            for (int i = 0; i < size * 2; i++){
+                if (checkIndex(centerTile.TileX + size - i, centerTile.TileY - size) && clickableTiles[centerTile.TileX + size - i, centerTile.TileY - size].gameObject.name != "tileWall" && checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + size - i, centerTile.TileY - size].gameObject.transform.position)){
+                    clickableTiles[centerTile.TileX + size - i, centerTile.TileY - size].gameObject.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + size - i, centerTile.TileY - size].gameObject);
+                }
+            }
+            if (checkIndex(centerTile.TileX - size, centerTile.TileY - size) && clickableTiles[centerTile.TileX - size, centerTile.TileY - size].gameObject.name != "tileWall" && checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - size, centerTile.TileY - size].gameObject.transform.position)){
+                clickableTiles[centerTile.TileX - size, centerTile.TileY - size].gameObject.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                clickableTiles[centerTile.TileX - size, centerTile.TileY - size].gameObject.transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - size, centerTile.TileY - size].gameObject);
+            }
+            for (int i = 0; i < size * 2; i++){
+                if (checkIndex(centerTile.TileX - size, centerTile.TileY - size + i) && clickableTiles[centerTile.TileX - size, centerTile.TileY - size + i].gameObject.name != "tileWall" && checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - size, centerTile.TileY - size + i].gameObject.transform.position)){
+                    clickableTiles[centerTile.TileX - size, centerTile.TileY - size + i].gameObject.transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - size, centerTile.TileY - size + i].gameObject);
+                }
+            }
+            if (checkIndex(centerTile.TileX - size, centerTile.TileY + size) && clickableTiles[centerTile.TileX - size, centerTile.TileY + size].gameObject.name != "tileWall" && checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - size, centerTile.TileY + size].gameObject.transform.position)){
+                clickableTiles[centerTile.TileX - size, centerTile.TileY + size].gameObject.transform.Find("OutlineT").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                clickableTiles[centerTile.TileX - size, centerTile.TileY + size].gameObject.transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - size, centerTile.TileY + size].gameObject);
+            }
+            for (int i = 0; i < size - 1; i++){
+                if (checkIndex(centerTile.TileX - size + 1 + i, centerTile.TileY + size) && clickableTiles[centerTile.TileX - size + 1 + i, centerTile.TileY + size].gameObject.name != "tileWall" && checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - size + 1 + i, centerTile.TileY + size].gameObject.transform.position)){
+                    clickableTiles[centerTile.TileX - size + 1 + i, centerTile.TileY + size].gameObject.transform.Find("OutlineT").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - size + 1 + i, centerTile.TileY + size].gameObject);
+                }
+            }
+        }
+    }
+
+    public void removeAOEDisplay(){
+        if (aoeDisplayTiles != null){
+            for (int i = 0; i < aoeDisplayTiles.Count; i++){
+                aoeDisplayTiles[i].transform.Find("OutlineT").gameObject.GetComponent<MeshRenderer>().enabled = false;
+                aoeDisplayTiles[i].transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = false;
+                aoeDisplayTiles[i].transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = false;
+                aoeDisplayTiles[i].transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = false;
+            }
+        }
+        displayingAOE = false;
+        aoeDisplayTiles = null;
+    }
+
+    public bool checkVisible(Vector3 position1, Vector3 position2){
+        if (Physics.Linecast(position1, position2, mask)){
+            return false;
+        }
+        return true;
     }
 
     //Use this function when changing the selectedUnit variable

@@ -544,6 +544,7 @@ public class Basic_Character_Class : MonoBehaviour
         attackReach = defaultReach;
         targeting = false;
         renderer.material.color = Color.red;
+        map.removeAOEDisplay();
     }
 
     //Called when targeting a standard attack
@@ -653,6 +654,8 @@ public class Basic_Character_Class : MonoBehaviour
         UnityEngine.Debug.Log("Mouse Entered");
         //Set the hover variable to true
         charHover = true;
+
+        tile.OnMouseEnter();
     }
 
     //Resets when mouse has stopped hovering over a unit
@@ -685,6 +688,8 @@ public class Basic_Character_Class : MonoBehaviour
         //Set the hover variable to false
         charHover = false;
         UnityEngine.Debug.Log("Mouse Exited");
+
+        tile.OnMouseExit();
     }
 
     //Calls the drawReach function within the map, passing the same variables from the parameters as arguments

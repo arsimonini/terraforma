@@ -31,7 +31,10 @@ public class ClickableTile : MonoBehaviour
         color = GetComponent<Renderer>().material.color;
     }
 
-    void OnMouseEnter() {
+    public void OnMouseEnter() {
+        if (map.aoeDisplayTiles != null){
+            map.removeAOEDisplay();
+        }
         map.hidePath();
         
         //Highlight the tile upon hover
@@ -44,7 +47,9 @@ public class ClickableTile : MonoBehaviour
             tileRenderer.material.color = highlightColor;
             if (transform.childCount > 0){
                 foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
-                    rend.material.color = highlightColor;
+                    if (!rend.gameObject.name.StartsWith("Outline")){
+                        rend.material.color = highlightColor;
+                    }
                 }   
             }
         }
@@ -55,8 +60,20 @@ public class ClickableTile : MonoBehaviour
             tileRenderer.material.color = highlightColor;
             if (transform.childCount > 0){
                 foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
-                    rend.material.color = highlightColor;
+                    if (!rend.gameObject.name.StartsWith("Outline")){
+                        rend.material.color = highlightColor;
+                    }
                 }   
+            }
+        }
+
+        if (map.selectedUnitScript != null && map.selectedUnitScript.targeting && map.targetList.Contains(this.gameObject) || (characterOnTile != null && map.targetList.Contains(characterOnTile))){
+            if (map.selectedUnitScript.attackType == "Spell"){
+                map.displayAOE("Spell", this, size: map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.AOEsize, square: map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.square, map.selectedUnitScript.tile);
+            }
+            else{
+                UnityEngine.Debug.Log("Here");
+                map.displayAOE("Attack", this, size: 0);
             }
         }
 
@@ -75,7 +92,9 @@ public class ClickableTile : MonoBehaviour
         tileRenderer.material.color = highlightColor;
         if (transform.childCount > 0){
             foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
-                rend.material.color = highlightColor;
+                if (!rend.gameObject.name.StartsWith("Outline")){
+                    rend.material.color = highlightColor;
+                }
             }
         }
     }
@@ -87,20 +106,24 @@ public class ClickableTile : MonoBehaviour
         GetComponent<Renderer>().material.color = color;
         if (transform.childCount > 0){
             foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
-                UnityEngine.Debug.Log("Here");
-                rend.material.color = color;
+                if(!rend.gameObject.name.StartsWith("Outline")){
+                    rend.material.color = color;
+                }
             }
         }
     }
 
 
-    void OnMouseExit() {
+    public void OnMouseExit() {
         //Checks if the tile is currently withing the map's target list
         if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this.gameObject) || (characterOnTile != null && map.targetList.Contains(characterOnTile)))
         {
             //If so, the tile stays highlighted with the slightly lighter highlight
             highlight();
             return;
+        }
+        if (map.displayingAOE == true){
+            map.removeAOEDisplay();
         }
         //Else, the tile reverts back to its original color without a highlight
         endHighlight();
