@@ -24,6 +24,8 @@ public class Basic_Spell_Class : ScriptableObject
     public bool hitOwnTile; //If the spell should hit the caster's tile if AOE, true if it should, false if not
     public bool hitSelf; //If the spell should be able to hith the caster, true if it should, false if not
     public bool targetWalls; //If the spell should be able to target walls, true if so, false if not
+    public int AOEsize; //The size of AOE effect that the spell should have
+    public bool square; //IF the AOE effect should be a square or diamond shape
 
     public bool hyperSpecificTargeting; //If the spell requires a very specific type of targeting, either a list of specific tiles, specific tiles with effects, etc.
 
