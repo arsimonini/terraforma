@@ -18,9 +18,13 @@ MonoBehaviour:
   spellPrefab: {fileID: 2394175536890139692, guid: ee9334e422503c840bb34dfedfb5be70, type: 3}
   description: Deal 10 fire damage to an enemy and set their tile Ablaze
   targeted: 1
-  range: 2
+  range: 7
   targetTiles: 1
   targetAllies: 0
   target: {fileID: 0}
   amountOfTargets: 2
   requireDifferentTargets: 1
+  targetEnemies: 0
+  hitOwnTile: 0
+  hitSelf: 0
+  targetWalls: 1

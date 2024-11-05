@@ -21,9 +21,16 @@ public class GameControllerScript : MonoBehaviour
     public int enemyCount = 0; //Amount of enemies still remaining in the level
     public int enemiesToMove = 0; //Amount of enemies that still need to be moved before moving to the next phase
     public bool targeting = false; //True if the player is currently targeting an attack or spell, false if otherwise
+    public bool moving = false;
     public GameObject selectedCharacter; //Reference to the selected character, only references the GameObject, to access any variables in the Basic_Character_Class script use the characterScript variable below
     public Basic_Character_Class characterScript; //Reference to the selected character's Basic_Character_Class script, use to access variables like health, attack, etc.
     public List<GameObject> targets = new List<GameObject>(); //A list of currently selected targets for spells/attacks, if the player hasn't selected a target or is not targeting at all, will be null
+
+    private LayerMask mask;
+
+    void Start(){
+        mask = LayerMask.GetMask("Default") | LayerMask.GetMask("BlockVisibility");
+    }
 
     void Update()
     {
@@ -34,16 +41,24 @@ public class GameControllerScript : MonoBehaviour
         //Checks if the selectedCharacter isn't null and if it is targeting, if true sets the GameController's targeting variable to true as well
         if (selectedCharacter != null && characterScript.targeting == true)
         {
-                targeting = true;
+            targeting = true;
+        }
+        if (characterScript != null && characterScript.isMoving){
+            moving = true;
+        }
+        if (characterScript != null && characterScript.charSelected == false && selectedCharacter.GetComponent<Enemy_Character_Class>() == null){
+            map.updateSelectedCharacter(null);
+            map.currentPath = null;
+            updateSelectedObject(null);
         }
 
         //Executes when the player left-clicks
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && map.moving == false)
         {
             //Creates a RayCast from the mouse's location, checking if it returns a hit
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 100.0f))
+            if (Physics.Raycast(ray, out hit, 100.0f, layerMask: mask))
             {
                 //Checks if the player is currently targeting anything
                 if (targeting == false)
@@ -68,8 +83,8 @@ public class GameControllerScript : MonoBehaviour
                         else if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && hit.collider.gameObject.tag == "EnemyTeam" && phase == 0)
                         {
                             //Changes the selectedCharacter to the new unit, calls the selectedCharacter function inside the character ---NOTE: SHOULD NEVER UPDATE THE MAP'S SELECTED CHARACTER---
-                            updateSelectedObject(hit.collider.gameObject);
-                            characterScript.selectCharacter();
+                            //updateSelectedObject(hit.collider.gameObject);
+                            //characterScript.selectCharacter();
                         }
                     }
                     //If the player does have a unit selected, it now checks if the returned object is another character
@@ -92,14 +107,35 @@ public class GameControllerScript : MonoBehaviour
                         map.currentPath = null;
                         updateSelectedObject(null);
                     }
+                    else if (selectedCharacter != null && hit.collider.gameObject.GetComponent<Basic_Character_Class>() == null && moving == false && hit.collider.gameObject.tag != "EnemyTeam" && hit.collider.gameObject.tag != "PlayerTeam" && phase == 0)
+                    {
+                        //when you click on a tile after clicking on a character (and you're not moving), it clicks off the character
+                        
+                        moving = false;
+                        characterScript.isMoving = false;
+                        characterScript.deselectCharacter();
+                        map.updateSelectedCharacter(null);
+                        map.currentPath = null;
+                        updateSelectedObject(null);
+                    }
                     //Checks if the returned object was a clickable tile, if so calling the map's MoveSelectedUnitTo function to begin moving the unit there
                     else if(selectedCharacter != null && hit.collider.gameObject.GetComponent<ClickableTile>() != null){
                         map.MoveSelectedUnitTo(hit.collider.gameObject.GetComponent<ClickableTile>().TileX, hit.collider.gameObject.GetComponent<ClickableTile>().TileY);
                     }
                 }
+                else if (targeting == true && characterScript.attackType == "Spell" && selectedCharacter.GetComponent<Hero_Character_Class>().selectedSpell.targeted == false){
+                    List<GameObject> targets = map.targetList;
+                    if (characterScript.castSpell(targets))
+                        {
+                            //Deselects the character as their turn is over
+                            updateSelectedObject(null);
+                            map.updateSelectedCharacter(null);
+                            stopTargeting();
+                        }
+                }
                 //Arrive here if the player is targeting a spell or attack and left-clicked
                 //Check if the returned object from the above raycast returned is tagged on the enemy team and is within the spell/attack's reach
-                else if (targeting == true && hit.collider.gameObject.tag == "EnemyTeam" && characterScript.withinReach(hit.collider.gameObject) == true)
+                else if (targeting == true && (hit.collider.gameObject.tag == "EnemyTeam" || hit.collider.gameObject.tag == "PlayerTeam" || hit.collider.gameObject.GetComponent<ClickableTile>() != null || hit.collider.gameObject.tag == "Wall") && characterScript.withinReach(hit.collider.gameObject) == true)
                 {
                     //Checks if the player is targeting an Attack
                     if (characterScript.attackType == "Attack")
@@ -129,6 +165,7 @@ public class GameControllerScript : MonoBehaviour
                             //Checks if the required amount of targets has been selected
                             if (selectedCharacter.GetComponent<Hero_Character_Class>().selectedSpell.amountOfTargets == targets.Count){
                                 //Tries to cast the spell by calling the castSpell function within the selected character's script
+                                UnityEngine.Debug.Log(targets[1]);
                                 if (characterScript.castSpell(targets))
                                 {
                                     //Deselects the character as their turn is over
@@ -151,7 +188,7 @@ public class GameControllerScript : MonoBehaviour
         }
         //Next three if statements are for deselection and cancelling of targeting for the current character
         //Executes if the player rightclicks while they have a character selected
-        if (Input.GetMouseButtonDown(1) && selectedCharacter != null && phase == 0)
+        if (Input.GetMouseButtonDown(1) && selectedCharacter != null && phase == 0  && map.moving == false)
         {
             //Runs all relevent deselection functions in the map and character script
             characterScript.deselectCharacter();
@@ -161,13 +198,13 @@ public class GameControllerScript : MonoBehaviour
             stopTargeting();
         }
         //Executes if the player presses the escape key while they are targeting a spell/attack
-        if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0 && targeting == true)
+        if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0 && targeting == true && map.moving == false)
         {
             //Stops the targeting but leaves the character selected
             stopTargeting();
         }
         //Executes if the player presses the escape key when they are not targeting a spell/attack
-        else if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0)
+        else if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0  && map.moving == false)
         {
             //Runs all relevent deselection functions in the map and character script
             stopTargeting();
@@ -186,13 +223,14 @@ public class GameControllerScript : MonoBehaviour
         Phase 4 --- Player Effect Phase, triggers all end of turn effects on the enemy units and advances their durations, triggers all start of turn effects on the player units
         Phase 5 --- Reset Phase, Resets the phase to 0 and starts a new round
         */
+        map.setPhase(phase);
         switch (phase)
         {
             //Player's turn
             case 0:
                 enemyCount = enemyTeamList.Count;
                 //If the player presses the enter key on their turn, it ends their turn
-                if (Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Return) || checkEndOfturn())
                 {
                     //End Turn Stuff
                     UnityEngine.Debug.Log("Switching to Phase 1");
@@ -235,6 +273,7 @@ public class GameControllerScript : MonoBehaviour
                     //Checks if an enemy is already being moved
                     if (movingEnemy == false)
                     {
+                        UnityEngine.Debug.Log("Here");
                         //Sets the selected character to the next enemy in the list of enemies
                         map.updateSelectedCharacter(enemyTeamList[enemiesToMove - 1]);
                         //Calls the takeTurn function within the Enemy Class for the enemy that needs to be moved
@@ -271,6 +310,16 @@ public class GameControllerScript : MonoBehaviour
                 round++;
                 phase = 0;
                 resetPlayerTeamTurns();
+                
+                //Resets the abilities for characters to move
+                for (int i = 0; i < playerTeamList.Count; i++) {
+                    playerTeamList[i].GetComponent<Basic_Character_Class>().hasWalked = false;
+                }
+
+                for (int i = 0; i < enemyTeamList.Count; i++) {
+                    enemyTeamList[i].GetComponent<Basic_Character_Class>().hasWalked = false;
+                }
+
                 break;
         }
     }
@@ -367,5 +416,13 @@ public class GameControllerScript : MonoBehaviour
             }
         }
     }
-
+    
+    private bool checkEndOfturn(){
+        for (int i = 0; i < playerTeamList.Count; i++){
+            if (playerTeamList[i].GetComponent<Basic_Character_Class>().turnEnded == false){
+                return false;
+            }
+        }
+        return true;
+    }
 }

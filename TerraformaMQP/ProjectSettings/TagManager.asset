@@ -7,11 +7,12 @@ TagManager:
   - CircleArrow
   - PlayerTeam
   - EnemyTeam
+  - Wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - BlockVisibility
   - Water
   - UI
   - 

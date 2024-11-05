@@ -13,6 +13,7 @@ public class TileEffect : ScriptableObject
     public ClickableTile tile; //A reference to the tile the effect is applied to
     public string name; //The name of the effect
     public bool playerTeam; //Whether the effect was applied by the player team or the enemy team. True if the player team, false if the enemy team
+    public int movementCostIncrease = 0; //Amount to increase the cost to move onto the tile by. If left at 0 doesn't have any effect
     public GameObject tileEffectPrefab; //Reference to the tileEffectPrefab
     
     //Reduces the duration of the effect by 1
@@ -23,6 +24,7 @@ public class TileEffect : ScriptableObject
             return true;
         }
         else{
+            duration--;
             tile.removeEffectFromTile(this);
             return false;
         }
@@ -103,6 +105,16 @@ public class tileEffectActions : MonoBehaviour
     //Virtual function that an effect can override to have an effect when a unit steps onto the tile
     public virtual void performStepOnEffect(ClickableTile tile){
         UnityEngine.Debug.Log("Performing stepped on effect");
+    }
+
+    //Virtual function that causes the effect to react with any effects already on the tile
+    public virtual void react(List<TileEffect> effectsOnTile, ClickableTile tile, TileEffect thisEffect){
+        UnityEngine.Debug.Log("Performing Reactions");
+    }
+
+    //Virtual function that causes an effect when the duration of an effect runs out
+    public virtual void endOfDurationEffect(ClickableTile tile){
+        UnityEngine.Debug.Log("Performing end of duration effect");
     }
 }
 

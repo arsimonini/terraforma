@@ -3759,6 +3759,9 @@ MonoBehaviour:
   tooFarVertical: 10
   gc: {fileID: 1356950529}
   map: {fileID: 1297737938}
+  target: {x: 0, y: 0, z: 0}
+  targetIndex: -1
+  lUnits: []
 --- !u!1001 &993967173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5285,6 +5288,7 @@ GameObject:
   - component: {fileID: 1297737937}
   - component: {fileID: 1297737938}
   - component: {fileID: 1297737939}
+  - component: {fileID: 1297737940}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -5399,11 +5403,16 @@ MonoBehaviour:
     tileVisualPrefab: {fileID: 5296307935300308040, guid: 74736fe0684ee464f96b181620a6b05b, type: 3}
     isWalkable: 0
     cost: 1
+  - name: Wold Wall
+    tileVisualPrefab: {fileID: 4609658174146669432, guid: a9ab7a73a56972e47b2dccd0e2ef533c, type: 3}
+    isWalkable: 0
+    cost: 1
   movingEnemy: 0
   moving: 0
   targetList: []
   mapCreated: 0
   circleArrowPrefab: {fileID: 3581929253024597637, guid: 2d1e38878fa5027489d87c4d02e8f416, type: 3}
+  phase: 0
 --- !u!114 &1297737939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5420,6 +5429,23 @@ MonoBehaviour:
   enemyTeamEffects: []
   playerTeamTileEffects: []
   enemyTeamTileEffects: []
+--- !u!114 &1297737940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297737936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04bcb6f59956c644ba0aafd07f555066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileEffects:
+  - {fileID: 11400000, guid: 172d136be4abc0741b5b34fd7f644684, type: 2}
+  - {fileID: 11400000, guid: ec44c757fe2dc4f4284eddc7fa48ab44, type: 2}
+  - {fileID: 11400000, guid: 360567a08a87f4d4887237cb0e4f1875, type: 2}
+  tilePrefabs: []
 --- !u!1001 &1299232839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5587,7 +5613,6 @@ MonoBehaviour:
   movingEnemy: 0
   enemyCount: 0
   enemiesToMove: 0
-  lockPlayer: 0
   targeting: 0
   selectedCharacter: {fileID: 0}
   characterScript: {fileID: 0}
@@ -6636,6 +6661,10 @@ PrefabInstance:
     - target: {fileID: 4609658174146669432, guid: f4c58aa48bf65439099745bb531160d3, type: 3}
       propertyPath: m_Name
       value: tileWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517994062004051254, guid: f4c58aa48bf65439099745bb531160d3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9558,8 +9587,16 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: movementSpeed.value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: maxHealth.moddedValue
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: movementSpeed.moddedValue
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7593733271122737829, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: Unit
@@ -9803,8 +9840,8 @@ MonoBehaviour:
     value: 0
     moddedValue: 0
   movementSpeed:
-    value: 0
-    moddedValue: 0
+    value: 5
+    moddedValue: 5
   resistence:
     value: 0
     moddedValue: 0
@@ -9829,7 +9866,6 @@ MonoBehaviour:
   attackReach: 1
   defaultReach: 1
   attackType: 
-  testEffect: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 7
   tileY: 2
@@ -9847,6 +9883,7 @@ MonoBehaviour:
   renderer: {fileID: 6107281361265875633}
   nameplate: {fileID: 35339768}
   np2: {fileID: 35339767}
+  hasWalked: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
