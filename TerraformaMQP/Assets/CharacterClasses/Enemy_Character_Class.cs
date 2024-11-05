@@ -26,13 +26,15 @@ public class Enemy_Character_Class : MonoBehaviour
             int tileX = hero.GetComponent<Basic_Character_Class>().tileX;
             int tileY = hero.GetComponent<Basic_Character_Class>().tileY;
             UnityEngine.Debug.Log("Hero: " + tileX + "," + tileY);
-            List<Node> path = this.gameObject.GetComponent<Basic_Character_Class>().map.generatePathTo(tileX, tileY);
+            List<Node> path = this.gameObject.GetComponent<Basic_Character_Class>().map.generatePathTo(tileX, tileY, false, true);
+            UnityEngine.Debug.Log("path steps: " + path.Count);
             if ((path != null) && (path.Count < minSteps)) {
                 minSteps = path.Count;
                 target = hero;
                 pathToTarget = path;
+                UnityEngine.Debug.Log("step count: " + path.Count);
             }
-            UnityEngine.Debug.Log("step count: " + path.Count);
+            
         }
         UnityEngine.Debug.Log("minsteps: " + minSteps);
 
@@ -47,14 +49,12 @@ public class Enemy_Character_Class : MonoBehaviour
             }
         }
 
-        //remove last from list (hero's position)
-        pathToTarget.RemoveAt(minSteps-1);
-        UnityEngine.Debug.Log("final dest: " + pathToTarget[minSteps-2].x + "," + pathToTarget[minSteps-2].y);
-
-        this.gameObject.GetComponent<Basic_Character_Class>().map.setRemainingSteps(this.gameObject.GetComponent<Basic_Character_Class>().movementSpeed.value);
         this.gameObject.GetComponent<Basic_Character_Class>().map.currentPath = pathToTarget;
         this.gameObject.GetComponent<Basic_Character_Class>().path = pathToTarget;
         //this.gameObject.GetComponent<Basic_Character_Class>().map.MoveSelectedUnitTo(pathToTarget[minSteps-2].x, pathToTarget[minSteps-2].y);
+
+
+        //if hero in range do damage
     }
 
 }

@@ -65,7 +65,6 @@ public class TileMap : MonoBehaviour
     public List<Node> visualPath = null; //A List of Nodes that is the path to the currently hovered tile, null if the unit isn't trying to move or if no unit is selected
     public GameObject circleArrowPrefab; //Reference to the arrowPrefab used to display the path
 
-    int remainingSteps = 0; //steps remaining before reaching movement limit
     public int phase = 0; //Checks to see whether it is the player's turn or not. ONLY make this match what GameController's saying about the phase
 
     //Upon level load begin creating the map
@@ -85,9 +84,9 @@ public class TileMap : MonoBehaviour
             //UnityEngine.Debug.Log(obj.name.GetType());
             if (Array.IndexOf(heroNames, obj.name) >= 0) {
                 heroes.Add(obj);
+                UnityEngine.Debug.Log("HERO FOUND: " + obj.name);
             }
         }
-
     }
 
     //Called when setting up the map
@@ -108,9 +107,6 @@ public class TileMap : MonoBehaviour
         {
             //Hides the path
             hidePath();
-        }
-        if (remainingSteps == 0) {
-            currentPath = null;
         }
 
         //Checks if the path isn't null, then checks if the path still has nodes left to traverse
@@ -158,7 +154,6 @@ public class TileMap : MonoBehaviour
                         currentPath.RemoveAt(0);
                         selectedUnitScript.updateCharStats();
                     }
-                    remainingSteps -= 1;
                 }
             }
             //If the current path has no nodes left, then the path has been fully traversed 
@@ -171,13 +166,6 @@ public class TileMap : MonoBehaviour
             }
         }     
 
-    }
-
-    public int getRemainingSteps() {
-        return remainingSteps;
-    }
-    public void setRemainingSteps(int steps) {
-        remainingSteps = steps;
     }
 
     //Used to manually generate a tile map by setting the tileTypes using a 2D array
@@ -347,7 +335,7 @@ public class TileMap : MonoBehaviour
                 else if (selectedUnitScript.charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
                 {
                     hidePath();
-                    remainingSteps = selectedUnitScript.movementSpeed.value;
+                    UnityEngine.Debug.Log("REMAINING STEPS: " + selectedUnitScript.movementSpeed.value);
                     generatePathTo(x, y);
                     UnityEngine.Debug.Log(currentPath.Count);
 
@@ -371,7 +359,7 @@ public class TileMap : MonoBehaviour
 
         return len;
     }
-    public List<Node> generatePathTo(int x, int y, bool visual = false){
+    public List<Node> generatePathTo(int x, int y, bool visual = false, bool ignoreTargetWalkable = false){
 
         if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
             currentPath = new List<Node>();
@@ -420,7 +408,7 @@ public class TileMap : MonoBehaviour
 
             foreach (Node n in u.neighbors){
 
-                float alt = dist[u] + costToEnterTile(n.x, n.y);
+                float alt = dist[u] + costToEnterTile(n.x, n.y, ignoreTargetWalkable);
                 if (alt < dist[n]){
                     dist[n] = alt;
                     prev[n] = u;
@@ -521,10 +509,12 @@ public class TileMap : MonoBehaviour
     // }
 
     
-    public float costToEnterTile(int x, int y) {
+    public float costToEnterTile(int x, int y, bool ignoreCanEnter = false) {
 
-        if (unitCanEnterTile(x, y) == false) {
-            return Mathf.Infinity;
+        if (!ignoreCanEnter) {
+            if (unitCanEnterTile(x, y) == false) {
+                return Mathf.Infinity;
+            }
         }
         int cost = clickableTiles[x, y].cost;
         if (cost <= 0){
