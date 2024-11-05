@@ -338,7 +338,6 @@ public class TileMap : MonoBehaviour
                 else if (selectedUnitScript.charSelected || selectedUnit.GetComponent<Enemy_Character_Class>())
                 {
                     hidePath();
-                    UnityEngine.Debug.Log("REMAINING STEPS: " + selectedUnitScript.movementSpeed.value);
                     generatePathTo(x, y);
                     UnityEngine.Debug.Log(currentPath.Count);
 
