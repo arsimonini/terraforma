@@ -160,6 +160,9 @@ public class TileMap : MonoBehaviour
             else
             {
                 //The moving variables are set to false and the currentPath becomes null
+                if (movingEnemy == true) {
+                    selectedUnit.GetComponent<Enemy_Character_Class>().attackTarget();
+                }
                 movingEnemy = false;
                 moving = false;
                 currentPath = null;
@@ -682,6 +685,12 @@ public class TileMap : MonoBehaviour
         int partialWidth = (width - 1) / 2;
         int storeWidth = partialWidth;
         GameObject newTile = tile.gameObject;
+
+        if (selectedUnit.GetComponent<Enemy_Character_Class>())
+        {
+            targetAllies = !targetAllies;
+            targetEnemies = !targetEnemies;
+        } 
 
         UnityEngine.Debug.Log(width);
         UnityEngine.Debug.Log(partialWidth);

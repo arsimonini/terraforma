@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Enemy_Character_Class : MonoBehaviour
 {
+    GameObject target = null;
+
     //Tells the enemy to take their turn ---SUBJECT TO CHANGES AS AI IS ADDED---
     public void takeTurn()
     {
@@ -15,12 +17,11 @@ public class Enemy_Character_Class : MonoBehaviour
         //Moves the unit to a random location by calling the map's MoveSelectedUnitTo function
         this.gameObject.GetComponent<Basic_Character_Class>().map.MoveSelectedUnitTo(rand.Next(1, 9), rand.Next(1, 9));
 
-
         //get list of all heroes in scene
         GameObject[] heroes = this.gameObject.GetComponent<Basic_Character_Class>().map.heroes.ToArray(); 
         int minSteps = 100;
-        GameObject target = null;
         List<Node> pathToTarget = null;
+        target = null;
 
         foreach (GameObject hero in heroes) {
             int tileX = hero.GetComponent<Basic_Character_Class>().tileX;
@@ -51,10 +52,21 @@ public class Enemy_Character_Class : MonoBehaviour
 
         this.gameObject.GetComponent<Basic_Character_Class>().map.currentPath = pathToTarget;
         this.gameObject.GetComponent<Basic_Character_Class>().path = pathToTarget;
-        //this.gameObject.GetComponent<Basic_Character_Class>().map.MoveSelectedUnitTo(pathToTarget[minSteps-2].x, pathToTarget[minSteps-2].y);
+        
+    }
 
-
+    public void attackTarget() {
         //if hero in range do damage
+        this.gameObject.GetComponent<Basic_Character_Class>().beginTargeting(this.gameObject.GetComponent<Basic_Character_Class>().attackReach);
+        UnityEngine.Debug.Log("ATTACK " + target.name + " MY SCARAB " + this.gameObject.GetComponent<Basic_Character_Class>().map.targetList.Count);
+        UnityEngine.Debug.Log("ATTACK WITHIN REACH? " + this.gameObject.GetComponent<Basic_Character_Class>().withinReach(target));
+        if (target != null && this.gameObject.GetComponent<Basic_Character_Class>().withinReach(target)) {
+            UnityEngine.Debug.Log("Target within reach");
+            this.gameObject.GetComponent<Basic_Character_Class>().attackCharacter(target, this.gameObject.GetComponent<Basic_Character_Class>().attack.moddedValue);
+        }
+
+        this.gameObject.GetComponent<Basic_Character_Class>().stopTargeting();
+        this.gameObject.GetComponent<Basic_Character_Class>().takeAction();
     }
 
 }

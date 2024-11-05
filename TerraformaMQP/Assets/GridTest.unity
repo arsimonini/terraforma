@@ -2889,7 +2889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1ce368d30174859b2e73e22c1119bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 960158208}
 --- !u!224 &769043880
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3571,7 +3570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1ce368d30174859b2e73e22c1119bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 960158208}
 --- !u!224 &872315004
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5404,6 +5402,7 @@ MonoBehaviour:
   selectedUnit: {fileID: 0}
   selectedUnitScript: {fileID: 0}
   tilemap: {fileID: 1390268382}
+  heroes: []
   tileTypes:
   - name: Grass
     tileVisualPrefab: {fileID: 5589415869077225197, guid: 0e3d7416a877b4d1792beb3be8aa77f9, type: 3}
@@ -10175,8 +10174,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5920988999625256665}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: attack.value
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: maxHealth.value
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: attack.moddedValue
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: movementSpeed.value
