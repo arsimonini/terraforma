@@ -165,7 +165,6 @@ public class GameControllerScript : MonoBehaviour
                             //Checks if the required amount of targets has been selected
                             if (selectedCharacter.GetComponent<Hero_Character_Class>().selectedSpell.amountOfTargets == targets.Count){
                                 //Tries to cast the spell by calling the castSpell function within the selected character's script
-                                UnityEngine.Debug.Log(targets[1]);
                                 if (characterScript.castSpell(targets))
                                 {
                                     //Deselects the character as their turn is over
