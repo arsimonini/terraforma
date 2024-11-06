@@ -982,7 +982,7 @@ public class TileMap : MonoBehaviour
         UnityEngine.Debug.Log("Display AOE");
         displayingAOE = true;
         aoeDisplayTiles = new List<GameObject>();
-        if (size == 0){
+        if (size == 0 && centerTile.gameObject.tag != "Wall"){
             aoeDisplayTiles.Add(centerTile.gameObject);
             centerTile.gameObject.transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = true;
             centerTile.gameObject.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = true;
