@@ -162,6 +162,12 @@ public class TileMap : MonoBehaviour
                         addTileEffect(x, y, selectedUnit);
                         //Removes the node the unit just travelled to from the path
                         currentPath.RemoveAt(0);
+
+                        if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile.Count > 0){
+                            for(int i = 0; i < clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile.Count; i++){
+                                clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile[i].tileEffectPrefab.GetComponent<tileEffectActions>().performStepOnEffect(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY]);
+                            }
+                        }
                         selectedUnitScript.updateCharStats();
                     }
                 }
