@@ -65,6 +65,8 @@ public class TileMap : MonoBehaviour
         {"tileWoldWall", 20}
     };
 
+    public int[] wallNums = {17,20};
+
     public string[] coverNames = {"tileWall", "tileWoldWall"};
 
     //Nodes along the path of shortest path
@@ -369,7 +371,7 @@ public class TileMap : MonoBehaviour
 
         return len;
     }
-    public List<Node> generatePathTo(int x, int y, bool visual = false, bool ignoreTargetWalkable = false, int startX = -1, int startY = -1){
+    public List<Node> generatePathTo(int x, int y, bool visual = false, bool ignoreTargetWalkable = false, int startX = -1, int startY = -1, bool noWalls = false, bool setCurrent = true){
 
         if (startX == -1) {
             if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
@@ -379,8 +381,12 @@ public class TileMap : MonoBehaviour
             }
         }
 
-        selectedUnitScript.path = null;
-        currentPath = null;
+        List<Node> currentPathTemp = null;
+
+        if (setCurrent) {
+            selectedUnitScript.path = null;
+            currentPath = null;
+        }
 
         Dictionary<Node, float> dist = new Dictionary<Node, float>();
         Dictionary<Node, Node> prev = new Dictionary<Node, Node>();
@@ -426,7 +432,7 @@ public class TileMap : MonoBehaviour
 
             foreach (Node n in u.neighbors){
 
-                float alt = dist[u] + costToEnterTile(n.x, n.y, ignoreTargetWalkable);
+                float alt = dist[u] + costToEnterTile(n.x, n.y, ignoreTargetWalkable, noWalls);
                 if (alt < dist[n]){
                     dist[n] = alt;
                     prev[n] = u;
@@ -437,36 +443,39 @@ public class TileMap : MonoBehaviour
             return null;
         }
 
-        currentPath = new List<Node>();
+        currentPathTemp = new List<Node>();
         Node curr = target;
 
         //step through current path and add it to chain
         while (curr != null){
-            currentPath.Add(curr);
+            currentPathTemp.Add(curr);
             curr = prev[curr];
         }
         
-        currentPath.Reverse();
+        currentPathTemp.Reverse();
 
-        UnityEngine.Debug.Log("Path Count: " + currentPath.Count);
+        UnityEngine.Debug.Log("Path Count: " + currentPathTemp.Count);
         UnityEngine.Debug.Log("Movement: " + selectedUnitScript.movementSpeed.moddedValue);
 
         if (selectedUnit != null) {
-            cutDownPath(selectedUnitScript.movementSpeed.moddedValue, false, currentPath);
+            cutDownPath(selectedUnitScript.movementSpeed.moddedValue, false, currentPathTemp);
         }
 
-        selectedUnitScript.path = currentPath;
-        //Disables them from walking again
-        if (currentPath != null && currentPath.Count > 1) {
-            selectedUnitScript.hasWalked = true;
+        if (setCurrent) {
+            currentPath = currentPathTemp;
+            selectedUnitScript.path = currentPath;
+            //Disables them from walking again
+            if (currentPath != null && currentPath.Count > 1) {
+                selectedUnitScript.hasWalked = true;
+            }
         }
 
-        return currentPath;
+        return currentPathTemp;
         //showPath();
     }
 
     //Despite its existing name, this does a little more than that
-    public void cutDownPath(int range, bool visual = false, List<Node> path = null, bool cutDown = true) {    //This is recursive, so do take that into consideration
+    public void cutDownPath(int range, bool visual = false, List<Node> path = null, bool cutDown = true, bool noWalls = false) {    //This is recursive, so do take that into consideration
         //List<Node> l = currentPath;
         //if (visual) l = visualPath;
         List<Node> l = path;
@@ -481,7 +490,7 @@ public class TileMap : MonoBehaviour
         for (int i = 1; i < l.Count; i++) {
             int nodeX = l[i].x;
             int nodeY = l[i].y;
-            lCutoff += costToEnterTile(nodeX,nodeY);
+            lCutoff += costToEnterTile(nodeX,nodeY, false, noWalls);
         }
 
 
@@ -527,7 +536,7 @@ public class TileMap : MonoBehaviour
     // }
 
     
-    public float costToEnterTile(int x, int y, bool ignoreCanEnter = false) {
+    public float costToEnterTile(int x, int y, bool ignoreCanEnter = false, bool noWalls = false) {
 
         if (!ignoreCanEnter) {
             if (unitCanEnterTile(x, y) == false) {
@@ -535,6 +544,10 @@ public class TileMap : MonoBehaviour
             }
         }
         int cost = clickableTiles[x, y].cost;
+        if (noWalls && Array.IndexOf(wallNums, tiles[x,y]) != -1) {
+            cost = 1;
+        }
+
         if (cost <= 0){
             cost = 1;
         }
