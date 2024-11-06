@@ -16,7 +16,7 @@ public class TileMap : MonoBehaviour
 
     public TileType[] tileTypes; //Array that contains a list of all the tiletypes
     public int[,] tiles; //2D array of integers, the integer values correspond with a TileType in the tileTypes array. Ex. a 0 in the tiles array corresponds with the tileGrass TileType in the tileTypes array
-    Node[,] graph; //2D array of Nodes that represent the map
+    public Node[,] graph; //2D array of Nodes that represent the map
     public ClickableTile[,] clickableTiles; //2D array that contains the instances of tiles contained within the map
 
     public bool movingEnemy = false; //Variable that checks if the map is currently moving an enemy, true if so
@@ -46,22 +46,26 @@ public class TileMap : MonoBehaviour
         {"tileGrass", 0},
         {"tileDirt", 1},
         {"tileMud", 2},
-        {"tileIce", 3},
-        {"tileStone", 4},
-        {"tileWoodPlank", 5},
-        {"tileDenseForest", 6},
-        {"tileLightForest", 7},
-        {"tileShallowWater", 8},
-        {"tileDeepWater", 9},
-        {"tileSand", 10},
-        {"tileGlass", 11},
-        {"tileMetal", 12},
-        {"tileAshen", 13},
-        {"tileMountain", 14},
-        {"tileHill", 15},
-        {"tileWall", 16},
-        {"tileWhiteVoid", 17}
+        {"tileLandIce", 3},
+        {"tileWaterIce", 4},
+        {"tileStone", 5},
+        {"tileWoodPlank", 6},
+        {"tileDenseForest", 7},
+        {"tileLightForest", 8},
+        {"tileShallowWater", 9},
+        {"tileDeepWater", 10},
+        {"tileSand", 11},
+        {"tileGlass", 12},
+        {"tileMetal", 13},
+        {"tileAshen", 14},
+        {"tileMountain", 15},
+        {"tileHill", 16},
+        {"tileWall", 17},
+        {"tileWhiteVoid", 18},
+        {"tileWoldWall", 20}
     };
+
+    public string[] coverNames = {"tileWall", "tileWoldWall"};
 
     //Nodes along the path of shortest path
     public List<Node> currentPath = null; //A List of Nodes that is the current path the selected unit is moving along, null if no unit is moving
@@ -365,12 +369,14 @@ public class TileMap : MonoBehaviour
 
         return len;
     }
-    public List<Node> generatePathTo(int x, int y, bool visual = false, bool ignoreTargetWalkable = false){
+    public List<Node> generatePathTo(int x, int y, bool visual = false, bool ignoreTargetWalkable = false, int startX = -1, int startY = -1){
 
-        if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
-            currentPath = new List<Node>();
-            selectedUnitScript.path = currentPath;
-            return null;
+        if (startX == -1) {
+            if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
+                currentPath = new List<Node>();
+                selectedUnitScript.path = currentPath;
+                return null;
+            }
         }
 
         selectedUnitScript.path = null;
@@ -378,7 +384,13 @@ public class TileMap : MonoBehaviour
 
         Dictionary<Node, float> dist = new Dictionary<Node, float>();
         Dictionary<Node, Node> prev = new Dictionary<Node, Node>();
-        Node source = graph[selectedUnitScript.tileX, selectedUnitScript.tileY];
+        Node source;
+        if (startX == -1) {
+            source = graph[selectedUnitScript.tileX, selectedUnitScript.tileY];
+        }
+        else {
+            source = graph[startX, startY];
+        }
         Node target = graph[x, y];
         dist[source] = 0;
         prev[source] = null;
