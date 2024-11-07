@@ -41,16 +41,19 @@ public class CamControl : MonoBehaviour
             //Vector3 forward = transform.forward;
             //Vector3 right = transform.right;
             checkRotation();
-
-            target = new Vector3(map.selectedUnit.transform.position.x,transform.position.y,map.selectedUnit.transform.position.z);
+            if (map.selectedUnit != null){
+                target = new Vector3(map.selectedUnit.transform.position.x,transform.position.y,map.selectedUnit.transform.position.z);
             
-            //if ((target.x != map.selectedUnit.x) && ())
+                //if ((target.x != map.selectedUnit.x) && ())
 
-            //float xChar = map.selectedUnit.transform.position.x;
-            //float zChar = map.selectedUnit.transform.position.z;
-            //easeToLocation(xChar,zChar);
-            target += -3*getForward();
-            easeToLocation(target.x,target.z);
+                //float xChar = map.selectedUnit.transform.position.x;
+                //float zChar = map.selectedUnit.transform.position.z;
+                //easeToLocation(xChar,zChar);
+                target += -3*getForward();
+                easeToLocation(target.x,target.z);
+            }
+
+
         } else if (map.selectedUnit != null) { //Unit is selected but isn't moving, restrict camera so that they are always within shot.
             checkRotation();
 
