@@ -190,6 +190,16 @@ public class TileMap : MonoBehaviour
         
     }
 
+    //checks if name of object is a valid tile, returns tile arr number
+    int checkTileName(string name) {
+        foreach(var nameKey in tileNames.Keys){
+            if (name.StartsWith(nameKey)) {
+                return tileNames[nameKey];
+            }
+        }
+        return -1;
+    }
+
     void GenerateMapData() {
         UnityEngine.Debug.Log(tilemap.GetUsedTilesCount());
 
@@ -203,7 +213,7 @@ public class TileMap : MonoBehaviour
 
         UnityEngine.Debug.Log(bounds[3]);
         foreach (Transform tile in allObj) {
-            if (tileNames.ContainsKey(tile.name)) {
+            if (checkTileName(tile.name) != -1) {
                 if (tile.position.x < bounds[0]) {
                     bounds[0] = tile.position.x;
                 }
@@ -239,17 +249,17 @@ public class TileMap : MonoBehaviour
         }
 
         foreach (Transform tile in allObj) {
-            if (tileNames.ContainsKey(tile.name)) {
+            if (checkTileName(tile.name) != -1) {
                 //UnityEngine.Debug.Log((int)(tile.position.x-xOffset) + "," + (int)(tile.position.z-yOffset));
                 int x = (int)(tile.position.x-xOffset);
                 int y = (int)(tile.position.z-yOffset);
-                tiles[x, y] = tileNames[tile.name];
+                tiles[x, y] = checkTileName(tile.name);
 
                 ClickableTile ct = tile.gameObject.GetComponent<ClickableTile>();
                 ct.TileX = x;//(int)tile.position.x;
                 ct.TileY = y;//(int)tile.position.z;
                 ct.map = this;
-                ct.isWalkable = tileTypes[tileNames[tile.name]].isWalkable;
+                ct.isWalkable = tileTypes[checkTileName(tile.name)].isWalkable;
                 clickableTiles[x, y] = ct;
 
                 UnityEngine.Debug.Log(clickableTiles[x, y].isWalkable);
