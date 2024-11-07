@@ -159,7 +159,6 @@ public class Enemy_Character_Class : MonoBehaviour
             basic.stopTargeting();
             basic.takeAction();
         }
-        findCover();
     }
 
 }
