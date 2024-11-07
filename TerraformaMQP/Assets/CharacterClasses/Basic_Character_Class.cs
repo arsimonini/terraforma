@@ -50,7 +50,8 @@ public class Basic_Character_Class : MonoBehaviour
     public List<Node> path = null; //The current path the character is travelling? ---NOT SURE WHY THIS IS HERE, NOT BEING USED AT ALL INSIDE THIS SCRIPT---
 
     public Camera camera; //Reference to the camera ---ALSO NOT SURE WHY THIS IS HERE, NOT BEING USED AT ALL INSIDE THIS SCRIPT---
-    public Renderer renderer; //Reference to the renderer that is attached to the GameObject
+    public SpriteRenderer renderer; //Reference to the renderer that is attached to the GameObject
+    //TODO NOTE FROM ANDREW: CHANGED RENDERER TO SPRITERENDERER
 
     public Nameplate nameplate;
     public GameObject np2;
@@ -83,6 +84,9 @@ public class Basic_Character_Class : MonoBehaviour
         //Set the tile to be unwalkable because there is a unit occupying it
         map.clickableTiles[tileX, tileY].isWalkable = false;
         //nameplate = transfrom.root.GetComponent<Nameplate>();
+
+
+        
     }
 
     void Update()
