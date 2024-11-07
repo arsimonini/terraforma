@@ -179,6 +179,7 @@ public class Basic_Character_Class : MonoBehaviour
 
     void checkHealth() {
         if (health <= 0){
+            map.heroes.Remove(gameObject);
             destroy();
         }
     }
