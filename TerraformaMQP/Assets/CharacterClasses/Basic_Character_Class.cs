@@ -131,8 +131,9 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of Physical Damage Taken
 
     public void takePhysicalDamage(int damage){
-        health = health - (damage - defense.moddedValue);
-        UnityEngine.Debug.Log("Took " +  (damage - defense.moddedValue) + " physical damage");
+        float mitigatedDamage = Mathf.Round((float)damage * (20f/(20f + (float)defense.moddedValue)));
+        health = health - (int)mitigatedDamage;
+        UnityEngine.Debug.Log("Took " +  mitigatedDamage + " physical damage");
         checkHealth();
         return;
     }
@@ -141,8 +142,9 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of Magic Damage Taken
 
     public void takeMagicDamage(int damage, string magicType){
-        health = health - (damage - resistence.moddedValue);
-        UnityEngine.Debug.Log("Took " + (damage - resistence.moddedValue) + " magic damage");
+        float mitigatedDamage = Mathf.Round((float)damage * (20f/(20f + (float)resistence.moddedValue)));
+        health = health - (int)mitigatedDamage;
+        UnityEngine.Debug.Log("Took " + mitigatedDamage + " magic damage");
         checkHealth();
     }
 
