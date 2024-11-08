@@ -50,7 +50,8 @@ public class Basic_Character_Class : MonoBehaviour
     public List<Node> path = null; //The current path the character is travelling? ---NOT SURE WHY THIS IS HERE, NOT BEING USED AT ALL INSIDE THIS SCRIPT---
 
     public Camera camera; //Reference to the camera ---ALSO NOT SURE WHY THIS IS HERE, NOT BEING USED AT ALL INSIDE THIS SCRIPT---
-    public Renderer renderer; //Reference to the renderer that is attached to the GameObject
+    public SpriteRenderer renderer; //Reference to the renderer that is attached to the GameObject
+    //TODO NOTE FROM ANDREW: CHANGED RENDERER TO SPRITERENDERER
 
     public Nameplate nameplate;
     public GameObject np2;
@@ -83,6 +84,9 @@ public class Basic_Character_Class : MonoBehaviour
         //Set the tile to be unwalkable because there is a unit occupying it
         map.clickableTiles[tileX, tileY].isWalkable = false;
         //nameplate = transfrom.root.GetComponent<Nameplate>();
+
+
+        
     }
 
     void Update()
@@ -127,8 +131,9 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of Physical Damage Taken
 
     public void takePhysicalDamage(int damage){
-        health = health - (damage - defense.moddedValue);
-        UnityEngine.Debug.Log("Took " +  (damage - defense.moddedValue) + " physical damage");
+        float mitigatedDamage = Mathf.Round((float)damage * (20f/(20f + (float)defense.moddedValue)));
+        health = health - (int)mitigatedDamage;
+        UnityEngine.Debug.Log("Took " +  mitigatedDamage + " physical damage");
         checkHealth();
         return;
     }
@@ -137,8 +142,9 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of Magic Damage Taken
 
     public void takeMagicDamage(int damage, string magicType){
-        health = health - (damage - resistence.moddedValue);
-        UnityEngine.Debug.Log("Took " + (damage - resistence.moddedValue) + " magic damage");
+        float mitigatedDamage = Mathf.Round((float)damage * (20f/(20f + (float)resistence.moddedValue)));
+        health = health - (int)mitigatedDamage;
+        UnityEngine.Debug.Log("Took " + mitigatedDamage + " magic damage");
         checkHealth();
     }
 
@@ -175,6 +181,7 @@ public class Basic_Character_Class : MonoBehaviour
 
     void checkHealth() {
         if (health <= 0){
+            map.heroes.Remove(gameObject);
             destroy();
         }
     }

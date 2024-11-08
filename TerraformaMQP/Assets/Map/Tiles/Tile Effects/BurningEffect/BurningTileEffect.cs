@@ -45,4 +45,8 @@ public class BurningTileEffect : tileEffectActions
                 break;
         }
     }
+
+    public override void performStepOnEffect(ClickableTile tile){
+        tile.characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(2, "Fire");
+    }
 }
