@@ -488,6 +488,26 @@ public class Basic_Character_Class : MonoBehaviour
         return true;
     }
 
+    //Called when player tries to physically attack a piece of terrain at a location, likely a Wold Wall
+    //Takes in the selected target and the type of damage to deal
+    //
+    public bool attackTile(int xPos, int yPox, int damageAmount)
+    {
+        //Calls the takePhysicalDamage function on the target, passing in the damage amount
+       
+        //Stops targeting
+        stopTargeting();
+        //Uses the action, and then checks if there are still actions remaining
+        if (takeAction() == false)
+        {
+            //The character still has at least one action
+            renderer.material.color = Color.red;
+            return false;
+        }
+        //The character has no actions left
+        return true;
+    }
+
     //Called when the player tries to cast a spell
     //Takes in a list of GameObjects as targets
     //Returns true if the character has no actions left after the spell, false if the character still has at least one action

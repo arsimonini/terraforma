@@ -5408,91 +5408,177 @@ MonoBehaviour:
   - name: Grass
     tileVisualPrefab: {fileID: 5589415869077225197, guid: 0e3d7416a877b4d1792beb3be8aa77f9, type: 3}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Dirt
     tileVisualPrefab: {fileID: 4609658174146669432, guid: 7a123d4087b294f409d1a05d686ae271, type: 3}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Mud
     tileVisualPrefab: {fileID: 313383055986497203, guid: 7c010d1b6cd8245d999a68a01481397e, type: 3}
     isWalkable: 1
+    isBreakable: 0
     cost: 2
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Land Ice
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Water Ice
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Stone
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Wood Plank
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Dense Forest
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Light Forest
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Shallow Water
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Deep Water
     tileVisualPrefab: {fileID: 0}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Sand
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Glass
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Metal
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Ashen
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Mountain
     tileVisualPrefab: {fileID: 0}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Hill
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Wall
     tileVisualPrefab: {fileID: 0}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: White Void
     tileVisualPrefab: {fileID: 0}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: tileFireGrass
     tileVisualPrefab: {fileID: 5296307935300308040, guid: 74736fe0684ee464f96b181620a6b05b, type: 3}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 20
   - name: Wold Wall
     tileVisualPrefab: {fileID: 4609658174146669432, guid: a9ab7a73a56972e47b2dccd0e2ef533c, type: 3}
     isWalkable: 0
+    isBreakable: 1
     cost: 1
+    breakBecome: 2
+    hp: 8
+    maxHp: 0
   movingEnemy: 0
   moving: 0
   targetList: []
   mapCreated: 0
+  aoeDisplayTiles: []
+  displayingAOE: 0
   moveButtonPressed: 0
   activelyMoving: 0
   circleArrowPrefab: {fileID: 3581929253024597637, guid: 2d1e38878fa5027489d87c4d02e8f416, type: 3}
@@ -10320,6 +10406,14 @@ PrefabInstance:
       propertyPath: spellList
       value: 
       objectReference: {fileID: 1469080465}
+    - target: {fileID: 8307509125131471017, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
+      propertyPath: movementSpeed.value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307509125131471017, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
+      propertyPath: movementSpeed.moddedValue
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8310715287971430493, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
       propertyPath: Unit
       value: 
@@ -10508,7 +10602,11 @@ MonoBehaviour:
     name: 
     tileVisualPrefab: {fileID: 0}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   tile: {fileID: 0}
   map: {fileID: 1297737938}
   targeting: 0

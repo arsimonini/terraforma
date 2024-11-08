@@ -123,12 +123,13 @@ MonoBehaviour:
   TileX: 0
   TileY: 0
   map: {fileID: 0}
-  isWalkable: 1
+  isWalkable: 0
   statsToEffect:
   - speed
   effectAmounts: feffffff
   characterOnTile: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  cost: 0
   effectsOnTile: []
 --- !u!1 &9069269853647289291
 GameObject:
@@ -142,9 +143,9 @@ GameObject:
   - component: {fileID: 5980904706126317804}
   - component: {fileID: 5297732616798431037}
   - component: {fileID: 8517994062004051254}
-  m_Layer: 3
+  m_Layer: 2
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

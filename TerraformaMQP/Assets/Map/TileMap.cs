@@ -59,7 +59,8 @@ public class TileMap : MonoBehaviour
         {"tileMountain", 14},
         {"tileHill", 15},
         {"tileWall", 16},
-        {"tileWhiteVoid", 17}
+        {"tileWhiteVoid", 17},
+        {"tileWoldWall", 20}
     };
 
     //Nodes along the path of shortest path
@@ -72,6 +73,7 @@ public class TileMap : MonoBehaviour
     //Upon level load begin creating the map
     void Start() {
         createMap();
+        //swapTiles(clickableTiles[1,1],20,false);
         mask = LayerMask.GetMask("BlockVisibility");
         //GenerateMapVisual();
     }
@@ -1097,7 +1099,12 @@ public class TileMap : MonoBehaviour
         moveButtonPressed = b;
     }
 
+    //Damages the tile at a position if it is damageable.
+    public void damageTile(int X, int Y, float damage) {
+        ClickableTile ct = clickableTiles[X,Y];
 
+        //return false;       
+    }
 }
 
 
