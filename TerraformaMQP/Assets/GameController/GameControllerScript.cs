@@ -29,7 +29,7 @@ public class GameControllerScript : MonoBehaviour
     private LayerMask mask;
 
     void Start(){
-        mask = LayerMask.GetMask("Default") | LayerMask.GetMask("BlockVisibility");
+        mask = LayerMask.GetMask("Default") | LayerMask.GetMask("BlockVisibility") | LayerMask.GetMask("UI");
     }
 
     void Update()
@@ -45,6 +45,9 @@ public class GameControllerScript : MonoBehaviour
         }
         if (characterScript != null && characterScript.isMoving){
             moving = true;
+        }
+        else {
+            moving = false;
         }
         if (characterScript != null && characterScript.charSelected == false && selectedCharacter.GetComponent<Enemy_Character_Class>() == null){
             map.updateSelectedCharacter(null);
@@ -110,13 +113,15 @@ public class GameControllerScript : MonoBehaviour
                     else if (selectedCharacter != null && hit.collider.gameObject.GetComponent<Basic_Character_Class>() == null && moving == false && hit.collider.gameObject.tag != "EnemyTeam" && hit.collider.gameObject.tag != "PlayerTeam" && phase == 0)
                     {
                         //when you click on a tile after clicking on a character (and you're not moving), it clicks off the character
-                        
-                        moving = false;
-                        characterScript.isMoving = false;
-                        characterScript.deselectCharacter();
-                        map.updateSelectedCharacter(null);
-                        map.currentPath = null;
-                        updateSelectedObject(null);
+                        if(hit.collider.gameObject.GetComponent<Billboard>() != null && hit.collider.gameObject.GetComponent<Billboard>().uiHover == false){
+                            moving = false;
+                            characterScript.isMoving = false;
+                            characterScript.deselectCharacter();
+                            map.updateSelectedCharacter(null);
+                            map.currentPath = null;
+                            updateSelectedObject(null);
+                        }
+
                     }
                     //Checks if the returned object was a clickable tile, if so calling the map's MoveSelectedUnitTo function to begin moving the unit there
                     else if(selectedCharacter != null && hit.collider.gameObject.GetComponent<ClickableTile>() != null){
