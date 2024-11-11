@@ -1,18 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-
-public class ManaBarUI : MonoBehaviour
-{
-    public Slider slider;
-
-    public void SetMaxMana(int mana) {
-        slider.maxValue = mana;
-        slider.value = mana;
-    }
-
-    public void SetMana(int mana) {
-        slider.value = mana;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e4847b00f48625637a61aa16849d39d82bb158bdde6f67d92bbd26ba9823db13
+size 350

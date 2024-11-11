@@ -1,18 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-
-public class HealthBarUI : MonoBehaviour
-{
-    public Slider slider;
-
-    public void SetMaxHealth(int health) {
-        slider.maxValue = health;
-        slider.value = health;
-    }
-
-    public void SetHealth(int health) {
-        slider.value = health;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:6f03304fdb674ac38be39e07851b4498eb944fbdc43db086a745566d589e22ea
+size 365

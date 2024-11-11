@@ -1,15 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Billboard : MonoBehaviour
-{
-
-    public Transform cam;
-
-    // Update is called once per frame
-    void LateUpdate()
-    {
-        transform.LookAt(transform.position + cam.forward);   
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:74b6870d4854e68420471408b6b5305b6bf53ef0f4d2958e19578b8a1cd4af7e
+size 287

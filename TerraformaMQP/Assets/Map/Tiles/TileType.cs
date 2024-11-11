@@ -1,20 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-
-[System.Serializable]
-public class TileType
-{
-    public string name; //Name of the TileType
-    public GameObject tileVisualPrefab; //A reference to the prefab asset
-    public bool isWalkable; //If the tile type is walkable or not
-
-    public int cost = 1; //The cost to walk through or step on the tile
-
-    void Start()
-    {
-
-    }
-
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b06201d41cdba140e62ed78f06bed6fabb4d5c23e4cbf88b40c29dac5c978577
+size 421

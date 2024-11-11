@@ -1,15 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SpriteBillboard : MonoBehaviour
-{
-
-    public Transform cam;
-
-    // Update is called once per frame
-    void LateUpdate()
-    {
-        transform.rotation = Quaternion.Euler(0f, Camera.main.transform.rotation.eulerAngles.y, 0f);   
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a3947770b57aa394bf781e0a8d11bcf8b088f051af4e365aa1d88f00e9c8e579
+size 334
