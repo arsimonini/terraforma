@@ -232,7 +232,7 @@ public class GameControllerScript : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Return) || checkEndOfturn())
                 {
                     //End Turn Stuff
-                    UnityEngine.Debug.Log("Switching to Phase 1");
+                    //UnityEngine.Debug.Log("Switching to Phase 1");
                     phase++;
                     //Checks if the player had a unit selected when ending their turn, executes if so
                     if (selectedCharacter != null)
@@ -252,7 +252,7 @@ public class GameControllerScript : MonoBehaviour
             case 1:
                 playerTeamEndOfTurnTileEffects();
                 statusEffectController.enemyTeamEffectsAdvance();
-                UnityEngine.Debug.Log("Switching to Phase 2");
+                //UnityEngine.Debug.Log("Switching to Phase 2");
                 enemyTeamStartOfTurnTileEffects();
                 enemyTeamList.RemoveAll(x => !x);
                 playerTeamList.RemoveAll(x => !x);
@@ -272,7 +272,7 @@ public class GameControllerScript : MonoBehaviour
                     //Checks if an enemy is already being moved
                     if (movingEnemy == false)
                     {
-                        UnityEngine.Debug.Log("Here");
+                        //UnityEngine.Debug.Log("Here");
                         //Sets the selected character to the next enemy in the list of enemies
                         map.updateSelectedCharacter(enemyTeamList[enemiesToMove - 1]);
                         //Calls the takeTurn function within the Enemy Class for the enemy that needs to be moved
@@ -305,7 +305,7 @@ public class GameControllerScript : MonoBehaviour
                 break;
             //Resets the phase to 0 and starts a new round
             case 5:
-                UnityEngine.Debug.Log("End of round " + round + ". Switching to phase 0");
+                //UnityEngine.Debug.Log("End of round " + round + ". Switching to phase 0");
                 round++;
                 phase = 0;
                 resetPlayerTeamTurns();

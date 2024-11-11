@@ -22,6 +22,10 @@ public class ClickableTile : MonoBehaviour
     public Color color; //The color of the tile
     public int cost;
 
+    public bool isBreakable = false;
+    public int hp = 10;
+    public int maxHp = 10;
+
     public List<TileEffect> effectsOnTile; //List of effects currently on the tile
     
     //Set the renderer and color variables upon level load
@@ -72,7 +76,7 @@ public class ClickableTile : MonoBehaviour
                 map.displayAOE("Spell", this, size: map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.AOEsize, square: map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.square, map.selectedUnitScript.tile);
             }
             else{
-                UnityEngine.Debug.Log("Here");
+                //UnityEngine.Debug.Log("Here");
                 map.displayAOE("Attack", this, size: 0);
             }
         }
