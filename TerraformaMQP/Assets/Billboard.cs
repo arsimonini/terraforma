@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Billboard : MonoBehaviour
+public class Billboard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
     public Transform cam;
@@ -16,12 +17,12 @@ public class Billboard : MonoBehaviour
         transform.LookAt(transform.position + cam.forward);   
     }
 
-    void OnMouseEnter() 
+    public void OnPointerEnter(PointerEventData data) 
     {
         uiHover = true;
     }
 
-    void OnMouseExit() {
+    public void OnPointerExit(PointerEventData data) {
         uiHover = false;
     }
     

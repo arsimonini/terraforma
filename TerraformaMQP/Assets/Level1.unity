@@ -33953,6 +33953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 960158208}
+  uiHover: 0
 --- !u!1 &7329593187684872872 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6279022746633800168, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
@@ -33971,6 +33972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 960158208}
+  uiHover: 0
 --- !u!1001 &7371227639451404204
 PrefabInstance:
   m_ObjectHideFlags: 0

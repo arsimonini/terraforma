@@ -113,7 +113,7 @@ public class GameControllerScript : MonoBehaviour
                     else if (selectedCharacter != null && hit.collider.gameObject.GetComponent<Basic_Character_Class>() == null && moving == false && hit.collider.gameObject.tag != "EnemyTeam" && hit.collider.gameObject.tag != "PlayerTeam" && phase == 0)
                     {
                         //when you click on a tile after clicking on a character (and you're not moving), it clicks off the character
-                        if(hit.collider.gameObject.GetComponent<Billboard>() != null && hit.collider.gameObject.GetComponent<Billboard>().uiHover == false){
+                        if(selectedCharacter.GetComponent<Basic_Character_Class>().atkMenu.GetComponent<Billboard>().uiHover == false){
                             moving = false;
                             characterScript.isMoving = false;
                             characterScript.deselectCharacter();
@@ -121,6 +121,7 @@ public class GameControllerScript : MonoBehaviour
                             map.currentPath = null;
                             updateSelectedObject(null);
                         }
+                        //selectedCharacter.gameObject.GetComponent<Basic_Character_Class>().atkMenu.GetComponent<Billboard>().uiHover
 
                     }
                     //Checks if the returned object was a clickable tile, if so calling the map's MoveSelectedUnitTo function to begin moving the unit there

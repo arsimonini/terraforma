@@ -617,7 +617,14 @@ public class Basic_Character_Class : MonoBehaviour
 
     public void displayAttackMenu(bool b)
     {
+
+        if(b == false && atkMenu.GetComponent<Billboard>() != null) {
+            atkMenu.GetComponent<Billboard>().uiHover = false;
+        }
+
+
         atkMenu.SetActive(b);
+
         if(turnEnded == true && b == true) {
             atkMenu.SetActive(false);
             if (spellList != null){
