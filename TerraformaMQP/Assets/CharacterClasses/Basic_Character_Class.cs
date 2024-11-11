@@ -478,9 +478,22 @@ public class Basic_Character_Class : MonoBehaviour
     public bool attackCharacter(GameObject target, int damageAmount)
     {
         //Calls the takePhysicalDamage function on the target, passing in the damage amount
-        if (target.GetComponent<Basic_Character_Class>() != null){
-            target.GetComponent<Basic_Character_Class>().takePhysicalDamage(damageAmount);
-            target.GetComponent<Basic_Character_Class>().updateCharStats();
+        Basic_Character_Class targetCharacter = target.GetComponent<Basic_Character_Class>();
+        if (targetCharacter != null){
+
+            if (checkAccuracy(targetCharacter.speed.moddedValue)) { //Attack Lands
+                if (checkCrit()) {
+                    targetCharacter.takePhysicalDamage(2*damageAmount); //Critical Hit!!!
+                    UnityEngine.Debug.Log("FAIR AND BALANCED");
+                } else {
+                    targetCharacter.takePhysicalDamage(damageAmount);
+                }
+
+                targetCharacter.updateCharStats();
+            } else { //Attack Misses
+                
+            }
+
         }
         //Stops targeting
         stopTargeting();
@@ -493,6 +506,32 @@ public class Basic_Character_Class : MonoBehaviour
         }
         //The character has no actions left
         return true;
+    }
+
+    //Checks whether the enemy will hit or dodge
+    public bool checkAccuracy(float speed) {
+        float acc = accuracy.moddedValue;
+        float cover = 0;
+
+		float scale = 2;
+		float foeScale = 2;
+		
+		//Calculates hit rate; should average around 80 without considering enemy evasion
+		int playerFormula = (int) (UnityEngine.Random.Range(0,100)-acc*scale);
+		int enemyFormula = (int) Math.Round(75-foeScale*(speed+cover));
+		
+		if (playerFormula < enemyFormula) return true;
+        
+        return false;
+    }
+
+    //Checks crit
+    public bool checkCrit() {
+        float crit = criticalChance.moddedValue;
+        int formula = (UnityEngine.Random.Range(0,20));
+
+        if (crit > formula) return true;
+        return false;
     }
 
     //Called when player tries to physically attack a piece of terrain at a location, likely a Wold Wall
