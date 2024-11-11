@@ -56,6 +56,11 @@ public class Hero_Character_Class : MonoBehaviour
                 //Stops picking a spell
                 pickingSpell = false;
             }
+            else if (Input.GetKeyDown(KeyCode.Alpha2)){
+                gameObject.GetComponent<Basic_Character_Class>().beginTargetingSpell(spellList[1].range, spellList[1]);
+                selectedSpell = spellList[1];
+                pickingSpell = false;
+            }
         }
         //If picking a spell and the escape key is pressed, the player stops picking a spell
         if (Input.GetKeyDown(KeyCode.Escape) && pickingSpell == true)
