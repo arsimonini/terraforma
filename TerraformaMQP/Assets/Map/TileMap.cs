@@ -167,7 +167,7 @@ public class TileMap : MonoBehaviour
                             for(int i = 0; i < clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile.Count; i++){
                                 clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile[i].tileEffectPrefab.GetComponent<tileEffectActions>().performStepOnEffect(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY]);
                             }
-                            if (selectedUnit != null){
+                            if (selectedUnit == null){
                                 movingEnemy = false;
                                 moving = false;
                                 currentPath = null;

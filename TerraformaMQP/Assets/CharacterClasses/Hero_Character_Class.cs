@@ -61,6 +61,11 @@ public class Hero_Character_Class : MonoBehaviour
                 selectedSpell = spellList[1];
                 pickingSpell = false;
             }
+            else if (Input.GetKeyDown(KeyCode.Alpha3)){
+                gameObject.GetComponent<Basic_Character_Class>().beginTargetingSpell(spellList[2].range, spellList[2]);
+                selectedSpell = spellList[2];
+                pickingSpell = false;
+            }
         }
         //If picking a spell and the escape key is pressed, the player stops picking a spell
         if (Input.GetKeyDown(KeyCode.Escape) && pickingSpell == true)
@@ -114,14 +119,14 @@ public class Hero_Character_Class : MonoBehaviour
     //Increases the character's magic value
     //Input - Amount of magic to increase by
 
-    void increaseMagic(int amount){
+    public void increaseMagic(int amount){
         magic.moddedValue += amount;
     }
 
     //Decreases the character's magic value
     //Input - Amount of magic to decrease by
 
-    void decreaseMagic(int amount){
+    public void decreaseMagic(int amount){
         magic.moddedValue -= amount;
     }
 

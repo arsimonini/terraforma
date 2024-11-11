@@ -26,7 +26,7 @@ public class Nameplate : MonoBehaviour
     }
 
     public void displayImage(Sprite sp) {
-        UnityEngine.Debug.Log("Setting Sprite");
+        //UnityEngine.Debug.Log("Setting Sprite");
         pic.sprite = sp;
     }
 
