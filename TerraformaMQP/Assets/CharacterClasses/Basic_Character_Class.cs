@@ -494,9 +494,13 @@ public class Basic_Character_Class : MonoBehaviour
             } else { //Attack Misses
                 
             }
-        } else if (targetTile != null && targetTile.isBreakable) {
+        } else if (targetTile != null && targetTile.isBreakable) { //Damage Tile
             targetTile.hp -= damageAmount;
             UnityEngine.Debug.Log("Tile Health: " + targetTile.hp);
+
+            if (targetTile.hp <= 0) {
+                targetTile.breakTile();
+            }
 
         }
         //Stops targeting

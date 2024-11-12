@@ -80,7 +80,7 @@ public class TileMap : MonoBehaviour
     void Start() {
         createMap();
         //GenerateMapVisual();
-        swapTiles(clickableTiles[1,2],20,true);
+        //swapTiles(clickableTiles[2,3],20,true);
         mask = LayerMask.GetMask("BlockVisibility");
         findHeroes();
     }
@@ -1145,6 +1145,7 @@ public class TileMap : MonoBehaviour
         newTile.map = this;
         newTile.TileX = previousTile.TileX;
         newTile.TileY = previousTile.TileY;
+        newTile.tileWas = tiles[previousTile.TileX,previousTile.TileY];
         //Sets the tile arrays in the map to contain the new tile
         tiles[previousTile.TileX, previousTile.TileY] = tileNumber;
         clickableTiles[previousTile.TileX, previousTile.TileY] = newTile;

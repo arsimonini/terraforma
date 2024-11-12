@@ -131,6 +131,8 @@ MonoBehaviour:
   characterOnTile: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   cost: 100
+  tileWas: 20
+  tileIs: 20
   isBreakable: 1
   hp: 10
   maxHp: 10

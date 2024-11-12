@@ -22,6 +22,9 @@ public class ClickableTile : MonoBehaviour
     public Color color; //The color of the tile
     public int cost;
 
+    public int tileWas = 0; //The tile type it used to be. Defaults to itself.
+    public int tileIs = 0;//The tile type it currently is. Defaults, again, to itself.
+
     public bool isBreakable = false;
     public int hp = 10;
     public int maxHp = 10;
@@ -197,4 +200,38 @@ public class ClickableTile : MonoBehaviour
         return -99;
     }
 
+    public void breakTile() {
+        if (!isBreakable) return;
+
+        switch (tileIs) {
+            default: //We're assuming Wold Wall by default
+                if (tileWas == 0 || tileWas == 1 || tileWas == 2 || tileWas == 3 || tileWas == 14) { //Grass, Dirt, Mud, Land Ice, Ashen -> Dirt
+                    map.swapTiles(map.clickableTiles[TileX,TileY],1,true);
+                } else if (tileWas == 4 || tileWas == 9) { //Shallow Water / Ice -> Shallow Water
+                    map.swapTiles(map.clickableTiles[TileX,TileY],9,true); 
+                } else { //Stone -> Stone, Sand -> Sand, other things shouldn't be in this condition anyways, so this also acts as a failsafe
+                    map.swapTiles(map.clickableTiles[TileX,TileY],tileWas,true); 
+                }
+
+            break;
+        }
+    }
+
+    /*
+grass -> dirt
+dirt -> dirt
+mud -> dirt
+land ice -> dirt
+water ice -> shallow water
+stone/rock -> stone/rock
+wood -> ???
+light forest -> x
+dense forest -> x
+shallow water -> shallow water
+deep water -> x
+sand -> sand
+glass -> x
+metal -> x
+ashen -> dirt
+    */
 }
