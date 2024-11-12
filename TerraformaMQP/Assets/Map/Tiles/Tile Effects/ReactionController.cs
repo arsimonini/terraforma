@@ -257,6 +257,9 @@ public class ReactionController : MonoBehaviour
         switch(damageType){
             case "Fire":
                 newEffect = Instantiate(tileEffects[0]);
+                GameObject newVisual = Instantiate(newEffect.tileEffectPrefab);
+                newEffect.tileEffectPrefab = newVisual;
+                newVisual.transform.position = new Vector3 (tile.transform.position.x, tile.transform.position.y + 0.52f, tile.transform.position.z);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
                 break;
 
@@ -289,6 +292,9 @@ public class ReactionController : MonoBehaviour
         switch(damageType){
             case "Fire":
                 newEffect = Instantiate(tileEffects[0]);
+                GameObject newVisual = Instantiate(newEffect.tileEffectPrefab);
+                newEffect.tileEffectPrefab = newVisual;
+                newVisual.transform.position = new Vector3 (tile.transform.position.x, tile.transform.position.y + 0.52f, tile.transform.position.z);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 1);
                 break;
 
