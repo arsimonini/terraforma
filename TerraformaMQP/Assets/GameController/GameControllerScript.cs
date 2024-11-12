@@ -272,7 +272,6 @@ public class GameControllerScript : MonoBehaviour
                     //Checks if an enemy is already being moved
                     if (movingEnemy == false)
                     {
-                        UnityEngine.Debug.Log("Here");
                         //Sets the selected character to the next enemy in the list of enemies
                         map.updateSelectedCharacter(enemyTeamList[enemiesToMove - 1]);
                         //Calls the takeTurn function within the Enemy Class for the enemy that needs to be moved
