@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: SearingWind
   m_EditorClassIdentifier: 
-  manaCost: 0
-  spellName: 
-  elementType: 
-  spellPrefab: {fileID: 0}
-  description: 
-  targeted: 0
-  range: 0
+  manaCost: 5
+  spellName: Searing Wind
+  elementType: Fire
+  spellPrefab: {fileID: 7446415652197001530, guid: 414009961424a25488daaa983dadadcc, type: 3}
+  description: Increase the duration of fire on a tile and cause it to spread to
+    the tile behind it
+  targeted: 1
+  range: 4
   targetTiles: 0
   targetAllies: 0
   target: {fileID: 0}
-  amountOfTargets: 0
+  amountOfTargets: 1
   requireDifferentTargets: 0
   targetEnemies: 0
   hitOwnTile: 0
@@ -30,8 +31,9 @@ MonoBehaviour:
   targetWalls: 0
   AOEsize: 0
   square: 0
-  hyperSpecificTargeting: 0
+  hyperSpecificTargeting: 1
   needSpecificTiles: 0
   specificTiles: []
-  needSpecificTileEffects: 0
-  specificTileEffects: []
+  needSpecificTileEffects: 1
+  specificTileEffects:
+  - Burning
