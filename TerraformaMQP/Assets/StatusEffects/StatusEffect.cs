@@ -81,7 +81,9 @@ public class StatusEffect : ScriptableObject
             else
             {
                 //Removes the effect from the selectedObject
-                selectedObject.GetComponent<Basic_Character_Class>().removeStatus(this, false);
+                if (selectedObject != null){
+                    selectedObject.GetComponent<Basic_Character_Class>().removeStatus(this, false);
+                }
                 return false;
             }
     }

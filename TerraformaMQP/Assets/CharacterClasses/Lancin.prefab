@@ -170,12 +170,16 @@ MonoBehaviour:
   tile: {fileID: 0}
   map: {fileID: 0}
   targeting: 0
+  isMoving: 0
   charSelected: 0
   charHover: 0
   camera: {fileID: 0}
   renderer: {fileID: 2046855266562885014}
   nameplate: {fileID: 0}
   np2: {fileID: 0}
+  atkMenu: {fileID: 0}
+  spellList: {fileID: 0}
+  hasWalked: 0
 --- !u!114 &7585430571080152534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,3 +216,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellList:
   - {fileID: 11400000, guid: c92a33e8dd119c44482b3bbbd2291f7c, type: 2}
+  - {fileID: 11400000, guid: 2bd81b36d673f2a4cb7acb0c27382ca7, type: 2}
+  - {fileID: 11400000, guid: 4f6ee2a8730fa3b4b8ea34c24b4e2b6c, type: 2}
