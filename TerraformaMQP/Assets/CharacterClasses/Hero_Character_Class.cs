@@ -92,7 +92,7 @@ public class Hero_Character_Class : MonoBehaviour
     //Checks if there is enough mana for an ability to be used
     //Output - Returns True is there is, False if there is not
 
-    bool enoughMana(int amount){
+    public bool enoughMana(int amount){
         if (mana - amount >= 0)
         {
             return true;
