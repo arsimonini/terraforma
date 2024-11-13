@@ -321,6 +321,8 @@ public class GameControllerScript : MonoBehaviour
 
                 break;
         }
+
+        
     }
 
     //Can be called with unit to set the selectedCharacter variables and characterScript variables.

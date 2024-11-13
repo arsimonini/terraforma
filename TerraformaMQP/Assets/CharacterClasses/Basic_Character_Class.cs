@@ -126,11 +126,9 @@ public class Basic_Character_Class : MonoBehaviour
         }
 
 
-        if(spellListIsUp == false) {
+        if(spellListIsUp == false && charSelected == true && this.gameObject.GetComponent<Hero_Character_Class>() == true) {
 
-            UnityEngine.Debug.Log("PLEASE HELP ME");
-
-
+            //UnityEngine.Debug.Log("PLEASE HELP ME");
 
             GameObject t = GameObject.Find("SpellDescCanvas(Clone)");
             Destroy(t);
