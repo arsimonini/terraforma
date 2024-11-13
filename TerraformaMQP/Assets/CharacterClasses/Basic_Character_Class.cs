@@ -814,6 +814,15 @@ public class Basic_Character_Class : MonoBehaviour
         displaySpellList(true);
     }
 
+    public void spellButtonUI(int i) {
+        if(this.gameObject.GetComponent<Hero_Character_Class>().enoughMana(this.gameObject.GetComponent<Hero_Character_Class>().spellList[i].manaCost) == true) {
+            this.gameObject.GetComponent<Hero_Character_Class>().selectedSpell = this.gameObject.GetComponent<Hero_Character_Class>().spellList[i];
+            beginTargetingSpell(this.gameObject.GetComponent<Hero_Character_Class>().spellList[i].range, this.gameObject.GetComponent<Hero_Character_Class>().spellList[i]);
+            displaySpellList(false);
+            displayAttackMenu(false);
+        }
+    }
+
     public void updateCharStats() {
         //Sets the values of the nameplate
         nameplate.displayName(name);

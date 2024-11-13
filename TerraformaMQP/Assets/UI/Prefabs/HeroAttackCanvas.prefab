@@ -2060,6 +2060,7 @@ GameObject:
   - component: {fileID: 7383254995779752938}
   - component: {fileID: 9071515870018613477}
   - component: {fileID: 4384560478976465204}
+  - component: {fileID: 7489113166128811884}
   m_Layer: 5
   m_Name: Spell (1)
   m_TagString: Untagged
@@ -2171,6 +2172,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7489113166128811884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3404171912553769225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
 --- !u!1 &3408576355911191536
 GameObject:
   m_ObjectHideFlags: 0
@@ -3254,6 +3268,7 @@ GameObject:
   - component: {fileID: 7072208902113894139}
   - component: {fileID: 1958796688394247839}
   - component: {fileID: 8096505105762678217}
+  - component: {fileID: 4334625206511751578}
   m_Layer: 5
   m_Name: Spell
   m_TagString: Untagged
@@ -3365,6 +3380,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4334625206511751578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868454430415914133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UISpellDesc: {fileID: 0}
 --- !u!1 &5954776696348854551
 GameObject:
   m_ObjectHideFlags: 0
@@ -3745,7 +3773,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6279022746633800168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff1ce368d30174859b2e73e22c1119bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bf2631d034744c8abf3e22d0bd9c24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
