@@ -389,6 +389,12 @@ public class Basic_Character_Class : MonoBehaviour
                     increaseTotalActions(effect.amount[i]);
                     break;
 
+                case "magic":
+                    if (this.gameObject.GetComponent<Hero_Character_Class>()){
+                        this.gameObject.GetComponent<Hero_Character_Class>().increaseMagic(effect.amount[i]);
+                    }
+                    break;
+
             }
         }
         //Checks if the effect came from a tile or a different source
@@ -460,6 +466,12 @@ public class Basic_Character_Class : MonoBehaviour
 
                 case "totalActions":
                     decreaseTotalActions(effect.amount[i]);
+                    break;
+                
+                case "magic":
+                    if (this.gameObject.GetComponent<Hero_Character_Class>()){
+                        this.gameObject.GetComponent<Hero_Character_Class>().decreaseMagic(effect.amount[i]);
+                    }
                     break;
 
             }

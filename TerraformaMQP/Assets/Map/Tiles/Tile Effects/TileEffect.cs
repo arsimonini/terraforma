@@ -26,6 +26,7 @@ public class TileEffect : ScriptableObject
         else{
             duration--;
             tile.removeEffectFromTile(this);
+            Destroy(tileEffectPrefab);
             return false;
         }
     }

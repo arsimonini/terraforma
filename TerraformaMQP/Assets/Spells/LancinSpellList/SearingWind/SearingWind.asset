@@ -10,29 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
-  m_Name: Fireball
+  m_Name: SearingWind
   m_EditorClassIdentifier: 
-  manaCost: 10
-  spellName: Fireball
+  manaCost: 5
+  spellName: Searing Wind
   elementType: Fire
-  spellPrefab: {fileID: 2394175536890139692, guid: ee9334e422503c840bb34dfedfb5be70, type: 3}
-  description: Apply Fire to a 3x3 square and deal {m} Fire damage to enemies caught
-    in the blast
+  spellPrefab: {fileID: 7446415652197001530, guid: 414009961424a25488daaa983dadadcc, type: 3}
+  description: Increase the duration of fire on a tile and cause it to spread to
+    the tile behind it
   targeted: 1
   range: 4
-  targetTiles: 1
+  targetTiles: 0
   targetAllies: 0
   target: {fileID: 0}
   amountOfTargets: 1
-  requireDifferentTargets: 1
+  requireDifferentTargets: 0
   targetEnemies: 0
   hitOwnTile: 0
   hitSelf: 0
-  targetWalls: 1
-  AOEsize: 1
-  square: 1
-  hyperSpecificTargeting: 0
+  targetWalls: 0
+  AOEsize: 0
+  square: 0
+  hyperSpecificTargeting: 1
   needSpecificTiles: 0
   specificTiles: []
-  needSpecificTileEffects: 0
-  specificTileEffects: []
+  needSpecificTileEffects: 1
+  specificTileEffects:
+  - Burning
