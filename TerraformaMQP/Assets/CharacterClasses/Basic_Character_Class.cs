@@ -85,7 +85,6 @@ public class Basic_Character_Class : MonoBehaviour
         map.clickableTiles[tileX, tileY].isWalkable = false;
         //nameplate = transfrom.root.GetComponent<Nameplate>();
 
-
         
     }
 
@@ -630,13 +629,18 @@ public class Basic_Character_Class : MonoBehaviour
 
     public void displayAttackMenu(bool b)
     {
-        if (atkMenu != null){
-            atkMenu.SetActive(b);
-            if(turnEnded == true && b == true) {
-                atkMenu.SetActive(false);
-                if (spellList != null){
-                    spellList.SetActive(false);
-                }
+
+        if(b == false && atkMenu.GetComponent<Billboard>() != null) {
+            atkMenu.GetComponent<Billboard>().uiHover = false;
+        }
+
+
+        atkMenu.SetActive(b);
+
+        if(turnEnded == true && b == true) {
+            atkMenu.SetActive(false);
+            if (spellList != null){
+                spellList.SetActive(false);
             }
         }
     }
@@ -671,7 +675,7 @@ public class Basic_Character_Class : MonoBehaviour
             //if unit is not selected, display a nameplate
             displayNameplate(true);
         }
-        UnityEngine.Debug.Log("Mouse Entered");
+        //UnityEngine.Debug.Log("Mouse Entered");
         //Set the hover variable to true
         charHover = true;
 
@@ -707,7 +711,7 @@ public class Basic_Character_Class : MonoBehaviour
         }
         //Set the hover variable to false
         charHover = false;
-        UnityEngine.Debug.Log("Mouse Exited");
+        //UnityEngine.Debug.Log("Mouse Exited");
 
         tile.OnMouseExit();
     }
@@ -813,18 +817,21 @@ public class Basic_Character_Class : MonoBehaviour
     }
 
     public void moveButtonUI() {
+    UnityEngine.Debug.Log("Move is Clicked");
         map.setMoveButtonPressed(true);
         displayAttackMenu(false);
         isMoving = true;
     }
 
     public void attackButtonUI() {
+        UnityEngine.Debug.Log("Attack is Clicked");
         attackType = "Attack";
         displayAttackMenu(false);
         beginTargeting(attackReach);
     }
 
     public void magicButtonUI() {
+        UnityEngine.Debug.Log("Magic is Clicked");
         displaySpellList(true);
     }
 
