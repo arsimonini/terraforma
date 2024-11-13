@@ -125,11 +125,11 @@ MonoBehaviour:
   map: {fileID: 0}
   isWalkable: 1
   statsToEffect:
-  - attack
-  effectAmounts: 05000000
+  - speed
+  effectAmounts: 02000000
   characterOnTile: {fileID: 0}
-  color: {r: 1, g: 0, b: 0, a: 0}
-  cost: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+  cost: 1
   effectsOnTile: []
 --- !u!1001 &2315922952409446876
 PrefabInstance:

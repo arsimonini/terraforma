@@ -18847,7 +18847,7 @@ MonoBehaviour:
     isWalkable: 1
     cost: 1
   - name: Light Forest
-    tileVisualPrefab: {fileID: 0}
+    tileVisualPrefab: {fileID: 5296307935300308040, guid: d60c68c33fe7f40b795fa968839add81, type: 3}
     isWalkable: 1
     cost: 1
   - name: Shallow Water
