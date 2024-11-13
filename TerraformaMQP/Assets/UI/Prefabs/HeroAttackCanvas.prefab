@@ -3839,7 +3839,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7375472305537389770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3870,6 +3870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+  uiHover: 0
 --- !u!114 &2884631016090133442
 MonoBehaviour:
   m_ObjectHideFlags: 0

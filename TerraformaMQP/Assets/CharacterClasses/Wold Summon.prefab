@@ -126,9 +126,10 @@ MonoBehaviour:
   renderer: {fileID: 3434780674799459154}
   nameplate: {fileID: 0}
   np2: {fileID: 0}
-  atkMenu: {fileID: 0}
-  spellList: {fileID: 0}
+  atkMenu: {fileID: 4200577507287227711}
+  spellList: {fileID: 2665985302958401928}
   hasWalked: 0
+  spellListIsUp: 0
 --- !u!212 &3434780674799459154
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b3f8aaa1c730f4bfbaa957aaf5295aef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6eb465c820405440d88f4f812f57fabc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -330,6 +331,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4074691919379839622}
   m_SourcePrefab: {fileID: 100100000, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
+--- !u!1 &2665985302958401928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2043697001693507432, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
+  m_PrefabInstance: {fileID: 4081334498913388256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4200577507287227711 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 209596495226100703, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
@@ -348,6 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+  uiHover: 0
 --- !u!224 &7899925118088887545 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6125454115303078425, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
