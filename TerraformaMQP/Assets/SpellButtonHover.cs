@@ -29,7 +29,7 @@ public class SpellButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
     void Start()
     {
         //UISpellDesc.GetComponent<Canvas>().worldCamera = GameObject.Find("UI Camera").GetComponent<Camera>();
-        //UISpellDesc.GetComponent<Canvas>().GetComponent<Billboard>().cam = GameObject.Find("UI Camera").GetComponent<Camera>();
+        UISpellDesc.GetComponent<Canvas>().GetComponent<Billboard>().cam = GameObject.Find("UI Camera").GetComponent<Camera>().transform;
         SN.text = GetComponentInParent<Hero_Character_Class>().spellList[spellNum].spellName;
         MC.text = GetComponentInParent<Hero_Character_Class>().spellList[spellNum].manaCost.ToString();
         SD.text = GetComponentInParent<Hero_Character_Class>().spellList[spellNum].description;
