@@ -217,6 +217,32 @@ public class ClickableTile : MonoBehaviour
         }
     }
 
+    public bool canBecomeWoldWall() {
+        switch (tileIs) {
+            case 0: return true; break;
+            case 1: return true; break;
+            case 2: return true; break;
+            case 3: return true; break;
+            case 4: return true; break;
+            case 5: return true; break;
+            case 6: return false; break;
+            case 7: return false; break;
+            case 8: return false; break;
+            case 9: return true; break;
+            case 10: return false; break;
+            case 11: return true; break;
+            case 12: return false; break;
+            case 13: return false; break;
+            case 14: return true; break;
+            case 15: return false; break;
+            case 16: return false; break;
+            case 17: return false; break;
+            case 18: return false; break;
+            case 19: return true; break;
+            case 20: return false; break;
+            default: return true; break;
+        }
+    }
     /*
 grass -> dirt
 dirt -> dirt
