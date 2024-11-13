@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: SearingWind
   m_EditorClassIdentifier: 
   manaCost: 0
-  spellName: 
+  spellName: Searing Wind
   elementType: 
-  spellPrefab: {fileID: 0}
-  description: 
+  spellPrefab: {fileID: 7446415652197001530, guid: 414009961424a25488daaa983dadadcc, type: 3}
+  description: Put Other Stuff Here
   targeted: 0
   range: 0
   targetTiles: 0

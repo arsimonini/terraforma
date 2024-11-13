@@ -60,6 +60,8 @@ public class Basic_Character_Class : MonoBehaviour
     public GameObject spellList;
     
     public bool hasWalked = false;
+    public bool spellListIsUp = false;
+
 
 
 
@@ -84,8 +86,6 @@ public class Basic_Character_Class : MonoBehaviour
         //Set the tile to be unwalkable because there is a unit occupying it
         map.clickableTiles[tileX, tileY].isWalkable = false;
         //nameplate = transfrom.root.GetComponent<Nameplate>();
-
-
         
     }
 
@@ -123,6 +123,17 @@ public class Basic_Character_Class : MonoBehaviour
 
         if(this.gameObject.tag == "EnemyTeam") {
             //updateCharStats();
+        }
+
+
+        if(spellListIsUp == false) {
+
+            UnityEngine.Debug.Log("PLEASE HELP ME");
+
+
+
+            GameObject t = GameObject.Find("SpellDescCanvas(Clone)");
+            Destroy(t);
         }
         
     }
@@ -630,11 +641,19 @@ public class Basic_Character_Class : MonoBehaviour
     public void displaySpellList(bool b)
     {
         if (spellList != null){
-            spellList.SetActive(b);
+            if(b == true) {
+                spellList.SetActive(b);
+                spellListIsUp = true;
+            }
+            else if (b == false) {
+                spellList.SetActive(b);
+                spellListIsUp = false;
+            }
         }
         if(turnEnded == true && b == true) {
             if (spellList != null){
                 spellList.SetActive(false);
+                spellListIsUp = false;
             }
             atkMenu.SetActive(false);
         }
@@ -850,7 +869,6 @@ public class Basic_Character_Class : MonoBehaviour
             nameplate.displayMagicArea(false);
         }
     }
-    
 
 
 
