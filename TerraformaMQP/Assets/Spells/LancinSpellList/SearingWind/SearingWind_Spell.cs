@@ -18,6 +18,8 @@ public class SearingWind_Spell : MonoBehaviour, Cast_Spell
         TileMap map = casterTile.map;
         ReactionController reactController = map.gameObject.GetComponent<ReactionController>();
 
+        reactController.checkReaction(targetTile, caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+
         switch (map.checkDirection(casterTile.gameObject.transform.position, targetTile.gameObject.transform.position, targetTile)){
             case "Right":
                 reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);

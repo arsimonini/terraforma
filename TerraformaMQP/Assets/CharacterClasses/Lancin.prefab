@@ -217,3 +217,4 @@ MonoBehaviour:
   spellList:
   - {fileID: 11400000, guid: c92a33e8dd119c44482b3bbbd2291f7c, type: 2}
   - {fileID: 11400000, guid: 2bd81b36d673f2a4cb7acb0c27382ca7, type: 2}
+  - {fileID: 11400000, guid: 4f6ee2a8730fa3b4b8ea34c24b4e2b6c, type: 2}

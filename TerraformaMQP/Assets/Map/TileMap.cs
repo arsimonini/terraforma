@@ -166,15 +166,16 @@ public class TileMap : MonoBehaviour
                         if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile.Count > 0){
                             for(int i = 0; i < clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile.Count; i++){
                                 clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile[i].tileEffectPrefab.GetComponent<tileEffectActions>().performStepOnEffect(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY]);
-                            }
-                            if (selectedUnit != null){
-                                movingEnemy = false;
-                                moving = false;
-                                currentPath = null;
+                                UnityEngine.Debug.Log(selectedUnit);
                             }
                         }
                         selectedUnitScript.updateCharStats();
                     }
+                }
+                else {
+                    movingEnemy = false;
+                    moving = false;
+                    currentPath = null;
                 }
             }
             //If the current path has no nodes left, then the path has been fully traversed 

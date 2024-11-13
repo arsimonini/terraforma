@@ -68,10 +68,10 @@ public class ClickableTile : MonoBehaviour
         }
 
         if (map.selectedUnitScript != null && map.selectedUnitScript.targeting && map.targetList.Contains(this.gameObject) || (characterOnTile != null && map.targetList.Contains(characterOnTile))){
-            if (map.selectedUnitScript.attackType == "Spell"){
+            if (map.selectedUnitScript.attackType == "Spell" && map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.targeted == true){
                 map.displayAOE("Spell", this, size: map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.AOEsize, square: map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.square, map.selectedUnitScript.tile);
             }
-            else{
+            else if (map.selectedUnitScript.attackType == "Attack"){
                 UnityEngine.Debug.Log("Here");
                 map.displayAOE("Attack", this, size: 0);
             }

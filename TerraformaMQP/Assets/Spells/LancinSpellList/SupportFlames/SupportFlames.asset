@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
-  m_Name: SearingWind
-  m_EditorClassIdentifier:
+  m_Name: SupportFlames
+  m_EditorClassIdentifier: 
   manaCost: 5
-  spellName: Searing Wind
+  spellName: Support Flames
   elementType: Fire
-  spellPrefab: {fileID: 7446415652197001530, guid: 414009961424a25488daaa983dadadcc, type: 3}
-  description: Increase the duration of fire on a tile and cause it to spread to
-    the tile behind it
-  targeted: 1
-  range: 4
+  spellPrefab: {fileID: 1009746080516193270, guid: a264048be27bf88428fac8eca7ef95c7, type: 3}
+  description: Increase the Magic, Attack, and Speed stats of all characters standing
+    on Burning tiles in range by 2
+  targeted: 0
+  range: 3
   targetTiles: 0
   targetAllies: 0
   target: {fileID: 0}
-  amountOfTargets: 1
+  amountOfTargets: 0
   requireDifferentTargets: 0
   targetEnemies: 0
   hitOwnTile: 0
