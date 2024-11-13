@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3352410986930010922}
   - component: {fileID: 2015180818333459478}
   m_Layer: 0
-  m_Name: Lancin
+  m_Name: Wold
   m_TagString: PlayerTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,33 +74,33 @@ MonoBehaviour:
   turnEnded: 0
   effects: []
   tileEffect: {fileID: 0}
-  name: Lancin Bermane
-  char_img: {fileID: 21300000, guid: 8d40b31ee7e0f4d0a8f2ff5db21c443e, type: 3}
-  health: 20
+  name: Wold Wold
+  char_img: {fileID: 21300000, guid: 42f53c59de0d144f0bf8fbfdac5d7cb7, type: 3}
+  health: 22
   maxHealth:
-    value: 20
-    moddedValue: 20
+    value: 22
+    moddedValue: 22
   attack:
-    value: 5
-    moddedValue: 5
+    value: 4
+    moddedValue: 4
   movementSpeed:
-    value: 5
-    moddedValue: 5
+    value: 4
+    moddedValue: 4
   resistence:
-    value: 4
-    moddedValue: 4
+    value: 6
+    moddedValue: 6
   defense:
-    value: 4
-    moddedValue: 4
+    value: 6
+    moddedValue: 6
   speed:
+    value: 2
+    moddedValue: 2
+  criticalChance:
+    value: 2
+    moddedValue: 2
+  accuracy:
     value: 3
     moddedValue: 3
-  criticalChance:
-    value: 1
-    moddedValue: 1
-  accuracy:
-    value: 4
-    moddedValue: 4
   actionsLeft:
     value: 1
     moddedValue: 1
@@ -128,8 +128,8 @@ MonoBehaviour:
   renderer: {fileID: 3352410986930010922}
   nameplate: {fileID: 0}
   np2: {fileID: 0}
-  atkMenu: {fileID: 4310487430304140754}
-  spellList: {fileID: 1070278616635177142}
+  atkMenu: {fileID: 0}
+  spellList: {fileID: 0}
   hasWalked: 0
 --- !u!114 &7585430571080152534
 MonoBehaviour:
@@ -143,13 +143,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f240c9c904af85a47902bf15d2327347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mana: 20
+  mana: 25
   maxMana:
-    value: 20
-    moddedValue: 20
+    value: 25
+    moddedValue: 25
   magic:
-    value: 6
-    moddedValue: 6
+    value: 2
+    moddedValue: 2
   pickingSpell: 0
   spellList: []
   selectedSpell: {fileID: 0}
@@ -165,10 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60060481a77192648a64793a574fd2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellList:
-  - {fileID: 11400000, guid: c92a33e8dd119c44482b3bbbd2291f7c, type: 2}
-  - {fileID: 11400000, guid: 2bd81b36d673f2a4cb7acb0c27382ca7, type: 2}
-  - {fileID: 11400000, guid: 4f6ee2a8730fa3b4b8ea34c24b4e2b6c, type: 2}
+  spellList: []
 --- !u!212 &3352410986930010922
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -394,11 +391,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2471195623318993539}
   m_SourcePrefab: {fileID: 100100000, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
---- !u!1 &1070278616635177142 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7072929785375653004, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
-  m_PrefabInstance: {fileID: 7850474063773566010}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1525196600132784515 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8780025495231681977, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}

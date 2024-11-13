@@ -232,9 +232,8 @@ MonoBehaviour:
   TileY: 0
   map: {fileID: 0}
   isWalkable: 1
-  statsToEffect:
-  - speed
-  effectAmounts: feffffff
+  statsToEffect: []
+  effectAmounts: 
   characterOnTile: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   cost: 1

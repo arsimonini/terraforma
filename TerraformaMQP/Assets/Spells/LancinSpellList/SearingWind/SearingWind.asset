@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: SearingWind
   m_EditorClassIdentifier: 
-  manaCost: 5
+  manaCost: 3
   spellName: Searing Wind
   elementType: Fire
   spellPrefab: {fileID: 7446415652197001530, guid: 414009961424a25488daaa983dadadcc, type: 3}

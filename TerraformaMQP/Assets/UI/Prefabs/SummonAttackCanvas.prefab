@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1234089368658263270}
   - component: {fileID: 6759236136583954470}
   - component: {fileID: 6470662728463384484}
-  - component: {fileID: 6853815887289683401}
   m_Layer: 5
   m_Name: SummonAttackCanvas
   m_TagString: Untagged
@@ -85,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &6470662728463384484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,19 +102,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6853815887289683401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 209596495226100703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff1ce368d30174859b2e73e22c1119bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!1 &813658226512387323
 GameObject:
   m_ObjectHideFlags: 0

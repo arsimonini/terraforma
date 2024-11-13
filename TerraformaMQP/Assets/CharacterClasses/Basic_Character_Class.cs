@@ -630,11 +630,13 @@ public class Basic_Character_Class : MonoBehaviour
 
     public void displayAttackMenu(bool b)
     {
-        atkMenu.SetActive(b);
-        if(turnEnded == true && b == true) {
-            atkMenu.SetActive(false);
-            if (spellList != null){
-                spellList.SetActive(false);
+        if (atkMenu != null){
+            atkMenu.SetActive(b);
+            if(turnEnded == true && b == true) {
+                atkMenu.SetActive(false);
+                if (spellList != null){
+                    spellList.SetActive(false);
+                }
             }
         }
     }
