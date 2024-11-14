@@ -569,6 +569,9 @@ public class TileMap : MonoBehaviour
                 return Mathf.Infinity;
             }
         }
+        if (clickableTiles[x, y] == null) {
+            return Mathf.Infinity;
+        }
         int cost = clickableTiles[x, y].cost;
         if (noWalls && Array.IndexOf(wallNums, tiles[x,y]) != -1) {
             cost = 1;
