@@ -238,7 +238,7 @@ public class GameControllerScript : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Return) || checkEndOfturn())
                 {
                     //End Turn Stuff
-                    UnityEngine.Debug.Log("Switching to Phase 1");
+                    //UnityEngine.Debug.Log("Switching to Phase 1");
                     phase++;
                     //Checks if the player had a unit selected when ending their turn, executes if so
                     if (selectedCharacter != null)
@@ -258,7 +258,7 @@ public class GameControllerScript : MonoBehaviour
             case 1:
                 playerTeamEndOfTurnTileEffects();
                 statusEffectController.enemyTeamEffectsAdvance();
-                UnityEngine.Debug.Log("Switching to Phase 2");
+                //UnityEngine.Debug.Log("Switching to Phase 2");
                 enemyTeamStartOfTurnTileEffects();
                 enemyTeamList.RemoveAll(x => !x);
                 playerTeamList.RemoveAll(x => !x);
@@ -310,7 +310,7 @@ public class GameControllerScript : MonoBehaviour
                 break;
             //Resets the phase to 0 and starts a new round
             case 5:
-                UnityEngine.Debug.Log("End of round " + round + ". Switching to phase 0");
+                //UnityEngine.Debug.Log("End of round " + round + ". Switching to phase 0");
                 round++;
                 phase = 0;
                 resetPlayerTeamTurns();

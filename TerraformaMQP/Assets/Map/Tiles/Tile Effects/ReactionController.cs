@@ -20,13 +20,13 @@ public class ReactionController : MonoBehaviour
     }
 
     public void checkReaction(ClickableTile tile, string damageType, string source, bool playerTeam){
-        UnityEngine.Debug.Log("Here");
+        //UnityEngine.Debug.Log("Here");
         bool checkTile = true;
         if (tile.effectsOnTile != null){
             for (int i = 0; i < tile.effectsOnTile.Count; i++){
                 switch (tile.effectsOnTile[i].name){
                     case "Burning":
-                        UnityEngine.Debug.Log("Here");
+                        //UnityEngine.Debug.Log("Here");
                         checkTile = checkBurningReaction(tile, damageType, source, tile.effectsOnTile[i], playerTeam);
                         break;
 

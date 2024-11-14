@@ -22,6 +22,13 @@ public class ClickableTile : MonoBehaviour
     public Color color; //The color of the tile
     public int cost;
 
+    public int tileWas = 0; //The tile type it used to be. Defaults to itself.
+    public int tileIs = 0;//The tile type it currently is. Defaults, again, to itself.
+
+    public bool isBreakable = false;
+    public int hp = 10;
+    public int maxHp = 10;
+
     public List<TileEffect> effectsOnTile; //List of effects currently on the tile
     
     //Set the renderer and color variables upon level load
@@ -193,4 +200,64 @@ public class ClickableTile : MonoBehaviour
         return -99;
     }
 
+    public void breakTile() {
+        if (!isBreakable) return;
+
+        switch (tileIs) {
+            default: //We're assuming Wold Wall by default
+                if (tileWas == 0 || tileWas == 1 || tileWas == 2 || tileWas == 3 || tileWas == 14) { //Grass, Dirt, Mud, Land Ice, Ashen -> Dirt
+                    map.swapTiles(map.clickableTiles[TileX,TileY],1,true);
+                } else if (tileWas == 4 || tileWas == 9) { //Shallow Water / Ice -> Shallow Water
+                    map.swapTiles(map.clickableTiles[TileX,TileY],9,true); 
+                } else { //Stone -> Stone, Sand -> Sand, other things shouldn't be in this condition anyways, so this also acts as a failsafe
+                    map.swapTiles(map.clickableTiles[TileX,TileY],tileWas,true); 
+                }
+
+            break;
+        }
+    }
+
+    public bool canBecomeWoldWall() {
+        switch (tileIs) {
+            case 0: return true; break;
+            case 1: return true; break;
+            case 2: return true; break;
+            case 3: return true; break;
+            case 4: return true; break;
+            case 5: return true; break;
+            case 6: return false; break;
+            case 7: return false; break;
+            case 8: return false; break;
+            case 9: return true; break;
+            case 10: return false; break;
+            case 11: return true; break;
+            case 12: return false; break;
+            case 13: return false; break;
+            case 14: return true; break;
+            case 15: return false; break;
+            case 16: return false; break;
+            case 17: return false; break;
+            case 18: return false; break;
+            case 19: return true; break;
+            case 20: return false; break;
+            default: return true; break;
+        }
+    }
+    /*
+grass -> dirt
+dirt -> dirt
+mud -> dirt
+land ice -> dirt
+water ice -> shallow water
+stone/rock -> stone/rock
+wood -> ???
+light forest -> x
+dense forest -> x
+shallow water -> shallow water
+deep water -> x
+sand -> sand
+glass -> x
+metal -> x
+ashen -> dirt
+    */
 }

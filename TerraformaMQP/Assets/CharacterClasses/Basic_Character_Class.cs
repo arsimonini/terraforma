@@ -75,7 +75,7 @@ public class Basic_Character_Class : MonoBehaviour
         while(map.mapCreated != true){
             yield return null;
         }
-        UnityEngine.Debug.Log("Character Created");
+        //UnityEngine.Debug.Log("Character Created");
         //Retrieve the unit's base color
         color = renderer.material.color;
         //After map is created, set the characters to be located on their designated tiles on the map
@@ -142,7 +142,7 @@ public class Basic_Character_Class : MonoBehaviour
     public void takePhysicalDamage(int damage){
         float mitigatedDamage = Mathf.Round((float)damage * (20f/(20f + (float)defense.moddedValue)));
         health = health - (int)mitigatedDamage;
-        UnityEngine.Debug.Log("Took " +  mitigatedDamage + " physical damage");
+        //UnityEngine.Debug.Log("Took " +  mitigatedDamage + " physical damage");
         checkHealth();
         return;
     }
@@ -153,7 +153,7 @@ public class Basic_Character_Class : MonoBehaviour
     public void takeMagicDamage(int damage, string magicType){
         float mitigatedDamage = Mathf.Round((float)damage * (20f/(20f + (float)resistence.moddedValue)));
         health = health - (int)mitigatedDamage;
-        UnityEngine.Debug.Log("Took " + mitigatedDamage + " magic damage");
+        //UnityEngine.Debug.Log("Took " + mitigatedDamage + " magic damage");
         checkHealth();
     }
 
@@ -178,7 +178,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Destroys the GameObject
 
     void destroy(){
-        UnityEngine.Debug.Log("Destroyed");
+        //UnityEngine.Debug.Log("Destroyed");
         tile.isWalkable = true;
         tile.characterOnTile = null;
         displayNameplate(false);
@@ -499,15 +499,82 @@ public class Basic_Character_Class : MonoBehaviour
     public bool attackCharacter(GameObject target, int damageAmount)
     {
         //Calls the takePhysicalDamage function on the target, passing in the damage amount
-        if (target.GetComponent<Basic_Character_Class>() != null){
-            target.GetComponent<Basic_Character_Class>().takePhysicalDamage(damageAmount);
-            target.GetComponent<Basic_Character_Class>().updateCharStats();
+        Basic_Character_Class targetCharacter = target.GetComponent<Basic_Character_Class>();
+        ClickableTile targetTile = target.GetComponent<ClickableTile>();
+        if (targetCharacter != null){
+
+            if (checkAccuracy(targetCharacter.speed.moddedValue)) { //Attack Lands
+                if (checkCrit()) {
+                    targetCharacter.takePhysicalDamage(2*damageAmount); //Critical Hit!!!
+                    //UnityEngine.Debug.Log("FAIR AND BALANCED");
+                } else {
+                    targetCharacter.takePhysicalDamage(damageAmount);
+                }
+
+                targetCharacter.updateCharStats();
+            } else { //Attack Misses
+                
+            }
+        } else if (targetTile != null && targetTile.isBreakable) { //Damage Tile
+            targetTile.hp -= damageAmount;
+            UnityEngine.Debug.Log("Tile Health: " + targetTile.hp);
+
+            if (targetTile.hp <= 0) {
+                targetTile.breakTile();
+            }
+
         }
         //Stops targeting
         stopTargeting();
         //Uses the action, and then checks if there are still actions remaining
         if (takeAction() == false)
         {
+            //The character still has at least one action
+            renderer.material.color = Color.red;
+            return false;
+        }
+        //The character has no actions left
+        return true;
+    }
+
+    //Checks whether the enemy will hit or dodge
+    public bool checkAccuracy(float speed) {
+        float acc = accuracy.moddedValue;
+        float cover = 0;
+
+		float scale = 2;
+		float foeScale = 2;
+		
+		//Calculates hit rate; should average around 80 without considering enemy evasion
+		int playerFormula = (int) (UnityEngine.Random.Range(0,100)-acc*scale);
+		int enemyFormula = (int) Math.Round(75-foeScale*(speed+cover));
+		
+		if (playerFormula < enemyFormula) return true;
+        
+        return false;
+    }
+
+    //Checks crit
+    public bool checkCrit() {
+        float crit = criticalChance.moddedValue;
+        int formula = (UnityEngine.Random.Range(0,20));
+
+        if (crit > formula) return true;
+        return false;
+    }
+
+    //Called when player tries to physically attack a piece of terrain at a location, likely a Wold Wall
+    //Takes in the selected target and the type of damage to deal
+    //
+    public bool attackTile(int xPos, int yPos, int damageAmount)
+    {
+        //Calls the takePhysicalDamage function on the target, passing in the damage amount
+        
+
+        //Stops targeting
+        stopTargeting();
+        //Uses the action, and then checks if there are still actions remaining
+        if (takeAction() == false) {
             //The character still has at least one action
             renderer.material.color = Color.red;
             return false;
@@ -580,11 +647,11 @@ public class Basic_Character_Class : MonoBehaviour
     {
         //Sets unit color to yellow
         renderer.material.color = Color.yellow;
-        UnityEngine.Debug.Log("Targeting an Attack");
+        //UnityEngine.Debug.Log("Targeting an Attack");
         //Sets targeting to true
         targeting = true;
         //Calls the drawReach function with the reach of the attack, the inability to target tiles, and the inability to target allies
-        drawReach(reach, false, false, true, false, false, true, false, false, null, false, null, tile);
+        drawReach(reach, false, false, true, false, false, true, false, false, null, false, null, tile,true);
     }
 
     //Called when targeting a Spell
@@ -735,9 +802,9 @@ public class Basic_Character_Class : MonoBehaviour
     }
 
     //Calls the drawReach function within the map, passing the same variables from the parameters as arguments
-    private void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, bool hitOwnTile, bool hitSelf, bool targetWalls, bool hyperSpecificTargeting, bool needSpecificTileEffects, List<string> specificTileEffects, bool needSpecificTiles, List<string> specificTiles, ClickableTile tile)
+    private void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, bool hitOwnTile, bool hitSelf, bool targetWalls, bool hyperSpecificTargeting, bool needSpecificTileEffects, List<string> specificTileEffects, bool needSpecificTiles, List<string> specificTiles, ClickableTile tile, bool targetBreakables = true)
     {
-        map.drawReach(reach, targetTiles, targetAllies, targetEnemies, targetWalls, hyperSpecificTargeting, needSpecificTileEffects, specificTileEffects, needSpecificTiles, specificTiles, tile);
+        map.drawReach(reach, targetTiles, targetAllies, targetEnemies, targetWalls, hyperSpecificTargeting, needSpecificTileEffects, specificTileEffects, needSpecificTiles, specificTiles, tile,targetBreakables);
         if(!hitOwnTile){
             if (map.targetList.Contains(tile.gameObject)){
                 map.targetList.Remove(tile.gameObject);
@@ -818,7 +885,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Call the checkForTarget function in the map, using the selectedTarget parameter and the attackReach variable as the arguments
         if (map.checkForTarget(selectedTarget, attackReach))
         {
-            UnityEngine.Debug.Log("Target Found");
+            //UnityEngine.Debug.Log("Target Found");
             //Return true if the target is found
             return true;
         }

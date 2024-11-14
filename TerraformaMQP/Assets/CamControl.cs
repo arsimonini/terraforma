@@ -29,7 +29,7 @@ public class CamControl : MonoBehaviour
         startPos = transform.position;
         lUnits = new List<GameObject>(gc.playerTeamList);
         xAngle = transform.eulerAngles.x;
-        Debug.Log(xAngle);
+        //Debug.Log(xAngle);
     }
 
     // Update is called once per frame
@@ -156,14 +156,14 @@ public class CamControl : MonoBehaviour
             if (tL) {
                 rot = -45;
                 rotationDirection = -5;
-                Debug.Log("Turn Left");
+                //Debug.Log("Turn Left");
                 rotationCount = 9;
             }
             //If Q, set rotate left
             if (tR) {
                 rot = 45;
                 rotationDirection = 5;
-                Debug.Log("Turn Right");
+                //Debug.Log("Turn Right");
                 rotationCount = 9;
             }
 

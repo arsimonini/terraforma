@@ -132,6 +132,11 @@ MonoBehaviour:
   characterOnTile: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   cost: 2
+  tileWas: 2
+  tileIs: 2
+  isBreakable: 0
+  hp: 10
+  maxHp: 10
   effectsOnTile: []
 --- !u!1 &1763995507969099174
 GameObject:
