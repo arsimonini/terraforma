@@ -88,17 +88,14 @@ public class TileMap : MonoBehaviour
     public void findHeroes() {
         GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
         //UnityEngine.Debug.Log("Total objects: " + allObjects.Length);
-        string[] heroNames = {"Wold", "Lancin", "BasicCharacter"};
         foreach (GameObject obj in allObjects) {
-            //UnityEngine.Debug.Log(obj.name.GetType());
-
             //set tilemap coords
             if (obj.GetComponent<Basic_Character_Class>() != null) {
                 //UnityEngine.Debug.Log("TEST: " + obj.name + " " + Math.Floor(obj.transform.position.x - xOffset) + "," + Math.Floor(obj.transform.position.z - yOffset));
                 obj.GetComponent<Basic_Character_Class>().tileX = (int) Math.Floor(obj.transform.position.x - xOffset);
                 obj.GetComponent<Basic_Character_Class>().tileY = (int) Math.Floor(obj.transform.position.z - yOffset);
             }
-            if (Array.IndexOf(heroNames, obj.name) >= 0) {
+            if (obj.GetComponent<Basic_Character_Class>() != null && obj.GetComponent<Enemy_Character_Class>() == null) {
                 heroes.Add(obj);
                 UnityEngine.Debug.Log("HERO FOUND: " + obj.name);
             }
