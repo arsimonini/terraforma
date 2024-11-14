@@ -14738,6 +14738,10 @@ PrefabInstance:
       propertyPath: nameplate
       value: 
       objectReference: {fileID: 8238293854779057181}
+    - target: {fileID: 8756442279849895531, guid: d88333c14fcde9a46b97858ae864223d, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1918770147}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
