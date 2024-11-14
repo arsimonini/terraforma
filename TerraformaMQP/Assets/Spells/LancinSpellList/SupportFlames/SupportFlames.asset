@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: SupportFlames
   m_EditorClassIdentifier: 
-  manaCost: 5
+  manaCost: 3
   spellName: Support Flames
   elementType: Fire
   spellPrefab: {fileID: 1009746080516193270, guid: a264048be27bf88428fac8eca7ef95c7, type: 3}
