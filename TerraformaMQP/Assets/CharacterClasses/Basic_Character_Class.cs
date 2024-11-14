@@ -60,6 +60,8 @@ public class Basic_Character_Class : MonoBehaviour
     public GameObject spellList;
     
     public bool hasWalked = false;
+    public bool spellListIsUp = false;
+
 
 
 
@@ -84,8 +86,6 @@ public class Basic_Character_Class : MonoBehaviour
         //Set the tile to be unwalkable because there is a unit occupying it
         map.clickableTiles[tileX, tileY].isWalkable = false;
         //nameplate = transfrom.root.GetComponent<Nameplate>();
-
-
         
     }
 
@@ -123,6 +123,15 @@ public class Basic_Character_Class : MonoBehaviour
 
         if(this.gameObject.tag == "EnemyTeam") {
             //updateCharStats();
+        }
+
+
+        if(spellListIsUp == false && charSelected == true && this.gameObject.GetComponent<Hero_Character_Class>() == true) {
+
+            //UnityEngine.Debug.Log("PLEASE HELP ME");
+
+            GameObject t = GameObject.Find("SpellDescCanvas(Clone)");
+            Destroy(t);
         }
         
     }
@@ -630,7 +639,14 @@ public class Basic_Character_Class : MonoBehaviour
 
     public void displayAttackMenu(bool b)
     {
+
+        if(b == false && atkMenu.GetComponent<Billboard>() != null) {
+            atkMenu.GetComponent<Billboard>().uiHover = false;
+        }
+
+
         atkMenu.SetActive(b);
+
         if(turnEnded == true && b == true) {
             atkMenu.SetActive(false);
             if (spellList != null){
@@ -642,11 +658,19 @@ public class Basic_Character_Class : MonoBehaviour
     public void displaySpellList(bool b)
     {
         if (spellList != null){
-            spellList.SetActive(b);
+            if(b == true) {
+                spellList.SetActive(b);
+                spellListIsUp = true;
+            }
+            else if (b == false) {
+                spellList.SetActive(b);
+                spellListIsUp = false;
+            }
         }
         if(turnEnded == true && b == true) {
             if (spellList != null){
                 spellList.SetActive(false);
+                spellListIsUp = false;
             }
             atkMenu.SetActive(false);
         }
@@ -669,7 +693,7 @@ public class Basic_Character_Class : MonoBehaviour
             //if unit is not selected, display a nameplate
             displayNameplate(true);
         }
-        UnityEngine.Debug.Log("Mouse Entered");
+        //UnityEngine.Debug.Log("Mouse Entered");
         //Set the hover variable to true
         charHover = true;
 
@@ -705,7 +729,7 @@ public class Basic_Character_Class : MonoBehaviour
         }
         //Set the hover variable to false
         charHover = false;
-        UnityEngine.Debug.Log("Mouse Exited");
+        //UnityEngine.Debug.Log("Mouse Exited");
 
         tile.OnMouseExit();
     }
@@ -811,19 +835,31 @@ public class Basic_Character_Class : MonoBehaviour
     }
 
     public void moveButtonUI() {
+    UnityEngine.Debug.Log("Move is Clicked");
         map.setMoveButtonPressed(true);
         displayAttackMenu(false);
         isMoving = true;
     }
 
     public void attackButtonUI() {
+        UnityEngine.Debug.Log("Attack is Clicked");
         attackType = "Attack";
         displayAttackMenu(false);
         beginTargeting(attackReach);
     }
 
     public void magicButtonUI() {
+        UnityEngine.Debug.Log("Magic is Clicked");
         displaySpellList(true);
+    }
+
+    public void spellButtonUI(int i) {
+        if(this.gameObject.GetComponent<Hero_Character_Class>().enoughMana(this.gameObject.GetComponent<Hero_Character_Class>().spellList[i].manaCost) == true) {
+            this.gameObject.GetComponent<Hero_Character_Class>().selectedSpell = this.gameObject.GetComponent<Hero_Character_Class>().spellList[i];
+            beginTargetingSpell(this.gameObject.GetComponent<Hero_Character_Class>().spellList[i].range, this.gameObject.GetComponent<Hero_Character_Class>().spellList[i]);
+            displaySpellList(false);
+            displayAttackMenu(false);
+        }
     }
 
     public void updateCharStats() {
@@ -853,7 +889,6 @@ public class Basic_Character_Class : MonoBehaviour
             nameplate.displayMagicArea(false);
         }
     }
-    
 
 
 
