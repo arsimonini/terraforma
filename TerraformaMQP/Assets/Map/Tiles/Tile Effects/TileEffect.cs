@@ -82,6 +82,9 @@ public class TileEffect : ScriptableObject
         }
         //Updates the tile to incorperate the new effect's stat changes
         tile.addEffectToTile(this);
+        GameObject newVisual = Instantiate(tileEffectPrefab);
+        tileEffectPrefab = newVisual;
+        newVisual.transform.position = new Vector3 (tile.transform.position.x, tile.transform.position.y + 0.52f, tile.transform.position.z);
     }
     
 

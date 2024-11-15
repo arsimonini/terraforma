@@ -39,10 +39,8 @@ public class BurningTileEffect : tileEffectActions
     */
 
     public override void endOfDurationEffect(ClickableTile tile){
-        switch(tile.gameObject.name){
-            case "tileGrass":
-                tile.map.swapTiles(tile, 1, true);
-                break;
+        if (tile.gameObject.name.Contains("tileGrass")){
+            tile.map.swapTiles(tile, 1, true);
         }
     }
 

@@ -16393,6 +16393,7 @@ GameObject:
   - component: {fileID: 1297737938}
   - component: {fileID: 1297737939}
   - component: {fileID: 1297737940}
+  - component: {fileID: 1297737941}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -16435,87 +16436,171 @@ MonoBehaviour:
   - name: Grass
     tileVisualPrefab: {fileID: 5589415869077225197, guid: 0e3d7416a877b4d1792beb3be8aa77f9, type: 3}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Dirt
     tileVisualPrefab: {fileID: 4609658174146669432, guid: 7a123d4087b294f409d1a05d686ae271, type: 3}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Mud
     tileVisualPrefab: {fileID: 313383055986497203, guid: 7c010d1b6cd8245d999a68a01481397e, type: 3}
     isWalkable: 1
+    isBreakable: 0
     cost: 2
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Land Ice
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Water Ice
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Stone
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Wood Plank
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Dense Forest
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Light Forest
     tileVisualPrefab: {fileID: 5296307935300308040, guid: d60c68c33fe7f40b795fa968839add81, type: 3}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Shallow Water
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Deep Water
     tileVisualPrefab: {fileID: 0}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Sand
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Glass
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Metal
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Ashen
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Mountain
     tileVisualPrefab: {fileID: 0}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Hill
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Wall
     tileVisualPrefab: {fileID: 0}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: White Void
     tileVisualPrefab: {fileID: 0}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: tileFireGrass
     tileVisualPrefab: {fileID: 5296307935300308040, guid: 74736fe0684ee464f96b181620a6b05b, type: 3}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Wold Wall
     tileVisualPrefab: {fileID: 4609658174146669432, guid: a9ab7a73a56972e47b2dccd0e2ef533c, type: 3}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   movingEnemy: 0
   moving: 0
   targetList: []
@@ -16563,6 +16648,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec44c757fe2dc4f4284eddc7fa48ab44, type: 2}
   - {fileID: 11400000, guid: 360567a08a87f4d4887237cb0e4f1875, type: 2}
   tilePrefabs: []
+--- !u!114 &1297737941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297737936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f352d4fdfed698479e33ff8aede21c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTeamBuffs: []
+  enemyTeamBuffs: []
 --- !u!1 &1304588924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7421672215106744178, guid: d88333c14fcde9a46b97858ae864223d, type: 3}
