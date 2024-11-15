@@ -27,6 +27,7 @@ public class GameControllerScript : MonoBehaviour
     public List<GameObject> targets = new List<GameObject>(); //A list of currently selected targets for spells/attacks, if the player hasn't selected a target or is not targeting at all, will be null
     private bool endGame = false;
     private List<GameObject> heroCharacters = new List<GameObject>();
+    private BuffController BuffController;
 
     private LayerMask mask;
 
@@ -37,6 +38,7 @@ public class GameControllerScript : MonoBehaviour
                 heroCharacters.Add(playerTeamList[i]);
             }
         }
+        BuffController = map.gameObject.GetComponent<BuffController>();
     }
 
     void Update()
@@ -274,6 +276,9 @@ public class GameControllerScript : MonoBehaviour
             case 1:
                 playerTeamEndOfTurnTileEffects();
                 statusEffectController.enemyTeamEffectsAdvance();
+                enemyTeamList.RemoveAll(x => !x);
+                playerTeamList.RemoveAll(x => !x);
+                BuffController.enemyTeamBuffsAdvance();
                 //UnityEngine.Debug.Log("Switching to Phase 2");
                 enemyTeamStartOfTurnTileEffects();
                 enemyTeamList.RemoveAll(x => !x);
@@ -319,6 +324,9 @@ public class GameControllerScript : MonoBehaviour
             case 4:
                 enemyTeamEndOfTurnTileEffects();
                 statusEffectController.playerTeamEffectsAdvance();
+                enemyTeamList.RemoveAll(x => !x);
+                playerTeamList.RemoveAll(x => !x);
+                BuffController.playerTeamBuffsAdvance();
                 //Sets the map's selected character to null
                 map.updateSelectedCharacter(null);
                 playerTeamStartOfTurnTileEffects();
