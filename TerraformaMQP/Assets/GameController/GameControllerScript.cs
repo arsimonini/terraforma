@@ -25,18 +25,34 @@ public class GameControllerScript : MonoBehaviour
     public GameObject selectedCharacter; //Reference to the selected character, only references the GameObject, to access any variables in the Basic_Character_Class script use the characterScript variable below
     public Basic_Character_Class characterScript; //Reference to the selected character's Basic_Character_Class script, use to access variables like health, attack, etc.
     public List<GameObject> targets = new List<GameObject>(); //A list of currently selected targets for spells/attacks, if the player hasn't selected a target or is not targeting at all, will be null
+    private bool endGame = false;
+    private List<GameObject> heroCharacters = new List<GameObject>();
 
     private LayerMask mask;
 
     void Start(){
         mask = LayerMask.GetMask("Default") | LayerMask.GetMask("BlockVisibility") | LayerMask.GetMask("UI");
+        for (int i = 0; i < playerTeamList.Count; i++){
+            if (playerTeamList[i].GetComponent<Hero_Character_Class>()){
+                heroCharacters.Add(playerTeamList[i]);
+            }
+        }
     }
 
     void Update()
     {
+        if (!endGame){
         //Removes all null values from the list of remaining enemy and player units
         enemyTeamList.RemoveAll(x => !x);
         playerTeamList.RemoveAll(x => !x);
+        heroCharacters.RemoveAll(x => !x);
+
+        if (enemyTeamList.Count == 0){
+            gameOver(true);
+        }
+        else if(heroCharacters.Count == 0){
+            gameOver(false);
+        }
 
         //Checks if the selectedCharacter isn't null and if it is targeting, if true sets the GameController's targeting variable to true as well
         if (selectedCharacter != null && characterScript.targeting == true)
@@ -326,8 +342,7 @@ public class GameControllerScript : MonoBehaviour
 
                 break;
         }
-
-        
+        }
     }
 
     //Can be called with unit to set the selectedCharacter variables and characterScript variables.
@@ -430,5 +445,17 @@ public class GameControllerScript : MonoBehaviour
             }
         }
         return true;
+    }
+
+
+
+    public void gameOver(bool playerVictory){
+        if (playerVictory){
+            UnityEngine.Debug.Log("The Player has won the game");
+        }
+        else{
+            UnityEngine.Debug.Log("The Enemy has defeated all the player characters");
+        }
+        endGame = true;
     }
 }
