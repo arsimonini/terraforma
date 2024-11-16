@@ -26,9 +26,12 @@ public class TileEffect : ScriptableObject
         else{
             duration--;
             tile.removeEffectFromTile(this);
-            Destroy(tileEffectPrefab);
             return false;
         }
+    }
+
+    public void removeEffect(){
+        Destroy(tileEffectPrefab);
     }
 
     //Basically a constructor to create a tileEffect
@@ -85,6 +88,20 @@ public class TileEffect : ScriptableObject
         GameObject newVisual = Instantiate(tileEffectPrefab);
         tileEffectPrefab = newVisual;
         newVisual.transform.position = new Vector3 (tile.transform.position.x, tile.transform.position.y + 0.52f, tile.transform.position.z);
+        int rand = Random.Range(0, 3);
+        float rotate = 0f;
+        switch (rand){
+            case 0:
+                rotate = 90f;
+                break;
+            case 1:
+                rotate = 180f;
+                break;
+            case 2:
+                rotate = 270f;
+                break;
+        }
+        newVisual.transform.Rotate(0f, rotate, 0f);
     }
     
 
