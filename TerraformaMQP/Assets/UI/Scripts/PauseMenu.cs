@@ -9,6 +9,12 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
+    public float fixedDeltaTime;
+
+    void Start() 
+    {
+        fixedDeltaTime = Time.fixedDeltaTime;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -27,20 +33,24 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+
+        Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
     }
 
     void Pause() {
             pauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             GameIsPaused = true;
+
+            Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
     }
 
     public void Quit() {
         Debug.Log("Quit Clicked");
+        Application.Quit();
     }
 
     public void Settings() {
         Debug.Log("Settings Clicked");
-        Application.Quit();
     }
 }
