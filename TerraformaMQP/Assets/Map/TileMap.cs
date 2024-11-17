@@ -41,6 +41,9 @@ public class TileMap : MonoBehaviour
 
     LayerMask mask; //A mask that is used to find objects that block visibility
 
+    public CombatLog comlog;
+    
+
     //A Dictionary the contains the tiles and their corresponding integer value used to find their type in the tileTypes array
     Dictionary<string, int> tileNames = new Dictionary<string, int>(){
         {"tileGrass", 0},
@@ -383,6 +386,8 @@ public class TileMap : MonoBehaviour
                     //selectedUnitScript.tileX = currentPath[1].x;
                     //selectedUnitScript.tileY = currentPath[1].y;
                     //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
+
+                    comlog.addText(selectedUnit.name + " has Moved");
                 }
             }
         }

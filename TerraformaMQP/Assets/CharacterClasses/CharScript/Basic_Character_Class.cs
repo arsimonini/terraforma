@@ -62,6 +62,8 @@ public class Basic_Character_Class : MonoBehaviour
     public bool hasWalked = false;
     public bool spellListIsUp = false;
 
+    public CombatLog comlog;
+
 
 
 
@@ -609,6 +611,8 @@ public class Basic_Character_Class : MonoBehaviour
     public void endTurn()
     {
         //Sets the current remaining actions to 0, changes the color to gray, sets the turnEnded variable to true, and deselects the character
+        comlog.addText(name + " is Waiting");
+
         deselectCharacter();
         actionsLeft.moddedValue = 0;
         renderer.material.color = Color.gray;

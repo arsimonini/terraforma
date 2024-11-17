@@ -17,6 +17,7 @@ public class SpellButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public GameObject UISpellDesc = null;
     public GameObject spell = null;
+    public Transform currPos;
     public int spellNum;
 
     public TextMeshProUGUI SN = null;
@@ -24,6 +25,9 @@ public class SpellButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public TextMeshProUGUI SD = null;
 
     public bool displayingDescription = false;
+
+    public bool hasSpell;
+    public float spellOffset;
 
 
     void Start()
@@ -56,12 +60,16 @@ public class SpellButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnPointerEnter(PointerEventData data) 
     {
-        spell = Instantiate(UISpellDesc, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
-        spell.GetComponentInChildren<TextMeshProUGUI>().text = GetComponentInParent<Hero_Character_Class>().spellList[spellNum].description;
+        if(hasSpell == true) {
+            spell = Instantiate(UISpellDesc, new Vector3(currPos.position.x - spellOffset, currPos.position.y , currPos.position.z), currPos.rotation);
+            spell.GetComponentInChildren<TextMeshProUGUI>().text = GetComponentInParent<Hero_Character_Class>().spellList[spellNum].description;
+        }
     }
 
     public void OnPointerExit(PointerEventData data) {
-        Destroy(spell);   
+        if(hasSpell == true) {
+            Destroy(spell);   
+        }
     }
 
 }

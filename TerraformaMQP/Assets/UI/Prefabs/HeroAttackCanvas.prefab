@@ -404,13 +404,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
+  UISpellDesc: {fileID: 3015374799451286561, guid: 2be417ff28727438fae9548952a2d7a6, type: 3}
   spell: {fileID: 0}
-  spellNum: 0
+  currPos: {fileID: 4476988025835131413}
+  spellNum: 7
   SN: {fileID: 0}
   MC: {fileID: 0}
   SD: {fileID: 0}
   displayingDescription: 0
+  hasSpell: 0
+  spellOffset: 1.75
 --- !u!1 &1617324703539942678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,13 +1218,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
+  UISpellDesc: {fileID: 3015374799451286561, guid: 2be417ff28727438fae9548952a2d7a6, type: 3}
   spell: {fileID: 0}
-  spellNum: 0
+  currPos: {fileID: 6741809979959867453}
+  spellNum: 8
   SN: {fileID: 0}
   MC: {fileID: 0}
   SD: {fileID: 0}
   displayingDescription: 0
+  hasSpell: 0
+  spellOffset: 1.75
 --- !u!1 &2331491577270709331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,13 +1364,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
+  UISpellDesc: {fileID: 3015374799451286561, guid: 2be417ff28727438fae9548952a2d7a6, type: 3}
   spell: {fileID: 0}
-  spellNum: 0
+  currPos: {fileID: 5453003914526435480}
+  spellNum: 3
   SN: {fileID: 0}
   MC: {fileID: 0}
   SD: {fileID: 0}
   displayingDescription: 0
+  hasSpell: 0
+  spellOffset: 1.75
 --- !u!1 &2890086895479722502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1769,13 +1778,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
+  UISpellDesc: {fileID: 3015374799451286561, guid: 2be417ff28727438fae9548952a2d7a6, type: 3}
   spell: {fileID: 0}
-  spellNum: 0
+  currPos: {fileID: 1266346940518996}
+  spellNum: 5
   SN: {fileID: 0}
   MC: {fileID: 0}
   SD: {fileID: 0}
   displayingDescription: 0
+  hasSpell: 0
+  spellOffset: 1.75
 --- !u!1 &3185995950618227684
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,13 +2276,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
+  UISpellDesc: {fileID: 3015374799451286561, guid: 2be417ff28727438fae9548952a2d7a6, type: 3}
   spell: {fileID: 0}
+  currPos: {fileID: 4695611018245920935}
   spellNum: 1
   SN: {fileID: 6644198447835862578}
   MC: {fileID: 3874750891085019632}
   SD: {fileID: 120079223724984484}
   displayingDescription: 0
+  hasSpell: 0
+  spellOffset: 1.75
 --- !u!1 &3408576355911191536
 GameObject:
   m_ObjectHideFlags: 0
@@ -3478,13 +3493,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
+  UISpellDesc: {fileID: 3015374799451286561, guid: 2be417ff28727438fae9548952a2d7a6, type: 3}
   spell: {fileID: 0}
+  currPos: {fileID: 8280509901734821744}
   spellNum: 0
   SN: {fileID: 5218247223133026309}
   MC: {fileID: 1075245349592457921}
   SD: {fileID: 3050557317886829895}
   displayingDescription: 0
+  hasSpell: 0
+  spellOffset: 1.75
 --- !u!1 &5954776696348854551
 GameObject:
   m_ObjectHideFlags: 0
@@ -4291,13 +4309,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
+  UISpellDesc: {fileID: 3015374799451286561, guid: 2be417ff28727438fae9548952a2d7a6, type: 3}
   spell: {fileID: 0}
-  spellNum: 0
+  currPos: {fileID: 6382013075217118963}
+  spellNum: 6
   SN: {fileID: 0}
   MC: {fileID: 0}
   SD: {fileID: 0}
   displayingDescription: 0
+  hasSpell: 0
+  spellOffset: 1.75
 --- !u!1 &6610503422675362573
 GameObject:
   m_ObjectHideFlags: 0
@@ -5706,13 +5727,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
+  UISpellDesc: {fileID: 3015374799451286561, guid: 2be417ff28727438fae9548952a2d7a6, type: 3}
   spell: {fileID: 0}
-  spellNum: 0
+  currPos: {fileID: 7024921084706148029}
+  spellNum: 4
   SN: {fileID: 0}
   MC: {fileID: 0}
   SD: {fileID: 0}
   displayingDescription: 0
+  hasSpell: 0
+  spellOffset: 1.75
 --- !u!1 &8054680562551367980
 GameObject:
   m_ObjectHideFlags: 0
@@ -5983,13 +6007,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
+  UISpellDesc: {fileID: 3015374799451286561, guid: 2be417ff28727438fae9548952a2d7a6, type: 3}
   spell: {fileID: 0}
-  spellNum: 0
+  currPos: {fileID: 2777595480827946288}
+  spellNum: 2
   SN: {fileID: 0}
   MC: {fileID: 0}
   SD: {fileID: 0}
   displayingDescription: 0
+  hasSpell: 0
+  spellOffset: 1.75
 --- !u!1 &8645904151010663938
 GameObject:
   m_ObjectHideFlags: 0
