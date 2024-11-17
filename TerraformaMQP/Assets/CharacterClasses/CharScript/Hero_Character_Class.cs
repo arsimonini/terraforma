@@ -19,6 +19,9 @@ public class Hero_Character_Class : MonoBehaviour
     public List<Basic_Spell_Class> spellList; //The list of spells that the character can cast
     public Basic_Spell_Class selectedSpell = null; //The currently selected spell the character is trying to cast
 
+    //public CombatLog comlog;
+
+
     void Start()
     {
         //Checks if the unit has a spellList attached to it
@@ -167,9 +170,12 @@ public class Hero_Character_Class : MonoBehaviour
     //Takes in a list of GameObjects as the targets
     public void castSpell(List<GameObject> targets)
     {
+
+        this.gameObject.GetComponent<Basic_Character_Class>().comlog.addText("-> " + gameObject.GetComponent<Basic_Character_Class>().name + " has Cast " + selectedSpell.name);
         //Instantiates an instance of the selected spell, then calls the castSpell function within it, passing along the targets and then this GameObject as the spells caster
         Basic_Spell_Class spellInstance = Instantiate(selectedSpell);
         spellInstance.spellPrefab.GetComponent<Cast_Spell>().castSpell(targets, this.gameObject);
+
     }
 
 }

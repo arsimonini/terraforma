@@ -148,7 +148,6 @@ GameObject:
   - component: {fileID: 8944591265060717679}
   - component: {fileID: 8220426907617637317}
   - component: {fileID: 8277469543065369209}
-  - component: {fileID: 6724781217188067863}
   m_Layer: 5
   m_Name: SpellDesc
   m_TagString: Untagged
@@ -253,22 +252,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   uiHover: 0
---- !u!114 &6724781217188067863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3015374799451286561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd3bd4b2c86a64f938af17abc012fbce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackButton: {fileID: 0}
-  MoveButton: {fileID: 0}
-  MagicButton: {fileID: 0}
-  WaitButton: {fileID: 0}
 --- !u!1 &3725960144016401535
 GameObject:
   m_ObjectHideFlags: 0

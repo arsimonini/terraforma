@@ -158,6 +158,7 @@ public class Basic_Character_Class : MonoBehaviour
         health = health - (int)mitigatedDamage;
         //UnityEngine.Debug.Log("Took " + mitigatedDamage + " magic damage");
         checkHealth();
+        comlog.addText("  -> " + name + " has Taken " + mitigatedDamage.ToString() + " " + magicType + " Damage");
     }
 
     //Increases the Health Total of the character
@@ -506,12 +507,16 @@ public class Basic_Character_Class : MonoBehaviour
         ClickableTile targetTile = target.GetComponent<ClickableTile>();
         if (targetCharacter != null){
 
+            int targetCurrHealth = targetCharacter.health;
+
             if (checkAccuracy(targetCharacter.speed.moddedValue)) { //Attack Lands
                 if (checkCrit()) {
                     targetCharacter.takePhysicalDamage(2*damageAmount); //Critical Hit!!!
+                    comlog.addText("-> " + name + " Has Landed a Critical Attack on " + targetCharacter.name + " Dealing " + (targetCurrHealth - targetCharacter.health).ToString() + " Damage");
                     //UnityEngine.Debug.Log("FAIR AND BALANCED");
                 } else {
                     targetCharacter.takePhysicalDamage(damageAmount);
+                    comlog.addText("-> " +  name + " Has Landed an Attack on " + targetCharacter.name + " Dealing " + (targetCurrHealth - targetCharacter.health).ToString() + " Damage");
                 }
 
                 targetCharacter.updateCharStats();
@@ -612,7 +617,7 @@ public class Basic_Character_Class : MonoBehaviour
     public void endTurn()
     {
         //Sets the current remaining actions to 0, changes the color to gray, sets the turnEnded variable to true, and deselects the character
-        comlog.addText(name + " is Waiting");
+        comlog.addText("-> " + name + " is Waiting");
 
         deselectCharacter();
         actionsLeft.moddedValue = 0;

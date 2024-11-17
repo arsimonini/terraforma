@@ -387,7 +387,7 @@ public class TileMap : MonoBehaviour
                     //selectedUnitScript.tileY = currentPath[1].y;
                     //selectedUnit.transform.position = TileCoordToWorldCoord(currentPath[1].x,currentPath[1].y);
 
-                    comlog.addText(selectedUnit.name + " has Moved");
+                    comlog.addText("-> " + selectedUnit.name + " has Moved");
                 }
             }
         }

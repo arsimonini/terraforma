@@ -72,4 +72,8 @@ public class SpellButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
         }
     }
 
+    public void buttonClicked() {
+        Destroy(spell);
+    }
+
 }
