@@ -110,6 +110,7 @@ MonoBehaviour:
   attackReach: 1
   defaultReach: 1
   attackType: 
+  buffs: []
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 0
   tileY: 2
@@ -117,7 +118,11 @@ MonoBehaviour:
     name: 
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   tile: {fileID: 0}
   map: {fileID: 0}
   targeting: 0
@@ -170,6 +175,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c92a33e8dd119c44482b3bbbd2291f7c, type: 2}
   - {fileID: 11400000, guid: 2bd81b36d673f2a4cb7acb0c27382ca7, type: 2}
   - {fileID: 11400000, guid: 4f6ee2a8730fa3b4b8ea34c24b4e2b6c, type: 2}
+  - {fileID: 11400000, guid: b1cc540388cdebd498602ce3501dab32, type: 2}
 --- !u!212 &3352410986930010922
 SpriteRenderer:
   m_ObjectHideFlags: 0

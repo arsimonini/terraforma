@@ -77,78 +77,59 @@ public class ReactionController : MonoBehaviour
             }
         }
         if (checkTile){
-            switch (tile.gameObject.name){
-                case "tileGrass":
-                    checkGrassReaction(tile, damageType, source, playerTeam);
-                    break;
+            if (tile.gameObject.name.Contains("tileGrass")){
+                checkGrassReaction(tile, damageType, source, playerTeam);
+            }
+            else if(tile.gameObject.name.Contains("tileDirt")){
+                checkDirtReaction(tile, damageType, source, playerTeam);
+            }
+            else if(tile.gameObject.name.Contains("tileMud")){
+                checkMudReaction(tile, damageType, source, playerTeam);
+            }
+            else if(tile.gameObject.name.Contains("tileIce")){
+
+            }
+            else if(tile.gameObject.name.Contains("tileStone")){
+
+            }
+            else if(tile.gameObject.name.Contains("tileWoodPlank")){
+
+            }
+            else if(tile.gameObject.name.Contains("tileDenseForest")){
+
+            }
+            else if(tile.gameObject.name.Contains("tileLightForest")){
+
+            }
+            else if(tile.gameObject.name.Contains("tileShallowWater")){
+
+            }
+            else if(tile.gameObject.name.Contains("tileDeepWater")){
+
+            }
+            else if(tile.gameObject.name.Contains("tileSand")){
+
+            }
+            else if(tile.gameObject.name.Contains("tileGlass")){
+
+            }
+            else if(tile.gameObject.name.Contains("tileMetal")){
+
+            }
+            else if(tile.gameObject.name.Contains("tileAshen")){
+
+            }
+            else if(tile.gameObject.name.Contains("tileMountain")){
+
+            }
+            else if(tile.gameObject.name.Contains("tileHill")){
+
+            }
+            else if(tile.gameObject.name.Contains("tileWall")){
+
+            }
+            else if(tile.gameObject.name.Contains("tileWhiteVoid")){
                 
-                case "tileDirt":
-                    checkDirtReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileMud":
-                    checkMudReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileIce":
-                    //checkIceReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileStone":
-                    //checkStoneReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileWoodPlank":
-                    //checkWoodPlankReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileDenseForest":
-                    //checkDenseForestReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileLightForest":
-                    //checkLightForestReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileShallowWater":
-                    //checkShallowWaterReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileDeepWater":
-                    //checkDeepWaterReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileSand":
-                    //checkSandReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileGlass":
-                    //checkGlassReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileMetal":
-                    //checkMetalReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileAshen":
-                    //checkAshenReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileMountain":
-                    //checkMountainReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileHill":
-                    //checkHillReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileWall":
-                    //checkWallReaction(tile, damageType, source, playerTeam);
-                    break;
-
-                case "tileWhiteVoid":
-                    //checkWhiteVoidReaction(tile, damageType, source, playerTeam);
-                    break;
             }
         }
     }
@@ -257,9 +238,6 @@ public class ReactionController : MonoBehaviour
         switch(damageType){
             case "Fire":
                 newEffect = Instantiate(tileEffects[0]);
-                GameObject newVisual = Instantiate(newEffect.tileEffectPrefab);
-                newEffect.tileEffectPrefab = newVisual;
-                newVisual.transform.position = new Vector3 (tile.transform.position.x, tile.transform.position.y + 0.52f, tile.transform.position.z);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
                 break;
 
@@ -292,9 +270,6 @@ public class ReactionController : MonoBehaviour
         switch(damageType){
             case "Fire":
                 newEffect = Instantiate(tileEffects[0]);
-                GameObject newVisual = Instantiate(newEffect.tileEffectPrefab);
-                newEffect.tileEffectPrefab = newVisual;
-                newVisual.transform.position = new Vector3 (tile.transform.position.x, tile.transform.position.y + 0.52f, tile.transform.position.z);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 1);
                 break;
 

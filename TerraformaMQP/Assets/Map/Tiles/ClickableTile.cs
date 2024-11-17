@@ -182,6 +182,7 @@ public class ClickableTile : MonoBehaviour
         if (characterOnTile!= null){
             updateTileEffect();
         }
+        effect.removeEffect();
     }
 
     //Recreates the tile effect with the current stat changes, updating the character on the tile

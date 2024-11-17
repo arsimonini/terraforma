@@ -3135,7 +3135,7 @@ GameObject:
   - component: {fileID: 2722016549965898784}
   - component: {fileID: 8512297856777946970}
   m_Layer: 5
-  m_Name: HeroAttackCanvas 1
+  m_Name: (DoNotUse)_HeroAttackCanvas 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
