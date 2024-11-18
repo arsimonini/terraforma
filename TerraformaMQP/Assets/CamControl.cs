@@ -127,6 +127,7 @@ public class CamControl : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W)){
                 vInput = -0.75f;
+                UnityEngine.Debug.Log(vInput);
             }
             Vector3 fw = 4*getForward();
 

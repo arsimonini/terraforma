@@ -80,6 +80,7 @@ public class TileMap : MonoBehaviour
 
     //Upon level load begin creating the map
     void Start() {
+        Time.timeScale = 1f;
         createMap();
         //GenerateMapVisual();
         //swapTiles(clickableTiles[2,3],20,true);
