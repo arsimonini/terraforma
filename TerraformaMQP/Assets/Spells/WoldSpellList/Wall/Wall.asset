@@ -27,20 +27,14 @@ MonoBehaviour:
   targetEnemies: 0
   hitOwnTile: 0
   hitSelf: 0
-  targetWalls: 1
+  targetWalls: 0
   AOEsize: 1
   square: 1
   hyperSpecificTargeting: 1
   needSpecificTiles: 1
   specificTiles:
-  - 0
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 9
-  - 11
-  - 14
+  - tileGrass
+  - tileDirt
+  - tileMud
   needSpecificTileEffects: 0
   specificTileEffects: []

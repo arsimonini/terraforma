@@ -79,7 +79,7 @@ public class ClickableTile : MonoBehaviour
                 map.displayAOE("Spell", this, size: map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.AOEsize, square: map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.square, map.selectedUnitScript.tile);
             }
             else if (map.selectedUnitScript.attackType == "Attack"){
-                UnityEngine.Debug.Log("Here");
+                //UnityEngine.Debug.Log("Here");
                 map.displayAOE("Attack", this, size: 0);
             }
         }
@@ -114,7 +114,7 @@ public class ClickableTile : MonoBehaviour
         if (transform.childCount > 0){
             foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
                 if(!rend.gameObject.name.StartsWith("Outline") && !rend.gameObject.name.Contains("oak")){
-                    UnityEngine.Debug.Log(rend.gameObject.name);
+                    //UnityEngine.Debug.Log(rend.gameObject.name);
                     rend.material.color = color;
                 }
             }
