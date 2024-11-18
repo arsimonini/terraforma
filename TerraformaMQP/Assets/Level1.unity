@@ -15643,10 +15643,6 @@ PrefabInstance:
       propertyPath: nameplate
       value: 
       objectReference: {fileID: 8238293854779057181}
-    - target: {fileID: 8630637868926062189, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: hasSpell
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: openAtkMenu.Array.size
       value: 4
@@ -15703,6 +15699,10 @@ PrefabInstance:
       propertyPath: physicallyAttacked.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 7e5e3941f20ca44d597ebe2877f1bee0, type: 3}
+    - target: {fileID: 8630637868926062189, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: hasSpell
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8895871286598532798, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_Name
       value: Lancin Bermane

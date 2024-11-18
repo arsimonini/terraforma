@@ -40,7 +40,7 @@ public class CombatLog : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.X)) {
             
             //extendedCombatLogText.text = extendedCombatLogText.text + "Testing the Chat Log \n";
-            addText("Hello, Please Work");
+            addText("Test Log");
             //shortenedCombatLogText.text = "Testing the Chat Log \n";
         }
     }
@@ -50,6 +50,9 @@ public class CombatLog : MonoBehaviour
         RectTransform rtext = extendedCombatLogText.GetComponent<RectTransform>();
         RectTransform rpanel = extendedCombatLogText.GetComponent<RectTransform>();
         textHeight = textHeight + 16;
+        if(s.Length >= 60) {
+            textHeight = textHeight + 16;
+        }
         rtext.sizeDelta = new Vector2(textWidth, textHeight);
         rpanel.sizeDelta = new Vector2(textWidth, textHeight);
         //extendedCombatLogText.GetComponent<RectTransform>().height = extendedCombatLogText.GetComponent<RectTransform>().height + 12;
