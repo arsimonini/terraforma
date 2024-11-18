@@ -65,6 +65,10 @@ public class Basic_Character_Class : MonoBehaviour
 
     public PauseMenu pm;
 
+    [SerializeField] private AudioClip[] physicallyAttacked;
+    [SerializeField] private AudioClip[] openAtkMenu;
+    [SerializeField] private AudioClip[] closeAtkMenu;
+
 
 
 
@@ -149,6 +153,9 @@ public class Basic_Character_Class : MonoBehaviour
         float mitigatedDamage = Mathf.Round((float)damage * (20f/(20f + (float)defense.moddedValue)));
         health = health - (int)mitigatedDamage;
         //UnityEngine.Debug.Log("Took " +  mitigatedDamage + " physical damage");
+        
+        SFXController.instance.PlayRandomSFXClip(physicallyAttacked, transform, 1f);
+        
         checkHealth();
         return;
     }
@@ -840,6 +847,7 @@ public class Basic_Character_Class : MonoBehaviour
         {
             //If the unit is part of the player team, allow the player to move it and perform actions
             charSelected = true;
+            SFXController.instance.PlayRandomSFXClip(openAtkMenu, transform, 1f);
         }
         //Display the health and mana of the selected unit
         displayNameplate(true);  
@@ -858,6 +866,10 @@ public class Basic_Character_Class : MonoBehaviour
         displaySpellList(false);
         map.setMoveButtonPressed(false);
         isMoving = false;
+
+        
+        SFXController.instance.PlayRandomSFXClip(closeAtkMenu, transform, 1f);
+        
         if (turnEnded == false)
         {
             //If it hasn't ended, reset its color to its base color
@@ -928,6 +940,8 @@ public class Basic_Character_Class : MonoBehaviour
     public void magicButtonUI() {
         UnityEngine.Debug.Log("Magic is Clicked");
         displaySpellList(true);
+        SFXController.instance.PlayRandomSFXClip(openAtkMenu, transform, 1f);
+        
     }
 
     public void spellButtonUI(int i) {

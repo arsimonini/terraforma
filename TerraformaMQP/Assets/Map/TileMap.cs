@@ -41,6 +41,8 @@ public class TileMap : MonoBehaviour
 
     LayerMask mask; //A mask that is used to find objects that block visibility
 
+    [SerializeField] private AudioClip[] movementSounds;
+
     //A Dictionary the contains the tiles and their corresponding integer value used to find their type in the tileTypes array
     Dictionary<string, int> tileNames = new Dictionary<string, int>(){
         {"tileGrass", 0},
@@ -144,6 +146,7 @@ public class TileMap : MonoBehaviour
                     {
                         //If not, the unit moves closer to the desired location
                         selectedUnit.transform.position = Vector3.MoveTowards(selectedUnit.transform.position, nextPos, step);
+                        //SFXController.instance.PlayRandomSFXClip(movementSounds, transform, 1f);
                         selectedUnitScript.OnMouseExit();
                     }
                     //If the unit is at the desired location, the unit's tileX and tileY variables are updated
