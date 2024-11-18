@@ -32,6 +32,7 @@ public class Basic_Character_Class : MonoBehaviour
     public int attackReach = 1; //The reach the character can hit with the currently being targeted spell or attack
     public int defaultReach = 1; //The default reach the character can hit with an attack
     public string attackType = null; //What is being targeting, either a "Spell" or "Attack", if not currently targeting will be null
+    public List<BuffClass> buffs = new List<BuffClass>();
 
     public Color color; //Color of the shape ---WILL BE DELETED WHEN MODELS ARE ADDED---
 
@@ -955,6 +956,120 @@ public class Basic_Character_Class : MonoBehaviour
             nameplate.mana.gameObject.SetActive(false);
             nameplate.displayMagicArea(false);
         }
+    }
+
+    public void addBuff(BuffClass buff){
+        for (int i = 0; i < buff.statsToEffect.Count; i++)
+        {
+            //Checks which stat to effect and then applies the change
+            switch (buff.statsToEffect[i])
+            {
+                case "health":
+                    increaseHealth(buff.amountsToEffect[i]);
+                    break;
+
+                case "attack":
+                    increaseAttack(buff.amountsToEffect[i]);
+                    break;
+
+                case "speed":
+                    increaseSpeed(buff.amountsToEffect[i]);
+                    break;
+
+                case "maxHealth":
+                    increaseMaxHealth(buff.amountsToEffect[i]);
+                    break;
+
+                case "movementSpeed":
+                    increaseMoveSpeed(buff.amountsToEffect[i]);
+                    break;
+
+                case "resistence":
+                    increaseResistence(buff.amountsToEffect[i]);
+                    break;
+
+                case "defense":
+                    increaseDefense(buff.amountsToEffect[i]);
+                    break;
+
+                case "criticalChance":
+                    increaseCritChance(buff.amountsToEffect[i]);
+                    break;
+
+                case "accuracy":
+                    increaseAccuracy(buff.amountsToEffect[i]);
+                    break;
+
+                case "totalActions":
+                    increaseTotalActions(buff.amountsToEffect[i]);
+                    break;
+
+                case "magic":
+                    if (this.gameObject.GetComponent<Hero_Character_Class>()){
+                        this.gameObject.GetComponent<Hero_Character_Class>().increaseMagic(buff.amountsToEffect[i]);
+                    }
+                    break;
+
+            }
+        }
+        buffs.Add(buff);
+    }
+
+    public void removeBuff(BuffClass buff){
+        for (int i = 0; i < buff.statsToEffect.Count; ++i)
+        {
+            //Checks which stat to effect and then applies the change
+            switch (buff.statsToEffect[i])
+            {
+                case "health":
+                    decreaseHealth(buff.amountsToEffect[i]);
+                    break;
+
+                case "attack":
+                    decreaseAttack(buff.amountsToEffect[i]);
+                    break;
+
+                case "speed":
+                    decreaseSpeed(buff.amountsToEffect[i]);
+                    break;
+
+                case "maxHealth":
+                    decreaseMaxHealth(buff.amountsToEffect[i]);
+                    break;
+
+                case "movementSpeed":
+                    decreaseMoveSpeed(buff.amountsToEffect[i]);
+                    break;
+
+                case "resistence":
+                    decreaseResistence(buff.amountsToEffect[i]);
+                    break;
+
+                case "defense":
+                    decreaseDefense(buff.amountsToEffect[i]);
+                    break;
+
+                case "criticalChance":
+                    decreaseCritChance(buff.amountsToEffect[i]);
+                    break;
+
+                case "accuracy":
+                    decreaseAccuracy(buff.amountsToEffect[i]);
+                    break;
+
+                case "totalActions":
+                    decreaseTotalActions(buff.amountsToEffect[i]);
+                    break;
+                
+                case "magic":
+                    if (this.gameObject.GetComponent<Hero_Character_Class>()){
+                        this.gameObject.GetComponent<Hero_Character_Class>().decreaseMagic(buff.amountsToEffect[i]);
+                    }
+                    break;
+
+            }
+        }
+        buffs.Remove(buff);
     }
 
 
