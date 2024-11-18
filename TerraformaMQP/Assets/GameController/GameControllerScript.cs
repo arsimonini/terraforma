@@ -31,6 +31,8 @@ public class GameControllerScript : MonoBehaviour
 
     private LayerMask mask;
 
+    public PauseMenu pauseMenuController;
+
     void Start(){
         mask = LayerMask.GetMask("Default") | LayerMask.GetMask("BlockVisibility") | LayerMask.GetMask("UI");
         for (int i = 0; i < playerTeamList.Count; i++){
@@ -235,6 +237,22 @@ public class GameControllerScript : MonoBehaviour
             map.updateSelectedCharacter(null);
             map.currentPath = null;
             updateSelectedObject(null);
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && selectedCharacter == null) {
+            if(pauseMenuController.GameIsPaused) {
+                pauseMenuController.Resume();
+            }
+            else {
+                pauseMenuController.Pause();
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null) {
+            if(pauseMenuController.GameIsPaused) {
+                pauseMenuController.Resume();
+            }
+            else {
+                pauseMenuController.Pause();
+            }
         }
 
         //Controls the game state and switching between the player/enemy turns
