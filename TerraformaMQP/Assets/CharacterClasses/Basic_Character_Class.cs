@@ -628,7 +628,7 @@ public class Basic_Character_Class : MonoBehaviour
     public void stopTargeting()
     {
         //Checks if the player was targeting a spell or normal attack
-        if (attackType == "Spell")
+        if (attackType == "Spell" && gameObject.GetComponent<Hero_Character_Class>() != null)
         {
             //If the player was targeting a spell, sets the selectedSpell in the Hero Class to null
             gameObject.GetComponent<Hero_Character_Class>().selectedSpell = null;

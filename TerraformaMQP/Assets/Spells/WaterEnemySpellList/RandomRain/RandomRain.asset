@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
+  m_Name: RandomRain
+  m_EditorClassIdentifier: 
+  manaCost: 3
+  spellName: Random Rain
+  elementType: Water
+  spellPrefab: {fileID: 3896469610843690738, guid: 54e56856f81854953a964748f0b4c591, type: 3}
+  description: Soak 8 random tiles in 5x5 area
+  targeted: 0
+  range: 4
+  targetTiles: 1
+  targetAllies: 0
+  target: {fileID: 0}
+  amountOfTargets: 1
+  requireDifferentTargets: 0
+  targetEnemies: 0
+  hitOwnTile: 1
+  hitSelf: 0
+  targetWalls: 1
+  AOEsize: 2
+  square: 1
+  hyperSpecificTargeting: 0
+  needSpecificTiles: 0
+  specificTiles: []
+  needSpecificTileEffects: 0
+  specificTileEffects: []

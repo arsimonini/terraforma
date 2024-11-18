@@ -8,6 +8,11 @@ public class Enemy_Character_Class : MonoBehaviour
 {
     GameObject target = null;
     Basic_Character_Class basic = null;
+    public string element = "";
+    public bool chaseFromFar = false;
+    public int chaseSteps = 10;
+
+    public List<Basic_Spell_Class> spellList; //The list of spells that the character can cast
 
     void Start() {
         basic = this.gameObject.GetComponent<Basic_Character_Class>();
@@ -18,45 +23,67 @@ public class Enemy_Character_Class : MonoBehaviour
     {
         UnityEngine.Debug.Log("Taking turn");
 
-        List<Node> enemyPath = new List<Node>();
-        
-        if (basic.health > 5) {
-            enemyPath = findHero();
+        if (element == "") {
+            basicTurn();
         }
         else {
-            enemyPath = findCover();
+            magicTurns();
         }
+    }
 
-        basic.map.currentPath = enemyPath;
-        basic.path = enemyPath;
+    public void magicTurns() {
+        if (element == "water") {
+            waterEnemyTurn();
+        }
+    }
+
+    public void basicTurn() {
+        UnityEngine.Debug.Log("BASIC TURN");
+        if (basic.health > 5) {
+            takePath(findHero());
+        }
+        else {
+            takePath(findCover());
+        }
+    }
+
+    public void takePath(List<Node> path) {
+        if (path.Count > 0) {
+            //LOG STUFF HERE FOR MOVEMENT
+        }
+        else {
+            attackTarget();
+        }
+        basic.map.currentPath = path;
+        basic.path = path;
     }
 
     public List<Node> findHero() {
         GameObject[] heroes = basic.map.heroes.ToArray();
 
         //get list of all heroes in scene
-        int minSteps = 20;
-        List<Node> pathToTarget = null;
+        int minSteps = chaseSteps;
+        List<Node> pathToTarget = new List<Node>();
         target = null;
 
         foreach (GameObject hero in heroes) {
             int tileX = hero.GetComponent<Basic_Character_Class>().tileX;
             int tileY = hero.GetComponent<Basic_Character_Class>().tileY;
             UnityEngine.Debug.Log("Hero: " + tileX + "," + tileY);
-            List<Node> path = basic.map.generatePathTo(tileX, tileY, false, true, setCurrent:false);
-            UnityEngine.Debug.Log("path steps: " + path.Count);
+            List<Node> path = basic.map.generatePathTo(tileX, tileY, false, true, setCurrent:false, cutPath:false);
+            //UnityEngine.Debug.Log("path steps: " + path.Count);
             if ((path != null) && (path.Count < minSteps)) {
                 minSteps = path.Count;
                 target = hero;
-                pathToTarget = path;
-                UnityEngine.Debug.Log("step count: " + path.Count);
+                pathToTarget = basic.map.cutDownPath(basic.movementSpeed.moddedValue, false, path);
+                //UnityEngine.Debug.Log("step count: " + path.Count);
             }
             
         }
-        UnityEngine.Debug.Log("minsteps: " + minSteps);
+        //UnityEngine.Debug.Log("minsteps: " + minSteps);
 
-        //no target selected - all heroes very out of reach, target first in list
-        if (heroes.Length > 0) {
+        //no target selected - all heroes out of reach + chase == true, target first in list
+        if (chaseFromFar == true && heroes.Length > 0) {
             if (target == null) {
                 target = heroes[0];
                 int tileX = target.GetComponent<Basic_Character_Class>().tileX;
@@ -67,12 +94,8 @@ public class Enemy_Character_Class : MonoBehaviour
                 }
             }
 
-            //basic.map.currentPath = pathToTarget;
-            //basic.path = pathToTarget;
-            return pathToTarget;
-
         }
-        return new List<Node>();
+        return pathToTarget;
 
     }
 
@@ -143,22 +166,163 @@ public class Enemy_Character_Class : MonoBehaviour
         return shortestCoverTilePath;
     }
 
-    //run as far from hero units as possible
-    public void run() {
+    //get closer to nearest ally - don't go closer than range
+    public List<Node> nearAlly(int range) {
+        return new List<Node>();
+    }
 
+    //run as far from hero units as possible
+    public List<Node> run() {
+        return new List<Node>();
+    }
+
+    public GameObject heroWithName(string name) {
+        GameObject[] heroes = basic.map.heroes.ToArray();
+        foreach (GameObject hero in heroes) {
+            if (hero.name == name) {
+                return hero;
+            }
+        }
+        return null;
     }
 
     public void attackTarget() {
         //if hero in range do damage
-        basic.beginTargeting(basic.attackReach);
-        if (target != null && basic.withinReach(target)) {
-            UnityEngine.Debug.Log("Target within reach");
-            basic.attackCharacter(target, basic.attack.moddedValue);
+        if (element == "") {
+            basic.beginTargeting(basic.attackReach);
+            if (target != null && basic.withinReach(target)) {
+                UnityEngine.Debug.Log("Target within reach");
+                basic.attackCharacter(target, basic.attack.moddedValue);
+            }
+            else {
+                basic.stopTargeting();
+            }
+            UnityEngine.Debug.Log("END TURN PLEASE");
+            basic.endTurn();
         }
         else {
-            basic.stopTargeting();
-            basic.takeAction();
+            magicTurns();
         }
+    }
+
+
+    //Water enemy functions
+
+    //make water enemy go last (reorder in scene)
+    public void waterEnemyTurn() {
+        //if on fire, hero adjacent, and mana high enough, do flood
+        //if on fire but not fitting other reqs move
+
+        //if on burning tile
+        if (basic.map.checkForTileEffect(basic.tileX, basic.tileY, "Burning")) {
+            //check for adjacent hero
+            basic.beginTargeting(basic.attackReach);
+            if (basic.map.targetList.Count > 0) {
+                basic.stopTargeting();
+                //cast flood
+                basic.beginTargetingSpell(spellList[0].range, spellList[0]);
+                //Basic_Spell_Class spellInstance = Instantiate(spellList[0]);
+                //spellInstance.spellPrefab.GetComponent<Cast_Spell>().castSpell(basic.map.targetList, this.gameObject);
+                UnityEngine.Debug.Log("ENEMY CAST FLOOD");
+            }
+            else {
+                basic.stopTargeting();
+                if (basic.hasWalked == false) {
+                    takePath(findCover());
+                }
+            }
+
+        }
+        else {
+            //begintargeting for rain to get targetlist of tiles
+            basic.beginTargetingSpell(spellList[1].range, spellList[1]);
+            GameObject bestTarget = null;
+            int alliesNearLancin = 0;
+            int tilesOnFire = 0;
+
+            GameObject lancin = heroWithName("Lancin");
+            int[] mapsize = basic.map.getMapSize();
+            int mapX = mapsize[0];
+            int mapY = mapsize[1];
+
+            //keep track of ally distance from lancin
+            Dictionary<string, bool> lancinNear = new Dictionary<string, bool>();
+
+            foreach (GameObject tile in basic.map.targetList) {
+                int tilex = tile.GetComponent<ClickableTile>().TileX;
+                int tiley = tile.GetComponent<ClickableTile>().TileY;
+                int boxX = tilex-2;
+                int boxY = tiley-2;
+
+
+                if (boxX < 0) boxX = 0;
+                if (boxX > mapX - 1) boxX = mapX - 1;
+                if (boxY < 0) boxY = 0;
+                if (boxY > mapY - 1) boxY = mapY - 1;
+
+                int fire = 0;
+                int ally = 0;
+                int allyNearL = 0;
+
+                for (int x = boxX; x < boxX+5; x++) {
+                    for (int y = boxY; y < boxY+5;y++) {
+                        if (basic.map.clickableTiles[x,y] != null) {
+                            GameObject characterOnTile = basic.map.clickableTiles[x,y].characterOnTile;
+                            if (basic.map.checkForTileEffect(x, y, "Burning")) {
+                                fire++;
+                            }
+                            if (characterOnTile != null && characterOnTile.GetComponent<Enemy_Character_Class>()) {
+                                ally++;
+
+                                //check if ally is close to Lancin
+                                if (lancin != null) {
+                                    if (lancinNear.ContainsKey(characterOnTile.name)){
+                                        if (lancinNear[characterOnTile.name]) {
+                                            allyNearL++;
+                                        }
+                                    }
+                                    else {
+                                        int tileX = characterOnTile.GetComponent<Basic_Character_Class>().tileX;
+                                        int tileY = characterOnTile.GetComponent<Basic_Character_Class>().tileY;
+                                        List<Node> path = basic.map.generatePathTo(tileX, tileY, false, true, lancin.GetComponent<Basic_Character_Class>().tileX, lancin.GetComponent<Basic_Character_Class>().tileY, setCurrent:false, cutPath:false);
+                                        if (path.Count < 8) {
+                                            allyNearL++;
+                                        }
+                                        lancinNear[characterOnTile.name] = path.Count < 8;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (fire > tilesOnFire || allyNearL > alliesNearLancin) {
+                    bestTarget = tile;
+                    tilesOnFire = fire;
+                    alliesNearLancin = allyNearL;
+                }
+            }
+            basic.stopTargeting();
+            if (alliesNearLancin != 0 || tilesOnFire > 1) {
+                List<GameObject> target = new List<GameObject>();
+                target.Add(bestTarget);
+                UnityEngine.Debug.Log("ENEMY CAST RAIN");
+                Basic_Spell_Class spellInstance = Instantiate(spellList[1]);
+                spellInstance.spellPrefab.GetComponent<Cast_Spell>().castSpell(target, this.gameObject);
+                basic.stopTargeting();
+                basic.endTurn();
+            }
+            else {
+                //basic.stopTargeting();
+                if (basic.hasWalked == false) {
+                    takePath(findCover());
+                }
+            }
+
+
+        }
+
+        //if not go towards cover, then check again (first fire in range, then Lancin)
     }
 
 }

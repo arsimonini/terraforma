@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
+  m_Name: Flood
+  m_EditorClassIdentifier: 
+  manaCost: 5
+  spellName: Flood
+  elementType: Water
+  spellPrefab: {fileID: 7336424655232090086, guid: 90ba1e28a0821449d8901dcd7ae44271, type: 3}
+  description: Soak 3x3 tiles with unit in center, pushing back adjacent units while
+    dealing damage
+  targeted: 1
+  range: 0
+  targetTiles: 1
+  targetAllies: 0
+  target: {fileID: 0}
+  amountOfTargets: 1
+  requireDifferentTargets: 0
+  targetEnemies: 0
+  hitOwnTile: 1
+  hitSelf: 0
+  targetWalls: 0
+  AOEsize: 1
+  square: 1
+  hyperSpecificTargeting: 0
+  needSpecificTiles: 0
+  specificTiles: []
+  needSpecificTileEffects: 0
+  specificTileEffects: []
