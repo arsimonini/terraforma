@@ -406,6 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
   spell: {fileID: 0}
+  currPos: {fileID: 4253498559501370805}
   spellNum: 0
   SN: {fileID: 7433275350968182732}
   MC: {fileID: 1312485680175725228}
@@ -1352,6 +1353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
   spell: {fileID: 0}
+  currPos: {fileID: 0}
   spellNum: 0
   SN: {fileID: 0}
   MC: {fileID: 0}
@@ -1629,6 +1631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
   spell: {fileID: 0}
+  currPos: {fileID: 0}
   spellNum: 0
   SN: {fileID: 0}
   MC: {fileID: 0}
@@ -2709,6 +2712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
   spell: {fileID: 0}
+  currPos: {fileID: 0}
   spellNum: 0
   SN: {fileID: 0}
   MC: {fileID: 0}
@@ -3522,6 +3526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
   spell: {fileID: 0}
+  currPos: {fileID: 2826691931688161092}
   spellNum: 1
   SN: {fileID: 2015921422404388954}
   MC: {fileID: 7567929995139443494}
@@ -4406,6 +4411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
   spell: {fileID: 0}
+  currPos: {fileID: 0}
   spellNum: 0
   SN: {fileID: 0}
   MC: {fileID: 0}
@@ -5218,6 +5224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
   spell: {fileID: 0}
+  currPos: {fileID: 0}
   spellNum: 0
   SN: {fileID: 0}
   MC: {fileID: 0}
@@ -5575,6 +5582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
   spell: {fileID: 0}
+  currPos: {fileID: 3486679875738888110}
   spellNum: 0
   SN: {fileID: 0}
   MC: {fileID: 0}
@@ -5986,6 +5994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UISpellDesc: {fileID: 954336060654053633, guid: 91e8433cf1ae6426ba0aebe47d68e7ff, type: 3}
   spell: {fileID: 0}
+  currPos: {fileID: 0}
   spellNum: 0
   SN: {fileID: 0}
   MC: {fileID: 0}

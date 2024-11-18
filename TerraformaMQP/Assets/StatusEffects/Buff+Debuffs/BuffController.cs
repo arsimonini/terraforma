@@ -8,6 +8,8 @@ public class BuffController : MonoBehaviour
     public List<BuffClass> playerTeamBuffs;
     public List<BuffClass> enemyTeamBuffs;
 
+    public CombatLog comlog;
+
     public void playerTeamBuffsAdvance(){
         if (playerTeamBuffs != null){
             List<BuffClass> buffsToRemove = new List<BuffClass>();
@@ -46,11 +48,15 @@ public class BuffController : MonoBehaviour
         playerTeamBuffs.Add(buff);
         buff.character.addBuff(buff);
         buff.buffAsset.GetComponent<BuffActions>().startOfDurationEffect(buff.character);
+
+        comlog.addText("  -> " + buff.character.name + " has Received " + buff.name + " from " + buff.source);
     }
 
     public void addEnemyBuff(BuffClass buff){
         enemyTeamBuffs.Add(buff);
         buff.character.addBuff(buff);
         buff.buffAsset.GetComponent<BuffActions>().startOfDurationEffect(buff.character);
+
+        comlog.addText("  -> " + buff.character.name + " has Received " + buff.name + " from " + buff.source);
     }
 }

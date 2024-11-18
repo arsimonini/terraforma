@@ -31,8 +31,12 @@ public class GameControllerScript : MonoBehaviour
 
     private LayerMask mask;
 
+
+    public CombatLog comlog;
+
     public PauseMenu pauseMenuController;
     [SerializeField] private AudioClip[] closeAtkMenu;
+
 
     void Start(){
         mask = LayerMask.GetMask("Default") | LayerMask.GetMask("BlockVisibility") | LayerMask.GetMask("UI");
@@ -311,6 +315,9 @@ public class GameControllerScript : MonoBehaviour
                 enemyTeamList.RemoveAll(x => !x);
                 playerTeamList.RemoveAll(x => !x);
                 phase++;
+                comlog.addText("");
+                comlog.addText("");
+                comlog.addText("** Enemy Turn Start **");
                 break;
             //Sets the count of enemies remaining and how many enemies need to be moved before starting the enemy turn
             case 2:
@@ -363,6 +370,10 @@ public class GameControllerScript : MonoBehaviour
             case 5:
                 //UnityEngine.Debug.Log("End of round " + round + ". Switching to phase 0");
                 round++;
+                comlog.addText("");
+                comlog.addText("");
+                comlog.addText("Turn " + (round + 1).ToString() + " Start");
+                comlog.addText("** Player Phase Start **");
                 phase = 0;
                 resetPlayerTeamTurns();
                 

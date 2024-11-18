@@ -137,6 +137,7 @@ MonoBehaviour:
   spellList: {fileID: 1070278616635177142}
   hasWalked: 0
   spellListIsUp: 0
+  comlog: {fileID: 0}
 --- !u!114 &7585430571080152534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,10 +457,6 @@ PrefabInstance:
     - target: {fileID: 7020707633692308249, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8096505105762678217, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8096505105762678217, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
