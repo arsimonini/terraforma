@@ -31,7 +31,12 @@ public class GameControllerScript : MonoBehaviour
 
     private LayerMask mask;
 
+
     public CombatLog comlog;
+
+    public PauseMenu pauseMenuController;
+    [SerializeField] private AudioClip[] closeAtkMenu;
+
 
     void Start(){
         mask = LayerMask.GetMask("Default") | LayerMask.GetMask("BlockVisibility") | LayerMask.GetMask("UI");
@@ -76,7 +81,7 @@ public class GameControllerScript : MonoBehaviour
         }
 
         //Executes when the player left-clicks
-        if (Input.GetMouseButtonDown(0) && map.moving == false)
+        if (Input.GetMouseButtonDown(0))
         {
             //Creates a RayCast from the mouse's location, checking if it returns a hit
             RaycastHit hit;
@@ -115,23 +120,28 @@ public class GameControllerScript : MonoBehaviour
                     {
                         //If the returned object was another unit and the player has already selected a unit, the unit becomes de-selected
                         //Calls the deselectCharacter function in the selectedCharacter's script, updates the map's selectedCharacter, sets the map's path to null, sets the GameController's selectedCharacter to null
+                        /*
                         characterScript.deselectCharacter();
                         map.updateSelectedCharacter(null);
                         map.currentPath = null;
                         updateSelectedObject(null);
+                        */
                     } 
                     //If the player has a unit selected and the returned object was either on the enemy team or had their turn ended ---NOTE: THIS COULD PROBABLY BE INCLUDED IN THE ABOVE IF ELSE STATEMENT, NEED TO REVIEW---
                     else if (selectedCharacter != null && (selectedCharacter.gameObject.tag == "EnemyTeam" || characterScript.turnEnded == true))
                     {
                         //Runs deselection
                         //Calls the deselectCharacter function in the selectedCharacter's script, updates the map's selectedCharacter, sets the map's path to null, sets the GameController's selectedCharacter to null
+                        /*
                         characterScript.deselectCharacter();
                         map.updateSelectedCharacter(null);
                         map.currentPath = null;
                         updateSelectedObject(null);
+                        */
                     }
                     else if (selectedCharacter != null && hit.collider.gameObject.GetComponent<Basic_Character_Class>() == null && moving == false && hit.collider.gameObject.tag != "EnemyTeam" && hit.collider.gameObject.tag != "PlayerTeam" && phase == 0)
                     {
+                        /*
                         //when you click on a tile after clicking on a character (and you're not moving), it clicks off the character
                         if(selectedCharacter.GetComponent<Basic_Character_Class>().atkMenu.GetComponent<Billboard>().uiHover == false){
                             moving = false;
@@ -142,6 +152,7 @@ public class GameControllerScript : MonoBehaviour
                             updateSelectedObject(null);
                         }
                         //selectedCharacter.gameObject.GetComponent<Basic_Character_Class>().atkMenu.GetComponent<Billboard>().uiHover
+                        */
 
                     }
                     //Checks if the returned object was a clickable tile, if so calling the map's MoveSelectedUnitTo function to begin moving the unit there
@@ -227,6 +238,7 @@ public class GameControllerScript : MonoBehaviour
         {
             //Stops the targeting but leaves the character selected
             stopTargeting();
+            SFXController.instance.PlayRandomSFXClip(closeAtkMenu, transform, 1f);
         }
         //Executes if the player presses the escape key when they are not targeting a spell/attack
         else if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0  && map.moving == false)
@@ -237,6 +249,23 @@ public class GameControllerScript : MonoBehaviour
             map.updateSelectedCharacter(null);
             map.currentPath = null;
             updateSelectedObject(null);
+            SFXController.instance.PlayRandomSFXClip(closeAtkMenu, transform, 1f);
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && selectedCharacter == null) {
+            if(pauseMenuController.GameIsPaused) {
+                pauseMenuController.Resume();
+            }
+            else {
+                pauseMenuController.Pause();
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null) {
+            if(pauseMenuController.GameIsPaused) {
+                pauseMenuController.Resume();
+            }
+            else {
+                pauseMenuController.Pause();
+            }
         }
 
         //Controls the game state and switching between the player/enemy turns

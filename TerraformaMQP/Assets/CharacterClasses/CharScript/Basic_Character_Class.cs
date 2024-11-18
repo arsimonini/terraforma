@@ -65,6 +65,13 @@ public class Basic_Character_Class : MonoBehaviour
 
     public CombatLog comlog;
 
+    public PauseMenu pm;
+
+    [SerializeField] private AudioClip[] physicallyAttacked;
+    [SerializeField] private AudioClip[] openAtkMenu;
+    [SerializeField] private AudioClip[] closeAtkMenu;
+
+
 
 
 
@@ -136,7 +143,10 @@ public class Basic_Character_Class : MonoBehaviour
             GameObject t = GameObject.Find("SpellDescCanvas(Clone)");
             Destroy(t);
         }
-        
+
+        if(charSelected == false && pm.forDeselecting == true) {
+            Invoke("deselectOnResume", 0.05f);
+        }
     }
 
     //Deals Physical Damage to the character and checks if it reduces the health total below 0. Reduces the Damage value by the amount of Defense the character has
@@ -146,6 +156,9 @@ public class Basic_Character_Class : MonoBehaviour
         float mitigatedDamage = Mathf.Round((float)damage * (20f/(20f + (float)defense.moddedValue)));
         health = health - (int)mitigatedDamage;
         //UnityEngine.Debug.Log("Took " +  mitigatedDamage + " physical damage");
+        
+        SFXController.instance.PlayRandomSFXClip(physicallyAttacked, transform, 1f);
+        
         checkHealth();
         return;
     }
@@ -756,59 +769,63 @@ public class Basic_Character_Class : MonoBehaviour
     //Recolors when mouse is hovering over a unit
     public void OnMouseEnter()
     {
+        if(pm.GameIsPaused != true) {
 
-        if (this.gameObject.GetComponent<Enemy_Character_Class>() != null && map.movingEnemy == true){
-            displayNameplate(true);
-            renderer.material.color = Color.blue;
+            if (this.gameObject.GetComponent<Enemy_Character_Class>() != null && map.movingEnemy == true){
+                displayNameplate(true);
+                renderer.material.color = Color.blue;
+            }
+
+            //Checks if the unit is currently selected
+            if (charSelected == false && (map.selectedUnit == null || this.gameObject.tag != map.selectedUnit.tag))
+            {
+                //If not, the color is changed to the highlight color
+                renderer.material.color = Color.blue;
+                //if unit is not selected, display a nameplate
+                displayNameplate(true);
+            }
+            //UnityEngine.Debug.Log("Mouse Entered");
+            //Set the hover variable to true
+            charHover = true;
+
+            tile.OnMouseEnter();
         }
-
-        //Checks if the unit is currently selected
-        if (charSelected == false && (map.selectedUnit == null || this.gameObject.tag != map.selectedUnit.tag))
-        {
-            //If not, the color is changed to the highlight color
-            renderer.material.color = Color.blue;
-            //if unit is not selected, display a nameplate
-            displayNameplate(true);
-        }
-        //UnityEngine.Debug.Log("Mouse Entered");
-        //Set the hover variable to true
-        charHover = true;
-
-        tile.OnMouseEnter();
     }
 
     //Resets when mouse has stopped hovering over a unit
     public void OnMouseExit()
     {
-        //Checks if the unit is currently selected
-        if (charSelected == false && (map.selectedUnit == null || this.gameObject.tag != map.selectedUnit.tag))
-        {
-            //Checks if the unit's turn has been ended
-            if (turnEnded == false)
+        if(pm.GameIsPaused != true) {
+            //Checks if the unit is currently selected
+            if (charSelected == false && (map.selectedUnit == null || this.gameObject.tag != map.selectedUnit.tag))
             {
-                //If the unit's turn isn't over and isn't selected, reset the color to it's base
+                //Checks if the unit's turn has been ended
+                if (turnEnded == false)
+                {
+                    //If the unit's turn isn't over and isn't selected, reset the color to it's base
+                    renderer.material.color = color;
+                    //If the character is not selected, and the turn is not over turn off nameplate
+                    displayNameplate(false);
+                }
+                else
+                {
+                    //Otherwise set the color to gray
+                    renderer.material.color = Color.gray;
+                    displayNameplate(false);
+
+                }
+            }
+            if (this.gameObject.GetComponent<Enemy_Character_Class>() != null && map.movingEnemy == true){
                 renderer.material.color = color;
-                //If the character is not selected, and the turn is not over turn off nameplate
                 displayNameplate(false);
+                //updateCharStats();
             }
-            else
-            {
-                //Otherwise set the color to gray
-                renderer.material.color = Color.gray;
-                displayNameplate(false);
+            //Set the hover variable to false
+            charHover = false;
+            //UnityEngine.Debug.Log("Mouse Exited");
 
-            }
+            tile.OnMouseExit();
         }
-        if (this.gameObject.GetComponent<Enemy_Character_Class>() != null && map.movingEnemy == true){
-            renderer.material.color = color;
-            displayNameplate(false);
-            //updateCharStats();
-        }
-        //Set the hover variable to false
-        charHover = false;
-        //UnityEngine.Debug.Log("Mouse Exited");
-
-        tile.OnMouseExit();
     }
 
     //Calls the drawReach function within the map, passing the same variables from the parameters as arguments
@@ -840,6 +857,7 @@ public class Basic_Character_Class : MonoBehaviour
         {
             //If the unit is part of the player team, allow the player to move it and perform actions
             charSelected = true;
+            SFXController.instance.PlayRandomSFXClip(openAtkMenu, transform, 1f);
         }
         //Display the health and mana of the selected unit
         displayNameplate(true);  
@@ -858,6 +876,8 @@ public class Basic_Character_Class : MonoBehaviour
         displaySpellList(false);
         map.setMoveButtonPressed(false);
         isMoving = false;
+
+        
         if (turnEnded == false)
         {
             //If it hasn't ended, reset its color to its base color
@@ -928,6 +948,8 @@ public class Basic_Character_Class : MonoBehaviour
     public void magicButtonUI() {
         UnityEngine.Debug.Log("Magic is Clicked");
         displaySpellList(true);
+        SFXController.instance.PlayRandomSFXClip(openAtkMenu, transform, 1f);
+        
     }
 
     public void spellButtonUI(int i) {
@@ -1081,6 +1103,38 @@ public class Basic_Character_Class : MonoBehaviour
         buffs.Remove(buff);
     }
 
+    public void deselectOnResume() 
+    {
+        if (charSelected == false && (map.selectedUnit == null || this.gameObject.tag != map.selectedUnit.tag))
+        {
+            //Checks if the unit's turn has been ended
+            if (turnEnded == false)
+            {
+                //If the unit's turn isn't over and isn't selected, reset the color to it's base
+                renderer.material.color = color;
+                //If the character is not selected, and the turn is not over turn off nameplate
+                displayNameplate(false);
+            }
+            else
+            {
+                //Otherwise set the color to gray
+                renderer.material.color = Color.gray;
+                displayNameplate(false);
+
+            }
+        }
+        if (this.gameObject.GetComponent<Enemy_Character_Class>() != null && map.movingEnemy == true){
+            renderer.material.color = color;
+            displayNameplate(false);
+            //updateCharStats();
+        }
+        //Set the hover variable to false
+        charHover = false;
+        //UnityEngine.Debug.Log("Mouse Exited");
+
+        tile.OnMouseExit();
+        pm.setDeslection(false);
+    }
 
 
 }

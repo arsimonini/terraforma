@@ -54,20 +54,20 @@ public class ClickableTile : MonoBehaviour
             tileRenderer.material.color = highlightColor;
             if (transform.childCount > 0){
                 foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
-                    if (!rend.gameObject.name.StartsWith("Outline")){
+                    if (!rend.gameObject.name.StartsWith("Outline") && !rend.gameObject.name.Contains("oak")){
                         rend.material.color = highlightColor;
                     }
                 }   
             }
         }
-        else
+        else if (map.selectedUnit == null || (map.selectedUnitScript.isMoving && map.moving == false))
         {
             //Else, just do a normal highlight
             highlightColor = originalColor * highlightMultiplier;
             tileRenderer.material.color = highlightColor;
             if (transform.childCount > 0){
                 foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
-                    if (!rend.gameObject.name.StartsWith("Outline")){
+                    if (!rend.gameObject.name.StartsWith("Outline") && !rend.gameObject.name.Contains("oak")){
                         rend.material.color = highlightColor;
                     }
                 }   
@@ -99,7 +99,7 @@ public class ClickableTile : MonoBehaviour
         tileRenderer.material.color = highlightColor;
         if (transform.childCount > 0){
             foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
-                if (!rend.gameObject.name.StartsWith("Outline")){
+                if (!rend.gameObject.name.StartsWith("Outline") && !rend.gameObject.name.Contains("oak")){
                     rend.material.color = highlightColor;
                 }
             }
@@ -113,7 +113,8 @@ public class ClickableTile : MonoBehaviour
         GetComponent<Renderer>().material.color = color;
         if (transform.childCount > 0){
             foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
-                if(!rend.gameObject.name.StartsWith("Outline")){
+                if(!rend.gameObject.name.StartsWith("Outline") && !rend.gameObject.name.Contains("oak")){
+                    UnityEngine.Debug.Log(rend.gameObject.name);
                     rend.material.color = color;
                 }
             }

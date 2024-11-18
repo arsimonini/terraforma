@@ -23,6 +23,8 @@ public class CamControl : MonoBehaviour
 
     public List<GameObject> lUnits;
 
+    public PauseMenu pm;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +61,8 @@ public class CamControl : MonoBehaviour
 
             float hInput = Input.GetAxis("Horizontal");
             float vInput = Input.GetAxis("Vertical");
+            UnityEngine.Debug.Log(hInput);
+            UnityEngine.Debug.Log(vInput);
             GameObject unit = map.selectedUnit;
             Vector3 unitPos = unit.transform.position;
 
@@ -99,7 +103,8 @@ public class CamControl : MonoBehaviour
             checkSwitchTarget();
             float hInput = Input.GetAxis("Horizontal");
             float vInput = Input.GetAxis("Vertical");
-
+            UnityEngine.Debug.Log(hInput);
+            UnityEngine.Debug.Log(vInput);
             Vector3 fw = 4*getForward();
 
             /*if ((transform.position.x) <= 0 && hInput < 0) {
@@ -132,56 +137,59 @@ public class CamControl : MonoBehaviour
 
     void easeToLocation(float x,float z) {
 
+        if(pm.GameIsPaused != true) {
+            float inc = 16;
+            //The higher the number, the more gradual the travel speed.
 
-        float inc = 16;
-        //The higher the number, the more gradual the travel speed.
+            float xOld = transform.position.x;
+            float zOld = transform.position.z;
 
-        float xOld = transform.position.x;
-        float zOld = transform.position.z;
+            float xAvg = (xOld*(inc-1) + x) / inc;
+            float zAvg = (zOld*(inc-1) + z) / inc;
 
-        float xAvg = (xOld*(inc-1) + x) / inc;
-        float zAvg = (zOld*(inc-1) + z) / inc;
-
-        transform.position = new Vector3(xAvg,transform.position.y,zAvg);
+            transform.position = new Vector3(xAvg,transform.position.y,zAvg);
+        }
     }
 
     void checkRotation() {
-        if (rotationCount <= 0) {
-            //Check rotation keys
-            bool tL = Input.GetKeyDown(KeyCode.Q); 
-            bool tR = Input.GetKeyDown(KeyCode.E);
-            int rot = 0;
-            
-            //If E, set rotate right
-            if (tL) {
-                rot = -45;
-                rotationDirection = -5;
-                //Debug.Log("Turn Left");
-                rotationCount = 9;
+        if(pm.GameIsPaused != true) {
+            if (rotationCount <= 0) {
+                //Check rotation keys
+                bool tL = Input.GetKeyDown(KeyCode.Q); 
+                bool tR = Input.GetKeyDown(KeyCode.E);
+                int rot = 0;
+                
+                //If E, set rotate right
+                if (tL) {
+                    rot = -45;
+                    rotationDirection = -5;
+                    //Debug.Log("Turn Left");
+                    rotationCount = 9;
+                }
+                //If Q, set rotate left
+                if (tR) {
+                    rot = 45;
+                    rotationDirection = 5;
+                    //Debug.Log("Turn Right");
+                    rotationCount = 9;
+                }
+
+
+
+            } else {
+                rotationCount --;
+
+                //Increment towards that
+                transform.Rotate(-xAngle,0,0);
+                transform.Rotate(0,rotationDirection,0);
+                transform.Rotate(xAngle,0,0); 
+
+                if (rotationCount == 0) {
+                    rotationDirection = 0;
+
+                }
+                
             }
-            //If Q, set rotate left
-            if (tR) {
-                rot = 45;
-                rotationDirection = 5;
-                //Debug.Log("Turn Right");
-                rotationCount = 9;
-            }
-
-
-
-        } else {
-            rotationCount --;
-
-            //Increment towards that
-            transform.Rotate(-xAngle,0,0);
-            transform.Rotate(0,rotationDirection,0);
-            transform.Rotate(xAngle,0,0); 
-
-            if (rotationCount == 0) {
-                rotationDirection = 0;
-
-            }
-            
         }
 
         
@@ -189,28 +197,30 @@ public class CamControl : MonoBehaviour
     }
 
     void checkSwitchTarget () {
-        lUnits = new List<GameObject>(gc.playerTeamList);
-        lUnits.AddRange(gc.enemyTeamList);
+        if(pm.GameIsPaused != true) {
+            lUnits = new List<GameObject>(gc.playerTeamList);
+            lUnits.AddRange(gc.enemyTeamList);
 
-        bool inputTab = Input.GetKeyDown(KeyCode.Tab); 
+            bool inputTab = Input.GetKeyDown(KeyCode.Tab); 
 
-        if (inputTab) {
-            targetIndex ++;
+            if (inputTab) {
+                targetIndex ++;
 
-            if ((targetIndex < 0) || (targetIndex >= lUnits.Count)) {
-                targetIndex = 0;
-            } 
+                if ((targetIndex < 0) || (targetIndex >= lUnits.Count)) {
+                    targetIndex = 0;
+                } 
 
-            targetCounter = 60;
+                targetCounter = 60;
 
-        } else if (targetCounter > 0) {
-            GameObject targetObject = lUnits[targetIndex];
-            target = targetObject.transform.position - 3*getForward();
-            easeToLocation(target.x,target.z);
+            } else if (targetCounter > 0) {
+                GameObject targetObject = lUnits[targetIndex];
+                target = targetObject.transform.position - 3*getForward();
+                easeToLocation(target.x,target.z);
 
-            targetCounter --;
-        } else {
-            
+                targetCounter --;
+            } else {
+                
+            }
         }
     }
 

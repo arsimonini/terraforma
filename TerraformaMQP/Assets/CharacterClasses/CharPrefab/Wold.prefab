@@ -57,7 +57,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7928607729415032659
 MonoBehaviour:
@@ -110,6 +110,7 @@ MonoBehaviour:
   attackReach: 1
   defaultReach: 1
   attackType: 
+  buffs: []
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 0
   tileY: 2
@@ -117,7 +118,11 @@ MonoBehaviour:
     name: 
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   tile: {fileID: 0}
   map: {fileID: 0}
   targeting: 0

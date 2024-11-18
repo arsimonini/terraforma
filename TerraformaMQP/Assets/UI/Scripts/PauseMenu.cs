@@ -1,46 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
 
-    public static bool GameIsPaused = false;
+    public bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape)) {
-            if(GameIsPaused) {
-                Resume();
-            }
-            else {
-                Pause();
-            }
+    public bool forDeselecting = false;
+
+    public GameObject descriptionPage;
+    public GameObject settingsPage;
+
+    [SerializeField] private AudioClip[] openPauseMenu;
+    [SerializeField] private AudioClip[] closePauseMenu;
+    [SerializeField] private AudioClip[] flipPauseMenu;
+
+    public void Update() {
+        if(GameIsPaused == true && Input.GetKeyUp(KeyCode.R)) {
+            RestartLevel();
         }
-        
     }
 
     public void Resume() {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        setDeslection(true);
+        SFXController.instance.PlayRandomSFXClip(closePauseMenu, transform, 1f);
     }
 
-    void Pause() {
-            pauseMenuUI.SetActive(true);
-            Time.timeScale = 0f;
-            GameIsPaused = true;
+    public void Pause() {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        SFXController.instance.PlayRandomSFXClip(openPauseMenu, transform, 1f);
+        descriptionPage.SetActive(true);
+        settingsPage.SetActive(false);
+    }
+
+    public void RestartLevel() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Quit() {
         Debug.Log("Quit Clicked");
+        Application.Quit();
     }
 
     public void Settings() {
         Debug.Log("Settings Clicked");
-        Application.Quit();
+        SFXController.instance.PlayRandomSFXClip(flipPauseMenu, transform, 1f);
+        descriptionPage.SetActive(false);
+        settingsPage.SetActive(true);
+    }
+
+    public void setDeslection(bool b) {
+        forDeselecting = b;
+    }
+
+    public void goBackButton(bool b) {
+        descriptionPage.SetActive(true);
+        settingsPage.SetActive(false);
+        SFXController.instance.PlayRandomSFXClip(flipPauseMenu, transform, 1f);
     }
 }
