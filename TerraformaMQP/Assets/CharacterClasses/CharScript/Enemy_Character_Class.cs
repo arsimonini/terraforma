@@ -240,7 +240,7 @@ public class Enemy_Character_Class : MonoBehaviour
             int alliesNearLancin = 0;
             int tilesOnFire = 0;
 
-            GameObject lancin = heroWithName("Lancin");
+            GameObject lancin = heroWithName("Lancin Bermane");
             int[] mapsize = basic.map.getMapSize();
             int mapX = mapsize[0];
             int mapY = mapsize[1];

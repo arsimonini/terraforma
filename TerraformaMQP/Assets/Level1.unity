@@ -30685,6 +30685,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3556103306998089025, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: element
+      value: water
+      objectReference: {fileID: 0}
+    - target: {fileID: 3556103306998089025, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: spellList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3556103306998089025, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: spellList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 93c847b5b0c264066ac7f4d1a9d72c54, type: 2}
+    - target: {fileID: 3556103306998089025, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: spellList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: d7da6be75e8f44b2992b2a073e0dea70, type: 2}
     - target: {fileID: 6571172650880656856, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -30727,7 +30743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_Name
-      value: BasicEnemy (8)
+      value: WaterEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: pm
@@ -33189,11 +33205,11 @@ SceneRoots:
   - {fileID: 1943246912}
   - {fileID: 1194131359}
   - {fileID: 671733283}
+  - {fileID: 1974213121}
   - {fileID: 607914652}
   - {fileID: 836072117}
   - {fileID: 46602160}
   - {fileID: 897001945}
-  - {fileID: 1974213121}
   - {fileID: 159743916}
   - {fileID: 1268972661}
   - {fileID: 1931351488}
