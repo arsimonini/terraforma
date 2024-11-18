@@ -188,6 +188,9 @@ public class TileMap : MonoBehaviour
                     if(moving == true) {
                         SFXController.instance.PlayRandomSFXClip(movementSounds, transform, 1f);
                     }
+                    if(selectedUnitScript != null){
+                        selectedUnitScript.isMoving = false;
+                    }
                     movingEnemy = false;
                     moving = false;
                     currentPath = null;
@@ -201,8 +204,14 @@ public class TileMap : MonoBehaviour
                     selectedUnit.GetComponent<Enemy_Character_Class>().attackTarget();
                 }
 
+
                 if(moving == true) {
                     SFXController.instance.PlayRandomSFXClip(movementSounds, transform, 1f);
+                }
+
+                if(selectedUnitScript != null){
+                    selectedUnitScript.isMoving = false;
+
                 }
                 movingEnemy = false;
                 moving = false;
