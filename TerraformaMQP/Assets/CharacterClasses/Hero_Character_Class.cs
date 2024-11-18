@@ -19,6 +19,10 @@ public class Hero_Character_Class : MonoBehaviour
     public List<Basic_Spell_Class> spellList; //The list of spells that the character can cast
     public Basic_Spell_Class selectedSpell = null; //The currently selected spell the character is trying to cast
 
+    [SerializeField] private AudioClip[] fireSpells;
+    [SerializeField] private AudioClip[] earthSpells;
+    [SerializeField] private AudioClip[] waterSpells;
+
     void Start()
     {
         //Checks if the unit has a spellList attached to it
@@ -170,6 +174,17 @@ public class Hero_Character_Class : MonoBehaviour
         //Instantiates an instance of the selected spell, then calls the castSpell function within it, passing along the targets and then this GameObject as the spells caster
         Basic_Spell_Class spellInstance = Instantiate(selectedSpell);
         spellInstance.spellPrefab.GetComponent<Cast_Spell>().castSpell(targets, this.gameObject);
+
+        if(selectedSpell.elementType == "Fire") {
+            SFXController.instance.PlayRandomSFXClip(fireSpells, transform, 1f);
+        }
+        else if(selectedSpell.elementType == "Earth") {
+            SFXController.instance.PlayRandomSFXClip(earthSpells, transform, 1f);
+        }
+        else if(selectedSpell.elementType == "Water") {
+            SFXController.instance.PlayRandomSFXClip(waterSpells, transform, 1f);
+        }
+
     }
 
 }
