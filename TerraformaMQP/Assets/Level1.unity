@@ -9609,6 +9609,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8895871286598532798, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
   m_PrefabInstance: {fileID: 1943246912}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &812480041 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7928607729415032659, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+  m_PrefabInstance: {fileID: 1943246912}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812480036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eef314c587c8e24aa38801bf961afa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &820136265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11890,8 +11901,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0, z: 0}
-  tooFarHorizontal: 10
-  tooFarVertical: 10
+  tooFarHorizontal: 14
+  tooFarVertical: 12
+  tooNearHorizontal: -5
+  tooNearVertical: -8
   gc: {fileID: 1356950529}
   map: {fileID: 1297737938}
   target: {x: 0, y: 0, z: 0}
@@ -16435,87 +16448,171 @@ MonoBehaviour:
   - name: Grass
     tileVisualPrefab: {fileID: 5589415869077225197, guid: 0e3d7416a877b4d1792beb3be8aa77f9, type: 3}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Dirt
     tileVisualPrefab: {fileID: 4609658174146669432, guid: 7a123d4087b294f409d1a05d686ae271, type: 3}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Mud
     tileVisualPrefab: {fileID: 313383055986497203, guid: 7c010d1b6cd8245d999a68a01481397e, type: 3}
     isWalkable: 1
+    isBreakable: 0
     cost: 2
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Land Ice
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Water Ice
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Stone
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Wood Plank
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Dense Forest
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Light Forest
     tileVisualPrefab: {fileID: 5296307935300308040, guid: d60c68c33fe7f40b795fa968839add81, type: 3}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Shallow Water
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Deep Water
     tileVisualPrefab: {fileID: 0}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Sand
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Glass
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Metal
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Ashen
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Mountain
     tileVisualPrefab: {fileID: 0}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Hill
     tileVisualPrefab: {fileID: 0}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Wall
     tileVisualPrefab: {fileID: 0}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: White Void
     tileVisualPrefab: {fileID: 0}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: tileFireGrass
     tileVisualPrefab: {fileID: 5296307935300308040, guid: 74736fe0684ee464f96b181620a6b05b, type: 3}
     isWalkable: 1
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   - name: Wold Wall
     tileVisualPrefab: {fileID: 4609658174146669432, guid: a9ab7a73a56972e47b2dccd0e2ef533c, type: 3}
     isWalkable: 0
+    isBreakable: 0
     cost: 1
+    breakBecome: 0
+    hp: 20
+    maxHp: 0
   movingEnemy: 0
   moving: 0
   targetList: []
@@ -25467,6 +25564,8 @@ MonoBehaviour:
   startPos: {x: 0, y: 0, z: 0}
   tooFarHorizontal: 10
   tooFarVertical: 10
+  tooNearHorizontal: -5
+  tooNearVertical: -5
   gc: {fileID: 1356950529}
   map: {fileID: 1297737938}
   target: {x: 0, y: 0, z: 0}
@@ -25922,6 +26021,34 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 960158208}
+    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 812480041}
+    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: spellButtonUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Basic_Character_Class, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2471195623318993539, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: cam
       value: 
@@ -25930,6 +26057,46 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1918770147}
+    - target: {fileID: 5776827594926185742, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776827594926185742, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776827594926185742, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 812480041}
+    - target: {fileID: 5776827594926185742, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776827594926185742, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: spellButtonUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776827594926185742, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Basic_Character_Class, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776827594926185742, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776827594926185742, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585430571080152534, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: spellList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585430571080152534, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: spellList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: fd81b9e3a376c5841958c1023d189a9c, type: 2}
     - target: {fileID: 7928607729415032659, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: map
       value: 
@@ -25954,6 +26121,22 @@ PrefabInstance:
       propertyPath: nameplate
       value: 
       objectReference: {fileID: 8238293854779057181}
+    - target: {fileID: 7928607729415032659, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: movementSpeed.moddedValue
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047284439058182590, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: spellList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047284439058182590, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: spellList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: aa201f79e3450ad40825d734c3069464, type: 2}
+    - target: {fileID: 8047284439058182590, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: spellList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: fd81b9e3a376c5841958c1023d189a9c, type: 2}
     - target: {fileID: 8895871286598532798, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: m_Name
       value: Wold
