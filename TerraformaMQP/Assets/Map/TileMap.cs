@@ -178,6 +178,9 @@ public class TileMap : MonoBehaviour
                     }
                 }
                 else {
+                    if(selectedUnitScript != null){
+                        selectedUnitScript.isMoving = false;
+                    }
                     movingEnemy = false;
                     moving = false;
                     currentPath = null;
@@ -189,6 +192,9 @@ public class TileMap : MonoBehaviour
                 //The moving variables are set to false and the currentPath becomes null
                 if (movingEnemy == true) {
                     selectedUnit.GetComponent<Enemy_Character_Class>().attackTarget();
+                }
+                if(selectedUnitScript != null){
+                    selectedUnitScript.isMoving = false;
                 }
                 movingEnemy = false;
                 moving = false;
