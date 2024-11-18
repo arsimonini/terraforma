@@ -31,6 +31,9 @@ public class GameControllerScript : MonoBehaviour
 
     private LayerMask mask;
 
+    public PauseMenu pauseMenuController;
+    [SerializeField] private AudioClip[] closeAtkMenu;
+
     void Start(){
         mask = LayerMask.GetMask("Default") | LayerMask.GetMask("BlockVisibility") | LayerMask.GetMask("UI");
         for (int i = 0; i < playerTeamList.Count; i++){
@@ -231,6 +234,7 @@ public class GameControllerScript : MonoBehaviour
         {
             //Stops the targeting but leaves the character selected
             stopTargeting();
+            SFXController.instance.PlayRandomSFXClip(closeAtkMenu, transform, 1f);
         }
         //Executes if the player presses the escape key when they are not targeting a spell/attack
         else if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0  && map.moving == false)
@@ -241,6 +245,23 @@ public class GameControllerScript : MonoBehaviour
             map.updateSelectedCharacter(null);
             map.currentPath = null;
             updateSelectedObject(null);
+            SFXController.instance.PlayRandomSFXClip(closeAtkMenu, transform, 1f);
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && selectedCharacter == null) {
+            if(pauseMenuController.GameIsPaused) {
+                pauseMenuController.Resume();
+            }
+            else {
+                pauseMenuController.Pause();
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null) {
+            if(pauseMenuController.GameIsPaused) {
+                pauseMenuController.Resume();
+            }
+            else {
+                pauseMenuController.Pause();
+            }
         }
 
         //Controls the game state and switching between the player/enemy turns
