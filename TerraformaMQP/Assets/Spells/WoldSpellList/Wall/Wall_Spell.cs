@@ -33,47 +33,59 @@ public class Wall_Spell : MonoBehaviour, Cast_Spell
                 float targetX = targetTile.TileX;
                 float targetY = targetTile.TileY;
                 TileMap map = targetTile.map;
-                
 
-                if (targetTile == null) {
+                Basic_Character_Class casterCharacter = caster.GetComponent<Basic_Character_Class>();    
+                
+                if (targetTile == null || casterCharacter == null) {
                     return;
                 }
 
                 if (acceptableLocation(targetTile)){
                     map.swapTiles(targetTile,20,false);
+
+                    float castX = casterCharacter.tileX;
+                    float castY = casterCharacter.tileY;
+
+                    float castDistanceX = Mathf.Abs(castX - targetX);
+                    float castDistanceY = Mathf.Abs(castY - targetY);
+
+                    if (castDistanceX > castDistanceY) {
+                        //North
+                        if (targetY < map.clickableTiles.GetLength(1)-1) {
+                            ClickableTile north = map.clickableTiles[(int) targetX,(int) targetY+1];
+                            if (acceptableLocation(north)) {
+                                map.swapTiles(north,20,false);
+                            }
+                        }                
+
+                        //South
+                        if (targetY > 0) {
+                            ClickableTile south = map.clickableTiles[(int) targetX,(int) targetY-1];
+                            if (acceptableLocation(south)) {
+                                map.swapTiles(south,20,false);
+                            }
+                        }
+                    } else {
+
+                        //East
+                        if (targetX > 0) {
+                            ClickableTile east = map.clickableTiles[(int) targetX-1,(int) targetY];
+                            if (acceptableLocation(east)) {
+                                map.swapTiles(east,20,false);
+                            }
+                        }
+
+                        //West
+                        if (targetX < map.clickableTiles.GetLength(0)-1) {
+                            ClickableTile west = map.clickableTiles[(int) targetX+1,(int) targetY];
+                            if (acceptableLocation(west)) {
+                                map.swapTiles(west,20,false);
+                            }
+                        }
+                    }
                 }
 
-                //North
-                if (targetY < map.clickableTiles.GetLength(1)-1) {
-                    ClickableTile north = map.clickableTiles[(int) targetX,(int) targetY+1];
-                    if (acceptableLocation(north)) {
-                        map.swapTiles(north,20,false);
-                    }
-                }                
 
-                //South
-                if (targetY > 0) {
-                    ClickableTile south = map.clickableTiles[(int) targetX,(int) targetY-1];
-                    if (acceptableLocation(south)) {
-                        map.swapTiles(south,20,false);
-                    }
-                }
-
-                //East
-                if (targetX > 0) {
-                    ClickableTile east = map.clickableTiles[(int) targetX-1,(int) targetY];
-                    if (acceptableLocation(east)) {
-                        map.swapTiles(east,20,false);
-                    }
-                }
-
-                //West
-                if (targetX < map.clickableTiles.GetLength(0)-1) {
-                    ClickableTile west = map.clickableTiles[(int) targetX+1,(int) targetY];
-                    if (acceptableLocation(west)) {
-                        map.swapTiles(west,20,false);
-                    }
-                }
                 
             }
 
