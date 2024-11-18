@@ -82,6 +82,7 @@ public class TileMap : MonoBehaviour
 
     //Upon level load begin creating the map
     void Start() {
+        Time.timeScale = 1f;
         createMap();
         //GenerateMapVisual();
         //swapTiles(clickableTiles[2,3],20,true);
@@ -205,15 +206,11 @@ public class TileMap : MonoBehaviour
                 if (movingEnemy == true) {
                     selectedUnit.GetComponent<Enemy_Character_Class>().attackTarget();
                 }
-
-
-                if(moving == true) {
-                    SFXController.instance.PlayRandomSFXClip(movementSounds, transform, 1f);
-                }
-
                 if(selectedUnitScript != null){
                     selectedUnitScript.isMoving = false;
-
+                }
+                if(moving == true) {
+                    SFXController.instance.PlayRandomSFXClip(movementSounds, transform, 1f);
                 }
                 movingEnemy = false;
                 moving = false;

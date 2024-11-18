@@ -58,11 +58,22 @@ public class CamControl : MonoBehaviour
 
         } else if (map.selectedUnit != null) { //Unit is selected but isn't moving, restrict camera so that they are always within shot.
             checkRotation();
-
-            float hInput = Input.GetAxis("Horizontal");
-            float vInput = Input.GetAxis("Vertical");
-            UnityEngine.Debug.Log(hInput);
-            UnityEngine.Debug.Log(vInput);
+            float hInput = 0f;
+            float vInput = 0f;
+            //float hInput = Input.GetAxis("Horizontal");
+            //float vInput = Input.GetAxis("Vertical");
+            if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)){
+                hInput = 0.75f;
+            }
+            else if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)){
+                hInput = -0.75f;
+            }
+            if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)){
+                vInput = 0.75f;
+            }
+            else if (Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W)){
+                vInput = -0.75f;
+            }
             GameObject unit = map.selectedUnit;
             Vector3 unitPos = unit.transform.position;
 
@@ -101,10 +112,23 @@ public class CamControl : MonoBehaviour
         } else {
             checkRotation();
             checkSwitchTarget();
-            float hInput = Input.GetAxis("Horizontal");
-            float vInput = Input.GetAxis("Vertical");
-            UnityEngine.Debug.Log(hInput);
-            UnityEngine.Debug.Log(vInput);
+            float hInput = 0f;
+            float vInput = 0f;
+            //float hInput = Input.GetAxis("Horizontal");
+            //float vInput = Input.GetAxis("Vertical");
+            if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)){
+                hInput = 0.75f;
+            }
+            else if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)){
+                hInput = -0.75f;
+            }
+            if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)){
+                vInput = 0.75f;
+            }
+            else if (Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W)){
+                vInput = -0.75f;
+                UnityEngine.Debug.Log(vInput);
+            }
             Vector3 fw = 4*getForward();
 
             /*if ((transform.position.x) <= 0 && hInput < 0) {
