@@ -60,7 +60,7 @@ public class ClickableTile : MonoBehaviour
                 }   
             }
         }
-        else
+        else if (map.selectedUnit == null || (map.selectedUnitScript.isMoving && map.moving == false))
         {
             //Else, just do a normal highlight
             highlightColor = originalColor * highlightMultiplier;
