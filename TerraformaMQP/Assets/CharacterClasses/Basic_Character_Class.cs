@@ -868,8 +868,6 @@ public class Basic_Character_Class : MonoBehaviour
         isMoving = false;
 
         
-        SFXController.instance.PlayRandomSFXClip(closeAtkMenu, transform, 1f);
-        
         if (turnEnded == false)
         {
             //If it hasn't ended, reset its color to its base color

@@ -61,6 +61,8 @@ public class CamControl : MonoBehaviour
 
             float hInput = Input.GetAxis("Horizontal");
             float vInput = Input.GetAxis("Vertical");
+            UnityEngine.Debug.Log(hInput);
+            UnityEngine.Debug.Log(vInput);
             GameObject unit = map.selectedUnit;
             Vector3 unitPos = unit.transform.position;
 
@@ -101,7 +103,8 @@ public class CamControl : MonoBehaviour
             checkSwitchTarget();
             float hInput = Input.GetAxis("Horizontal");
             float vInput = Input.GetAxis("Vertical");
-
+            UnityEngine.Debug.Log(hInput);
+            UnityEngine.Debug.Log(vInput);
             Vector3 fw = 4*getForward();
 
             /*if ((transform.position.x) <= 0 && hInput < 0) {

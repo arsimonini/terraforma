@@ -146,12 +146,16 @@ public class TileMap : MonoBehaviour
                     {
                         //If not, the unit moves closer to the desired location
                         selectedUnit.transform.position = Vector3.MoveTowards(selectedUnit.transform.position, nextPos, step);
-                        //SFXController.instance.PlayRandomSFXClip(movementSounds, transform, 1f);
                         selectedUnitScript.OnMouseExit();
                     }
                     //If the unit is at the desired location, the unit's tileX and tileY variables are updated
                     else
                     {
+
+                    
+                        SFXController.instance.PlayRandomSFXClip(movementSounds, transform, 1f);
+                
+
                         selectedUnitScript.tile.OnMouseExit();
                         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].characterOnTile = null;
                         //Makes the tile passable again when the unit moves off it
@@ -181,6 +185,9 @@ public class TileMap : MonoBehaviour
                     }
                 }
                 else {
+                    if(moving == true) {
+                        SFXController.instance.PlayRandomSFXClip(movementSounds, transform, 1f);
+                    }
                     movingEnemy = false;
                     moving = false;
                     currentPath = null;
@@ -192,6 +199,10 @@ public class TileMap : MonoBehaviour
                 //The moving variables are set to false and the currentPath becomes null
                 if (movingEnemy == true) {
                     selectedUnit.GetComponent<Enemy_Character_Class>().attackTarget();
+                }
+
+                if(moving == true) {
+                    SFXController.instance.PlayRandomSFXClip(movementSounds, transform, 1f);
                 }
                 movingEnemy = false;
                 moving = false;
