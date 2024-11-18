@@ -186,11 +186,11 @@ public class TileMap : MonoBehaviour
                     }
                 }
                 else {
-                    if(selectedUnitScript != null){
-                        selectedUnitScript.isMoving = false;
-                    }
                     if(moving == true) {
                         SFXController.instance.PlayRandomSFXClip(movementSounds, transform, 1f);
+                    }
+                    if(selectedUnitScript != null){
+                        selectedUnitScript.isMoving = false;
                     }
                     movingEnemy = false;
                     moving = false;
