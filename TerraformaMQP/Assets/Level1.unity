@@ -10845,6 +10845,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8895871286598532798, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
   m_PrefabInstance: {fileID: 1943246912}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &812480041 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7928607729415032659, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+  m_PrefabInstance: {fileID: 1943246912}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812480036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eef314c587c8e24aa38801bf961afa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &818315120
 GameObject:
   m_ObjectHideFlags: 0
@@ -13656,6 +13667,8 @@ MonoBehaviour:
   startPos: {x: 0, y: 0, z: 0}
   tooFarHorizontal: 10
   tooFarVertical: 10
+  tooNearHorizontal: -5
+  tooNearVertical: -5
   gc: {fileID: 1356950529}
   map: {fileID: 1297737938}
   target: {x: 0, y: 0, z: 0}
@@ -29313,6 +29326,8 @@ MonoBehaviour:
   startPos: {x: 0, y: 0, z: 0}
   tooFarHorizontal: 10
   tooFarVertical: 10
+  tooNearHorizontal: -5
+  tooNearVertical: -5
   gc: {fileID: 1356950529}
   map: {fileID: 1297737938}
   target: {x: 0, y: 0, z: 0}
@@ -29816,7 +29831,27 @@ PrefabInstance:
       objectReference: {fileID: 960158208}
     - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 812480041}
+    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: spellButtonUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Basic_Character_Class, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2471195623318993539, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: cam
