@@ -203,7 +203,7 @@ public class TileMap : MonoBehaviour
             else
             {
                 //The moving variables are set to false and the currentPath becomes null
-                if (movingEnemy == true) {
+                if (movingEnemy == true && selectedUnitScript != null) {
                     selectedUnit.GetComponent<Enemy_Character_Class>().attackTarget();
                 }
                 if(selectedUnitScript != null){
