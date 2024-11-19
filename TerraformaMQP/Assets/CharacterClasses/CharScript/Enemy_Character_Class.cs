@@ -12,16 +12,21 @@ public class Enemy_Character_Class : MonoBehaviour
     public bool chaseFromFar = false;
     public int chaseSteps = 10;
 
+    public int[] waterCooldown = new int[2]; 
+
     public List<Basic_Spell_Class> spellList; //The list of spells that the character can cast
 
     void Start() {
         basic = this.gameObject.GetComponent<Basic_Character_Class>();
+        waterCooldown[0] = 0;
+        waterCooldown[1] = 0;
     }
 
     //Tells the enemy to take their turn ---SUBJECT TO CHANGES AS AI IS ADDED---
     public void takeTurn()
     {
         UnityEngine.Debug.Log("Taking turn");
+        lowerWaterCooldown();
 
         if (element == "") {
             basicTurn();
@@ -50,9 +55,12 @@ public class Enemy_Character_Class : MonoBehaviour
     public void takePath(List<Node> path) {
         if (path.Count > 0) {
             //LOG STUFF HERE FOR MOVEMENT
+            if (path[0].x == basic.tileX && path[0].y == basic.tileY) {
+                basic.endTurn();
+            }
         }
         else {
-            attackTarget();
+            basic.endTurn();
         }
         basic.map.currentPath = path;
         basic.path = path;
@@ -108,9 +116,15 @@ public class Enemy_Character_Class : MonoBehaviour
 
         List<Node> wallAdj = new List<Node>();
 
+        //check for cover within 10x10 area?
+        int startX = Math.Max(basic.tileX-5, 0);
+        int endX = Math.Min(basic.tileX+5, tiles.GetLength(0));
+        int startY = Math.Max(basic.tileY-5, 0);
+        int endY = Math.Min(basic.tileY+5, tiles.GetLength(1));
+
         //iterate through map tiles
-        for (int i = 0; i < tiles.GetLength(0); i++) { 
-            for (int j = 0; j < tiles.GetLength(1); j++) { 
+        for (int i = startX; i < endX; i++) { 
+            for (int j = startY; j < endY; j++) { 
                 //if tile is wall, add adjacent non-walls to wallAdj
                 if (Array.IndexOf(wallNums, tiles[i,j]) != -1) {
                     foreach (Node n in graph[i,j].neighbors) {
@@ -119,14 +133,14 @@ public class Enemy_Character_Class : MonoBehaviour
                     }
                 } 
             } 
-        }  
+        }
 
         List<Node> coverTiles = new List<Node>();
         List<Node> shortestCoverTilePath = new List<Node>();
         //refine list to walls that put distance between enemy and hero
+        bool first = true;
         foreach (Node n in wallAdj) {
             int coveredFrom = 0;
-            bool found = false;
             List<Node> coverTilePath = new List<Node>();
             foreach (GameObject hero in heroes) {
                 int heroX = hero.GetComponent<Basic_Character_Class>().tileX;
@@ -134,27 +148,35 @@ public class Enemy_Character_Class : MonoBehaviour
                 List<Node> pathWithWall = basic.map.generatePathTo(heroX, heroX, false, true, n.x, n.y, false, setCurrent:false);
                 List<Node> pathNoWall = basic.map.generatePathTo(heroX, heroX, false, true, n.x, n.y, true, setCurrent:false);
                 if (pathNoWall != null && pathWithWall != null) {
-                    if (pathWithWall.Count > pathNoWall.Count || pathWithWall.Count > 15) {
+                    if (pathWithWall.Count > pathNoWall.Count || pathWithWall.Count > 10) {
                         coveredFrom += 1;
                     }
                 }
             }
             if (coveredFrom == heroes.Length) {
                 coverTiles.Add(n);
-                coverTilePath = basic.map.generatePathTo(n.x, n.y, false, false, setCurrent:false);
 
-                if (!found) {
-                    shortestCoverTilePath = coverTilePath;
-                    found = true;
+                if (n.x == basic.tileX && n.y == basic.tileY) {
+                    coverTilePath = new List<Node>();
+                    //UnityEngine.Debug.Log("ALREADY ON COVER TILE: " + n.x + "," + n.y);
+                }
+                else {
+                    coverTilePath = basic.map.generatePathTo(n.x, n.y, false, false, setCurrent:false);
                 }
 
-                if (coverTilePath != null && coverTilePath.Count < shortestCoverTilePath.Count) {
+                if (first) {
                     shortestCoverTilePath = coverTilePath;
+                    first = false;
                 }
-                UnityEngine.Debug.Log("FOUND COVER TILE: " + n.x + "," + n.y);
+                else if (coverTilePath != null && coverTilePath.Count < shortestCoverTilePath.Count) {
+                    shortestCoverTilePath = coverTilePath;
+                    //UnityEngine.Debug.Log("CLOSEST: " + n.x + "," + n.y + "; to go: " + coverTilePath.Count);
+                }
+                //UnityEngine.Debug.Log("FOUND COVER TILE: " + n.x + "," + n.y + "; to go: " + coverTilePath.Count);
             }
         }
-        UnityEngine.Debug.Log("VALID COVER TILES: " + coverTiles.Count);
+        //UnityEngine.Debug.Log("VALID COVER TILES: " + coverTiles.Count);
+        //UnityEngine.Debug.Log("CLOSE COVER TILE: " + shortestCoverTilePath.Count);
 
         //reject paths that land directly next to hero
 
@@ -205,8 +227,12 @@ public class Enemy_Character_Class : MonoBehaviour
         }
     }
 
-
     //Water enemy functions
+
+    void lowerWaterCooldown() {
+        waterCooldown[0] -= 1;
+        waterCooldown[1] -= 1;
+    }
 
     //make water enemy go last (reorder in scene)
     public void waterEnemyTurn() {
@@ -224,6 +250,7 @@ public class Enemy_Character_Class : MonoBehaviour
                 //Basic_Spell_Class spellInstance = Instantiate(spellList[0]);
                 //spellInstance.spellPrefab.GetComponent<Cast_Spell>().castSpell(basic.map.targetList, this.gameObject);
                 UnityEngine.Debug.Log("ENEMY CAST FLOOD");
+                waterCooldown[0] = 3;
             }
             else {
                 basic.stopTargeting();
@@ -233,7 +260,7 @@ public class Enemy_Character_Class : MonoBehaviour
             }
 
         }
-        else {
+        else if (waterCooldown[1] <= 0){
             //begintargeting for rain to get targetlist of tiles
             basic.beginTargetingSpell(spellList[1].range, spellList[1]);
             GameObject bestTarget = null;
@@ -266,7 +293,7 @@ public class Enemy_Character_Class : MonoBehaviour
 
                 for (int x = boxX; x < boxX+5; x++) {
                     for (int y = boxY; y < boxY+5;y++) {
-                        if (basic.map.clickableTiles[x,y] != null) {
+                        if (x < mapX - 1 && y < mapY - 1 && basic.map.clickableTiles[x,y] != null) {
                             GameObject characterOnTile = basic.map.clickableTiles[x,y].characterOnTile;
                             if (basic.map.checkForTileEffect(x, y, "Burning")) {
                                 fire++;
@@ -309,6 +336,7 @@ public class Enemy_Character_Class : MonoBehaviour
                 UnityEngine.Debug.Log("ENEMY CAST RAIN");
                 Basic_Spell_Class spellInstance = Instantiate(spellList[1]);
                 spellInstance.spellPrefab.GetComponent<Cast_Spell>().castSpell(target, this.gameObject);
+                waterCooldown[1] = 3;
                 basic.stopTargeting();
                 basic.endTurn();
             }
@@ -318,8 +346,12 @@ public class Enemy_Character_Class : MonoBehaviour
                     takePath(findCover());
                 }
             }
-
-
+        }
+        else {
+            if (basic.hasWalked == false) {
+                UnityEngine.Debug.Log("WATER FINDING COVER");
+                takePath(findCover());
+            }
         }
 
         //if not go towards cover, then check again (first fire in range, then Lancin)

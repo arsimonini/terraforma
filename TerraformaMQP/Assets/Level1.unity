@@ -20354,12 +20354,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusEffectController: {fileID: 1297737939}
   enemyTeamList:
+  - {fileID: 1974213122}
   - {fileID: 671733284}
   - {fileID: 607914653}
   - {fileID: 836072118}
   - {fileID: 46602161}
   - {fileID: 897001946}
-  - {fileID: 1974213122}
   playerTeamList:
   - {fileID: 1081816112}
   - {fileID: 421606889}
@@ -33205,11 +33205,11 @@ SceneRoots:
   - {fileID: 1943246912}
   - {fileID: 1194131359}
   - {fileID: 671733283}
-  - {fileID: 1974213121}
   - {fileID: 607914652}
   - {fileID: 836072117}
   - {fileID: 46602160}
   - {fileID: 897001945}
+  - {fileID: 1974213121}
   - {fileID: 159743916}
   - {fileID: 1268972661}
   - {fileID: 1931351488}
