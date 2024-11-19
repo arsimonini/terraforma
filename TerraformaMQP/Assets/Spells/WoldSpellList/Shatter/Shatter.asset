@@ -18,7 +18,7 @@ MonoBehaviour:
   spellPrefab: {fileID: 2394175536890139692, guid: 78f3c1662d7e6944db377b2d8c888dff, type: 3}
   description: Shatters one of Wold's walls, striking enemies with the debris.
   targeted: 1
-  range: 5
+  range: 1
   targetTiles: 0
   targetAllies: 0
   target: {fileID: 0}
@@ -28,7 +28,7 @@ MonoBehaviour:
   hitOwnTile: 0
   hitSelf: 0
   targetWalls: 1
-  AOEsize: 1
+  AOEsize: 0
   square: 0
   hyperSpecificTargeting: 1
   needSpecificTiles: 1
