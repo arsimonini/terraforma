@@ -122,17 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &4901812 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 800743736671406934, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-  m_PrefabInstance: {fileID: 1059849650}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &13129407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15512,34 +15501,6 @@ PrefabInstance:
       propertyPath: hasSpell
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 980919351638914851, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 980919351638914851, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 980919351638914851, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1366839110}
-    - target: {fileID: 980919351638914851, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 980919351638914851, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: buttonClicked
-      objectReference: {fileID: 0}
-    - target: {fileID: 980919351638914851, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: SpellButtonHover, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 980919351638914851, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 2015180818333459478, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: cam
       value: 
@@ -15551,34 +15512,6 @@ PrefabInstance:
     - target: {fileID: 4310487430304140754, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5776827594926185742, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5776827594926185742, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5776827594926185742, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 4901812}
-    - target: {fileID: 5776827594926185742, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5776827594926185742, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: buttonClicked
-      objectReference: {fileID: 0}
-    - target: {fileID: 5776827594926185742, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: SpellButtonHover, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5776827594926185742, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5824792837831677344, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: hasSpell
@@ -20438,17 +20371,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1366839110 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7569175350312196855, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-  m_PrefabInstance: {fileID: 1059849650}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1372773766
 PrefabInstance:
   m_ObjectHideFlags: 0

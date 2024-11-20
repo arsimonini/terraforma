@@ -178,6 +178,12 @@ public class ClickableTile : MonoBehaviour
         if (effect.duration == 0){
             effect.tileEffectPrefab.GetComponent<tileEffectActions>().endOfDurationEffect(this);
         }
+        else if (effect.playerTeam){
+            map.GetComponent<StatusEffectController>().playerTeamTileEffects.Remove(effect);
+        }
+        else{
+            map.GetComponent<StatusEffectController>().enemyTeamTileEffects.Remove(effect);  
+        }
         cost -= effect.movementCostIncrease;
         //If there is a character on the tile then it's tile effect is then updated to reflect the new stats
         if (characterOnTile!= null){
@@ -186,8 +192,8 @@ public class ClickableTile : MonoBehaviour
         effect.removeEffect();
 
         //remove from appropriate team list
-        map.GetComponent<StatusEffectController>().playerTeamTileEffects.Remove(effect);
-        map.GetComponent<StatusEffectController>().enemyTeamTileEffects.Remove(effect);
+        //map.GetComponent<StatusEffectController>().playerTeamTileEffects.Remove(effect);
+        //map.GetComponent<StatusEffectController>().enemyTeamTileEffects.Remove(effect);
     }
 
     //Recreates the tile effect with the current stat changes, updating the character on the tile
