@@ -20387,12 +20387,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusEffectController: {fileID: 1297737939}
   enemyTeamList:
+  - {fileID: 1974213122}
   - {fileID: 671733284}
   - {fileID: 607914653}
   - {fileID: 836072118}
   - {fileID: 46602161}
   - {fileID: 897001946}
-  - {fileID: 1974213122}
   playerTeamList:
   - {fileID: 1081816112}
   - {fileID: 421606889}
@@ -30744,6 +30744,22 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1918770147}
+    - target: {fileID: 3556103306998089025, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: element
+      value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 3556103306998089025, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: spellList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3556103306998089025, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: spellList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 93c847b5b0c264066ac7f4d1a9d72c54, type: 2}
+    - target: {fileID: 3556103306998089025, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: spellList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: d7da6be75e8f44b2992b2a073e0dea70, type: 2}
     - target: {fileID: 6571172650880656856, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -30786,7 +30802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_Name
-      value: BasicEnemy (8)
+      value: WaterEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: pm

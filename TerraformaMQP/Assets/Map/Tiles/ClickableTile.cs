@@ -184,6 +184,10 @@ public class ClickableTile : MonoBehaviour
             updateTileEffect();
         }
         effect.removeEffect();
+
+        //remove from appropriate team list
+        map.GetComponent<StatusEffectController>().playerTeamTileEffects.Remove(effect);
+        map.GetComponent<StatusEffectController>().enemyTeamTileEffects.Remove(effect);
     }
 
     //Recreates the tile effect with the current stat changes, updating the character on the tile

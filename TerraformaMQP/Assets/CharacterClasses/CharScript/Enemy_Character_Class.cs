@@ -37,7 +37,7 @@ public class Enemy_Character_Class : MonoBehaviour
     }
 
     public void magicTurns() {
-        if (element == "water") {
+        if (element == "Water") {
             waterEnemyTurn();
         }
     }
