@@ -570,7 +570,7 @@ public class TileMap : MonoBehaviour
         for (int i = 1; i < l.Count; i++) {
             int nodeX = l[i].x;
             int nodeY = l[i].y;
-            lCutoff += costToEnterTile(nodeX,nodeY, false, noWalls);
+            lCutoff += costToEnterTile(nodeX,nodeY, false, noWalls, true);
         }
 
 
@@ -618,7 +618,7 @@ public class TileMap : MonoBehaviour
     // }
 
     
-    public float costToEnterTile(int x, int y, bool ignoreCanEnter = false, bool noWalls = false) {
+    public float costToEnterTile(int x, int y, bool ignoreCanEnter = false, bool noWalls = false, bool cut = false) {
 
         if (!ignoreCanEnter) {
             if (unitCanEnterTile(x, y) == false) {
@@ -635,6 +635,11 @@ public class TileMap : MonoBehaviour
 
         if (cost <= 0){
             cost = 1;
+        }
+        if (cut == false && selectedUnit.GetComponent<Enemy_Character_Class>() != null) {
+            if (checkForTileEffect(x,y,"Burning")) {
+                cost += 10;
+            }
         }
         float dist = cost;
 

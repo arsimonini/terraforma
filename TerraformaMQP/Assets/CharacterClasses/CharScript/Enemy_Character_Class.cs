@@ -60,6 +60,7 @@ public class Enemy_Character_Class : MonoBehaviour
             }
         }
         else {
+            //add stuff here about leaving if standing on fire
             basic.endTurn();
         }
         basic.map.currentPath = path;
@@ -128,7 +129,7 @@ public class Enemy_Character_Class : MonoBehaviour
                 //if tile is wall, add adjacent non-walls to wallAdj
                 if (Array.IndexOf(wallNums, tiles[i,j]) != -1) {
                     foreach (Node n in graph[i,j].neighbors) {
-                        if (!(wallAdj.Contains(n)) && (Array.IndexOf(wallNums, tiles[n.x, n.y]) == -1))
+                        if (!(wallAdj.Contains(n)) && (Array.IndexOf(wallNums, tiles[n.x, n.y]) == -1) && !(basic.map.checkForTileEffect(n.x, n.y, "Burning")))
                             wallAdj.Add(n);
                     }
                 } 
@@ -164,7 +165,7 @@ public class Enemy_Character_Class : MonoBehaviour
                     coverTilePath = basic.map.generatePathTo(n.x, n.y, false, false, setCurrent:false);
                 }
 
-                if (first) {
+                if (first && coverTilePath != null) {
                     shortestCoverTilePath = coverTilePath;
                     first = false;
                 }
@@ -211,20 +212,23 @@ public class Enemy_Character_Class : MonoBehaviour
     public void attackTarget() {
         //if hero in range do damage
         if (element == "") {
-            basic.beginTargeting(basic.attackReach);
-            if (target != null && basic.withinReach(target)) {
-                UnityEngine.Debug.Log("Target within reach");
-                basic.attackCharacter(target, basic.attack.moddedValue);
-            }
-            else {
-                basic.stopTargeting();
-            }
-            UnityEngine.Debug.Log("END TURN PLEASE");
-            basic.endTurn();
+            basicAttack();
         }
         else {
             magicTurns();
         }
+    }
+
+    void basicAttack() {
+        basic.beginTargeting(basic.attackReach);
+        if (target != null && basic.withinReach(target)) {
+            UnityEngine.Debug.Log("Target within reach");
+            basic.attackCharacter(target, basic.attack.moddedValue);
+        }
+        else {
+            basic.stopTargeting();
+        }
+        basic.endTurn();
     }
 
     //Water enemy functions
@@ -345,12 +349,19 @@ public class Enemy_Character_Class : MonoBehaviour
                 if (basic.hasWalked == false) {
                     takePath(findCover());
                 }
+                else
+                {
+                    basicAttack();
+                }
             }
         }
         else {
             if (basic.hasWalked == false) {
-                UnityEngine.Debug.Log("WATER FINDING COVER");
                 takePath(findCover());
+            }
+            else
+            {
+                basicAttack();
             }
         }
 
