@@ -104,7 +104,11 @@ public class Basic_Character_Class : MonoBehaviour
 
         if (charSelected == true && turnEnded == false & map.moving == false & map.moveButtonPressed == false && targeting == false)
         {
-            displayAttackMenu(true);
+
+            if(isMoving == false) {
+                displayAttackMenu(true);
+            }
+
             if (Input.GetKeyDown(KeyCode.N))
             {
                 //Start targeting an attack
@@ -135,12 +139,12 @@ public class Basic_Character_Class : MonoBehaviour
             //updateCharStats();
         }
 
-
+        //To Take down any instance of the spell description
         if(spellListIsUp == false && charSelected == true && this.gameObject.GetComponent<Hero_Character_Class>() == true) {
 
             //UnityEngine.Debug.Log("PLEASE HELP ME");
 
-            GameObject t = GameObject.Find("SpellDescCanvas(Clone)");
+            GameObject t = GameObject.Find("SpellDesc(Clone)");
             Destroy(t);
         }
 
@@ -876,6 +880,11 @@ public class Basic_Character_Class : MonoBehaviour
         displaySpellList(false);
         map.setMoveButtonPressed(false);
         isMoving = false;
+
+        GameObject t = GameObject.Find("SpellDesc(Clone)");
+        if(t != null) {
+            Destroy(t);
+        }
 
         
         if (turnEnded == false)
