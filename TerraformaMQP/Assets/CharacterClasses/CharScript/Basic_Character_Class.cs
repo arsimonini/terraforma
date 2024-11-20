@@ -33,6 +33,7 @@ public class Basic_Character_Class : MonoBehaviour
     public int defaultReach = 1; //The default reach the character can hit with an attack
     public string attackType = null; //What is being targeting, either a "Spell" or "Attack", if not currently targeting will be null
     public List<BuffClass> buffs = new List<BuffClass>();
+    public GameObject atkPrefab;
 
     public Color color; //Color of the shape ---WILL BE DELETED WHEN MODELS ARE ADDED---
 
@@ -538,7 +539,7 @@ public class Basic_Character_Class : MonoBehaviour
 
                 targetCharacter.updateCharStats();
             } else { //Attack Misses
-                
+                comlog.addText("-> " +  name + " Has Missed their Attack on " + targetCharacter.name);
             }
         } else if (targetTile != null && targetTile.isBreakable) { //Damage Tile
             targetTile.hp -= damageAmount;
@@ -547,8 +548,12 @@ public class Basic_Character_Class : MonoBehaviour
             if (targetTile.hp <= 0) {
                 targetTile.breakTile();
             }
-
+            //callToPrefab.transform.Find("slash-effect_0").GetComponent<SpriteRenderer>().flipX = true;
         }
+        Vector3 newPos = Vector3.Lerp(this.gameObject.transform.position, target.gameObject.transform.position, 0.5f);
+        GameObject callToPrefab = Instantiate(atkPrefab);
+        callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
+        callToPrefab.transform.position = newPos;
         //Stops targeting
         stopTargeting();
         //Uses the action, and then checks if there are still actions remaining
@@ -638,7 +643,9 @@ public class Basic_Character_Class : MonoBehaviour
 
         deselectCharacter();
         actionsLeft.moddedValue = 0;
-        renderer.material.color = Color.gray;
+        if (!this.gameObject.GetComponent<Enemy_Character_Class>()){
+            renderer.material.color = Color.gray;
+        }
         turnEnded = true;
         charSelected = false;
         //Turns off attack menu

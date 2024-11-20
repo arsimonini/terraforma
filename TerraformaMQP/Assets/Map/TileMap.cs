@@ -203,7 +203,7 @@ public class TileMap : MonoBehaviour
             else
             {
                 //The moving variables are set to false and the currentPath becomes null
-                if (movingEnemy == true) {
+                if (movingEnemy == true && selectedUnitScript != null) {
                     selectedUnit.GetComponent<Enemy_Character_Class>().attackTarget();
                 }
                 if(selectedUnitScript != null){
@@ -1315,6 +1315,13 @@ public class TileMap : MonoBehaviour
                 return clickableTiles[originalTile.TileX - 1, originalTile.TileY - 1];
         }
         return originalTile;
+    }
+
+    public bool inRange(int X, int Y) {
+        if (X < 0 || Y < 0 || X > clickableTiles.GetLength(0)-1 || Y > clickableTiles.GetLength(1)-1) {
+            return false;
+        }
+        return true;
     }
 
 }
