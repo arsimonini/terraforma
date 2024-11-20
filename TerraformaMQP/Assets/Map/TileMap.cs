@@ -1196,6 +1196,7 @@ public class TileMap : MonoBehaviour
             StatusEffect newEffect = new StatusEffect();
             newEffect.initializeTileEffect(newTile.statsToEffect, newTile.name, newTile.effectAmounts, unitAffected.gameObject, newTile.name + "Effect");
             unitAffected.tileType = newTile.map.tileTypes[tileNumber];
+            newTile.isWalkable = false;
         }
         //Destroys the old tile
         Destroy(previousTile.gameObject);
