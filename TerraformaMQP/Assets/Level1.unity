@@ -20466,6 +20466,8 @@ MonoBehaviour:
   characterScript: {fileID: 0}
   targets: []
   comlog: {fileID: 159743917}
+  winPrefab: {fileID: 1843266675286868564, guid: 8feba2bd0790b4feca68ea0cba3c4a3f, type: 3}
+  losePrefab: {fileID: 8444017649079071323, guid: f2910c70229494441a1381fa9fd1e428, type: 3}
   pauseMenuController: {fileID: 1173448418}
   closeAtkMenu:
   - {fileID: 8300000, guid: d375c5e6078df411f9ca084f9661035b, type: 3}
