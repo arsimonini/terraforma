@@ -108,6 +108,16 @@ public class TileMap : MonoBehaviour
         }
     }
 
+    public GameObject findCharacterWithName(string name) {
+        GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in allObjects) {
+            if (obj.GetComponent<Basic_Character_Class>() != null && obj.name == name) {
+                return obj;
+            }
+        }
+        return null;
+    }
+
     //Called when setting up the map
     public void createMap(){
         //UnityEngine.Debug.Log("Map Created");
@@ -220,6 +230,13 @@ public class TileMap : MonoBehaviour
 
     }
 
+    public int[] getMapSize() {
+        int[] size = new int[2];
+        size[0] = mapSizeX;
+        size[1] = mapSizeY;
+        return size;
+    }
+
     //Used to manually generate a tile map by setting the tileTypes using a 2D array
     void GenerateMapDataManual() {
         //allocate map tiles
@@ -255,6 +272,11 @@ public class TileMap : MonoBehaviour
             }
         }
         return -1;
+    }
+
+    public float[] getMapOffsets() {
+        float[] offsets = new float[] {xOffset, yOffset};
+        return offsets;
     }
 
     void GenerateMapData() {
@@ -413,6 +435,38 @@ public class TileMap : MonoBehaviour
 
     }
 
+    public bool checkForTileEffect(int x, int y, string effectName) {
+        if (clickableTiles[x,y] == null) {
+            return false;
+        }
+        foreach (TileEffect effect in clickableTiles[x, y].effectsOnTile) {
+            if (effect.name == effectName) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void moveCharTo(GameObject t, int x, int y) {
+        Basic_Character_Class target = t.GetComponent<Basic_Character_Class>();
+
+        //check if new pos is walkable
+        ClickableTile newTile = clickableTiles[x,y];
+        if (newTile != null && newTile.isWalkable) {
+            newTile.characterOnTile = t;
+            target.tile.characterOnTile = null;
+            target.tile = newTile;
+            target.tileX = x;
+            target.tileY = y;
+
+            float newX = (float) x + xOffset;
+            float newY = (float) y + yOffset;
+            Vector3 tileVec = new Vector3(newX, 1.0f, newY);
+            //UnityEngine.Debug.Log("Prev pos: " + t.transform.position + " new pos: " + tileVec);
+            t.transform.position = tileVec;
+        }
+    }
+
     public float getPathLength(Dictionary<Node,float> dist) {
         float len = 0f;
 
@@ -422,7 +476,7 @@ public class TileMap : MonoBehaviour
 
         return len;
     }
-    public List<Node> generatePathTo(int x, int y, bool visual = false, bool ignoreTargetWalkable = false, int startX = -1, int startY = -1, bool noWalls = false, bool setCurrent = true){
+    public List<Node> generatePathTo(int x, int y, bool visual = false, bool ignoreTargetWalkable = false, int startX = -1, int startY = -1, bool noWalls = false, bool setCurrent = true, bool cutPath = true){
 
         if (startX == -1) {
             if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
@@ -482,8 +536,13 @@ public class TileMap : MonoBehaviour
             unvisited.Remove(u);
 
             foreach (Node n in u.neighbors){
-
-                float alt = dist[u] + costToEnterTile(n.x, n.y, ignoreTargetWalkable, noWalls);
+                float alt = 0;
+                if (n == target) {
+                    alt = dist[u] + costToEnterTile(n.x, n.y, ignoreTargetWalkable, noWalls);
+                }
+                else {
+                    alt = dist[u] + costToEnterTile(n.x, n.y, false, noWalls);
+                }
                 if (alt < dist[n]){
                     dist[n] = alt;
                     prev[n] = u;
@@ -508,8 +567,8 @@ public class TileMap : MonoBehaviour
         //UnityEngine.Debug.Log("Path Count: " + currentPathTemp.Count);
         //UnityEngine.Debug.Log("Movement: " + selectedUnitScript.movementSpeed.moddedValue);
 
-        if (selectedUnit != null) {
-            cutDownPath(selectedUnitScript.movementSpeed.moddedValue, false, currentPathTemp);
+        if (selectedUnit != null && cutPath) {
+            currentPathTemp = cutDownPath(selectedUnitScript.movementSpeed.moddedValue, false, currentPathTemp);
         }
 
         if (setCurrent) {
@@ -526,13 +585,13 @@ public class TileMap : MonoBehaviour
     }
 
     //Despite its existing name, this does a little more than that
-    public void cutDownPath(int range, bool visual = false, List<Node> path = null, bool cutDown = true, bool noWalls = false) {    //This is recursive, so do take that into consideration
+    public List<Node> cutDownPath(int range, bool visual = false, List<Node> path = null, bool cutDown = true, bool noWalls = false) {    //This is recursive, so do take that into consideration
         //List<Node> l = currentPath;
         //if (visual) l = visualPath;
         List<Node> l = path;
 
         if ((l == null) || (l.Count <= 0)) {
-            return; //Nowhere to go 
+            return l; //Nowhere to go 
         }
 
         //First calculate l's max range
@@ -541,7 +600,7 @@ public class TileMap : MonoBehaviour
         for (int i = 1; i < l.Count; i++) {
             int nodeX = l[i].x;
             int nodeY = l[i].y;
-            lCutoff += costToEnterTile(nodeX,nodeY, false, noWalls);
+            lCutoff += costToEnterTile(nodeX,nodeY, false, noWalls, true);
         }
 
 
@@ -554,7 +613,7 @@ public class TileMap : MonoBehaviour
                 cutDownPath(range,true,l);
             }
 
-            return;
+            return l;
         }
         
         //If character movement isn't enough, cut down path by one layer and try again. Basically, this is so that the enemy will move in the direction they mean to go even if it's out of range
@@ -566,8 +625,10 @@ public class TileMap : MonoBehaviour
             } else {
                 l.Clear();//Clears the list
                 currentPath = null;
+                return l;
             }
         }
+        return l;
 
     }
     public bool unitCanEnterTile(int x, int y) {
@@ -586,8 +647,16 @@ public class TileMap : MonoBehaviour
     //     }
     // }
 
+    public float pathMovementCost(List<Node> path) {
+        float cost = 0;
+        for (int i = 1; i < path.Count; i++) {
+            cost += costToEnterTile(path[i].x,path[i].y);
+        }
+        return cost;
+    }
+
     
-    public float costToEnterTile(int x, int y, bool ignoreCanEnter = false, bool noWalls = false) {
+    public float costToEnterTile(int x, int y, bool ignoreCanEnter = false, bool noWalls = false, bool cut = false) {
 
         if (!ignoreCanEnter) {
             if (unitCanEnterTile(x, y) == false) {
@@ -604,6 +673,11 @@ public class TileMap : MonoBehaviour
 
         if (cost <= 0){
             cost = 1;
+        }
+        if (cut == false && selectedUnit.GetComponent<Enemy_Character_Class>() != null) {
+            if (checkForTileEffect(x,y,"Burning")) {
+                cost += 10;
+            }
         }
         float dist = cost;
 

@@ -642,9 +642,9 @@ public class Basic_Character_Class : MonoBehaviour
 
         deselectCharacter();
         actionsLeft.moddedValue = 0;
-        if (!this.gameObject.GetComponent<Enemy_Character_Class>()){
-            renderer.material.color = Color.gray;
-        }
+        //if (!this.gameObject.GetComponent<Enemy_Character_Class>()){
+        renderer.material.color = Color.gray;
+        
         turnEnded = true;
         charSelected = false;
         //Turns off attack menu
@@ -660,7 +660,7 @@ public class Basic_Character_Class : MonoBehaviour
     public void stopTargeting()
     {
         //Checks if the player was targeting a spell or normal attack
-        if (attackType == "Spell")
+        if (attackType == "Spell" && gameObject.GetComponent<Hero_Character_Class>() != null)
         {
             //If the player was targeting a spell, sets the selectedSpell in the Hero Class to null
             gameObject.GetComponent<Hero_Character_Class>().selectedSpell = null;
