@@ -639,9 +639,9 @@ public class Basic_Character_Class : MonoBehaviour
 
         deselectCharacter();
         actionsLeft.moddedValue = 0;
-        if (!this.gameObject.GetComponent<Enemy_Character_Class>()){
-            renderer.material.color = Color.gray;
-        }
+        //if (!this.gameObject.GetComponent<Enemy_Character_Class>()){
+        renderer.material.color = Color.gray;
+        
         turnEnded = true;
         charSelected = false;
         //Turns off attack menu

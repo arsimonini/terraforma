@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy_Character_Class : MonoBehaviour
 {
@@ -48,7 +49,7 @@ public class Enemy_Character_Class : MonoBehaviour
             takePath(findHero());
         }
         else {
-            takePath(findCover());
+            takePath(findCover(run: true));
         }
     }
 
@@ -94,7 +95,7 @@ public class Enemy_Character_Class : MonoBehaviour
         foreach (GameObject hero in heroes) {
             int tileX = hero.GetComponent<Basic_Character_Class>().tileX;
             int tileY = hero.GetComponent<Basic_Character_Class>().tileY;
-            UnityEngine.Debug.Log("Hero: " + tileX + "," + tileY);
+            //UnityEngine.Debug.Log("Hero: " + tileX + "," + tileY);
             List<Node> path = basic.map.generatePathTo(tileX, tileY, false, true, setCurrent:false, cutPath:false);
             //UnityEngine.Debug.Log("step count: " + path.Count + " to hero " + hero.name);
             if (path != null && hero.GetComponent<Hero_Character_Class>() != null) {
@@ -135,7 +136,7 @@ public class Enemy_Character_Class : MonoBehaviour
 
     }
 
-    public List<Node> findCover() {
+    public List<Node> findCover(bool run = false, bool runIfAdjToHero = true) {
         GameObject[] heroes = basic.map.heroes.ToArray(); 
         //get list of spaces adjacent to walls
         int[,] tiles = basic.map.tiles;
@@ -173,8 +174,8 @@ public class Enemy_Character_Class : MonoBehaviour
             foreach (GameObject hero in heroes) {
                 int heroX = hero.GetComponent<Basic_Character_Class>().tileX;
                 int heroY = hero.GetComponent<Basic_Character_Class>().tileY;
-                List<Node> pathWithWall = basic.map.generatePathTo(heroX, heroX, false, true, n.x, n.y, false, setCurrent:false, cutPath: false);
-                List<Node> pathNoWall = basic.map.generatePathTo(heroX, heroX, false, true, n.x, n.y, true, setCurrent:false, cutPath: false);
+                List<Node> pathWithWall = basic.map.generatePathTo(heroX, heroY, false, true, n.x, n.y, false, setCurrent:false, cutPath: false);
+                List<Node> pathNoWall = basic.map.generatePathTo(heroX, heroY, false, true, n.x, n.y, true, setCurrent:false, cutPath: false);
                 if (pathNoWall != null && pathWithWall != null) {
                     if (pathWithWall.Count > pathNoWall.Count || pathWithWall.Count > 8) {
                         coveredFrom += 1;
@@ -212,7 +213,16 @@ public class Enemy_Character_Class : MonoBehaviour
 
         //if no valid cover tiles run (bool for run maybe?)
         if (coverTiles.Count == 0) {
-            //shortestCoverTilePath = findHero();
+            if (run) {
+                shortestCoverTilePath = runPath();
+            }
+            else if (runIfAdjToHero) {
+                basic.beginTargeting(basic.attackReach);
+                if (basic.map.targetList.Count > 0) {
+                    shortestCoverTilePath = runPath();
+                }
+                basic.stopTargeting();
+            }
         }
 
         return shortestCoverTilePath;
@@ -224,8 +234,46 @@ public class Enemy_Character_Class : MonoBehaviour
     }
 
     //run as far from hero units as possible
-    public List<Node> run() {
-        return new List<Node>();
+    public List<Node> runPath() {
+        int[] mapsize = basic.map.getMapSize();
+        int mapX = mapsize[0];
+        int mapY = mapsize[1];
+
+        int[] randX = new int[5];
+        int[] randY = new int[5];
+
+        int bestTile = 0;
+        float score = 0;
+        GameObject[] heroes = basic.map.heroes.ToArray();
+        List<Node> pathToTarget = new List<Node>();
+
+        for (int i = 0; i < 5; i++) {
+            randX[i] = Random.Range(basic.tileX-4, basic.tileX+5);
+            randY[i] = Random.Range(basic.tileY-4, basic.tileY+5);
+
+            if (randX[i] >= 0 && randY[i] >=0 && randX[i] < mapX && randY[i] < mapY){
+                if (basic.map.clickableTiles[randX[i],randY[i]] != null && basic.map.clickableTiles[randX[i],randY[i]].isWalkable && !basic.map.checkForTileEffect(randX[i],randY[i], "Burning")) {
+
+                    float tileScore = 0;
+                    foreach (GameObject hero in heroes) {
+                        int tileX = hero.GetComponent<Basic_Character_Class>().tileX;
+                        int tileY = hero.GetComponent<Basic_Character_Class>().tileY;
+                        List<Node> path = basic.map.generatePathTo(randX[i], randY[i], false, true, tileX, tileY, setCurrent:false, cutPath:false);
+                        if (path != null && path.Count < 10) {
+                            path.RemoveAt(path.Count - 1);
+                            tileScore += basic.map.pathMovementCost(path);
+                        }
+                    }
+                    if (tileScore > score) {
+                        bestTile = i;
+                        score = tileScore;
+                    }
+                }
+            }
+        }
+        pathToTarget = basic.map.generatePathTo(randX[bestTile], randY[bestTile], false, false, setCurrent:false);
+
+        return pathToTarget;
     }
 
     public GameObject heroWithName(string name) {
@@ -376,7 +424,7 @@ public class Enemy_Character_Class : MonoBehaviour
             else {
                 //basic.stopTargeting();
                 if (basic.hasWalked == false) {
-                    takePath(findCover());
+                    takePath(findCover(runIfAdjToHero: true));
                 }
                 else
                 {
@@ -387,7 +435,7 @@ public class Enemy_Character_Class : MonoBehaviour
         else {
             if (basic.hasWalked == false) {
                 //UnityEngine.Debug.Log("HERE?????");
-                takePath(findCover());
+                takePath(findCover(runIfAdjToHero: true));
             }
             else
             {
