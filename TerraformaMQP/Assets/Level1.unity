@@ -15492,18 +15492,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 276095707044313952, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 276095707044313952, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 276095707044313952, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 800743736671406934, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: hasSpell
       value: 1
@@ -15883,7 +15871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237879e574e864b248a925e8c982f142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkPrefab: {fileID: 130503883296144048, guid: 03e89af8452273a48bab46fe4dba0f28, type: 3}
+  atkPrefab: {fileID: 3263986713029312892, guid: beddc0412118abd4c9dde7b191fef4ff, type: 3}
   pos: {fileID: 1081816119}
 --- !u!1001 &1085602532
 PrefabInstance:
@@ -20411,6 +20399,8 @@ MonoBehaviour:
   characterScript: {fileID: 0}
   targets: []
   comlog: {fileID: 159743917}
+  winPrefab: {fileID: 0}
+  losePrefab: {fileID: 0}
   pauseMenuController: {fileID: 1173448418}
   closeAtkMenu:
   - {fileID: 8300000, guid: d375c5e6078df411f9ca084f9661035b, type: 3}
@@ -29825,6 +29815,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 800743736671406934, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: hasSpell
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2015180818333459478, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: cam
       value: 
@@ -29861,6 +29855,14 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1918770147}
+    - target: {fileID: 5824792837831677344, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: hasSpell
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569175350312196855, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: hasSpell
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7585430571080152534, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: fireSpells.Array.size
       value: 3

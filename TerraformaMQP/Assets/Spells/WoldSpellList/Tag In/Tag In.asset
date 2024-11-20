@@ -23,15 +23,16 @@ MonoBehaviour:
   targetAllies: 1
   target: {fileID: 0}
   amountOfTargets: 1
-  requireDifferentTargets: 1
+  requireDifferentTargets: 0
   targetEnemies: 0
   hitOwnTile: 0
   hitSelf: 0
   targetWalls: 0
   AOEsize: 0
-  square: 1
-  hyperSpecificTargeting: 0
-  needSpecificTiles: 0
+  square: 0
+  hyperSpecificTargeting: 1
+  needSpecificTiles: 1
   specificTiles: []
   needSpecificTileEffects: 0
   specificTileEffects: []
+  targetBreakables: 0

@@ -183,7 +183,7 @@ MonoBehaviour:
   spellList:
   - {fileID: 11400000, guid: aa201f79e3450ad40825d734c3069464, type: 2}
   - {fileID: 11400000, guid: fd81b9e3a376c5841958c1023d189a9c, type: 2}
-  - {fileID: 11400000, guid: 71a648dfdd7b6ec4099691875238f971, type: 2}
+  - {fileID: 11400000, guid: 6f8262477f705431ca5f79f3ee404afd, type: 2}
 --- !u!212 &3352410986930010922
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   manaCost: 5
   spellName: Shatterpoint
   elementType: Earth
-  spellPrefab: {fileID: 2394175536890139692, guid: 78f3c1662d7e6944db377b2d8c888dff, type: 3}
+  spellPrefab: {fileID: 2394175536890139692, guid: 8c7fe60249eb74e9e90dbcdb13cdc3e0, type: 3}
   description: Shatters one of Wold's walls, striking enemies with the debris.
   targeted: 1
   range: 1
@@ -27,7 +27,7 @@ MonoBehaviour:
   targetEnemies: 0
   hitOwnTile: 0
   hitSelf: 0
-  targetWalls: 1
+  targetWalls: 0
   AOEsize: 0
   square: 0
   hyperSpecificTargeting: 1
@@ -36,3 +36,4 @@ MonoBehaviour:
   - tileWoldWall
   needSpecificTileEffects: 0
   specificTileEffects: []
+  targetBreakables: 1

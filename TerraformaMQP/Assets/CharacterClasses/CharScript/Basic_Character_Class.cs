@@ -105,7 +105,10 @@ public class Basic_Character_Class : MonoBehaviour
 
         if (charSelected == true && turnEnded == false & map.moving == false & map.moveButtonPressed == false && targeting == false)
         {
-            displayAttackMenu(true);
+            if(isMoving == false) {
+                displayAttackMenu(true);
+            }
+
             if (Input.GetKeyDown(KeyCode.N))
             {
                 //Start targeting an attack
@@ -137,13 +140,13 @@ public class Basic_Character_Class : MonoBehaviour
         }
 
 
-        if(spellListIsUp == false && charSelected == true && this.gameObject.GetComponent<Hero_Character_Class>() == true) {
+        // if(spellListIsUp == false && charSelected == true && this.gameObject.GetComponent<Hero_Character_Class>() == true) {
 
-            //UnityEngine.Debug.Log("PLEASE HELP ME");
+        //     //UnityEngine.Debug.Log("PLEASE HELP ME");
 
-            GameObject t = GameObject.Find("SpellDescCanvas(Clone)");
-            Destroy(t);
-        }
+        //     GameObject t = GameObject.Find("SpellDescCanvas(Clone)");
+        //     Destroy(t);
+        // }
 
         if(charSelected == false && pm.forDeselecting == true) {
             Invoke("deselectOnResume", 0.05f);
@@ -697,7 +700,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Sets the attackReach to the inputted reach
         attackReach = reach;
         //Calls the drawReach function with the reach of the spell, the spell's ability to target tiles, and the spell's ability to target allies
-        drawReach(reach, spell.targetTiles, spell.targetAllies, spell.targetEnemies, spell.hitOwnTile, spell.hitSelf, spell.targetWalls, spell.hyperSpecificTargeting, spell.needSpecificTileEffects, spell.specificTileEffects, spell.needSpecificTiles, spell.specificTiles, tile);
+        drawReach(reach, spell.targetTiles, spell.targetAllies, spell.targetEnemies, spell.hitOwnTile, spell.hitSelf, spell.targetWalls, spell.hyperSpecificTargeting, spell.needSpecificTileEffects, spell.specificTileEffects, spell.needSpecificTiles, spell.specificTiles, tile, targetBreakables: spell.targetBreakables);
     }
 
     //Called when selecting a unit, displays the current health and, if possible, the mana of the selected unit, along with their char_img
@@ -836,7 +839,7 @@ public class Basic_Character_Class : MonoBehaviour
     }
 
     //Calls the drawReach function within the map, passing the same variables from the parameters as arguments
-    private void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, bool hitOwnTile, bool hitSelf, bool targetWalls, bool hyperSpecificTargeting, bool needSpecificTileEffects, List<string> specificTileEffects, bool needSpecificTiles, List<string> specificTiles, ClickableTile tile, bool targetBreakables = true)
+    private void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, bool hitOwnTile, bool hitSelf, bool targetWalls, bool hyperSpecificTargeting, bool needSpecificTileEffects, List<string> specificTileEffects, bool needSpecificTiles, List<string> specificTiles, ClickableTile tile, bool targetBreakables = false)
     {
         map.drawReach(reach, targetTiles, targetAllies, targetEnemies, targetWalls, hyperSpecificTargeting, needSpecificTileEffects, specificTileEffects, needSpecificTiles, specificTiles, tile,targetBreakables);
         if(!hitOwnTile){
@@ -884,11 +887,17 @@ public class Basic_Character_Class : MonoBehaviour
         map.setMoveButtonPressed(false);
         isMoving = false;
 
+        GameObject t = GameObject.Find("SpellDesc(Clone)");
+        if(t != null) {
+            Destroy(t);
+        }
+
         
         if (turnEnded == false)
         {
             //If it hasn't ended, reset its color to its base color
             renderer.material.color = color;
+            OnMouseExit();
         }
         else
         {
