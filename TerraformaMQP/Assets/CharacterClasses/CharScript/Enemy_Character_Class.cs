@@ -56,6 +56,7 @@ public class Enemy_Character_Class : MonoBehaviour
     public void takePath(List<Node> path) {
         if (path.Count > 1) {
             //LOG STUFF HERE FOR MOVEMENT
+            basic.comlog.addText("-> " + basic.name + " has Moved");
             if (path[0].x == basic.tileX && path[0].y == basic.tileY) {
                 basic.endTurn();
             }
@@ -329,6 +330,7 @@ public class Enemy_Character_Class : MonoBehaviour
                 Basic_Spell_Class spellInstance = Instantiate(spellList[0]);
                 spellInstance.spellPrefab.GetComponent<Cast_Spell>().castSpell(basic.map.targetList, this.gameObject);
                 UnityEngine.Debug.Log("ENEMY CAST FLOOD");
+                basic.comlog.addText("-> " + basic.name + " has Cast Flood");
                 waterCooldown[0] = 3;
                 basic.stopTargeting();
                 basic.endTurn();
@@ -417,6 +419,7 @@ public class Enemy_Character_Class : MonoBehaviour
                 UnityEngine.Debug.Log("ENEMY CAST RAIN");
                 Basic_Spell_Class spellInstance = Instantiate(spellList[1]);
                 spellInstance.spellPrefab.GetComponent<Cast_Spell>().castSpell(target, this.gameObject);
+                basic.comlog.addText("-> " + basic.name + " has Cast Rain");
                 waterCooldown[1] = 3;
                 basic.stopTargeting();
                 basic.endTurn();
