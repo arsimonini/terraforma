@@ -274,6 +274,11 @@ public class TileMap : MonoBehaviour
         return -1;
     }
 
+    public float[] getMapOffsets() {
+        float[] offsets = new float[] {xOffset, yOffset};
+        return offsets;
+    }
+
     void GenerateMapData() {
         //UnityEngine.Debug.Log(tilemap.GetUsedTilesCount());
 
@@ -440,6 +445,26 @@ public class TileMap : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void moveCharTo(GameObject t, int x, int y) {
+        Basic_Character_Class target = t.GetComponent<Basic_Character_Class>();
+
+        //check if new pos is walkable
+        ClickableTile newTile = clickableTiles[x,y];
+        if (newTile != null && newTile.isWalkable) {
+            newTile.characterOnTile = t;
+            target.tile.characterOnTile = null;
+            target.tile = newTile;
+            target.tileX = x;
+            target.tileY = y;
+
+            float newX = (float) x + xOffset;
+            float newY = (float) y + yOffset;
+            Vector3 tileVec = new Vector3(newX, 1.0f, newY);
+            //UnityEngine.Debug.Log("Prev pos: " + t.transform.position + " new pos: " + tileVec);
+            t.transform.position = tileVec;
+        }
     }
 
     public float getPathLength(Dictionary<Node,float> dist) {

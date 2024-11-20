@@ -19,7 +19,7 @@ MonoBehaviour:
   description: Soak 3x3 tiles with unit in center, pushing back adjacent units while
     dealing damage
   targeted: 1
-  range: 0
+  range: 1
   targetTiles: 1
   targetAllies: 0
   target: {fileID: 0}
