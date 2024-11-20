@@ -19,7 +19,7 @@ MonoBehaviour:
   description: Shatters one of Wold's walls, striking enemies with the debris.
   targeted: 1
   range: 2
-  targetTiles: 0
+  targetTiles: 1
   targetAllies: 0
   target: {fileID: 0}
   amountOfTargets: 1
@@ -27,12 +27,13 @@ MonoBehaviour:
   targetEnemies: 0
   hitOwnTile: 0
   hitSelf: 0
-  targetWalls: 1
+  targetWalls: 0
   AOEsize: 0
   square: 0
-  hyperSpecificTargeting: 1
-  needSpecificTiles: 1
+  hyperSpecificTargeting: 0
+  needSpecificTiles: 0
   specificTiles:
   - tileWoldWall
   needSpecificTileEffects: 0
   specificTileEffects: []
+  targetBreakables: 1
