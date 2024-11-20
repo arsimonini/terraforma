@@ -17,5 +17,13 @@ public class Flood_Spell : MonoBehaviour, Cast_Spell
     }
 
     public void castSpell(List<GameObject> targets, GameObject caster){
+        foreach (GameObject target in targets) {
+            caster.GetComponent<Basic_Character_Class>().map.gameObject.GetComponent<ReactionController>().checkReaction(target.GetComponent<ClickableTile>(), "Water", "Random Rain", false);
+            if (target.GetComponent<ClickableTile>().characterOnTile != null) {
+                target.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(5, "Water");
+
+                //movement stuff here
+            }
+        }
     }
 }

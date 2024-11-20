@@ -66,7 +66,6 @@ public class Enemy_Character_Class : MonoBehaviour
                     int tileX = target.GetComponent<Basic_Character_Class>().tileX;
                     int tileY = target.GetComponent<Basic_Character_Class>().tileY;
                     int[] adjCoords = new int[] {tileX-1,tileY,tileX+1,tileY,tileX,tileY+1,tileX,tileY-1};
-                    //adjCoords = [tileX-1,tileY,tileX+1,tileY,tileX,tileY+1,tileX,tileY-1];
 
                     for (int i = 0; i < 8; i = i+2) {
                         if (!basic.map.checkForTileEffect(adjCoords[i], adjCoords[i+1], "Burning")) {
@@ -74,9 +73,7 @@ public class Enemy_Character_Class : MonoBehaviour
                         }
                     }
                 }
-
             }
-            //random non burning tile
 
             basic.endTurn();
         }
@@ -91,27 +88,31 @@ public class Enemy_Character_Class : MonoBehaviour
         int minSteps = chaseSteps;
         List<Node> pathToTarget = new List<Node>();
         target = null;
+        float closestHeroCost = 20;
+        bool ignoreSummon = false;
 
         foreach (GameObject hero in heroes) {
             int tileX = hero.GetComponent<Basic_Character_Class>().tileX;
             int tileY = hero.GetComponent<Basic_Character_Class>().tileY;
             UnityEngine.Debug.Log("Hero: " + tileX + "," + tileY);
             List<Node> path = basic.map.generatePathTo(tileX, tileY, false, true, setCurrent:false, cutPath:false);
-            //UnityEngine.Debug.Log("path steps: " + path.Count);
+            UnityEngine.Debug.Log("step count: " + path.Count + " to hero " + hero.name);
             if (path != null && hero.GetComponent<Hero_Character_Class>() != null) {
                 path.RemoveAt(path.Count - 1);
-                if (basic.map.pathMovementCost(path) <= basic.movementSpeed.moddedValue) {
+                float mCost = basic.map.pathMovementCost(path);
+                if (mCost <= basic.movementSpeed.moddedValue && mCost < closestHeroCost) {
                     target = hero;
                     minSteps = path.Count;
                     pathToTarget = path;
-                    break;
+                    ignoreSummon = true;
+                    //break;
                 }
             }
-            if ((path != null) && (path.Count < minSteps)) {
+            if ((path != null) && (path.Count < minSteps) && !ignoreSummon) {
                 minSteps = path.Count;
                 target = hero;
                 pathToTarget = basic.map.cutDownPath(basic.movementSpeed.moddedValue, false, path);
-                //UnityEngine.Debug.Log("step count: " + path.Count);
+                //UnityEngine.Debug.Log("step count: " + path.Count + " to hero " + hero.name);
             }
             
         }
@@ -185,6 +186,8 @@ public class Enemy_Character_Class : MonoBehaviour
 
                 if (n.x == basic.tileX && n.y == basic.tileY) {
                     coverTilePath = new List<Node>();
+                    shortestCoverTilePath = coverTilePath;
+                    break;
                     //UnityEngine.Debug.Log("ALREADY ON COVER TILE: " + n.x + "," + n.y);
                 }
                 else {
@@ -266,8 +269,6 @@ public class Enemy_Character_Class : MonoBehaviour
 
     //make water enemy go last (reorder in scene)
     public void waterEnemyTurn() {
-        //if on fire, hero adjacent, and mana high enough, do flood
-        //if on fire but not fitting other reqs move
 
         //if on burning tile
         if (basic.map.checkForTileEffect(basic.tileX, basic.tileY, "Burning")) {
@@ -277,10 +278,12 @@ public class Enemy_Character_Class : MonoBehaviour
                 basic.stopTargeting();
                 //cast flood
                 basic.beginTargetingSpell(spellList[0].range, spellList[0]);
-                //Basic_Spell_Class spellInstance = Instantiate(spellList[0]);
-                //spellInstance.spellPrefab.GetComponent<Cast_Spell>().castSpell(basic.map.targetList, this.gameObject);
+                Basic_Spell_Class spellInstance = Instantiate(spellList[0]);
+                spellInstance.spellPrefab.GetComponent<Cast_Spell>().castSpell(basic.map.targetList, this.gameObject);
                 UnityEngine.Debug.Log("ENEMY CAST FLOOD");
                 waterCooldown[0] = 3;
+                basic.stopTargeting();
+                basic.endTurn();
             }
             else {
                 basic.stopTargeting();
