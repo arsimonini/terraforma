@@ -6,8 +6,10 @@ public class CamControl : MonoBehaviour
 {
     float xAngle = 58;
     public Vector3 startPos;
-    public float tooFarHorizontal = 10;
+    public float tooFarHorizontal = 14;
     public float tooFarVertical = 10;
+    public float tooNearHorizontal = -5;
+    public float tooNearVertical = -8;
     public GameControllerScript gc;
     public TileMap map;
 
@@ -82,7 +84,7 @@ public class CamControl : MonoBehaviour
             Vector3 newMove = speed*vInput*getForward()*Time.deltaTime + speed*hInput*getRight()*Time.deltaTime;
             Vector3 newPos = transform.position + newMove;
 
-            if ((newPos.x > -5) && (newPos.x < tooFarHorizontal) && (newPos.z > -5) && (newPos.z < tooFarVertical)) {
+            if ((newPos.x > tooNearHorizontal) && (newPos.x < tooFarHorizontal) && (newPos.z > tooNearVertical) && (newPos.z < tooFarVertical)) {
                 transform.position = newPos;
             }
             //Set restrictions

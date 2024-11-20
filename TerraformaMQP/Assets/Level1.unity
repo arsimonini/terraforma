@@ -9826,6 +9826,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 159743917}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: char_img
+      value: 
+      objectReference: {fileID: 21300000, guid: c234f782a91d4475b9867abe06fa1f54, type: 3}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: nameplate
       value: 
       objectReference: {fileID: 5920988999625256665}
@@ -13667,8 +13671,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0, z: 0}
-  tooFarHorizontal: 10
+  tooFarHorizontal: 14
   tooFarVertical: 10
+  tooNearHorizontal: -5
+  tooNearVertical: -8
   gc: {fileID: 1356950529}
   map: {fileID: 1297737938}
   target: {x: 0, y: 0, z: 0}
@@ -29381,8 +29387,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0, z: 0}
-  tooFarHorizontal: 10
+  tooFarHorizontal: 14
   tooFarVertical: 10
+  tooNearHorizontal: -5
+  tooNearVertical: -8
   gc: {fileID: 1356950529}
   map: {fileID: 1297737938}
   target: {x: 0, y: 0, z: 0}
@@ -30080,6 +30088,10 @@ PrefabInstance:
       propertyPath: comlog
       value: 
       objectReference: {fileID: 159743917}
+    - target: {fileID: 7928607729415032659, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: char_img
+      value: 
+      objectReference: {fileID: 21300000, guid: 2d862418c106b4e6d8af660a0a6d7e25, type: 3}
     - target: {fileID: 7928607729415032659, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: nameplate
       value: 
@@ -30959,6 +30971,10 @@ PrefabInstance:
       propertyPath: comlog
       value: 
       objectReference: {fileID: 159743917}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: char_img
+      value: 
+      objectReference: {fileID: 21300000, guid: c234f782a91d4475b9867abe06fa1f54, type: 3}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: nameplate
       value: 
