@@ -53,7 +53,7 @@ public class Enemy_Character_Class : MonoBehaviour
     }
 
     public void takePath(List<Node> path) {
-        if (path.Count > 0) {
+        if (path.Count > 1) {
             //LOG STUFF HERE FOR MOVEMENT
             if (path[0].x == basic.tileX && path[0].y == basic.tileY) {
                 basic.endTurn();
@@ -61,6 +61,23 @@ public class Enemy_Character_Class : MonoBehaviour
         }
         else {
             //add stuff here about leaving if standing on fire
+            if (basic.map.checkForTileEffect(basic.tileX, basic.tileY, "Burning")) {
+                if (target != null) {
+                    int tileX = target.GetComponent<Basic_Character_Class>().tileX;
+                    int tileY = target.GetComponent<Basic_Character_Class>().tileY;
+                    int[] adjCoords = new int[] {tileX-1,tileY,tileX+1,tileY,tileX,tileY+1,tileX,tileY-1};
+                    //adjCoords = [tileX-1,tileY,tileX+1,tileY,tileX,tileY+1,tileX,tileY-1];
+
+                    for (int i = 0; i < 8; i = i+2) {
+                        if (!basic.map.checkForTileEffect(adjCoords[i], adjCoords[i+1], "Burning")) {
+                            path = basic.map.generatePathTo(adjCoords[i], adjCoords[i+1], false, false, setCurrent:false);
+                        }
+                    }
+                }
+
+            }
+            //random non burning tile
+
             basic.endTurn();
         }
         basic.map.currentPath = path;
