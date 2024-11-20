@@ -511,8 +511,13 @@ public class TileMap : MonoBehaviour
             unvisited.Remove(u);
 
             foreach (Node n in u.neighbors){
-
-                float alt = dist[u] + costToEnterTile(n.x, n.y, ignoreTargetWalkable, noWalls);
+                float alt = 0;
+                if (n == target) {
+                    alt = dist[u] + costToEnterTile(n.x, n.y, ignoreTargetWalkable, noWalls);
+                }
+                else {
+                    alt = dist[u] + costToEnterTile(n.x, n.y, false, noWalls);
+                }
                 if (alt < dist[n]){
                     dist[n] = alt;
                     prev[n] = u;

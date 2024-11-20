@@ -8537,6 +8537,10 @@ PrefabInstance:
       propertyPath: physicallyAttacked.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 7e5e3941f20ca44d597ebe2877f1bee0, type: 3}
+    - target: {fileID: 8111968720976678732, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: chaseSteps
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 9083810117275825196, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: cam
       value: 
@@ -11320,6 +11324,10 @@ PrefabInstance:
       propertyPath: physicallyAttacked.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 7e5e3941f20ca44d597ebe2877f1bee0, type: 3}
+    - target: {fileID: 8111968720976678732, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: chaseSteps
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 9083810117275825196, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: cam
       value: 
