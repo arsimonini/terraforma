@@ -415,6 +415,11 @@ public class GameControllerScript : MonoBehaviour
         {
             playerTeamList[i].GetComponent<Basic_Character_Class>().resetTurn();
         }
+
+        for (int i = 0; i < enemyTeamList.Count; i++)
+        {
+            enemyTeamList[i].GetComponent<Basic_Character_Class>().resetTurn();
+        }
     }
 
     //Iterates through the list of player units and ends their turns by calling the Basic Class endTurn function

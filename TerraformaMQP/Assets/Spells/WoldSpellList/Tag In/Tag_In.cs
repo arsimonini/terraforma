@@ -28,7 +28,7 @@ public class Tag_In : MonoBehaviour, Cast_Spell
         for (int i = 0; i < targets.Count; i++)
         {
             Basic_Character_Class targetAlly = targets[0].GetComponent<Basic_Character_Class>();
-            if (targets[0].GetComponent<Enemy_Character_Class>() == null && targetAlly != null) { //They are an ally (are not an enemy && are a player character)
+            if ((targets[0].GetComponent<Enemy_Character_Class>() == null) && (targetAlly != null)) { //They are an ally (are not an enemy && are a player character)
                 //Swaps locations
                 Vector3 allyPos = targets[0].transform.position;
                 int allyX = targetAlly.tileX;

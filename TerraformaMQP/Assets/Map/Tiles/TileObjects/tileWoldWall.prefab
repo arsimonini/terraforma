@@ -124,13 +124,13 @@ MonoBehaviour:
   TileX: 0
   TileY: 0
   map: {fileID: 0}
-  isWalkable: 0
+  isWalkable: 1
   statsToEffect:
   - speed
   effectAmounts: feffffff
   characterOnTile: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
-  cost: 100
+  cost: 9999
   tileWas: 20
   tileIs: 20
   isBreakable: 1
