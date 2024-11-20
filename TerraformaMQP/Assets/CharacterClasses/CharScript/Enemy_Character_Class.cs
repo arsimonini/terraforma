@@ -96,7 +96,7 @@ public class Enemy_Character_Class : MonoBehaviour
             int tileY = hero.GetComponent<Basic_Character_Class>().tileY;
             UnityEngine.Debug.Log("Hero: " + tileX + "," + tileY);
             List<Node> path = basic.map.generatePathTo(tileX, tileY, false, true, setCurrent:false, cutPath:false);
-            UnityEngine.Debug.Log("step count: " + path.Count + " to hero " + hero.name);
+            //UnityEngine.Debug.Log("step count: " + path.Count + " to hero " + hero.name);
             if (path != null && hero.GetComponent<Hero_Character_Class>() != null) {
                 path.RemoveAt(path.Count - 1);
                 float mCost = basic.map.pathMovementCost(path);
@@ -173,10 +173,10 @@ public class Enemy_Character_Class : MonoBehaviour
             foreach (GameObject hero in heroes) {
                 int heroX = hero.GetComponent<Basic_Character_Class>().tileX;
                 int heroY = hero.GetComponent<Basic_Character_Class>().tileY;
-                List<Node> pathWithWall = basic.map.generatePathTo(heroX, heroX, false, true, n.x, n.y, false, setCurrent:false);
-                List<Node> pathNoWall = basic.map.generatePathTo(heroX, heroX, false, true, n.x, n.y, true, setCurrent:false);
+                List<Node> pathWithWall = basic.map.generatePathTo(heroX, heroX, false, true, n.x, n.y, false, setCurrent:false, cutPath: false);
+                List<Node> pathNoWall = basic.map.generatePathTo(heroX, heroX, false, true, n.x, n.y, true, setCurrent:false, cutPath: false);
                 if (pathNoWall != null && pathWithWall != null) {
-                    if (pathWithWall.Count > pathNoWall.Count || pathWithWall.Count > 10) {
+                    if (pathWithWall.Count > pathNoWall.Count || pathWithWall.Count > 8) {
                         coveredFrom += 1;
                     }
                 }
@@ -210,9 +210,9 @@ public class Enemy_Character_Class : MonoBehaviour
 
         //reject paths that land directly next to hero
 
-        //if no valid cover tiles find hero instead (SWAP THIS OUT FOR RUN)
+        //if no valid cover tiles run (bool for run maybe?)
         if (coverTiles.Count == 0) {
-            shortestCoverTilePath = findHero();
+            //shortestCoverTilePath = findHero();
         }
 
         return shortestCoverTilePath;
@@ -386,6 +386,7 @@ public class Enemy_Character_Class : MonoBehaviour
         }
         else {
             if (basic.hasWalked == false) {
+                //UnityEngine.Debug.Log("HERE?????");
                 takePath(findCover());
             }
             else
