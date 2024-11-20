@@ -81,6 +81,15 @@ public class Enemy_Character_Class : MonoBehaviour
             UnityEngine.Debug.Log("Hero: " + tileX + "," + tileY);
             List<Node> path = basic.map.generatePathTo(tileX, tileY, false, true, setCurrent:false, cutPath:false);
             //UnityEngine.Debug.Log("path steps: " + path.Count);
+            if (path != null && hero.GetComponent<Hero_Character_Class>() != null) {
+                path.RemoveAt(path.Count - 1);
+                if (basic.map.pathMovementCost(path) <= basic.movementSpeed.moddedValue) {
+                    target = hero;
+                    minSteps = path.Count;
+                    pathToTarget = path;
+                    break;
+                }
+            }
             if ((path != null) && (path.Count < minSteps)) {
                 minSteps = path.Count;
                 target = hero;

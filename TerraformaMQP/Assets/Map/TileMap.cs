@@ -622,6 +622,14 @@ public class TileMap : MonoBehaviour
     //     }
     // }
 
+    public float pathMovementCost(List<Node> path) {
+        float cost = 0;
+        for (int i = 1; i < path.Count; i++) {
+            cost += costToEnterTile(path[i].x,path[i].y);
+        }
+        return cost;
+    }
+
     
     public float costToEnterTile(int x, int y, bool ignoreCanEnter = false, bool noWalls = false, bool cut = false) {
 
