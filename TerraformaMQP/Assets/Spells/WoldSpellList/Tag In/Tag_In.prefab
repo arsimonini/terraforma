@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3281928208819819768}
   - component: {fileID: 8952784826642133216}
   - component: {fileID: 6735173004546557610}
-  - component: {fileID: 5587089345454913673}
+  - component: {fileID: -2338932290555123131}
   m_Layer: 0
-  m_Name: Fireball
+  m_Name: Tag_In
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5587089345454913673
+--- !u!114 &-2338932290555123131
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,9 +115,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2394175536890139692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0489584346dfa84458888f5cf8d856db, type: 3}
+  m_Script: {fileID: 11500000, guid: e2403ee37676ebb42bb6731da789cbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spread: 0
-  BurningTileEffect: {fileID: 11400000, guid: 172d136be4abc0741b5b34fd7f644684, type: 2}
-  magicAnimation: {fileID: 130503883296144048, guid: 03e89af8452273a48bab46fe4dba0f28, type: 3}
+  BurningTileEffect: {fileID: 0}

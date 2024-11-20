@@ -111,6 +111,7 @@ MonoBehaviour:
   defaultReach: 1
   attackType: 
   buffs: []
+  atkPrefab: {fileID: 4396117065116841325, guid: 8b66e881856c54496b800c258a60e18d, type: 3}
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 0
   tileY: 2
@@ -137,6 +138,11 @@ MonoBehaviour:
   spellList: {fileID: 1070278616635177142}
   hasWalked: 0
   spellListIsUp: 0
+  comlog: {fileID: 0}
+  pm: {fileID: 0}
+  physicallyAttacked: []
+  openAtkMenu: []
+  closeAtkMenu: []
 --- !u!114 &7585430571080152534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +165,9 @@ MonoBehaviour:
   pickingSpell: 0
   spellList: []
   selectedSpell: {fileID: 0}
+  fireSpells: []
+  earthSpells: []
+  waterSpells: []
 --- !u!114 &8047284439058182590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60060481a77192648a64793a574fd2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellList: []
+  spellList:
+  - {fileID: 11400000, guid: aa201f79e3450ad40825d734c3069464, type: 2}
+  - {fileID: 11400000, guid: fd81b9e3a376c5841958c1023d189a9c, type: 2}
+  - {fileID: 11400000, guid: 71a648dfdd7b6ec4099691875238f971, type: 2}
 --- !u!212 &3352410986930010922
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -269,6 +281,38 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7928607729415032659}
+    - target: {fileID: 4384560478976465204, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384560478976465204, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384560478976465204, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 7928607729415032659}
+    - target: {fileID: 4384560478976465204, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384560478976465204, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: spellButtonUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384560478976465204, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Basic_Character_Class, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384560478976465204, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384560478976465204, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4728323435278843969, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
       propertyPath: cam
       value: 
@@ -293,6 +337,54 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7928607729415032659}
+    - target: {fileID: 7020707633692308249, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020707633692308249, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020707633692308249, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 7928607729415032659}
+    - target: {fileID: 7020707633692308249, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020707633692308249, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: spellButtonUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020707633692308249, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Basic_Character_Class, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020707633692308249, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020707633692308249, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8096505105762678217, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8096505105762678217, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 7928607729415032659}
+    - target: {fileID: 8096505105762678217, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: spellButtonUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8096505105762678217, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Basic_Character_Class, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8780025495231681977, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
