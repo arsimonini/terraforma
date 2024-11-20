@@ -10,32 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
-  m_Name: Wall
+  m_Name: Tag In
   m_EditorClassIdentifier: 
-  manaCost: 3
-  spellName: Wall
+  manaCost: 7
+  spellName: Tag In
   elementType: Earth
-  spellPrefab: {fileID: 2394175536890139692, guid: bf21f55e4863b1e4b88b87121b217dbd, type: 3}
-  description: Turn tiles in a 3x1 wall
+  spellPrefab: {fileID: 2394175536890139692, guid: c75ffc91fa3f2bb4ca568046b2e5129b, type: 3}
+  description: Swap positions with an ally.
   targeted: 1
-  range: 5
-  targetTiles: 1
-  targetAllies: 0
+  range: 3
+  targetTiles: 0
+  targetAllies: 1
   target: {fileID: 0}
   amountOfTargets: 1
-  requireDifferentTargets: 1
+  requireDifferentTargets: 0
   targetEnemies: 0
   hitOwnTile: 0
   hitSelf: 0
   targetWalls: 0
-  AOEsize: 1
+  AOEsize: 0
   square: 0
   hyperSpecificTargeting: 1
   needSpecificTiles: 1
-  specificTiles:
-  - tileGrass
-  - tileDirt
-  - tileMud
+  specificTiles: []
   needSpecificTileEffects: 0
   specificTileEffects: []
-  targetBreakables: 0

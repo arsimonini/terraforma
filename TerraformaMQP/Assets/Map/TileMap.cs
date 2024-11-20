@@ -1227,6 +1227,13 @@ public class TileMap : MonoBehaviour
     }
 
 
+    public bool inRange(int X, int Y) {
+        if (X < 0 || Y < 0 || X > clickableTiles.GetLength(0)-1 || Y > clickableTiles.GetLength(1)-1) {
+            return false;
+        }
+        return true;
+    }
+
 
 
 
