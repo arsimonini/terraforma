@@ -38,7 +38,7 @@ public class Basic_Spell_Class : ScriptableObject
     public List<string> specificTileEffects;
 
 
-
+    public bool targetBreakables;
 
 }
 

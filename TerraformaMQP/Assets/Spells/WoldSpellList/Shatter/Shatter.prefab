@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3281928208819819768}
   - component: {fileID: 8952784826642133216}
   - component: {fileID: 6735173004546557610}
-  - component: {fileID: -6621772182179029443}
+  - component: {fileID: 8740252644417581117}
   m_Layer: 0
   m_Name: Shatter
   m_TagString: Untagged
@@ -106,7 +106,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-6621772182179029443
+--- !u!114 &8740252644417581117
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2394175536890139692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24c684a422aa9ea4888e91838e19a577, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f6dff2324f654db09b7ea128e67f2f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spread: 0

@@ -50,7 +50,7 @@ public class CombatLog : MonoBehaviour
         RectTransform rtext = extendedCombatLogText.GetComponent<RectTransform>();
         RectTransform rpanel = extendedCombatLogText.GetComponent<RectTransform>();
         textHeight = textHeight + 16;
-        if(s.Length >= 60) {
+        if(s.Length >= 40) {
             textHeight = textHeight + 16;
         }
         rtext.sizeDelta = new Vector2(textWidth, textHeight);

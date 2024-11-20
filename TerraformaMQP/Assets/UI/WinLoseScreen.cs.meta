@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 3f6dff2324f654db09b7ea128e67f2f5
+guid: 98794a023cc1442fc8e2a0cc2d6425f9
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - tileFireGrass: {fileID: 5296307935300308040, guid: 74736fe0684ee464f96b181620a6b05b, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -46,7 +46,7 @@ public class Shatter : MonoBehaviour, Cast_Spell
             Hero_Character_Class castHero = caster.GetComponent<Hero_Character_Class>();
             if (castHero != null) {
                 //UnityEngine.Debug.Log("Valid Hero Character");
-                damage = castHero.magic.moddedValue;
+                damage = castHero.magic.moddedValue*3;
             } 
             //Enemy_Character_Class castEnemy = caster.GetComponent<Enemy_Character_Class>();
             //if (castEnemy != null) {
@@ -100,15 +100,17 @@ public class Shatter : MonoBehaviour, Cast_Spell
         if (map.inRange(RealX,RealY)) {
             ClickableTile targetTile = map.clickableTiles[RealX,RealY];
 
-            if (targetTile == null) { return; }
+            if (targetTile == null) { UnityEngine.Debug.Log("TargetTileFail");return; }
+            GameObject characterAtTile = targetTile.characterOnTile;
+            if (characterAtTile == null) { UnityEngine.Debug.Log("CharacterAtTileFail");return; }
 
-            Basic_Character_Class targetChar = targetTile.characterOnTile.GetComponent<Basic_Character_Class>(); 
+            Basic_Character_Class targetChar = characterAtTile.GetComponent<Basic_Character_Class>(); 
 
             if (targetChar != null) {
-                UnityEngine.Debug.Log("GetComponent Succeeded");
+                //UnityEngine.Debug.Log("GetComponent Succeeded");
                 targetChar.takeMagicDamage(damage,"Earth");
             } else {
-                UnityEngine.Debug.Log("GetComponent Failed");
+                //UnityEngine.Debug.Log("GetComponent Failed");
             }
         }
 

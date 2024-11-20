@@ -33,6 +33,10 @@ public class GameControllerScript : MonoBehaviour
 
 
     public CombatLog comlog;
+    public GameObject winPrefab;
+    public GameObject losePrefab;
+
+
 
     public PauseMenu pauseMenuController;
     [SerializeField] private AudioClip[] closeAtkMenu;
@@ -498,9 +502,11 @@ public class GameControllerScript : MonoBehaviour
     public void gameOver(bool playerVictory){
         if (playerVictory){
             UnityEngine.Debug.Log("The Player has won the game");
+            Instantiate(winPrefab);
         }
         else{
             UnityEngine.Debug.Log("The Enemy has defeated all the player characters");
+            Instantiate(losePrefab);
         }
         endGame = true;
     }
