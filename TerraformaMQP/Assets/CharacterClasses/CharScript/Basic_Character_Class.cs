@@ -694,7 +694,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Sets the attackReach to the inputted reach
         attackReach = reach;
         //Calls the drawReach function with the reach of the spell, the spell's ability to target tiles, and the spell's ability to target allies
-        drawReach(reach, spell.targetTiles, spell.targetAllies, spell.targetEnemies, spell.hitOwnTile, spell.hitSelf, spell.targetWalls, spell.hyperSpecificTargeting, spell.needSpecificTileEffects, spell.specificTileEffects, spell.needSpecificTiles, spell.specificTiles, tile);
+        drawReach(reach, spell.targetTiles, spell.targetAllies, spell.targetEnemies, spell.hitOwnTile, spell.hitSelf, spell.targetWalls, spell.hyperSpecificTargeting, spell.needSpecificTileEffects, spell.specificTileEffects, spell.needSpecificTiles, spell.specificTiles, tile, spell.targetBreakables);
     }
 
     //Called when selecting a unit, displays the current health and, if possible, the mana of the selected unit, along with their char_img
@@ -833,7 +833,7 @@ public class Basic_Character_Class : MonoBehaviour
     }
 
     //Calls the drawReach function within the map, passing the same variables from the parameters as arguments
-    private void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, bool hitOwnTile, bool hitSelf, bool targetWalls, bool hyperSpecificTargeting, bool needSpecificTileEffects, List<string> specificTileEffects, bool needSpecificTiles, List<string> specificTiles, ClickableTile tile, bool targetBreakables = true)
+    private void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, bool hitOwnTile, bool hitSelf, bool targetWalls, bool hyperSpecificTargeting, bool needSpecificTileEffects, List<string> specificTileEffects, bool needSpecificTiles, List<string> specificTiles, ClickableTile tile, bool targetBreakables = false)
     {
         map.drawReach(reach, targetTiles, targetAllies, targetEnemies, targetWalls, hyperSpecificTargeting, needSpecificTileEffects, specificTileEffects, needSpecificTiles, specificTiles, tile,targetBreakables);
         if(!hitOwnTile){

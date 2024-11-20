@@ -757,6 +757,9 @@ public class TileMap : MonoBehaviour
     */
     public void drawReach(int reach, bool targetTiles, bool targetAllies, bool targetEnemies, bool targetWalls, bool hyperSpecificTargeting, bool needSpecificTileEffects, List<string> specificTileEffects, bool needSpecificTiles, List<string> specificTiles, ClickableTile tile, bool targetBreakableTiles = false)
     {
+        if (targetBreakableTiles) {
+            UnityEngine.Debug.Log("TargetBreakableTiles is online");
+        }
         int width = 1;
         //Find the maximum width that needs to be checked
         for (int i = 2; i <= reach; ++i)
@@ -825,7 +828,8 @@ public class TileMap : MonoBehaviour
                                 }
                             }
                         }
-                    } else if (targetBreakableTiles == true && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].isBreakable == true) {
+                    } else if (targetBreakableTiles == true && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].isBreakable == true && hits.Length <= 1) {
+                                UnityEngine.Debug.Log("Tile is breakable");
                                 clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
                                 targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);
                     } else if (targetWalls && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.tag == "Wall" && hits.Length <= 1){
@@ -883,7 +887,7 @@ public class TileMap : MonoBehaviour
                                 }
                             }
                         }
-                    } else if (targetBreakableTiles == true && clickableTiles[selectedUnitScript.tileX+i, selectedUnitScript.tileY + j].isBreakable == true) {
+                    } else if (targetBreakableTiles == true && clickableTiles[selectedUnitScript.tileX+i, selectedUnitScript.tileY + j].isBreakable == true && hits.Length <= 1) {
                                 clickableTiles[selectedUnitScript.tileX+ i, selectedUnitScript.tileY + j].highlight();
                                 targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);
                     }
@@ -940,7 +944,7 @@ public class TileMap : MonoBehaviour
                             }
                         }
                     }
-                } else if (targetBreakableTiles == true && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].isBreakable == true) {
+                } else if (targetBreakableTiles == true && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].isBreakable == true && hits.Length <= 1) {
                             clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].highlight();
                             targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject);
                 }
@@ -995,7 +999,7 @@ public class TileMap : MonoBehaviour
                             }
                         }
                     }
-                } else if (targetBreakableTiles == true && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].isBreakable == true) {
+                } else if (targetBreakableTiles == true && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].isBreakable == true && hits.Length <= 1) {
                             clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].highlight();
                             targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject);
                 }

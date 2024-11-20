@@ -10,29 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
-  m_Name: Wall
+  m_Name: Shatter
   m_EditorClassIdentifier: 
-  manaCost: 10
-  spellName: Fireball
-  elementType: Fire
-  spellPrefab: {fileID: 2394175536890139692, guid: ee9334e422503c840bb34dfedfb5be70, type: 3}
-  description: Turn tiles in a 3x1 wall
+  manaCost: 5
+  spellName: Shatterpoint
+  elementType: Earth
+  spellPrefab: {fileID: 2394175536890139692, guid: 78f3c1662d7e6944db377b2d8c888dff, type: 3}
+  description: Shatters one of Wold's walls, striking enemies with the debris.
   targeted: 1
-  range: 4
+  range: 2
   targetTiles: 1
   targetAllies: 0
   target: {fileID: 0}
   amountOfTargets: 1
-  requireDifferentTargets: 1
+  requireDifferentTargets: 0
   targetEnemies: 0
   hitOwnTile: 0
   hitSelf: 0
-  targetWalls: 1
-  AOEsize: 1
-  square: 1
+  targetWalls: 0
+  AOEsize: 0
+  square: 0
   hyperSpecificTargeting: 0
   needSpecificTiles: 0
-  specificTiles: []
+  specificTiles:
+  - tileWoldWall
   needSpecificTileEffects: 0
   specificTileEffects: []
   targetBreakables: 1
