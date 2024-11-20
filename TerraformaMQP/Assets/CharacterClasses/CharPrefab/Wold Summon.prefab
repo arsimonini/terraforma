@@ -109,7 +109,6 @@ MonoBehaviour:
   defaultReach: 1
   attackType: 
   buffs: []
-  atkPrefab: {fileID: 4396117065116841325, guid: 8b66e881856c54496b800c258a60e18d, type: 3}
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 0
   tileY: 0
@@ -136,11 +135,6 @@ MonoBehaviour:
   spellList: {fileID: 2665985302958401928}
   hasWalked: 0
   spellListIsUp: 0
-  comlog: {fileID: 0}
-  pm: {fileID: 0}
-  physicallyAttacked: []
-  openAtkMenu: []
-  closeAtkMenu: []
 --- !u!212 &3434780674799459154
 SpriteRenderer:
   m_ObjectHideFlags: 0

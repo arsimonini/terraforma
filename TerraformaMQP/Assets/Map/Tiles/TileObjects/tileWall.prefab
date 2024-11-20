@@ -129,7 +129,7 @@ MonoBehaviour:
   effectAmounts: feffffff
   characterOnTile: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
-  cost: 9999
+  cost: 100
   tileWas: 17
   tileIs: 17
   isBreakable: 0

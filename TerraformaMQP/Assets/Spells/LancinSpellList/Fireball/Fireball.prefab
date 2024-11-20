@@ -120,4 +120,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spread: 0
   BurningTileEffect: {fileID: 11400000, guid: 172d136be4abc0741b5b34fd7f644684, type: 2}
-  magicAnimation: {fileID: 130503883296144048, guid: 03e89af8452273a48bab46fe4dba0f28, type: 3}

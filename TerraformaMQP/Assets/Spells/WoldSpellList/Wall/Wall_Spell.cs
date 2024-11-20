@@ -20,89 +20,88 @@ public class Wall_Spell : MonoBehaviour, Cast_Spell
         wallsMask = LayerMask.GetMask("Block Visibility");
     }
 
+
+
+
     public void castSpell(List<GameObject> targets, GameObject caster)
     {
-        int sumCorrect = 0;
-
         for (int i = 0; i < targets.Count; i++)
         {
-            
+            /*
+            ClickableTile previousTile = targets[i].GetComponent<Basic_Character_Class>().tile;
+            GameObject newTile = (GameObject)Instantiate(tileFireGrass, new Vector3(previousTile.gameObject.transform.position.x, 0, previousTile.gameObject.transform.position.z), Quaternion.identity);
+            previousTile.map.swapTiles(previousTile, newTile.GetComponent<ClickableTile>(), 18);
+            */
+            //Used to test for casting AOE on tiles
+            /*
+            ClickableTile targetTile = targets[i].GetComponent<ClickableTile>();
+            TileEffect newEffect = Instantiate(BurningTileEffect);
+            newEffect.createTileEffect(true, targetTile, newSource: "Fireball", newDuration: 3);
+            */
+            /* Wall of Fire
+            ClickableTile targetTile = targets[i].GetComponent<ClickableTile>();
+            RaycastHit[] hits;
+            hits = Physics.RaycastAll(caster.GetComponent<Basic_Character_Class>().tile.gameObject.transform.position, targetTile.gameObject.transform.position - caster.GetComponent<Basic_Character_Class>().tile.gameObject.transform.position, Vector3.Distance(targetTile.gameObject.transform.position, caster.GetComponent<Basic_Character_Class>().tile.gameObject.transform.position));
+            for (int j = 0; j < hits.Length; j++){
+                targetTile.map.swapTiles(hits[j].collider.gameObject.GetComponent<ClickableTile>(), 1);
+            }
+            */
             ClickableTile targetTile;
             if (targets[0].GetComponent<ClickableTile>()){
                 targetTile = targets[0].GetComponent<ClickableTile>();
-                float targetX = targetTile.TileX;
-                float targetY = targetTile.TileY;
-                TileMap map = targetTile.map;
+            }
+            else{
+                targetTile = targets[0].GetComponent<Basic_Character_Class>().tile;
+            }
 
-                Basic_Character_Class casterCharacter = caster.GetComponent<Basic_Character_Class>();    
-                
-                if (targetTile == null || casterCharacter == null) {
-                    return;
-                }
+            if (targetTile.gameObject.tag != "Wall"){
+                Collider[] hits = Physics.OverlapSphere(targetTile.gameObject.transform.position, 0.8f);
 
-                if (acceptableLocation(targetTile)){
-                    map.swapTiles(targetTile,20,false);
-
-                    float castX = casterCharacter.tileX;
-                    float castY = casterCharacter.tileY;
-
-                    float castDistanceX = Mathf.Abs(castX - targetX);
-                    float castDistanceY = Mathf.Abs(castY - targetY);
-
-                    if (castDistanceX > castDistanceY) {
-                        //North
-                        if (targetY < map.clickableTiles.GetLength(1)-1) {
-                            ClickableTile north = map.clickableTiles[(int) targetX,(int) targetY+1];
-                            if (acceptableLocation(north)) {
-                                map.swapTiles(north,20,false);
+                foreach (var hitCollider in hits){
+                    if (hitCollider.gameObject.name.StartsWith("tile")){
+                        if (hitCollider.gameObject.tag != "Wall"){
+                            if (hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile != null){
+                                hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(caster.GetComponent<Hero_Character_Class>().magic.moddedValue, "Fire");
                             }
-                        }                
-
-                        //South
-                        if (targetY > 0) {
-                            ClickableTile south = map.clickableTiles[(int) targetX,(int) targetY-1];
-                            if (acceptableLocation(south)) {
-                                map.swapTiles(south,20,false);
-                            }
-                        }
-                    } else {
-
-                        //East
-                        if (targetX > 0) {
-                            ClickableTile east = map.clickableTiles[(int) targetX-1,(int) targetY];
-                            if (acceptableLocation(east)) {
-                                map.swapTiles(east,20,false);
-                            }
-                        }
-
-                        //West
-                        if (targetX < map.clickableTiles.GetLength(0)-1) {
-                            ClickableTile west = map.clickableTiles[(int) targetX+1,(int) targetY];
-                            if (acceptableLocation(west)) {
-                                map.swapTiles(west,20,false);
-                            }
+                            hitCollider.gameObject.GetComponent<ClickableTile>().map.gameObject.GetComponent<ReactionController>().checkReaction(hitCollider.gameObject.GetComponent<ClickableTile>(), caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Fireball", true);
                         }
                     }
                 }
+            }
+            else {
+                targetTile = targetTile.map.shuntOver(targetTile, caster.GetComponent<Basic_Character_Class>().tile.GetComponent<ClickableTile>());
+                Collider[] hits = Physics.OverlapSphere(targetTile.gameObject.transform.position, 0.8f);
 
-
-                
+                foreach (var hitCollider in hits){
+                    if (hitCollider.gameObject.name.StartsWith("tile")){
+                        if (hitCollider.gameObject.tag != "Wall"){
+                            if (hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile != null){
+                                hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(caster.GetComponent<Hero_Character_Class>().magic.moddedValue, "Fire");
+                            }
+                            hitCollider.gameObject.GetComponent<ClickableTile>().map.gameObject.GetComponent<ReactionController>().checkReaction(hitCollider.gameObject.GetComponent<ClickableTile>(), caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Fireball", true);
+                        }
+                    }
+                }
             }
 
 
 
-
-        }
-    }
-
-    public bool acceptableLocation(ClickableTile t) {
-        
-        if (t.isWalkable && t.gameObject.tag != "Wall") { 
-            //Must be one of these types of walls
-            if (t.tileIs == 0 || t.tileIs == 1 || t.tileIs == 2 || t.tileIs == 3 || t.tileIs == 4 || t.tileIs == 5 || t.tileIs == 9 || t.tileIs == 11 || t.tileIs == 14) {           
-                return true;
+            /*
+             ClickableTile targetTile;
+            //Normal Casting
+            if (targets[i].GetComponent<Basic_Character_Class>()){
+                targetTile = targets[i].GetComponent<Basic_Character_Class>().tile;
+                targets[i].GetComponent<Basic_Character_Class>().takeMagicDamage(caster.GetComponent<Hero_Character_Class>().magic.moddedValue, "Fire");
             }
+            else {
+                targetTile = targets[i].GetComponent<ClickableTile>();
+            }
+
+            //TileEffect newEffect = Instantiate(BurningTileEffect);
+            //newEffect.createTileEffect(true, targetTile, newSource: "Fireball", newDuration: 3);
+            targetTile.map.gameObject.GetComponent<ReactionController>().checkReaction(targetTile, caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Fireball", true);
+            //UnityEngine.Debug.Log(newEffect.duration);
+            */
         }
-        return false;
     }
 }

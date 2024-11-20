@@ -15,8 +15,6 @@ public class Fireball_Spell : MonoBehaviour, Cast_Spell
     private LayerMask hittableTilesMask;
     private LayerMask wallsMask;
 
-    public GameObject magicAnimation;
-
     void Start(){
         hittableTilesMask = LayerMask.GetMask("Default");
         wallsMask = LayerMask.GetMask("Block Visibility");
@@ -66,8 +64,6 @@ public class Fireball_Spell : MonoBehaviour, Cast_Spell
                                 hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(caster.GetComponent<Hero_Character_Class>().magic.moddedValue, "Fire");
                             }
                             hitCollider.gameObject.GetComponent<ClickableTile>().map.gameObject.GetComponent<ReactionController>().checkReaction(hitCollider.gameObject.GetComponent<ClickableTile>(), caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Fireball", true);
-                            //GameObject animation = Instantiate(magicAnimation);
-                            //animation.transform.position = new Vector3(hitCollider.gameObject.transform.position.x, hitCollider.gameObject.transform.position.y, hitCollider.gameObject.transform.position.z + 0.75f);
                         }
                     }
                 }
@@ -83,20 +79,11 @@ public class Fireball_Spell : MonoBehaviour, Cast_Spell
                                 hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(caster.GetComponent<Hero_Character_Class>().magic.moddedValue, "Fire");
                             }
                             hitCollider.gameObject.GetComponent<ClickableTile>().map.gameObject.GetComponent<ReactionController>().checkReaction(hitCollider.gameObject.GetComponent<ClickableTile>(), caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Fireball", true);
-                            //GameObject animation = Instantiate(magicAnimation);
-                            //animation.transform.position = new Vector3(hitCollider.gameObject.transform.position.x, hitCollider.gameObject.transform.position.y, hitCollider.gameObject.transform.position.z + 0.75f);
                         }
                     }
                 }
             }
-            GameObject animation = Instantiate(magicAnimation);
-            animation.transform.position = new Vector3(targetTile.gameObject.transform.position.x, targetTile.gameObject.transform.position.y + 0.75f, targetTile.gameObject.transform.position.z);
-            animation.transform.localScale = animation.transform.localScale * 4;
 
-            GameObject animation2 = Instantiate(magicAnimation);
-            animation2.transform.position = new Vector3(targetTile.gameObject.transform.position.x, targetTile.gameObject.transform.position.y + 0.75f, targetTile.gameObject.transform.position.z);
-            animation2.transform.localScale = animation2.transform.localScale * 4;
-            animation2.transform.Rotate(0.0f, 90.0f, 0.0f);
 
 
             /*

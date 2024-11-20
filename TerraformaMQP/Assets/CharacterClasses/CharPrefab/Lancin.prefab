@@ -111,7 +111,6 @@ MonoBehaviour:
   defaultReach: 1
   attackType: 
   buffs: []
-  atkPrefab: {fileID: 4396117065116841325, guid: 8b66e881856c54496b800c258a60e18d, type: 3}
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 0
   tileY: 2
@@ -139,10 +138,6 @@ MonoBehaviour:
   hasWalked: 0
   spellListIsUp: 0
   comlog: {fileID: 0}
-  pm: {fileID: 0}
-  physicallyAttacked: []
-  openAtkMenu: []
-  closeAtkMenu: []
 --- !u!114 &7585430571080152534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,9 +160,6 @@ MonoBehaviour:
   pickingSpell: 0
   spellList: []
   selectedSpell: {fileID: 0}
-  fireSpells: []
-  earthSpells: []
-  waterSpells: []
 --- !u!114 &8047284439058182590
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -502,10 +502,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1635415079892293990, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 1918770147}
     - target: {fileID: 6571172650880656856, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15
@@ -8412,10 +8408,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1635415079892293990, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 1918770147}
     - target: {fileID: 6571172650880656856, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15
@@ -9761,10 +9753,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1635415079892293990, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 1918770147}
     - target: {fileID: 6571172650880656856, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1
@@ -11195,10 +11183,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1635415079892293990, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 1918770147}
     - target: {fileID: 6571172650880656856, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14
@@ -12304,10 +12288,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1635415079892293990, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 1918770147}
     - target: {fileID: 6571172650880656856, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15
@@ -13687,10 +13667,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0, z: 0}
-  tooFarHorizontal: 14
+  tooFarHorizontal: 10
   tooFarVertical: 10
-  tooNearHorizontal: -5
-  tooNearVertical: -8
   gc: {fileID: 1356950529}
   map: {fileID: 1297737938}
   target: {x: 0, y: 0, z: 0}
@@ -15949,7 +15927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237879e574e864b248a925e8c982f142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkPrefab: {fileID: 130503883296144048, guid: 03e89af8452273a48bab46fe4dba0f28, type: 3}
+  atkPrefab: {fileID: 4396117065116841325, guid: 8b66e881856c54496b800c258a60e18d, type: 3}
   pos: {fileID: 1081816119}
 --- !u!114 &1081816125 stripped
 MonoBehaviour:
@@ -29403,8 +29381,6 @@ MonoBehaviour:
   startPos: {x: 0, y: 0, z: 0}
   tooFarHorizontal: 10
   tooFarVertical: 10
-  tooNearHorizontal: -5
-  tooNearVertical: -5
   gc: {fileID: 1356950529}
   map: {fileID: 1297737938}
   target: {x: 0, y: 0, z: 0}
@@ -29947,24 +29923,12 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 812480041}
-    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: spellButtonUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Basic_Character_Class, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2066849787545317875, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -30921,10 +30885,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1635415079892293990, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 1918770147}
     - target: {fileID: 6571172650880656856, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
