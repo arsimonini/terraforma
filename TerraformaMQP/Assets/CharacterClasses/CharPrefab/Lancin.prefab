@@ -75,7 +75,7 @@ MonoBehaviour:
   effects: []
   tileEffect: {fileID: 0}
   name: Lancin Bermane
-  char_img: {fileID: 21300000, guid: 8d40b31ee7e0f4d0a8f2ff5db21c443e, type: 3}
+  char_img: {fileID: 21300000, guid: fff53fbb4374744cc8c1a99290ce27e4, type: 3}
   health: 20
   maxHealth:
     value: 20
@@ -99,8 +99,8 @@ MonoBehaviour:
     value: 1
     moddedValue: 1
   accuracy:
-    value: 4
-    moddedValue: 4
+    value: 5
+    moddedValue: 5
   actionsLeft:
     value: 1
     moddedValue: 1
@@ -113,8 +113,8 @@ MonoBehaviour:
   buffs: []
   atkPrefab: {fileID: 4396117065116841325, guid: 8b66e881856c54496b800c258a60e18d, type: 3}
   color: {r: 0, g: 0, b: 0, a: 0}
-  tileX: 0
-  tileY: 2
+  tileX: 11
+  tileY: 9
   tileType:
     name: 
     tileVisualPrefab: {fileID: 0}
@@ -140,9 +140,20 @@ MonoBehaviour:
   spellListIsUp: 0
   comlog: {fileID: 0}
   pm: {fileID: 0}
-  physicallyAttacked: []
-  openAtkMenu: []
-  closeAtkMenu: []
+  physicallyAttacked:
+  - {fileID: 8300000, guid: 7040ee4e4f16244e6a325286133d7c9a, type: 3}
+  - {fileID: 8300000, guid: 2f7149dc057e44817b39393490d328bf, type: 3}
+  - {fileID: 8300000, guid: 7e5e3941f20ca44d597ebe2877f1bee0, type: 3}
+  openAtkMenu:
+  - {fileID: 8300000, guid: 9153ecf3c2086433180c62737a991ae9, type: 3}
+  - {fileID: 8300000, guid: b6fef9f967c71406ba1ea59ad4f95c87, type: 3}
+  - {fileID: 8300000, guid: 8a00c2bde8d7a46a6b69dc462aa6d2b9, type: 3}
+  - {fileID: 8300000, guid: fd12b5c19a4d64c1c8852b710e8fac52, type: 3}
+  closeAtkMenu:
+  - {fileID: 8300000, guid: d375c5e6078df411f9ca084f9661035b, type: 3}
+  - {fileID: 8300000, guid: 0101ccd2561894cf88c174c96913a3cc, type: 3}
+  - {fileID: 8300000, guid: ae21374cd30fa40bba78fc4cbfa78620, type: 3}
+  - {fileID: 8300000, guid: fd52fa82e4d88422da73715775afdba5, type: 3}
 --- !u!114 &7585430571080152534
 MonoBehaviour:
   m_ObjectHideFlags: 0

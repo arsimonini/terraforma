@@ -449,8 +449,8 @@ MonoBehaviour:
   turnEnded: 0
   effects: []
   tileEffect: {fileID: 0}
-  name: Basic Enemy
-  char_img: {fileID: 21300000, guid: 70357dc2ed72e4325abbd77554514278, type: 3}
+  name: Grunt
+  char_img: {fileID: 21300000, guid: c234f782a91d4475b9867abe06fa1f54, type: 3}
   health: 18
   maxHealth:
     value: 18
@@ -488,8 +488,8 @@ MonoBehaviour:
   buffs: []
   atkPrefab: {fileID: 4396117065116841325, guid: 8b66e881856c54496b800c258a60e18d, type: 3}
   color: {r: 0, g: 0, b: 0, a: 0}
-  tileX: 4
-  tileY: 2
+  tileX: 22
+  tileY: 10
   tileType:
     name: 
     tileVisualPrefab: {fileID: 0}
@@ -515,9 +515,20 @@ MonoBehaviour:
   spellListIsUp: 0
   comlog: {fileID: 0}
   pm: {fileID: 0}
-  physicallyAttacked: []
-  openAtkMenu: []
-  closeAtkMenu: []
+  physicallyAttacked:
+  - {fileID: 8300000, guid: 7040ee4e4f16244e6a325286133d7c9a, type: 3}
+  - {fileID: 8300000, guid: 2f7149dc057e44817b39393490d328bf, type: 3}
+  - {fileID: 8300000, guid: 7e5e3941f20ca44d597ebe2877f1bee0, type: 3}
+  openAtkMenu:
+  - {fileID: 8300000, guid: 9153ecf3c2086433180c62737a991ae9, type: 3}
+  - {fileID: 8300000, guid: b6fef9f967c71406ba1ea59ad4f95c87, type: 3}
+  - {fileID: 8300000, guid: 8a00c2bde8d7a46a6b69dc462aa6d2b9, type: 3}
+  - {fileID: 8300000, guid: fd12b5c19a4d64c1c8852b710e8fac52, type: 3}
+  closeAtkMenu:
+  - {fileID: 8300000, guid: d375c5e6078df411f9ca084f9661035b, type: 3}
+  - {fileID: 8300000, guid: 0101ccd2561894cf88c174c96913a3cc, type: 3}
+  - {fileID: 8300000, guid: ae21374cd30fa40bba78fc4cbfa78620, type: 3}
+  - {fileID: 8300000, guid: fd52fa82e4d88422da73715775afdba5, type: 3}
 --- !u!114 &3556103306998089025
 MonoBehaviour:
   m_ObjectHideFlags: 0
