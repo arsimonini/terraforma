@@ -72,8 +72,8 @@ MonoBehaviour:
   turnEnded: 0
   effects: []
   tileEffect: {fileID: 0}
-  name: Lancin Summon
-  char_img: {fileID: 21300000, guid: 8d40b31ee7e0f4d0a8f2ff5db21c443e, type: 3}
+  name: Urson
+  char_img: {fileID: 21300000, guid: fff53fbb4374744cc8c1a99290ce27e4, type: 3}
   health: 28
   maxHealth:
     value: 28
