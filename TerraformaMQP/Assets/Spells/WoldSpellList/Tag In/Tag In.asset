@@ -16,7 +16,7 @@ MonoBehaviour:
   spellName: Tag In
   elementType: Earth
   spellPrefab: {fileID: 2394175536890139692, guid: c75ffc91fa3f2bb4ca568046b2e5129b, type: 3}
-  description: Swap positions with an ally.
+  description: Swap positions with an ally
   targeted: 1
   range: 3
   targetTiles: 0

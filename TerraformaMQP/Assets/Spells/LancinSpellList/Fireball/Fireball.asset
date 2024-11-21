@@ -16,7 +16,7 @@ MonoBehaviour:
   spellName: Fireball
   elementType: Fire
   spellPrefab: {fileID: 2394175536890139692, guid: ee9334e422503c840bb34dfedfb5be70, type: 3}
-  description: Apply Fire to a 3x3 square and deal {m} Fire damage to enemies caught
+  description: Apply Fire to a 3x3 square and deal 6 Fire damage to enemies caught
     in the blast
   targeted: 1
   range: 4
@@ -36,3 +36,4 @@ MonoBehaviour:
   specificTiles: []
   needSpecificTileEffects: 0
   specificTileEffects: []
+  targetBreakables: 0

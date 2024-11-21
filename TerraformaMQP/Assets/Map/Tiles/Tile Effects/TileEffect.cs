@@ -101,7 +101,7 @@ public class TileEffect : ScriptableObject
                 rotate = 270f;
                 break;
         }
-        newVisual.transform.Rotate(0f, rotate, 0f);
+        newVisual.transform.Rotate(0f, 0f, rotate);
     }
     
 

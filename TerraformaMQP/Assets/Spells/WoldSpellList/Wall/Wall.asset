@@ -16,7 +16,7 @@ MonoBehaviour:
   spellName: Wall
   elementType: Earth
   spellPrefab: {fileID: 2394175536890139692, guid: bf21f55e4863b1e4b88b87121b217dbd, type: 3}
-  description: Turn tiles in a 3x1 wall
+  description: Place a 3x1 breakable wall centered at a target location
   targeted: 1
   range: 5
   targetTiles: 1
