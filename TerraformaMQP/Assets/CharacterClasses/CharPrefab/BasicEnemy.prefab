@@ -388,7 +388,6 @@ GameObject:
   - component: {fileID: 1803627313196331527}
   - component: {fileID: 7448667868949999440}
   - component: {fileID: 3556103306998089025}
-  - component: {fileID: 8111968720976678732}
   - component: {fileID: 2101969773794711547}
   - component: {fileID: 9083810117275825196}
   m_Layer: 0
@@ -531,18 +530,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4405e3c5166a04fbef27de6e26baad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8111968720976678732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7009967892437524158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4405e3c5166a04fbef27de6e26baad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  element: 
+  chaseFromFar: 0
+  chaseSteps: 10
+  waterCooldown: 0000000000000000
+  spellList: []
+  fireSpells: []
+  earthSpells: []
+  waterSpells: []
 --- !u!212 &2101969773794711547
 SpriteRenderer:
   m_ObjectHideFlags: 0

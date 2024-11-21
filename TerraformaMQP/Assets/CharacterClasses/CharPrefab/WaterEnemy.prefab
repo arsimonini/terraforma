@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1277116234486759462}
   - component: {fileID: 521441566614050383}
   - component: {fileID: 5590519867409697623}
-  - component: {fileID: 8441232135550919202}
   - component: {fileID: 4272299001614567363}
   - component: {fileID: 3655638616690951539}
   m_Layer: 0
@@ -173,23 +172,9 @@ MonoBehaviour:
   spellList:
   - {fileID: 11400000, guid: 93c847b5b0c264066ac7f4d1a9d72c54, type: 2}
   - {fileID: 11400000, guid: d7da6be75e8f44b2992b2a073e0dea70, type: 2}
---- !u!114 &8441232135550919202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280795916125588129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4405e3c5166a04fbef27de6e26baad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  element: 
-  chaseFromFar: 0
-  chaseSteps: 10
-  waterCooldown: 0000000000000000
-  spellList: []
+  fireSpells: []
+  earthSpells: []
+  waterSpells: []
 --- !u!212 &4272299001614567363
 SpriteRenderer:
   m_ObjectHideFlags: 0

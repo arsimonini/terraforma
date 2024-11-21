@@ -17,6 +17,10 @@ public class Enemy_Character_Class : MonoBehaviour
 
     public List<Basic_Spell_Class> spellList; //The list of spells that the character can cast
 
+    [SerializeField] private AudioClip[] fireSpells;
+    [SerializeField] private AudioClip[] earthSpells;
+    [SerializeField] private AudioClip[] waterSpells;
+
     void Start() {
         basic = this.gameObject.GetComponent<Basic_Character_Class>();
         waterCooldown[0] = 0;
@@ -74,6 +78,9 @@ public class Enemy_Character_Class : MonoBehaviour
                             path = basic.map.generatePathTo(adjCoords[i], adjCoords[i+1], false, false, setCurrent:false);
                         }
                     }
+                }
+                else {
+                    path = runPath();
                 }
             }
 
@@ -419,6 +426,17 @@ public class Enemy_Character_Class : MonoBehaviour
                 UnityEngine.Debug.Log("ENEMY CAST RAIN");
                 Basic_Spell_Class spellInstance = Instantiate(spellList[1]);
                 spellInstance.spellPrefab.GetComponent<Cast_Spell>().castSpell(target, this.gameObject);
+
+                if(spellInstance.elementType == "Fire") {
+                    SFXController.instance.PlayRandomSFXClip(fireSpells, transform, 1f);
+                }
+                else if(spellInstance.elementType == "Earth") {
+                    SFXController.instance.PlayRandomSFXClip(earthSpells, transform, 1f);
+                }
+                else if(spellInstance.elementType == "Water") {
+                    SFXController.instance.PlayRandomSFXClip(waterSpells, transform, 1f);
+                }
+
                 basic.comlog.addText("-> " + basic.name + " has Cast Rain");
                 waterCooldown[1] = 3;
                 basic.stopTargeting();
