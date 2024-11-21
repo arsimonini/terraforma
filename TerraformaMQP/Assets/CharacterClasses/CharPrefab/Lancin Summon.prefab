@@ -152,6 +152,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0101ccd2561894cf88c174c96913a3cc, type: 3}
   - {fileID: 8300000, guid: ae21374cd30fa40bba78fc4cbfa78620, type: 3}
   - {fileID: 8300000, guid: fd52fa82e4d88422da73715775afdba5, type: 3}
+  missedAttack:
+  - {fileID: 8300000, guid: b9cbd2ccaf22f934eb00f7e8ee3ec60d, type: 3}
+  - {fileID: 8300000, guid: 7c5cf9b73201f39408a52b33bb463df6, type: 3}
+  - {fileID: 8300000, guid: b4e130e79d3561f4b866c52ee35c8073, type: 3}
+  - {fileID: 8300000, guid: 0c9b8264f326ab04985d183d3efd6e5c, type: 3}
 --- !u!212 &3434780674799459154
 SpriteRenderer:
   m_ObjectHideFlags: 0

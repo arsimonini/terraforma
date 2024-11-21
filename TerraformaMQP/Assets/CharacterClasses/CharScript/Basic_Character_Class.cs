@@ -71,6 +71,8 @@ public class Basic_Character_Class : MonoBehaviour
     [SerializeField] private AudioClip[] physicallyAttacked;
     [SerializeField] private AudioClip[] openAtkMenu;
     [SerializeField] private AudioClip[] closeAtkMenu;
+    [SerializeField] private AudioClip[] missedAttack;
+
 
 
 
@@ -539,10 +541,13 @@ public class Basic_Character_Class : MonoBehaviour
                 targetCharacter.updateCharStats();
             } else { //Attack Misses
                 comlog.addText("-> " +  name + " Has Missed their Attack on " + targetCharacter.name);
+                SFXController.instance.PlayRandomSFXClip(missedAttack, transform, 1f);
             }
         } else if (targetTile != null && targetTile.isBreakable) { //Damage Tile
             targetTile.hp -= damageAmount;
             UnityEngine.Debug.Log("Tile Health: " + targetTile.hp);
+            SFXController.instance.PlayRandomSFXClip(physicallyAttacked, transform, 1f);
+
 
             if (targetTile.hp <= 0) {
                 targetTile.breakTile();
