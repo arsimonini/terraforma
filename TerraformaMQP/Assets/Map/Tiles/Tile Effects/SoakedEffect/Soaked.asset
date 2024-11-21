@@ -15,7 +15,7 @@ MonoBehaviour:
   duration: 3
   statToEffect:
   - speed
-  amountToEffect: fdffffff
+  amountToEffect: feffffff
   source: 
   tile: {fileID: 0}
   name: Soaked

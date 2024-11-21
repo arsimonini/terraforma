@@ -1281,7 +1281,7 @@ public class TileMap : MonoBehaviour
     public void addTileEffect(int x, int y, GameObject unitToAffect){
         //Creates the status effect and then applies it to the character
         StatusEffect newEffect = new StatusEffect();
-        newEffect.initializeTileEffect(tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().statsToEffect, tileTypes[tiles[x, y]].name, tileTypes[tiles[x, y]].tileVisualPrefab.GetComponent<ClickableTile>().effectAmounts, unitToAffect, tileTypes[tiles[x, y]].name + "Effect");
+        newEffect.initializeTileEffect(clickableTiles[x, y].statsToEffect, tileTypes[tiles[x, y]].name, clickableTiles[x, y].effectAmounts, unitToAffect, tileTypes[tiles[x, y]].name + "Effect");
     }
 
     //Sets phase to match that of the gamecontroller

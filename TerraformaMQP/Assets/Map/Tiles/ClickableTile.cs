@@ -155,7 +155,7 @@ public class ClickableTile : MonoBehaviour
         }
         cost += effect.movementCostIncrease;
         //If there is a character on the tile then it's tile effect is then updated to reflect the new stats
-        if (characterOnTile!= null){
+        if (characterOnTile != null){
             updateTileEffect();
         }
         //effect.tileEffectPrefab.GetComponent<tileEffectActions>().react(effectsOnTile, this, effect);
