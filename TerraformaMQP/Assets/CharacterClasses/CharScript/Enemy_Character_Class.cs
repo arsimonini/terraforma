@@ -58,7 +58,7 @@ public class Enemy_Character_Class : MonoBehaviour
     }
 
     public void takePath(List<Node> path) {
-        if (path.Count > 1) {
+        if (path != null && path.Count > 1) {
             //LOG STUFF HERE FOR MOVEMENT
             basic.comlog.addText("-> " + basic.name + " has Moved");
             if (path[0].x == basic.tileX && path[0].y == basic.tileY) {
@@ -402,10 +402,10 @@ public class Enemy_Character_Class : MonoBehaviour
                                         int tileX = characterOnTile.GetComponent<Basic_Character_Class>().tileX;
                                         int tileY = characterOnTile.GetComponent<Basic_Character_Class>().tileY;
                                         List<Node> path = basic.map.generatePathTo(tileX, tileY, false, true, lancin.GetComponent<Basic_Character_Class>().tileX, lancin.GetComponent<Basic_Character_Class>().tileY, setCurrent:false, cutPath:false);
-                                        if (path.Count < 8) {
+                                        if (path != null && path.Count < 8) {
                                             allyNearL++;
                                         }
-                                        lancinNear[characterOnTile.name] = path.Count < 8;
+                                        lancinNear[characterOnTile.name] = path != null && path.Count < 8;
                                     }
                                 }
                             }
