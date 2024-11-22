@@ -36,6 +36,8 @@ public class GameControllerScript : MonoBehaviour
     public GameObject winPrefab;
     public GameObject losePrefab;
 
+    public bool treetopVisible = true;
+
 
 
     public PauseMenu pauseMenuController;
@@ -269,6 +271,17 @@ public class GameControllerScript : MonoBehaviour
             }
             else {
                 pauseMenuController.Pause();
+            }
+        }
+
+        //toggle treetop visibility
+        if (Input.GetKeyUp(KeyCode.V))
+        {
+            GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>(true);
+            foreach (GameObject obj in allObjects) {
+                if (obj.name == "tree top") {
+                    obj.SetActive(!obj.activeSelf);
+                }
             }
         }
 

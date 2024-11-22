@@ -29561,9 +29561,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0, z: 0}
-  tooFarHorizontal: 14
+  tooFarHorizontal: 17
   tooFarVertical: 10
-  tooNearHorizontal: -5
+  tooNearHorizontal: -8
   tooNearVertical: -8
   gc: {fileID: 1356950529}
   map: {fileID: 1297737938}
