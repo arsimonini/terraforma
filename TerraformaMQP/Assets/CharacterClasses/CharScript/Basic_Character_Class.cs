@@ -34,6 +34,9 @@ public class Basic_Character_Class : MonoBehaviour
     public string attackType = null; //What is being targeting, either a "Spell" or "Attack", if not currently targeting will be null
     public List<BuffClass> buffs = new List<BuffClass>();
     public GameObject atkPrefab;
+    public GameObject critPrefab;
+    public GameObject missPrefab;
+    
 
     public Color color; //Color of the shape ---WILL BE DELETED WHEN MODELS ARE ADDED---
 
@@ -533,7 +536,15 @@ public class Basic_Character_Class : MonoBehaviour
                     targetCharacter.takePhysicalDamage(2*damageAmount); //Critical Hit!!!
                     comlog.addText("-> " + name + " Has Landed a Critical Attack on " + targetCharacter.name + " Dealing " + (targetCurrHealth - targetCharacter.health).ToString() + " Damage");
                     //UnityEngine.Debug.Log("FAIR AND BALANCED");
+                    Vector3 newPos = Vector3.Lerp(this.gameObject.transform.position, target.gameObject.transform.position, 0.5f);
+                    GameObject callToPrefab = Instantiate(critPrefab);
+                    callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
+                    callToPrefab.transform.position = newPos;
                 } else {
+                    Vector3 newPos = Vector3.Lerp(this.gameObject.transform.position, target.gameObject.transform.position, 0.5f);
+                    GameObject callToPrefab = Instantiate(atkPrefab);
+                    callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
+                    callToPrefab.transform.position = newPos;
                     targetCharacter.takePhysicalDamage(damageAmount);
                     comlog.addText("-> " +  name + " Has Landed an Attack on " + targetCharacter.name + " Dealing " + (targetCurrHealth - targetCharacter.health).ToString() + " Damage");
                 }
@@ -542,6 +553,11 @@ public class Basic_Character_Class : MonoBehaviour
             } else { //Attack Misses
                 comlog.addText("-> " +  name + " Has Missed their Attack on " + targetCharacter.name);
                 SFXController.instance.PlayRandomSFXClip(missedAttack, transform, 1f);
+                                    //UnityEngine.Debug.Log("FAIR AND BALANCED");
+                Vector3 newPos = Vector3.Lerp(this.gameObject.transform.position, target.gameObject.transform.position, 0.5f);
+                GameObject callToPrefab = Instantiate(missPrefab);
+                callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
+                callToPrefab.transform.position = newPos;
             }
         } else if (targetTile != null && targetTile.isBreakable) { //Damage Tile
             targetTile.hp -= damageAmount;
@@ -554,10 +570,7 @@ public class Basic_Character_Class : MonoBehaviour
             }
             //callToPrefab.transform.Find("slash-effect_0").GetComponent<SpriteRenderer>().flipX = true;
         }
-        Vector3 newPos = Vector3.Lerp(this.gameObject.transform.position, target.gameObject.transform.position, 0.5f);
-        GameObject callToPrefab = Instantiate(atkPrefab);
-        callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
-        callToPrefab.transform.position = newPos;
+   
         //Stops targeting
         stopTargeting();
         //Uses the action, and then checks if there are still actions remaining

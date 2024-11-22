@@ -12,6 +12,7 @@ public class BuffClass : ScriptableObject
     public bool playerTeam;
     public Basic_Character_Class character;
     public GameObject buffAsset;
+    public GameObject buffAnimationPrefab;
 
     public bool reduceDuration(){
         if (duration > 1){
@@ -45,6 +46,11 @@ public class BuffClass : ScriptableObject
         else {
             character.tile.GetComponent<ClickableTile>().map.gameObject.GetComponent<BuffController>().addEnemyBuff(this);
         }
+
+        
+        GameObject callToPrefab = Instantiate(buffAnimationPrefab);
+        callToPrefab.GetComponent<Billboard>().cam = newCharacter.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
+        callToPrefab.transform.position = newCharacter.gameObject.transform.position;
     }
 }
 

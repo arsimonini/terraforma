@@ -23,3 +23,4 @@ MonoBehaviour:
   playerTeam: 0
   character: {fileID: 0}
   buffAsset: {fileID: 5327647445369823984, guid: c1a59777e992a2d4a893e8e4b8afe1b1, type: 3}
+  buffAnimationPrefab: {fileID: 168724785735174551, guid: 01748f657143a4fff82edef4b7d71237, type: 3}
