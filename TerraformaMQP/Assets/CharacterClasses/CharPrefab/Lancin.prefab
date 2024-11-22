@@ -454,6 +454,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7928607729415032659}
+    - target: {fileID: 5540325939918616062, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5540325939918616062, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 8.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6279022746633800168, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
       propertyPath: m_Name
       value: HeroAttackCanvas

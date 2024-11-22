@@ -1260,6 +1260,11 @@ public class TileMap : MonoBehaviour
                 newTile.addEffectToTile(previousTile.effectsOnTile[i]);
             }
         }
+        else {
+            while (previousTile.effectsOnTile.Count != 0){
+                previousTile.removeEffectFromTile(previousTile.effectsOnTile[0]);
+            }
+        }
         //Checks if there was a character on the previous tile
         if (previousTile.characterOnTile != null)
         {

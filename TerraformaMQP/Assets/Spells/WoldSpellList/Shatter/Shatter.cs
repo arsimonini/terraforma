@@ -99,6 +99,7 @@ public class Shatter : MonoBehaviour, Cast_Spell
 
         if (map.inRange(RealX,RealY)) {
             ClickableTile targetTile = map.clickableTiles[RealX,RealY];
+            map.gameObject.GetComponent<ReactionController>().checkReaction(map.clickableTiles[RealX, RealY], "Earth", "Shatterpoint", true);
 
             if (targetTile == null) { UnityEngine.Debug.Log("TargetTileFail");return; }
             GameObject characterAtTile = targetTile.characterOnTile;
