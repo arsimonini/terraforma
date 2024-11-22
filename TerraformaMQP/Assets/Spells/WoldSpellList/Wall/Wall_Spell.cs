@@ -30,6 +30,10 @@ public class Wall_Spell : MonoBehaviour, Cast_Spell
             ClickableTile targetTile;
             if (targets[0].GetComponent<ClickableTile>()){
                 targetTile = targets[0].GetComponent<ClickableTile>();
+            }
+            else{
+                targetTile = targets[0].GetComponent<Basic_Character_Class>().tile;
+            }
                 float targetX = targetTile.TileX;
                 float targetY = targetTile.TileY;
                 TileMap map = targetTile.map;
@@ -84,15 +88,11 @@ public class Wall_Spell : MonoBehaviour, Cast_Spell
                         }
                     }
                 }
-
-
-                
-            }
-
-
-
-
         }
+
+
+
+
     }
 
     public bool acceptableLocation(ClickableTile t) {
