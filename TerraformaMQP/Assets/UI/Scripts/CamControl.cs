@@ -27,6 +27,10 @@ public class CamControl : MonoBehaviour
 
     public PauseMenu pm;
 
+    public bool movingToEnemy = false;
+    public bool atEnemy = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +43,17 @@ public class CamControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (movingToEnemy == true){
+            if (Mathf.Abs(target.x - this.gameObject.transform.position.x) < 0.5f && Mathf.Abs(target.z - this.gameObject.transform.position.z) < 0.5f){
+                movingToEnemy = false;
+                atEnemy = true;
+            }
+            else {
+                easeToLocation(target.x,target.z);
+            }
+        }
         //Unit is actively moving
-        if (map.currentPath != null) {
+        else if (map.currentPath != null) {
             //transform.position = new Vector3(map.selectedUnit.transform.position.x, 7, map.selectedUnit.transform.position.z - 2.3f);
             //Vector3 forward = transform.forward;
             //Vector3 right = transform.right;
@@ -272,5 +285,12 @@ public class CamControl : MonoBehaviour
         right.Normalize();
         
         return right;
+    }
+
+    public void moveToEnemy(GameObject targetObject){
+        movingToEnemy = true;
+        checkRotation();
+        target = targetObject.transform.position - 3*getForward();
+        easeToLocation(target.x,target.z);
     }
 }
