@@ -29,6 +29,12 @@ public class ClickableTile : MonoBehaviour
     public int hp = 10;
     public int maxHp = 10;
 
+    public GameObject standardHighlight;
+    public GameObject canHitHighlight;
+    public GameObject cannotHitHightlight;
+
+    public GameObject currentHightlight = null;
+
     public List<TileEffect> effectsOnTile; //List of effects currently on the tile
     
     //Set the renderer and color variables upon level load
@@ -46,9 +52,10 @@ public class ClickableTile : MonoBehaviour
         
         //Highlight the tile upon hover
         Color highlightColor;
-        //Check if the player currently has a unit targeting and this tile is withing the current target list
+        //Check if the player currently has a unit targeting and this tile is within the current target list
         if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this.gameObject)) {
             //If so, set the highlight to be darker than normal
+            /*
             float darkerHighlight = highlightMultiplier + 0.1f;
             highlightColor = originalColor * darkerHighlight;
             tileRenderer.material.color = highlightColor;
@@ -59,18 +66,25 @@ public class ClickableTile : MonoBehaviour
                     }
                 }   
             }
+            */
         }
         else if (map.selectedUnit == null || (map.selectedUnitScript.isMoving && map.moving == false))
         {
             //Else, just do a normal highlight
-            highlightColor = originalColor * highlightMultiplier;
-            tileRenderer.material.color = highlightColor;
-            if (transform.childCount > 0){
-                foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
-                    if (!rend.gameObject.name.StartsWith("Outline") && !rend.gameObject.name.Contains("oak")){
-                        rend.material.color = highlightColor;
-                    }
-                }   
+            if (gameObject.tag == "Wall"){
+                highlightColor = originalColor * highlightMultiplier;
+                tileRenderer.material.color = highlightColor;
+                if (transform.childCount > 0){
+                    foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
+                        if (!rend.gameObject.name.StartsWith("Outline") && !rend.gameObject.name.Contains("oak")){
+                            rend.material.color = highlightColor;
+                        }
+                    }   
+                }
+            }
+            else {
+            currentHightlight = Instantiate(standardHighlight);
+            currentHightlight.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.52f, gameObject.transform.position.z);
             }
         }
 
@@ -127,7 +141,7 @@ public class ClickableTile : MonoBehaviour
         if (map.selectedUnit != null && map.selectedUnitScript.targeting == true && map.targetList.Contains(this.gameObject) || (characterOnTile != null && map.targetList.Contains(characterOnTile)))
         {
             //If so, the tile stays highlighted with the slightly lighter highlight
-            highlight();
+            //highlight();
             return;
         }
         if (map.displayingAOE == true){
@@ -135,6 +149,7 @@ public class ClickableTile : MonoBehaviour
         }
         //Else, the tile reverts back to its original color without a highlight
         endHighlight();
+        removeHighlight();
     }
 
     //Adds an effect to the tile
@@ -272,4 +287,14 @@ glass -> x
 metal -> x
 ashen -> dirt
     */
+
+    public void canHit(){
+        Destroy(currentHightlight);
+        currentHightlight = Instantiate(canHitHighlight);
+        currentHightlight.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.52f, gameObject.transform.position.z);
+    }
+
+    public void removeHighlight(){
+        Destroy(currentHightlight);
+    }
 }

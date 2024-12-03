@@ -224,6 +224,7 @@ public class GameControllerScript : MonoBehaviour
                 else if (targeting == true)
                 {
                     //Causes the player to stop targeting the attack/spell
+                    UnityEngine.Debug.Log(hit.collider.gameObject.name);
                     stopTargeting();
                 }
             }

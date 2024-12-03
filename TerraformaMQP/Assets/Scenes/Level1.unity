@@ -13961,6 +13961,8 @@ MonoBehaviour:
   targetIndex: -1
   lUnits: []
   pm: {fileID: 1173448418}
+  movingToEnemy: 0
+  atEnemy: 0
 --- !u!1001 &960427038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19751,6 +19753,7 @@ MonoBehaviour:
   mapCreated: 0
   aoeDisplayTiles: []
   displayingAOE: 0
+  allTargets: []
   moveButtonPressed: 0
   activelyMoving: 0
   comlog: {fileID: 159743917}
@@ -29408,6 +29411,8 @@ MonoBehaviour:
   targetIndex: -1
   lUnits: []
   pm: {fileID: 1173448418}
+  movingToEnemy: 0
+  atEnemy: 0
 --- !u!20 &1918770146
 Camera:
   m_ObjectHideFlags: 0
