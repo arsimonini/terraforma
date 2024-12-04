@@ -527,6 +527,9 @@ public class Basic_Character_Class : MonoBehaviour
         //Calls the takePhysicalDamage function on the target, passing in the damage amount
         Basic_Character_Class targetCharacter = target.GetComponent<Basic_Character_Class>();
         ClickableTile targetTile = target.GetComponent<ClickableTile>();
+        if (targetCharacter == null){
+            targetCharacter = targetTile.characterOnTile.GetComponent<Basic_Character_Class>();
+        }
         if (targetCharacter != null){
 
             int targetCurrHealth = targetCharacter.health;

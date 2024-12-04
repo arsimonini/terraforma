@@ -224,6 +224,7 @@ public class GameControllerScript : MonoBehaviour
                 else if (targeting == true)
                 {
                     //Causes the player to stop targeting the attack/spell
+                    UnityEngine.Debug.Log(hit.collider.gameObject.name);
                     stopTargeting();
                 }
             }
@@ -347,8 +348,11 @@ public class GameControllerScript : MonoBehaviour
                 //Checks if there are still enemies that need to be moved
                 if (enemiesToMove > 0)
                 {
+                    if (camera.gameObject.GetComponent<CamControl>().movingToEnemy == false && camera.gameObject.GetComponent<CamControl>().atEnemy == false){
+                        camera.gameObject.GetComponent<CamControl>().moveToEnemy(enemyTeamList[enemiesToMove - 1]);
+                    }
                     //Checks if an enemy is already being moved
-                    if (movingEnemy == false)
+                    else if (movingEnemy == false && camera.gameObject.GetComponent<CamControl>().atEnemy == true)
                     {
                         //Sets the selected character to the next enemy in the list of enemies
                         map.updateSelectedCharacter(enemyTeamList[enemiesToMove - 1]);
@@ -361,6 +365,7 @@ public class GameControllerScript : MonoBehaviour
                     else if (map.movingEnemy == false && movingEnemy == true)
                     {
                         //Sets moving enemy to false and counts down the enemies to move
+                        camera.gameObject.GetComponent<CamControl>().atEnemy = false;
                         movingEnemy = false;
                         enemiesToMove--;
                     }
