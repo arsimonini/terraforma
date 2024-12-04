@@ -29381,6 +29381,7 @@ GameObject:
   - component: {fileID: 1918770147}
   - component: {fileID: 1918770146}
   - component: {fileID: 1918770145}
+  - component: {fileID: 1918770148}
   m_Layer: 0
   m_Name: UI Camera
   m_TagString: Untagged
@@ -29479,6 +29480,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
+--- !u!114 &1918770148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918770144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fa8ba1fe781c6c4f8874014d1545a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 960158207}
 --- !u!1001 &1926291684
 PrefabInstance:
   m_ObjectHideFlags: 0
