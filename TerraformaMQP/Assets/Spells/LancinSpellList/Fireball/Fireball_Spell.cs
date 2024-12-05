@@ -117,4 +117,19 @@ public class Fireball_Spell : MonoBehaviour, Cast_Spell
             */
         }
     }
+
+    public List<GameObject> displaySpecificAOE(string attackType, ClickableTile centerTile, int size = 0, bool square = false, ClickableTile targetersTile = null){
+        List<GameObject> list = new List<GameObject>();
+        centerTile.canHit();
+        list.Add(centerTile.gameObject);
+        centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].canHit();
+        list.Add(centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject);
+        return list;
+    }
+
+    public void removeAOEDisplay (List<GameObject> tiles){
+        for (int i = 0; i < tiles.Count; i++){
+            tiles[i].GetComponent<ClickableTile>().removeHighlight();
+        }
+    }
 }

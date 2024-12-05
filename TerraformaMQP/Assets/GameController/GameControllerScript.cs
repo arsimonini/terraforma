@@ -172,8 +172,8 @@ public class GameControllerScript : MonoBehaviour
                         {
                             //Deselects the character as their turn is over
                             updateSelectedObject(null);
-                            map.updateSelectedCharacter(null);
                             stopTargeting();
+                            map.updateSelectedCharacter(null);
                         }
                 }
                 //Arrive here if the player is targeting a spell or attack and left-clicked
@@ -188,8 +188,8 @@ public class GameControllerScript : MonoBehaviour
                         {
                             //Deselects the character as their turn is over
                             updateSelectedObject(null);
-                            map.updateSelectedCharacter(null);
                             stopTargeting();
+                            map.updateSelectedCharacter(null);
                         }
                     }
                     //Checks if the player is targeting a Spell
@@ -212,8 +212,8 @@ public class GameControllerScript : MonoBehaviour
                                 {
                                     //Deselects the character as their turn is over
                                     updateSelectedObject(null);
-                                    map.updateSelectedCharacter(null);
                                     stopTargeting();
+                                    map.updateSelectedCharacter(null);
                                 }
                             }
                         }
@@ -235,10 +235,10 @@ public class GameControllerScript : MonoBehaviour
         {
             //Runs all relevent deselection functions in the map and character script
             characterScript.deselectCharacter();
+            stopTargeting();
             map.updateSelectedCharacter(null);
             map.currentPath = null;
             updateSelectedObject(null);
-            stopTargeting();
         }
         //Executes if the player presses the escape key while they are targeting a spell/attack
         if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0 && targeting == true && map.moving == false)

@@ -680,6 +680,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Stops targeting, removes the highlighted range, resets the attackType, attackReach variables
     public void stopTargeting()
     {
+        map.removeAOEDisplay();
         //Checks if the player was targeting a spell or normal attack
         if (attackType == "Spell" && gameObject.GetComponent<Hero_Character_Class>() != null)
         {
@@ -692,7 +693,6 @@ public class Basic_Character_Class : MonoBehaviour
         attackReach = defaultReach;
         targeting = false;
         renderer.material.color = Color.red;
-        map.removeAOEDisplay();
     }
 
     //Called when targeting a standard attack

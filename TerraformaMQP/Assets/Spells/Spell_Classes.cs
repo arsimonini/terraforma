@@ -25,7 +25,8 @@ public class Basic_Spell_Class : ScriptableObject
     public bool hitSelf; //If the spell should be able to hith the caster, true if it should, false if not
     public bool targetWalls; //If the spell should be able to target walls, true if so, false if not
     public int AOEsize; //The size of AOE effect that the spell should have
-    public bool square; //IF the AOE effect should be a square or diamond shape
+    public bool square; //IF the AOE effect should be a square or diamond 
+    public bool alternateAOEDisplay = false;
 
     public bool hyperSpecificTargeting; //If the spell requires a very specific type of targeting, either a list of specific tiles, specific tiles with effects, etc.
 
@@ -50,5 +51,13 @@ public interface Cast_Spell
     public void castSpell(List<GameObject> targets, GameObject caster)
     {
         UnityEngine.Debug.Log("Cast Spell");
+    }
+
+    public List<GameObject> displaySpecificAOE(string attackType, ClickableTile centerTile, int size = 0, bool square = false, ClickableTile targetersTile = null){
+        return null;
+    }
+
+    public void removeAOEDisplay (List<GameObject> tiles){
+        return;
     }
 }
