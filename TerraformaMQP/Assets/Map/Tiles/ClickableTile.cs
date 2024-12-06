@@ -45,7 +45,7 @@ public class ClickableTile : MonoBehaviour
     }
 
     public void OnMouseEnter() {
-        if (map.aoeDisplayTiles != null){
+        if (map.aoeDisplayTiles != null && map.displayingAOE == true){
             map.removeAOEDisplay();
         }
         map.hidePath();
