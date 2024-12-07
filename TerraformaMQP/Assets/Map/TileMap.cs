@@ -1192,14 +1192,14 @@ public class TileMap : MonoBehaviour
         UnityEngine.Debug.Log("Display AOE");
         displayingAOE = true;
         aoeDisplayTiles = new List<GameObject>();
-        if (size == 0 && centerTile.gameObject.tag != "Wall"){
-            centerTile.canHit();
-            aoeDisplayTiles.Add(centerTile.gameObject);
-        }
-        else if (attackType == "Spell" && selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.alternateAOEDisplay){
+        if (attackType == "Spell" && selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.alternateAOEDisplay){
             GameObject prefab = Instantiate(selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.spellPrefab);
             aoeDisplayTiles = prefab.GetComponent<Cast_Spell>().displaySpecificAOE(attackType, centerTile, size, square, targetersTile);
             Destroy(prefab);
+        }
+        else if (size == 0 && centerTile.gameObject.tag != "Wall"){
+            centerTile.canHit();
+            aoeDisplayTiles.Add(centerTile.gameObject);
         }
         else if (square){
             if (centerTile.gameObject.tag == "Wall"){
@@ -1311,7 +1311,7 @@ public class TileMap : MonoBehaviour
     public bool checkForTarget(GameObject selectedTarget, int reach)
     {
         UnityEngine.Debug.Log(selectedTarget);
-        if (targetList.Contains(selectedTarget) || (selectedTarget.GetComponent<ClickableTile>() && targetList.Contains(selectedTarget.GetComponent<ClickableTile>().characterOnTile))){
+        if (targetList.Contains(selectedTarget) || (selectedTarget.GetComponent<ClickableTile>() && targetList.Contains(selectedTarget.GetComponent<ClickableTile>().characterOnTile)) || targetList.Contains(selectedTarget.GetComponent<Basic_Character_Class>().tile.gameObject)){
             return true;
         }
         //If the target can't be found return false
@@ -1501,6 +1501,136 @@ public class TileMap : MonoBehaviour
                 tileToCheck.gameObject.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = true;
             }
         }
+    }
+
+    public void pushCharacter(Basic_Character_Class characterToMove, int startX, int startY, string direction, int strength){
+        switch (direction){
+            case "Left":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX - i, startY].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX, startY], clickableTiles[startX - i, startY]);
+                        startX -= i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+            
+            case "Right":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX + i, startY].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX, startY], clickableTiles[startX + i, startY]);
+                        startX += i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+            
+            case "Up":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX, startY + i].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX, startY + i], clickableTiles[startX, startY + i]);
+                        startY += i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+            
+            case "Down":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX, startY - i].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX, startY - i], clickableTiles[startX, startY - i]);
+                        startY -= i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+            
+            case "LeftUp":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX - i, startY + i].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX - i, startY + i], clickableTiles[startX - i, startY + i]);
+                        startX -= i;
+                        startY += i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+            
+            case "LeftDown":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX - i, startY - i].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX - i, startY - i], clickableTiles[startX - i, startY - i]);
+                        startX -= i;
+                        startY -= i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+
+            case "RightUp":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX + i, startY + i].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX + i, startY + i], clickableTiles[startX + i, startY + i]);
+                        startX += i;
+                        startY += i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+            
+            case "RightDown":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX + i, startY - i].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX + i, startY - i], clickableTiles[startX + i, startY - i]);
+                        startX += i;
+                        startY -= i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+        }
+    }
+
+    public void moveCharacterToTile(Basic_Character_Class characterToMove, ClickableTile startTile, ClickableTile endTile){
+        startTile.characterOnTile = null;
+        startTile.isWalkable = true;
+
+        characterToMove.tileX = endTile.TileX;
+        characterToMove.tileY = endTile.TileY;
+        //Used to apply buff/debuff to the player based on tile type stepped on
+        characterToMove.tileType = tileTypes[tiles[endTile.TileX, endTile.TileY]];
+        characterToMove.tile = clickableTiles[endTile.TileX, endTile.TileY];
+        endTile.characterOnTile = characterToMove.gameObject;
+
+        //Makes the tile impassable when a character stands on it
+        endTile.isWalkable = false;
+
+        addTileEffect(endTile.TileX, endTile.TileY, characterToMove.gameObject);
+        //Removes the node the unit just travelled to from the path
+        if (endTile.effectsOnTile.Count > 0){
+            for(int i = 0; i < endTile.effectsOnTile.Count; i++){
+                endTile.effectsOnTile[i].tileEffectPrefab.GetComponent<tileEffectActions>().performStepOnEffect(endTile);
+                UnityEngine.Debug.Log(characterToMove);
+            }
+        }
+        characterToMove.updateCharStats();
+        characterToMove.gameObject.transform.position = new Vector3(endTile.transform.position.x, 1.0f, endTile.transform.position.z);
     }
 
 /*

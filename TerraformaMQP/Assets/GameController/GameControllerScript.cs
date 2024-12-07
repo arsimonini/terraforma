@@ -195,6 +195,7 @@ public class GameControllerScript : MonoBehaviour
                     //Checks if the player is targeting a Spell
                     else if (characterScript.attackType == "Spell")
                     {
+                        UnityEngine.Debug.Log("Here");
                         //Checks if the amount of targets selected is less than the amount of targets the spell can have
                         if (targets == null || selectedCharacter.GetComponent<Hero_Character_Class>().selectedSpell.amountOfTargets > targets.Count){
                             //If the list of targets is null, creates a new list that can be added to
