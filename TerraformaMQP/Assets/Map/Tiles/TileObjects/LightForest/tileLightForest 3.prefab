@@ -355,6 +355,7 @@ MonoBehaviour:
   cannotHitHightlight: {fileID: 3357865700613062142, guid: 17211cf1562d8fa4094a33446dbbc3c9, type: 3}
   currentHightlight: {fileID: 0}
   effectsOnTile: []
+  tileName: Light Forest
 --- !u!1 &6252013379618569735
 GameObject:
   m_ObjectHideFlags: 0
