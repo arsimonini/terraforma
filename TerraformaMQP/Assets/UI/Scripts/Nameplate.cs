@@ -36,6 +36,8 @@ public class Nameplate : MonoBehaviour
     public int effectNum;
     public GameObject extraEffectArea;
     public GameObject extraEffectButton;
+    public bool exEffectOn;
+    public bool nameplateIsActive;
 
 
 
@@ -109,6 +111,21 @@ public class Nameplate : MonoBehaviour
         }
     }
 
+    public void displayMagBuff(stat st) {
+        
+        if((st.moddedValue - st.value) == 0) {
+            magBuff.text = "";
+        }
+        else if((st.moddedValue - st.value) > 0) {
+            magBuff.color = Color.blue;
+            magBuff.text = "+" + (st.moddedValue - st.value).ToString();
+        }
+        else if((st.moddedValue - st.value) < 0) {
+            magBuff.color = Color.red;
+            magBuff.text = (st.moddedValue - st.value).ToString();
+        }
+    }
+
     public void displayAtkBuff(stat st) {
         
         if((st.moddedValue - st.value) == 0) {
@@ -122,10 +139,10 @@ public class Nameplate : MonoBehaviour
             atkBuff.color = Color.red;
             atkBuff.text = (st.moddedValue - st.value).ToString();
         }
-        
-    }
+    }  
+    
 
-        public void displayDefBuff(stat st) {
+    public void displayDefBuff(stat st) {
         
         if((st.moddedValue - st.value) == 0) {
             defBuff.text = "";
@@ -141,7 +158,7 @@ public class Nameplate : MonoBehaviour
         
     }
 
-        public void displayResBuff(stat st) {
+    public void displayResBuff(stat st) {
         
         if((st.moddedValue - st.value) == 0) {
             resBuff.text = "";
@@ -153,11 +170,10 @@ public class Nameplate : MonoBehaviour
         else if((st.moddedValue - st.value) < 0) {
             resBuff.color = Color.red;
             resBuff.text = (st.moddedValue - st.value).ToString();
-        }
-        
+        }  
     }
 
-        public void displayCritBuff(stat st) {
+    public void displayCritBuff(stat st) {
         
         if((st.moddedValue - st.value) == 0) {
             critBuff.text = "";
@@ -170,10 +186,9 @@ public class Nameplate : MonoBehaviour
             critBuff.color = Color.red;
             critBuff.text = (st.moddedValue - st.value).ToString();
         }
-        
     }
 
-        public void displayAccBuff(stat st) {
+    public void displayAccBuff(stat st) {
         
         if((st.moddedValue - st.value) == 0) {
             accBuff.text = "";
@@ -185,11 +200,10 @@ public class Nameplate : MonoBehaviour
         else if((st.moddedValue - st.value) < 0) {
             accBuff.color = Color.red;
             accBuff.text = (st.moddedValue - st.value).ToString();
-        }
-        
+        }   
     }
 
-        public void displaySpdBuff(stat st) {
+    public void displaySpdBuff(stat st) {
         
         if((st.moddedValue - st.value) == 0) {
             spdBuff.text = "";
@@ -201,8 +215,7 @@ public class Nameplate : MonoBehaviour
         else if((st.moddedValue - st.value) < 0) {
             spdBuff.color = Color.red;
             spdBuff.text = (st.moddedValue - st.value).ToString();
-        }
-        
+        }  
     }
 
     public void displayStatBlock(stat atk, stat def, stat res, stat acc, stat crit, stat spd) {
@@ -260,6 +273,8 @@ public class Nameplate : MonoBehaviour
             for(int i = 0; i < effectNum; i++) {
                 effectsVisuals[i].SetActive(true);
             }
+
+            exEffectOn = true;
         }
         else if(b == false) {
             for(int i = 0; i < 21; i++) {
@@ -267,6 +282,8 @@ public class Nameplate : MonoBehaviour
             }
             
             extraEffectArea.SetActive(false);
+
+            exEffectOn = false;
 
         }
     }

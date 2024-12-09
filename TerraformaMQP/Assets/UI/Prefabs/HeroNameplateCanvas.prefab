@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 3346199336819309995}
   - component: {fileID: 3430530795512598560}
   - component: {fileID: 2268490526429676604}
+  - component: {fileID: 3034420092398159182}
   m_Layer: 5
   m_Name: Critical Chance Button
   m_TagString: Untagged
@@ -242,6 +243,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3034420092398159182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108418273299851701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 8398396629709489032}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8386121491720844199}
+  smallDescriptorText: {fileID: 8405008239504129082}
+  largeDescriptor: {fileID: 3567557912104406061}
+  largeDescriptorText: {fileID: 6494314490545378509}
+  key: Crit
+  specText: 
 --- !u!1 &151626960636348324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,6 +1730,7 @@ GameObject:
   - component: {fileID: 6890210955519279528}
   - component: {fileID: 2756489283620160580}
   - component: {fileID: 683955737038082200}
+  - component: {fileID: 4206947963903006628}
   m_Layer: 5
   m_Name: Accuracy Button
   m_TagString: Untagged
@@ -1818,6 +1840,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4206947963903006628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313658832521434493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 8398396629709489032}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8386121491720844199}
+  smallDescriptorText: {fileID: 8405008239504129082}
+  largeDescriptor: {fileID: 3567557912104406061}
+  largeDescriptorText: {fileID: 6494314490545378509}
+  key: Acc
+  specText: 
 --- !u!1 &1433347362370164779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2487,6 +2529,7 @@ GameObject:
   - component: {fileID: 8237337248484504257}
   - component: {fileID: 8964504175212224455}
   - component: {fileID: 5915181228521509957}
+  - component: {fileID: 2431323361061657829}
   m_Layer: 5
   m_Name: Attack Button
   m_TagString: Untagged
@@ -2596,6 +2639,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2431323361061657829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052947415786927354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 8398396629709489032}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8386121491720844199}
+  smallDescriptorText: {fileID: 8405008239504129082}
+  largeDescriptor: {fileID: 3567557912104406061}
+  largeDescriptorText: {fileID: 6494314490545378509}
+  key: Atk
+  specText: 
 --- !u!1 &2095583006779409929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2607,6 +2670,7 @@ GameObject:
   - component: {fileID: 6951696162764240212}
   - component: {fileID: 2715405393785883299}
   - component: {fileID: 3894826479823097612}
+  - component: {fileID: 6312004088576621981}
   m_Layer: 5
   m_Name: Health Stat
   m_TagString: Untagged
@@ -2730,6 +2794,26 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6312004088576621981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095583006779409929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 8398396629709489032}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8386121491720844199}
+  smallDescriptorText: {fileID: 8405008239504129082}
+  largeDescriptor: {fileID: 3567557912104406061}
+  largeDescriptorText: {fileID: 6494314490545378509}
+  key: Health
+  specText: 
 --- !u!1 &2097444686163118437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,6 +2959,7 @@ GameObject:
   - component: {fileID: 1348111642968108256}
   - component: {fileID: 7414713021175533211}
   - component: {fileID: 220328895168034523}
+  - component: {fileID: 7750999589061349207}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -2968,6 +3053,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 7414713021175533211}
+--- !u!114 &7750999589061349207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111886434230229793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 8398396629709489032}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8386121491720844199}
+  smallDescriptorText: {fileID: 8405008239504129082}
+  largeDescriptor: {fileID: 3567557912104406061}
+  largeDescriptorText: {fileID: 6494314490545378509}
+  key: Health
+  specText: 
 --- !u!1 &2119748001857285884
 GameObject:
   m_ObjectHideFlags: 0
@@ -3443,6 +3548,7 @@ GameObject:
   - component: {fileID: 7852326492585453566}
   - component: {fileID: 2858013204661040583}
   - component: {fileID: 2874896761226682954}
+  - component: {fileID: 4709878862656170850}
   m_Layer: 5
   m_Name: Magic Title
   m_TagString: Untagged
@@ -3552,6 +3658,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4709878862656170850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2580173818386986459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 8398396629709489032}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8386121491720844199}
+  smallDescriptorText: {fileID: 8405008239504129082}
+  largeDescriptor: {fileID: 3567557912104406061}
+  largeDescriptorText: {fileID: 6494314490545378509}
+  key: Mag
+  specText: 
 --- !u!1 &2613657986839209937
 GameObject:
   m_ObjectHideFlags: 0
@@ -3893,6 +4019,7 @@ GameObject:
   - component: {fileID: 185940234301097849}
   - component: {fileID: 2293777499002821476}
   - component: {fileID: 6617805048283426092}
+  - component: {fileID: 211699387659596272}
   m_Layer: 5
   m_Name: Mana Stat
   m_TagString: Untagged
@@ -4016,6 +4143,26 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &211699387659596272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079192111527236976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 8398396629709489032}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8386121491720844199}
+  smallDescriptorText: {fileID: 8405008239504129082}
+  largeDescriptor: {fileID: 3567557912104406061}
+  largeDescriptorText: {fileID: 6494314490545378509}
+  key: Mana
+  specText: 
 --- !u!1 &3257630359451287565
 GameObject:
   m_ObjectHideFlags: 0
@@ -5443,6 +5590,7 @@ GameObject:
   - component: {fileID: 503386669689680959}
   - component: {fileID: 6170003531254911234}
   - component: {fileID: 7088474601606198944}
+  - component: {fileID: 2991781645090847019}
   m_Layer: 5
   m_Name: Defense Button
   m_TagString: Untagged
@@ -5552,6 +5700,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2991781645090847019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233803740668776197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 8398396629709489032}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8386121491720844199}
+  smallDescriptorText: {fileID: 8405008239504129082}
+  largeDescriptor: {fileID: 3567557912104406061}
+  largeDescriptorText: {fileID: 6494314490545378509}
+  key: Def
+  specText: 
 --- !u!1 &4271867044743917338
 GameObject:
   m_ObjectHideFlags: 0
@@ -5564,7 +5732,7 @@ GameObject:
   - component: {fileID: 7007769142479825829}
   - component: {fileID: 6494314490545378509}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: LargeDescText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7478,7 +7646,7 @@ GameObject:
   - component: {fileID: 618452073578811109}
   - component: {fileID: 8405008239504129082}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: SmallDescrTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8770,6 +8938,7 @@ GameObject:
   - component: {fileID: 7604292599537429303}
   - component: {fileID: 576945201692457433}
   - component: {fileID: 9083947663862702179}
+  - component: {fileID: 6738662427460633731}
   m_Layer: 5
   m_Name: ManaBar
   m_TagString: Untagged
@@ -8863,6 +9032,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 576945201692457433}
+--- !u!114 &6738662427460633731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7328141635482351197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 8398396629709489032}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8386121491720844199}
+  smallDescriptorText: {fileID: 8405008239504129082}
+  largeDescriptor: {fileID: 3567557912104406061}
+  largeDescriptorText: {fileID: 6494314490545378509}
+  key: Mana
+  specText: 
 --- !u!1 &7444524739648345690
 GameObject:
   m_ObjectHideFlags: 0
@@ -10329,6 +10518,7 @@ GameObject:
   - component: {fileID: 3158073461816883341}
   - component: {fileID: 7012725596581759826}
   - component: {fileID: 6752749811188492167}
+  - component: {fileID: 3191038363958549345}
   m_Layer: 5
   m_Name: Resistence Button
   m_TagString: Untagged
@@ -10438,6 +10628,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3191038363958549345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8397863675248335409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 8398396629709489032}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8386121491720844199}
+  smallDescriptorText: {fileID: 8405008239504129082}
+  largeDescriptor: {fileID: 3567557912104406061}
+  largeDescriptorText: {fileID: 6494314490545378509}
+  key: Res
+  specText: 
 --- !u!1 &8553338052123913348
 GameObject:
   m_ObjectHideFlags: 0
@@ -10450,6 +10660,7 @@ GameObject:
   - component: {fileID: 1705192717297424512}
   - component: {fileID: 8200914123811700374}
   - component: {fileID: 4059873173181813302}
+  - component: {fileID: 1178962332608509606}
   m_Layer: 5
   m_Name: Speed Button
   m_TagString: Untagged
@@ -10559,6 +10770,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1178962332608509606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8553338052123913348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 8398396629709489032}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8386121491720844199}
+  smallDescriptorText: {fileID: 8405008239504129082}
+  largeDescriptor: {fileID: 3567557912104406061}
+  largeDescriptorText: {fileID: 6494314490545378509}
+  key: Spd
+  specText: 
 --- !u!1 &8624156948536141666
 GameObject:
   m_ObjectHideFlags: 0
@@ -11586,6 +11817,7 @@ MonoBehaviour:
   effectNum: 0
   extraEffectArea: {fileID: 7444524739648345690}
   extraEffectButton: {fileID: 8224152042291843383}
+  exEffectOn: 0
 --- !u!1 &8864775429738335361
 GameObject:
   m_ObjectHideFlags: 0

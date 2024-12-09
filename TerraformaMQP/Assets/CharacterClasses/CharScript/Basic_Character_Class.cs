@@ -752,6 +752,7 @@ public class Basic_Character_Class : MonoBehaviour
             nameplate.displayManaValue(gameObject.GetComponent<Hero_Character_Class>().mana, gameObject.GetComponent<Hero_Character_Class>().maxMana);
             nameplate.mana.gameObject.SetActive(true);
             nameplate.displayMag(gameObject.GetComponent<Hero_Character_Class>().magic);
+            nameplate.displayMagBuff(gameObject.GetComponent<Hero_Character_Class>().magic);
             nameplate.displayMagicArea(true);
         }
         else
