@@ -105,4 +105,12 @@ public class Wall_Spell : MonoBehaviour, Cast_Spell
         }
         return false;
     }
+
+    public List<GameObject> displaySpecificAOE(string attackType, ClickableTile centerTile, int size = 0, bool square = false, ClickableTile targetersTile = null){
+        return null;
+    }
+
+    public void removeAOEDisplay(List<GameObject> tiles){
+        return;
+    }
 }

@@ -1192,7 +1192,12 @@ public class TileMap : MonoBehaviour
         UnityEngine.Debug.Log("Display AOE");
         displayingAOE = true;
         aoeDisplayTiles = new List<GameObject>();
-        if (size == 0 && centerTile.gameObject.tag != "Wall"){
+        if (attackType == "Spell" && selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.alternateAOEDisplay){
+            GameObject prefab = Instantiate(selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.spellPrefab);
+            aoeDisplayTiles = prefab.GetComponent<Cast_Spell>().displaySpecificAOE(attackType, centerTile, size, square, targetersTile);
+            Destroy(prefab);
+        }
+        else if (size == 0 && centerTile.gameObject.tag != "Wall"){
             centerTile.canHit();
             aoeDisplayTiles.Add(centerTile.gameObject);
         }
@@ -1263,8 +1268,15 @@ public class TileMap : MonoBehaviour
         }
         */
         if (aoeDisplayTiles != null){
-            for (int i = 0; i < aoeDisplayTiles.Count; i++){
-                aoeDisplayTiles[i].GetComponent<ClickableTile>().removeHighlight();
+            if (selectedUnitScript.attackType == "Spell" && selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.alternateAOEDisplay){
+                GameObject prefab = Instantiate(selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.spellPrefab);
+                prefab.GetComponent<Cast_Spell>().removeAOEDisplay(aoeDisplayTiles);
+                Destroy(prefab);
+            }
+            else{
+                for (int i = 0; i < aoeDisplayTiles.Count; i++){
+                    aoeDisplayTiles[i].GetComponent<ClickableTile>().removeHighlight();
+                }
             }
         }
         displayingAOE = false;
@@ -1299,7 +1311,7 @@ public class TileMap : MonoBehaviour
     public bool checkForTarget(GameObject selectedTarget, int reach)
     {
         UnityEngine.Debug.Log(selectedTarget);
-        if (targetList.Contains(selectedTarget) || (selectedTarget.GetComponent<ClickableTile>() && targetList.Contains(selectedTarget.GetComponent<ClickableTile>().characterOnTile))){
+        if (targetList.Contains(selectedTarget) || (selectedTarget.GetComponent<ClickableTile>() && targetList.Contains(selectedTarget.GetComponent<ClickableTile>().characterOnTile)) || targetList.Contains(selectedTarget.GetComponent<Basic_Character_Class>().tile.gameObject)){
             return true;
         }
         //If the target can't be found return false
@@ -1491,6 +1503,136 @@ public class TileMap : MonoBehaviour
         }
     }
 
+    public void pushCharacter(Basic_Character_Class characterToMove, int startX, int startY, string direction, int strength){
+        switch (direction){
+            case "Left":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX - i, startY].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX, startY], clickableTiles[startX - i, startY]);
+                        startX -= i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+            
+            case "Right":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX + i, startY].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX, startY], clickableTiles[startX + i, startY]);
+                        startX += i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+            
+            case "Up":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX, startY + i].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX, startY + i], clickableTiles[startX, startY + i]);
+                        startY += i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+            
+            case "Down":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX, startY - i].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX, startY - i], clickableTiles[startX, startY - i]);
+                        startY -= i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+            
+            case "LeftUp":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX - i, startY + i].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX - i, startY + i], clickableTiles[startX - i, startY + i]);
+                        startX -= i;
+                        startY += i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+            
+            case "LeftDown":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX - i, startY - i].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX - i, startY - i], clickableTiles[startX - i, startY - i]);
+                        startX -= i;
+                        startY -= i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+
+            case "RightUp":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX + i, startY + i].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX + i, startY + i], clickableTiles[startX + i, startY + i]);
+                        startX += i;
+                        startY += i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+            
+            case "RightDown":
+                for (int i = 1; i < strength + 1; i++){
+                    if (clickableTiles[startX + i, startY - i].isWalkable){
+                        moveCharacterToTile(characterToMove, clickableTiles[startX + i, startY - i], clickableTiles[startX + i, startY - i]);
+                        startX += i;
+                        startY -= i;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+        }
+    }
+
+    public void moveCharacterToTile(Basic_Character_Class characterToMove, ClickableTile startTile, ClickableTile endTile){
+        startTile.characterOnTile = null;
+        startTile.isWalkable = true;
+
+        characterToMove.tileX = endTile.TileX;
+        characterToMove.tileY = endTile.TileY;
+        //Used to apply buff/debuff to the player based on tile type stepped on
+        characterToMove.tileType = tileTypes[tiles[endTile.TileX, endTile.TileY]];
+        characterToMove.tile = clickableTiles[endTile.TileX, endTile.TileY];
+        endTile.characterOnTile = characterToMove.gameObject;
+
+        //Makes the tile impassable when a character stands on it
+        endTile.isWalkable = false;
+
+        addTileEffect(endTile.TileX, endTile.TileY, characterToMove.gameObject);
+        //Removes the node the unit just travelled to from the path
+        if (endTile.effectsOnTile.Count > 0){
+            for(int i = 0; i < endTile.effectsOnTile.Count; i++){
+                endTile.effectsOnTile[i].tileEffectPrefab.GetComponent<tileEffectActions>().performStepOnEffect(endTile);
+                UnityEngine.Debug.Log(characterToMove);
+            }
+        }
+        characterToMove.updateCharStats();
+        characterToMove.gameObject.transform.position = new Vector3(endTile.transform.position.x, 1.0f, endTile.transform.position.z);
+    }
+
 /*
     public int finiteDirection(Vector3 startPosition, Vector3 targetPosition){
         Vector3 normalizedVector = (startPosition - targetPosition).normalized;
@@ -1546,241 +1688,6 @@ public class TileMap : MonoBehaviour
         }
         return 0;
     }
-
-    public void behindWall(ClickableTile startTile, ClickableTile targetTile){
-        int direc = finiteDirection(startTile.gameObject.transform.position, targetTile.gameObject.transform.position);
-             if (direc == 1){
-                RaycastHit[] hits;
-                hits = Physics.RaycastAll(startTile.transform.position, clickableTiles[targetTile.TileX + 1, targetTile.TileY].gameObject.transform.position - startTile.transform.position, Vector3.Distance(clickableTiles[targetTile.TileX + 1, targetTile.TileY].gameObject.transform.position, startTile.transform.position), mask);
-                if (hits.Length == 0){
-                    clickableTiles[targetTile.TileX + 1, targetTile.TileY].gameObject.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                    if (!rangeDisplay.Contains(clickableTiles[targetTile.TileX + 1, targetTile.TileY].gameObject)){
-                        rangeDisplay.Add(clickableTiles[targetTile.TileX + 1, targetTile.TileY].gameObject);
-                    }
-                }
-            }
-            else if (direc == 2){
-                return;
-            }
-            else if (direc == 3){
-                RaycastHit[] hits;
-                hits = Physics.RaycastAll(startTile.transform.position, clickableTiles[targetTile.TileX, targetTile.TileY + 1].gameObject.transform.position - startTile.transform.position, Vector3.Distance(clickableTiles[targetTile.TileX, targetTile.TileY + 1].gameObject.transform.position, startTile.transform.position), mask);
-                if (hits.Length == 0){
-                    clickableTiles[targetTile.TileX, targetTile.TileY + 1].gameObject.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                    if (!rangeDisplay.Contains(clickableTiles[targetTile.TileX, targetTile.TileY + 1].gameObject)){
-                        rangeDisplay.Add(clickableTiles[targetTile.TileX, targetTile.TileY + 1].gameObject);
-                    }
-                }
-            }
-            else if (direc == 4){
-                bool check = true;
-                int increment = 0;
-
-                while (check){
-                    ClickableTile tileToCheck = clickableTiles[targetTile.TileX - increment, targetTile.TileY];
-                    if ((tileToCheck.characterOnTile != null && tileToCheck.characterOnTile == selectedUnit) || tileToCheck.gameObject.tag == "Wall"){
-                        break;
-                    }
-                    else {
-                        GameObject tileUp = clickableTiles[targetTile.TileX - increment, targetTile.TileY + 1].gameObject;
-                        RaycastHit[] hits;
-                        hits = Physics.RaycastAll(startTile.transform.position, tileUp.transform.position - startTile.transform.position, Vector3.Distance(tileUp.transform.position, startTile.transform.position), mask);
-                        if (hits.Length == 0){
-                            tileUp.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                            if (!rangeDisplay.Contains(tileUp)){
-                                rangeDisplay.Add(tileUp);
-                            }
-                        }
-
-                        GameObject tileDown = clickableTiles[targetTile.TileX - increment, targetTile.TileY - 1].gameObject;
-                        hits = Physics.RaycastAll(startTile.transform.position, tileDown.transform.position - startTile.transform.position, Vector3.Distance(tileDown.transform.position, startTile.transform.position), mask);
-                        if (hits.Length == 0){
-                            tileDown.transform.Find("OutlineT").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                            if (!rangeDisplay.Contains(tileDown)){
-                                rangeDisplay.Add(tileDown);
-                            }
-                        }
-                    }
-                    increment++;
-                }
-            }
-            else if (direc == 5){
-                GameObject tileToCheck = clickableTiles[targetTile.TileX, targetTile.TileY - 1].gameObject;
-                RaycastHit[] hits;
-                hits = Physics.RaycastAll(startTile.transform.position, tileToCheck.transform.position - startTile.transform.position, Vector3.Distance(tileToCheck.transform.position, startTile.transform.position), mask);
-                if (hits.Length == 0){
-                    tileToCheck.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                    if (!rangeDisplay.Contains(tileToCheck)){
-                        rangeDisplay.Add(tileToCheck);
-                    }
-                }
-            }
-            else if (direc == 6){
-                return;
-            }            
-            else if (direc == 7){
-                GameObject tileToCheck = clickableTiles[targetTile.TileX + 1, targetTile.TileY].gameObject;
-                RaycastHit[] hits;
-                hits = Physics.RaycastAll(startTile.transform.position, tileToCheck.transform.position - startTile.transform.position, Vector3.Distance(tileToCheck.transform.position, startTile.transform.position), mask);
-                if (hits.Length == 0){
-                    tileToCheck.transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                    if (!rangeDisplay.Contains(tileToCheck)){
-                        rangeDisplay.Add(tileToCheck);
-                    }
-                }
-            }
-            
-            else if (direc == 8){
-                bool check = true;
-                int increment = 0;
-
-                while (check){
-                    ClickableTile tileToCheck = clickableTiles[targetTile.TileX, targetTile.TileY - increment];
-                    if ((tileToCheck.characterOnTile != null && tileToCheck.characterOnTile == selectedUnit) || tileToCheck.gameObject.tag == "Wall"){
-                        break;
-                    }
-                    else {
-                        UnityEngine.Debug.Log("Here");
-                        GameObject tileRight = clickableTiles[targetTile.TileX + 1, targetTile.TileY - increment].gameObject;
-                        RaycastHit[] hits;
-                        hits = Physics.RaycastAll(startTile.transform.position, tileRight.transform.position - startTile.transform.position, Vector3.Distance(tileRight.transform.position, startTile.transform.position), mask);
-                        if (hits.Length == 0){
-                            UnityEngine.Debug.Log("Here as well");
-                            tileRight.transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                            if (!rangeDisplay.Contains(tileRight)){
-                                rangeDisplay.Add(tileRight);
-                            }
-                        }
-
-                        GameObject tileLeft = clickableTiles[targetTile.TileX - 1, targetTile.TileY - increment].gameObject;
-                        hits = Physics.RaycastAll(startTile.transform.position, tileLeft.transform.position - startTile.transform.position, Vector3.Distance(tileLeft.transform.position, startTile.transform.position), mask);
-                        if (hits.Length == 0){
-                            tileLeft.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                            if (!rangeDisplay.Contains(tileLeft)){
-                                rangeDisplay.Add(tileLeft);
-                            }
-                        }
-                    }
-                    increment++;
-                }
-            }            
-            else if(direc == 9){
-                GameObject tileToCheck = clickableTiles[targetTile.TileX - 1, targetTile.TileY].gameObject;
-                RaycastHit[] hits;
-                hits = Physics.RaycastAll(startTile.transform.position, tileToCheck.transform.position - startTile.transform.position, Vector3.Distance(tileToCheck.transform.position, startTile.transform.position), mask);
-                if (hits.Length == 0){
-                    tileToCheck.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                    if (!rangeDisplay.Contains(tileToCheck)){
-                        rangeDisplay.Add(tileToCheck);
-                    }
-                }
-            }
-            else if (direc == 10){
-                return;
-            }            
-            else if (direc == 11){
-                GameObject tileToCheck = clickableTiles[targetTile.TileX, targetTile.TileY - 1].gameObject;
-                RaycastHit[] hits;
-                hits = Physics.RaycastAll(startTile.transform.position, tileToCheck.transform.position - startTile.transform.position, Vector3.Distance(tileToCheck.transform.position, startTile.transform.position), mask);
-                if (hits.Length == 0){
-                    tileToCheck.transform.Find("OutlineT").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                    if (!rangeDisplay.Contains(tileToCheck)){
-                        rangeDisplay.Add(tileToCheck);
-                    }
-                }
-            }            
-            else if (direc == 12){
-                bool check = true;
-                int increment = 0;
-
-                while (check){
-                    ClickableTile tileToCheck = clickableTiles[targetTile.TileX + increment, targetTile.TileY];
-                    if ((tileToCheck.characterOnTile != null && tileToCheck.characterOnTile == selectedUnit) || tileToCheck.gameObject.tag == "Wall"){
-                        break;
-                    }
-                    else {
-                        GameObject tileUp = clickableTiles[targetTile.TileX + increment, targetTile.TileY + 1].gameObject;
-                        RaycastHit[] hits;
-                        hits = Physics.RaycastAll(startTile.transform.position, tileUp.transform.position - startTile.transform.position, Vector3.Distance(tileUp.transform.position, startTile.transform.position), mask);
-                        if (hits.Length == 0){
-                            tileUp.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                            if (!rangeDisplay.Contains(tileUp)){
-                                rangeDisplay.Add(tileUp);
-                            }
-                        }
-
-                        GameObject tileDown = clickableTiles[targetTile.TileX + increment, targetTile.TileY - 1].gameObject;
-                        hits = Physics.RaycastAll(startTile.transform.position, tileDown.transform.position - startTile.transform.position, Vector3.Distance(tileDown.transform.position, startTile.transform.position), mask);
-                        if (hits.Length == 0){
-                            tileDown.transform.Find("OutlineT").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                            if (!rangeDisplay.Contains(tileDown)){
-                                rangeDisplay.Add(tileDown);
-                            }
-                        }
-                    }
-                    increment++;
-                }
-            }
-            else if (direc == 13){
-                RaycastHit[] hits;
-                hits = Physics.RaycastAll(startTile.transform.position, clickableTiles[targetTile.TileX, targetTile.TileY + 1].gameObject.transform.position - startTile.transform.position, Vector3.Distance(clickableTiles[targetTile.TileX, targetTile.TileY + 1].gameObject.transform.position, startTile.transform.position), mask);
-                if (hits.Length == 0){
-                    clickableTiles[targetTile.TileX, targetTile.TileY + 1].gameObject.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                    if (!rangeDisplay.Contains(clickableTiles[targetTile.TileX, targetTile.TileY + 1].gameObject)){
-                        rangeDisplay.Add(clickableTiles[targetTile.TileX, targetTile.TileY + 1].gameObject);
-                    }
-                }
-            }
-            else if (direc == 14){
-                return;
-            }
-            else if (direc == 15){
-                GameObject tileToCheck = clickableTiles[targetTile.TileX - 1, targetTile.TileY].gameObject;
-                RaycastHit[] hits;
-                hits = Physics.RaycastAll(startTile.transform.position, tileToCheck.transform.position - startTile.transform.position, Vector3.Distance(tileToCheck.transform.position, startTile.transform.position), mask);
-                if (hits.Length == 0){
-                    tileToCheck.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                    if (!rangeDisplay.Contains(tileToCheck)){
-                        rangeDisplay.Add(tileToCheck);
-                    }
-                }
-            }
-            else if (direc == 16){
-                bool check = true;
-                int increment = 0;
-                UnityEngine.Debug.Log(targetTile.TileX);
-                UnityEngine.Debug.Log(targetTile.TileY);
-
-                while (check){
-                    ClickableTile tileToCheck = clickableTiles[targetTile.TileX, targetTile.TileY + increment];
-                    if ((tileToCheck.characterOnTile != null && tileToCheck.characterOnTile == selectedUnit) || tileToCheck.gameObject.tag == "Wall"){
-                        break;
-                    }
-                    else {
-                        GameObject tileRight = clickableTiles[tileToCheck.TileX + 1, tileToCheck.TileY].gameObject;
-                        UnityEngine.Debug.Log(tileRight.GetComponent<ClickableTile>().TileX + " , " + tileRight.GetComponent<ClickableTile>().TileY);
-                        RaycastHit[] hits;
-                        hits = Physics.RaycastAll(startTile.transform.position, tileRight.transform.position - startTile.transform.position, Vector3.Distance(tileRight.transform.position, startTile.transform.position), mask);
-                        if (hits.Length == 0){
-                            tileRight.transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                            if (!rangeDisplay.Contains(tileRight)){
-                                rangeDisplay.Add(tileRight);
-                            }
-                        }
-
-                        GameObject tileLeft = clickableTiles[tileToCheck.TileX - 1, tileToCheck.TileY].gameObject;
-                        hits = Physics.RaycastAll(startTile.transform.position, tileLeft.transform.position - startTile.transform.position, Vector3.Distance(tileLeft.transform.position, startTile.transform.position), mask);
-                        if (hits.Length == 0){
-                            tileLeft.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = true;
-                            if (!rangeDisplay.Contains(tileLeft)){
-                                rangeDisplay.Add(tileLeft);
-                            }
-                        }
-                    }
-                    increment++;
-                }
-            }
-        }
 */
 }
 

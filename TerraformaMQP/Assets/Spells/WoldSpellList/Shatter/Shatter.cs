@@ -117,5 +117,12 @@ public class Shatter : MonoBehaviour, Cast_Spell
 
     }
 
+    public List<GameObject> displaySpecificAOE(string attackType, ClickableTile centerTile, int size = 0, bool square = false, ClickableTile targetersTile = null){
+        return null;
+    }
+
+    public void removeAOEDisplay (List<GameObject> tiles){
+        return;
+    }
 
 }

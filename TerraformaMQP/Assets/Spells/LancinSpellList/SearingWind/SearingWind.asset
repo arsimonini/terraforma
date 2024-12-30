@@ -20,20 +20,22 @@ MonoBehaviour:
     the tile behind it
   targeted: 1
   range: 4
-  targetTiles: 0
+  targetTiles: 1
   targetAllies: 0
   target: {fileID: 0}
   amountOfTargets: 1
   requireDifferentTargets: 0
-  targetEnemies: 0
+  targetEnemies: 1
   hitOwnTile: 0
   hitSelf: 0
   targetWalls: 0
   AOEsize: 0
-  square: 0
-  hyperSpecificTargeting: 1
+  square: 1
+  alternateAOEDisplay: 1
+  hyperSpecificTargeting: 0
   needSpecificTiles: 0
   specificTiles: []
   needSpecificTileEffects: 1
   specificTileEffects:
   - Burning
+  targetBreakables: 0

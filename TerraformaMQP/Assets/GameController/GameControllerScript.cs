@@ -172,8 +172,8 @@ public class GameControllerScript : MonoBehaviour
                         {
                             //Deselects the character as their turn is over
                             updateSelectedObject(null);
-                            map.updateSelectedCharacter(null);
                             stopTargeting();
+                            map.updateSelectedCharacter(null);
                         }
                 }
                 //Arrive here if the player is targeting a spell or attack and left-clicked
@@ -188,13 +188,14 @@ public class GameControllerScript : MonoBehaviour
                         {
                             //Deselects the character as their turn is over
                             updateSelectedObject(null);
-                            map.updateSelectedCharacter(null);
                             stopTargeting();
+                            map.updateSelectedCharacter(null);
                         }
                     }
                     //Checks if the player is targeting a Spell
                     else if (characterScript.attackType == "Spell")
                     {
+                        UnityEngine.Debug.Log("Here");
                         //Checks if the amount of targets selected is less than the amount of targets the spell can have
                         if (targets == null || selectedCharacter.GetComponent<Hero_Character_Class>().selectedSpell.amountOfTargets > targets.Count){
                             //If the list of targets is null, creates a new list that can be added to
@@ -212,8 +213,8 @@ public class GameControllerScript : MonoBehaviour
                                 {
                                     //Deselects the character as their turn is over
                                     updateSelectedObject(null);
-                                    map.updateSelectedCharacter(null);
                                     stopTargeting();
+                                    map.updateSelectedCharacter(null);
                                 }
                             }
                         }
@@ -235,10 +236,10 @@ public class GameControllerScript : MonoBehaviour
         {
             //Runs all relevent deselection functions in the map and character script
             characterScript.deselectCharacter();
+            stopTargeting();
             map.updateSelectedCharacter(null);
             map.currentPath = null;
             updateSelectedObject(null);
-            stopTargeting();
         }
         //Executes if the player presses the escape key while they are targeting a spell/attack
         if (Input.GetKeyDown(KeyCode.Escape) && selectedCharacter != null && phase == 0 && targeting == true && map.moving == false)

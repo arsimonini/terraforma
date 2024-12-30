@@ -19,4 +19,12 @@ public class Backfire : MonoBehaviour, Cast_Spell
         BuffClass newBuff = Instantiate(BackfireBuff);
         newBuff.createBuff(true, targets[0].GetComponent<Basic_Character_Class>());
     }
+
+    public List<GameObject> displaySpecificAOE(string attackType, ClickableTile centerTile, int size = 0, bool square = false, ClickableTile targetersTile = null){
+        return null;
+    }
+
+    public void removeAOEDisplay (List<GameObject> tiles){
+        return;
+    }
 }
