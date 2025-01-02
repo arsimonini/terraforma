@@ -34,6 +34,7 @@ public class Nameplate : MonoBehaviour
 
     public GameObject[] effectsVisuals;
     public int effectNum;
+    public List<string> effectKeyNames;
     public GameObject extraEffectArea;
     public GameObject extraEffectButton;
     public bool exEffectOn;
@@ -216,6 +217,60 @@ public class Nameplate : MonoBehaviour
             spdBuff.color = Color.red;
             spdBuff.text = (st.moddedValue - st.value).ToString();
         }  
+    }
+
+    public void getTileNum(List<BuffClass> buffs, string tileName, ClickableTile tile, bool b) {
+        //Resets Effect Num on call
+        effectNum = 0;
+        effectKeyNames.Clear();
+
+
+        //Tile Type
+        if(tileName.Contains("Grass")) 
+        {
+            UnityEngine.Debug.Log("Grass");
+            effectNum = effectNum + 1;
+            effectKeyNames.Add("Grass");
+        }
+    /*
+        grass -> dirt
+        dirt -> dirt
+        mud -> dirt
+        land ice -> dirt
+        water ice -> shallow water
+        stone/rock -> stone/rock
+        wood -> ???
+        light forest -> x
+        dense forest -> x
+        shallow water -> shallow water
+        deep water -> x
+        sand -> sand
+        glass -> x
+        metal -> x
+        ashen -> dirt
+    */
+
+        //Tile Effect
+
+
+        //Other Effects
+        for(int i = 0; i < buffs.Count; i++) {
+            UnityEngine.Debug.Log(buffs[i].name);
+
+            effectNum = effectNum + 1;
+            effectKeyNames.Add(buffs[i].name);
+        }
+
+        //Display the effects
+        displayEffect(b);
+        exEffButtonNeeded(b);
+        if(b == false) {
+            openExtraEffects(b);
+        }
+
+
+        //UnityEngine.Debug.Log(effectKeyNames.length());
+
     }
 
     public void displayStatBlock(stat atk, stat def, stat res, stat acc, stat crit, stat spd) {

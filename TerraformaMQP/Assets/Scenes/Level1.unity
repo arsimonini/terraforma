@@ -3544,6 +3544,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 159743917}
     - target: {fileID: 8307509125131471017, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
+      propertyPath: char_img
+      value: 
+      objectReference: {fileID: 21300000, guid: 74ac8aa391c374ef6aff53f10922351e, type: 3}
+    - target: {fileID: 8307509125131471017, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
       propertyPath: nameplate
       value: 
       objectReference: {fileID: 8238293854779057181}

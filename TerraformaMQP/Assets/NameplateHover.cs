@@ -75,6 +75,70 @@ public class NameplateHover : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         case "Acc":
             specText = "The characters accuracy";
             break;
+            
+        case "Effect1":
+            specText = nameplate.effectKeyNames[0];
+            break;
+        case "Effect2":
+            specText = nameplate.effectKeyNames[1];
+            break;
+        case "Effect3":
+            specText = nameplate.effectKeyNames[2];
+            break;
+        case "Effect4":
+            specText = nameplate.effectKeyNames[3];
+            break;
+        case "Effect5":
+            specText = nameplate.effectKeyNames[4];
+            break;
+        case "Effect6":
+            specText = nameplate.effectKeyNames[5];
+            break;
+        case "Effect7":
+            specText = nameplate.effectKeyNames[6];
+            break;
+        case "Effect8":
+            specText = nameplate.effectKeyNames[7];
+            break;
+        case "Effect9":
+            specText = nameplate.effectKeyNames[8];
+            break;
+        case "Effect10":
+            specText = nameplate.effectKeyNames[9];
+            break;
+        case "Effect11":
+            specText = nameplate.effectKeyNames[10];
+            break;
+        case "Effect12":
+            specText = nameplate.effectKeyNames[11];
+            break;
+        case "Effect13":
+            specText = nameplate.effectKeyNames[12];
+            break;
+        case "Effect14":
+            specText = nameplate.effectKeyNames[13];
+            break;
+        case "Effect15":
+            specText = nameplate.effectKeyNames[14];
+            break;
+        case "Effect16":
+            specText = nameplate.effectKeyNames[15];
+            break;
+        case "Effect17":
+            specText = nameplate.effectKeyNames[16];
+            break;
+        case "Effect18":
+            specText = nameplate.effectKeyNames[17];
+            break;
+        case "Effect19":
+            specText = nameplate.effectKeyNames[18];
+            break;
+        case "Effect20":
+            specText = nameplate.effectKeyNames[19];
+            break;
+        case "Effect21":
+            specText = nameplate.effectKeyNames[20];
+            break;
         default:
             specText = "Shouldn't See This";
             break;

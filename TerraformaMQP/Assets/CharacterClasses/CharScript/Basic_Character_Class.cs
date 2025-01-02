@@ -738,11 +738,12 @@ public class Basic_Character_Class : MonoBehaviour
         nameplate.displayHealthValue(health, maxHealth);
 
         //Displays the Effects
-        nameplate.displayEffect(b);
-        nameplate.exEffButtonNeeded(b);
-        if(b == false) {
-            nameplate.openExtraEffects(b);
-        }
+        nameplate.getTileNum(buffs, tileType.name, tile, b);
+        // nameplate.displayEffect(b);
+        // nameplate.exEffButtonNeeded(b);
+        // if(b == false) {
+        //     nameplate.openExtraEffects(b);
+        // }
 
         //Checks if the character is a Hero and has mana
         if (gameObject.GetComponent<Hero_Character_Class>() != null)
