@@ -32,13 +32,14 @@ public class Nameplate : MonoBehaviour
     public TextMeshProUGUI healthVal;
     public TextMeshProUGUI manaVal;
 
-    public GameObject[] effectsVisuals;
-    public int effectNum;
-    public List<string> effectKeyNames;
-    public GameObject extraEffectArea;
-    public GameObject extraEffectButton;
-    public bool exEffectOn;
-    public bool nameplateIsActive;
+    public GameObject[] effectsVisuals; //the effects that the characters have
+    public List<NameplateEffect> effects; //The list of effects has the key, name, image, and more
+    public int effectNum; //How many effects the character has
+    public List<string> effectKeyNames; //all of the key names the effects have
+    public GameObject extraEffectArea; //For cases where there are more than 6 effects
+    public GameObject extraEffectButton; //The buttong for more effects
+    public bool exEffectOn; //a bool to see if the extra effects area is open
+    public bool nameplateIsActive; //whether the nameplate is active
 
 
 
@@ -225,37 +226,74 @@ public class Nameplate : MonoBehaviour
         effectKeyNames.Clear();
 
 
-        //Tile Type
+        //Tile Type TODO Need to figure out a faster way for this
         if(tileName.Contains("Grass")) 
         {
-            UnityEngine.Debug.Log("Grass");
             effectNum = effectNum + 1;
             effectKeyNames.Add("Grass");
         }
-    /*
-        grass -> dirt
-        dirt -> dirt
-        mud -> dirt
-        land ice -> dirt
-        water ice -> shallow water
-        stone/rock -> stone/rock
-        wood -> ???
-        light forest -> x
-        dense forest -> x
-        shallow water -> shallow water
-        deep water -> x
-        sand -> sand
-        glass -> x
-        metal -> x
-        ashen -> dirt
-    */
+        else if(tileName.Contains("Dirt")) 
+        {
+            effectNum = effectNum + 1;
+            effectKeyNames.Add("Dirt");
+        }
+        else if(tileName.Contains("Ashen")) 
+        {
+            effectNum = effectNum + 1;
+            effectKeyNames.Add("Ashen");
+        }
+        else if(tileName.Contains("Mud")) 
+        {
+            effectNum = effectNum + 1;
+            effectKeyNames.Add("Mud");
+        }
+        else if(tileName.Contains("Sand")) 
+        {
+            effectNum = effectNum + 1;
+            effectKeyNames.Add("Sand");
+        }
+        else if(tileName.Contains("Wood")) 
+        {
+            effectNum = effectNum + 1;
+            effectKeyNames.Add("Wood");
+        }
+        else if(tileName.Contains("Metal")) 
+        {
+            effectNum = effectNum + 1;
+            effectKeyNames.Add("Metal");
+        }
+        else if(tileName.Contains("LightForest")) 
+        {
+            effectNum = effectNum + 1;
+            effectKeyNames.Add("LForest");
+        }
+        else if(tileName.Contains("DenseForest")) 
+        {
+            effectNum = effectNum + 1;
+            effectKeyNames.Add("DForest");
+        }        
+        else if(tileName.Contains("ShallowWater")) 
+        {
+            effectNum = effectNum + 1;
+            effectKeyNames.Add("SWater");
+        }        
+        else if(tileName.Contains("DeepWater")) 
+        {
+            effectNum = effectNum + 1;
+            effectKeyNames.Add("DWater");
+        }
 
         //Tile Effect
+        for(int i = 0; i < tile.effectsOnTile.Count; i++) {
+
+            effectNum = effectNum + 1;
+            effectKeyNames.Add(tile.effectsOnTile[i].name);
+        }
 
 
         //Other Effects
         for(int i = 0; i < buffs.Count; i++) {
-            UnityEngine.Debug.Log(buffs[i].name);
+            //UnityEngine.Debug.Log(buffs[i].name);
 
             effectNum = effectNum + 1;
             effectKeyNames.Add(buffs[i].name);
@@ -294,6 +332,14 @@ public class Nameplate : MonoBehaviour
         if(b == true) {
             for(int i = 0; i < effectNum; i++) {
                 effectsVisuals[i].SetActive(true);
+
+                for(int j = 0; j < effects.Count; j++) {
+                    if(effects[j].key == effectKeyNames[i]) {
+                        effectsVisuals[i].GetComponent<Image>().sprite = effects[j].effectVis;
+                        //Figure out how to set up the timers
+                        //effectsVisuals[i].GetComponent<Image>().sprite = effects[j].effectVis;
+                    }
+                }
             }
         }
         else if(b == false) {

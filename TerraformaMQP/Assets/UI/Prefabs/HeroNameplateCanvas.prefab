@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.17926931, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -140,7 +140,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect20
+  key: Effect
+  effectIndex: 19
   specText: 
 --- !u!1 &108418273299851701
 GameObject:
@@ -283,6 +284,7 @@ MonoBehaviour:
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
   key: Crit
+  effectIndex: 0
   specText: 
 --- !u!1 &151626960636348324
 GameObject:
@@ -479,7 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.04460168, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -558,7 +560,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect10
+  key: Effect
+  effectIndex: 9
   specText: 
 --- !u!1 &272609919690567321
 GameObject:
@@ -621,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.04460168, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -700,7 +703,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect16
+  key: Effect
+  effectIndex: 15
   specText: 
 --- !u!1 &308720668846639261
 GameObject:
@@ -1721,7 +1725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.17926931, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1800,7 +1804,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect8
+  key: Effect
+  effectIndex: 7
   specText: 
 --- !u!1 &1313658832521434493
 GameObject:
@@ -1943,6 +1948,7 @@ MonoBehaviour:
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
   key: Acc
+  effectIndex: 0
   specText: 
 --- !u!1 &1433347362370164779
 GameObject:
@@ -2139,7 +2145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.04460168, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2218,7 +2224,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect4
+  key: Effect
+  effectIndex: 3
   specText: 
 --- !u!1 &1606384519741572300
 GameObject:
@@ -2763,6 +2770,7 @@ MonoBehaviour:
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
   key: Atk
+  effectIndex: 0
   specText: 
 --- !u!1 &2095583006779409929
 GameObject:
@@ -2918,6 +2926,7 @@ MonoBehaviour:
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
   key: Health
+  effectIndex: 0
   specText: 
 --- !u!1 &2097444686163118437
 GameObject:
@@ -3177,6 +3186,7 @@ MonoBehaviour:
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
   key: Health
+  effectIndex: 0
   specText: 
 --- !u!1 &2119748001857285884
 GameObject:
@@ -3460,7 +3470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.9893317, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3539,7 +3549,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect17
+  key: Effect
+  effectIndex: 16
   specText: 
 --- !u!1 &2541261936943067602
 GameObject:
@@ -3602,7 +3613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7737833, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3681,7 +3692,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect21
+  key: Effect
+  effectIndex: 20
   specText: 
 --- !u!1 &2580173818386986459
 GameObject:
@@ -3824,6 +3836,7 @@ MonoBehaviour:
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
   key: Mag
+  effectIndex: 0
   specText: 
 --- !u!1 &2613657986839209937
 GameObject:
@@ -3886,7 +3899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.9893317, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3965,7 +3978,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect5
+  key: Effect
+  effectIndex: 4
   specText: 
 --- !u!1 &2631288772885038717
 GameObject:
@@ -4330,6 +4344,7 @@ MonoBehaviour:
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
   key: Mana
+  effectIndex: 0
   specText: 
 --- !u!1 &3257630359451287565
 GameObject:
@@ -4526,7 +4541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4605,7 +4620,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect7
+  key: Effect
+  effectIndex: 6
   specText: 
 --- !u!1 &3359785635325151189
 GameObject:
@@ -5707,7 +5723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5786,7 +5802,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect19
+  key: Effect
+  effectIndex: 18
   specText: 
 --- !u!1 &4233803740668776197
 GameObject:
@@ -5929,6 +5946,7 @@ MonoBehaviour:
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
   key: Def
+  effectIndex: 0
   specText: 
 --- !u!1 &4271867044743917338
 GameObject:
@@ -6529,7 +6547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.17926931, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6608,7 +6626,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect14
+  key: Effect
+  effectIndex: 13
   specText: 
 --- !u!1 &5134830974028811591
 GameObject:
@@ -6671,7 +6690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6750,7 +6769,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect1
+  key: Effect
+  effectIndex: 0
   specText: 
 --- !u!1 &5166082936242310169
 GameObject:
@@ -7098,7 +7118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.17926931, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7177,7 +7197,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect2
+  key: Effect
+  effectIndex: 1
   specText: 
 --- !u!1 &5282466247553601909
 GameObject:
@@ -7592,7 +7613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7671,7 +7692,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect13
+  key: Effect
+  effectIndex: 12
   specText: 
 --- !u!1 &5668468753902423277
 GameObject:
@@ -7734,7 +7756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9740491, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7813,7 +7835,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect6
+  key: Effect
+  effectIndex: 5
   specText: 
 --- !u!1 &5874649318653613455
 GameObject:
@@ -8489,7 +8512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7737833, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8568,7 +8591,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect3
+  key: Effect
+  effectIndex: 2
   specText: 
 --- !u!1 &6459485751902880415
 GameObject:
@@ -9387,6 +9411,7 @@ MonoBehaviour:
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
   key: Mana
+  effectIndex: 0
   specText: 
 --- !u!1 &7444524739648345690
 GameObject:
@@ -9941,7 +9966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7737833, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10020,7 +10045,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect15
+  key: Effect
+  effectIndex: 14
   specText: 
 --- !u!1 &8125613864456020656
 GameObject:
@@ -10083,7 +10109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.9893317, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10162,7 +10188,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect11
+  key: Effect
+  effectIndex: 10
   specText: 
 --- !u!1 &8224152042291843383
 GameObject:
@@ -10358,7 +10385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7737833, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10437,7 +10464,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect9
+  key: Effect
+  effectIndex: 8
   specText: 
 --- !u!1 &8291014339287645324
 GameObject:
@@ -10635,7 +10663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9740491, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10714,7 +10742,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect18
+  key: Effect
+  effectIndex: 17
   specText: 
 --- !u!1 &8386121491720844199
 GameObject:
@@ -11067,6 +11096,7 @@ MonoBehaviour:
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
   key: Res
+  effectIndex: 0
   specText: 
 --- !u!1 &8553338052123913348
 GameObject:
@@ -11209,6 +11239,7 @@ MonoBehaviour:
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
   key: Spd
+  effectIndex: 0
   specText: 
 --- !u!1 &8624156948536141666
 GameObject:
@@ -11405,7 +11436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9740491, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11484,7 +11515,8 @@ MonoBehaviour:
   smallDescriptorText: {fileID: 8405008239504129082}
   largeDescriptor: {fileID: 3567557912104406061}
   largeDescriptorText: {fileID: 6494314490545378509}
-  key: Effect12
+  key: Effect
+  effectIndex: 11
   specText: 
 --- !u!1 &8651446013903484183
 GameObject:
@@ -12255,6 +12287,28 @@ MonoBehaviour:
   - {fileID: 4033011420884109414}
   - {fileID: 43276507816849445}
   - {fileID: 2541261936943067602}
+  effects:
+  - {fileID: 11400000, guid: 4ceeceb363f1e4fab9202306ff06082d, type: 2}
+  - {fileID: 11400000, guid: 542011dde37de4191a7d674758d5079e, type: 2}
+  - {fileID: 11400000, guid: c8e4693c5eca746dfa4d5e4dc08db061, type: 2}
+  - {fileID: 11400000, guid: 85d8859da006d4b53822a184657a0310, type: 2}
+  - {fileID: 11400000, guid: 97be9047a67414d468127cab88222108, type: 2}
+  - {fileID: 11400000, guid: 600d188b88cdd41a793033b7442a538a, type: 2}
+  - {fileID: 11400000, guid: 1af7c024f78054267b4ac755657336fa, type: 2}
+  - {fileID: 11400000, guid: 9037dbef7096940c786dbe3837c3e90d, type: 2}
+  - {fileID: 11400000, guid: ae7ed53f1502f404b81a4c581ab763e6, type: 2}
+  - {fileID: 11400000, guid: 5a7fa25de5dab4330a7a8a159e583286, type: 2}
+  - {fileID: 11400000, guid: 6ac33e2b04e7044debbe354c4c6906e0, type: 2}
+  - {fileID: 11400000, guid: 228428cb2bd9841058e22c1d442db6fe, type: 2}
+  - {fileID: 11400000, guid: 6d0685fc1361549e88a6928d8d541828, type: 2}
+  - {fileID: 11400000, guid: 787bea73f112b4a20a3465902b6d3fba, type: 2}
+  - {fileID: 11400000, guid: e9d37933aa2da4fe7bd1a223d4b12ef1, type: 2}
+  - {fileID: 11400000, guid: 6e0ada87dbe07489a80c79533e25ec5b, type: 2}
+  - {fileID: 11400000, guid: 1bfb33ab7457c42a496e413e069bc3eb, type: 2}
+  - {fileID: 11400000, guid: 4838389c45f7540efbd46b91e71cef3d, type: 2}
+  - {fileID: 11400000, guid: c99ddf669a5c348e7a3541f9fa7e43da, type: 2}
+  - {fileID: 11400000, guid: 008df06b99eae4efe9670d42d9490259, type: 2}
+  - {fileID: 11400000, guid: 2bdb881b2d3084c0890dee867d1604b8, type: 2}
   effectNum: 0
   effectKeyNames: []
   extraEffectArea: {fileID: 7444524739648345690}
