@@ -36,6 +36,8 @@ public class ClickableTile : MonoBehaviour
     public GameObject currentHightlight = null;
 
     public List<TileEffect> effectsOnTile; //List of effects currently on the tile
+
+    public String tileName;
     
     //Set the renderer and color variables upon level load
     void Start() {

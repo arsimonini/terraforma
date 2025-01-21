@@ -136,7 +136,12 @@ MonoBehaviour:
   isBreakable: 1
   hp: 10
   maxHp: 10
+  standardHighlight: {fileID: 0}
+  canHitHighlight: {fileID: 0}
+  cannotHitHightlight: {fileID: 0}
+  currentHightlight: {fileID: 0}
   effectsOnTile: []
+  tileName: Wold Wall
 --- !u!1 &7828012613600840513
 GameObject:
   m_ObjectHideFlags: 0

@@ -135,7 +135,12 @@ MonoBehaviour:
   isBreakable: 0
   hp: 10
   maxHp: 10
+  standardHighlight: {fileID: 0}
+  canHitHighlight: {fileID: 0}
+  cannotHitHightlight: {fileID: 0}
+  currentHightlight: {fileID: 0}
   effectsOnTile: []
+  tileName: Wall
 --- !u!1 &9069269853647289291
 GameObject:
   m_ObjectHideFlags: 0

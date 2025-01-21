@@ -733,19 +733,27 @@ public class Basic_Character_Class : MonoBehaviour
         nameplate.displayName(name);
         nameplate.displayImage(char_img);
         nameplate.displayHealth(health, maxHealth);
-        nameplate.displayAtk(attack);
-        nameplate.displayDef(defense);
-        nameplate.displayRes(resistence);
-        nameplate.displayAcc(accuracy);
-        nameplate.displayCrit(criticalChance);
-        nameplate.displaySpd(speed);
+
+        nameplate.displayStatBlock(attack, defense, resistence, accuracy, criticalChance, speed);
+        nameplate.displayHealthValue(health, maxHealth);
+
+        //Displays the Effects
+        nameplate.getTileNum(buffs, tileType.name, tile, b);
+        // nameplate.displayEffect(b);
+        // nameplate.exEffButtonNeeded(b);
+        // if(b == false) {
+        //     nameplate.openExtraEffects(b);
+        // }
+
         //Checks if the character is a Hero and has mana
         if (gameObject.GetComponent<Hero_Character_Class>() != null)
         {
             //If the character does have mana, it is also passed to the nameplate and the mana bar is set to active
             nameplate.displayMana(gameObject.GetComponent<Hero_Character_Class>().mana, gameObject.GetComponent<Hero_Character_Class>().maxMana);
+            nameplate.displayManaValue(gameObject.GetComponent<Hero_Character_Class>().mana, gameObject.GetComponent<Hero_Character_Class>().maxMana);
             nameplate.mana.gameObject.SetActive(true);
             nameplate.displayMag(gameObject.GetComponent<Hero_Character_Class>().magic);
+            nameplate.displayMagBuff(gameObject.GetComponent<Hero_Character_Class>().magic);
             nameplate.displayMagicArea(true);
         }
         else
