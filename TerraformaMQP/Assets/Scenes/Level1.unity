@@ -35090,6 +35090,30 @@ PrefabInstance:
       propertyPath: magicAreaObj
       value: 
       objectReference: {fileID: 1116508384}
+    - target: {fileID: 8398396629709489032, guid: 2bbc89aaddde54793a8b96299743ddf3, type: 3}
+      propertyPath: effects.Array.size
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398396629709489032, guid: 2bbc89aaddde54793a8b96299743ddf3, type: 3}
+      propertyPath: effects.Array.data[21]
+      value: 
+      objectReference: {fileID: 11400000, guid: 348fc4d536d6744848d1596f4e3559de, type: 2}
+    - target: {fileID: 8398396629709489032, guid: 2bbc89aaddde54793a8b96299743ddf3, type: 3}
+      propertyPath: effects.Array.data[22]
+      value: 
+      objectReference: {fileID: 11400000, guid: 25ebd678c206543679f46b462d13fd59, type: 2}
+    - target: {fileID: 8398396629709489032, guid: 2bbc89aaddde54793a8b96299743ddf3, type: 3}
+      propertyPath: effects.Array.data[23]
+      value: 
+      objectReference: {fileID: 11400000, guid: 85a9c07ec5d5648fd956acd08f7473de, type: 2}
+    - target: {fileID: 8398396629709489032, guid: 2bbc89aaddde54793a8b96299743ddf3, type: 3}
+      propertyPath: effects.Array.data[24]
+      value: 
+      objectReference: {fileID: 11400000, guid: d02e1205e93b64687adab755d261214e, type: 2}
+    - target: {fileID: 8398396629709489032, guid: 2bbc89aaddde54793a8b96299743ddf3, type: 3}
+      propertyPath: effects.Array.data[25]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3756725e649464966b4c7c431868e320, type: 2}
     - target: {fileID: 8860534562158812993, guid: 2bbc89aaddde54793a8b96299743ddf3, type: 3}
       propertyPath: m_Name
       value: HeroNameplateCanvas
@@ -35398,6 +35422,30 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6086204880388043493, guid: 1a0188553a64e40eb988846dc3c553ba, type: 3}
+      propertyPath: effects.Array.size
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6086204880388043493, guid: 1a0188553a64e40eb988846dc3c553ba, type: 3}
+      propertyPath: effects.Array.data[21]
+      value: 
+      objectReference: {fileID: 11400000, guid: 348fc4d536d6744848d1596f4e3559de, type: 2}
+    - target: {fileID: 6086204880388043493, guid: 1a0188553a64e40eb988846dc3c553ba, type: 3}
+      propertyPath: effects.Array.data[22]
+      value: 
+      objectReference: {fileID: 11400000, guid: 25ebd678c206543679f46b462d13fd59, type: 2}
+    - target: {fileID: 6086204880388043493, guid: 1a0188553a64e40eb988846dc3c553ba, type: 3}
+      propertyPath: effects.Array.data[23]
+      value: 
+      objectReference: {fileID: 11400000, guid: 85a9c07ec5d5648fd956acd08f7473de, type: 2}
+    - target: {fileID: 6086204880388043493, guid: 1a0188553a64e40eb988846dc3c553ba, type: 3}
+      propertyPath: effects.Array.data[24]
+      value: 
+      objectReference: {fileID: 11400000, guid: d02e1205e93b64687adab755d261214e, type: 2}
+    - target: {fileID: 6086204880388043493, guid: 1a0188553a64e40eb988846dc3c553ba, type: 3}
+      propertyPath: effects.Array.data[25]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3756725e649464966b4c7c431868e320, type: 2}
     - target: {fileID: 6976407717615286069, guid: 1a0188553a64e40eb988846dc3c553ba, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1

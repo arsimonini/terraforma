@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4aa4a4f39089a41ef9b5cbd23e9d52eb, type: 3}
-  m_Name: TE_Soaked
+  m_Name: TE_Poison
   m_EditorClassIdentifier: 
-  key: Soaked
-  name: Soaked
+  key: Poison
+  name: Poison
   description: Add Later
   timeRemaining: 0
-  effectVis: {fileID: 21300000, guid: c9861a2bfeadb4e969dc332c1d903b54, type: 3}
+  effectVis: {fileID: 21300000, guid: c79c97f71be91427c9969dee3a91c345, type: 3}
   type: Effect
