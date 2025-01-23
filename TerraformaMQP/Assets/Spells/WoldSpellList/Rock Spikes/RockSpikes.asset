@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
+  m_Name: RockSpikes
+  m_EditorClassIdentifier: 
+  manaCost: 5
+  spellName: Rock Spikes
+  elementType: Rock
+  spellPrefab: {fileID: 2394175536890139692, guid: 8d0f1b9b91ade0e43abd1ebb3321ffac, type: 3}
+  description: Raise spikes from the ground, damaging foes in a wide swath and leaving
+    rocky terrain.
+  targeted: 1
+  range: 1
+  targetTiles: 1
+  targetAllies: 0
+  target: {fileID: 0}
+  amountOfTargets: 1
+  requireDifferentTargets: 1
+  targetEnemies: 0
+  hitOwnTile: 0
+  hitSelf: 0
+  targetWalls: 0
+  AOEsize: 1
+  square: 1
+  alternateAOEDisplay: 0
+  hyperSpecificTargeting: 0
+  needSpecificTiles: 0
+  specificTiles: []
+  needSpecificTileEffects: 0
+  specificTileEffects: []
+  targetBreakables: 0

@@ -20869,6 +20869,8 @@ MonoBehaviour:
   moving: 0
   targetList: []
   mapCreated: 0
+  mapSizeX: 10
+  mapSizeY: 10
   aoeDisplayTiles: []
   displayingAOE: 0
   allTargets: []
@@ -31671,13 +31673,21 @@ PrefabInstance:
       propertyPath: nameplate
       value: 
       objectReference: {fileID: 8238293854779057181}
+    - target: {fileID: 8047284439058182590, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: spellList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047284439058182590, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: spellList.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6116a4e7df13b1144a12d76f3595da42, type: 2}
     - target: {fileID: 8344735724431438881, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1440120559}
     - target: {fileID: 8344735724431438881, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: m_VersionIndex
-      value: 1099
+      value: 1120
       objectReference: {fileID: 0}
     - target: {fileID: 8895871286598532798, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: m_Name
