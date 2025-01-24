@@ -61,18 +61,18 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
                 break;
                 
                 case 2: 
-                    strikeAtPosition(basicCaster,0,1,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,0,2,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,0,3,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,0,4,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,1,2,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,-1,2,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,1,3,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,-1,3,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,1,4,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,-1,4,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,2,4,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,-2,4,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,0,-1,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,0,-2,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,0,-3,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,0,-4,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,1,-2,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,-1,-2,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,1,-3,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,-1,-3,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,1,-4,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,-1,-4,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,2,-4,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,-2,-4,dmg,acc,elm);
                 break;
                 
                 case 3: 
@@ -111,18 +111,18 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
                 break;
                 
                 case 6: 
-                    strikeAtPosition(basicCaster,0,-1,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,0,-2,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,0,-3,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,0,-4,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,1,-2,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,-1,-2,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,1,-3,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,-1,-3,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,1,-4,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,-1,-4,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,2,-4,dmg,acc,elm);
-                    strikeAtPosition(basicCaster,-2,-4,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,0,1,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,0,2,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,0,3,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,0,4,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,1,2,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,-1,2,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,1,3,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,-1,3,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,1,4,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,-1,4,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,2,4,dmg,acc,elm);
+                    strikeAtPosition(basicCaster,-2,4,dmg,acc,elm);
                 break;
                 
                 case 7:
@@ -150,6 +150,9 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
         int trueX = caster.tileX + xOffset;
         int trueY = caster.tileY + yOffset;
 
+
+        UnityEngine.Debug.Log(trueX+ ", "+ trueY);
+
         if ((trueX < 0) || (trueY < 0) || (trueX > map.mapSizeX) || (trueY > map.mapSizeY)) {
             return;
         } else {
@@ -157,35 +160,36 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
 
             //check for a player sitting there
             if (tile.characterOnTile != null) {
-                UnityEngine.Debug.Log("Enemy Here!");
+                //UnityEngine.Debug.Log("Enemy Here!");
                 Basic_Character_Class characterGettingHit = tile.characterOnTile.GetComponent<Basic_Character_Class>();
                 if (characterGettingHit != null) {
                     characterGettingHit.takeMagicDamage(damage,"Earth");
                 }
             } else {
-                UnityEngine.Debug.Log("No enemy here");
+                //UnityEngine.Debug.Log("No enemy here");
             }
 
             //affect the tiles with rocky terrain
-
+            
             
         }
     }
 
     //Finds the direction of the attack to be done. Has 8 directions.
-    public int findAttackDirection(float x1, float x2, float y1, float y2) {
+    public int findAttackDirection(float x1, float y1, float x2, float y2) {
         //
         float xDelta = x2 - x1;
         float yDelta = y2 - y1;
 
+        UnityEngine.Debug.Log("Deltas:" + xDelta+ ", "+ yDelta);
         //As a simplification, any time that x or y is twice as great as another means that its just that axis. otherwise, it's a 
-        if (xDelta > Mathf.Abs(2*yDelta)) { //East
+        if (xDelta >= Mathf.Abs(2*yDelta)) { //East
             return 0;
-        } else if (xDelta < -Mathf.Abs(2*yDelta)) {//West 
+        } else if (xDelta <= -Mathf.Abs(2*yDelta)) {//West 
             return 4;
-        } else if (yDelta > Mathf.Abs(2*xDelta)) { //North
+        } else if (yDelta >= Mathf.Abs(2*xDelta)) { //North
             return 6;
-        } else if (yDelta < -Mathf.Abs(2*xDelta)) { //South
+        } else if (yDelta <= -Mathf.Abs(2*xDelta)) { //South
             return 2;
         } else {
             //NE

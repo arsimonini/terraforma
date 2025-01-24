@@ -19,7 +19,7 @@ MonoBehaviour:
   description: Raise spikes from the ground, damaging foes in a wide swath and leaving
     rocky terrain.
   targeted: 1
-  range: 1
+  range: 4
   targetTiles: 1
   targetAllies: 0
   target: {fileID: 0}
