@@ -170,7 +170,7 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
             }
 
             //affect the tiles with rocky terrain
-            
+            placeTileEffect(tile,"Earth","Rock Spikes");
             
         }
     }
@@ -226,6 +226,17 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
         for (int i = 0; i < tiles.Count; i++){
             tiles[i].GetComponent<ClickableTile>().removeHighlight();
         }
+    }
+
+    public bool placeTileEffect (ClickableTile ct, string element = "Earth", string spellName = "Rock Spikes", bool heroTeam = true) {
+        if (ct == null) {
+            return false;
+        }
+        TileMap map = ct.map; if (map == null) { return false;}
+        ReactionController rc = map.GetComponent<ReactionController>(); if (rc == null) { return false;}
+        rc.checkReaction(ct,element,spellName, heroTeam);
+
+        return true;
     }
 }
 
