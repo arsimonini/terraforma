@@ -1310,8 +1310,7 @@ public class TileMap : MonoBehaviour
     //Takes in a GameObject that will be the selectedTarget that is searched for
     public bool checkForTarget(GameObject selectedTarget, int reach)
     {
-        UnityEngine.Debug.Log(selectedTarget);
-        if (targetList.Contains(selectedTarget) || (selectedTarget.GetComponent<ClickableTile>() && targetList.Contains(selectedTarget.GetComponent<ClickableTile>().characterOnTile)) || targetList.Contains(selectedTarget.GetComponent<Basic_Character_Class>().tile.gameObject)){
+        if (targetList.Contains(selectedTarget) || (selectedTarget.GetComponent<ClickableTile>() != null && selectedTarget.GetComponent<ClickableTile>().characterOnTile != null && targetList.Contains(selectedTarget.GetComponent<ClickableTile>().characterOnTile)) || (selectedTarget.GetComponent<Basic_Character_Class>() != null && targetList.Contains(selectedTarget.GetComponent<Basic_Character_Class>().tile.gameObject))){
             return true;
         }
         //If the target can't be found return false
