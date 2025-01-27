@@ -292,6 +292,7 @@ ashen -> dirt
         Destroy(currentHightlight);
         currentHightlight = Instantiate(canHitHighlight);
         currentHightlight.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.52f, gameObject.transform.position.z);
+        //currentHightlight.transform.localScale = new Vector3(0.05f,0.05f,0.05f);
     }
 
     public void removeHighlight(){

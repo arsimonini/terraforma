@@ -31533,6 +31533,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 277143660847197708, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 277143660847197708, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 277143660847197708, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 812480041}
+    - target: {fileID: 277143660847197708, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 277143660847197708, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: spellButtonUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 277143660847197708, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Basic_Character_Class, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 277143660847197708, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 277143660847197708, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 756233040778545519, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -31589,6 +31621,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1440120559}
+    - target: {fileID: 5261875560171011904, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: hasSpell
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5824792837831677344, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: hasSpell
       value: 1
@@ -31675,19 +31711,27 @@ PrefabInstance:
       objectReference: {fileID: 8238293854779057181}
     - target: {fileID: 8047284439058182590, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: spellList.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8047284439058182590, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: spellList.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: 6116a4e7df13b1144a12d76f3595da42, type: 2}
+    - target: {fileID: 8047284439058182590, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: spellList.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: f0909c5c7cc82ce4fb6e61c5e626e4ef, type: 2}
     - target: {fileID: 8344735724431438881, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1440120559}
     - target: {fileID: 8344735724431438881, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: m_VersionIndex
-      value: 1120
+      value: 1126
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630637868926062189, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: hasSpell
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8895871286598532798, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: m_Name

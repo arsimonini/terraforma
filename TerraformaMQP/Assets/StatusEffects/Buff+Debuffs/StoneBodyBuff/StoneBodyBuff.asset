@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9da8668d7f3cbe48babc49b4063efde, type: 3}
+  m_Name: StoneBodyBuff
+  m_EditorClassIdentifier: 
+  statsToEffect:
+  - movementSpeed
+  - defense
+  amountsToEffect: feffffff0a000000
+  duration: 5
+  source: Stone Body
+  name: Stone Body
+  playerTeam: 0
+  character: {fileID: 0}
+  buffAsset: {fileID: 3131852301963619530, guid: 3b6cc8c12ba37b6468f21ef6149e5c8a, type: 3}
+  buffAnimationPrefab: {fileID: 168724785735174551, guid: 01748f657143a4fff82edef4b7d71237, type: 3}

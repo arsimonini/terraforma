@@ -217,8 +217,8 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
         List<GameObject> list = new List<GameObject>();
         centerTile.canHit();
         list.Add(centerTile.gameObject);
-        centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].canHit();
-        list.Add(centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject);
+        //centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].canHit();
+        //list.Add(centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject);
         return list;
     }
 
