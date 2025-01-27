@@ -16,6 +16,7 @@ public class SpellButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
     //public int spellNum;
 
     public GameObject UISpellDesc = null;
+    public TextMeshProUGUI spellDescText = null;
     public GameObject spell = null;
     public Transform currPos;
     public int spellNum;
@@ -33,7 +34,7 @@ public class SpellButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
     void Start()
     {
         //UISpellDesc.GetComponent<Canvas>().worldCamera = GameObject.Find("UI Camera").GetComponent<Camera>();
-        UISpellDesc.GetComponent<Canvas>().GetComponent<Billboard>().cam = GameObject.Find("UI Camera").GetComponent<Camera>().transform;
+        //UISpellDesc.GetComponent<Canvas>().GetComponent<Billboard>().cam = GameObject.Find("UI Camera").GetComponent<Camera>().transform;
         SN.text = GetComponentInParent<Hero_Character_Class>().spellList[spellNum].spellName;
         MC.text = GetComponentInParent<Hero_Character_Class>().spellList[spellNum].manaCost.ToString();
         SD.text = GetComponentInParent<Hero_Character_Class>().spellList[spellNum].description;
@@ -61,19 +62,24 @@ public class SpellButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnPointerEnter(PointerEventData data) 
     {
         if(hasSpell == true) {
-            spell = Instantiate(UISpellDesc, new Vector3(currPos.position.x - spellOffset, currPos.position.y , currPos.position.z), currPos.rotation);
-            spell.GetComponentInChildren<TextMeshProUGUI>().text = GetComponentInParent<Hero_Character_Class>().spellList[spellNum].description;
+            //spell = Instantiate(UISpellDesc, new Vector3(currPos.position.x - spellOffset, currPos.position.y , currPos.position.z), currPos.rotation);
+            //spell.GetComponentInChildren<TextMeshProUGUI>().text = GetComponentInParent<Hero_Character_Class>().spellList[spellNum].description;
+            UISpellDesc.SetActive(true);
+            spellDescText.text = GetComponentInParent<Hero_Character_Class>().spellList[spellNum].description;
+
         }
     }
 
     public void OnPointerExit(PointerEventData data) {
         if(hasSpell == true) {
-            Destroy(spell);   
+            //Destroy(spell);
+            UISpellDesc.SetActive(false);
         }
     }
 
     public void buttonClicked() {
-        Destroy(spell);
+        //Destroy(spell);
+        UISpellDesc.SetActive(false);
     }
 
 }
