@@ -16,5 +16,5 @@ MonoBehaviour:
   name: Sand
   description: Handle Later
   timeRemaining: 0
-  effectVis: {fileID: 21300000, guid: 4ff608b571fee4808a1e9fca32f61b37, type: 3}
+  effectVis: {fileID: 21300000, guid: 9725e8c560eac4509845f8926e5fb0e9, type: 3}
   type: Tile
