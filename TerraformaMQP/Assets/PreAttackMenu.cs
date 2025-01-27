@@ -39,9 +39,42 @@ public class PreAttackMenu : MonoBehaviour
         calculateCrit(heroNameplate, playerCrit);
         calculateCrit(enemyNameplate, enemyCrit);
 
+        //Acc
+        calculateAcc(heroNameplate, playerAcc);
+        calculateAcc(enemyNameplate, enemyAcc);
+
         calculateDam(heroNameplate, enemyNameplate, playerDam);
         calculateDam(enemyNameplate, heroNameplate, enemyDam);
 
+    }
+
+    public void calculateAcc(GameObject go, TextMeshProUGUI tmpGUI) {
+        
+        if(go.GetComponent<Nameplate>() == null) {
+            return;
+        }
+
+        int accVal = System.Convert.ToInt32(go.GetComponent<Nameplate>().acc.text);
+        int accBuffVal;
+        if(go.GetComponent<Nameplate>().accBuff.text.Length == 0) {
+            accBuffVal = 0;
+        }
+        else {
+            accBuffVal = System.Convert.ToInt32(go.GetComponent<Nameplate>().accBuff.text.Substring(1,go.GetComponent<Nameplate>().accBuff.text.Length));
+        }
+        
+        int spdVal = System.Convert.ToInt32(go.GetComponent<Nameplate>().spd.text);
+        int spdBuffVal;
+        if(go.GetComponent<Nameplate>().spdBuff.text.Length == 0) {
+            spdBuffVal = 0;
+        }
+        else {
+            spdBuffVal = System.Convert.ToInt32(go.GetComponent<Nameplate>().spdBuff.text.Substring(1,go.GetComponent<Nameplate>().spdBuff.text.Length));
+        }
+
+        float finalVal = 75+3*(((float)accVal + (float)accBuffVal) - ((float)spdVal + (float)spdBuffVal));
+
+        tmpGUI.text = finalVal.ToString() + "%";
     }
 
     public void calculateCrit(GameObject go, TextMeshProUGUI tmpGUI) {
