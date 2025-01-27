@@ -129,8 +129,8 @@ public class Basic_Character_Class : MonoBehaviour
             //Check if the player is pressing the B key
             else if (Input.GetKeyDown(KeyCode.B)){
                 //End the unit's turn
-                endTurn();
-                map.hidePath();
+                //endTurn();
+                //map.hidePath();
             }
             updateCharStats();
         }
@@ -155,6 +155,9 @@ public class Basic_Character_Class : MonoBehaviour
 
         if(charSelected == false && pm.forDeselecting == true) {
             Invoke("deselectOnResume", 0.05f);
+        }
+        if (Input.GetKeyDown(KeyCode.B) && charSelected){
+            abilityButtonUI(0);
         }
     }
 
@@ -638,21 +641,32 @@ public class Basic_Character_Class : MonoBehaviour
     //Returns true if the character has no actions left after the spell, false if the character still has at least one action
     public bool castSpell(List<GameObject> targets)
     {
-        //Calls the castSpell function in the Hero Class, passing the list of targets as the argument
-        gameObject.GetComponent<Hero_Character_Class>().castSpell(targets);
-        //Calls the useMana function in the Hero Class to reduce the amount of mana the unit has remaining
-        gameObject.GetComponent<Hero_Character_Class>().useMana(gameObject.GetComponent<Hero_Character_Class>().selectedSpell.manaCost);
-        //Stops targeting
-        stopTargeting();
-        //Uses the action, and then checks if there are still actions remaining
-        if (takeAction() == false)
-        {
-            //The character sill has at least one action
-            renderer.material.color = Color.red;
-            return false;
+        if (gameObject.GetComponent<Hero_Character_Class>()){
+            //Calls the castSpell function in the Hero Class, passing the list of targets as the argument
+            gameObject.GetComponent<Hero_Character_Class>().castSpell(targets);
+            //Calls the useMana function in the Hero Class to reduce the amount of mana the unit has remaining
+            gameObject.GetComponent<Hero_Character_Class>().useMana(gameObject.GetComponent<Hero_Character_Class>().selectedSpell.manaCost);
+            //Stops targeting
+            stopTargeting();
+            //Uses the action, and then checks if there are still actions remaining
+            if (takeAction() == false)
+            {
+                //The character sill has at least one action
+                renderer.material.color = Color.red;
+                return false;
+            }
+            //The character has no actions left
+            return true;
         }
-        //The character has no actions left
-        return true;
+        else {
+            gameObject.GetComponent<SummonClass>().useAbility(targets);
+            stopTargeting();
+            if(takeAction() == false){
+                renderer.material.color = Color.red;
+                return false;
+            }
+            return true;
+        }
     }
 
     //Ends the unit's turn
@@ -682,7 +696,7 @@ public class Basic_Character_Class : MonoBehaviour
     {
         map.removeAOEDisplay();
         //Checks if the player was targeting a spell or normal attack
-        if (attackType == "Spell" && gameObject.GetComponent<Hero_Character_Class>() != null)
+        if ((attackType == "Spell" || attackType == "Ability") && gameObject.GetComponent<Hero_Character_Class>() != null)
         {
             //If the player was targeting a spell, sets the selectedSpell in the Hero Class to null
             gameObject.GetComponent<Hero_Character_Class>().selectedSpell = null;
@@ -721,6 +735,14 @@ public class Basic_Character_Class : MonoBehaviour
         //Sets the attackReach to the inputted reach
         attackReach = reach;
         //Calls the drawReach function with the reach of the spell, the spell's ability to target tiles, and the spell's ability to target allies
+        drawReach(reach, spell.targetTiles, spell.targetAllies, spell.targetEnemies, spell.hitOwnTile, spell.hitSelf, spell.targetWalls, spell.hyperSpecificTargeting, spell.needSpecificTileEffects, spell.specificTileEffects, spell.needSpecificTiles, spell.specificTiles, tile, targetBreakables: spell.targetBreakables);
+    }
+
+    public void beginTargetingAbility(int reach, Basic_Spell_Class spell){
+        attackType = "Ability";
+        renderer.material.color = Color.magenta;
+        targeting = true;
+        attackReach = reach;
         drawReach(reach, spell.targetTiles, spell.targetAllies, spell.targetEnemies, spell.hitOwnTile, spell.hitSelf, spell.targetWalls, spell.hyperSpecificTargeting, spell.needSpecificTileEffects, spell.specificTileEffects, spell.needSpecificTiles, spell.specificTiles, tile, targetBreakables: spell.targetBreakables);
     }
 
@@ -803,6 +825,10 @@ public class Basic_Character_Class : MonoBehaviour
             }
             atkMenu.SetActive(false);
         }
+    }
+
+    public void displayAbilityList(bool b){
+        //Needs to be filled out
     }
 
     //Recolors when mouse is hovering over a unit
@@ -1002,6 +1028,16 @@ public class Basic_Character_Class : MonoBehaviour
             this.gameObject.GetComponent<Hero_Character_Class>().selectedSpell = this.gameObject.GetComponent<Hero_Character_Class>().spellList[i];
             beginTargetingSpell(this.gameObject.GetComponent<Hero_Character_Class>().spellList[i].range, this.gameObject.GetComponent<Hero_Character_Class>().spellList[i]);
             displaySpellList(false);
+            displayAttackMenu(false);
+        }
+    }
+
+    public void abilityButtonUI(int i){
+        if (this.gameObject.GetComponent<SummonClass>().offCooldown(i)){
+            UnityEngine.Debug.Log("Here");
+            this.gameObject.GetComponent<SummonClass>().selectedAbility = this.gameObject.GetComponent<SummonClass>().abilityList[i];
+            beginTargetingAbility(this.gameObject.GetComponent<SummonClass>().abilityList[i].range, this.gameObject.GetComponent<SummonClass>().abilityList[i]);
+            displayAbilityList(false);
             displayAttackMenu(false);
         }
     }
