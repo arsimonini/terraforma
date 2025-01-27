@@ -49,4 +49,21 @@ public class ChangeCharMenu : MonoBehaviour
             break;
         }
     }
+
+    public void summonQuickChange(int slot) {
+        //Get character in hero slot
+        //Make the menu appear
+        //fill in the blanks for the menu
+    }
+
+    public void spellQuickChange(int slot) {
+        //Get character in hero slot
+        //Make the menu appear
+        //fill in the blanks for the menu        
+    }
+
+    public void heroSlowChange(int slot) {
+        //Open Second Menu
+        //fill in the blanks for the menu
+    }
 }
