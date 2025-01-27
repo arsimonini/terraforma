@@ -176,6 +176,14 @@ public class GameControllerScript : MonoBehaviour
                             map.updateSelectedCharacter(null);
                         }
                 }
+                else if (targeting == true && characterScript.attackType == "Ability" && selectedCharacter.GetComponent<SummonClass>().selectedAbility.targeted == false){
+                    List<GameObject> targets = map.targetList;
+                    if (characterScript.castSpell(targets)){
+                        updateSelectedObject(null);
+                        stopTargeting();
+                        map.updateSelectedCharacter(null);
+                    }
+                }
                 //Arrive here if the player is targeting a spell or attack and left-clicked
                 //Check if the returned object from the above raycast returned is tagged on the enemy team and is within the spell/attack's reach
                 else if (targeting == true && (hit.collider.gameObject.tag == "EnemyTeam" || hit.collider.gameObject.tag == "PlayerTeam" || hit.collider.gameObject.GetComponent<ClickableTile>() != null || hit.collider.gameObject.tag == "Wall") && characterScript.withinReach(hit.collider.gameObject) == true)
@@ -195,7 +203,6 @@ public class GameControllerScript : MonoBehaviour
                     //Checks if the player is targeting a Spell
                     else if (characterScript.attackType == "Spell")
                     {
-                        UnityEngine.Debug.Log("Here");
                         //Checks if the amount of targets selected is less than the amount of targets the spell can have
                         if (targets == null || selectedCharacter.GetComponent<Hero_Character_Class>().selectedSpell.amountOfTargets > targets.Count){
                             //If the list of targets is null, creates a new list that can be added to
@@ -219,6 +226,23 @@ public class GameControllerScript : MonoBehaviour
                             }
                         }
 
+                    }
+                    else if (characterScript.attackType == "Ability"){
+                        if (targets == null || selectedCharacter.GetComponent<SummonClass>().selectedAbility.amountOfTargets > targets.Count){
+                            if (targets == null){
+                                targets = new List<GameObject>();
+                            }
+                            if (!targets.Contains(hit.collider.gameObject) || selectedCharacter.GetComponent<SummonClass>().selectedAbility.requireDifferentTargets == false){
+                                targets.Add(hit.collider.gameObject);
+                            }
+                            if (selectedCharacter.GetComponent<SummonClass>().selectedAbility.amountOfTargets == targets.Count){
+                                if (characterScript.castSpell(targets)){
+                                    updateSelectedObject(null);
+                                    stopTargeting();
+                                    map.updateSelectedCharacter(null);
+                                }
+                            }
+                        }
                     }
                 }
                 //Code arrives here if the player was targeting but didn't selected a valid target
@@ -438,6 +462,7 @@ public class GameControllerScript : MonoBehaviour
         {
             playerTeamList[i].GetComponent<Basic_Character_Class>().resetTurn();
         }
+        reduceCooldowns();
     }
 
     //Iterates through the list of player units and ends their turns by calling the Basic Class endTurn function
@@ -528,5 +553,13 @@ public class GameControllerScript : MonoBehaviour
             Instantiate(losePrefab);
         }
         endGame = true;
+    }
+
+    public void reduceCooldowns(){
+        for (int i = 0; i < playerTeamList.Count; i++){
+            if (playerTeamList[i].GetComponent<SummonClass>()){
+                playerTeamList[i].GetComponent<SummonClass>().reduceCooldowns();
+            }
+        }
     }
 }

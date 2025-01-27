@@ -36,6 +36,8 @@ public class ClickableTile : MonoBehaviour
     public GameObject currentHightlight = null;
 
     public List<TileEffect> effectsOnTile; //List of effects currently on the tile
+
+    public String tileName;
     
     //Set the renderer and color variables upon level load
     void Start() {
@@ -95,6 +97,9 @@ public class ClickableTile : MonoBehaviour
             else if (map.selectedUnitScript.attackType == "Attack"){
                 //UnityEngine.Debug.Log("Here");
                 map.displayAOE("Attack", this, size: 0);
+            }
+            else if (map.selectedUnitScript.attackType == "Ability"){
+                map.displayAOE("Ability", this, size: map.selectedUnit.GetComponent<SummonClass>().selectedAbility.AOEsize, square: map.selectedUnit.GetComponent<SummonClass>().selectedAbility.square, map.selectedUnitScript.tile);
             }
         }
 

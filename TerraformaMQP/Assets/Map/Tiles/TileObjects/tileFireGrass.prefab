@@ -128,3 +128,15 @@ MonoBehaviour:
   effectAmounts: 05000000
   characterOnTile: {fileID: 0}
   color: {r: 1, g: 0, b: 0, a: 0}
+  cost: 0
+  tileWas: 0
+  tileIs: 0
+  isBreakable: 0
+  hp: 10
+  maxHp: 10
+  standardHighlight: {fileID: 0}
+  canHitHighlight: {fileID: 0}
+  cannotHitHightlight: {fileID: 0}
+  currentHightlight: {fileID: 0}
+  effectsOnTile: []
+  tileName: Ashen
