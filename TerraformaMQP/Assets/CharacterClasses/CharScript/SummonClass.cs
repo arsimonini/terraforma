@@ -21,7 +21,7 @@ public class SummonClass : MonoBehaviour
         abilityInstance.spellPrefab.GetComponent<Cast_Spell>().castSpell(targets, this.gameObject);
         playAnimation();
         cooldowns[abilityList.IndexOf(selectedAbility)] = selectedAbility.spellPrefab.GetComponent<ActiveAbility>().cooldown;
-        Destroy(this);
+        Destroy(abilityInstance);
     }
 
     public bool offCooldown(int i){

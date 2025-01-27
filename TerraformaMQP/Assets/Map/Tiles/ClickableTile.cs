@@ -98,6 +98,9 @@ public class ClickableTile : MonoBehaviour
                 //UnityEngine.Debug.Log("Here");
                 map.displayAOE("Attack", this, size: 0);
             }
+            else if (map.selectedUnitScript.attackType == "Ability"){
+                map.displayAOE("Ability", this, size: map.selectedUnit.GetComponent<SummonClass>().selectedAbility.AOEsize, square: map.selectedUnit.GetComponent<SummonClass>().selectedAbility.square, map.selectedUnitScript.tile);
+            }
         }
 
         //Highlight Path
