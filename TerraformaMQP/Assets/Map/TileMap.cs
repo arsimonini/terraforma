@@ -1268,7 +1268,7 @@ public class TileMap : MonoBehaviour
         }
         */
         if (aoeDisplayTiles != null){
-            if (selectedUnitScript.attackType == "Spell" && selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.alternateAOEDisplay){
+            if (selectedUnitScript.attackType == "Spell" && selectedUnit.GetComponent<Hero_Character_Class>() != null && selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.alternateAOEDisplay){
                 GameObject prefab = Instantiate(selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.spellPrefab);
                 prefab.GetComponent<Cast_Spell>().removeAOEDisplay(aoeDisplayTiles);
                 Destroy(prefab);
