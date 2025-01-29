@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StoneBodyScript : BuffActions
 {
+    public GameObject magicAnimation;
 
     public override void endOfDurationEffect(Basic_Character_Class character){
         //character.takeMagicDamage(4, "Fire");
@@ -15,6 +16,8 @@ public class StoneBodyScript : BuffActions
         strikeAtPosition(character,-1,0,revenge);
         strikeAtPosition(character,0,1,revenge);
         strikeAtPosition(character,0,-1,revenge);
+
+        showAnimation(magicAnimation,character.transform.position.x,character.transform.position.y,character.transform.position.z);
 
         UnityEngine.Debug.Log("Stone Body Ended, attack strength" + revenge);
     }
@@ -52,6 +55,17 @@ public class StoneBodyScript : BuffActions
             //placeTileEffect(tile,"Earth","Rock Spikes");
             
         }
+    }
+
+    public void showAnimation(GameObject anim, float x, float y, float z, float scale = 4) {
+            GameObject animation = Instantiate(anim);
+            animation.transform.position = new Vector3(x, y, z);
+            animation.transform.localScale = animation.transform.localScale * scale;
+
+            GameObject animation2 = Instantiate(anim);
+            animation2.transform.position = new Vector3(x,y,z);
+            animation2.transform.localScale = animation2.transform.localScale * scale;
+            animation2.transform.Rotate(0.0f, 90.0f, 0.0f);
     }
 
 }
