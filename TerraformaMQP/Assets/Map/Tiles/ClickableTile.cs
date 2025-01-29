@@ -47,7 +47,9 @@ public class ClickableTile : MonoBehaviour
     }
 
     public void OnMouseEnter() {
-        if (map.aoeDisplayTiles != null && map.displayingAOE == true){
+        if (map.aoeDisplayTiles != null && map.displayingAOE == true && 
+            ((map.selectedUnit.GetComponent<Hero_Character_Class>() != null && map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell != null && map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.targeted == true) 
+            || (map.selectedUnit.GetComponent<SummonClass>() != null && map.selectedUnit.GetComponent<SummonClass>().selectedAbility != null && map.selectedUnit.GetComponent<SummonClass>().selectedAbility.targeted == true))){
             map.removeAOEDisplay();
         }
         map.hidePath();
@@ -91,7 +93,7 @@ public class ClickableTile : MonoBehaviour
         }
 
         if (map.selectedUnitScript != null && map.selectedUnitScript.targeting && map.targetList.Contains(this.gameObject) || (characterOnTile != null && map.targetList.Contains(characterOnTile))){
-            if (map.selectedUnitScript.attackType == "Spell" && map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.targeted == true){
+            if (map.selectedUnitScript.attackType == "Spell"){
                 map.displayAOE("Spell", this, size: map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.AOEsize, square: map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.square, map.selectedUnitScript.tile);
             }
             else if (map.selectedUnitScript.attackType == "Attack"){
@@ -99,6 +101,14 @@ public class ClickableTile : MonoBehaviour
                 map.displayAOE("Attack", this, size: 0);
             }
             else if (map.selectedUnitScript.attackType == "Ability"){
+                map.displayAOE("Ability", this, size: map.selectedUnit.GetComponent<SummonClass>().selectedAbility.AOEsize, square: map.selectedUnit.GetComponent<SummonClass>().selectedAbility.square, map.selectedUnitScript.tile);
+            }
+        }
+        else if (map.selectedUnitScript != null && map.selectedUnitScript.targeting){
+            if (map.selectedUnitScript.attackType == "Spell" && map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.targeted == false){
+                map.displayAOE("Spell", this, size: map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.AOEsize, square: map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.square, map.selectedUnitScript.tile);
+            }
+            else if (map.selectedUnitScript.attackType == "Ability" && map.selectedUnit.GetComponent<SummonClass>().selectedAbility.targeted == false){
                 map.displayAOE("Ability", this, size: map.selectedUnit.GetComponent<SummonClass>().selectedAbility.AOEsize, square: map.selectedUnit.GetComponent<SummonClass>().selectedAbility.square, map.selectedUnitScript.tile);
             }
         }

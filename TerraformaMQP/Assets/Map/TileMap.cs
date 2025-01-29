@@ -1145,6 +1145,12 @@ public class TileMap : MonoBehaviour
         }
         //if (selectedUnit.gameObject.tag == "PlayerTeam"){
             displayRange();
+            if (selectedUnitScript.attackType == "Spell" && selectedUnit.GetComponent<Hero_Character_Class>() != null){
+                displayAOE(selectedUnitScript.attackType, tile, size: selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.AOEsize, square: selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.square, targetersTile: selectedUnitScript.tile);
+            }
+            else if (selectedUnitScript.attackType == "Ability" && selectedUnit.GetComponent<SummonClass>() != null){
+                displayAOE(selectedUnitScript.attackType, tile, size: selectedUnit.GetComponent<SummonClass>().selectedAbility.AOEsize, square: selectedUnit.GetComponent<SummonClass>().selectedAbility.square, targetersTile: selectedUnitScript.tile);
+            }
         //}
     }
 
@@ -1201,6 +1207,20 @@ public class TileMap : MonoBehaviour
             GameObject prefab = Instantiate(selectedUnit.GetComponent<SummonClass>().selectedAbility.spellPrefab);
             aoeDisplayTiles = prefab.GetComponent<Cast_Spell>().displaySpecificAOE(attackType, centerTile, size, square, targetersTile);
             Destroy(prefab);
+        }
+        else if ((attackType == "Spell" || attackType == "Ability") && ((selectedUnit.GetComponent<Hero_Character_Class>() != null && selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.targeted == false) || (selectedUnit.GetComponent<SummonClass>() != null && selectedUnit.GetComponent<SummonClass>().selectedAbility.targeted == false))){
+            if (targetList != null){
+                for (int i = 0; i < targetList.Count; i++){
+                    if (targetList[i].GetComponent<ClickableTile>() != null){
+                        targetList[i].GetComponent<ClickableTile>().canHit();
+                        aoeDisplayTiles.Add(targetList[i]);
+                    }
+                    else {
+                        targetList[i].GetComponent<Basic_Character_Class>().tile.canHit();
+                        aoeDisplayTiles.Add(targetList[i].GetComponent<Basic_Character_Class>().tile.gameObject);
+                    }
+                }
+            }
         }
         else if (size == 0 && centerTile.gameObject.tag != "Wall"){
             centerTile.canHit();
