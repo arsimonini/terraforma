@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: StoneBody
   m_EditorClassIdentifier: 
-  manaCost: 3
+  manaCost: 6
   spellName: Stone Body
   elementType: Earth
   spellPrefab: {fileID: 5642006647470111640, guid: b2ca2c5ee6864804cb263d02a81fd2a9, type: 3}

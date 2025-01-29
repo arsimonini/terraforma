@@ -77,7 +77,7 @@ public class Basic_Character_Class : MonoBehaviour
     [SerializeField] private AudioClip[] missedAttack;
 
 
-
+    public int startHP = 0; //This is needed for Stone Body to work, as it tracks the HP at the start of Wold's spell and
 
 
 

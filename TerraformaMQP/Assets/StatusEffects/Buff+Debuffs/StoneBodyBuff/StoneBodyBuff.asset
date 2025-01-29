@@ -15,8 +15,8 @@ MonoBehaviour:
   statsToEffect:
   - movementSpeed
   - defense
-  amountsToEffect: feffffff0a000000
-  duration: 5
+  amountsToEffect: feffffff14000000
+  duration: 3
   source: Stone Body
   name: Stone Body
   playerTeam: 0

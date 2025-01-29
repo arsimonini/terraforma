@@ -12,7 +12,7 @@ public class BuffClass : ScriptableObject
     public bool playerTeam;
     public Basic_Character_Class character;
     public GameObject buffAsset;
-    public GameObject buffAnimationPrefab;
+    public GameObject buffAnimationPrefab; 
 
     public bool reduceDuration(){
         if (duration > 1){

@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class StoneBodyScript : BuffActions
 {
+
     public override void endOfDurationEffect(Basic_Character_Class character){
-        UnityEngine.Debug.Log("WOLD TIME. STONE BODY, BURST!");
         //character.takeMagicDamage(4, "Fire");
 
         //burst, hitting enemies to left, right, up, and down
-        int revenge = 500;
+        int revenge = (int) Mathf.Max(0,((float) character.startHP-character.health) / 1.2f);
+
         strikeAtPosition(character,1,0,revenge);
         strikeAtPosition(character,-1,0,revenge);
         strikeAtPosition(character,0,1,revenge);
         strikeAtPosition(character,0,-1,revenge);
+
+        UnityEngine.Debug.Log("Stone Body Ended, attack strength" + revenge);
     }
 
     public void strikeAtPosition(Basic_Character_Class caster = null, int xOffset = 0, int yOffset = 0, int damage = 0) {
