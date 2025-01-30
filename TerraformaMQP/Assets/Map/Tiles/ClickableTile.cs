@@ -169,24 +169,30 @@ public class ClickableTile : MonoBehaviour
 
     //Adds an effect to the tile
     //Takes in an effect to add
-    public void addEffectToTile(TileEffect effect){
+    public void addEffectToTile(TileEffect effect, bool fromReact = false){
         //Adds the effect to the effectsOnTile list
         effectsOnTile.Add(effect);
+        List<int> tempAmounts = new List<int>();
+        List<string> tempNames = new List<string>();
         //Updates the tile's list of statsToEffect and effectAmounts by either adding new stats to effect if they aren't already within the original list, or adding the new amounts to the pre-existing amounts
         for (int i = 0; i < effect.statToEffect.Count; i++){
             if (statsToEffect.Contains(effect.statToEffect[i])){
                 int statLoc = checkList(effect.statToEffect[i]);
                 effectAmounts[statLoc] += effect.amountToEffect[i];
+                tempAmounts.Add(effect.amountToEffect[i]);
+                tempNames.Add(effect.statToEffect[i]);
             }
             else{
                 statsToEffect.Add(effect.statToEffect[i]);
                 effectAmounts.Add(effect.amountToEffect[i]);
+                tempAmounts.Add(effect.amountToEffect[i]);
+                tempNames.Add(effect.statToEffect[i]);
             }
         }
         cost += effect.movementCostIncrease;
         //If there is a character on the tile then it's tile effect is then updated to reflect the new stats
         if (characterOnTile != null){
-            updateTileEffect();
+            updateTileEffect(tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact);
         }
         //effect.tileEffectPrefab.GetComponent<tileEffectActions>().react(effectsOnTile, this, effect);
     }
@@ -227,9 +233,9 @@ public class ClickableTile : MonoBehaviour
     }
 
     //Recreates the tile effect with the current stat changes, updating the character on the tile
-    public void updateTileEffect(){
+    public void updateTileEffect(List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false){
         StatusEffect newEffect = new StatusEffect();
-        newEffect.initializeTileEffect(statsToEffect, name, effectAmounts, characterOnTile, name + " Effect");
+        newEffect.initializeTileEffect(statsToEffect, name, effectAmounts, characterOnTile, name + " Effect", tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact);
     }
     
     //---REDUNDANT, NEED TO DESTROY---
