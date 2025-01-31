@@ -344,6 +344,7 @@ public class GameControllerScript : MonoBehaviour
                     updateSelectedObject(null);
                     //Ends all of the player's units' turns
                     endAllPlayerTurns();
+                    regenMana();
                 }
                 break;
             //Triggers all of the end of turn effects on the player units and advances their durations, then triggers all of the start of turn effects on enemy units, then cleans the lists of enemy and player units remaining
@@ -559,6 +560,14 @@ public class GameControllerScript : MonoBehaviour
         for (int i = 0; i < playerTeamList.Count; i++){
             if (playerTeamList[i].GetComponent<SummonClass>()){
                 playerTeamList[i].GetComponent<SummonClass>().reduceCooldowns();
+            }
+        }
+    }
+
+    public void regenMana(){
+        for (int i = 0; i < playerTeamList.Count; i++){
+            if (playerTeamList[i].GetComponent<Hero_Character_Class>()){
+                playerTeamList[i].GetComponent<Hero_Character_Class>().regenMana(2);
             }
         }
     }
