@@ -93,9 +93,10 @@ public class ReactionController : MonoBehaviour
 
             }
             else if(tile.gameObject.name.Contains("tileWoodPlank")){
-
+                checkWoodPlankReaction(tile, damageType, source, playerTeam);
             }
             else if(tile.gameObject.name.Contains("tileDenseForest")){
+                checkDenseForestReaction(tile, damageType, source, playerTeam);
 
             }
             else if(tile.gameObject.name.Contains("tileLightForest")){
@@ -351,6 +352,98 @@ public class ReactionController : MonoBehaviour
             case "Earth":
                 newEffect = Instantiate(tileEffects[2]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source);
+                break;
+
+            case "Air":
+                break;
+
+            case "Lightning":
+                break;
+
+            case "Ice":
+                break;
+
+            case "Plant":
+                break;
+        }
+    }
+
+    private void checkDenseForestReaction(ClickableTile tile, string damageType, string source, bool playerTeam){
+        TileEffect newEffect;
+        switch(damageType){
+            case "Fire":
+                newEffect = Instantiate(tileEffects[0]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
+                break;
+
+            case "Water":
+                newEffect = Instantiate(tileEffects[1]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
+                break;
+
+            case "Earth":
+                newEffect = Instantiate(tileEffects[2]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source);
+                break;
+
+            case "Air":
+                break;
+
+            case "Lightning":
+                break;
+
+            case "Ice":
+                break;
+
+            case "Plant":
+                break;
+        }
+    }
+
+    private void checkStoneReaction(ClickableTile tile, string damageType, string source, bool playerTeam){
+        TileEffect newEffect;
+        switch(damageType){
+            case "Fire":
+                break;
+
+            case "Water":
+                newEffect = Instantiate(tileEffects[1]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
+                break;
+
+            case "Earth":
+                newEffect = Instantiate(tileEffects[2]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source);
+                break;
+
+            case "Air":
+                break;
+
+            case "Lightning":
+                break;
+
+            case "Ice":
+                break;
+
+            case "Plant":
+                break;
+        }
+    }
+
+    private void checkWoodPlankReaction(ClickableTile tile, string damageType, string source, bool playerTeam){
+        TileEffect newEffect;
+        switch(damageType){
+            case "Fire":
+                newEffect = Instantiate(tileEffects[0]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
+                break;
+
+            case "Water":
+                newEffect = Instantiate(tileEffects[1]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
+                break;
+
+            case "Earth":
                 break;
 
             case "Air":
