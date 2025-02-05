@@ -20,10 +20,14 @@ public class BuffClass : ScriptableObject
             buffAsset.GetComponent<BuffActions>().tickEffect(character);
             return true;
         }
-        else{
+        else if (duration == 1){
             duration--;
             buffAsset.GetComponent<BuffActions>().endOfDurationEffect(character);
             return false;
+        }
+        else {
+            buffAsset.GetComponent<BuffActions>().tickEffect(character);
+            return true;
         }
     }
 

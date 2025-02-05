@@ -238,17 +238,17 @@ public class ReactionController : MonoBehaviour
         switch(damageType){
             case "Fire":
                 newEffect = Instantiate(tileEffects[0]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
                 break;
 
             case "Water":
                 newEffect = Instantiate(tileEffects[1]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
                 break;
 
             case "Earth":
                 newEffect = Instantiate(tileEffects[2]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true);
                 break;
 
             case "Air":
@@ -270,7 +270,7 @@ public class ReactionController : MonoBehaviour
         switch(damageType){
             case "Fire":
                 newEffect = Instantiate(tileEffects[0]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 1);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 1, fromReact: true);
                 break;
 
             case "Water":
@@ -281,12 +281,12 @@ public class ReactionController : MonoBehaviour
                 }
                 ClickableTile newTile = tile.map.swapTiles(tile, 2, true);
                 newEffect = Instantiate(tileEffects[1]);
-                newEffect.createTileEffect(playerTeam, newTile, newSource: source, newDuration: 3);
+                newEffect.createTileEffect(playerTeam, newTile, newSource: source, newDuration: 3, fromReact: true);
                 break;
 
             case "Earth":
                 newEffect = Instantiate(tileEffects[2]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true);
                 break;
                 
             case "Air":
@@ -313,12 +313,12 @@ public class ReactionController : MonoBehaviour
 
             case "Water":
                 newEffect = Instantiate(tileEffects[1]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
                 break;
 
             case "Earth":
                 newEffect = Instantiate(tileEffects[2]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true);
                 break;
 
             case "Air":
@@ -340,17 +340,17 @@ public class ReactionController : MonoBehaviour
         switch(damageType){
             case "Fire":
                 newEffect = Instantiate(tileEffects[0]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
                 break;
 
             case "Water":
                 newEffect = Instantiate(tileEffects[1]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
                 break;
 
             case "Earth":
                 newEffect = Instantiate(tileEffects[2]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true);
                 break;
 
             case "Air":

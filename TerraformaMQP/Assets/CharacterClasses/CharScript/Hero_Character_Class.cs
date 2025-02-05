@@ -117,7 +117,7 @@ public class Hero_Character_Class : MonoBehaviour
     //Regenerates Mana for the character, but not over the characters maximum amount
     //Input - Amount of mana to regenerate
 
-    void regenMana(int amount){
+    public void regenMana(int amount){
         mana = mana + amount;
         if (mana > maxMana.moddedValue)
         {

@@ -379,7 +379,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Adds a status effect to the character
     //Input - Effect to add, If the effect is coming from a tile or Buff/Debuff
 
-    public void addStatus(StatusEffect effect, bool fromTile)
+    public void addStatus(StatusEffect effect, bool fromTile, List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false)
     {
         //Iterates over the list of stats that need to be effected
         for (int i = 0; i < effect.statToEffect.Count; i++)
@@ -388,47 +388,80 @@ public class Basic_Character_Class : MonoBehaviour
             switch (effect.statToEffect[i])
             {
                 case "health":
+                    if (fromReact){
+                        increaseHealth(effect.amount[i]);    
+                    }
                     increaseHealth(effect.amount[i]);
                     break;
 
                 case "attack":
+                    if (fromReact){
+                        increaseAttack(effect.amount[i]);    
+                    }
                     increaseAttack(effect.amount[i]);
                     break;
 
                 case "speed":
+                    if (fromReact){
+                        increaseSpeed(effect.amount[i]);    
+                    }
                     increaseSpeed(effect.amount[i]);
                     break;
 
                 case "maxHealth":
+                    if (fromReact){
+                        increaseMaxHealth(effect.amount[i]);    
+                    }
                     increaseMaxHealth(effect.amount[i]);
                     break;
 
                 case "movementSpeed":
+                    if (fromReact){
+                        increaseMoveSpeed(effect.amount[i]);    
+                    }
                     increaseMoveSpeed(effect.amount[i]);
                     break;
 
                 case "resistence":
+                    if (fromReact){
+                        increaseResistence(effect.amount[i]);    
+                    }
                     increaseResistence(effect.amount[i]);
                     break;
 
                 case "defense":
+                    if (fromReact){
+                        increaseDefense(effect.amount[i]);    
+                    }
                     increaseDefense(effect.amount[i]);
                     break;
 
                 case "criticalChance":
+                    if (fromReact){
+                        increaseCritChance(effect.amount[i]);    
+                    }
                     increaseCritChance(effect.amount[i]);
                     break;
 
                 case "accuracy":
+                    if (fromReact){
+                        increaseAccuracy(effect.amount[i]);    
+                    }
                     increaseAccuracy(effect.amount[i]);
                     break;
 
                 case "totalActions":
+                    if (fromReact){
+                        increaseTotalActions(effect.amount[i]);    
+                    }
                     increaseTotalActions(effect.amount[i]);
                     break;
 
                 case "magic":
                     if (this.gameObject.GetComponent<Hero_Character_Class>()){
+                        if (fromReact){
+                            this.gameObject.GetComponent<Hero_Character_Class>().increaseMagic(effect.amount[i]);
+                        }
                         this.gameObject.GetComponent<Hero_Character_Class>().increaseMagic(effect.amount[i]);
                     }
                     break;
@@ -471,6 +504,7 @@ public class Basic_Character_Class : MonoBehaviour
                     break;
 
                 case "attack":
+                    UnityEngine.Debug.Log(effect.amount[i]);
                     decreaseAttack(effect.amount[i]);
                     break;
 

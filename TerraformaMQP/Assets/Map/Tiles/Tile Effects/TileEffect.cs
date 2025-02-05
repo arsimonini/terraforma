@@ -49,7 +49,7 @@ public class TileEffect : ScriptableObject
         newTile
     These are unable to be specified in the asset menu as they must be given at runtime, and so are required
     */
-    public void createTileEffect(bool newPlayerTeam, ClickableTile newTile, int newDuration = -1, List<string> newStatToEffect = null, List<int> newAmountToEffect = null, string newSource = null, string newName = null){
+    public void createTileEffect(bool newPlayerTeam, ClickableTile newTile, int newDuration = -1, List<string> newStatToEffect = null, List<int> newAmountToEffect = null, string newSource = null, string newName = null, bool fromReact = false){
         //These if statements check if the user has inputted values for the optional parameters, if not then the variables aren't changed from the base asset
         if (newDuration != -1){
             duration = newDuration;
@@ -70,11 +70,11 @@ public class TileEffect : ScriptableObject
         tile = newTile;
         playerTeam = newPlayerTeam;
         //Calls the initializeTileEffect function to add the effect to the StatusEffectController
-        initializeTileEffect();
+        initializeTileEffect(fromReact: fromReact);
     }
 
     //Adds this to the StatusController's list of effects
-    public void initializeTileEffect(){
+    public void initializeTileEffect(bool fromReact = false){
         UnityEngine.Debug.Log("Created Tile Effect");
         //Checks if the effect should be added to the player team or enemy team effect list
         if (playerTeam == true){
@@ -84,7 +84,7 @@ public class TileEffect : ScriptableObject
             tile.map.gameObject.GetComponent<StatusEffectController>().enemyTeamTileEffects.Add(this);
         }
         //Updates the tile to incorperate the new effect's stat changes
-        tile.addEffectToTile(this);
+        tile.addEffectToTile(this, fromReact: fromReact);
         GameObject newVisual = Instantiate(tileEffectPrefab);
         tileEffectPrefab = newVisual;
         newVisual.transform.position = new Vector3 (tile.transform.position.x, tile.transform.position.y + 0.52f, tile.transform.position.z);
