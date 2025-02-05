@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Heated
   name: Heated
-  description: Add Later
+  description: Deals Damage when Moving across Tile
   timeRemaining: 0
   effectVis: {fileID: 21300000, guid: 1427e75a11a824a6fb13ffed24340c52, type: 3}
   type: Effect
