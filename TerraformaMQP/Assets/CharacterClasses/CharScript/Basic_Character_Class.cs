@@ -77,7 +77,7 @@ public class Basic_Character_Class : MonoBehaviour
     [SerializeField] private AudioClip[] missedAttack;
 
 
-
+    public int startHP = 0; //This is needed for Stone Body to work, as it tracks the HP at the start of Wold's spell and
 
 
 
@@ -629,6 +629,22 @@ public class Basic_Character_Class : MonoBehaviour
         float acc = accuracy.moddedValue;
         float cover = 0;
 
+		float scale = 3;
+		
+        //Random rand = new Random();
+		//double scale = 3;
+		
+		int hit = (int) Math.Round(75+scale*(acc-speed-cover));
+		int miss = (int) (UnityEngine.Random.Range(0,100));
+		
+		if (hit>miss) return true;
+		return false;
+    }
+
+    public bool checkAccuracyOld(float speed) {
+        float acc = accuracy.moddedValue;
+        float cover = 0;
+
 		float scale = 2;
 		float foeScale = 2;
 		
@@ -640,7 +656,6 @@ public class Basic_Character_Class : MonoBehaviour
         
         return false;
     }
-
     //Checks crit
     public bool checkCrit() {
         float crit = criticalChance.moddedValue;

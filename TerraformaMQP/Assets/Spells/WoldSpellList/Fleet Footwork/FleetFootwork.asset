@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
-  m_Name: Backfire
+  m_Name: FleetFootwork
   m_EditorClassIdentifier: 
-  manaCost: 3
-  spellName: Backfire
-  elementType: Fire
-  spellPrefab: {fileID: 5642006647470111640, guid: aeb8581c2df783f43b9b199df34e088b, type: 3}
-  description: Buff a characters Attack by 3, Speed by 2, and Defense by 4 for 3
-    turns. At the end of the duration the character takes 2 Fire damage
+  manaCost: 6
+  spellName: Fleet Footwork
+  elementType: Earth
+  spellPrefab: {fileID: 5642006647470111640, guid: d08996d05ca9e834c89904b966e327ca, type: 3}
+  description: Make an ally highly evasive for a few terms.
   targeted: 1
-  range: 4
+  range: 3
   targetTiles: 0
   targetAllies: 1
   target: {fileID: 0}

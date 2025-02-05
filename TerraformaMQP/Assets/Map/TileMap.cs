@@ -26,8 +26,8 @@ public class TileMap : MonoBehaviour
 
     public bool mapCreated = false; //If the map is fully created or not, used when instantiating the map upon level load to ensure the map is created before the units
 
-    int mapSizeX = 10; //The maximum X dimension
-    int mapSizeY = 10; //The maximum Y dimension
+    public int mapSizeX = 10; //The maximum X dimension
+    public int mapSizeY = 10; //The maximum Y dimension
 
     public List<GameObject> aoeDisplayTiles = null;
     public bool displayingAOE = false;

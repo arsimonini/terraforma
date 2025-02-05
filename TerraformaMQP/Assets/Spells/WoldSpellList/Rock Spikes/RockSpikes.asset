@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
-  m_Name: Backfire
+  m_Name: RockSpikes
   m_EditorClassIdentifier: 
-  manaCost: 3
-  spellName: Backfire
-  elementType: Fire
-  spellPrefab: {fileID: 5642006647470111640, guid: aeb8581c2df783f43b9b199df34e088b, type: 3}
-  description: Buff a characters Attack by 3, Speed by 2, and Defense by 4 for 3
-    turns. At the end of the duration the character takes 2 Fire damage
+  manaCost: 5
+  spellName: Rock Spikes
+  elementType: Earth
+  spellPrefab: {fileID: 2394175536890139692, guid: 8d0f1b9b91ade0e43abd1ebb3321ffac, type: 3}
+  description: Raise spikes from the ground, damaging foes in a wide swath and leaving
+    rocky terrain.
   targeted: 1
   range: 4
-  targetTiles: 0
-  targetAllies: 1
+  targetTiles: 1
+  targetAllies: 0
   target: {fileID: 0}
   amountOfTargets: 1
-  requireDifferentTargets: 0
+  requireDifferentTargets: 1
   targetEnemies: 0
   hitOwnTile: 0
   hitSelf: 0
   targetWalls: 0
-  AOEsize: 0
-  square: 0
-  alternateAOEDisplay: 0
+  AOEsize: 1
+  square: 1
+  alternateAOEDisplay: 1
   hyperSpecificTargeting: 0
   needSpecificTiles: 0
   specificTiles: []
