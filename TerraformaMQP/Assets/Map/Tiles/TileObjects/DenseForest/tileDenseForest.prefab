@@ -462,6 +462,7 @@ MonoBehaviour:
   cannotHitHightlight: {fileID: 3357865700613062142, guid: 17211cf1562d8fa4094a33446dbbc3c9, type: 3}
   currentHightlight: {fileID: 0}
   effectsOnTile: []
+  tileName: 
 --- !u!1 &8795742235148428868
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,7 +872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e2fe97d8e78a24005bf772a21c5f4e4c, type: 3}
       propertyPath: m_Name
-      value: tree top (1)
+      value: tree top
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e2fe97d8e78a24005bf772a21c5f4e4c, type: 3}
       propertyPath: m_Layer
