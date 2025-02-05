@@ -7694,6 +7694,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aed823b9fac848fab5c32383d8eb04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hero1: 
+  hero2: 
+  hero3: 
+  summon1_1: 
+  summon1_2: 
+  summon2_1: 
+  summon2_2: 
+  summon3_1: 
+  summon3_2: 
+  spell1_1: 
+  spell1_2: 
+  spell1_3: 
+  spell1_4: 
+  spell1_5: 
+  spell1_6: 
+  spell2_1: 
+  spell2_2: 
+  spell2_3: 
+  spell2_4: 
+  spell2_5: 
+  spell2_6: 
+  spell3_1: 
+  spell3_2: 
+  spell3_3: 
+  spell3_4: 
+  spell3_5: 
+  spell3_6: 
 --- !u!4 &1795492631
 Transform:
   m_ObjectHideFlags: 0
@@ -8133,6 +8160,7 @@ MonoBehaviour:
   SPQC: {fileID: 0}
   summonQCAsset: {fileID: 7007019163570516834, guid: 178d8279ba2f948aea2c0fb6420cce6e, type: 3}
   SMQC: {fileID: 0}
+  ti: {fileID: 1795492629}
 --- !u!1 &1935397767
 GameObject:
   m_ObjectHideFlags: 0

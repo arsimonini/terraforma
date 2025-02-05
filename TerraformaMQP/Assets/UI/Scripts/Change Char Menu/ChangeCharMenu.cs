@@ -17,9 +17,12 @@ public class ChangeCharMenu : MonoBehaviour
     public GameObject summonQCAsset;
     public GameObject SMQC = null;
 
+    public GameObject ti;
+
     // Start is called before the first frame update
     void Start()
     {
+        //ti.SetTeam();
         
     }
 
@@ -81,5 +84,9 @@ public class ChangeCharMenu : MonoBehaviour
 
     public void setCurrPos(Transform t) {
         currPos = t;
+    }
+
+    public void setTeam() {
+        //
     }
 }
