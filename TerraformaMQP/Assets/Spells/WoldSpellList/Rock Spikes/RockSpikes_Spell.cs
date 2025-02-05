@@ -215,11 +215,115 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
 
     public List<GameObject> displaySpecificAOE(string attackType, ClickableTile centerTile, int size = 0, bool square = false, ClickableTile targetersTile = null){
         List<GameObject> list = new List<GameObject>();
-        centerTile.canHit();
-        list.Add(centerTile.gameObject);
-        //centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].canHit();
-        //list.Add(centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject);
+        //centerTile.canHit();   
+        TileMap map = centerTile.map;
+
+        //
+        int centerX = targetersTile.TileX;
+        int centerY = targetersTile.TileY;
+
+        //Find the attack direction
+        int dir = findAttackDirection(targetersTile.TileX, targetersTile.TileY,centerTile.TileX,centerTile.TileY);
+        //UnityEngine.Debug.Log("Direction: " + dir);
+
+        switch (dir) {
+            case 0: //E
+                lightTile(list,map,centerX+1,centerY);
+                lightTile(list,map,centerX+2,centerY);
+                lightTile(list,map,centerX+3,centerY);
+                lightTile(list,map,centerX+4,centerY);
+                lightTile(list,map,centerX+2,centerY+1);
+                lightTile(list,map,centerX+2,centerY-1);
+                lightTile(list,map,centerX+3,centerY+1);
+                lightTile(list,map,centerX+3,centerY-1);
+                lightTile(list,map,centerX+4,centerY+1);
+                lightTile(list,map,centerX+4,centerY-1);
+                lightTile(list,map,centerX+4,centerY+2);
+                lightTile(list,map,centerX+4,centerY-2);
+                //ClickableTile ct = map.clickableTiles[centerX+1,centerY+0]; list.Add(ct.gameObject); ct.canHit(); 
+                //list.Add(map.clickableTiles[centerX+2,centerY+0].gameObject);
+                //list.Add(map.clickableTiles[centerX+3,centerY+0].gameObject);
+                //list.Add(map.clickableTiles[centerX+4,centerY+0].gameObject);
+                //list.Add(map.clickableTiles[centerX+2,centerY+1].gameObject);
+                //list.Add(map.clickableTiles[centerX+2,centerY-1].gameObject);
+                //list.Add(map.clickableTiles[centerX+3,centerY+1].gameObject);
+                //list.Add(map.clickableTiles[centerX+3,centerY-1].gameObject);
+                //list.Add(map.clickableTiles[centerX+4,centerY+1].gameObject);
+                //list.Add(map.clickableTiles[centerX+4,centerY-1].gameObject);
+                //list.Add(map.clickableTiles[centerX+4,centerY+2].gameObject);
+                //list.Add(map.clickableTiles[centerX+4,centerY+2].gameObject);
+                break;
+            case 1: //SE
+
+                break;
+            case 2: //S
+                lightTile(list,map,centerX,centerY-1);
+                lightTile(list,map,centerX,centerY-2);
+                lightTile(list,map,centerX,centerY-3);
+                lightTile(list,map,centerX,centerY-4);
+                lightTile(list,map,centerX+1,centerY-2);
+                lightTile(list,map,centerX-1,centerY-2);
+                lightTile(list,map,centerX+1,centerY-3);
+                lightTile(list,map,centerX-1,centerY-3);
+                lightTile(list,map,centerX+1,centerY-4);
+                lightTile(list,map,centerX-1,centerY-4);
+                lightTile(list,map,centerX+2,centerY-4);
+                lightTile(list,map,centerX-2,centerY-4);
+                break;
+            case 3: //SW
+                break;
+            case 4: //W
+                lightTile(list,map,centerX-1,centerY);
+                lightTile(list,map,centerX-2,centerY);
+                lightTile(list,map,centerX-3,centerY);
+                lightTile(list,map,centerX-4,centerY);
+                lightTile(list,map,centerX-2,centerY+1);
+                lightTile(list,map,centerX-2,centerY-1);
+                lightTile(list,map,centerX-3,centerY+1);
+                lightTile(list,map,centerX-3,centerY-1);
+                lightTile(list,map,centerX-4,centerY+1);
+                lightTile(list,map,centerX-4,centerY-1);
+                lightTile(list,map,centerX-4,centerY+2);
+                lightTile(list,map,centerX-4,centerY-2);
+                break;
+            case 5: //NW
+                break;
+            case 6: //N
+                lightTile(list,map,centerX,centerY+1);
+                lightTile(list,map,centerX,centerY+2);
+                lightTile(list,map,centerX,centerY+3);
+                lightTile(list,map,centerX,centerY+4);
+                lightTile(list,map,centerX+1,centerY+2);
+                lightTile(list,map,centerX-1,centerY+2);
+                lightTile(list,map,centerX+1,centerY+3);
+                lightTile(list,map,centerX-1,centerY+3);
+                lightTile(list,map,centerX+1,centerY+4);
+                lightTile(list,map,centerX-1,centerY+4);
+                lightTile(list,map,centerX+2,centerY+4);
+                lightTile(list,map,centerX-2,centerY+4);
+                break;
+            case 7: //NE
+
+                break;
+        }
+
+//        list.Add(centerTile.gameObject);
+        
+
+
         return list;
+    }
+
+    public bool lightTile(List<GameObject> l, TileMap map, int xPos, int yPos) {
+        if (xPos < 0 || yPos < 0) {
+            return false;
+        }
+
+        ClickableTile ct = map.clickableTiles[xPos,yPos];
+        ct.canHit();
+        UnityEngine.Debug.Log("location: (" + (ct.TileX) + ", "+ (ct.TileY) + ")");
+        l.Add(ct.gameObject);
+        return true;
     }
 
     public void removeAOEDisplay (List<GameObject> tiles){

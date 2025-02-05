@@ -31,7 +31,7 @@ MonoBehaviour:
   targetWalls: 0
   AOEsize: 1
   square: 1
-  alternateAOEDisplay: 0
+  alternateAOEDisplay: 1
   hyperSpecificTargeting: 0
   needSpecificTiles: 0
   specificTiles: []
