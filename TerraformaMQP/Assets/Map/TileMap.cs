@@ -34,6 +34,7 @@ public class TileMap : MonoBehaviour
     public List<GameObject> allTargets = null;
 
     public List<GameObject> movementDisplayLimit = null;
+    private bool displayMovementDisplay = true;
 
     //For Move Button
     public bool moveButtonPressed = false;
@@ -133,6 +134,15 @@ public class TileMap : MonoBehaviour
     }
 
     void Update() {
+
+        //-----FOR TESTING ONLY-----
+        if (Input.GetKeyDown(KeyCode.L) && displayMovementDisplay == true){
+            displayMovementDisplay = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.L)){
+            displayMovementDisplay = true;
+        }
+
         float speed = 2;
         float step = speed * Time.deltaTime;
 
@@ -1723,127 +1733,129 @@ public class TileMap : MonoBehaviour
 
 
     public void displayMovementLimit(int x, int y){
-        List<GameObject> tiles = new List<GameObject>();
-        bool finish = false;
-        List<Node> newList = null;
-        bool hit = false;
-        int j = 1;
-        while(finish == false){
-            hit = false;
-            UnityEngine.Debug.Log("Here");
-            for (int i = 0; i < j; i++){
-                if (checkIndex(x + i, y + j)){
-                    newList = generatePathTo(x + i, y + j, fromDisplay: true);
-                    if (newList != null && newList.Count != 0){
-                        tiles.Add(clickableTiles[x + i, y + j].gameObject);
-                        hit = true;
+        if (displayMovementDisplay){
+            List<GameObject> tiles = new List<GameObject>();
+            bool finish = false;
+            List<Node> newList = null;
+            bool hit = false;
+            int j = 1;
+            while(finish == false){
+                hit = false;
+                UnityEngine.Debug.Log("Here");
+                for (int i = 0; i < j; i++){
+                    if (checkIndex(x + i, y + j)){
+                        newList = generatePathTo(x + i, y + j, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x + i, y + j].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
                     }
-                    newList = null;
+                }
+                if (checkIndex(x + j, y + j)){
+                        newList = generatePathTo(x + j, y + j, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x + j, y + j].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                }
+                for (int i = 0; i < j * 2; i++){
+                    if (checkIndex(x + j, y + j - i)){
+                        newList = generatePathTo(x + j, y + j - i, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x + j, y + j - i].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                    }
+                }
+                if (checkIndex(x + j, y - j)){
+                        newList = generatePathTo(x + j, y - j, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x + j, y - j].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                }
+                for (int i = 0; i < j * 2; i++){
+                    if (checkIndex(x + j - i, y - j)){
+                        newList = generatePathTo(x + j - i, y - j, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x + j - i, y - j].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                    }
+                }
+                if (checkIndex(x - j, y - j)){
+                        newList = generatePathTo(x - j, y - j, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x - j, y - j].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                }
+                for (int i = 0; i < j * 2; i++){
+                    if (checkIndex(x - j, y - j + i)){
+                        newList = generatePathTo(x - j, y - j + i, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x - j, y - j + i].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                    }
+                }
+                if (checkIndex(x - j, y + j)){
+                        newList = generatePathTo(x - j, y + j, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x - j, y + j].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                }
+                for (int i = 0; i < j - 1; i++){
+                    if (checkIndex(x - j + 1 + i, y + j)){
+                        newList = generatePathTo(x - j + 1 + i, y + j, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x - j + 1 + i, y + j].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                    }
+                }
+                if (hit){
+                    UnityEngine.Debug.Log(j);
+                    j++;
+                }
+                else{
+                    finish = true;
                 }
             }
-            if (checkIndex(x + j, y + j)){
-                    newList = generatePathTo(x + j, y + j, fromDisplay: true);
-                    if (newList != null && newList.Count != 0){
-                        tiles.Add(clickableTiles[x + j, y + j].gameObject);
-                        hit = true;
-                    }
-                    newList = null;
-            }
-            for (int i = 0; i < j * 2; i++){
-                if (checkIndex(x + j, y + j - i)){
-                    newList = generatePathTo(x + j, y + j - i, fromDisplay: true);
-                    if (newList != null && newList.Count != 0){
-                        tiles.Add(clickableTiles[x + j, y + j - i].gameObject);
-                        hit = true;
-                    }
-                    newList = null;
+            UnityEngine.Debug.Log(tiles.Count);
+            tiles.Add(clickableTiles[x, y].gameObject);
+            for (int i = 0; i < tiles.Count; i++){
+                ClickableTile tileToCheck = tiles[i].GetComponent<ClickableTile>();
+                if (!tiles.Contains(clickableTiles[tileToCheck.TileX + 1, tileToCheck.TileY].gameObject)){
+                    tileToCheck.gameObject.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                }
+                if (!tiles.Contains(clickableTiles[tileToCheck.TileX - 1, tileToCheck.TileY].gameObject)){
+                    tileToCheck.gameObject.transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                }
+                if (!tiles.Contains(clickableTiles[tileToCheck.TileX, tileToCheck.TileY + 1].gameObject)){
+                    tileToCheck.gameObject.transform.Find("OutlineT").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                }
+                if (!tiles.Contains(clickableTiles[tileToCheck.TileX, tileToCheck.TileY - 1].gameObject)){
+                    tileToCheck.gameObject.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = true;
                 }
             }
-            if (checkIndex(x + j, y - j)){
-                    newList = generatePathTo(x + j, y - j, fromDisplay: true);
-                    if (newList != null && newList.Count != 0){
-                        tiles.Add(clickableTiles[x + j, y - j].gameObject);
-                        hit = true;
-                    }
-                    newList = null;
-            }
-            for (int i = 0; i < j * 2; i++){
-                if (checkIndex(x + j - i, y - j)){
-                    newList = generatePathTo(x + j - i, y - j, fromDisplay: true);
-                    if (newList != null && newList.Count != 0){
-                        tiles.Add(clickableTiles[x + j - i, y - j].gameObject);
-                        hit = true;
-                    }
-                    newList = null;
-                }
-            }
-            if (checkIndex(x - j, y - j)){
-                    newList = generatePathTo(x - j, y - j, fromDisplay: true);
-                    if (newList != null && newList.Count != 0){
-                        tiles.Add(clickableTiles[x - j, y - j].gameObject);
-                        hit = true;
-                    }
-                    newList = null;
-            }
-            for (int i = 0; i < j * 2; i++){
-                if (checkIndex(x - j, y - j + i)){
-                    newList = generatePathTo(x - j, y - j + i, fromDisplay: true);
-                    if (newList != null && newList.Count != 0){
-                        tiles.Add(clickableTiles[x - j, y - j + i].gameObject);
-                        hit = true;
-                    }
-                    newList = null;
-                }
-            }
-            if (checkIndex(x - j, y + j)){
-                    newList = generatePathTo(x - j, y + j, fromDisplay: true);
-                    if (newList != null && newList.Count != 0){
-                        tiles.Add(clickableTiles[x - j, y + j].gameObject);
-                        hit = true;
-                    }
-                    newList = null;
-            }
-            for (int i = 0; i < j - 1; i++){
-                if (checkIndex(x - j + 1 + i, y + j)){
-                    newList = generatePathTo(x - j + 1 + i, y + j, fromDisplay: true);
-                    if (newList != null && newList.Count != 0){
-                        tiles.Add(clickableTiles[x - j + 1 + i, y + j].gameObject);
-                        hit = true;
-                    }
-                    newList = null;
-                }
-            }
-            if (hit){
-                UnityEngine.Debug.Log(j);
-                j++;
-            }
-            else{
-                finish = true;
-            }
+            currentPath = null;
+            movementDisplayTiles = tiles;
         }
-        UnityEngine.Debug.Log(tiles.Count);
-        tiles.Add(clickableTiles[x, y].gameObject);
-        for (int i = 0; i < tiles.Count; i++){
-            ClickableTile tileToCheck = tiles[i].GetComponent<ClickableTile>();
-            if (!tiles.Contains(clickableTiles[tileToCheck.TileX + 1, tileToCheck.TileY].gameObject)){
-                tileToCheck.gameObject.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = true;
-            }
-            if (!tiles.Contains(clickableTiles[tileToCheck.TileX - 1, tileToCheck.TileY].gameObject)){
-                tileToCheck.gameObject.transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = true;
-            }
-            if (!tiles.Contains(clickableTiles[tileToCheck.TileX, tileToCheck.TileY + 1].gameObject)){
-                tileToCheck.gameObject.transform.Find("OutlineT").gameObject.GetComponent<MeshRenderer>().enabled = true;
-            }
-            if (!tiles.Contains(clickableTiles[tileToCheck.TileX, tileToCheck.TileY - 1].gameObject)){
-                tileToCheck.gameObject.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = true;
-            }
-        }
-        currentPath = null;
-        movementDisplayTiles = tiles;
     }
 
     public void removeMovementLimit(){
-        if (movementDisplayTiles != null && movementDisplayTiles.Count > 0){
+        if (movementDisplayTiles != null && movementDisplayTiles.Count > 0 && displayMovementDisplay){
             for (int i = 0; i < movementDisplayTiles.Count; i++){
                 movementDisplayTiles[i].gameObject.transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = false;
                 movementDisplayTiles[i].gameObject.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = false;
