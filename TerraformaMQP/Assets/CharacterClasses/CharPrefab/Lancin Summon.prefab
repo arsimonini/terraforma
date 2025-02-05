@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8307509125131471017}
   - component: {fileID: 3434780674799459154}
   - component: {fileID: 3299561186631009963}
+  - component: {fileID: 4282278907873126038}
   m_Layer: 0
   m_Name: Lancin Summon
   m_TagString: PlayerTeam
@@ -225,6 +226,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+--- !u!114 &4282278907873126038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7421672215106744178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4d552710e4913479e78c3bf9d33df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityList:
+  - {fileID: 11400000, guid: 28a653615a3a79b4eb664aee8eec5eff, type: 2}
+  selectedAbility: {fileID: 0}
+  cooldowns: 
 --- !u!1001 &3823504466312843517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,6 +447,22 @@ PrefabInstance:
     - target: {fileID: 6545480577689878064, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: attackButtonUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759236136583954470, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420588449390507276, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420588449390507276, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8307509125131471017}
+    - target: {fileID: 7420588449390507276, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: abilityButtonUI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

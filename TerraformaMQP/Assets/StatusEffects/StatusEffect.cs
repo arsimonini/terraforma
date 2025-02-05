@@ -57,7 +57,7 @@ public class StatusEffect : ScriptableObject
         newSelectedObject      |
         newName              --
     */
-    public void initializeTileEffect(List<string> newStatToEffect, string newSource, List<int> newAmount, GameObject newSelectedObject, string newName)
+    public void initializeTileEffect(List<string> newStatToEffect, string newSource, List<int> newAmount, GameObject newSelectedObject, string newName, List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false)
     {
         //Sets the variables
         statToEffect = newStatToEffect;
@@ -66,7 +66,7 @@ public class StatusEffect : ScriptableObject
         selectedObject = newSelectedObject;
         name = newName;
         //Adds the status to the selectedObject
-        selectedObject.GetComponent<Basic_Character_Class>().addStatus(this, true);
+        selectedObject.GetComponent<Basic_Character_Class>().addStatus(this, true, tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact);
     }
 
     //Reduces the remaining duration of the effect by 1

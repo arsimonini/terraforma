@@ -26,8 +26,8 @@ public class TileMap : MonoBehaviour
 
     public bool mapCreated = false; //If the map is fully created or not, used when instantiating the map upon level load to ensure the map is created before the units
 
-    int mapSizeX = 10; //The maximum X dimension
-    int mapSizeY = 10; //The maximum Y dimension
+    public int mapSizeX = 10; //The maximum X dimension
+    public int mapSizeY = 10; //The maximum Y dimension
 
     public List<GameObject> aoeDisplayTiles = null;
     public bool displayingAOE = false;
@@ -1145,6 +1145,12 @@ public class TileMap : MonoBehaviour
         }
         //if (selectedUnit.gameObject.tag == "PlayerTeam"){
             displayRange();
+            if (selectedUnitScript.attackType == "Spell" && selectedUnit.GetComponent<Hero_Character_Class>() != null){
+                displayAOE(selectedUnitScript.attackType, tile, size: selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.AOEsize, square: selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.square, targetersTile: selectedUnitScript.tile);
+            }
+            else if (selectedUnitScript.attackType == "Ability" && selectedUnit.GetComponent<SummonClass>() != null){
+                displayAOE(selectedUnitScript.attackType, tile, size: selectedUnit.GetComponent<SummonClass>().selectedAbility.AOEsize, square: selectedUnit.GetComponent<SummonClass>().selectedAbility.square, targetersTile: selectedUnitScript.tile);
+            }
         //}
     }
 
@@ -1197,6 +1203,25 @@ public class TileMap : MonoBehaviour
             aoeDisplayTiles = prefab.GetComponent<Cast_Spell>().displaySpecificAOE(attackType, centerTile, size, square, targetersTile);
             Destroy(prefab);
         }
+        else if (attackType == "Ability" && selectedUnit.GetComponent<SummonClass>().selectedAbility.alternateAOEDisplay){
+            GameObject prefab = Instantiate(selectedUnit.GetComponent<SummonClass>().selectedAbility.spellPrefab);
+            aoeDisplayTiles = prefab.GetComponent<Cast_Spell>().displaySpecificAOE(attackType, centerTile, size, square, targetersTile);
+            Destroy(prefab);
+        }
+        else if ((attackType == "Spell" || attackType == "Ability") && ((selectedUnit.GetComponent<Hero_Character_Class>() != null && selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.targeted == false) || (selectedUnit.GetComponent<SummonClass>() != null && selectedUnit.GetComponent<SummonClass>().selectedAbility.targeted == false))){
+            if (targetList != null){
+                for (int i = 0; i < targetList.Count; i++){
+                    if (targetList[i].GetComponent<ClickableTile>() != null){
+                        targetList[i].GetComponent<ClickableTile>().canHit();
+                        aoeDisplayTiles.Add(targetList[i]);
+                    }
+                    else {
+                        targetList[i].GetComponent<Basic_Character_Class>().tile.canHit();
+                        aoeDisplayTiles.Add(targetList[i].GetComponent<Basic_Character_Class>().tile.gameObject);
+                    }
+                }
+            }
+        }
         else if (size == 0 && centerTile.gameObject.tag != "Wall"){
             centerTile.canHit();
             aoeDisplayTiles.Add(centerTile.gameObject);
@@ -1207,50 +1232,52 @@ public class TileMap : MonoBehaviour
             }
             centerTile.canHit();
             aoeDisplayTiles.Add(centerTile.gameObject);
-            for (int i = 0; i < size; i++){
-                if (checkIndex(centerTile.TileX + i, centerTile.TileY + size) && !clickableTiles[centerTile.TileX + i, centerTile.TileY + size].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + i, centerTile.TileY + size].gameObject.transform.position)*/){
-                    clickableTiles[centerTile.TileX + i, centerTile.TileY + size].canHit();
-                    aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + i, centerTile.TileY + size].gameObject);
+            for (int j = 0; j < size + 1; j++){
+                for (int i = 0; i < j; i++){
+                    if (checkIndex(centerTile.TileX + i, centerTile.TileY + j) && !clickableTiles[centerTile.TileX + i, centerTile.TileY + j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + i, centerTile.TileY + j].gameObject.transform.position)*/){
+                        clickableTiles[centerTile.TileX + i, centerTile.TileY + j].canHit();
+                        aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + i, centerTile.TileY + j].gameObject);
+                    }
                 }
-            }
-            if (checkIndex(centerTile.TileX + size, centerTile.TileY + size) && !clickableTiles[centerTile.TileX + size, centerTile.TileY + size].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + size, centerTile.TileY + size].gameObject.transform.position)*/){
-                clickableTiles[centerTile.TileX + size, centerTile.TileY + size].canHit();
-                aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + size, centerTile.TileY + size].gameObject);
-            }
-            for (int i = 0; i < size * 2; i++){
-                if (checkIndex(centerTile.TileX + size, centerTile.TileY + size - i) && !clickableTiles[centerTile.TileX + size, centerTile.TileY + size - i].gameObject.name.Contains("Wall")  /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + size, centerTile.TileY + size - i].gameObject.transform.position)*/){
-                    clickableTiles[centerTile.TileX + size, centerTile.TileY + size - i].canHit();
-                    aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + size, centerTile.TileY + size - i].gameObject);
+                if (checkIndex(centerTile.TileX + j, centerTile.TileY + j) && !clickableTiles[centerTile.TileX + j, centerTile.TileY + j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + j, centerTile.TileY + j].gameObject.transform.position)*/){
+                    clickableTiles[centerTile.TileX + j, centerTile.TileY + j].canHit();
+                    aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + j, centerTile.TileY + j].gameObject);
                 }
-            }
-            if (checkIndex(centerTile.TileX + size, centerTile.TileY - size) && !clickableTiles[centerTile.TileX + size, centerTile.TileY - size].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + size, centerTile.TileY - size].gameObject.transform.position)*/){
-                clickableTiles[centerTile.TileX + size, centerTile.TileY - size].canHit();
-                aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + size, centerTile.TileY - size].gameObject);
-            }
-            for (int i = 0; i < size * 2; i++){
-                if (checkIndex(centerTile.TileX + size - i, centerTile.TileY - size) && !clickableTiles[centerTile.TileX + size - i, centerTile.TileY - size].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + size - i, centerTile.TileY - size].gameObject.transform.position)*/){
-                    clickableTiles[centerTile.TileX + size - i, centerTile.TileY - size].canHit();
-                    aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + size - i, centerTile.TileY - size].gameObject);
+                for (int i = 0; i < j * 2; i++){
+                    if (checkIndex(centerTile.TileX + j, centerTile.TileY + j - i) && !clickableTiles[centerTile.TileX + j, centerTile.TileY + j - i].gameObject.name.Contains("Wall")  /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + j, centerTile.TileY + j - i].gameObject.transform.position)*/){
+                        clickableTiles[centerTile.TileX + j, centerTile.TileY + j - i].canHit();
+                        aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + j, centerTile.TileY + j - i].gameObject);
+                    }
                 }
-            }
-            if (checkIndex(centerTile.TileX - size, centerTile.TileY - size) && !clickableTiles[centerTile.TileX - size, centerTile.TileY - size].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - size, centerTile.TileY - size].gameObject.transform.position)*/){
-                clickableTiles[centerTile.TileX - size, centerTile.TileY - size].canHit();
-                aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - size, centerTile.TileY - size].gameObject);
-            }
-            for (int i = 0; i < size * 2; i++){
-                if (checkIndex(centerTile.TileX - size, centerTile.TileY - size + i) && !clickableTiles[centerTile.TileX - size, centerTile.TileY - size + i].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - size, centerTile.TileY - size + i].gameObject.transform.position)*/){
-                    clickableTiles[centerTile.TileX - size, centerTile.TileY - size + i].canHit();
-                    aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - size, centerTile.TileY - size + i].gameObject);
+                if (checkIndex(centerTile.TileX + j, centerTile.TileY - j) && !clickableTiles[centerTile.TileX + j, centerTile.TileY - j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + j, centerTile.TileY - j].gameObject.transform.position)*/){
+                    clickableTiles[centerTile.TileX + j, centerTile.TileY - j].canHit();
+                    aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + j, centerTile.TileY - j].gameObject);
                 }
-            }
-            if (checkIndex(centerTile.TileX - size, centerTile.TileY + size) && !clickableTiles[centerTile.TileX - size, centerTile.TileY + size].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - size, centerTile.TileY + size].gameObject.transform.position)*/){
-                clickableTiles[centerTile.TileX - size, centerTile.TileY + size].canHit();
-                aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - size, centerTile.TileY + size].gameObject);
-            }
-            for (int i = 0; i < size - 1; i++){
-                if (checkIndex(centerTile.TileX - size + 1 + i, centerTile.TileY + size) && !clickableTiles[centerTile.TileX - size + 1 + i, centerTile.TileY + size].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - size + 1 + i, centerTile.TileY + size].gameObject.transform.position)*/){
-                    clickableTiles[centerTile.TileX - size + 1 + i, centerTile.TileY + size].canHit();
-                    aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - size + 1 + i, centerTile.TileY + size].gameObject);
+                for (int i = 0; i < j * 2; i++){
+                    if (checkIndex(centerTile.TileX + j - i, centerTile.TileY - j) && !clickableTiles[centerTile.TileX + j - i, centerTile.TileY - j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + j - i, centerTile.TileY - j].gameObject.transform.position)*/){
+                        clickableTiles[centerTile.TileX + j - i, centerTile.TileY - j].canHit();
+                        aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + j - i, centerTile.TileY - j].gameObject);
+                    }
+                }
+                if (checkIndex(centerTile.TileX - j, centerTile.TileY - j) && !clickableTiles[centerTile.TileX - j, centerTile.TileY - j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - j, centerTile.TileY - j].gameObject.transform.position)*/){
+                    clickableTiles[centerTile.TileX - j, centerTile.TileY - j].canHit();
+                    aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - j, centerTile.TileY - j].gameObject);
+                }
+                for (int i = 0; i < j * 2; i++){
+                    if (checkIndex(centerTile.TileX - j, centerTile.TileY - j + i) && !clickableTiles[centerTile.TileX - j, centerTile.TileY - j + i].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - j, centerTile.TileY - j + i].gameObject.transform.position)*/){
+                        clickableTiles[centerTile.TileX - j, centerTile.TileY - j + i].canHit();
+                        aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - j, centerTile.TileY - j + i].gameObject);
+                    }
+                }
+                if (checkIndex(centerTile.TileX - j, centerTile.TileY + j) && !clickableTiles[centerTile.TileX - j, centerTile.TileY + j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - j, centerTile.TileY + j].gameObject.transform.position)*/){
+                    clickableTiles[centerTile.TileX - j, centerTile.TileY + j].canHit();
+                    aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - j, centerTile.TileY + j].gameObject);
+                }
+                for (int i = 0; i < j - 1; i++){
+                    if (checkIndex(centerTile.TileX - j + 1 + i, centerTile.TileY + j) && !clickableTiles[centerTile.TileX - j + 1 + i, centerTile.TileY + j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - j + 1 + i, centerTile.TileY + j].gameObject.transform.position)*/){
+                        clickableTiles[centerTile.TileX - j + 1 + i, centerTile.TileY + j].canHit();
+                        aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - j + 1 + i, centerTile.TileY + j].gameObject);
+                    }
                 }
             }
         }
@@ -1310,8 +1337,7 @@ public class TileMap : MonoBehaviour
     //Takes in a GameObject that will be the selectedTarget that is searched for
     public bool checkForTarget(GameObject selectedTarget, int reach)
     {
-        UnityEngine.Debug.Log(selectedTarget);
-        if (targetList.Contains(selectedTarget) || (selectedTarget.GetComponent<ClickableTile>() && targetList.Contains(selectedTarget.GetComponent<ClickableTile>().characterOnTile)) || targetList.Contains(selectedTarget.GetComponent<Basic_Character_Class>().tile.gameObject)){
+        if (targetList.Contains(selectedTarget) || (selectedTarget.GetComponent<ClickableTile>() != null && selectedTarget.GetComponent<ClickableTile>().characterOnTile != null && targetList.Contains(selectedTarget.GetComponent<ClickableTile>().characterOnTile)) || (selectedTarget.GetComponent<Basic_Character_Class>() != null && targetList.Contains(selectedTarget.GetComponent<Basic_Character_Class>().tile.gameObject))){
             return true;
         }
         //If the target can't be found return false

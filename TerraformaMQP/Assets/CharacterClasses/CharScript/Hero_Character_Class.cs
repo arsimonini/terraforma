@@ -117,7 +117,7 @@ public class Hero_Character_Class : MonoBehaviour
     //Regenerates Mana for the character, but not over the characters maximum amount
     //Input - Amount of mana to regenerate
 
-    void regenMana(int amount){
+    public void regenMana(int amount){
         mana = mana + amount;
         if (mana > maxMana.moddedValue)
         {
@@ -175,7 +175,6 @@ public class Hero_Character_Class : MonoBehaviour
     //Takes in a list of GameObjects as the targets
     public void castSpell(List<GameObject> targets)
     {
-
         this.gameObject.GetComponent<Basic_Character_Class>().comlog.addText("-> " + gameObject.GetComponent<Basic_Character_Class>().name + " has Cast " + selectedSpell.name);
         //Instantiates an instance of the selected spell, then calls the castSpell function within it, passing along the targets and then this GameObject as the spells caster
         Basic_Spell_Class spellInstance = Instantiate(selectedSpell);
