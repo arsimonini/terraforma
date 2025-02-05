@@ -254,7 +254,13 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
                 //list.Add(map.clickableTiles[centerX+4,centerY+2].gameObject);
                 break;
             case 1: //SE
-
+                lightTile(list,map,centerX+1,centerY-1);
+                lightTile(list,map,centerX+2,centerY-2);
+                lightTile(list,map,centerX+3,centerY-3);
+                lightTile(list,map,centerX+3,centerY-2);
+                lightTile(list,map,centerX+2,centerY-3);
+                lightTile(list,map,centerX+4,centerY-3);
+                lightTile(list,map,centerX+3,centerY-4);
                 break;
             case 2: //S
                 lightTile(list,map,centerX,centerY-1);
@@ -271,6 +277,13 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
                 lightTile(list,map,centerX-2,centerY-4);
                 break;
             case 3: //SW
+                lightTile(list,map,centerX-1,centerY-1);
+                lightTile(list,map,centerX-2,centerY-2);
+                lightTile(list,map,centerX-3,centerY-3);
+                lightTile(list,map,centerX-3,centerY-2);
+                lightTile(list,map,centerX-2,centerY-3);
+                lightTile(list,map,centerX-4,centerY-3);
+                lightTile(list,map,centerX-3,centerY-4);
                 break;
             case 4: //W
                 lightTile(list,map,centerX-1,centerY);
@@ -287,6 +300,13 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
                 lightTile(list,map,centerX-4,centerY-2);
                 break;
             case 5: //NW
+                lightTile(list,map,centerX-1,centerY+1);
+                lightTile(list,map,centerX-2,centerY+2);
+                lightTile(list,map,centerX-3,centerY+3);
+                lightTile(list,map,centerX-3,centerY+2);
+                lightTile(list,map,centerX-2,centerY+3);
+                lightTile(list,map,centerX-4,centerY+3);
+                lightTile(list,map,centerX-3,centerY+4);
                 break;
             case 6: //N
                 lightTile(list,map,centerX,centerY+1);
@@ -303,7 +323,13 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
                 lightTile(list,map,centerX-2,centerY+4);
                 break;
             case 7: //NE
-
+                lightTile(list,map,centerX+1,centerY+1);
+                lightTile(list,map,centerX+2,centerY+2);
+                lightTile(list,map,centerX+3,centerY+3);
+                lightTile(list,map,centerX+3,centerY+2);
+                lightTile(list,map,centerX+2,centerY+3);
+                lightTile(list,map,centerX+4,centerY+3);
+                lightTile(list,map,centerX+3,centerY+4);
                 break;
         }
 
@@ -315,7 +341,7 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
     }
 
     public bool lightTile(List<GameObject> l, TileMap map, int xPos, int yPos) {
-        if (xPos < 0 || yPos < 0) {
+        if (xPos < 0 || yPos < 0 || xPos > map.mapSizeX || yPos > map.mapSizeY) {
             return false;
         }
 
