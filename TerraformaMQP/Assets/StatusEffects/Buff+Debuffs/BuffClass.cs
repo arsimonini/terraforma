@@ -12,7 +12,7 @@ public class BuffClass : ScriptableObject
     public bool playerTeam;
     public Basic_Character_Class character;
     public GameObject buffAsset;
-    public GameObject buffAnimationPrefab;
+    public GameObject buffAnimationPrefab; 
 
     public bool reduceDuration(){
         if (duration > 1){
@@ -20,10 +20,14 @@ public class BuffClass : ScriptableObject
             buffAsset.GetComponent<BuffActions>().tickEffect(character);
             return true;
         }
-        else{
+        else if (duration == 1){
             duration--;
             buffAsset.GetComponent<BuffActions>().endOfDurationEffect(character);
             return false;
+        }
+        else {
+            buffAsset.GetComponent<BuffActions>().tickEffect(character);
+            return true;
         }
     }
 
