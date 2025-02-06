@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: DForest
   name: Dense Forest
-  description: Handle Later
+  description: Increases Evasion
   timeRemaining: 0
-  effectVis: {fileID: 21300000, guid: 4ff608b571fee4808a1e9fca32f61b37, type: 3}
+  effectVis: {fileID: 21300000, guid: f17276827aff4420cbce36475890f6e5, type: 3}
   type: Tile

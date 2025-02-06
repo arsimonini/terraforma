@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Soaked
   name: Soaked
-  description: Add Later
+  description: Lowers Evasion
   timeRemaining: 0
   effectVis: {fileID: 21300000, guid: c9861a2bfeadb4e969dc332c1d903b54, type: 3}
   type: Effect

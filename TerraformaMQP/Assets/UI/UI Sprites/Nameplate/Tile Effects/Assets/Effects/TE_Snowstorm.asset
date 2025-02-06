@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Snowstorm
   name: Snowstorm
-  description: Add Later
+  description: "Lower\u2019s Accuracy while Increasing Evasion and Dealing Damage"
   timeRemaining: 0
   effectVis: {fileID: 21300000, guid: f732094aa8f1c43e692f109c61f4c789, type: 3}
   type: Effect

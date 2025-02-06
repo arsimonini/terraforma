@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Electrified
   name: Electrified
-  description: Deals Electric damage to tile and those around it
+  description: 'Prevents Reaction Attacks while Dealing Damage when Moving '
   timeRemaining: 0
   effectVis: {fileID: 21300000, guid: 4ff608b571fee4808a1e9fca32f61b37, type: 3}
   type: Effect

@@ -16,5 +16,5 @@ MonoBehaviour:
   name: Support Flame
   description: Do Later
   timeRemaining: 0
-  effectVis: {fileID: 21300000, guid: c9861a2bfeadb4e969dc332c1d903b54, type: 3}
+  effectVis: {fileID: 21300000, guid: b5e0f6a975a604c71a07403229354a1f, type: 3}
   type: Spell

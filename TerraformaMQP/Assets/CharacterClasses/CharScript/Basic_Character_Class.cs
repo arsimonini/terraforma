@@ -582,13 +582,15 @@ public class Basic_Character_Class : MonoBehaviour
                     //UnityEngine.Debug.Log("FAIR AND BALANCED");
                     Vector3 newPos = Vector3.Lerp(this.gameObject.transform.position, target.gameObject.transform.position, 0.5f);
                     GameObject callToPrefab = Instantiate(critPrefab);
-                    callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
-                    callToPrefab.transform.position = newPos;
+                    // callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
+                    // callToPrefab.transform.position = newPos;
                 } else {
                     Vector3 newPos = Vector3.Lerp(this.gameObject.transform.position, target.gameObject.transform.position, 0.5f);
                     GameObject callToPrefab = Instantiate(atkPrefab);
-                    callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
-                    callToPrefab.transform.position = newPos;
+
+                    //Commented this out as new attack prefab doesn't require it
+                    //callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
+                    //callToPrefab.transform.position = newPos;
                     targetCharacter.takePhysicalDamage(damageAmount);
                     comlog.addText("-> " +  name + " Has Landed an Attack on " + targetCharacter.name + " Dealing " + (targetCurrHealth - targetCharacter.health).ToString() + " Damage");
                 }

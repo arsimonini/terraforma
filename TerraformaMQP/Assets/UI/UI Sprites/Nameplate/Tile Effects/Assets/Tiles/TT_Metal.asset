@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Metal
   name: Metal
-  description: Handle Later
+  description: No Stat Changes - susceptible to fire and electric magic
   timeRemaining: 0
-  effectVis: {fileID: 21300000, guid: 4ff608b571fee4808a1e9fca32f61b37, type: 3}
+  effectVis: {fileID: 21300000, guid: b5e0f6a975a604c71a07403229354a1f, type: 3}
   type: Tile

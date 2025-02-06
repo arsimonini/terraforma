@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Burning
   name: Burning
-  description: Deals damage when standing or moving on tile
+  description: Increases Attack Slightly while Dealing Damage when Moving across
+    Tile
   timeRemaining: 0
-  effectVis: {fileID: 21300000, guid: c9861a2bfeadb4e969dc332c1d903b54, type: 3}
+  effectVis: {fileID: 21300000, guid: bdf31224a3ba04af38f591d32f430060, type: 3}
   type: Effect
