@@ -16,5 +16,5 @@ MonoBehaviour:
   name: Soaked
   description: Lowers Evasion
   timeRemaining: 0
-  effectVis: {fileID: 21300000, guid: c9861a2bfeadb4e969dc332c1d903b54, type: 3}
+  effectVis: {fileID: 21300000, guid: fc5934c1b1da647cb9336071748d6332, type: 3}
   type: Effect
