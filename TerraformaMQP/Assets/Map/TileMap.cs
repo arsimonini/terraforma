@@ -34,7 +34,7 @@ public class TileMap : MonoBehaviour
     public List<GameObject> allTargets = null;
 
     public List<GameObject> movementDisplayLimit = null;
-    private bool displayMovementDisplay = true;
+    private bool displayMovementDisplay = false;
 
     //For Move Button
     public bool moveButtonPressed = false;
