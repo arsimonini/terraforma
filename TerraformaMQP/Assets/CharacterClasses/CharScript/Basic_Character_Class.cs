@@ -108,6 +108,10 @@ public class Basic_Character_Class : MonoBehaviour
     void Update()
     {
 
+        if (charSelected && Input.GetKeyDown(KeyCode.Y)){
+            //map.displayMovementLimit(tileX, tileY);
+        }
+
         if (charSelected == true && turnEnded == false & map.moving == false & map.moveButtonPressed == false && targeting == false)
         {
             if(isMoving == false) {
@@ -989,6 +993,7 @@ public class Basic_Character_Class : MonoBehaviour
         displayAttackMenu(false);
         displaySpellList(false);
         map.setMoveButtonPressed(false);
+        map.removeMovementLimit();
         isMoving = false;
 
         GameObject t = GameObject.Find("SpellDesc(Clone)");
@@ -1056,6 +1061,7 @@ public class Basic_Character_Class : MonoBehaviour
         map.setMoveButtonPressed(true);
         displayAttackMenu(false);
         isMoving = true;
+        map.displayMovementLimit(tileX, tileY);
     }
 
     public void attackButtonUI() {
