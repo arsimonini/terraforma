@@ -16925,6 +16925,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 380693188859943664, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 380693188859943664, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 380693188859943664, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1059849651}
+    - target: {fileID: 380693188859943664, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 380693188859943664, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: spellButtonUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 380693188859943664, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Basic_Character_Class, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 380693188859943664, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 380693188859943664, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 800743736671406934, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: hasSpell
       value: 1
@@ -17045,6 +17077,18 @@ PrefabInstance:
       propertyPath: spellList
       value: 
       objectReference: {fileID: 1487087143}
+    - target: {fileID: 8047284439058182590, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: spellList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047284439058182590, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: spellList.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0cba071374210ee4faee99576681505f, type: 2}
+    - target: {fileID: 8047284439058182590, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: spellList.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c4dfe0c563d5f04ba151b31e766170c, type: 2}
     - target: {fileID: 8233266726302139542, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -17105,6 +17149,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1081816120}
   m_SourcePrefab: {fileID: 100100000, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+--- !u!114 &1059849651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+  m_PrefabInstance: {fileID: 1059849650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081816112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eef314c587c8e24aa38801bf961afa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1073281241 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1224596112376488648, guid: 2bbc89aaddde54793a8b96299743ddf3, type: 3}
@@ -21097,6 +21152,8 @@ MonoBehaviour:
   moving: 0
   targetList: []
   mapCreated: 0
+  mapSizeX: 10
+  mapSizeY: 10
   aoeDisplayTiles: []
   displayingAOE: 0
   allTargets: []
