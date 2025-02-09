@@ -107,10 +107,119 @@ public class Wall_Spell : MonoBehaviour, Cast_Spell
     }
 
     public List<GameObject> displaySpecificAOE(string attackType, ClickableTile centerTile, int size = 0, bool square = false, ClickableTile targetersTile = null){
-        return null;
+        List<GameObject> tiles = new List<GameObject>();
+        switch (centerTile.map.checkDirection(targetersTile.gameObject.GetComponent<Transform>().position, centerTile.gameObject.GetComponent<Transform>().position, centerTile)){
+            case "Top":
+                tiles.Add(centerTile.gameObject);
+                centerTile.canHit();
+                if (centerTile.map.checkIndex(centerTile.TileX + 1, centerTile.TileY) && centerTile.map.tileExists(centerTile.TileX + 1, centerTile.TileY) && !centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].canHit();
+                }
+                if (centerTile.map.checkIndex(centerTile.TileX - 1, centerTile.TileY) && centerTile.map.tileExists(centerTile.TileX + 1, centerTile.TileY) && !centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].canHit();
+                }
+                break;
+            
+            case "Bottom":
+                tiles.Add(centerTile.gameObject);
+                centerTile.canHit();
+                if (centerTile.map.checkIndex(centerTile.TileX + 1, centerTile.TileY) && centerTile.map.tileExists(centerTile.TileX + 1, centerTile.TileY) && !centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].canHit();
+                }
+                if (centerTile.map.checkIndex(centerTile.TileX - 1, centerTile.TileY) && centerTile.map.tileExists(centerTile.TileX + 1, centerTile.TileY) && !centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].canHit();
+                }
+                break;
+            
+            case "Right":
+                tiles.Add(centerTile.gameObject);
+                centerTile.canHit();
+                if (centerTile.map.checkIndex(centerTile.TileX, centerTile.TileY + 1) && centerTile.map.tileExists(centerTile.TileX, centerTile.TileY + 1) && !centerTile.map.clickableTiles[centerTile.TileX, centerTile.TileY + 1].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX, centerTile.TileY + 1].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX, centerTile.TileY + 1].canHit();
+                }
+                if (centerTile.map.checkIndex(centerTile.TileX, centerTile.TileY - 1) && centerTile.map.tileExists(centerTile.TileX, centerTile.TileY - 1) && !centerTile.map.clickableTiles[centerTile.TileX, centerTile.TileY - 1].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX, centerTile.TileY - 1].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX, centerTile.TileY - 1].canHit();
+                }
+                break;
+            
+            case "Left":
+                tiles.Add(centerTile.gameObject);
+                centerTile.canHit();
+                if (centerTile.map.checkIndex(centerTile.TileX, centerTile.TileY + 1) && centerTile.map.tileExists(centerTile.TileX, centerTile.TileY + 1) && !centerTile.map.clickableTiles[centerTile.TileX, centerTile.TileY + 1].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX, centerTile.TileY + 1].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX, centerTile.TileY + 1].canHit();
+                }
+                if (centerTile.map.checkIndex(centerTile.TileX, centerTile.TileY - 1) && centerTile.map.tileExists(centerTile.TileX, centerTile.TileY - 1) && !centerTile.map.clickableTiles[centerTile.TileX, centerTile.TileY - 1].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX, centerTile.TileY - 1].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX, centerTile.TileY - 1].canHit();
+                }
+                break;
+            
+            case "TopRight":
+                tiles.Add(centerTile.gameObject);
+                centerTile.canHit();
+                if (centerTile.map.checkIndex(centerTile.TileX + 1, centerTile.TileY) && centerTile.map.tileExists(centerTile.TileX + 1, centerTile.TileY) && !centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].canHit();
+                }
+                if (centerTile.map.checkIndex(centerTile.TileX - 1, centerTile.TileY) && centerTile.map.tileExists(centerTile.TileX + 1, centerTile.TileY) && !centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].canHit();
+                }
+                break;
+            
+            case "TopLeft":
+                tiles.Add(centerTile.gameObject);
+                centerTile.canHit();
+                if (centerTile.map.checkIndex(centerTile.TileX + 1, centerTile.TileY) && centerTile.map.tileExists(centerTile.TileX + 1, centerTile.TileY) && !centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].canHit();
+                }
+                if (centerTile.map.checkIndex(centerTile.TileX - 1, centerTile.TileY) && centerTile.map.tileExists(centerTile.TileX + 1, centerTile.TileY) && !centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].canHit();
+                }
+                break;
+            
+            case "BottomRight":
+                tiles.Add(centerTile.gameObject);
+                centerTile.canHit();
+                if (centerTile.map.checkIndex(centerTile.TileX + 1, centerTile.TileY) && centerTile.map.tileExists(centerTile.TileX + 1, centerTile.TileY) && !centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].canHit();
+                }
+                if (centerTile.map.checkIndex(centerTile.TileX - 1, centerTile.TileY) && centerTile.map.tileExists(centerTile.TileX + 1, centerTile.TileY) && !centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].canHit();
+                }
+                break;
+            
+            case "BottomLeft":
+                tiles.Add(centerTile.gameObject);
+                centerTile.canHit();
+                if (centerTile.map.checkIndex(centerTile.TileX + 1, centerTile.TileY) && centerTile.map.tileExists(centerTile.TileX + 1, centerTile.TileY) && !centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX + 1, centerTile.TileY].canHit();
+                }
+                if (centerTile.map.checkIndex(centerTile.TileX - 1, centerTile.TileY) && centerTile.map.tileExists(centerTile.TileX + 1, centerTile.TileY) && !centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].gameObject.name.Contains("Wall")){
+                    tiles.Add(centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].gameObject);
+                    centerTile.map.clickableTiles[centerTile.TileX - 1, centerTile.TileY].canHit();
+                }
+                break;
+
+        }
+        return tiles;
     }
 
     public void removeAOEDisplay(List<GameObject> tiles){
-        return;
+        for (int i = 0; i < tiles.Count; i++){
+            tiles[i].GetComponent<ClickableTile>().removeHighlight();
+        }
     }
 }

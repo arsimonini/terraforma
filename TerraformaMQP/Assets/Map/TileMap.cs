@@ -657,6 +657,13 @@ public class TileMap : MonoBehaviour
         return walkable;
     }
 
+    public bool tileExists(int x, int y){
+        if (clickableTiles[x, y] != null){
+            return true;
+        }
+        return false;
+    }
+
     // public void selectedChar() {
     //     if(Input.GetMouseButtonDown(0)) {
     //         selectedUnit.setCharSelected(true);
