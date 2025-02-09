@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: RolloutDM
   name: Rollout
-  description: Do Later
+  description: 'Rold Enters Attack Mode: Atk +2, Acc +1, Def -2, Res -1. Revert Stats
+    by Switching Back'
   timeRemaining: 0
   effectVis: {fileID: 21300000, guid: b5e0f6a975a604c71a07403229354a1f, type: 3}
   type: Spell
