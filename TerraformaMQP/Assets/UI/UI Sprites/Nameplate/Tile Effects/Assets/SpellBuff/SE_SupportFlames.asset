@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: SupportFlame
   name: Support Flame
-  description: Do Later
+  description: Mag +2, Eva +2,  Atk +2
   timeRemaining: 0
   effectVis: {fileID: 21300000, guid: b5e0f6a975a604c71a07403229354a1f, type: 3}
   type: Spell

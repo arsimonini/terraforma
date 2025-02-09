@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Stonebody
   name: Stonebody
-  description: Do Later
+  description: Def +20, Movement -2, Deals Damage Porportional to Damage Taken After
+    Duration Ends
   timeRemaining: 0
   effectVis: {fileID: 21300000, guid: b5e0f6a975a604c71a07403229354a1f, type: 3}
   type: Spell

@@ -50,31 +50,31 @@ public class NameplateHover : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         switch (str)
         {
         case "Health":
-            specText = "The characters health";
+            specText = "Amount of Damage You Can Endure Before Defeated";
             break;
         case "Mana":
-            specText = "The characters mana";
+            specText = "Amount of Magic You Can Use";
             break;
         case "Mag":
-            specText = "The characters magic";
+            specText = "Potency of Spell Based Attacks";
             break;
         case "Atk":
-            specText = "The characters attack";
+            specText = "Potency of Phyisical Attack";
             break;
         case "Def":
-            specText = "The characters defense";
+            specText = "Endurance Against Physical Attacks";
             break;
         case "Res":
-            specText = "The characters resistance";
+            specText = "Endurance Against Spell Based Attacks";
             break;
         case "Spd":
-            specText = "The characters speed";
+            specText = "Chance to Completely Dodge an Attack";
             break;
         case "Crit":
-            specText = "The characters critical chance";
+            specText = "Chance to Deal a Stronger Physical Attack";
             break;
         case "Acc":
-            specText = "The characters accuracy";
+            specText = "Chance to Hit with a Physical Attack";
             break;
             
         case "Effect":

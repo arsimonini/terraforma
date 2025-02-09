@@ -36,7 +36,7 @@ public class Basic_Character_Class : MonoBehaviour
     public GameObject atkPrefab;
     public GameObject critPrefab;
     public GameObject missPrefab;
-    
+    public GameObject abilityPrefab;
 
     public Color color; //Color of the shape ---WILL BE DELETED WHEN MODELS ARE ADDED---
 
@@ -581,16 +581,30 @@ public class Basic_Character_Class : MonoBehaviour
                     comlog.addText("-> " + name + " Has Landed a Critical Attack on " + targetCharacter.name + " Dealing " + (targetCurrHealth - targetCharacter.health).ToString() + " Damage");
                     //UnityEngine.Debug.Log("FAIR AND BALANCED");
                     Vector3 newPos = Vector3.Lerp(this.gameObject.transform.position, target.gameObject.transform.position, 0.5f);
-                    GameObject callToPrefab = Instantiate(critPrefab);
-                    // callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
-                    // callToPrefab.transform.position = newPos;
+                    
+                    
+                    if(this.gameObject.tag == "EnemyTeam") {
+                        GameObject callToPrefab = Instantiate(critPrefab);    
+                        callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
+                        callToPrefab.transform.position = newPos;
+                    }
+                    else if(this.gameObject.tag == "PlayerTeam") {
+                        GameObject callToPrefab = Instantiate(critPrefab);    
+                    }
                 } else {
                     Vector3 newPos = Vector3.Lerp(this.gameObject.transform.position, target.gameObject.transform.position, 0.5f);
-                    GameObject callToPrefab = Instantiate(atkPrefab);
+
+                    if(this.gameObject.tag == "EnemyTeam") {
+                        GameObject callToPrefab = Instantiate(atkPrefab);    
+                        callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
+                        callToPrefab.transform.position = newPos;
+                    }
+                    else if(this.gameObject.tag == "PlayerTeam") {
+                        GameObject callToPrefab = Instantiate(atkPrefab);    
+                    }
 
                     //Commented this out as new attack prefab doesn't require it
-                    //callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
-                    //callToPrefab.transform.position = newPos;
+                    
                     targetCharacter.takePhysicalDamage(damageAmount);
                     comlog.addText("-> " +  name + " Has Landed an Attack on " + targetCharacter.name + " Dealing " + (targetCurrHealth - targetCharacter.health).ToString() + " Damage");
                 }
@@ -715,6 +729,9 @@ public class Basic_Character_Class : MonoBehaviour
         }
         else {
             gameObject.GetComponent<SummonClass>().useAbility(targets);
+
+            GameObject callToPrefab = Instantiate(abilityPrefab);    
+
             stopTargeting();
             if(takeAction() == false){
                 renderer.material.color = Color.red;
