@@ -112,8 +112,8 @@ MonoBehaviour:
   defaultReach: 1
   attackType: 
   buffs: []
-  atkPrefab: {fileID: 4370733696641074040, guid: 7552207c80db54ed9a53b31848fdabb7, type: 3}
-  critPrefab: {fileID: 4370733696641074040, guid: 7552207c80db54ed9a53b31848fdabb7, type: 3}
+  atkPrefab: {fileID: 4396117065116841325, guid: 8b66e881856c54496b800c258a60e18d, type: 3}
+  critPrefab: {fileID: 1351090809278183054, guid: 70f83795e17e149619783be2264dd393, type: 3}
   missPrefab: {fileID: 5228633549399205854, guid: 9e2b41c1ba3314cfba742b3a596ce337, type: 3}
   abilityPrefab: {fileID: 4370733696641074040, guid: 7552207c80db54ed9a53b31848fdabb7, type: 3}
   color: {r: 0, g: 0, b: 0, a: 0}
