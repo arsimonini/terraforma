@@ -115,6 +115,7 @@ MonoBehaviour:
   atkPrefab: {fileID: 4396117065116841325, guid: 8b66e881856c54496b800c258a60e18d, type: 3}
   critPrefab: {fileID: 1351090809278183054, guid: 70f83795e17e149619783be2264dd393, type: 3}
   missPrefab: {fileID: 5228633549399205854, guid: 9e2b41c1ba3314cfba742b3a596ce337, type: 3}
+  abilityPrefab: {fileID: 4370733696641074040, guid: 7552207c80db54ed9a53b31848fdabb7, type: 3}
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 14
   tileY: 8
@@ -138,7 +139,7 @@ MonoBehaviour:
   nameplate: {fileID: 0}
   np2: {fileID: 0}
   atkMenu: {fileID: 4310487430304140754}
-  spellList: {fileID: 1070278616635177142}
+  spellList: {fileID: 2551400291830531482}
   hasWalked: 0
   spellListIsUp: 0
   comlog: {fileID: 0}
@@ -654,14 +655,14 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2471195623318993539}
   m_SourcePrefab: {fileID: 100100000, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
---- !u!1 &1070278616635177142 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7072929785375653004, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
-  m_PrefabInstance: {fileID: 7850474063773566010}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1525196600132784515 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8780025495231681977, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+  m_PrefabInstance: {fileID: 7850474063773566010}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2551400291830531482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5735925239318512032, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
   m_PrefabInstance: {fileID: 7850474063773566010}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4310487430304140754 stripped
