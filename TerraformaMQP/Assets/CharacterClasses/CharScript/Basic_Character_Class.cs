@@ -102,6 +102,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Set the tile to be unwalkable because there is a unit occupying it
         map.clickableTiles[tileX, tileY].isWalkable = false;
         //nameplate = transfrom.root.GetComponent<Nameplate>();
+        tileType = map.tileTypes[map.tiles[tileX, tileY]];
         
     }
 

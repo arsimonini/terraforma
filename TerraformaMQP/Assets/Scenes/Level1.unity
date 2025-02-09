@@ -17061,6 +17061,14 @@ PrefabInstance:
       propertyPath: critPrefab
       value: 
       objectReference: {fileID: 4370733696641074040, guid: 53d5d08d9ba6f4c52b6131d876e61e81, type: 3}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: movementSpeed.value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: movementSpeed.moddedValue
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8233266726302139542, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -21121,11 +21129,15 @@ MonoBehaviour:
   moving: 0
   targetList: []
   mapCreated: 0
+  mapSizeX: 10
+  mapSizeY: 10
   aoeDisplayTiles: []
   displayingAOE: 0
   allTargets: []
+  movementDisplayLimit: []
   moveButtonPressed: 0
   activelyMoving: 0
+  movementDisplayTiles: []
   comlog: {fileID: 159743917}
   movementSounds:
   - {fileID: 8300000, guid: 18a8c4c30f80040d59332b72932b738f, type: 3}

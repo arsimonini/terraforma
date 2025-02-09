@@ -327,7 +327,7 @@ public class GameControllerScript : MonoBehaviour
             case 0:
                 enemyCount = enemyTeamList.Count;
                 //If the player presses the enter key on their turn, it ends their turn
-                if (Input.GetKeyDown(KeyCode.Return) || checkEndOfturn())
+                if ((Input.GetKeyDown(KeyCode.Return) && selectedCharacter != null && characterScript.isMoving == false) || checkEndOfturn())
                 {
                     //End Turn Stuff
                     //UnityEngine.Debug.Log("Switching to Phase 1");
