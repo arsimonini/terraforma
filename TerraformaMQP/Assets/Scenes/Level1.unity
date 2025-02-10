@@ -3517,13 +3517,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 828453385543867396, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1346715079175242853, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 509846068}
     - target: {fileID: 1346715079175242853, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
       propertyPath: m_VersionIndex
-      value: 1240
+      value: 1342
       objectReference: {fileID: 0}
     - target: {fileID: 3299561186631009963, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
       propertyPath: cam
@@ -3577,6 +3581,19 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1918770147}
+    - target: {fileID: 9187885308342209692, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
+      propertyPath: m_text
+      value: Blazing Fury -  A powerful fire based melee attack that leaves fire
+        in it's wake. 3 Turns of Cooldown
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187885308342209692, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187885308342209692, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18708,7 +18725,7 @@ PrefabInstance:
       objectReference: {fileID: 297659979}
     - target: {fileID: 742552820882812091, guid: d88333c14fcde9a46b97858ae864223d, type: 3}
       propertyPath: m_VersionIndex
-      value: 1252
+      value: 1354
       objectReference: {fileID: 0}
     - target: {fileID: 3299561186631009963, guid: d88333c14fcde9a46b97858ae864223d, type: 3}
       propertyPath: cam
@@ -18754,6 +18771,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wold Summon
       objectReference: {fileID: 0}
+    - target: {fileID: 8232507051609683804, guid: d88333c14fcde9a46b97858ae864223d, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8307509125131471017, guid: d88333c14fcde9a46b97858ae864223d, type: 3}
       propertyPath: pm
       value: 
@@ -18786,6 +18807,19 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1918770147}
+    - target: {fileID: 9158122764958961736, guid: d88333c14fcde9a46b97858ae864223d, type: 3}
+      propertyPath: m_text
+      value: Rollout -  Swap between a defensive and offensive stance for Rold. 1
+        Turns of Cooldown
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158122764958961736, guid: d88333c14fcde9a46b97858ae864223d, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158122764958961736, guid: d88333c14fcde9a46b97858ae864223d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
