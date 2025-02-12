@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Mud
   name: Mud
-  description: Handle Later
+  description: Reduces movement
   timeRemaining: 0
-  effectVis: {fileID: 21300000, guid: 4ff608b571fee4808a1e9fca32f61b37, type: 3}
+  effectVis: {fileID: 21300000, guid: 2d3af4b60fdeb47f78708fd0830087a4, type: 3}
   type: Tile

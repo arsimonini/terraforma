@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: DWater
   name: Deep  Water
-  description: Handle Later
+  description: Generally impassable - susceptible to electric and ice magic
   timeRemaining: 0
-  effectVis: {fileID: 21300000, guid: 4ff608b571fee4808a1e9fca32f61b37, type: 3}
+  effectVis: {fileID: 21300000, guid: 6e75afbdea4124541a77e92f1db61552, type: 3}
   type: Tile

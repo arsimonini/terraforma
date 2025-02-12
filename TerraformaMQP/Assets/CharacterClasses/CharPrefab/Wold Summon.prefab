@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3299561186631009963}
   - component: {fileID: 7884286615612736571}
   - component: {fileID: 7357787880328293490}
+  - component: {fileID: 5939171319365987941}
   m_Layer: 0
   m_Name: Wold Summon
   m_TagString: PlayerTeam
@@ -76,7 +77,7 @@ MonoBehaviour:
   effects: []
   tileEffect: {fileID: 0}
   name: Rold
-  char_img: {fileID: 21300000, guid: 2d862418c106b4e6d8af660a0a6d7e25, type: 3}
+  char_img: {fileID: 21300000, guid: ce4204cd5caab44058eaeb85c94f99c0, type: 3}
   health: 32
   maxHealth:
     value: 32
@@ -112,9 +113,10 @@ MonoBehaviour:
   defaultReach: 1
   attackType: 
   buffs: []
-  atkPrefab: {fileID: 4396117065116841325, guid: 8b66e881856c54496b800c258a60e18d, type: 3}
-  critPrefab: {fileID: 1351090809278183054, guid: 70f83795e17e149619783be2264dd393, type: 3}
+  atkPrefab: {fileID: 4370733696641074040, guid: 469b0af5556404f79b03a0a8137ede65, type: 3}
+  critPrefab: {fileID: 4370733696641074040, guid: 469b0af5556404f79b03a0a8137ede65, type: 3}
   missPrefab: {fileID: 5228633549399205854, guid: 9e2b41c1ba3314cfba742b3a596ce337, type: 3}
+  abilityPrefab: {fileID: 4370733696641074040, guid: 9acea563e3a5346769c2135cb9f3743b, type: 3}
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 15
   tileY: 8
@@ -162,6 +164,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7c5cf9b73201f39408a52b33bb463df6, type: 3}
   - {fileID: 8300000, guid: b4e130e79d3561f4b866c52ee35c8073, type: 3}
   - {fileID: 8300000, guid: 0c9b8264f326ab04985d183d3efd6e5c, type: 3}
+  startHP: 0
 --- !u!212 &3434780674799459154
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -256,6 +259,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f94bfe0b14b2e454d9bece39cc0bd79c, type: 2}
   selectedAbility: {fileID: 0}
   cooldowns: 
+--- !u!114 &5939171319365987941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7421672215106744178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c958fd58883d4ffc861059bd68b997b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  go: {fileID: 7421672215106744178}
+  AM: {fileID: 4370733696641074040, guid: 9acea563e3a5346769c2135cb9f3743b, type: 3}
+  DM: {fileID: 4370733696641074040, guid: d731a856e8cf64dfeb20dd66ff0ca0ed, type: 3}
+  activated: 0
 --- !u!1001 &3310634924771014691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -266,7 +285,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2864200540203865240, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
       propertyPath: m_VersionIndex
-      value: 1087
+      value: 1090
       objectReference: {fileID: 0}
     - target: {fileID: 4338082057154234030, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
       propertyPath: m_Name

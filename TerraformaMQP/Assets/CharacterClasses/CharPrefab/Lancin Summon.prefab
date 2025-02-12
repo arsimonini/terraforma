@@ -75,7 +75,7 @@ MonoBehaviour:
   effects: []
   tileEffect: {fileID: 0}
   name: Urson
-  char_img: {fileID: 21300000, guid: fff53fbb4374744cc8c1a99290ce27e4, type: 3}
+  char_img: {fileID: 21300000, guid: 74ac8aa391c374ef6aff53f10922351e, type: 3}
   health: 28
   maxHealth:
     value: 28
@@ -111,9 +111,10 @@ MonoBehaviour:
   defaultReach: 1
   attackType: 
   buffs: []
-  atkPrefab: {fileID: 4396117065116841325, guid: 8b66e881856c54496b800c258a60e18d, type: 3}
-  critPrefab: {fileID: 1351090809278183054, guid: 70f83795e17e149619783be2264dd393, type: 3}
+  atkPrefab: {fileID: 4370733696641074040, guid: 6d413809bcf6049aa8b64c87d638e4a2, type: 3}
+  critPrefab: {fileID: 4370733696641074040, guid: 6d413809bcf6049aa8b64c87d638e4a2, type: 3}
   missPrefab: {fileID: 5228633549399205854, guid: 9e2b41c1ba3314cfba742b3a596ce337, type: 3}
+  abilityPrefab: {fileID: 4370733696641074040, guid: 2559445247f1f4385bf04807dd0ba3c2, type: 3}
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 10
   tileY: 9
@@ -161,6 +162,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7c5cf9b73201f39408a52b33bb463df6, type: 3}
   - {fileID: 8300000, guid: b4e130e79d3561f4b866c52ee35c8073, type: 3}
   - {fileID: 8300000, guid: 0c9b8264f326ab04985d183d3efd6e5c, type: 3}
+  startHP: 0
 --- !u!212 &3434780674799459154
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -33,9 +33,14 @@ public class TileMap : MonoBehaviour
     public bool displayingAOE = false;
     public List<GameObject> allTargets = null;
 
+    public List<GameObject> movementDisplayLimit = null;
+    private bool displayMovementDisplay = false;
+
     //For Move Button
     public bool moveButtonPressed = false;
     public bool activelyMoving = false;
+
+    public List<GameObject> movementDisplayTiles = null;
 
     float xOffset; //An offset that can be set to account for maps not starting at location 0,0
     float yOffset; //^
@@ -129,6 +134,15 @@ public class TileMap : MonoBehaviour
     }
 
     void Update() {
+
+        //-----FOR TESTING ONLY-----
+        if (Input.GetKeyDown(KeyCode.L) && displayMovementDisplay == true){
+            displayMovementDisplay = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.L)){
+            displayMovementDisplay = true;
+        }
+
         float speed = 2;
         float step = speed * Time.deltaTime;
 
@@ -407,6 +421,7 @@ public class TileMap : MonoBehaviour
 
             setMoveButtonPressed(false);
             moveButtonPressed = false;
+            removeMovementLimit();
 
             //UnityEngine.Debug.Log(x + "," + y);
 
@@ -477,7 +492,7 @@ public class TileMap : MonoBehaviour
 
         return len;
     }
-    public List<Node> generatePathTo(int x, int y, bool visual = false, bool ignoreTargetWalkable = false, int startX = -1, int startY = -1, bool noWalls = false, bool setCurrent = true, bool cutPath = true){
+    public List<Node> generatePathTo(int x, int y, bool visual = false, bool ignoreTargetWalkable = false, int startX = -1, int startY = -1, bool noWalls = false, bool setCurrent = true, bool cutPath = true, bool fromDisplay = false){
 
         if (startX == -1) {
             if (selectedUnitScript.tileX == x && selectedUnitScript.tileY == y){
@@ -572,7 +587,7 @@ public class TileMap : MonoBehaviour
             currentPathTemp = cutDownPath(selectedUnitScript.movementSpeed.moddedValue, false, currentPathTemp);
         }
 
-        if (setCurrent) {
+        if (setCurrent && fromDisplay == false) {
             currentPath = currentPathTemp;
             selectedUnitScript.path = currentPath;
             //Disables them from walking again
@@ -640,6 +655,13 @@ public class TileMap : MonoBehaviour
             walkable = clickableTiles[x, y].isWalkable;
         }
         return walkable;
+    }
+
+    public bool tileExists(int x, int y){
+        if (checkIndex(x, y) && clickableTiles[x, y] != null){
+            return true;
+        }
+        return false;
     }
 
     // public void selectedChar() {
@@ -994,8 +1016,8 @@ public class TileMap : MonoBehaviour
                             rangeDisplay.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);
                         }
                         */
-                    } else if (targetBreakableTiles == true && clickableTiles[selectedUnitScript.tileX+i, selectedUnitScript.tileY + j].isBreakable == true) {
-                                clickableTiles[selectedUnitScript.tileX+ i, selectedUnitScript.tileY + j].highlight();
+                    } else if (targetBreakableTiles == true && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].isBreakable == true) {
+                                clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
                                 targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);
                     }
                     else if (targetWalls && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.tag == "Wall" && hits.Length <= 1){
@@ -1234,47 +1256,47 @@ public class TileMap : MonoBehaviour
             aoeDisplayTiles.Add(centerTile.gameObject);
             for (int j = 0; j < size + 1; j++){
                 for (int i = 0; i < j; i++){
-                    if (checkIndex(centerTile.TileX + i, centerTile.TileY + j) && !clickableTiles[centerTile.TileX + i, centerTile.TileY + j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + i, centerTile.TileY + j].gameObject.transform.position)*/){
+                    if (tileExists(centerTile.TileX + i, centerTile.TileY + j) && !clickableTiles[centerTile.TileX + i, centerTile.TileY + j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + i, centerTile.TileY + j].gameObject.transform.position)*/){
                         clickableTiles[centerTile.TileX + i, centerTile.TileY + j].canHit();
                         aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + i, centerTile.TileY + j].gameObject);
                     }
                 }
-                if (checkIndex(centerTile.TileX + j, centerTile.TileY + j) && !clickableTiles[centerTile.TileX + j, centerTile.TileY + j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + j, centerTile.TileY + j].gameObject.transform.position)*/){
+                if (tileExists(centerTile.TileX + j, centerTile.TileY + j) && !clickableTiles[centerTile.TileX + j, centerTile.TileY + j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + j, centerTile.TileY + j].gameObject.transform.position)*/){
                     clickableTiles[centerTile.TileX + j, centerTile.TileY + j].canHit();
                     aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + j, centerTile.TileY + j].gameObject);
                 }
                 for (int i = 0; i < j * 2; i++){
-                    if (checkIndex(centerTile.TileX + j, centerTile.TileY + j - i) && !clickableTiles[centerTile.TileX + j, centerTile.TileY + j - i].gameObject.name.Contains("Wall")  /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + j, centerTile.TileY + j - i].gameObject.transform.position)*/){
+                    if (tileExists(centerTile.TileX + j, centerTile.TileY + j - i) && !clickableTiles[centerTile.TileX + j, centerTile.TileY + j - i].gameObject.name.Contains("Wall")  /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + j, centerTile.TileY + j - i].gameObject.transform.position)*/){
                         clickableTiles[centerTile.TileX + j, centerTile.TileY + j - i].canHit();
                         aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + j, centerTile.TileY + j - i].gameObject);
                     }
                 }
-                if (checkIndex(centerTile.TileX + j, centerTile.TileY - j) && !clickableTiles[centerTile.TileX + j, centerTile.TileY - j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + j, centerTile.TileY - j].gameObject.transform.position)*/){
+                if (tileExists(centerTile.TileX + j, centerTile.TileY - j) && !clickableTiles[centerTile.TileX + j, centerTile.TileY - j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + j, centerTile.TileY - j].gameObject.transform.position)*/){
                     clickableTiles[centerTile.TileX + j, centerTile.TileY - j].canHit();
                     aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + j, centerTile.TileY - j].gameObject);
                 }
                 for (int i = 0; i < j * 2; i++){
-                    if (checkIndex(centerTile.TileX + j - i, centerTile.TileY - j) && !clickableTiles[centerTile.TileX + j - i, centerTile.TileY - j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + j - i, centerTile.TileY - j].gameObject.transform.position)*/){
+                    if (tileExists(centerTile.TileX + j - i, centerTile.TileY - j) && !clickableTiles[centerTile.TileX + j - i, centerTile.TileY - j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX + j - i, centerTile.TileY - j].gameObject.transform.position)*/){
                         clickableTiles[centerTile.TileX + j - i, centerTile.TileY - j].canHit();
                         aoeDisplayTiles.Add(clickableTiles[centerTile.TileX + j - i, centerTile.TileY - j].gameObject);
                     }
                 }
-                if (checkIndex(centerTile.TileX - j, centerTile.TileY - j) && !clickableTiles[centerTile.TileX - j, centerTile.TileY - j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - j, centerTile.TileY - j].gameObject.transform.position)*/){
+                if (tileExists(centerTile.TileX - j, centerTile.TileY - j) && !clickableTiles[centerTile.TileX - j, centerTile.TileY - j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - j, centerTile.TileY - j].gameObject.transform.position)*/){
                     clickableTiles[centerTile.TileX - j, centerTile.TileY - j].canHit();
                     aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - j, centerTile.TileY - j].gameObject);
                 }
                 for (int i = 0; i < j * 2; i++){
-                    if (checkIndex(centerTile.TileX - j, centerTile.TileY - j + i) && !clickableTiles[centerTile.TileX - j, centerTile.TileY - j + i].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - j, centerTile.TileY - j + i].gameObject.transform.position)*/){
+                    if (tileExists(centerTile.TileX - j, centerTile.TileY - j + i) && !clickableTiles[centerTile.TileX - j, centerTile.TileY - j + i].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - j, centerTile.TileY - j + i].gameObject.transform.position)*/){
                         clickableTiles[centerTile.TileX - j, centerTile.TileY - j + i].canHit();
                         aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - j, centerTile.TileY - j + i].gameObject);
                     }
                 }
-                if (checkIndex(centerTile.TileX - j, centerTile.TileY + j) && !clickableTiles[centerTile.TileX - j, centerTile.TileY + j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - j, centerTile.TileY + j].gameObject.transform.position)*/){
+                if (tileExists(centerTile.TileX - j, centerTile.TileY + j) && !clickableTiles[centerTile.TileX - j, centerTile.TileY + j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - j, centerTile.TileY + j].gameObject.transform.position)*/){
                     clickableTiles[centerTile.TileX - j, centerTile.TileY + j].canHit();
                     aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - j, centerTile.TileY + j].gameObject);
                 }
                 for (int i = 0; i < j - 1; i++){
-                    if (checkIndex(centerTile.TileX - j + 1 + i, centerTile.TileY + j) && !clickableTiles[centerTile.TileX - j + 1 + i, centerTile.TileY + j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - j + 1 + i, centerTile.TileY + j].gameObject.transform.position)*/){
+                    if (tileExists(centerTile.TileX - j + 1 + i, centerTile.TileY + j) && !clickableTiles[centerTile.TileX - j + 1 + i, centerTile.TileY + j].gameObject.name.Contains("Wall") /*&& checkVisible(targetersTile.gameObject.transform.position, clickableTiles[centerTile.TileX - j + 1 + i, centerTile.TileY + j].gameObject.transform.position)*/){
                         clickableTiles[centerTile.TileX - j + 1 + i, centerTile.TileY + j].canHit();
                         aoeDisplayTiles.Add(clickableTiles[centerTile.TileX - j + 1 + i, centerTile.TileY + j].gameObject);
                     }
@@ -1295,7 +1317,7 @@ public class TileMap : MonoBehaviour
         }
         */
         if (aoeDisplayTiles != null){
-            if (selectedUnitScript.attackType == "Spell" && selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.alternateAOEDisplay){
+            if (selectedUnitScript.attackType == "Spell" && selectedUnit.GetComponent<Hero_Character_Class>() != null && selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.alternateAOEDisplay){
                 GameObject prefab = Instantiate(selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.spellPrefab);
                 prefab.GetComponent<Cast_Spell>().removeAOEDisplay(aoeDisplayTiles);
                 Destroy(prefab);
@@ -1514,16 +1536,16 @@ public class TileMap : MonoBehaviour
     public void displayRange(){
         for (int i = 0; i < allTargets.Count; i++){
             ClickableTile tileToCheck = allTargets[i].GetComponent<ClickableTile>();
-            if (inRange(tileToCheck.TileX + 1, tileToCheck.TileY) && !allTargets.Contains(clickableTiles[tileToCheck.TileX + 1, tileToCheck.TileY].gameObject)){
+            if (!tileExists(tileToCheck.TileX + 1, tileToCheck.TileY) || (inRange(tileToCheck.TileX + 1, tileToCheck.TileY) && !allTargets.Contains(clickableTiles[tileToCheck.TileX + 1, tileToCheck.TileY].gameObject))){
                 tileToCheck.gameObject.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = true;
             }
-            if (inRange(tileToCheck.TileX - 1, tileToCheck.TileY) && !allTargets.Contains(clickableTiles[tileToCheck.TileX - 1, tileToCheck.TileY].gameObject)){
+            if (!tileExists(tileToCheck.TileX - 1, tileToCheck.TileY) || (inRange(tileToCheck.TileX - 1, tileToCheck.TileY) && !allTargets.Contains(clickableTiles[tileToCheck.TileX - 1, tileToCheck.TileY].gameObject))){
                 tileToCheck.gameObject.transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = true;
             }
-            if (inRange(tileToCheck.TileX, tileToCheck.TileY + 1) && !allTargets.Contains(clickableTiles[tileToCheck.TileX, tileToCheck.TileY + 1].gameObject)){
+            if (!tileExists(tileToCheck.TileX, tileToCheck.TileY + 1) || (inRange(tileToCheck.TileX, tileToCheck.TileY + 1) && !allTargets.Contains(clickableTiles[tileToCheck.TileX, tileToCheck.TileY + 1].gameObject))){
                 tileToCheck.gameObject.transform.Find("OutlineT").gameObject.GetComponent<MeshRenderer>().enabled = true;
             }
-            if (inRange(tileToCheck.TileX, tileToCheck.TileY - 1) && !allTargets.Contains(clickableTiles[tileToCheck.TileX, tileToCheck.TileY - 1].gameObject)){
+            if (!tileExists(tileToCheck.TileX, tileToCheck.TileY - 1) || (inRange(tileToCheck.TileX, tileToCheck.TileY - 1) && !allTargets.Contains(clickableTiles[tileToCheck.TileX, tileToCheck.TileY - 1].gameObject))){
                 tileToCheck.gameObject.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = true;
             }
         }
@@ -1715,6 +1737,141 @@ public class TileMap : MonoBehaviour
         return 0;
     }
 */
+
+
+    public void displayMovementLimit(int x, int y){
+        if (displayMovementDisplay){
+            List<GameObject> tiles = new List<GameObject>();
+            bool finish = false;
+            List<Node> newList = null;
+            bool hit = false;
+            int j = 1;
+            while(finish == false){
+                hit = false;
+                UnityEngine.Debug.Log("Here");
+                for (int i = 0; i < j; i++){
+                    if (checkIndex(x + i, y + j) && tileExists(x + i, y + j)){
+                        newList = generatePathTo(x + i, y + j, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x + i, y + j].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                    }
+                }
+                if (checkIndex(x + j, y + j) && tileExists(x + j, y + j)){
+                        newList = generatePathTo(x + j, y + j, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x + j, y + j].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                }
+                for (int i = 0; i < j * 2; i++){
+                    if (checkIndex(x + j, y + j - i) && tileExists(x + j, y + j - i)){
+                        newList = generatePathTo(x + j, y + j - i, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x + j, y + j - i].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                    }
+                }
+                if (checkIndex(x + j, y - j) && tileExists(x + j, y - j)){
+                        newList = generatePathTo(x + j, y - j, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x + j, y - j].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                }
+                for (int i = 0; i < j * 2; i++){
+                    if (checkIndex(x + j - i, y - j) && tileExists(x + j - i, y - j)){
+                        newList = generatePathTo(x + j - i, y - j, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x + j - i, y - j].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                    }
+                }
+                if (checkIndex(x - j, y - j) && tileExists(x - j, y - j)){
+                        newList = generatePathTo(x - j, y - j, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x - j, y - j].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                }
+                for (int i = 0; i < j * 2; i++){
+                    if (checkIndex(x - j, y - j + i) && tileExists(x - j, y - j + i)){
+                        newList = generatePathTo(x - j, y - j + i, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x - j, y - j + i].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                    }
+                }
+                if (checkIndex(x - j, y + j) && tileExists(x - j, y + j)){
+                        newList = generatePathTo(x - j, y + j, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x - j, y + j].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                }
+                for (int i = 0; i < j - 1; i++){
+                    if (checkIndex(x - j + 1 + i, y + j) && tileExists(x - j + 1 + i, y + j)){
+                        newList = generatePathTo(x - j + 1 + i, y + j, fromDisplay: true);
+                        if (newList != null && newList.Count != 0){
+                            tiles.Add(clickableTiles[x - j + 1 + i, y + j].gameObject);
+                            hit = true;
+                        }
+                        newList = null;
+                    }
+                }
+                if (hit){
+                    UnityEngine.Debug.Log(j);
+                    j++;
+                }
+                else{
+                    finish = true;
+                }
+            }
+            UnityEngine.Debug.Log(tiles.Count);
+            tiles.Add(clickableTiles[x, y].gameObject);
+            for (int i = 0; i < tiles.Count; i++){
+                ClickableTile tileToCheck = tiles[i].GetComponent<ClickableTile>();
+                if (!tileExists(tileToCheck.TileX + 1, tileToCheck.TileY) || !tiles.Contains(clickableTiles[tileToCheck.TileX + 1, tileToCheck.TileY].gameObject)){
+                    tileToCheck.gameObject.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                }
+                if (!tileExists(tileToCheck.TileX - 1, tileToCheck.TileY) || !tiles.Contains(clickableTiles[tileToCheck.TileX - 1, tileToCheck.TileY].gameObject)){
+                    tileToCheck.gameObject.transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                }
+                if (!tileExists(tileToCheck.TileX, tileToCheck.TileY + 1) || !tiles.Contains(clickableTiles[tileToCheck.TileX, tileToCheck.TileY + 1].gameObject)){
+                    tileToCheck.gameObject.transform.Find("OutlineT").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                }
+                if (!tileExists(tileToCheck.TileX, tileToCheck.TileY - 1) || !tiles.Contains(clickableTiles[tileToCheck.TileX, tileToCheck.TileY - 1].gameObject)){
+                    tileToCheck.gameObject.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = true;
+                }
+            }
+            currentPath = null;
+            movementDisplayTiles = tiles;
+        }
+    }
+
+    public void removeMovementLimit(){
+        if (movementDisplayTiles != null && movementDisplayTiles.Count > 0 && displayMovementDisplay){
+            for (int i = 0; i < movementDisplayTiles.Count; i++){
+                movementDisplayTiles[i].gameObject.transform.Find("OutlineL").gameObject.GetComponent<MeshRenderer>().enabled = false;
+                movementDisplayTiles[i].gameObject.transform.Find("OutlineR").gameObject.GetComponent<MeshRenderer>().enabled = false;
+                movementDisplayTiles[i].gameObject.transform.Find("OutlineT").gameObject.GetComponent<MeshRenderer>().enabled = false;
+                movementDisplayTiles[i].gameObject.transform.Find("OutlineB").gameObject.GetComponent<MeshRenderer>().enabled = false;
+            }
+            movementDisplayTiles = new List<GameObject>();
+        }
+    }
 }
 
 

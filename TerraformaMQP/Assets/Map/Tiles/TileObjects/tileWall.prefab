@@ -123,7 +123,7 @@ MonoBehaviour:
   TileX: 0
   TileY: 0
   map: {fileID: 0}
-  isWalkable: 1
+  isWalkable: 0
   statsToEffect:
   - speed
   effectAmounts: feffffff
@@ -135,9 +135,9 @@ MonoBehaviour:
   isBreakable: 0
   hp: 10
   maxHp: 10
-  standardHighlight: {fileID: 0}
-  canHitHighlight: {fileID: 0}
-  cannotHitHightlight: {fileID: 0}
+  standardHighlight: {fileID: 3357865700613062142, guid: c94cccf7daa6a704583d7ebd37a66e28, type: 3}
+  canHitHighlight: {fileID: 3357865700613062142, guid: fb1971a22139b1e4190d369fdddb7aae, type: 3}
+  cannotHitHightlight: {fileID: 3357865700613062142, guid: 17211cf1562d8fa4094a33446dbbc3c9, type: 3}
   currentHightlight: {fileID: 0}
   effectsOnTile: []
   tileName: Wall

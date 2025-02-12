@@ -282,6 +282,11 @@ public class Nameplate : MonoBehaviour
             effectNum = effectNum + 1;
             effectKeyNames.Add("DWater");
         }
+        else if(tileName.Contains("Ice")) 
+        {
+            effectNum = effectNum + 1;
+            effectKeyNames.Add("Ice");
+        }
 
         //Tile Effect
         for(int i = 0; i < tile.effectsOnTile.Count; i++) {

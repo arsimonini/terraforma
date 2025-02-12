@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Overgrown
   name: Overgrown
-  description: Add Later
+  description: 'Reduces Movement while Increasing Defense and Resistance '
   timeRemaining: 0
   effectVis: {fileID: 21300000, guid: 7cf6c240b559d4267a796d314ef257e3, type: 3}
   type: Effect

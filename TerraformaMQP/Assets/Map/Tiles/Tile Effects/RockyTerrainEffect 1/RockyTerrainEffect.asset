@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93fbfcd5a1363dd4da21513af5d88401, type: 3}
   m_Name: RockyTerrainEffect
   m_EditorClassIdentifier: 
-  duration: 100
+  duration: 4
   statToEffect: []
   amountToEffect: 
   source: 

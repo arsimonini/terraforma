@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Sand
   name: Sand
-  description: Handle Later
+  description: No Stat Changes - susceptible to wind and water magic
   timeRemaining: 0
-  effectVis: {fileID: 21300000, guid: 9725e8c560eac4509845f8926e5fb0e9, type: 3}
+  effectVis: {fileID: 21300000, guid: b5e0f6a975a604c71a07403229354a1f, type: 3}
   type: Tile

@@ -327,7 +327,7 @@ public class GameControllerScript : MonoBehaviour
             case 0:
                 enemyCount = enemyTeamList.Count;
                 //If the player presses the enter key on their turn, it ends their turn
-                if (Input.GetKeyDown(KeyCode.Return) || checkEndOfturn())
+                if ((Input.GetKeyDown(KeyCode.Return) && selectedCharacter != null && characterScript.isMoving == false) || (Input.GetKeyDown(KeyCode.Return) && selectedCharacter == null) || checkEndOfturn())
                 {
                     //End Turn Stuff
                     //UnityEngine.Debug.Log("Switching to Phase 1");
@@ -367,6 +367,7 @@ public class GameControllerScript : MonoBehaviour
             case 2:
                 enemyCount = enemyTeamList.Count;
                 enemiesToMove = enemyCount;
+                resetEnemyTeamTurns();
                 phase++;
                 break;
             //Begins to move the enemies
@@ -464,6 +465,15 @@ public class GameControllerScript : MonoBehaviour
             playerTeamList[i].GetComponent<Basic_Character_Class>().resetTurn();
         }
         reduceCooldowns();
+    }
+
+    //Iterates through the list of enemy units and sets them to be able to take their turn again by calling the Basic Class resetTurn function
+    private void resetEnemyTeamTurns()
+    {
+        for (int i = 0; i < enemyTeamList.Count; i++)
+        {
+            enemyTeamList[i].GetComponent<Basic_Character_Class>().resetTurn();
+        }
     }
 
     //Iterates through the list of player units and ends their turns by calling the Basic Class endTurn function
