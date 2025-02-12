@@ -26,10 +26,19 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
     {
         Basic_Character_Class basicCaster = caster.GetComponent<Basic_Character_Class>();
         if (targets.Count > 0) {
+            int x = 0; int y = 0;
             ClickableTile ct = targets[0].GetComponent<ClickableTile>();
+            if (ct != null) {
+                x = ct.TileX;
+                y = ct.TileY;
+            } else {
+                Basic_Character_Class basicTarget = targets[0].GetComponent<Basic_Character_Class>();
+                x = basicTarget.tileX; 
+                y = basicTarget.tileY;
+            }
 
             //Decide attack direction (1 of 8)
-            int dir = findAttackDirection(basicCaster.tileX,basicCaster.tileY,ct.TileX,ct.TileY);
+            int dir = findAttackDirection(basicCaster.tileX,basicCaster.tileY,x,y);
             int dmg = 3;
             float acc = 1;
             string elm = "Earth";

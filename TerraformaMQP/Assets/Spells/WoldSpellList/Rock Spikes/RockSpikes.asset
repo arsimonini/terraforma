@@ -25,7 +25,7 @@ MonoBehaviour:
   target: {fileID: 0}
   amountOfTargets: 1
   requireDifferentTargets: 1
-  targetEnemies: 0
+  targetEnemies: 1
   hitOwnTile: 0
   hitSelf: 0
   targetWalls: 0
