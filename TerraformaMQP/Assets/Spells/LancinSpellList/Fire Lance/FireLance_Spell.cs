@@ -46,24 +46,29 @@ public class FireLance_Spell : MonoBehaviour, Cast_Spell
             for (int i = 0; i < 6; i++) {
                 int a = (i+1);
                 int b = (6-i);
-                int tweenX = (a*startX+b*endX)/7; //abbbbbb, aabbbbb, aaabbbb, aaaabbb, aaaaabb, aaaaaab
-                int tweenY = (a*startY+b*endY)/7;
+                int tweenX = (int) ((float) a*startX+ (float)b*endX)/7; //abbbbbb, aabbbbb, aaabbbb, aaaabbb, aaaaabb, aaaaaab
+                int tweenY = (int) ((float) a*startY+ (float)b*endY)/7;
                 warpath.Add(map.clickableTiles[tweenX,tweenY]);
             }
+            warpath.Add(map.clickableTiles[endX,endY]);
 
 
             //Cull any duplicate values; will do this later
 
             for (int i = 0; i < warpath.Count; i++) {
-                UnityEngine.Debug.Log("FLAME SPEAR");
+                //UnityEngine.Debug.Log("FLAME SPEAR");
                 placeTileEffect(warpath[i],"Fire","Fire Lance");
             }
 
             //Hit anyone standing on the last spot.
-            if (warpath[warpath.Count - 1].characterOnTile != null) {
+            UnityEngine.Debug.Log("Fire Lance End Point:" + warpath[warpath.Count - 1].TileX + ", " + warpath[warpath.Count - 1].TileY);
+            
+            if (warpath[warpath.Count-1].characterOnTile != null) {
                 //Translate them to a basic_character_class
                 Basic_Character_Class characterGettingHit = warpath[warpath.Count - 1].characterOnTile.GetComponent<Basic_Character_Class>();
+                
                 if (characterGettingHit != null) {
+//                    UnityEngine.Debug.Log("HIT!");
                     characterGettingHit.takeMagicDamage(4,"Fire");
                 }
 

@@ -16,7 +16,7 @@ MonoBehaviour:
   spellName: Fleet Footwork
   elementType: Earth
   spellPrefab: {fileID: 5642006647470111640, guid: d08996d05ca9e834c89904b966e327ca, type: 3}
-  description: Make an ally highly evasive for a few terms.
+  description: Make an ally highly evasive for a few turns.
   targeted: 1
   range: 3
   targetTiles: 0
