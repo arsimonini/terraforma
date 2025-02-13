@@ -740,8 +740,6 @@ public class TileMap : MonoBehaviour
         }
     }
     public void visualPathTo(int x, int y) {
-        visualToX = x;
-        visualToY = y;
         if (!moveButtonPressed) {
             
             return;
