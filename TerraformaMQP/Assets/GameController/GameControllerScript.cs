@@ -43,6 +43,9 @@ public class GameControllerScript : MonoBehaviour
     public PauseMenu pauseMenuController;
     [SerializeField] private AudioClip[] closeAtkMenu;
 
+    public GameObject heroPhase;
+    public GameObject enemyPhase;
+
 
     void Start(){
         mask = LayerMask.GetMask("Default") | LayerMask.GetMask("BlockVisibility") | LayerMask.GetMask("UI");
@@ -353,6 +356,7 @@ public class GameControllerScript : MonoBehaviour
                     updateSelectedObject(null);
                     //Ends all of the player's units' turns
                     endAllPlayerTurns();
+                    GameObject callToPrefab = Instantiate(enemyPhase);
                     regenMana();
                 }
                 break;
@@ -410,6 +414,7 @@ public class GameControllerScript : MonoBehaviour
                 else
                 {
                     phase++;
+                    GameObject callToPrefab = Instantiate(heroPhase);
                 }
                 break;
             //Triggers all the end of turn effects on the enemy characters and advances their durations, then triggers all start of turn effects on the player characters
