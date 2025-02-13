@@ -699,7 +699,7 @@ public class TileMap : MonoBehaviour
         if (cost <= 0){
             cost = 1;
         }
-        if ((cut == false && selectedUnit.GetComponent<Enemy_Character_Class>() != null) || (selectedUnit.GetComponent<Hero_Character_Class>() != null && heroAvoidFire && !realCost && !cut)) {
+        if ((cut == false && selectedUnit.GetComponent<Enemy_Character_Class>() != null) || (selectedUnit.GetComponent<Enemy_Character_Class>() == null && heroAvoidFire && !realCost && !cut)) {
             if (checkForTileEffect(x,y,"Burning")) {
                 cost += 10;
             }
