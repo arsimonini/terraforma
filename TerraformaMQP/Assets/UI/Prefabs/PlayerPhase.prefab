@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 665260371840281872}
   - component: {fileID: 2545659242716904501}
   - component: {fileID: 6011016794251664189}
+  - component: {fileID: 5320539278041371968}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fc2930fc7f5264876a3e2712d1d43767, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a5162e2e9ce44e419274829f6754451, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -75,6 +76,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &5320539278041371968
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3288628077410933301}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 654937076c99c46e9acfda89f0c4fbab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4370733696641074040
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +111,7 @@ GameObject:
   - component: {fileID: 2248086305642801574}
   - component: {fileID: 4665067817690104568}
   m_Layer: 5
-  m_Name: EnemyPhase
+  m_Name: PlayerPhase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
