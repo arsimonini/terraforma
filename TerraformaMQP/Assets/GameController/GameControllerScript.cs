@@ -311,6 +311,15 @@ public class GameControllerScript : MonoBehaviour
             }
         }
 
+        //toggle pathfinding through fire for hero
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
+            map.heroAvoidFire = !map.heroAvoidFire;
+            if (map.selectedUnit != null && !map.selectedUnitScript.hasWalked && map.selectedUnit.gameObject.tag != "EnemyTeam" && map.selectedUnitScript.turnEnded == false && map.selectedUnitScript.targeting == false && map.moving == false && ((map.selectedUnit.GetComponent<Hero_Character_Class>() != null && map.selectedUnit.GetComponent<Hero_Character_Class>().pickingSpell == false) || map.selectedUnit.GetComponent<Hero_Character_Class>() == null)) {
+                map.visualPathTo(map.visualPath[map.visualPath.Count-1].x, map.visualPath[map.visualPath.Count-1].y);
+            }
+        }
+
         //Controls the game state and switching between the player/enemy turns
         /*
         Phase 0 --- Player Turn, if the player presses enter their turn ends and the current character is deselected

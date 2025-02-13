@@ -36,6 +36,8 @@ public class TileMap : MonoBehaviour
     public List<GameObject> movementDisplayLimit = null;
     private bool displayMovementDisplay = false;
 
+    public bool heroAvoidFire = false;
+
     //For Move Button
     public bool moveButtonPressed = false;
     public bool activelyMoving = false;
@@ -673,13 +675,13 @@ public class TileMap : MonoBehaviour
     public float pathMovementCost(List<Node> path) {
         float cost = 0;
         for (int i = 1; i < path.Count; i++) {
-            cost += costToEnterTile(path[i].x,path[i].y);
+            cost += costToEnterTile(path[i].x,path[i].y,false, false, false, true);
         }
         return cost;
     }
 
     
-    public float costToEnterTile(int x, int y, bool ignoreCanEnter = false, bool noWalls = false, bool cut = false) {
+    public float costToEnterTile(int x, int y, bool ignoreCanEnter = false, bool noWalls = false, bool cut = false, bool realCost = false) {
 
         if (!ignoreCanEnter) {
             if (unitCanEnterTile(x, y) == false) {
@@ -697,7 +699,7 @@ public class TileMap : MonoBehaviour
         if (cost <= 0){
             cost = 1;
         }
-        if (cut == false && selectedUnit.GetComponent<Enemy_Character_Class>() != null) {
+        if ((cut == false && selectedUnit.GetComponent<Enemy_Character_Class>() != null) || (selectedUnit.GetComponent<Hero_Character_Class>() != null && heroAvoidFire && !realCost && !cut)) {
             if (checkForTileEffect(x,y,"Burning")) {
                 cost += 10;
             }
@@ -738,6 +740,8 @@ public class TileMap : MonoBehaviour
         }
     }
     public void visualPathTo(int x, int y) {
+        visualToX = x;
+        visualToY = y;
         if (!moveButtonPressed) {
             
             return;
