@@ -21928,6 +21928,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0101ccd2561894cf88c174c96913a3cc, type: 3}
   - {fileID: 8300000, guid: ae21374cd30fa40bba78fc4cbfa78620, type: 3}
   - {fileID: 8300000, guid: fd52fa82e4d88422da73715775afdba5, type: 3}
+  heroPhase: {fileID: 4370733696641074040, guid: fe46cab073b6c46ce99f0154caf7ec3a, type: 3}
+  enemyPhase: {fileID: 4370733696641074040, guid: 8df3d12942e584f38b53c666329bae09, type: 3}
 --- !u!4 &1356950530
 Transform:
   m_ObjectHideFlags: 0
