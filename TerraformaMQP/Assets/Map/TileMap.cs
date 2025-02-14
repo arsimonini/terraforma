@@ -206,7 +206,7 @@ public class TileMap : MonoBehaviour
                         if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile.Count > 0){
                             for(int i = 0; i < clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile.Count; i++){
                                 clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile[i].tileEffectPrefab.GetComponent<tileEffectActions>().performStepOnEffect(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY]);
-                                UnityEngine.Debug.Log(selectedUnit);
+                                //UnityEngine.Debug.Log(selectedUnit);
                             }
                         }
                         selectedUnitScript.updateCharStats();

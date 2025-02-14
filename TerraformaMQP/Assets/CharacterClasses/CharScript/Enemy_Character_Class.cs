@@ -30,7 +30,7 @@ public class Enemy_Character_Class : MonoBehaviour
     //Tells the enemy to take their turn ---SUBJECT TO CHANGES AS AI IS ADDED---
     public void takeTurn()
     {
-        UnityEngine.Debug.Log("Taking turn");
+        //UnityEngine.Debug.Log("Taking turn");
         lowerWaterCooldown();
 
         if (element == "") {
@@ -48,7 +48,7 @@ public class Enemy_Character_Class : MonoBehaviour
     }
 
     public void basicTurn() {
-        UnityEngine.Debug.Log("BASIC TURN");
+        //UnityEngine.Debug.Log("BASIC TURN");
         if (basic.health > 5) {
             takePath(findHero());
         }

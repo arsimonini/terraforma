@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -37,13 +37,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -52,9 +52,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -95,18 +95,590 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4400
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a801812876014c9da42663a940e93a5
+      internalID: 327933232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_1
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 4400
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbfa7a98099aa4e6db8c803f5d4b5115
+      internalID: 1194876925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_2
+      rect:
+        serializedVersion: 2
+        x: 1900
+        y: 4400
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba1ae0523c6364401860e65729801ac0
+      internalID: 1757231179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_3
+      rect:
+        serializedVersion: 2
+        x: 2850
+        y: 4400
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba2eb9c33d50a4ce8a6affa90e99f4e4
+      internalID: -621380364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_4
+      rect:
+        serializedVersion: 2
+        x: 3800
+        y: 4400
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 391c578c76523489897cba2cefbfe378
+      internalID: -1773667626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_5
+      rect:
+        serializedVersion: 2
+        x: 4750
+        y: 4400
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31e0f570166fb44dea80ccf576d3dbb7
+      internalID: -100031849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3300
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebdcca4d7e0754d529114e2804bf6389
+      internalID: -855188973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_7
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 3300
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb97491f4bb5143c4ba36d81ec88c28f
+      internalID: 1384762221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_8
+      rect:
+        serializedVersion: 2
+        x: 1900
+        y: 3300
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39e96ddfcdf804703a1bb5b2e83fca28
+      internalID: -217207790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_9
+      rect:
+        serializedVersion: 2
+        x: 2850
+        y: 3300
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5cf7d5e74b9f45ae94ff991afec08d6
+      internalID: -370388211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_10
+      rect:
+        serializedVersion: 2
+        x: 3800
+        y: 3300
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a84cee59ef1147fbac6132e8b6a21c5
+      internalID: -312288706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_11
+      rect:
+        serializedVersion: 2
+        x: 4750
+        y: 3300
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f0ce5201b4814dba8be3e0452e3d2d3
+      internalID: 2094446206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2200
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bce9b187782614d5aa47fbe31fe37d79
+      internalID: -2146893077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_13
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 2200
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 180bdfa73ab6045bca5cde33f91745b4
+      internalID: -361251923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_14
+      rect:
+        serializedVersion: 2
+        x: 1900
+        y: 2200
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c19467755c8ca45aa8ad8e068031e4fb
+      internalID: -218682981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_15
+      rect:
+        serializedVersion: 2
+        x: 2850
+        y: 2200
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a31efc2c03f0b4b22b025dcb330b72d0
+      internalID: 166649467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_16
+      rect:
+        serializedVersion: 2
+        x: 3800
+        y: 2200
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 538adfedcf45b40088d35a85f1b58f95
+      internalID: 851957618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_17
+      rect:
+        serializedVersion: 2
+        x: 4750
+        y: 2200
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 322a7609230b043c5a54ca57e041e457
+      internalID: 322022602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1100
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 990593d64182a4a7098da981bff1f209
+      internalID: -1928974894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_19
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 1100
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acc45f7d27f9a402e85f4fe3f62331aa
+      internalID: 405232777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_20
+      rect:
+        serializedVersion: 2
+        x: 1900
+        y: 1100
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f2cf9700081f45b7bd0208ca52b3b43
+      internalID: 1734010155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_21
+      rect:
+        serializedVersion: 2
+        x: 2850
+        y: 1100
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e085ef4519ed469d88bb6647a16d489
+      internalID: -1993575370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_22
+      rect:
+        serializedVersion: 2
+        x: 3800
+        y: 1100
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec48046f50fd54eeb93c321eeb02f14d
+      internalID: -145414686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_23
+      rect:
+        serializedVersion: 2
+        x: 4750
+        y: 1100
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02dc93569343347a8975a772189c852f
+      internalID: 781357880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98a8d1347b4c346cfa744bad7967a25a
+      internalID: 1158489318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rold_Basic_Move-1-0-2_25
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 0
+        width: 950
+        height: 1100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f79f283ed90674c2fb012c82f75ecc56
+      internalID: 387540970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9f501fd266061412aa16b084e9cab8ac
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Rold_Basic_Move-1-0-2_0: 327933232
+      Rold_Basic_Move-1-0-2_1: 1194876925
+      Rold_Basic_Move-1-0-2_10: -312288706
+      Rold_Basic_Move-1-0-2_11: 2094446206
+      Rold_Basic_Move-1-0-2_12: -2146893077
+      Rold_Basic_Move-1-0-2_13: -361251923
+      Rold_Basic_Move-1-0-2_14: -218682981
+      Rold_Basic_Move-1-0-2_15: 166649467
+      Rold_Basic_Move-1-0-2_16: 851957618
+      Rold_Basic_Move-1-0-2_17: 322022602
+      Rold_Basic_Move-1-0-2_18: -1928974894
+      Rold_Basic_Move-1-0-2_19: 405232777
+      Rold_Basic_Move-1-0-2_2: 1757231179
+      Rold_Basic_Move-1-0-2_20: 1734010155
+      Rold_Basic_Move-1-0-2_21: -1993575370
+      Rold_Basic_Move-1-0-2_22: -145414686
+      Rold_Basic_Move-1-0-2_23: 781357880
+      Rold_Basic_Move-1-0-2_24: 1158489318
+      Rold_Basic_Move-1-0-2_25: 387540970
+      Rold_Basic_Move-1-0-2_3: -621380364
+      Rold_Basic_Move-1-0-2_4: -1773667626
+      Rold_Basic_Move-1-0-2_5: -100031849
+      Rold_Basic_Move-1-0-2_6: -855188973
+      Rold_Basic_Move-1-0-2_7: 1384762221
+      Rold_Basic_Move-1-0-2_8: -217207790
+      Rold_Basic_Move-1-0-2_9: -370388211
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
