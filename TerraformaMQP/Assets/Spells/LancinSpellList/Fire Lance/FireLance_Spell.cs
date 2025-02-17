@@ -69,7 +69,7 @@ public class FireLance_Spell : MonoBehaviour, Cast_Spell
                 
                 if (characterGettingHit != null) {
 //                    UnityEngine.Debug.Log("HIT!");
-                    characterGettingHit.takeMagicDamage(4,"Fire");
+                    characterGettingHit.takeMagicDamage(7,"Fire");
                 }
 
             }

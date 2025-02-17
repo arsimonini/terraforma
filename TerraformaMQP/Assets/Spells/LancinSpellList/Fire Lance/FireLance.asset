@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: FireLance
   m_EditorClassIdentifier: 
-  manaCost: 5
+  manaCost: 6
   spellName: Fire Lance
   elementType: Fire
   spellPrefab: {fileID: 2394175536890139692, guid: fe08e04f83ed33743b89fb2a9ebaaa83, type: 3}
