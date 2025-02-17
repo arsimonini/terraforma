@@ -82,26 +82,26 @@ MonoBehaviour:
     value: 20
     moddedValue: 20
   attack:
-    value: 5
-    moddedValue: 5
+    value: 15
+    moddedValue: 15
   movementSpeed:
     value: 5
     moddedValue: 5
   resistence:
-    value: 4
-    moddedValue: 4
+    value: 14
+    moddedValue: 14
   defense:
-    value: 4
-    moddedValue: 4
+    value: 14
+    moddedValue: 14
   speed:
-    value: 3
-    moddedValue: 3
+    value: 13
+    moddedValue: 13
   criticalChance:
     value: 1
     moddedValue: 1
   accuracy:
-    value: 5
-    moddedValue: 5
+    value: 15
+    moddedValue: 15
   actionsLeft:
     value: 1
     moddedValue: 1

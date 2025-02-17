@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 3
   statToEffect:
-  - attack
+  - health
   amountToEffect: 02000000
   source: 
   tile: {fileID: 0}
