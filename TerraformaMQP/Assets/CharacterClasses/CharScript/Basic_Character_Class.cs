@@ -38,6 +38,8 @@ public class Basic_Character_Class : MonoBehaviour
     public GameObject missPrefab;
     public GameObject abilityPrefab;
 
+    public int waitTimeBeforeReacton = 1;
+
     public Color color; //Color of the shape ---WILL BE DELETED WHEN MODELS ARE ADDED---
 
     public int tileX = 0; //The X value of the tile the character is on
@@ -564,7 +566,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Called when the player tries to use a physical attack on an enemy
     //Takes in the selected enemy and the amount of damage to deal
     //Returns true if the character has no actions left after the attack, false if the character still has at least one action
-    public bool attackCharacter(GameObject target, int damageAmount)
+    public bool attackCharacter(GameObject target, int damageAmount, bool reacting = false)
     {
         //Calls the takePhysicalDamage function on the target, passing in the damage amount
         Basic_Character_Class targetCharacter = target.GetComponent<Basic_Character_Class>();
@@ -633,6 +635,13 @@ public class Basic_Character_Class : MonoBehaviour
                 callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
                 callToPrefab.transform.position = newPos;
             }
+
+            if(reacting == true){
+                return false;
+            }
+            if (targetCharacter.GetComponent<Basic_Character_Class>().health > 0){
+                StartCoroutine(pause(targetCharacter.gameObject));
+            }
         } else if (targetTile != null && targetTile.isBreakable) { //Damage Tile
             targetTile.hp -= damageAmount;
             UnityEngine.Debug.Log("Tile Health: " + targetTile.hp);
@@ -697,6 +706,11 @@ public class Basic_Character_Class : MonoBehaviour
 
         if (crit > formula) return true;
         return false;
+    }
+
+    IEnumerator pause(GameObject targetCharacter){
+        yield return new WaitForSecondsRealtime(waitTimeBeforeReacton);
+        targetCharacter.GetComponent<Basic_Character_Class>().attackCharacter(this.gameObject, targetCharacter.GetComponent<Basic_Character_Class>().attack.moddedValue, true);
     }
 
     //Called when player tries to physically attack a piece of terrain at a location, likely a Wold Wall
