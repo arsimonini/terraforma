@@ -570,7 +570,10 @@ public class Basic_Character_Class : MonoBehaviour
         Basic_Character_Class targetCharacter = target.GetComponent<Basic_Character_Class>();
         ClickableTile targetTile = target.GetComponent<ClickableTile>();
         if (targetCharacter == null){
-            targetCharacter = targetTile.characterOnTile.GetComponent<Basic_Character_Class>();
+            if (targetTile.characterOnTile != null) {
+                targetCharacter = targetTile.characterOnTile.GetComponent<Basic_Character_Class>();
+            }
+            
         }
         if (targetCharacter != null){
 
