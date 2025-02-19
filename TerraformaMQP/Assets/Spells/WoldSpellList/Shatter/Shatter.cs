@@ -32,63 +32,21 @@ public class Shatter : MonoBehaviour, Cast_Spell
         }
 
         ClickableTile targetTile = targets[0].GetComponent<ClickableTile>();
+        shatterWall(targetTile, caster);
+
+        //Shatter adjacent walls
+        TileMap map = targetTile.map;
+        int x = targetTile.TileX;
+        int y = targetTile.TileY;
+
+        if (map.tileExists(x-1,y)) {shatterWall(map.clickableTiles[x-1,y],caster);}
+        if (map.tileExists(x+1,y)) {shatterWall(map.clickableTiles[x+1,y],caster);}
+        if (map.tileExists(x,y-1)) {shatterWall(map.clickableTiles[x,y-1],caster);}
+        if (map.tileExists(x,y+1)) {shatterWall(map.clickableTiles[x,y+1],caster);}
         
-        if (targetTile.tileIs == 20) {
+        
             //UnityEngine.Debug.Log("Should activate?");
             //Shatter the tile
-            targetTile.breakTile();
-
-            
-            Basic_Character_Class castChar = caster.GetComponent<Basic_Character_Class>();
-
-            //Get the damage
-            int damage = 0;
-            Hero_Character_Class castHero = caster.GetComponent<Hero_Character_Class>();
-            if (castHero != null) {
-                //UnityEngine.Debug.Log("Valid Hero Character");
-                damage = castHero.magic.moddedValue*3;
-            } 
-            //Enemy_Character_Class castEnemy = caster.GetComponent<Enemy_Character_Class>();
-            //if (castEnemy != null) {
-            //    damage = castEnemy.magic.moddedValue;
-            //}
-
-            //Figure out whether the wall was north, south, east, or west of Wold
-            float cX = castChar.tileX;
-            float cY = castChar.tileY;
-
-            float tX = targetTile.TileX;
-            float tY = targetTile.TileY;
-
-            float dX = Mathf.Abs(cX-tX);
-            float dY = Mathf.Abs(cY-tY);
-
-            //Hit enemies on opposite end of tiles
-            if (dX > dY) { 
-                if (tX < cX) { //Damage enemies to the left of the tile. e   <- t  <- c
-                    strikeAt(targetTile,-1,0,damage);
-                    strikeAt(targetTile,-1,1,damage);
-                    strikeAt(targetTile,-1,-1,damage);
-                } else { //Hit enemies to the right of the tile.
-                    strikeAt(targetTile,1,0,damage);
-                    strikeAt(targetTile,1,1,damage);
-                    strikeAt(targetTile,1,-1,damage);
-                }
-
-            } else {//if (dY > dX) {
-                if (tY < cY) { //Damage enemies to the south of the tile. 
-                    strikeAt(targetTile,0,-1,damage);
-                    strikeAt(targetTile,1,-1,damage);
-                    strikeAt(targetTile,-1,-1,damage);
-                } else { //Hit enemies to the north of the tile.
-                    strikeAt(targetTile,0,1,damage);
-                    strikeAt(targetTile,1,1,damage);
-                    strikeAt(targetTile,-1,1,damage);
-                }
-            }// else {
-
-            //}
-        }
     }
 
     public void strikeAt(ClickableTile mainTile, int xOffSet, int yOffset, int damage = 2) {
@@ -189,4 +147,63 @@ public class Shatter : MonoBehaviour, Cast_Spell
         }
     }
 
+    public void shatterWall(ClickableTile targetTile, GameObject caster){
+        if (targetTile.tileIs != 20) {
+            return;
+        }
+        targetTile.breakTile();
+
+            
+        Basic_Character_Class castChar = caster.GetComponent<Basic_Character_Class>();
+
+        //Get the damage
+        int damage = 0;
+        Hero_Character_Class castHero = caster.GetComponent<Hero_Character_Class>();
+        if (castHero != null) {
+                //UnityEngine.Debug.Log("Valid Hero Character");
+            damage = castHero.magic.moddedValue*3;
+        } 
+            //Enemy_Character_Class castEnemy = caster.GetComponent<Enemy_Character_Class>();
+            //if (castEnemy != null) {
+            //    damage = castEnemy.magic.moddedValue;
+            //}
+
+            //Figure out whether the wall was north, south, east, or west of Wold
+        float cX = castChar.tileX;
+        float cY = castChar.tileY;
+
+        float tX = targetTile.TileX;
+        float tY = targetTile.TileY;
+
+        float dX = Mathf.Abs(cX-tX);
+        float dY = Mathf.Abs(cY-tY);
+
+        //Hit enemies on opposite end of tiles
+        if (dX > dY) { 
+            if (tX < cX) { //Damage enemies to the left of the tile. e   <- t  <- c
+                strikeAt(targetTile,-1,0,damage);
+                strikeAt(targetTile,-2,0,damage);
+                strikeAt(targetTile,-1,1,damage);
+                strikeAt(targetTile,-1,-1,damage);
+            } else { //Hit enemies to the right of the tile.
+                strikeAt(targetTile,1,0,damage);
+                strikeAt(targetTile,2,0,damage);
+                strikeAt(targetTile,1,1,damage);
+                strikeAt(targetTile,1,-1,damage);
+            }
+
+        } else {//if (dY > dX) {
+            if (tY < cY) { //Damage enemies to the south of the tile. 
+                strikeAt(targetTile,0,-1,damage);
+                strikeAt(targetTile,0,-2,damage);
+                strikeAt(targetTile,1,-1,damage);
+                strikeAt(targetTile,-1,-1,damage);
+            } else { //Hit enemies to the north of the tile.
+                strikeAt(targetTile,0,1,damage);
+                strikeAt(targetTile,0,2,damage);
+                strikeAt(targetTile,1,1,damage);
+                strikeAt(targetTile,-1,1,damage);
+            }
+        }
+    }
 }

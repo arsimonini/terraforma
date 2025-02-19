@@ -10,27 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
-  m_Name: FleetFootwork
+  m_Name: FireLance
   m_EditorClassIdentifier: 
   manaCost: 6
-  spellName: Fleet Footwork
-  elementType: Earth
-  spellPrefab: {fileID: 5642006647470111640, guid: d08996d05ca9e834c89904b966e327ca, type: 3}
-  description: Make an ally highly evasive for a few turns.
+  spellName: Fire Lance
+  elementType: Fire
+  spellPrefab: {fileID: 2394175536890139692, guid: fe08e04f83ed33743b89fb2a9ebaaa83, type: 3}
+  description: Throw a javelin of flame at foes from a distance, leaving a trail
+    of fire in its path.
   targeted: 1
-  range: 3
-  targetTiles: 0
-  targetAllies: 1
+  range: 7
+  targetTiles: 1
+  targetAllies: 0
   target: {fileID: 0}
   amountOfTargets: 1
-  requireDifferentTargets: 0
-  targetEnemies: 0
+  requireDifferentTargets: 1
+  targetEnemies: 1
   hitOwnTile: 0
   hitSelf: 0
   targetWalls: 0
-  AOEsize: 0
+  AOEsize: 1
   square: 0
-  alternateAOEDisplay: 0
+  alternateAOEDisplay: 1
   hyperSpecificTargeting: 0
   needSpecificTiles: 0
   specificTiles: []

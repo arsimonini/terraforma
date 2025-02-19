@@ -81,26 +81,26 @@ MonoBehaviour:
     value: 15
     moddedValue: 15
   attack:
-    value: 4
-    moddedValue: 4
+    value: 14
+    moddedValue: 14
   movementSpeed:
     value: 4
     moddedValue: 4
   resistence:
-    value: 4
-    moddedValue: 4
+    value: 14
+    moddedValue: 14
   defense:
-    value: 4
-    moddedValue: 4
+    value: 14
+    moddedValue: 14
   speed:
-    value: 3
-    moddedValue: 3
+    value: 13
+    moddedValue: 13
   criticalChance:
     value: 1
     moddedValue: 1
   accuracy:
-    value: 4
-    moddedValue: 4
+    value: 14
+    moddedValue: 14
   actionsLeft:
     value: 1
     moddedValue: 1
@@ -114,6 +114,7 @@ MonoBehaviour:
   atkPrefab: {fileID: 4396117065116841325, guid: 8b66e881856c54496b800c258a60e18d, type: 3}
   critPrefab: {fileID: 1351090809278183054, guid: 70f83795e17e149619783be2264dd393, type: 3}
   missPrefab: {fileID: 5228633549399205854, guid: 9e2b41c1ba3314cfba742b3a596ce337, type: 3}
+  abilityPrefab: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 7
   tileY: 5
@@ -161,6 +162,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7c5cf9b73201f39408a52b33bb463df6, type: 3}
   - {fileID: 8300000, guid: b4e130e79d3561f4b866c52ee35c8073, type: 3}
   - {fileID: 8300000, guid: 0c9b8264f326ab04985d183d3efd6e5c, type: 3}
+  startHP: 0
 --- !u!114 &5590519867409697623
 MonoBehaviour:
   m_ObjectHideFlags: 0
