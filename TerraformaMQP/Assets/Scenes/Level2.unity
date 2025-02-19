@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a12a70941f77f9a46b0631725bdb5d2f, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2611,8 +2611,10 @@ MonoBehaviour:
   aoeDisplayTiles: []
   displayingAOE: 0
   allTargets: []
+  movementDisplayLimit: []
   moveButtonPressed: 0
   activelyMoving: 0
+  movementDisplayTiles: []
   comlog: {fileID: 1033430468}
   movementSounds:
   - {fileID: 8300000, guid: 18a8c4c30f80040d59332b72932b738f, type: 3}
@@ -38191,6 +38193,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0101ccd2561894cf88c174c96913a3cc, type: 3}
   - {fileID: 8300000, guid: ae21374cd30fa40bba78fc4cbfa78620, type: 3}
   - {fileID: 8300000, guid: fd52fa82e4d88422da73715775afdba5, type: 3}
+  heroPhase: {fileID: 0}
+  enemyPhase: {fileID: 0}
 --- !u!4 &1690754007
 Transform:
   m_ObjectHideFlags: 0
