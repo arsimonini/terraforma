@@ -18,7 +18,7 @@ MonoBehaviour:
   spellPrefab: {fileID: 2394175536890139692, guid: c75ffc91fa3f2bb4ca568046b2e5129b, type: 3}
   description: Swap positions with an ally
   targeted: 1
-  range: 3
+  range: 5
   targetTiles: 0
   targetAllies: 1
   target: {fileID: 0}
@@ -30,6 +30,7 @@ MonoBehaviour:
   targetWalls: 0
   AOEsize: 0
   square: 0
+  alternateAOEDisplay: 0
   hyperSpecificTargeting: 1
   needSpecificTiles: 1
   specificTiles: []

@@ -29,6 +29,8 @@ public class ClickableTile : MonoBehaviour
     public int hp = 10;
     public int maxHp = 10;
 
+    public int decay = 0; //every turn, it decreases by x
+
     public GameObject standardHighlight;
     public GameObject canHitHighlight;
     public GameObject cannotHitHightlight;
@@ -263,6 +265,18 @@ public class ClickableTile : MonoBehaviour
 
             break;
         }
+    }
+
+    public int decayTile() {
+        if (isBreakable) {
+          hp-=decay;
+          
+          if (hp <= 0) {
+            breakTile();
+          }  
+        } 
+
+        return hp;
     }
 
     public bool canBecomeWoldWall() {

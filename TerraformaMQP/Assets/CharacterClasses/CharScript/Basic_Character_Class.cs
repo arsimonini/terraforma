@@ -172,7 +172,8 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of Physical Damage Taken
 
     public void takePhysicalDamage(int damage){
-        float mitigatedDamage = Mathf.Round((float)damage * (20f/(20f + (float)defense.moddedValue)));
+        float baseLine = 20f/3f;//1 for original stats; 2.5 for +10. General rule is the higher the base stat, the higher the baseline needs to be to balance it out
+        float mitigatedDamage = Mathf.Round((float)damage * (baseLine/(baseLine + (float)defense.moddedValue)));
         health = health - (int)mitigatedDamage;
         //UnityEngine.Debug.Log("Took " +  mitigatedDamage + " physical damage");
         
@@ -572,7 +573,9 @@ public class Basic_Character_Class : MonoBehaviour
         Basic_Character_Class targetCharacter = target.GetComponent<Basic_Character_Class>();
         ClickableTile targetTile = target.GetComponent<ClickableTile>();
         if (targetCharacter == null){
-            targetCharacter = targetTile.characterOnTile.GetComponent<Basic_Character_Class>();
+            if (targetTile.characterOnTile != null) {
+                targetCharacter = targetTile.characterOnTile.GetComponent<Basic_Character_Class>();
+            }
         }
         if (targetCharacter != null){
 
