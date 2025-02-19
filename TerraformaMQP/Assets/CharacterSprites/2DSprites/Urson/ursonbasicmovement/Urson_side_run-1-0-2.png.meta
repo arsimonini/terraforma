@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4cec1341a29c54208b48c3d8a7b11f08
+guid: 746ed9de560fa46babf2832468ca2af0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character_lineup-removebg-preview-2_0
+      name: Urson_side_run-1-0-2_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 7
-        width: 150
-        height: 300
+        x: 0
+        y: 1165
+        width: 2000
+        height: 1155
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4991c82017f0345ac91da06c3945c95b
-      internalID: -478804326
+      spriteID: e43f03118ed4548769e7da03e1939dd9
+      internalID: 602206158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_lineup-removebg-preview-2_1
+      name: Urson_side_run-1-0-2_1
       rect:
         serializedVersion: 2
-        x: 165
-        y: 7
-        width: 150
-        height: 300
+        x: 2000
+        y: 1165
+        width: 2000
+        height: 1155
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e67a96f76da72418e99bd58f1b523d58
-      internalID: -1295040777
+      spriteID: d5adfd13726354d88bf149e8598bd86e
+      internalID: 539234739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_lineup-removebg-preview-2_2
+      name: Urson_side_run-1-0-2_2
       rect:
         serializedVersion: 2
-        x: 325
-        y: 7
-        width: 150
-        height: 300
+        x: 4000
+        y: 1165
+        width: 2000
+        height: 1155
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56bc20e58da414f018b8cd9d9ac5ea79
-      internalID: -2052660611
+      spriteID: 3d2b6de9780694e04aa25cd26fcb6d6e
+      internalID: 1287143858
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_lineup-removebg-preview-2_3
+      name: Urson_side_run-1-0-2_3
       rect:
         serializedVersion: 2
-        x: 485
-        y: 7
-        width: 150
-        height: 300
+        x: 6000
+        y: 1165
+        width: 2000
+        height: 1155
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fcef01ccf35740e396ed69b5fb8b9df
-      internalID: 1644521974
+      spriteID: a98a44b761d1f4578ab0786a7fb2fb76
+      internalID: -1423690661
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_lineup-removebg-preview-2_4
+      name: Urson_side_run-1-0-2_4
       rect:
         serializedVersion: 2
-        x: 645
-        y: 7
-        width: 150
-        height: 300
+        x: 0
+        y: 10
+        width: 2000
+        height: 1155
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,8 +195,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 060513c6d8a304baabcbd835207b37d1
-      internalID: -101041259
+      spriteID: 0827c08e76dd84b4b832575ec852ef9a
+      internalID: 968173948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Urson_side_run-1-0-2_5
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 10
+        width: 2000
+        height: 1155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0accb1893527e431bb96431dc17a3d08
+      internalID: 1678083552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Urson_side_run-1-0-2_6
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 10
+        width: 2000
+        height: 1155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96a48431ed9d94f598136280ebf3d12c
+      internalID: -253587088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Urson_side_run-1-0-2_7
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 10
+        width: 2000
+        height: 1155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7ee2bec983bf493ab907497c3fc3f1c
+      internalID: 2063793876
       vertices: []
       indices: 
       edges: []
@@ -204,7 +267,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7b710e25dfb13436dbbd5d880c6ecd81
+    spriteID: 6f3bbe91e79f9487787be752516ae66a
     internalID: 0
     vertices: []
     indices: 
@@ -212,11 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Character_lineup-removebg-preview-2_0: -478804326
-      Character_lineup-removebg-preview-2_1: -1295040777
-      Character_lineup-removebg-preview-2_2: -2052660611
-      Character_lineup-removebg-preview-2_3: 1644521974
-      Character_lineup-removebg-preview-2_4: -101041259
+      Urson_side_run-1-0-2_0: 602206158
+      Urson_side_run-1-0-2_1: 539234739
+      Urson_side_run-1-0-2_2: 1287143858
+      Urson_side_run-1-0-2_3: -1423690661
+      Urson_side_run-1-0-2_4: 968173948
+      Urson_side_run-1-0-2_5: 1678083552
+      Urson_side_run-1-0-2_6: -253587088
+      Urson_side_run-1-0-2_7: 2063793876
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

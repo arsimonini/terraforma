@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4cec1341a29c54208b48c3d8a7b11f08
+guid: c73c3499350dd4538a8f4bb989110121
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character_lineup-removebg-preview-2_0
+      name: Lancin_RunLeft_0000-0_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 7
-        width: 150
-        height: 300
+        x: 0
+        y: 1160
+        width: 1000
+        height: 1160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4991c82017f0345ac91da06c3945c95b
-      internalID: -478804326
+      spriteID: 668d6a25478ac4986a14b32419743ba6
+      internalID: -1479424203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_lineup-removebg-preview-2_1
+      name: Lancin_RunLeft_0000-0_1
       rect:
         serializedVersion: 2
-        x: 165
-        y: 7
-        width: 150
-        height: 300
+        x: 1000
+        y: 1160
+        width: 1000
+        height: 1160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e67a96f76da72418e99bd58f1b523d58
-      internalID: -1295040777
+      spriteID: b1e4014ec2ba14a07bc53a55c8a440ae
+      internalID: -1703600532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_lineup-removebg-preview-2_2
+      name: Lancin_RunLeft_0000-0_2
       rect:
         serializedVersion: 2
-        x: 325
-        y: 7
-        width: 150
-        height: 300
+        x: 2000
+        y: 1160
+        width: 1000
+        height: 1160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56bc20e58da414f018b8cd9d9ac5ea79
-      internalID: -2052660611
+      spriteID: 41e7157238c504946ba58e64f3d9d689
+      internalID: -1565223242
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_lineup-removebg-preview-2_3
+      name: Lancin_RunLeft_0000-0_3
       rect:
         serializedVersion: 2
-        x: 485
-        y: 7
-        width: 150
-        height: 300
+        x: 3000
+        y: 1160
+        width: 1000
+        height: 1160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fcef01ccf35740e396ed69b5fb8b9df
-      internalID: 1644521974
+      spriteID: dfd881f6606194afca9a50b399ff84b9
+      internalID: -2079098390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_lineup-removebg-preview-2_4
+      name: Lancin_RunLeft_0000-0_4
       rect:
         serializedVersion: 2
-        x: 645
-        y: 7
-        width: 150
-        height: 300
+        x: 0
+        y: 0
+        width: 1000
+        height: 1160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,8 +195,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 060513c6d8a304baabcbd835207b37d1
-      internalID: -101041259
+      spriteID: a82d88b0a4b7d4d569e618a204828501
+      internalID: -628422554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lancin_RunLeft_0000-0_5
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 1000
+        height: 1160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e78a73728d1e34975a304447a8c06a38
+      internalID: -2061508819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lancin_RunLeft_0000-0_6
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 1000
+        height: 1160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5360c8968d5c94f1489eb2159f6ad578
+      internalID: -1241256476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lancin_RunLeft_0000-0_7
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 1000
+        height: 1160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 191fde801edb444d3aaaf61f5e24ce14
+      internalID: 1463203974
       vertices: []
       indices: 
       edges: []
@@ -204,7 +267,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7b710e25dfb13436dbbd5d880c6ecd81
+    spriteID: 309beb3eb212e440bb83b583bbadfda9
     internalID: 0
     vertices: []
     indices: 
@@ -212,11 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Character_lineup-removebg-preview-2_0: -478804326
-      Character_lineup-removebg-preview-2_1: -1295040777
-      Character_lineup-removebg-preview-2_2: -2052660611
-      Character_lineup-removebg-preview-2_3: 1644521974
-      Character_lineup-removebg-preview-2_4: -101041259
+      Lancin_RunLeft_0000-0_0: -1479424203
+      Lancin_RunLeft_0000-0_1: -1703600532
+      Lancin_RunLeft_0000-0_2: -1565223242
+      Lancin_RunLeft_0000-0_3: -2079098390
+      Lancin_RunLeft_0000-0_4: -628422554
+      Lancin_RunLeft_0000-0_5: -2061508819
+      Lancin_RunLeft_0000-0_6: -1241256476
+      Lancin_RunLeft_0000-0_7: 1463203974
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
