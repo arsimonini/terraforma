@@ -2611,8 +2611,10 @@ MonoBehaviour:
   aoeDisplayTiles: []
   displayingAOE: 0
   allTargets: []
+  movementDisplayLimit: []
   moveButtonPressed: 0
   activelyMoving: 0
+  movementDisplayTiles: []
   comlog: {fileID: 1033430468}
   movementSounds:
   - {fileID: 8300000, guid: 18a8c4c30f80040d59332b72932b738f, type: 3}
@@ -6578,6 +6580,10 @@ PrefabInstance:
       propertyPath: spellList
       value: 
       objectReference: {fileID: 261685571}
+    - target: {fileID: 8047284439058182590, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: spellList.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0cba071374210ee4faee99576681505f, type: 2}
     - target: {fileID: 8233266726302139542, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -38191,6 +38197,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0101ccd2561894cf88c174c96913a3cc, type: 3}
   - {fileID: 8300000, guid: ae21374cd30fa40bba78fc4cbfa78620, type: 3}
   - {fileID: 8300000, guid: fd52fa82e4d88422da73715775afdba5, type: 3}
+  heroPhase: {fileID: 4370733696641074040, guid: fe46cab073b6c46ce99f0154caf7ec3a, type: 3}
+  enemyPhase: {fileID: 4370733696641074040, guid: 8df3d12942e584f38b53c666329bae09, type: 3}
 --- !u!4 &1690754007
 Transform:
   m_ObjectHideFlags: 0

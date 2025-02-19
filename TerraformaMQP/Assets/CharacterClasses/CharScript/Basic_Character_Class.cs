@@ -172,7 +172,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of Physical Damage Taken
 
     public void takePhysicalDamage(int damage){
-        float baseLine = 20f/3f;//1 for original stats; 2.5 for +10. General rule is the higher the base stat, the higher the baseline needs to be to balance it out
+        float baseLine = 20f/3f;//1 for original stats; 3 for +10. General rule is the higher the base stat, the higher the baseline needs to be to balance it out
         float mitigatedDamage = Mathf.Round((float)damage * (baseLine/(baseLine + (float)defense.moddedValue)));
         health = health - (int)mitigatedDamage;
         //UnityEngine.Debug.Log("Took " +  mitigatedDamage + " physical damage");
@@ -680,7 +680,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Random rand = new Random();
 		//double scale = 3;
 		
-		int hit = (int) Math.Round(75+scale*(acc-speed-cover));
+		int hit = (int) Math.Round(80+scale*(acc-speed-cover));
 		int miss = (int) (UnityEngine.Random.Range(0,100));
 		
 		if (hit>miss) return true;
