@@ -16952,7 +16952,7 @@ PrefabInstance:
       objectReference: {fileID: 771237195}
     - target: {fileID: 860936756721351128, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_VersionIndex
-      value: 1738
+      value: 1744
       objectReference: {fileID: 0}
     - target: {fileID: 2015180818333459478, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: cam
@@ -17062,6 +17062,10 @@ PrefabInstance:
       propertyPath: nameplate
       value: 
       objectReference: {fileID: 8238293854779057181}
+    - target: {fileID: 8047284439058182590, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: spellList.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0cba071374210ee4faee99576681505f, type: 2}
     - target: {fileID: 8233266726302139542, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_Mesh
       value: 
