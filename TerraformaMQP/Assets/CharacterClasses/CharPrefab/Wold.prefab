@@ -182,8 +182,8 @@ MonoBehaviour:
     value: 25
     moddedValue: 25
   magic:
-    value: 2
-    moddedValue: 2
+    value: 12
+    moddedValue: 12
   pickingSpell: 0
   spellList: []
   selectedSpell: {fileID: 0}

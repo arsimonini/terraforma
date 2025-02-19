@@ -298,7 +298,7 @@ public class ReactionController : MonoBehaviour
             case "Plant":
                 break;
 
-            case "HearthFire":
+            case "HearthFire": //Need to do this last bit
                 newEffect = Instantiate(tileEffects[3]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
                 break;

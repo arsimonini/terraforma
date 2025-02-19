@@ -187,7 +187,8 @@ public class Basic_Character_Class : MonoBehaviour
     //Input - Amount of Magic Damage Taken
 
     public void takeMagicDamage(int damage, string magicType){
-        float mitigatedDamage = Mathf.Round((float)damage * (20f/(20f + (float)resistence.moddedValue)));
+        float baseLine = 20f/3f;
+        float mitigatedDamage = Mathf.Round((float)damage * (baseLine/(baseLine + (float)resistence.moddedValue)));
         health = health - (int)mitigatedDamage;
         //UnityEngine.Debug.Log("Took " + mitigatedDamage + " magic damage");
         checkHealth();

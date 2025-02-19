@@ -27,7 +27,14 @@ public class FireLance_Spell : MonoBehaviour, Cast_Spell
     {
         Basic_Character_Class basicCaster = caster.GetComponent<Basic_Character_Class>();
 
-        if (targets.Count > 0) {
+        float damage = .4375f;
+        Hero_Character_Class heroCaster = caster.GetComponent<Hero_Character_Class>();
+        if (heroCaster != null) {
+            //UnityEngine.Debug.Log("Multiply!");
+            damage = (damage* (heroCaster.magic.moddedValue));
+        }
+
+        if (targets.Count > 0) { 
             int endX = 0;
             int endY = 0;
             ClickableTile ct = targets[0].GetComponent<ClickableTile>();
@@ -69,7 +76,7 @@ public class FireLance_Spell : MonoBehaviour, Cast_Spell
                 
                 if (characterGettingHit != null) {
 //                    UnityEngine.Debug.Log("HIT!");
-                    characterGettingHit.takeMagicDamage(7,"Fire");
+                    characterGettingHit.takeMagicDamage((int) damage,"Fire");
                 }
 
             }
