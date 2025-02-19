@@ -10,9 +10,9 @@ public class HearthTileEffect : tileEffectActions
 
     public override void performEndOfTurnEffect(ClickableTile tile){
         //UnityEngine.Debug.Log("Proccing Burning");
-        if (tile.GetComponent<ClickableTile>().characterOnTile != null){
-            tile.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(-2, "Hearthfire");
-        }
+        //if (tile.GetComponent<ClickableTile>().characterOnTile != null){
+        //    tile.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().increaseHealth(2);
+        //}
     }
 
     /*
@@ -48,6 +48,7 @@ public class HearthTileEffect : tileEffectActions
     }
 
     public override void performStepOnEffect(ClickableTile tile){
-        tile.characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(-2, "Hearthfire");
+        //tile.characterOnTile.GetComponent<Basic_Character_Class>().increaseHealth(2);
     }
+
 }
