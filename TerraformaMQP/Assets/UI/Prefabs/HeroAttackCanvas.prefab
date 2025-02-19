@@ -2697,7 +2697,7 @@ MonoBehaviour:
   MC: {fileID: 3874750891085019632}
   SD: {fileID: 120079223724984484}
   displayingDescription: 0
-  hasSpell: 0
+  hasSpell: 1
   spellOffset: 2
 --- !u!1 &3408576355911191536
 GameObject:
@@ -3928,7 +3928,7 @@ MonoBehaviour:
   MC: {fileID: 457722280751972986}
   SD: {fileID: 2981624560340016690}
   displayingDescription: 0
-  hasSpell: 0
+  hasSpell: 1
   spellOffset: 2
 --- !u!1 &5266396258700926709
 GameObject:
@@ -4646,7 +4646,7 @@ MonoBehaviour:
   MC: {fileID: 1075245349592457921}
   SD: {fileID: 3050557317886829895}
   displayingDescription: 0
-  hasSpell: 0
+  hasSpell: 1
   spellOffset: 2
 --- !u!1 &6108463013852233457
 GameObject:
@@ -6236,9 +6236,9 @@ MonoBehaviour:
   spellNum: 2
   SN: {fileID: 5872632220361755359}
   MC: {fileID: 6949794395586480815}
-  SD: {fileID: 6904756134183193819}
+  SD: {fileID: 8877600779752170197}
   displayingDescription: 0
-  hasSpell: 0
+  hasSpell: 1
   spellOffset: 2
 --- !u!1 &8712269065652964465
 GameObject:
