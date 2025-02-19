@@ -76,7 +76,7 @@ public class ReactionController : MonoBehaviour
 
                     case "Hearthfire":
                         //UnityEngine.Debug.Log("Here");
-                        //checkTile = checkBurningReaction(tile, damageType, source, tile.effectsOnTile[i], playerTeam);
+                        checkTile = checkHearthfireReaction(tile, damageType, source, tile.effectsOnTile[i], playerTeam);
                     break;
                 }
             }
@@ -255,7 +255,7 @@ public class ReactionController : MonoBehaviour
 
             case "Earth":
                 newEffect = Instantiate(tileEffects[2]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration:4, fromReact: true);
                 break;
 
             case "Air":
@@ -268,6 +268,11 @@ public class ReactionController : MonoBehaviour
                 break;
 
             case "Plant":
+                break;
+
+            case "HearthFire":
+                newEffect = Instantiate(tileEffects[3]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
                 break;
         }
     }
@@ -466,4 +471,5 @@ public class ReactionController : MonoBehaviour
         }
     }
 
+    
 }
