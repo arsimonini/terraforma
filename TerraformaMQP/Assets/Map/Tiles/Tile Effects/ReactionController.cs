@@ -237,6 +237,34 @@ public class ReactionController : MonoBehaviour
         return true;
     }
 
+    private bool checkHearthfireReaction(ClickableTile tile, string damageType, string source, TileEffect effectOnTile, bool playerTeam){
+        switch (damageType){
+            case "Fire":
+                effectOnTile.duration += 2;
+                return false;
+
+            case "Water":
+                tile.removeEffectFromTile(effectOnTile);
+                return false;
+
+            case "Earth":
+                return true;
+
+            case "Air":
+                return true;
+
+            case "Lightning":
+                return true;
+
+            case "Ice":
+                return true;
+
+            case "Plant":
+                return true;
+        }
+        return true;
+    }
+
 
 
 //------------------------------------------------------------------TILE REACTIONS BELOW-----------------------------------------------------------------------
