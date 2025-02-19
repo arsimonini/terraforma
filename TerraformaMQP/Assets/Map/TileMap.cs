@@ -1872,6 +1872,15 @@ public class TileMap : MonoBehaviour
             movementDisplayTiles = new List<GameObject>();
         }
     }
+
+    //public void decayAllTiles() {
+      //  for (int i = 0; i < clickableTiles.GetLength(0); i++) {
+        //    for (int i = 0; i < clickableTiles.GetLength(0); i++) {
+            
+          //  }   
+        //}
+        
+    //}
 }
 
 

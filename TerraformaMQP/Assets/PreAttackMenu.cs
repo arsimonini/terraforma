@@ -72,7 +72,7 @@ public class PreAttackMenu : MonoBehaviour
             spdBuffVal = System.Convert.ToInt32(go.GetComponent<Nameplate>().spdBuff.text.Substring(1,go.GetComponent<Nameplate>().spdBuff.text.Length));
         }
 
-        float finalVal = 75+3*(((float)accVal + (float)accBuffVal) - ((float)spdVal + (float)spdBuffVal));
+        float finalVal = 80+3*(((float)accVal + (float)accBuffVal) - ((float)spdVal + (float)spdBuffVal));
 
         tmpGUI.text = finalVal.ToString() + "%";
     }
@@ -129,8 +129,8 @@ public class PreAttackMenu : MonoBehaviour
         int finalAttack = attack + attackbuff;
         int finalDefense = defense + defensebuff;
         
-
-        float mitigatedDamage = Mathf.Round((float)finalAttack * (20f/(20f + (float)finalDefense)));
+        float baseLine = 20f/3.0f;
+        float mitigatedDamage = Mathf.Round((float)finalAttack * (baseLine/(baseLine + (float)finalDefense)));
         
         
         primaryTMPGUI.text = mitigatedDamage.ToString();
