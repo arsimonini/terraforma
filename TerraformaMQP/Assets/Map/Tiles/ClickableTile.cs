@@ -130,7 +130,7 @@ public class ClickableTile : MonoBehaviour
         tileRenderer.material.color = highlightColor;
         if (transform.childCount > 0){
             foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
-                if (!rend.gameObject.name.StartsWith("Outline") && !rend.gameObject.name.Contains("oak")){
+                if (!(rend.gameObject.name.StartsWith("Outline") || rend.gameObject.name.Contains("tree top") || rend.gameObject.name.Contains("trunk"))){
                     rend.material.color = highlightColor;
                 }
             }
@@ -144,7 +144,7 @@ public class ClickableTile : MonoBehaviour
         GetComponent<Renderer>().material.color = color;
         if (transform.childCount > 0){
             foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
-                if(!rend.gameObject.name.StartsWith("Outline") && !rend.gameObject.name.Contains("oak")){
+                if(!(rend.gameObject.name.StartsWith("Outline") || rend.gameObject.name.Contains("tree top") || rend.gameObject.name.Contains("trunk"))){
                     //UnityEngine.Debug.Log(rend.gameObject.name);
                     rend.material.color = color;
                 }
