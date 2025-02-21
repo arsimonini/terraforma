@@ -73,6 +73,11 @@ public class ReactionController : MonoBehaviour
                     case "Heated":
                         //checkTile = checkHeatedReaction(tile, damageType, source, tile.effectsOnTile[i], playerTeam);
                         break;
+
+                    case "Hearthfire":
+                        //UnityEngine.Debug.Log("Here");
+                        //checkTile = checkBurningReaction(tile, damageType, source, tile.effectsOnTile[i], playerTeam);
+                    break;
                 }
             }
         }
@@ -131,7 +136,8 @@ public class ReactionController : MonoBehaviour
             }
             else if(tile.gameObject.name.Contains("tileWhiteVoid")){
                 
-            }
+            } 
+
         }
     }
 

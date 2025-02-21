@@ -83,26 +83,26 @@ MonoBehaviour:
     value: 32
     moddedValue: 32
   attack:
-    value: 4
-    moddedValue: 4
+    value: 18
+    moddedValue: 18
   movementSpeed:
     value: 6
     moddedValue: 6
   resistence:
-    value: 8
-    moddedValue: 8
+    value: 14
+    moddedValue: 14
   defense:
-    value: 8
-    moddedValue: 8
+    value: 14
+    moddedValue: 14
   speed:
-    value: 3
-    moddedValue: 3
+    value: 13
+    moddedValue: 13
   criticalChance:
     value: 1
     moddedValue: 1
   accuracy:
-    value: 3
-    moddedValue: 3
+    value: 15
+    moddedValue: 15
   actionsLeft:
     value: 1
     moddedValue: 1
@@ -117,6 +117,7 @@ MonoBehaviour:
   critPrefab: {fileID: 4370733696641074040, guid: 469b0af5556404f79b03a0a8137ede65, type: 3}
   missPrefab: {fileID: 5228633549399205854, guid: 9e2b41c1ba3314cfba742b3a596ce337, type: 3}
   abilityPrefab: {fileID: 4370733696641074040, guid: 9acea563e3a5346769c2135cb9f3743b, type: 3}
+  waitTimeBeforeReacton: 1
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 15
   tileY: 8
@@ -373,6 +374,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8307509125131471017}
+    - target: {fileID: 5168971530063550120, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
+      propertyPath: m_text
+      value: Rollout -  Swap between a defensive and offensive stance for Rold. 1
+        Turns of Cooldown
+      objectReference: {fileID: 0}
     - target: {fileID: 6125454115303078425, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

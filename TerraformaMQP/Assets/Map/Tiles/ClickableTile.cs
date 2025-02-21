@@ -29,6 +29,8 @@ public class ClickableTile : MonoBehaviour
     public int hp = 10;
     public int maxHp = 10;
 
+    public int decay = 0; //every turn, it decreases by x
+
     public GameObject standardHighlight;
     public GameObject canHitHighlight;
     public GameObject cannotHitHightlight;
@@ -128,7 +130,7 @@ public class ClickableTile : MonoBehaviour
         tileRenderer.material.color = highlightColor;
         if (transform.childCount > 0){
             foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
-                if (!rend.gameObject.name.StartsWith("Outline") && !rend.gameObject.name.Contains("oak")){
+                if (!(rend.gameObject.name.StartsWith("Outline") || rend.gameObject.name.Contains("tree top") || rend.gameObject.name.Contains("trunk"))){
                     rend.material.color = highlightColor;
                 }
             }
@@ -142,7 +144,7 @@ public class ClickableTile : MonoBehaviour
         GetComponent<Renderer>().material.color = color;
         if (transform.childCount > 0){
             foreach (Renderer rend in GetComponentsInChildren<Renderer>()){
-                if(!rend.gameObject.name.StartsWith("Outline") && !rend.gameObject.name.Contains("oak")){
+                if(!(rend.gameObject.name.StartsWith("Outline") || rend.gameObject.name.Contains("tree top") || rend.gameObject.name.Contains("trunk"))){
                     //UnityEngine.Debug.Log(rend.gameObject.name);
                     rend.material.color = color;
                 }
@@ -263,6 +265,18 @@ public class ClickableTile : MonoBehaviour
 
             break;
         }
+    }
+
+    public int decayTile() {
+        if (isBreakable) {
+          hp-=decay;
+          
+          if (hp <= 0) {
+            breakTile();
+          }  
+        } 
+
+        return hp;
     }
 
     public bool canBecomeWoldWall() {
