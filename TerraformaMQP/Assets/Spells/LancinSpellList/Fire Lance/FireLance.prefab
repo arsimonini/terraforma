@@ -115,9 +115,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2394175536890139692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e63cec09f4bd3c940b9f05708a34edfe, type: 3}
+  m_Script: {fileID: 11500000, guid: b715d933344c25e4297847e7dde9ee72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spread: 0
-  FireTileEffect: {fileID: 11400000, guid: 172d136be4abc0741b5b34fd7f644684, type: 2}
+  FireTileEffect: {fileID: 0}
+  warpath: []
   magicAnimation: {fileID: 0}
