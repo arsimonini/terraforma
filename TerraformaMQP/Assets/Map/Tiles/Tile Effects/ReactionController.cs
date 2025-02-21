@@ -286,6 +286,11 @@ public class ReactionController : MonoBehaviour
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration:4, fromReact: true);
                 break;
 
+            case "HearthFire": //Need to do this last bit
+                newEffect = Instantiate(tileEffects[6]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                break;
+                
             case "Air":
                 break;
 
@@ -298,10 +303,7 @@ public class ReactionController : MonoBehaviour
             case "Plant":
                 break;
 
-            case "HearthFire": //Need to do this last bit
-                newEffect = Instantiate(tileEffects[3]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
-                break;
+            
         }
     }
 
