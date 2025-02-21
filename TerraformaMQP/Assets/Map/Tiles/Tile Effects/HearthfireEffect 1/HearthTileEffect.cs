@@ -8,11 +8,12 @@ public class HearthTileEffect : tileEffectActions
     public List<string> burnableTiles;
     public List<string> reactableTiles;
 
+    public int healCount= 2;
     public override void performEndOfTurnEffect(ClickableTile tile){
-        //UnityEngine.Debug.Log("Proccing Burning");
-        //if (tile.GetComponent<ClickableTile>().characterOnTile != null){
-        //    tile.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().increaseHealth(2);
-        //}
+        GameObject character = tile.GetComponent<ClickableTile>().characterOnTile;
+        if (character != null) {
+            heal(character.GetComponent<Basic_Character_Class>(),healCount);
+        }
     }
 
     /*
@@ -48,7 +49,14 @@ public class HearthTileEffect : tileEffectActions
     }
 
     public override void performStepOnEffect(ClickableTile tile){
-        //tile.characterOnTile.GetComponent<Basic_Character_Class>().increaseHealth(2);
+        GameObject character = tile.GetComponent<ClickableTile>().characterOnTile;
+        if (character != null){
+            heal(character.GetComponent<Basic_Character_Class>(),healCount);
+        }
+    }
+
+    public void heal(Basic_Character_Class bcc, int heal) {
+        bcc.health = Mathf.Min(bcc.health + heal,bcc.maxHealth.moddedValue);
     }
 
 }

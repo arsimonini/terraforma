@@ -37,11 +37,11 @@ public class Hearthfire_Spell : MonoBehaviour, Cast_Spell
 
             TileMap map = basicCaster.map;
             
-            ClickableTile a = map.getTile(endX,endY); if (a !=null) {placeTileEffect(a,"Hearthfire","Hearthfire");};
-            ClickableTile b = map.getTile(endX,endY-1); if (b !=null) {placeTileEffect(b,"Hearthfire","Hearthfire");};
-            ClickableTile c = map.getTile(endX,endY+1); if (c !=null) {placeTileEffect(c,"Hearthfire","Hearthfire");};
-            ClickableTile d = map.getTile(endX-1,endY); if (d !=null) {placeTileEffect(d,"Hearthfire","Hearthfire");};
-            ClickableTile e = map.getTile(endX+1,endY); if (e !=null) {placeTileEffect(e,"Hearthfire","Hearthfire");};
+            ClickableTile a = map.getTile(endX,endY); if (a !=null) {placeTileEffect(a,"HearthFire","HearthFire");};
+            ClickableTile b = map.getTile(endX,endY-1); if (b !=null) {placeTileEffect(b,"HearthFire","HearthFire");};
+            ClickableTile c = map.getTile(endX,endY+1); if (c !=null) {placeTileEffect(c,"HearthFire","HearthFire");};
+            ClickableTile d = map.getTile(endX-1,endY); if (d !=null) {placeTileEffect(d,"HearthFire","HearthFire");};
+            ClickableTile e = map.getTile(endX+1,endY); if (e !=null) {placeTileEffect(e,"HearthFire","HearthFire");};
             //placeTileEffect(warpath[i],"Hearthfire","Hearthfire");
 
         }

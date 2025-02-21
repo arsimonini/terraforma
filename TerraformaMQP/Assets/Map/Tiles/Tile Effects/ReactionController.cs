@@ -74,7 +74,7 @@ public class ReactionController : MonoBehaviour
                         //checkTile = checkHeatedReaction(tile, damageType, source, tile.effectsOnTile[i], playerTeam);
                         break;
 
-                    case "Hearthfire":
+                    case "HearthFire":
                         //UnityEngine.Debug.Log("Here");
                         checkTile = checkHearthfireReaction(tile, damageType, source, tile.effectsOnTile[i], playerTeam);
                     break;
@@ -287,10 +287,10 @@ public class ReactionController : MonoBehaviour
                 break;
 
             case "HearthFire": //Need to do this last bit
-                newEffect = Instantiate(tileEffects[6]);
+                newEffect = Instantiate(tileEffects[3]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
                 break;
-                
+
             case "Air":
                 break;
 
@@ -330,7 +330,12 @@ public class ReactionController : MonoBehaviour
                 newEffect = Instantiate(tileEffects[2]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true);
                 break;
-                
+            
+            case "HearthFire": //Need to do this last bit
+                newEffect = Instantiate(tileEffects[3]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                break;
+
             case "Air":
                 break;
 
@@ -361,6 +366,10 @@ public class ReactionController : MonoBehaviour
             case "Earth":
                 newEffect = Instantiate(tileEffects[2]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true);
+                break;
+
+            case "HearthFire": //Need to do this last bit
+                this.gameObject.GetComponent<TileMap>().swapTiles(tile, 1, true);
                 break;
 
             case "Air":
@@ -395,6 +404,11 @@ public class ReactionController : MonoBehaviour
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true);
                 break;
 
+            case "HearthFire": //Need to do this last bit
+                newEffect = Instantiate(tileEffects[3]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                break;
+
             case "Air":
                 break;
 
@@ -427,6 +441,11 @@ public class ReactionController : MonoBehaviour
                 newEffect.createTileEffect(playerTeam, tile, newSource: source);
                 break;
 
+            case "HearthFire": //Need to do this last bit
+                newEffect = Instantiate(tileEffects[3]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                break;
+
             case "Air":
                 break;
 
@@ -455,6 +474,11 @@ public class ReactionController : MonoBehaviour
             case "Earth":
                 newEffect = Instantiate(tileEffects[2]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source);
+                break;
+
+            case "HearthFire": //Need to do this last bit
+                newEffect = Instantiate(tileEffects[3]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
                 break;
 
             case "Air":
@@ -487,6 +511,11 @@ public class ReactionController : MonoBehaviour
             case "Earth":
                 break;
 
+            case "HearthFire": //Need to do this last bit
+                newEffect = Instantiate(tileEffects[3]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                break;
+                
             case "Air":
                 break;
 

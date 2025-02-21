@@ -17171,7 +17171,7 @@ PrefabInstance:
     - target: {fileID: 8047284439058182590, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: spellList.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 0cba071374210ee4faee99576681505f, type: 2}
+      objectReference: {fileID: 11400000, guid: 4c5556c052b8e6344a990092671b75b5, type: 2}
     - target: {fileID: 8233266726302139542, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -21323,6 +21323,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 172d136be4abc0741b5b34fd7f644684, type: 2}
   - {fileID: 11400000, guid: ec44c757fe2dc4f4284eddc7fa48ab44, type: 2}
   - {fileID: 11400000, guid: 360567a08a87f4d4887237cb0e4f1875, type: 2}
+  - {fileID: 11400000, guid: ba5bc7b9192685645a96fbc2744473b9, type: 2}
   tilePrefabs: []
 --- !u!114 &1297737941
 MonoBehaviour:
