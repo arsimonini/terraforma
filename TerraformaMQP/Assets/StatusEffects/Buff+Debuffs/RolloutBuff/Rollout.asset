@@ -17,7 +17,7 @@ MonoBehaviour:
   - defense
   - resistence
   - accuracy
-  amountsToEffect: 02000000feffffffffffffff01000000
+  amountsToEffect: fcffffff0400000004000000feffffff
   duration: -1
   source: Rold
   name: Rollout

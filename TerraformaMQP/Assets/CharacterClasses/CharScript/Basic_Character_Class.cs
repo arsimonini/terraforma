@@ -40,6 +40,8 @@ public class Basic_Character_Class : MonoBehaviour
 
     public int waitTimeBeforeReacton = 1;
 
+    public List<string> movementCostsToIgnore = null;
+
     public Color color; //Color of the shape ---WILL BE DELETED WHEN MODELS ARE ADDED---
 
     public int tileX = 0; //The X value of the tile the character is on
