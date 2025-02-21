@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Hearthfire
   m_EditorClassIdentifier: 
   duration: 3
-  statToEffect:
-  - health
-  amountToEffect: 02000000
+  statToEffect: []
+  amountToEffect: 
   source: 
   tile: {fileID: 0}
   name: Hearthfire
