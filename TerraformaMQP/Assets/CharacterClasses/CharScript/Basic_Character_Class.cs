@@ -40,6 +40,8 @@ public class Basic_Character_Class : MonoBehaviour
 
     public int waitTimeBeforeReacton = 1;
 
+    public List<string> movementCostsToIgnore = null;
+
     public Color color; //Color of the shape ---WILL BE DELETED WHEN MODELS ARE ADDED---
 
     public int tileX = 0; //The X value of the tile the character is on
@@ -1229,6 +1231,13 @@ public class Basic_Character_Class : MonoBehaviour
 
             }
         }
+
+        if (buff.movementCostsToIgnore != null){
+            for (int i = 0; i < buff.movementCostsToIgnore.Count; i++){
+                addTileCostToIgnore(buff.movementCostsToIgnore[i]);
+            }
+        }
+
         buffs.Add(buff);
     }
 
@@ -1286,6 +1295,13 @@ public class Basic_Character_Class : MonoBehaviour
 
             }
         }
+
+        if (buff.movementCostsToIgnore != null){
+            for (int i = 0; i < buff.movementCostsToIgnore.Count; i++){
+                removeTileCostToIgnore(buff.movementCostsToIgnore[i]);
+            }
+        }
+
         buffs.Remove(buff);
     }
 
@@ -1320,6 +1336,18 @@ public class Basic_Character_Class : MonoBehaviour
 
         tile.OnMouseExit();
         pm.setDeslection(false);
+    }
+
+    public void addTileCostToIgnore(string name){
+        if (!movementCostsToIgnore.Contains(name)){
+            movementCostsToIgnore.Add(name);
+        }
+    }
+
+    public void removeTileCostToIgnore(string name){
+        if(movementCostsToIgnore.Contains(name)){
+            movementCostsToIgnore.Remove(name);
+        }
     }
 
 
