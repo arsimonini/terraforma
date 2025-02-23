@@ -119,7 +119,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LancinRunForward
+  m_Name: WoldRunForward
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -135,7 +135,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 1acf322652033483a88fd77cda9f8bed, type: 2}
+  m_Motion: {fileID: 7400000, guid: 8a86665831f7c448b8b24cf53a89dc85, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -148,7 +148,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LancinRunLeft
+  m_Name: WoldRunLeft
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -164,7 +164,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: dd740e4c8ac08448b955284f6b35adf8, type: 2}
+  m_Motion: {fileID: 7400000, guid: adb84672e2ced40f3b3fec84eb140860, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -344,7 +344,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LancinRunBack
+  m_Name: WoldRunBack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -360,7 +360,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 45284d46d0e5b461dbd8d82fce545d58, type: 2}
+  m_Motion: {fileID: 7400000, guid: aa5472d45bb5f4a9a951d63bf94917a9, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

@@ -10,6 +10,7 @@ public class PreAttackMenu : MonoBehaviour
     public GameObject heroNameplate;
     public GameObject enemyNameplate;
     public GameObject preattack;
+    public GameControllerScript gc;
 
     public TextMeshProUGUI playerAcc;
     public TextMeshProUGUI playerCrit; 
@@ -22,7 +23,7 @@ public class PreAttackMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(heroNameplate.activeSelf==true && enemyNameplate.activeSelf==true)
+        if(heroNameplate.activeSelf==true && enemyNameplate.activeSelf==true && gc.targeting == true)
         {
             preattack.SetActive(true);
             calculateStats();

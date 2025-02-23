@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 7884286615612736571}
   - component: {fileID: 7357787880328293490}
   - component: {fileID: 5939171319365987941}
+  - component: {fileID: 6079621520241744307}
+  - component: {fileID: 6016783205700458196}
+  - component: {fileID: 3423292401328859087}
   m_Layer: 0
   m_Name: Wold Summon
   m_TagString: PlayerTeam
@@ -277,6 +280,63 @@ MonoBehaviour:
   AM: {fileID: 4370733696641074040, guid: 9acea563e3a5346769c2135cb9f3743b, type: 3}
   DM: {fileID: 4370733696641074040, guid: d731a856e8cf64dfeb20dd66ff0ca0ed, type: 3}
   activated: 0
+--- !u!95 &6079621520241744307
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7421672215106744178}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0745196d8494247f7804663d4a256175, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6016783205700458196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7421672215106744178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5314bb9372242451f896029028083b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bcc: {fileID: 8307509125131471017}
+  ani: {fileID: 6079621520241744307}
+  t: {fileID: 172958851306762973}
+  camRot: 0
+  startX: 0
+  startZ: 0
+  x: 0
+  z: 0
+--- !u!114 &3423292401328859087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7421672215106744178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e1afa4981e94dcd9da8a19cfe56b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bcc: {fileID: 8307509125131471017}
+  ani: {fileID: 6079621520241744307}
+  currName: 
+  isActive: 0
 --- !u!1001 &3310634924771014691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -287,7 +347,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2864200540203865240, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
       propertyPath: m_VersionIndex
-      value: 1090
+      value: 1096
       objectReference: {fileID: 0}
     - target: {fileID: 4338082057154234030, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
       propertyPath: m_Name
