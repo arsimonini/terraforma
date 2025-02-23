@@ -24,11 +24,11 @@ public class RoldAbilityImageSwap : MonoBehaviour
 
         for(int i = 0; i < go.GetComponent<Basic_Character_Class>().buffs.Count; i++) {
             if(go.GetComponent<Basic_Character_Class>().buffs[i].name == "Rollout") {
-                go.GetComponent<Basic_Character_Class>().abilityPrefab = DM;
+                go.GetComponent<Basic_Character_Class>().abilityPrefab = AM;
                 activated = true;
             }
             else {
-                go.GetComponent<Basic_Character_Class>().abilityPrefab = AM;
+                go.GetComponent<Basic_Character_Class>().abilityPrefab = DM;
                 activated = false;
             }
         }

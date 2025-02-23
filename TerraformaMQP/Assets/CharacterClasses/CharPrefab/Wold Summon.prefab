@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 7884286615612736571}
   - component: {fileID: 7357787880328293490}
   - component: {fileID: 5939171319365987941}
+  - component: {fileID: 560788856344954981}
   - component: {fileID: 6079621520241744307}
-  - component: {fileID: 6016783205700458196}
-  - component: {fileID: 3423292401328859087}
+  - component: {fileID: 1907074780946638704}
   m_Layer: 0
   m_Name: Wold Summon
   m_TagString: PlayerTeam
@@ -36,7 +36,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7899925118088887545}
@@ -280,6 +280,26 @@ MonoBehaviour:
   AM: {fileID: 4370733696641074040, guid: 9acea563e3a5346769c2135cb9f3743b, type: 3}
   DM: {fileID: 4370733696641074040, guid: d731a856e8cf64dfeb20dd66ff0ca0ed, type: 3}
   activated: 0
+--- !u!114 &560788856344954981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7421672215106744178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5314bb9372242451f896029028083b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bcc: {fileID: 8307509125131471017}
+  a: {fileID: 0}
+  t: {fileID: 172958851306762973}
+  camRot: 0
+  startX: 0
+  startZ: 0
+  x: 0
+  z: 0
 --- !u!95 &6079621520241744307
 Animator:
   serializedVersion: 5
@@ -301,27 +321,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6016783205700458196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7421672215106744178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5314bb9372242451f896029028083b65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bcc: {fileID: 8307509125131471017}
-  ani: {fileID: 6079621520241744307}
-  t: {fileID: 172958851306762973}
-  camRot: 0
-  startX: 0
-  startZ: 0
-  x: 0
-  z: 0
---- !u!114 &3423292401328859087
+--- !u!114 &1907074780946638704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bcc: {fileID: 8307509125131471017}
-  ani: {fileID: 6079621520241744307}
+  ani: {fileID: 0}
   currName: 
   isActive: 0
 --- !u!1001 &3310634924771014691
@@ -347,23 +347,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2864200540203865240, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
       propertyPath: m_VersionIndex
-      value: 1096
+      value: 1108
       objectReference: {fileID: 0}
     - target: {fileID: 4338082057154234030, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
       propertyPath: m_Name
       value: PlayerTeamCircle
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769279382542546911, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769279382542546911, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769279382542546911, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8769279382542546911, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
       propertyPath: m_LocalPosition.x

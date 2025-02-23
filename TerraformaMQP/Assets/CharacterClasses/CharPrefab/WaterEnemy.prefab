@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -1}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 777347791333725829}
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bcc: {fileID: 521441566614050383}
-  ani: {fileID: -2307135946624812788}
+  a: {fileID: -2307135946624812788}
   t: {fileID: 7332120924486113192}
   camRot: 0
   startX: 0
@@ -1012,24 +1012,12 @@ PrefabInstance:
       value: EnemyTeamCircle
       objectReference: {fileID: 0}
     - target: {fileID: 8769279382542546911, guid: 2bf4495083835dc4bad7ab5124941b78, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769279382542546911, guid: 2bf4495083835dc4bad7ab5124941b78, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769279382542546911, guid: 2bf4495083835dc4bad7ab5124941b78, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769279382542546911, guid: 2bf4495083835dc4bad7ab5124941b78, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8769279382542546911, guid: 2bf4495083835dc4bad7ab5124941b78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 8769279382542546911, guid: 2bf4495083835dc4bad7ab5124941b78, type: 3}
       propertyPath: m_LocalPosition.z

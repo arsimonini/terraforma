@@ -5,7 +5,8 @@ using UnityEngine;
 public class CharacterAnimations : MonoBehaviour
 {
     public Basic_Character_Class bcc;
-    public Animator ani;
+    //public Animator ani;
+    public Animator a;
     public Transform t;
     public float camRot;
     public float startX;
@@ -32,14 +33,14 @@ public class CharacterAnimations : MonoBehaviour
         
 
         if(bcc.isMoving == true && bcc.hasWalked == true) {
-            ani.SetBool("charIsMoving", true);
+            a.SetBool("charIsMoving", true);
             checkDirection();
         }
         else {
-            ani.SetBool("charIsMoving", false);
-            ani.SetBool("charIsMovingBack", false); //back
-            ani.SetBool("charIsMovingForward", false);
-            ani.SetBool("charIsMovingSideways", false);
+            a.SetBool("charIsMoving", false);
+            a.SetBool("charIsMovingBack", false); //back
+            a.SetBool("charIsMovingForward", false);
+            a.SetBool("charIsMovingSideways", false);
             t.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
         }
     }
@@ -53,28 +54,28 @@ public class CharacterAnimations : MonoBehaviour
             if(startX > x) {
                 //UnityEngine.Debug.Log("X should be more than x: " + startX + "  " + x);
                 t.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                ani.SetBool("charIsMovingSideways", true); //Left
-                ani.SetBool("charIsMovingBack", false);
-                ani.SetBool("charIsMovingForward", false);
+                a.SetBool("charIsMovingSideways", true); //Left
+                a.SetBool("charIsMovingBack", false);
+                a.SetBool("charIsMovingForward", false);
             }
             else if(startX < x) {
                 //UnityEngine.Debug.Log("X should be less than x: " + startX + "  " + x);
                 t.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
-                ani.SetBool("charIsMovingSideways", true); //Right
-                ani.SetBool("charIsMovingBack", false);
-                ani.SetBool("charIsMovingForward", false);
+                a.SetBool("charIsMovingSideways", true); //Right
+                a.SetBool("charIsMovingBack", false);
+                a.SetBool("charIsMovingForward", false);
             }
             else if(startZ > z) {
                 //UnityEngine.Debug.Log("Z should be less than z: " + startZ + "  " + z);
-                ani.SetBool("charIsMovingForward", true); //forward
-                ani.SetBool("charIsMovingBack", false);
-                ani.SetBool("charIsMovingSideways", false);
+                a.SetBool("charIsMovingForward", true); //forward
+                a.SetBool("charIsMovingBack", false);
+                a.SetBool("charIsMovingSideways", false);
             }
             else if(startZ < z) {
                 //UnityEngine.Debug.Log("Z should be more than z: " + startZ + "  " + z);
-                ani.SetBool("charIsMovingBack", true); //back
-                ani.SetBool("charIsMovingForward", false);
-                ani.SetBool("charIsMovingSideways", false);
+                a.SetBool("charIsMovingBack", true); //back
+                a.SetBool("charIsMovingForward", false);
+                a.SetBool("charIsMovingSideways", false);
 
             }
             else if(startX == x) {
@@ -86,29 +87,29 @@ public class CharacterAnimations : MonoBehaviour
         else if(camRot == 90) {
             if(startX > x) {
                 //X is getting Lower
-                ani.SetBool("charIsMovingForward", true); //forward
-                ani.SetBool("charIsMovingBack", false);
-                ani.SetBool("charIsMovingSideways", false);
+                a.SetBool("charIsMovingForward", true); //forward
+                a.SetBool("charIsMovingBack", false);
+                a.SetBool("charIsMovingSideways", false);
 
             }
             else if(startX < x) {
-                ani.SetBool("charIsMovingBack", true); //back
-                ani.SetBool("charIsMovingForward", false);
-                ani.SetBool("charIsMovingSideways", false);
+                a.SetBool("charIsMovingBack", true); //back
+                a.SetBool("charIsMovingForward", false);
+                a.SetBool("charIsMovingSideways", false);
             }
             else if(startZ > z) {
                 //Z is getting Lower
                 t.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
-                ani.SetBool("charIsMovingSideways", true); //Right
-                ani.SetBool("charIsMovingBack", false);
-                ani.SetBool("charIsMovingForward", false);
+                a.SetBool("charIsMovingSideways", true); //Right
+                a.SetBool("charIsMovingBack", false);
+                a.SetBool("charIsMovingForward", false);
                 
             }
             else if(startZ < z) {
                 t.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                ani.SetBool("charIsMovingSideways", true); //Left
-                ani.SetBool("charIsMovingBack", false);
-                ani.SetBool("charIsMovingForward", false);
+                a.SetBool("charIsMovingSideways", true); //Left
+                a.SetBool("charIsMovingBack", false);
+                a.SetBool("charIsMovingForward", false);
                 
             }
             else if(startX == x) {
@@ -118,30 +119,30 @@ public class CharacterAnimations : MonoBehaviour
             if(startX > x) {
                 //X is getting Lower
                 t.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
-                ani.SetBool("charIsMovingSideways", true); //Right
-                ani.SetBool("charIsMovingBack", false);
-                ani.SetBool("charIsMovingForward", false);
+                a.SetBool("charIsMovingSideways", true); //Right
+                a.SetBool("charIsMovingBack", false);
+                a.SetBool("charIsMovingForward", false);
 
             }
             else if(startX < x) {
                 t.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                ani.SetBool("charIsMovingSideways", true); //Left
-                ani.SetBool("charIsMovingBack", false);
-                ani.SetBool("charIsMovingForward", false);
+                a.SetBool("charIsMovingSideways", true); //Left
+                a.SetBool("charIsMovingBack", false);
+                a.SetBool("charIsMovingForward", false);
                 
             }
             else if(startZ > z) {
                 //Z is getting Lower
-                ani.SetBool("charIsMovingBack", true); //back
-                ani.SetBool("charIsMovingForward", false);
-                ani.SetBool("charIsMovingSideways", false);
+                a.SetBool("charIsMovingBack", true); //back
+                a.SetBool("charIsMovingForward", false);
+                a.SetBool("charIsMovingSideways", false);
                 
             }
             else if(startZ < z) {
                 //UnityEngine.Debug.Log("Z should be less than z: " + startZ + "  " + z);
-                ani.SetBool("charIsMovingForward", true); //forward
-                ani.SetBool("charIsMovingBack", false);
-                ani.SetBool("charIsMovingSideways", false);
+                a.SetBool("charIsMovingForward", true); //forward
+                a.SetBool("charIsMovingBack", false);
+                a.SetBool("charIsMovingSideways", false);
                 
             }
             else if(startX == x) {
@@ -151,30 +152,30 @@ public class CharacterAnimations : MonoBehaviour
         else if(camRot == 270 || camRot == 269) {
             if(startX > x) {
                 //X is getting Lower
-                ani.SetBool("charIsMovingBack", true); //back
-                ani.SetBool("charIsMovingForward", false);
-                ani.SetBool("charIsMovingSideways", false);
+                a.SetBool("charIsMovingBack", true); //back
+                a.SetBool("charIsMovingForward", false);
+                a.SetBool("charIsMovingSideways", false);
                 
             }
             else if(startX < x) {
-                ani.SetBool("charIsMovingForward", true); //forward
-                ani.SetBool("charIsMovingBack", false);
-                ani.SetBool("charIsMovingSideways", false);
+                a.SetBool("charIsMovingForward", true); //forward
+                a.SetBool("charIsMovingBack", false);
+                a.SetBool("charIsMovingSideways", false);
                 
             }
             else if(startZ > z) {
                 //Z is getting Lower
                 t.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                ani.SetBool("charIsMovingSideways", true); //Left
-                ani.SetBool("charIsMovingBack", false);
-                ani.SetBool("charIsMovingForward", false);
+                a.SetBool("charIsMovingSideways", true); //Left
+                a.SetBool("charIsMovingBack", false);
+                a.SetBool("charIsMovingForward", false);
                 
             }
             else if(startZ < z) {
                 t.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
-                ani.SetBool("charIsMovingSideways", true); //Right
-                ani.SetBool("charIsMovingBack", false);
-                ani.SetBool("charIsMovingForward", false);
+                a.SetBool("charIsMovingSideways", true); //Right
+                a.SetBool("charIsMovingBack", false);
+                a.SetBool("charIsMovingForward", false);
                 
             }
             else if(startX == x) {
