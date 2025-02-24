@@ -28,6 +28,11 @@ public class GameControllerScript : MonoBehaviour
     private bool endGame = false;
     private List<GameObject> heroCharacters = new List<GameObject>();
     private BuffController BuffController;
+    public bool waiting = false;
+    public int timeToWaitBeforeNewEnemyTurn = 2;
+    public int timeToWaitBeforeNewPhase = 2;
+
+    private bool startingNewPhase = false;
 
     private LayerMask mask;
 
@@ -343,21 +348,23 @@ public class GameControllerScript : MonoBehaviour
                 {
                     //End Turn Stuff
                     //UnityEngine.Debug.Log("Switching to Phase 1");
-                    phase++;
-                    //Checks if the player had a unit selected when ending their turn, executes if so
-                    if (selectedCharacter != null)
-                    {
-                        //Calls the deselect character function inside the selected unit
-                        characterScript.deselectCharacter();
-                    }
                     //Deselects the current character
-                    stopTargeting();
-                    map.updateSelectedCharacter(null);
-                    updateSelectedObject(null);
-                    //Ends all of the player's units' turns
-                    endAllPlayerTurns();
-                    GameObject callToPrefab = Instantiate(enemyPhase);
-                    regenMana();
+                    if (startingNewPhase == false){
+                        //Checks if the player had a unit selected when ending their turn, executes if so
+                        if (selectedCharacter != null)
+                        {
+                            //Calls the deselect character function inside the selected unit
+                            characterScript.deselectCharacter();
+                        }
+                        stopTargeting();
+                        map.updateSelectedCharacter(null);
+                        updateSelectedObject(null);
+                        //Ends all of the player's units' turns
+                        endAllPlayerTurns();
+                        regenMana();
+                        StartCoroutine(waitForNewPhase());
+                    }
+                    //phase++;
                 }
                 break;
             //Triggers all of the end of turn effects on the player units and advances their durations, then triggers all of the start of turn effects on enemy units, then cleans the lists of enemy and player units remaining
@@ -388,33 +395,37 @@ public class GameControllerScript : MonoBehaviour
                 //Checks if there are still enemies that need to be moved
                 if (enemiesToMove > 0)
                 {
-                    if (camera.gameObject.GetComponent<CamControl>().movingToEnemy == false && camera.gameObject.GetComponent<CamControl>().atEnemy == false){
-                        camera.gameObject.GetComponent<CamControl>().moveToEnemy(enemyTeamList[enemiesToMove - 1]);
-                    }
-                    //Checks if an enemy is already being moved
-                    else if (movingEnemy == false && camera.gameObject.GetComponent<CamControl>().atEnemy == true)
-                    {
-                        //Sets the selected character to the next enemy in the list of enemies
-                        map.updateSelectedCharacter(enemyTeamList[enemiesToMove - 1]);
-                        //Calls the takeTurn function within the Enemy Class for the enemy that needs to be moved
-                        enemyTeamList[enemiesToMove - 1].GetComponent<Enemy_Character_Class>().takeTurn();
-                        //Sets moving enemy to true
-                        movingEnemy = true;
-                    }
-                    //If the GameController's movingEnemy variable is true, but the map's movingEnemy variable is false, then a new enemy needs to be selected to move
-                    else if (map.movingEnemy == false && movingEnemy == true)
-                    {
-                        //Sets moving enemy to false and counts down the enemies to move
-                        camera.gameObject.GetComponent<CamControl>().atEnemy = false;
-                        movingEnemy = false;
-                        enemiesToMove--;
+                    if (waiting == false){
+                        if (camera.gameObject.GetComponent<CamControl>().movingToEnemy == false && camera.gameObject.GetComponent<CamControl>().atEnemy == false){
+                            StartCoroutine(moveCamToEnemy());
+                        }
+                        //Checks if an enemy is already being moved
+                        else if (movingEnemy == false && camera.gameObject.GetComponent<CamControl>().atEnemy == true)
+                        {
+                            //Sets the selected character to the next enemy in the list of enemies
+                            map.updateSelectedCharacter(enemyTeamList[enemiesToMove - 1]);
+                            //Calls the takeTurn function within the Enemy Class for the enemy that needs to be moved
+                            enemyTeamList[enemiesToMove - 1].GetComponent<Enemy_Character_Class>().takeTurn();
+                            //Sets moving enemy to true
+                            movingEnemy = true;
+                        }
+                        //If the GameController's movingEnemy variable is true, but the map's movingEnemy variable is false, then a new enemy needs to be selected to move
+                        else if (map.movingEnemy == false && movingEnemy == true)
+                        {
+                            //Sets moving enemy to false and counts down the enemies to move
+                            camera.gameObject.GetComponent<CamControl>().atEnemy = false;
+                            movingEnemy = false;
+                            enemiesToMove--;
+                        }
                     }
                 }
                 //Upon reaching 0 enemies to move, end the phase
                 else
                 {
-                    phase++;
-                    GameObject callToPrefab = Instantiate(heroPhase);
+                    if (enemiesToMove == 0){
+                        StartCoroutine(waitForNewEnemyPhase());
+                        enemiesToMove = -1;
+                    }
                 }
                 break;
             //Triggers all the end of turn effects on the enemy characters and advances their durations, then triggers all start of turn effects on the player characters
@@ -594,5 +605,28 @@ public class GameControllerScript : MonoBehaviour
                 playerTeamList[i].GetComponent<Hero_Character_Class>().regenMana(2);
             }
         }
+    }
+
+    IEnumerator moveCamToEnemy(){
+        waiting = true;
+        yield return new WaitForSecondsRealtime(timeToWaitBeforeNewEnemyTurn);
+        UnityEngine.Debug.Log("Here");
+        waiting = false;
+        camera.gameObject.GetComponent<CamControl>().moveToEnemy(enemyTeamList[enemiesToMove - 1]);
+    }
+
+
+    IEnumerator waitForNewPhase(){
+        startingNewPhase = true;
+        yield return new WaitForSecondsRealtime(2);
+        GameObject callToPrefab = Instantiate(enemyPhase);
+        phase++;
+        startingNewPhase = false;
+    }
+
+    IEnumerator waitForNewEnemyPhase(){
+        yield return new WaitForSecondsRealtime(timeToWaitBeforeNewPhase);
+        phase++;
+        GameObject callToPrefab = Instantiate(heroPhase);
     }
 }

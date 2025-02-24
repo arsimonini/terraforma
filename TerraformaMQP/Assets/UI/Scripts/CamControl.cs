@@ -288,9 +288,9 @@ public class CamControl : MonoBehaviour
     }
 
     public void moveToEnemy(GameObject targetObject){
-        movingToEnemy = true;
         checkRotation();
         target = targetObject.transform.position - 3*getForward();
         easeToLocation(target.x,target.z);
+        movingToEnemy = true;
     }
 }
