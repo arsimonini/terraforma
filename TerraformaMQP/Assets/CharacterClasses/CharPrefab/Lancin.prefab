@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 8047284439058182590}
   - component: {fileID: 3352410986930010922}
   - component: {fileID: 2015180818333459478}
+  - component: {fileID: 7624356063161983468}
+  - component: {fileID: 6299130066377860431}
   m_Layer: 0
   m_Name: Lancin
   m_TagString: PlayerTeam
@@ -32,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 2}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1525196600132784515}
@@ -58,8 +60,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
-  m_Center: {x: 0.31471992, y: -0.096683025, z: 0}
+  m_Radius: 3.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7928607729415032659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,11 +114,12 @@ MonoBehaviour:
   defaultReach: 1
   attackType: 
   buffs: []
-  atkPrefab: {fileID: 4396117065116841325, guid: 8b66e881856c54496b800c258a60e18d, type: 3}
-  critPrefab: {fileID: 1351090809278183054, guid: 70f83795e17e149619783be2264dd393, type: 3}
+  atkPrefab: {fileID: 4370733696641074040, guid: 53d5d08d9ba6f4c52b6131d876e61e81, type: 3}
+  critPrefab: {fileID: 4370733696641074040, guid: 53d5d08d9ba6f4c52b6131d876e61e81, type: 3}
   missPrefab: {fileID: 5228633549399205854, guid: 9e2b41c1ba3314cfba742b3a596ce337, type: 3}
   abilityPrefab: {fileID: 4370733696641074040, guid: f82fbf98d4e4e4f2997764cb89b82ce0, type: 3}
   waitTimeBeforeReacton: 1
+  movementCostsToIgnore: []
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 11
   tileY: 9
@@ -187,9 +190,17 @@ MonoBehaviour:
   pickingSpell: 0
   spellList: []
   selectedSpell: {fileID: 0}
-  fireSpells: []
-  earthSpells: []
-  waterSpells: []
+  fireSpells:
+  - {fileID: 8300000, guid: 1e563c993dce14037bb8068d36570c27, type: 3}
+  - {fileID: 8300000, guid: d093ed5d1437d49b5ab3e9d5accf1b08, type: 3}
+  - {fileID: 8300000, guid: ba8d78da1ec7a4fe9aaaf38725b3146c, type: 3}
+  earthSpells:
+  - {fileID: 8300000, guid: fb929a894153b4e39b132b115f4a27c0, type: 3}
+  - {fileID: 8300000, guid: 3e6a926a9289d4cb5be93ed3873a4cc4, type: 3}
+  - {fileID: 8300000, guid: ebb88a95e6f9445879a89b7d89b1cfdd, type: 3}
+  waterSpells:
+  - {fileID: 8300000, guid: 965d4c162bb4c4eabbefbaca2c454aed, type: 3}
+  - {fileID: 8300000, guid: f4f092b4705e042eab45c0de6bb1bac0, type: 3}
 --- !u!114 &8047284439058182590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +218,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2bd81b36d673f2a4cb7acb0c27382ca7, type: 2}
   - {fileID: 11400000, guid: 4f6ee2a8730fa3b4b8ea34c24b4e2b6c, type: 2}
   - {fileID: 11400000, guid: b1cc540388cdebd498602ce3501dab32, type: 2}
-  - {fileID: 11400000, guid: 0c4dfe0c563d5f04ba151b31e766170c, type: 2}
+  - {fileID: 11400000, guid: 0cba071374210ee4faee99576681505f, type: 2}
   - {fileID: 11400000, guid: 0c4dfe0c563d5f04ba151b31e766170c, type: 2}
 --- !u!212 &3352410986930010922
 SpriteRenderer:
@@ -250,7 +261,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 894e5b6d89c4a492184a24f3e503b3df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f43525dad5ef4e29927e758b60d66cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -274,6 +285,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+--- !u!95 &7624356063161983468
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8895871286598532798}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f75fb66d2339142ab922cdaab41255dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6299130066377860431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8895871286598532798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5314bb9372242451f896029028083b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bcc: {fileID: 7928607729415032659}
+  a: {fileID: 7624356063161983468}
+  t: {fileID: 8979272379616217446}
+  camRot: 0
+  startX: 0
+  startZ: 0
+  x: 0
+  z: 0
 --- !u!1001 &3192214704729009472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -282,21 +334,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8979272379616217446}
     m_Modifications:
+    - target: {fileID: 2864200540203865240, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1096
+      objectReference: {fileID: 0}
     - target: {fileID: 4338082057154234030, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
       propertyPath: m_Name
       value: PlayerTeamCircle
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769279382542546911, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769279382542546911, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769279382542546911, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8769279382542546911, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -304,7 +348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8769279382542546911, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 8769279382542546911, guid: ffdf0000f4ccb3b49910d5d7c42cdd0f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -758,19 +802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8780025495231681977, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 135
-      objectReference: {fileID: 0}
-    - target: {fileID: 8780025495231681977, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.030000001
-      objectReference: {fileID: 0}
-    - target: {fileID: 8780025495231681977, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.030000001
-      objectReference: {fileID: 0}
-    - target: {fileID: 8780025495231681977, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.030000001
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8780025495231681977, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
       propertyPath: m_LocalPosition.x
@@ -802,7 +834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8780025495231681977, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8780025495231681977, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -819,10 +851,6 @@ PrefabInstance:
     - target: {fileID: 8780025495231681977, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8780025495231681977, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
