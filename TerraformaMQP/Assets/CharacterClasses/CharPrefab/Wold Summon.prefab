@@ -120,7 +120,7 @@ MonoBehaviour:
   critPrefab: {fileID: 4370733696641074040, guid: 469b0af5556404f79b03a0a8137ede65, type: 3}
   missPrefab: {fileID: 5228633549399205854, guid: 9e2b41c1ba3314cfba742b3a596ce337, type: 3}
   abilityPrefab: {fileID: 4370733696641074040, guid: 9acea563e3a5346769c2135cb9f3743b, type: 3}
-  waitTimeBeforeReacton: 1
+  waitTimeBeforeReacton: 1.3
   movementCostsToIgnore: []
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 15
