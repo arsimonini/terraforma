@@ -55,17 +55,22 @@ public class Tag_In : MonoBehaviour, Cast_Spell
                     ClickableTile myTile = me.tile;
 
                     //Does the flip
-                    caster.transform.position = allyPos;
+                    caster.transform.position = new Vector3 (allyPos.x,1,allyPos.z);
                     me.tileX = allyX;
                     me.tileY = allyY;
                     me.tile = allyTile;
+//                    caster.transform.position.z = 2;
+
                     allyTile.characterOnTile = caster;
 
-                    targetAlly.transform.position = myPos;
+                    targetAlly.transform.position = new Vector3(myPos.x,1,myPos.z);
                     targetAlly.tileX = myX;
                     targetAlly.tileY = myY;
                     targetAlly.tile = myTile;
+  //                  targetAlly.transform.position.z = 2;
                     myTile.characterOnTile = targets[0];
+
+
 
                 }
 
