@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: Backfire
   m_EditorClassIdentifier: 
-  manaCost: 3
+  manaCost: 4
   spellName: Backfire
   elementType: Fire
   spellPrefab: {fileID: 5642006647470111640, guid: aeb8581c2df783f43b9b199df34e088b, type: 3}

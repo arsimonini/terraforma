@@ -6130,7 +6130,7 @@ PrefabInstance:
       objectReference: {fileID: 273759725}
     - target: {fileID: 860936756721351128, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_VersionIndex
-      value: 1636
+      value: 1639
       objectReference: {fileID: 0}
     - target: {fileID: 2015180818333459478, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: cam
@@ -31823,9 +31823,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0, z: 0}
   tooFarHorizontal: 17
-  tooFarVertical: 10
+  tooFarVertical: 22
   tooNearHorizontal: -8
-  tooNearVertical: -8
+  tooNearVertical: -12
   gc: {fileID: 1690754006}
   map: {fileID: 81957702}
   target: {x: 0, y: 0, z: 0}
@@ -36505,6 +36505,9 @@ MonoBehaviour:
   selectedCharacter: {fileID: 0}
   characterScript: {fileID: 0}
   targets: []
+  waiting: 0
+  timeToWaitBeforeNewEnemyTurn: 2
+  timeToWaitBeforeNewPhase: 2
   comlog: {fileID: 1033430468}
   winPrefab: {fileID: 1843266675286868564, guid: 8feba2bd0790b4feca68ea0cba3c4a3f, type: 3}
   losePrefab: {fileID: 8444017649079071323, guid: f2910c70229494441a1381fa9fd1e428, type: 3}

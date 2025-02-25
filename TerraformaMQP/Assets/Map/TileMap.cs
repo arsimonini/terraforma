@@ -1391,6 +1391,11 @@ public class TileMap : MonoBehaviour
     public ClickableTile swapTiles (ClickableTile previousTile, int tileNumber, bool transferEffects)
     {
         //transfers the values of the previous tile to the new tile
+        //default to dirt I guess?
+        if (tileNumber >= tileTypes.Length) {
+            tileNumber = 2;
+        }
+
         GameObject newTilePrefab = Instantiate(tileTypes[tileNumber].tileVisualPrefab);
         newTilePrefab.name = tileTypes[tileNumber].tileVisualPrefab.name;
         ClickableTile newTile = newTilePrefab.GetComponent<ClickableTile>();
@@ -1890,6 +1895,12 @@ public class TileMap : MonoBehaviour
             }
             movementDisplayTiles = new List<GameObject>();
         }
+    }
+
+    public ClickableTile getTile(int x, int y) {
+        if (inRange(x,y)) {
+            return clickableTiles[x,y];
+        } return null;
     }
 
     //public void decayAllTiles() {

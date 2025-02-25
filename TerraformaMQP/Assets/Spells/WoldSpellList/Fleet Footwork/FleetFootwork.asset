@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: FleetFootwork
   m_EditorClassIdentifier: 
-  manaCost: 6
+  manaCost: 7
   spellName: Fleet Footwork
   elementType: Earth
   spellPrefab: {fileID: 5642006647470111640, guid: d08996d05ca9e834c89904b966e327ca, type: 3}

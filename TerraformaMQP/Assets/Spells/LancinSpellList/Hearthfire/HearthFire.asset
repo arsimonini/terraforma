@@ -10,32 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
-  m_Name: SupportFlames
+  m_Name: HearthFire
   m_EditorClassIdentifier: 
-  manaCost: 4
-  spellName: Support Flames
+  manaCost: 7
+  spellName: Hearthfire
   elementType: Fire
-  spellPrefab: {fileID: 1009746080516193270, guid: a264048be27bf88428fac8eca7ef95c7, type: 3}
-  description: Increase the Magic, Attack, and Speed stats of all characters standing
-    on Burning tiles in range by 2
-  targeted: 0
-  range: 3
-  targetTiles: 0
-  targetAllies: 0
+  spellPrefab: {fileID: 2394175536890139692, guid: ee27f635f5fe10648a366c65e60f17cf, type: 3}
+  description: Create a pink flame that heals those who walk in it.
+  targeted: 1
+  range: 5
+  targetTiles: 1
+  targetAllies: 1
   target: {fileID: 0}
-  amountOfTargets: 0
-  requireDifferentTargets: 0
-  targetEnemies: 0
+  amountOfTargets: 1
+  requireDifferentTargets: 1
+  targetEnemies: 1
   hitOwnTile: 0
   hitSelf: 0
   targetWalls: 0
-  AOEsize: 0
+  AOEsize: 1
   square: 0
-  alternateAOEDisplay: 0
-  hyperSpecificTargeting: 1
+  alternateAOEDisplay: 1
+  hyperSpecificTargeting: 0
   needSpecificTiles: 0
   specificTiles: []
-  needSpecificTileEffects: 1
-  specificTileEffects:
-  - Burning
+  needSpecificTileEffects: 0
+  specificTileEffects: []
   targetBreakables: 0

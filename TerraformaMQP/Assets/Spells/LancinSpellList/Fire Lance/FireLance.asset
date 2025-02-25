@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: FireLance
   m_EditorClassIdentifier: 
-  manaCost: 6
+  manaCost: 8
   spellName: Fire Lance
   elementType: Fire
-  spellPrefab: {fileID: 2394175536890139692, guid: fe08e04f83ed33743b89fb2a9ebaaa83, type: 3}
+  spellPrefab: {fileID: 2394175536890139692, guid: 56198cda53f7d934e889df62ba2a9e93, type: 3}
   description: Throw a javelin of flame at foes from a distance, leaving a trail
     of fire in its path.
   targeted: 1
