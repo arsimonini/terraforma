@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: Shove
   m_EditorClassIdentifier: 
-  manaCost: 5
-  spellName: Shatterpoint
+  manaCost: 3
+  spellName: Shove
   elementType: Earth
   spellPrefab: {fileID: 2394175536890139692, guid: 8c7fe60249eb74e9e90dbcdb13cdc3e0, type: 3}
-  description: Destroy a targeted breakable wall dealing damage to those in adkacent
-    squares behind it
+  description: Push a foe, friend, or wall, damaging foes if they hit a wall.
   targeted: 1
   range: 1
   targetTiles: 0
@@ -31,7 +30,7 @@ MonoBehaviour:
   targetWalls: 0
   AOEsize: 0
   square: 0
-  alternateAOEDisplay: 1
+  alternateAOEDisplay: 0
   hyperSpecificTargeting: 1
   needSpecificTiles: 1
   specificTiles:

@@ -31,22 +31,36 @@ public class Shove : MonoBehaviour, Cast_Spell
         Hero_Character_Class heroCaster = caster.GetComponent<Hero_Character_Class>();
         if (heroCaster == null) {
             isGood = false;
-            Enemy_Character_Class = enemyCaster = caster.GetComponent<Enemy_Character_Class>();
+            Enemy_Character_Class enemyCaster = caster.GetComponent<Enemy_Character_Class>();
         }
-
+        Basic_Character_Class basicCaster = caster.GetComponent<Basic_Character_Class>();
+        TileMap map = basicCaster.map;
 
         ClickableTile targetTile = targets[0].GetComponent<ClickableTile>();
-        shatterWall(targetTile, caster);
+        if (targetTile != null) {
+            return;
+        }
 
-        //Shatter adjacent walls
-        TileMap map = targetTile.map;
-        int x = targetTile.TileX;
-        int y = targetTile.TileY;
+        Basic_Character_Class targetCharacter = targets[0].GetComponent<Basic_Character_Class>();
+        if (targetCharacter != null) {
+            //Determine direction
+            int dX = targetCharacter.tileX-basicCaster.tileX;
+            int dY = targetCharacter.tileY-basicCaster.tileY;
+            int dist = 3;
 
-        if (map.tileExists(x-1,y)) {shatterWall(map.clickableTiles[x-1,y],caster);}
-        if (map.tileExists(x+1,y)) {shatterWall(map.clickableTiles[x+1,y],caster);}
-        if (map.tileExists(x,y-1)) {shatterWall(map.clickableTiles[x,y-1],caster);}
-        if (map.tileExists(x,y+1)) {shatterWall(map.clickableTiles[x,y+1],caster);}
+            if (dX > 0) {
+                moveCharacter(caster,map,targetCharacter,1,0,3);
+            } else if (dX < 0) {
+                moveCharacter(caster,map,targetCharacter,-1,0,3);
+            } else if (dY > 0) {
+                moveCharacter(caster,map,targetCharacter,0,1,3);
+            } else if (dY < 0) {
+                moveCharacter(caster,map,targetCharacter,0,-1,3);
+            }
+            return;
+        }
+        
+
     }
 
     public void strikeAt(ClickableTile mainTile, int xOffSet, int yOffset, int damage = 2) {
@@ -207,7 +221,28 @@ public class Shove : MonoBehaviour, Cast_Spell
         }
     }
 
-    public void moveCharacter(GameObject caster) {
+    public void moveCharacter(GameObject caster, TileMap map, Basic_Character_Class target, int x, int y, int damage, int times = 3) {
+        while (times > 0) {
+            int futX = x; //Future position
+            int futY = y;
+
+            //Check if position to go to is available
+            ClickableTile toTile = map.getTile(target.tileX+futX,target.tileY+futY);
+
+                //Is it a world boundary? Stop right there
+                if (toTile == null) {
+                    times = 0;
+                }
+                //Is it a wall?
+                
+                //Is it a wold wall?
+                    //If so,
+            
+            //Move position to match
+
+            times --;
+        }
+        
         return;
     }
 }
