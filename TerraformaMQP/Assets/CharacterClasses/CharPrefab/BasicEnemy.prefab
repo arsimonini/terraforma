@@ -390,6 +390,8 @@ GameObject:
   - component: {fileID: 3556103306998089025}
   - component: {fileID: 2101969773794711547}
   - component: {fileID: 9083810117275825196}
+  - component: {fileID: 8780710614807896018}
+  - component: {fileID: 7301228758867458744}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: EnemyTeam
@@ -407,7 +409,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.91, y: 1, z: 2}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9083810117275825198}
@@ -433,7 +435,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
+  m_Radius: 3.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7448667868949999440
 MonoBehaviour:
@@ -487,10 +489,12 @@ MonoBehaviour:
   defaultReach: 1
   attackType: 
   buffs: []
-  atkPrefab: {fileID: 4396117065116841325, guid: 8b66e881856c54496b800c258a60e18d, type: 3}
-  critPrefab: {fileID: 1351090809278183054, guid: 70f83795e17e149619783be2264dd393, type: 3}
+  atkPrefab: {fileID: 4370733696641074040, guid: 6f922527cb451408f939cba90b817433, type: 3}
+  critPrefab: {fileID: 4370733696641074040, guid: 6f922527cb451408f939cba90b817433, type: 3}
   missPrefab: {fileID: 5228633549399205854, guid: 9e2b41c1ba3314cfba742b3a596ce337, type: 3}
   abilityPrefab: {fileID: 0}
+  waitTimeBeforeReacton: 1.3
+  movementCostsToIgnore: []
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 22
   tileY: 10
@@ -600,7 +604,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ff47430876dbd4b0aa71c7f1bf83e597, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 633e269d8df604008bb571cf5c4079c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -624,6 +628,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+--- !u!95 &8780710614807896018
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7009967892437524158}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bb9eb934fc798437f9afb37bfba1f608, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7301228758867458744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7009967892437524158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5314bb9372242451f896029028083b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bcc: {fileID: 7448667868949999440}
+  a: {fileID: 8780710614807896018}
+  t: {fileID: 6571172650880656856}
+  camRot: 0
+  startX: 0
+  startZ: 0
+  x: 0
+  z: 0
 --- !u!1 &7040537254292071446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,15 +1254,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8769279382542546911, guid: 2bf4495083835dc4bad7ab5124941b78, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: -9.5
       objectReference: {fileID: 0}
     - target: {fileID: 8769279382542546911, guid: 2bf4495083835dc4bad7ab5124941b78, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4
+      value: 9.5
       objectReference: {fileID: 0}
     - target: {fileID: 8769279382542546911, guid: 2bf4495083835dc4bad7ab5124941b78, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4
+      value: 9.5
       objectReference: {fileID: 0}
     - target: {fileID: 8769279382542546911, guid: 2bf4495083835dc4bad7ab5124941b78, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1225,7 +1270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8769279382542546911, guid: 2bf4495083835dc4bad7ab5124941b78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 8769279382542546911, guid: 2bf4495083835dc4bad7ab5124941b78, type: 3}
       propertyPath: m_LocalPosition.z

@@ -203,14 +203,14 @@ public class CamControl : MonoBehaviour
                     rot = -45;
                     rotationDirection = -5;
                     //Debug.Log("Turn Left");
-                    rotationCount = 9;
+                    rotationCount = 18;
                 }
                 //If Q, set rotate left
                 if (tR) {
                     rot = 45;
                     rotationDirection = 5;
                     //Debug.Log("Turn Right");
-                    rotationCount = 9;
+                    rotationCount = 18;
                 }
 
 
@@ -288,9 +288,9 @@ public class CamControl : MonoBehaviour
     }
 
     public void moveToEnemy(GameObject targetObject){
-        movingToEnemy = true;
         checkRotation();
         target = targetObject.transform.position - 3*getForward();
         easeToLocation(target.x,target.z);
+        movingToEnemy = true;
     }
 }

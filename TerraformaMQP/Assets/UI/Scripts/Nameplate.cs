@@ -41,6 +41,8 @@ public class Nameplate : MonoBehaviour
     public bool exEffectOn; //a bool to see if the extra effects area is open
     public bool nameplateIsActive; //whether the nameplate is active
 
+    public bool rolloutActivated = false; //For Rold Rollout
+
 
 
     public void displayName(string name) {
@@ -302,6 +304,15 @@ public class Nameplate : MonoBehaviour
 
             effectNum = effectNum + 1;
             effectKeyNames.Add(buffs[i].name);
+
+            if(buffs[i].name == "Rollout" && charName.text == "Rold") {
+                rolloutActivated = true;
+            }
+        }
+
+        if(rolloutActivated == false && charName.text == "Rold") {
+            effectNum = effectNum + 1;
+            effectKeyNames.Add("RolloutAM");
         }
 
         //Display the effects
@@ -368,8 +379,7 @@ public class Nameplate : MonoBehaviour
         }
     }
 
-    public void openExtraEffects(bool b) 
-    {
+    public void openExtraEffects(bool b) {
         if(b == true) {
             extraEffectArea.SetActive(true);
 

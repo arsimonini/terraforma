@@ -117,13 +117,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroNameplate: {fileID: 0}
   enemyNameplate: {fileID: 0}
-  preattack: {fileID: 0}
-  playerAcc: {fileID: 0}
-  playerCrit: {fileID: 0}
-  playerDam: {fileID: 0}
-  enemyAcc: {fileID: 0}
-  enemyCrit: {fileID: 0}
-  enemyDam: {fileID: 0}
+  preattack: {fileID: 6395015485721465833}
+  gc: {fileID: 0}
+  playerAcc: {fileID: 5352285742122070409}
+  playerCrit: {fileID: 1243748363077791465}
+  playerDam: {fileID: 1132609781592510192}
+  enemyAcc: {fileID: 465027883782147618}
+  enemyCrit: {fileID: 8805984632353424875}
+  enemyDam: {fileID: 7612169537463917979}
 --- !u!1 &366318908602786759
 GameObject:
   m_ObjectHideFlags: 0

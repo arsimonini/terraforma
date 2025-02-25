@@ -38,7 +38,9 @@ public class Basic_Character_Class : MonoBehaviour
     public GameObject missPrefab;
     public GameObject abilityPrefab;
 
-    public int waitTimeBeforeReacton = 1;
+    public float waitTimeBeforeReacton = 1.5f;
+
+    public List<string> movementCostsToIgnore = null;
 
     public Color color; //Color of the shape ---WILL BE DELETED WHEN MODELS ARE ADDED---
 
@@ -592,17 +594,17 @@ public class Basic_Character_Class : MonoBehaviour
                     
                     if(this.gameObject.tag == "EnemyTeam") {
                         GameObject callToPrefab = Instantiate(critPrefab);    
-                        callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
-                        callToPrefab.transform.position = newPos;
+                        // callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
+                        // callToPrefab.transform.position = newPos;
                     }
                     else if(this.gameObject.tag == "PlayerTeam") {
-                        if(this.gameObject.GetComponent<Hero_Character_Class>() == null) {
+                        // if(this.gameObject.GetComponent<Hero_Character_Class>() == null) {
                             GameObject callToPrefab = Instantiate(critPrefab);
-                        }else {
-                            GameObject callToPrefab = Instantiate(critPrefab);    
-                            callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
-                            callToPrefab.transform.position = newPos;
-                        }
+                        // }else {
+                        //     GameObject callToPrefab = Instantiate(critPrefab);    
+                        //     callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
+                        //     callToPrefab.transform.position = newPos;
+                        // }
 
                     }
                 } else {
@@ -610,17 +612,17 @@ public class Basic_Character_Class : MonoBehaviour
 
                     if(this.gameObject.tag == "EnemyTeam") {
                         GameObject callToPrefab = Instantiate(atkPrefab);    
-                        callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
-                        callToPrefab.transform.position = newPos;
+                        // callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
+                        // callToPrefab.transform.position = newPos;
                     }
                     else if(this.gameObject.tag == "PlayerTeam") {
-                        if(this.gameObject.GetComponent<Hero_Character_Class>() == null) {
-                            GameObject callToPrefab = Instantiate(critPrefab);
-                        }else {
-                            GameObject callToPrefab = Instantiate(critPrefab);    
-                            callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
-                            callToPrefab.transform.position = newPos;
-                        }
+                        // if(this.gameObject.GetComponent<Hero_Character_Class>() == null) {
+                            GameObject callToPrefab = Instantiate(atkPrefab);
+                        // }else {
+                            //GameObject callToPrefab = Instantiate(atkPrefab);    
+                            // callToPrefab.GetComponent<Billboard>().cam = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Billboard>().cam;
+                            // callToPrefab.transform.position = newPos;
+                        //}
                     }
 
                     //Commented this out as new attack prefab doesn't require it
@@ -1230,6 +1232,13 @@ public class Basic_Character_Class : MonoBehaviour
 
             }
         }
+
+        if (buff.movementCostsToIgnore != null){
+            for (int i = 0; i < buff.movementCostsToIgnore.Count; i++){
+                addTileCostToIgnore(buff.movementCostsToIgnore[i]);
+            }
+        }
+
         buffs.Add(buff);
     }
 
@@ -1287,6 +1296,13 @@ public class Basic_Character_Class : MonoBehaviour
 
             }
         }
+
+        if (buff.movementCostsToIgnore != null){
+            for (int i = 0; i < buff.movementCostsToIgnore.Count; i++){
+                removeTileCostToIgnore(buff.movementCostsToIgnore[i]);
+            }
+        }
+
         buffs.Remove(buff);
     }
 
@@ -1321,6 +1337,18 @@ public class Basic_Character_Class : MonoBehaviour
 
         tile.OnMouseExit();
         pm.setDeslection(false);
+    }
+
+    public void addTileCostToIgnore(string name){
+        if (!movementCostsToIgnore.Contains(name)){
+            movementCostsToIgnore.Add(name);
+        }
+    }
+
+    public void removeTileCostToIgnore(string name){
+        if(movementCostsToIgnore.Contains(name)){
+            movementCostsToIgnore.Remove(name);
+        }
     }
 
 

@@ -13,6 +13,7 @@ public class BuffClass : ScriptableObject
     public Basic_Character_Class character;
     public GameObject buffAsset;
     public GameObject buffAnimationPrefab; 
+    public List<string> movementCostsToIgnore = null;
 
     public bool reduceDuration(){
         if (duration > 1){

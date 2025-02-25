@@ -208,7 +208,7 @@ public class TileMap : MonoBehaviour
                         if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile.Count > 0){
                             for(int i = 0; i < clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile.Count; i++){
                                 clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile[i].tileEffectPrefab.GetComponent<tileEffectActions>().performStepOnEffect(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY]);
-                                UnityEngine.Debug.Log(selectedUnit);
+                                //UnityEngine.Debug.Log(selectedUnit);
                             }
                         }
                         selectedUnitScript.updateCharStats();
@@ -692,6 +692,7 @@ public class TileMap : MonoBehaviour
             return Mathf.Infinity;
         }
         int cost = clickableTiles[x, y].cost;
+        cost = checkForMovementBonuses(x, y);
         if (noWalls && Array.IndexOf(wallNums, tiles[x,y]) != -1) {
             cost = 1;
         }
@@ -707,6 +708,22 @@ public class TileMap : MonoBehaviour
         float dist = cost;
 
         return dist;
+    }
+
+    public int checkForMovementBonuses(int x, int y){
+        ClickableTile tile = clickableTiles[x, y];
+        int cost = tile.cost;
+        if (selectedUnitScript.movementCostsToIgnore != null){
+            if (selectedUnitScript.movementCostsToIgnore.Contains(tile.tileName)){
+                cost--;
+            }
+            for (int i = 0; i < tile.effectsOnTile.Count; i++){
+                if (selectedUnitScript.movementCostsToIgnore.Contains(tile.effectsOnTile[i].name)){
+                    cost--;
+                }
+            }
+        }
+        return cost;
     }
 
     public void showPath(int blue = 999) { //This displays the finalized visualpath created by visualpathTo
