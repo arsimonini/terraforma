@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: SupportFlames
   m_EditorClassIdentifier: 
-  manaCost: 3
+  manaCost: 4
   spellName: Support Flames
   elementType: Fire
   spellPrefab: {fileID: 1009746080516193270, guid: a264048be27bf88428fac8eca7ef95c7, type: 3}
@@ -31,9 +31,11 @@ MonoBehaviour:
   targetWalls: 0
   AOEsize: 0
   square: 0
+  alternateAOEDisplay: 0
   hyperSpecificTargeting: 1
   needSpecificTiles: 0
   specificTiles: []
   needSpecificTileEffects: 1
   specificTileEffects:
   - Burning
+  targetBreakables: 0
