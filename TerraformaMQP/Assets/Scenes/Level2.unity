@@ -2675,6 +2675,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 172d136be4abc0741b5b34fd7f644684, type: 2}
   - {fileID: 11400000, guid: ec44c757fe2dc4f4284eddc7fa48ab44, type: 2}
   - {fileID: 11400000, guid: 360567a08a87f4d4887237cb0e4f1875, type: 2}
+  - {fileID: 11400000, guid: ba5bc7b9192685645a96fbc2744473b9, type: 2}
   tilePrefabs: []
 --- !u!4 &81957706
 Transform:
@@ -6130,7 +6131,7 @@ PrefabInstance:
       objectReference: {fileID: 273759725}
     - target: {fileID: 860936756721351128, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_VersionIndex
-      value: 1639
+      value: 1645
       objectReference: {fileID: 0}
     - target: {fileID: 2015180818333459478, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: cam
@@ -6140,6 +6141,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1233787505}
+    - target: {fileID: 3352410986930010922, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 314768326, guid: 616ac2878f9cf447786d2978daaed5b0, type: 3}
     - target: {fileID: 4310487430304140754, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -26780,7 +26785,7 @@ PrefabInstance:
       objectReference: {fileID: 388459181}
     - target: {fileID: 8344735724431438881, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: m_VersionIndex
-      value: 1696
+      value: 1699
       objectReference: {fileID: 0}
     - target: {fileID: 8895871286598532798, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: m_Name
@@ -45442,6 +45447,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8398396629709489032, guid: 2bbc89aaddde54793a8b96299743ddf3, type: 3}
+      propertyPath: effects.Array.size
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398396629709489032, guid: 2bbc89aaddde54793a8b96299743ddf3, type: 3}
+      propertyPath: effects.Array.data[33]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fdbba7eb933e423eae5fcba90e2f8e1, type: 2}
     - target: {fileID: 8860534562158812993, guid: 2bbc89aaddde54793a8b96299743ddf3, type: 3}
       propertyPath: m_Name
       value: HeroNameplateCanvas
@@ -45547,6 +45560,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6086204880388043493, guid: 1a0188553a64e40eb988846dc3c553ba, type: 3}
+      propertyPath: effects.Array.size
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6086204880388043493, guid: 1a0188553a64e40eb988846dc3c553ba, type: 3}
+      propertyPath: effects.Array.data[33]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fdbba7eb933e423eae5fcba90e2f8e1, type: 2}
     - target: {fileID: 6976407717615286069, guid: 1a0188553a64e40eb988846dc3c553ba, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1

@@ -10,6 +10,7 @@ public class Billboard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public bool uiHover = false;
     void Start() {
         uiHover = false;
+        cam = GameObject.Find("Main Camera").GetComponent<Transform>();
     }
     // Update is called once per frame
     void LateUpdate()

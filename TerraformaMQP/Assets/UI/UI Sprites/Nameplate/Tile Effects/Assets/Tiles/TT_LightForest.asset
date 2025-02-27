@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: LForest
   name: Light Forest
-  description: Handle Later
+  description: Increases Evasion. Susceptible to water and plant magic
   timeRemaining: 0
   effectVis: {fileID: 21300000, guid: e1f5f79fd37a3410f98df5c736e7ac92, type: 3}
   type: Tile

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4aa4a4f39089a41ef9b5cbd23e9d52eb, type: 3}
-  m_Name: TT_Metal
+  m_Name: TE_HearthFire
   m_EditorClassIdentifier: 
-  key: Metal
-  name: Metal
-  description: No Stat Changes. Susceptible to fire and electric magic
+  key: Hearthfire
+  name: Hearthfire
+  description: Heals Damage when Moving across Tile
   timeRemaining: 0
-  effectVis: {fileID: 21300000, guid: b5e0f6a975a604c71a07403229354a1f, type: 3}
-  type: Tile
+  effectVis: {fileID: 21300000, guid: 14f1642d5994b42a2a0d002e8065c4d4, type: 3}
+  type: Effect

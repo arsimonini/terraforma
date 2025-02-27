@@ -43,7 +43,7 @@ Animator:
   m_GameObject: {fileID: 6104203599383985260}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0339ea968b792410b926b2a904737fec, type: 2}
+  m_Controller: {fileID: 9100000, guid: e794ce6cfae989e4684d043722bfc9f6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -153,3 +153,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   burnableTiles: []
   reactableTiles: []
+  healCount: 2

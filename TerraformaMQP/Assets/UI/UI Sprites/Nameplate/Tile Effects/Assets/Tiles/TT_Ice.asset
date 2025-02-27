@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Ice
   name: Ice
-  description: Reduces movement, players get knocked back on it - susceptible to
-    fire magic
+  description: Reduces movement. Players get knocked back on it. Susceptible to fire
+    magic
   timeRemaining: 0
   effectVis: {fileID: 21300000, guid: 922879e8bffa94b118340e7ec67585d0, type: 3}
   type: Tile

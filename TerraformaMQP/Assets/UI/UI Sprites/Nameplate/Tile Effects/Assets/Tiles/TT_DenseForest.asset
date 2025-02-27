@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: DForest
   name: Dense Forest
-  description: Increases Evasion
+  description: Increases Evasion. Susceptible to water and plant magic
   timeRemaining: 0
   effectVis: {fileID: 21300000, guid: f17276827aff4420cbce36475890f6e5, type: 3}
   type: Tile
