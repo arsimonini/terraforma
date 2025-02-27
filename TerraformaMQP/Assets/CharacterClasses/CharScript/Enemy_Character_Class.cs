@@ -88,6 +88,7 @@ public class Enemy_Character_Class : MonoBehaviour
         }
         basic.map.currentPath = path;
         basic.path = path;
+        basic.isMoving = true;
     }
 
     public List<Node> findHero() {

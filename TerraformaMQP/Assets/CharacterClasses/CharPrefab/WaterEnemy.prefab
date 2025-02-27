@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4272299001614567363}
   - component: {fileID: 3655638616690951539}
   - component: {fileID: -2307135946624812788}
-  - component: {fileID: -7373193388354704508}
+  - component: {fileID: 7887716959705641884}
   m_Layer: 0
   m_Name: WaterEnemy
   m_TagString: EnemyTeam
@@ -230,7 +230,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 230c1e7ad60584d239c94d1a72b1878e, type: 3}
+  m_Sprite: {fileID: 455618571, guid: bd7f8aacb8b5f4ab390264332aa475c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -264,7 +264,7 @@ Animator:
   m_GameObject: {fileID: 1280795916125588129}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb9eb934fc798437f9afb37bfba1f608, type: 2}
+  m_Controller: {fileID: 9100000, guid: 301c603c58c054176a8af06399c2f653, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -275,7 +275,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-7373193388354704508
+--- !u!114 &7887716959705641884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1280795916125588129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5314bb9372242451f896029028083b65, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fef5cb3838004507b7532699afe1d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bcc: {fileID: 521441566614050383}
