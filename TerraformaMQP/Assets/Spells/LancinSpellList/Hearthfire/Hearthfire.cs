@@ -37,11 +37,11 @@ public class Hearthfire_Spell : MonoBehaviour, Cast_Spell
 
             TileMap map = basicCaster.map;
             
-            ClickableTile a = map.getTile(endX,endY); if (a !=null) {placeTileEffect(a,"HearthFire","HearthFire");};
-            ClickableTile b = map.getTile(endX,endY-1); if (b !=null) {placeTileEffect(b,"HearthFire","HearthFire");};
-            ClickableTile c = map.getTile(endX,endY+1); if (c !=null) {placeTileEffect(c,"HearthFire","HearthFire");};
-            ClickableTile d = map.getTile(endX-1,endY); if (d !=null) {placeTileEffect(d,"HearthFire","HearthFire");};
-            ClickableTile e = map.getTile(endX+1,endY); if (e !=null) {placeTileEffect(e,"HearthFire","HearthFire");};
+            ClickableTile a = map.getTile(endX,endY); if (a !=null) {placeTileEffect(a,"HearthFire","HearthFire");healOnTile(a,3);};
+            ClickableTile b = map.getTile(endX,endY-1); if (b !=null) {placeTileEffect(b,"HearthFire","HearthFire");healOnTile(b,3);};
+            ClickableTile c = map.getTile(endX,endY+1); if (c !=null) {placeTileEffect(c,"HearthFire","HearthFire"); healOnTile(c,3);};
+            ClickableTile d = map.getTile(endX-1,endY); if (d !=null) {placeTileEffect(d,"HearthFire","HearthFire"); healOnTile(d,3);};
+            ClickableTile e = map.getTile(endX+1,endY); if (e !=null) {placeTileEffect(e,"HearthFire","HearthFire"); healOnTile(e,3);};
             //placeTileEffect(warpath[i],"Hearthfire","Hearthfire");
 
         }
@@ -95,5 +95,17 @@ public class Hearthfire_Spell : MonoBehaviour, Cast_Spell
         rc.checkReaction(ct,element,spellName, heroTeam);
 
         return true;
+    }
+
+    public void healOnTile(ClickableTile ct, int heal) {
+        GameObject charObject = ct.characterOnTile;
+
+        if (charObject != null) {
+            Basic_Character_Class bcc = charObject.GetComponent<Basic_Character_Class>();
+            
+            if (bcc != null) {
+                bcc.health = Mathf.Min(bcc.health + heal,bcc.maxHealth.moddedValue);
+            }
+        }
     }
 }
