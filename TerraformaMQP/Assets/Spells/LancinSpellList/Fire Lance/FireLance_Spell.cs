@@ -41,7 +41,9 @@ public class FireLance_Spell : MonoBehaviour, Cast_Spell
             if (targetTile != null) { endX = targetTile.TileX; endY = targetTile.TileY;                
             } else { //It's likely a character
                 Basic_Character_Class bct = targets[0].GetComponent<Basic_Character_Class>();
-                if (bct != null) {endX = bct.tileX; endY = bct.tileY;}
+                if (bct != null) {endX = bct.tileX; endY = bct.tileY;
+                targetTile = bct.tile;
+                }
             }
 
 
@@ -67,6 +69,16 @@ public class FireLance_Spell : MonoBehaviour, Cast_Spell
 
                 if (newCt != null) {
                     placeTileEffect(newCt,"Fire","Fire Lance");
+                }
+            }
+
+            //Damage the foe at the target space
+            if (map.clickableTiles[endX,endY].characterOnTile != null) {
+                GameObject characterToStrike = map.clickableTiles[endX,endY].characterOnTile;
+
+                Basic_Character_Class cts = characterToStrike.GetComponent<Basic_Character_Class>();
+                if (cts != null) {
+                    cts.takeMagicDamage(heroCaster.magic.moddedValue, "Fire");
                 }
             }
 
