@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Mud
   name: Mud
-  description: Reduces movement
+  description: Reduces movement. Increases Evasion. Susceptible to fire magic
   timeRemaining: 0
   effectVis: {fileID: 21300000, guid: 2d3af4b60fdeb47f78708fd0830087a4, type: 3}
   type: Tile

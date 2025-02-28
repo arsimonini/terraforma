@@ -666,7 +666,7 @@ public class Basic_Character_Class : MonoBehaviour
         if (takeAction() == false)
         {
             //The character still has at least one action
-            renderer.material.color = Color.red;
+            //renderer.material.color = Color.red;
             return false;
         }
         //The character has no actions left
@@ -732,7 +732,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Uses the action, and then checks if there are still actions remaining
         if (takeAction() == false) {
             //The character still has at least one action
-            renderer.material.color = Color.red;
+            //renderer.material.color = Color.red;
             return false;
         }
         //The character has no actions left
@@ -755,7 +755,7 @@ public class Basic_Character_Class : MonoBehaviour
             if (takeAction() == false)
             {
                 //The character sill has at least one action
-                renderer.material.color = Color.red;
+                //renderer.material.color = Color.red;
                 return false;
             }
             //The character has no actions left
@@ -768,7 +768,7 @@ public class Basic_Character_Class : MonoBehaviour
 
             stopTargeting();
             if(takeAction() == false){
-                renderer.material.color = Color.red;
+                //renderer.material.color = Color.red;
                 return false;
             }
             return true;
@@ -812,7 +812,7 @@ public class Basic_Character_Class : MonoBehaviour
         removeReach();
         attackReach = defaultReach;
         targeting = false;
-        renderer.material.color = Color.red;
+        //renderer.material.color = Color.red;
     }
 
     //Called when targeting a standard attack
@@ -820,7 +820,7 @@ public class Basic_Character_Class : MonoBehaviour
     public void beginTargeting(int reach)
     {
         //Sets unit color to yellow
-        renderer.material.color = Color.yellow;
+        //renderer.material.color = Color.yellow;
         //UnityEngine.Debug.Log("Targeting an Attack");
         //Sets targeting to true
         targeting = true;
@@ -835,7 +835,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Sets the attack type to spell
         attackType = "Spell";
         //Sets the unit color to magenta to designate casting a Spell
-        renderer.material.color = Color.magenta;
+        //renderer.material.color = Color.magenta;
         //Sets targeting to true
         targeting = true;
         //Sets the attackReach to the inputted reach
@@ -846,7 +846,7 @@ public class Basic_Character_Class : MonoBehaviour
 
     public void beginTargetingAbility(int reach, Basic_Spell_Class spell){
         attackType = "Ability";
-        renderer.material.color = Color.magenta;
+        //renderer.material.color = Color.magenta;
         targeting = true;
         attackReach = reach;
         drawReach(reach, spell.targetTiles, spell.targetAllies, spell.targetEnemies, spell.hitOwnTile, spell.hitSelf, spell.targetWalls, spell.hyperSpecificTargeting, spell.needSpecificTileEffects, spell.specificTileEffects, spell.needSpecificTiles, spell.specificTiles, tile, targetBreakables: spell.targetBreakables);
@@ -866,7 +866,7 @@ public class Basic_Character_Class : MonoBehaviour
         nameplate.displayHealthValue(health, maxHealth);
 
         //Displays the Effects
-        nameplate.getTileNum(buffs, tileType.name, tile, b);
+        nameplate.getTileNum(buffs, tile.tileName, tile, b);
         // nameplate.displayEffect(b);
         // nameplate.exEffButtonNeeded(b);
         // if(b == false) {
@@ -1033,7 +1033,7 @@ public class Basic_Character_Class : MonoBehaviour
         //Display the health and mana of the selected unit
         displayNameplate(true);  
         //Set the unit's color to red      
-        renderer.material.color = Color.red;
+        //renderer.material.color = Color.red;
     }
 
     //Deselects the current character
@@ -1115,6 +1115,7 @@ public class Basic_Character_Class : MonoBehaviour
         displayAttackMenu(false);
         isMoving = true;
         map.displayMovementLimit(tileX, tileY);
+        renderer.material.color = color;
     }
 
     public void attackButtonUI() {
@@ -1122,12 +1123,14 @@ public class Basic_Character_Class : MonoBehaviour
         attackType = "Attack";
         displayAttackMenu(false);
         beginTargeting(attackReach);
+        renderer.material.color = color;
     }
 
     public void magicButtonUI() {
         UnityEngine.Debug.Log("Magic is Clicked");
         displaySpellList(true);
         SFXController.instance.PlayRandomSFXClip(openAtkMenu, transform, 1f);
+        renderer.material.color = color;
         
     }
 
@@ -1137,6 +1140,7 @@ public class Basic_Character_Class : MonoBehaviour
             beginTargetingSpell(this.gameObject.GetComponent<Hero_Character_Class>().spellList[i].range, this.gameObject.GetComponent<Hero_Character_Class>().spellList[i]);
             displaySpellList(false);
             displayAttackMenu(false);
+            renderer.material.color = color;
         }
     }
 
@@ -1147,6 +1151,7 @@ public class Basic_Character_Class : MonoBehaviour
             beginTargetingAbility(this.gameObject.GetComponent<SummonClass>().abilityList[i].range, this.gameObject.GetComponent<SummonClass>().abilityList[i]);
             displayAbilityList(false);
             displayAttackMenu(false);
+            renderer.material.color = color;
         }
     }
 
@@ -1155,19 +1160,30 @@ public class Basic_Character_Class : MonoBehaviour
         nameplate.displayName(name);
         nameplate.displayImage(char_img);
         nameplate.displayHealth(health, maxHealth);
+        nameplate.displayHealthValue(health, maxHealth);
         nameplate.displayAtk(attack);
         nameplate.displayDef(defense);
         nameplate.displayRes(resistence);
         nameplate.displayAcc(accuracy);
         nameplate.displayCrit(criticalChance);
         nameplate.displaySpd(speed);
+        nameplate.displayAtkBuff(attack);
+        nameplate.displayDefBuff(defense);
+        nameplate.displayResBuff(resistence);
+        nameplate.displayAccBuff(accuracy);
+        nameplate.displayCritBuff(criticalChance);
+        nameplate.displaySpdBuff(speed);
+        nameplate.getTileNum(buffs, tile.tileName, tile, false);
+        nameplate.getTileNum(buffs, tile.tileName, tile, true);
                 //Checks if the character is a Hero and has mana
         if (gameObject.GetComponent<Hero_Character_Class>() != null)
         {
             //If the character does have mana, it is also passed to the nameplate and the mana bar is set to active
             nameplate.displayMana(gameObject.GetComponent<Hero_Character_Class>().mana, gameObject.GetComponent<Hero_Character_Class>().maxMana);
+            nameplate.displayManaValue(gameObject.GetComponent<Hero_Character_Class>().mana, gameObject.GetComponent<Hero_Character_Class>().maxMana);
             nameplate.mana.gameObject.SetActive(true);
             nameplate.displayMag(gameObject.GetComponent<Hero_Character_Class>().magic);
+            nameplate.displayMagBuff(gameObject.GetComponent<Hero_Character_Class>().magic);
             nameplate.displayMagicArea(true);
         }
         else

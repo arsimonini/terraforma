@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Dirt
   name: Dirt
-  description: No Stat Changes - susceptible to water and plant magic
+  description: No Stat Changes. Susceptible to water and plant magic
   timeRemaining: 0
-  effectVis: {fileID: 21300000, guid: b5e0f6a975a604c71a07403229354a1f, type: 3}
+  effectVis: {fileID: 21300000, guid: 9bbec99de0c814cc29dc42555880cc15, type: 3}
   type: Tile

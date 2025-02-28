@@ -227,7 +227,6 @@ public class Nameplate : MonoBehaviour
         effectNum = 0;
         effectKeyNames.Clear();
 
-
         //Tile Type TODO Need to figure out a faster way for this
         if(tileName.Contains("Grass")) 
         {
@@ -288,6 +287,11 @@ public class Nameplate : MonoBehaviour
         {
             effectNum = effectNum + 1;
             effectKeyNames.Add("Ice");
+        }
+            else if(tileName.Contains("Stone")) 
+        {
+            effectNum = effectNum + 1;
+            effectKeyNames.Add("Stone");
         }
 
         //Tile Effect

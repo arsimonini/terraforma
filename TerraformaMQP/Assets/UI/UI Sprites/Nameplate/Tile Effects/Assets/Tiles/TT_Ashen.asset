@@ -16,5 +16,5 @@ MonoBehaviour:
   name: Ashen
   description: Handle Later
   timeRemaining: 0
-  effectVis: {fileID: 21300000, guid: 4ff608b571fee4808a1e9fca32f61b37, type: 3}
+  effectVis: {fileID: 21300000, guid: dd3cdddd4e56a477a9730c753c661d36, type: 3}
   type: Tile

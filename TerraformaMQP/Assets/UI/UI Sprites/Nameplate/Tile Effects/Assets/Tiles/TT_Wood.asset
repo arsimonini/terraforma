@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Wood
   name: Wood
-  description: No Stat Changes - susceptible to fire magic
+  description: No Stat Changes. Susceptible to fire magic
   timeRemaining: 0
   effectVis: {fileID: 21300000, guid: b5e0f6a975a604c71a07403229354a1f, type: 3}
   type: Tile
