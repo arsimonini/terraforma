@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: FireBreath
   m_EditorClassIdentifier: 
-  manaCost: 8
+  manaCost: 15
   spellName: Fire Breath
   elementType: Fire
   spellPrefab: {fileID: 2394175536890139692, guid: 0c927eb4e2d09f241ad6d8a3827fb5c3, type: 3}
