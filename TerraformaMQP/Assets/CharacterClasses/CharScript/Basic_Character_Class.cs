@@ -37,6 +37,7 @@ public class Basic_Character_Class : MonoBehaviour
     public GameObject critPrefab;
     public GameObject missPrefab;
     public GameObject abilityPrefab;
+    public bool canTakeReactions = true;
 
     public float waitTimeBeforeReacton = 1.5f;
 
@@ -645,7 +646,7 @@ public class Basic_Character_Class : MonoBehaviour
             if(reacting == true){
                 return false;
             }
-            if (targetCharacter.GetComponent<Basic_Character_Class>().health > 0){
+            if (targetCharacter.GetComponent<Basic_Character_Class>().health > 0 && targetCharacter.GetComponent<Basic_Character_Class>().canTakeReactions && checkReactionSpace(targetCharacter)){
                 StartCoroutine(pause(targetCharacter.gameObject));
             }
         } else if (targetTile != null && targetTile.isBreakable) { //Damage Tile
@@ -671,6 +672,13 @@ public class Basic_Character_Class : MonoBehaviour
         }
         //The character has no actions left
         return true;
+    }
+
+    public bool checkReactionSpace(Basic_Character_Class target){
+        if (map.clickableTiles[tileX - 1, tileY] == target.tile || map.clickableTiles[tileX + 1, tileY] == target.tile || map.clickableTiles[tileX, tileY + 1] == target.tile || map.clickableTiles[tileX, tileY - 1] == target.tile ){
+            return true;
+        }
+        return false;
     }
 
     //Checks whether the enemy will hit or dodge
