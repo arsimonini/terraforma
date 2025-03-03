@@ -20,12 +20,12 @@ MonoBehaviour:
     on Burning tiles in range by 2
   targeted: 0
   range: 3
-  targetTiles: 0
-  targetAllies: 0
+  targetTiles: 1
+  targetAllies: 1
   target: {fileID: 0}
   amountOfTargets: 0
   requireDifferentTargets: 0
-  targetEnemies: 0
+  targetEnemies: 1
   hitOwnTile: 0
   hitSelf: 0
   targetWalls: 0

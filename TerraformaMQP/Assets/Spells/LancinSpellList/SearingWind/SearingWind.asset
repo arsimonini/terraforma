@@ -16,8 +16,7 @@ MonoBehaviour:
   spellName: Searing Wind
   elementType: Fire
   spellPrefab: {fileID: 7446415652197001530, guid: 414009961424a25488daaa983dadadcc, type: 3}
-  description: Increase the duration of fire on a tile and cause it to spread to
-    the tile behind it
+  description: Push a foe away and ignite the ground with a blazing gust.
   targeted: 1
   range: 4
   targetTiles: 1
