@@ -22,7 +22,6 @@ public class Shove : MonoBehaviour, Cast_Spell
     {   
 
         if (targets.Count <= 0) {
-            //UnityEngine.Debug.Log("SPELL FAILED");
             return;
         }
 
@@ -46,16 +45,21 @@ public class Shove : MonoBehaviour, Cast_Spell
             //Determine direction
             int dX = targetCharacter.tileX-basicCaster.tileX;
             int dY = targetCharacter.tileY-basicCaster.tileY;
-            int dist = 3;
+            int dist = 2;
+            int dmg = 6;
 
             if (dX > 0) {
-                moveCharacter(caster,map,targetCharacter,1,0,3);
+                map.pushCharacter(targetCharacter,targetCharacter.tileX,targetCharacter.tileY,"Right",dist);
+                if (checkBackTile(map,targetCharacter.tileX,targetCharacter.tileY,1,0)) {targetCharacter.takePhysicalDamage(dmg);};
             } else if (dX < 0) {
-                moveCharacter(caster,map,targetCharacter,-1,0,3);
+                map.pushCharacter(targetCharacter,targetCharacter.tileX,targetCharacter.tileY,"Left",dist);
+                if (checkBackTile(map,targetCharacter.tileX,targetCharacter.tileY,-1,0)) {targetCharacter.takePhysicalDamage(dmg);};
             } else if (dY > 0) {
-                moveCharacter(caster,map,targetCharacter,0,1,3);
+                map.pushCharacter(targetCharacter,targetCharacter.tileX,targetCharacter.tileY,"Up",dist);
+                if (checkBackTile(map,targetCharacter.tileX,targetCharacter.tileY,0,1)) {targetCharacter.takePhysicalDamage(dmg);};
             } else if (dY < 0) {
-                moveCharacter(caster,map,targetCharacter,0,-1,3);
+                map.pushCharacter(targetCharacter,targetCharacter.tileX,targetCharacter.tileY,"Down",dist);
+                if (checkBackTile(map,targetCharacter.tileX,targetCharacter.tileY,0,-1)) {targetCharacter.takePhysicalDamage(dmg);};
             }
             return;
         }
@@ -161,88 +165,15 @@ public class Shove : MonoBehaviour, Cast_Spell
         }
     }
 
-    public void shatterWall(ClickableTile targetTile, GameObject caster){
-        if (targetTile.tileIs != 20) {
-            return;
-        }
-        targetTile.breakTile();
-
-            
-        Basic_Character_Class castChar = caster.GetComponent<Basic_Character_Class>();
-
-        //Get the damage
-        int damage = 0;
-        Hero_Character_Class castHero = caster.GetComponent<Hero_Character_Class>();
-        if (castHero != null) {
-                //UnityEngine.Debug.Log("Valid Hero Character");
-            damage = castHero.magic.moddedValue*3;
+    //Check to see if the block behind them is a wold wall or wall, breaking the tile if breakable
+    public bool checkBackTile(TileMap map, int tX, int tY, int xOff, int yOff) {
+        ClickableTile ct = map.getTile(tX+xOff,tY+yOff);
+        if (ct != null) {
+            if (ct.tileName == "Wall") {return true;};
+            if (ct.tileName == "Wold Wall") {ct.breakTile(); return true;};
         } 
-            //Enemy_Character_Class castEnemy = caster.GetComponent<Enemy_Character_Class>();
-            //if (castEnemy != null) {
-            //    damage = castEnemy.magic.moddedValue;
-            //}
-
-            //Figure out whether the wall was north, south, east, or west of Wold
-        float cX = castChar.tileX;
-        float cY = castChar.tileY;
-
-        float tX = targetTile.TileX;
-        float tY = targetTile.TileY;
-
-        float dX = Mathf.Abs(cX-tX);
-        float dY = Mathf.Abs(cY-tY);
-
-        //Hit enemies on opposite end of tiles
-        if (dX > dY) { 
-            if (tX < cX) { //Damage enemies to the left of the tile. e   <- t  <- c
-                strikeAt(targetTile,-1,0,damage);
-                strikeAt(targetTile,-2,0,damage);
-                strikeAt(targetTile,-1,1,damage);
-                strikeAt(targetTile,-1,-1,damage);
-            } else { //Hit enemies to the right of the tile.
-                strikeAt(targetTile,1,0,damage);
-                strikeAt(targetTile,2,0,damage);
-                strikeAt(targetTile,1,1,damage);
-                strikeAt(targetTile,1,-1,damage);
-            }
-
-        } else {//if (dY > dX) {
-            if (tY < cY) { //Damage enemies to the south of the tile. 
-                strikeAt(targetTile,0,-1,damage);
-                strikeAt(targetTile,0,-2,damage);
-                strikeAt(targetTile,1,-1,damage);
-                strikeAt(targetTile,-1,-1,damage);
-            } else { //Hit enemies to the north of the tile.
-                strikeAt(targetTile,0,1,damage);
-                strikeAt(targetTile,0,2,damage);
-                strikeAt(targetTile,1,1,damage);
-                strikeAt(targetTile,-1,1,damage);
-            }
-        }
+        return false;
     }
 
-    public void moveCharacter(GameObject caster, TileMap map, Basic_Character_Class target, int x, int y, int damage, int times = 3) {
-        while (times > 0) {
-            int futX = x; //Future position
-            int futY = y;
 
-            //Check if position to go to is available
-            ClickableTile toTile = map.getTile(target.tileX+futX,target.tileY+futY);
-
-                //Is it a world boundary? Stop right there
-                if (toTile == null) {
-                    times = 0;
-                }
-                //Is it a wall?
-                
-                //Is it a wold wall?
-                    //If so,
-            
-            //Move position to match
-
-            times --;
-        }
-        
-        return;
-    }
 }
