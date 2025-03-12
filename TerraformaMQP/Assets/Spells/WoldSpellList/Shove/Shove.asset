@@ -19,7 +19,7 @@ MonoBehaviour:
   description: Push a foe, friend, or wall, damaging foes if they hit a wall.
   targeted: 1
   range: 1
-  targetTiles: 0
+  targetTiles: 1
   targetAllies: 1
   target: {fileID: 0}
   amountOfTargets: 1

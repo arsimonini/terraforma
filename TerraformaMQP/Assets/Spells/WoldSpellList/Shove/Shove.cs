@@ -37,6 +37,20 @@ public class Shove : MonoBehaviour, Cast_Spell
 
         ClickableTile targetTile = targets[0].GetComponent<ClickableTile>();
         if (targetTile != null) {
+            int dX = targetTile.TileX-basicCaster.tileX;
+            int dY = targetTile.TileY-basicCaster.tileY;
+            int dist = 2;
+
+            if (dX > 0) {
+                movePillar(targetTile,"Right",2);
+            } else if (dX < 0) {
+                movePillar(targetTile,"Left",2);
+            } else if (dY > 0) {
+                movePillar(targetTile,"Up",2);
+            } else {
+                movePillar(targetTile,"Down",2);
+            }
+
             return;
         }
 
@@ -63,8 +77,49 @@ public class Shove : MonoBehaviour, Cast_Spell
             }
             return;
         }
-        
 
+    }
+
+    public void movePillar(ClickableTile ct, string dir, int strength) {
+        TileMap map = ct.map;
+        int currX = ct.TileX;
+        int currY = ct.TileY;
+
+        int str = strength;
+
+        while (str > 0) {
+            ClickableTile oct = map.getTile(currX,currY);
+
+            switch (dir) {
+                case "Left":
+                    currX --;
+                break;
+
+                case "Right":
+                    currX ++;
+                break;
+
+                case "Up":
+                    currY ++;
+                break;
+
+                case "Down":
+                    currY --;
+                break;
+            }
+
+            //ct.breakTile();
+
+            ClickableTile nct = map.getTile(currX,currY);
+            if (nct != null && nct.characterOnTile == null && nct.isWalkable == true) {
+                //make a pillar at currX, currY;
+                map.swapTiles(nct,20,false);
+                if (oct != null) {oct.breakTile();}
+                str --;
+            } else {
+                str = 0;
+            }
+        }
     }
 
     public void strikeAt(ClickableTile mainTile, int xOffSet, int yOffset, int damage = 2) {
