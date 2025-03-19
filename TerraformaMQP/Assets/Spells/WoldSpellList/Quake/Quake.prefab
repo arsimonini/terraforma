@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3281928208819819768}
   - component: {fileID: 8952784826642133216}
   - component: {fileID: 6735173004546557610}
-  - component: {fileID: 5482014439883698698}
+  - component: {fileID: -2397631055755958414}
   m_Layer: 0
-  m_Name: Shove
+  m_Name: Quake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5482014439883698698
+--- !u!114 &-2397631055755958414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,6 +115,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2394175536890139692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37f142f450726e848b0f5360067c0644, type: 3}
+  m_Script: {fileID: 11500000, guid: ed7807f2d5db03a4ea03771128412b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

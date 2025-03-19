@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
-  m_Name: Shove
+  m_Name: Quake
   m_EditorClassIdentifier: 
-  manaCost: 5
-  spellName: Shove
+  manaCost: 8
+  spellName: Quake
   elementType: Earth
-  spellPrefab: {fileID: 2394175536890139692, guid: 2970b092aa4bde44e87b77e872ba5e30, type: 3}
-  description: Push a foe, friend, or wall, damaging foes if they hit a wall.
+  spellPrefab: {fileID: 2394175536890139692, guid: e8e05fc276f46b34c96330fac50ee89f, type: 3}
+  description: Rend the earth around you, turning most land to dirt and crumbling
+    Wold's pillars. Damages enemies around as well.
   targeted: 1
-  range: 1
+  range: 2
   targetTiles: 1
   targetAllies: 1
   target: {fileID: 0}
@@ -30,9 +31,9 @@ MonoBehaviour:
   targetWalls: 0
   AOEsize: 0
   square: 0
-  alternateAOEDisplay: 0
-  hyperSpecificTargeting: 1
-  needSpecificTiles: 1
+  alternateAOEDisplay: 1
+  hyperSpecificTargeting: 0
+  needSpecificTiles: 0
   specificTiles:
   - tileWoldWall
   needSpecificTileEffects: 0
