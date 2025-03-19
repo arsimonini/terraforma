@@ -38,6 +38,7 @@ public class Basic_Character_Class : MonoBehaviour
     public GameObject missPrefab;
     public GameObject abilityPrefab;
     public bool canTakeReactions = true;
+    public bool canTakeReactionsDefault = true;
 
     public float waitTimeBeforeReacton = 1.5f;
 
@@ -1257,6 +1258,10 @@ public class Basic_Character_Class : MonoBehaviour
             }
         }
 
+        if (buff.stopReactions == true){
+            canTakeReactions = false;
+        }
+
         if (buff.movementCostsToIgnore != null){
             for (int i = 0; i < buff.movementCostsToIgnore.Count; i++){
                 addTileCostToIgnore(buff.movementCostsToIgnore[i]);
@@ -1318,6 +1323,15 @@ public class Basic_Character_Class : MonoBehaviour
                     }
                     break;
 
+            }
+        }
+
+        if (buff.stopReactions == true && canTakeReactionsDefault == true){
+            canTakeReactions = true;
+            for (int i = 0; i < buffs.Count; i++){
+                if (buffs[i] != buff && buffs[i].stopReactions == true){
+                    canTakeReactions = false;
+                }
             }
         }
 

@@ -14,6 +14,7 @@ public class BuffClass : ScriptableObject
     public GameObject buffAsset;
     public GameObject buffAnimationPrefab; 
     public List<string> movementCostsToIgnore = null;
+    public bool stopReactions = false;
 
     public bool reduceDuration(){
         if (duration > 1){

@@ -10,27 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
-  m_Name: Fireball
+  m_Name: Electrify
   m_EditorClassIdentifier: 
-  manaCost: 10
-  spellName: Fireball
-  elementType: Lightning
-  spellPrefab: {fileID: 2394175536890139692, guid: ee9334e422503c840bb34dfedfb5be70, type: 3}
-  description: Apply Fire to a 3x3 square and deal 6 Fire damage to enemies caught
-    in the blast
-  targeted: 1
-  range: 4
-  targetTiles: 1
+  manaCost: 0
+  spellName: 
+  elementType: 
+  spellPrefab: {fileID: 0}
+  description: 
+  targeted: 0
+  range: 0
+  targetTiles: 0
   targetAllies: 0
   target: {fileID: 0}
-  amountOfTargets: 1
-  requireDifferentTargets: 1
+  amountOfTargets: 0
+  requireDifferentTargets: 0
   targetEnemies: 0
   hitOwnTile: 0
   hitSelf: 0
-  targetWalls: 1
-  AOEsize: 1
-  square: 1
+  targetWalls: 0
+  AOEsize: 0
+  square: 0
   alternateAOEDisplay: 0
   hyperSpecificTargeting: 0
   needSpecificTiles: 0
