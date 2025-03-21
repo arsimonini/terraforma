@@ -218,6 +218,7 @@ MonoBehaviour:
   spellList:
   - {fileID: 11400000, guid: 5fd63f0d239e45c4f96a1a7666ae15bb, type: 2}
   - {fileID: 11400000, guid: 09a8c59eb4e56a44da169d0aee937de3, type: 2}
+  - {fileID: 11400000, guid: 248ee3e37f945644c946384ca3c1b635, type: 2}
   - {fileID: 11400000, guid: 0c4dfe0c563d5f04ba151b31e766170c, type: 2}
 --- !u!212 &4272299001614567363
 SpriteRenderer:
@@ -682,7 +683,7 @@ PrefabInstance:
     - target: {fileID: 8009263828729003866, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 521441566614050383}
     - target: {fileID: 8009263828729003866, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 

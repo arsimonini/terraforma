@@ -12,19 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: Jolt
   m_EditorClassIdentifier: 
-  manaCost: 0
-  spellName: 
-  elementType: 
-  spellPrefab: {fileID: 0}
-  description: 
-  targeted: 0
-  range: 0
+  manaCost: 3
+  spellName: Jolt
+  elementType: Lightning
+  spellPrefab: {fileID: 7691716510902581966, guid: 33b603d994186e0448922bd92b289339, type: 3}
+  description: Shoot a target, dealing magic damage and Jolting them, making them
+    unable to take reactions
+  targeted: 1
+  range: 6
   targetTiles: 0
   targetAllies: 0
   target: {fileID: 0}
-  amountOfTargets: 0
+  amountOfTargets: 1
   requireDifferentTargets: 0
-  targetEnemies: 0
+  targetEnemies: 1
   hitOwnTile: 0
   hitSelf: 0
   targetWalls: 0

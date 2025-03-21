@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: Electrify
   m_EditorClassIdentifier: 
-  manaCost: 0
-  spellName: 
-  elementType: 
-  spellPrefab: {fileID: 0}
-  description: 
-  targeted: 0
-  range: 0
+  manaCost: 2
+  spellName: Electrify
+  elementType: LightningStart
+  spellPrefab: {fileID: 588979726576418481, guid: a52ed9de3dc6cb64fa7bd0148f0fc209, type: 3}
+  description: Electrify a Water tile causing electricty to spread to nearby tiles
+  targeted: 1
+  range: 6
   targetTiles: 0
   targetAllies: 0
   target: {fileID: 0}
-  amountOfTargets: 0
+  amountOfTargets: 1
   requireDifferentTargets: 0
   targetEnemies: 0
   hitOwnTile: 0
@@ -31,9 +31,12 @@ MonoBehaviour:
   AOEsize: 0
   square: 0
   alternateAOEDisplay: 0
-  hyperSpecificTargeting: 0
-  needSpecificTiles: 0
-  specificTiles: []
-  needSpecificTileEffects: 0
-  specificTileEffects: []
+  hyperSpecificTargeting: 1
+  needSpecificTiles: 1
+  specificTiles:
+  - tileDeepWater
+  - tileShallowWater
+  needSpecificTileEffects: 1
+  specificTileEffects:
+  - Soaked
   targetBreakables: 0

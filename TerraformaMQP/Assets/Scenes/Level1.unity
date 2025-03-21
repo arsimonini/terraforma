@@ -21100,7 +21100,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 360567a08a87f4d4887237cb0e4f1875, type: 2}
   - {fileID: 11400000, guid: ba5bc7b9192685645a96fbc2744473b9, type: 2}
   - {fileID: 11400000, guid: 690236cb67f672f4784bb3a1089e6eb2, type: 2}
+  - {fileID: 11400000, guid: ab48fdef0bac3e847b5fc989982ee340, type: 2}
   tilePrefabs: []
+  joltedPrefab: {fileID: 0}
 --- !u!114 &1297737941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30124,7 +30126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7332120924486113192, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.9172835
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7332120924486113192, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
       propertyPath: m_LocalRotation.w

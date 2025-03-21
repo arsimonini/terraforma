@@ -57,7 +57,7 @@ public class StatusEffect : ScriptableObject
         newSelectedObject      |
         newName              --
     */
-    public void initializeTileEffect(List<string> newStatToEffect, string newSource, List<int> newAmount, GameObject newSelectedObject, string newName, List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false)
+    public void initializeTileEffect(List<string> newStatToEffect, string newSource, List<int> newAmount, GameObject newSelectedObject, string newName, List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false, bool blockChange = false, bool blockRemoval = false)
     {
         //Sets the variables
         statToEffect = newStatToEffect;
@@ -65,8 +65,17 @@ public class StatusEffect : ScriptableObject
         amount = newAmount;
         selectedObject = newSelectedObject;
         name = newName;
+        if (statToEffect != null && statToEffect.Count > 0){
+            UnityEngine.Debug.Log("We Have stats to change");
+        }
+        for (int i = 0; i < newStatToEffect.Count; i++){
+            UnityEngine.Debug.Log(newStatToEffect[i]);
+        }
+        for (int i = 0; i < newStatToEffect.Count; i++){
+            UnityEngine.Debug.Log(newAmount[i]);
+        }
         //Adds the status to the selectedObject
-        selectedObject.GetComponent<Basic_Character_Class>().addStatus(this, true, tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact);
+        selectedObject.GetComponent<Basic_Character_Class>().addStatus(this, true, tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact, blockChange: blockChange, blockRemoval: blockRemoval);
     }
 
     //Reduces the remaining duration of the effect by 1
