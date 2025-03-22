@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: FireBreath
   m_EditorClassIdentifier: 
-  manaCost: 8
-  spellName: Fire Breath
+  manaCost: 15
+  spellName: Dragon's Breath
   elementType: Fire
   spellPrefab: {fileID: 2394175536890139692, guid: 0c927eb4e2d09f241ad6d8a3827fb5c3, type: 3}
-  description: Breathe fire in a wide swath, setting an area on fire.
+  description: Blast foes in a wide swath with a fiery spell.
   targeted: 1
   range: 4
   targetTiles: 1

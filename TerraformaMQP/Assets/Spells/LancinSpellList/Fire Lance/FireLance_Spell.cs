@@ -78,7 +78,7 @@ public class FireLance_Spell : MonoBehaviour, Cast_Spell
 
                 Basic_Character_Class cts = characterToStrike.GetComponent<Basic_Character_Class>();
                 if (cts != null) {
-                    cts.takeMagicDamage(heroCaster.magic.moddedValue, "Fire");
+                    cts.takeMagicDamage((int) (heroCaster.magic.moddedValue/1.2), "Fire");
                 }
             }
 
