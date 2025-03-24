@@ -21102,7 +21102,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 690236cb67f672f4784bb3a1089e6eb2, type: 2}
   - {fileID: 11400000, guid: ab48fdef0bac3e847b5fc989982ee340, type: 2}
   tilePrefabs: []
-  joltedPrefab: {fileID: 0}
+  joltedPrefab: {fileID: 11400000, guid: 936bce4200a9f914b94239ef35b356f3, type: 2}
 --- !u!114 &1297737941
 MonoBehaviour:
   m_ObjectHideFlags: 0

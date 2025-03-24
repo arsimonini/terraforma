@@ -176,25 +176,37 @@ public class ClickableTile : MonoBehaviour
         effectsOnTile.Add(effect);
         List<int> tempAmounts = new List<int>();
         List<string> tempNames = new List<string>();
+        bool noStatChange = false;
+        bool noMovementCostChange = false;
         //Updates the tile's list of statsToEffect and effectAmounts by either adding new stats to effect if they aren't already within the original list, or adding the new amounts to the pre-existing amounts
-        for (int i = 0; i < effect.statToEffect.Count; i++){
-            if (statsToEffect.Contains(effect.statToEffect[i])){
-                int statLoc = checkList(effect.statToEffect[i]);
-                effectAmounts[statLoc] += effect.amountToEffect[i];
-                tempAmounts.Add(effect.amountToEffect[i]);
-                tempNames.Add(effect.statToEffect[i]);
-            }
-            else{
-                statsToEffect.Add(effect.statToEffect[i]);
-                effectAmounts.Add(effect.amountToEffect[i]);
-                tempAmounts.Add(effect.amountToEffect[i]);
-                tempNames.Add(effect.statToEffect[i]);
+        if (effect.statToEffect != null && effect.statToEffect.Count > 0){
+            for (int i = 0; i < effect.statToEffect.Count; i++){
+                if (statsToEffect.Contains(effect.statToEffect[i])){
+                    int statLoc = checkList(effect.statToEffect[i]);
+                    effectAmounts[statLoc] += effect.amountToEffect[i];
+                    tempAmounts.Add(effect.amountToEffect[i]);
+                    tempNames.Add(effect.statToEffect[i]);
+                }
+                else{
+                    statsToEffect.Add(effect.statToEffect[i]);
+                    effectAmounts.Add(effect.amountToEffect[i]);
+                    tempAmounts.Add(effect.amountToEffect[i]);
+                    tempNames.Add(effect.statToEffect[i]);
+                }
             }
         }
-        cost += effect.movementCostIncrease;
+        else {
+            noStatChange = true;
+        }
+        if (effect.movementCostIncrease != 0){
+            cost += effect.movementCostIncrease;
+        }
+        else{
+            noMovementCostChange = true;
+        }
         //If there is a character on the tile then it's tile effect is then updated to reflect the new stats
         if (characterOnTile != null){
-            updateTileEffect(tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact, blockRemoval: blockRemoval);
+            updateTileEffect(tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact, blockRemoval: blockRemoval, noStatChange: noStatChange, noMovementCostChange: noMovementCostChange);
         }
         //effect.tileEffectPrefab.GetComponent<tileEffectActions>().react(effectsOnTile, this, effect);
     }
@@ -219,6 +231,11 @@ public class ClickableTile : MonoBehaviour
                 UnityEngine.Debug.Log(characterOnTile.GetComponent<Basic_Character_Class>().tileEffect.statToEffect[i]);
             }
             updateTileEffect(fromReact: fromReact, blockChange: true);
+            if (effect.statToEffect != null && effect.statToEffect.Count > 0){
+                List<string> stats = effect.statToEffect;
+                List<int> amounts = effect.amountToEffect;
+                characterOnTile.GetComponent<Basic_Character_Class>().increaseStats(stats, amounts);
+            }
         }
         for (int i = 0; i < effect.statToEffect.Count; i++){
             int statLoc = checkList(effect.statToEffect[i]);
@@ -253,7 +270,7 @@ public class ClickableTile : MonoBehaviour
     }
 
     //Recreates the tile effect with the current stat changes, updating the character on the tile
-    public void updateTileEffect(List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false, bool blockChange = false, bool blockRemoval = false){
+    public void updateTileEffect(List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false, bool blockChange = false, bool blockRemoval = false, bool noStatChange = false, bool noMovementCostChange = false){
         StatusEffect newEffect = new StatusEffect();
         for (int i = 0; i < statsToEffect.Count; i++){
             UnityEngine.Debug.Log(statsToEffect[i]);
@@ -261,7 +278,7 @@ public class ClickableTile : MonoBehaviour
         for (int i = 0; i < statsToEffect.Count; i++){
             UnityEngine.Debug.Log(effectAmounts[i]);
         }
-        newEffect.initializeTileEffect(statsToEffect, name, effectAmounts, characterOnTile, name + " Effect", tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact, blockChange: blockChange, blockRemoval: blockRemoval);
+        newEffect.initializeTileEffect(statsToEffect, name, effectAmounts, characterOnTile, name + " Effect", tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact, blockChange: blockChange, blockRemoval: blockRemoval, noStatChange: noStatChange, noMovementCostChange: noMovementCostChange);
     }
     
     //---REDUNDANT, NEED TO DESTROY---

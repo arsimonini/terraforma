@@ -69,6 +69,11 @@ public class TileEffect : ScriptableObject
         //Sets the required parameters
         tile = newTile;
         playerTeam = newPlayerTeam;
+        if (tile.statsToEffect != null && tile.statsToEffect.Count > 0 && tile.characterOnTile != null && (statToEffect != null && statToEffect.Count > 0)){
+            List<string> tempStats = tile.statsToEffect;
+            List<int> tempAmounts = tile.effectAmounts;
+            tile.characterOnTile.GetComponent<Basic_Character_Class>().reduceStats(tempStats, tempAmounts);
+        }
         //Calls the initializeTileEffect function to add the effect to the StatusEffectController
         initializeTileEffect(fromReact: fromReact, blockRemoval: blockRemoval);
     }

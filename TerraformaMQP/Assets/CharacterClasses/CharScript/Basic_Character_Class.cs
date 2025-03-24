@@ -392,7 +392,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Adds a status effect to the character
     //Input - Effect to add, If the effect is coming from a tile or Buff/Debuff
 
-    public void addStatus(StatusEffect effect, bool fromTile, List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false, bool blockChange = false, bool blockRemoval = false)
+    public void addStatus(StatusEffect effect, bool fromTile, List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false, bool blockChange = false, bool blockRemoval = false, bool noStatChange = false, bool noMovementCostChange = false)
     {
         //Checks if the effect came from a tile or a different source
         if (fromTile == false)
@@ -417,7 +417,7 @@ public class Basic_Character_Class : MonoBehaviour
             }
             tileEffect = effect;
         }
-        if (!blockChange){
+        if (!blockChange && !noStatChange){
             //Iterates over the list of stats that need to be effected
             for (int i = 0; i < effect.statToEffect.Count; i++)
             {
@@ -608,6 +608,190 @@ public class Basic_Character_Class : MonoBehaviour
         {
             //If from another source, the effect is located within the list of effects on the character and then removed
             effects.Remove(effect);
+        }
+    }
+
+    public void reduceStats(List<string> stats, List<int> amounts){
+        //Iterates over the list of stats to affect
+        for (int i = 0; i < stats.Count; ++i)
+        {
+            //Checks which stat to effect and then applies the change
+            switch (stats[i])
+            {
+                case "health":
+                    decreaseHealth(amounts[i]);
+                    break;
+
+                case "attack":
+                    UnityEngine.Debug.Log(amounts[i]);
+                    decreaseAttack(amounts[i]);
+                    break;
+
+                case "speed":
+                    decreaseSpeed(amounts[i]);
+                    break;
+
+                case "maxHealth":
+                    decreaseMaxHealth(amounts[i]);
+                    break;
+
+                case "movementSpeed":
+                    decreaseMoveSpeed(amounts[i]);
+                    break;
+
+                case "resistence":
+                    decreaseResistence(amounts[i]);
+                    break;
+
+                case "defense":
+                    decreaseDefense(amounts[i]);
+                    break;
+
+                case "criticalChance":
+                    decreaseCritChance(amounts[i]);
+                    break;
+
+                case "accuracy":
+                    decreaseAccuracy(amounts[i]);
+                    break;
+
+                case "totalActions":
+                    decreaseTotalActions(amounts[i]);
+                    break;
+                
+                case "magic":
+                    if (this.gameObject.GetComponent<Hero_Character_Class>()){
+                        this.gameObject.GetComponent<Hero_Character_Class>().decreaseMagic(amounts[i]);
+                    }
+                    break;
+
+            }
+        }
+    }
+
+     public void increaseStats(List<string> stats, List<int> amounts){
+        List<string> oldStats = new List<string>();
+        List<int> oldAmounts = new List<int>();
+        for (int i = 0; i < tile.effectAmounts.Count; i++){
+            oldStats.Add(tile.statsToEffect[i]);
+            oldAmounts.Add(tile.effectAmounts[i]);
+        }
+        for(int i = 0; i < stats.Count; i++){
+            int index = 0;
+            switch(stats[i]){
+                case "health":
+                    index = oldStats.IndexOf("health");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "attack":
+                    UnityEngine.Debug.Log(amounts[i]);
+                    index = oldStats.IndexOf("attack");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "speed":
+                    index = oldStats.IndexOf("speed");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "maxHealth":
+                    index = oldStats.IndexOf("maxHealth");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "movementSpeed":
+                    index = oldStats.IndexOf("movementSpeed");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "resistence":
+                    index = oldStats.IndexOf("resistence");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "defense":
+                    index = oldStats.IndexOf("defense");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "criticalChance":
+                    index = oldStats.IndexOf("criticalChance");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "accuracy":
+                    index = oldStats.IndexOf("accuracy");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "totalActions":
+                    index = oldStats.IndexOf("totalActions");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+                
+                case "magic":
+                    if (this.gameObject.GetComponent<Hero_Character_Class>()){
+                        index = oldStats.IndexOf("totalActions");
+                        this.gameObject.GetComponent<Hero_Character_Class>().decreaseMagic(amounts[i]);
+                    }
+                    break;
+            }
+        }
+        //Iterates over the list of stats to affect
+        for (int i = 0; i < oldStats.Count; ++i)
+        {
+            //Checks which stat to effect and then applies the change
+            switch (oldStats[i])
+            {
+                case "health":
+                    increaseHealth(oldAmounts[i]);
+                    break;
+
+                case "attack":
+                    UnityEngine.Debug.Log(oldAmounts[i]);
+                    increaseAttack(oldAmounts[i]);
+                    break;
+
+                case "speed":
+                    increaseSpeed(oldAmounts[i]);
+                    break;
+
+                case "maxHealth":
+                    increaseMaxHealth(oldAmounts[i]);
+                    break;
+
+                case "movementSpeed":
+                    increaseMoveSpeed(oldAmounts[i]);
+                    break;
+
+                case "resistence":
+                    increaseResistence(oldAmounts[i]);
+                    break;
+
+                case "defense":
+                    increaseDefense(oldAmounts[i]);
+                    break;
+
+                case "criticalChance":
+                    increaseCritChance(oldAmounts[i]);
+                    break;
+
+                case "accuracy":
+                    increaseAccuracy(oldAmounts[i]);
+                    break;
+
+                case "totalActions":
+                    increaseTotalActions(oldAmounts[i]);
+                    break;
+                
+                case "magic":
+                    if (this.gameObject.GetComponent<Hero_Character_Class>()){
+                        this.gameObject.GetComponent<Hero_Character_Class>().increaseMagic(oldAmounts[i]);
+                    }
+                    break;
+
+            }
         }
     }
 

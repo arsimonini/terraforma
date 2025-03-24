@@ -57,7 +57,7 @@ public class StatusEffect : ScriptableObject
         newSelectedObject      |
         newName              --
     */
-    public void initializeTileEffect(List<string> newStatToEffect, string newSource, List<int> newAmount, GameObject newSelectedObject, string newName, List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false, bool blockChange = false, bool blockRemoval = false)
+    public void initializeTileEffect(List<string> newStatToEffect, string newSource, List<int> newAmount, GameObject newSelectedObject, string newName, List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false, bool blockChange = false, bool blockRemoval = false, bool noStatChange = false, bool noMovementCostChange = false)
     {
         //Sets the variables
         statToEffect = newStatToEffect;
@@ -75,7 +75,7 @@ public class StatusEffect : ScriptableObject
             UnityEngine.Debug.Log(newAmount[i]);
         }
         //Adds the status to the selectedObject
-        selectedObject.GetComponent<Basic_Character_Class>().addStatus(this, true, tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact, blockChange: blockChange, blockRemoval: blockRemoval);
+        selectedObject.GetComponent<Basic_Character_Class>().addStatus(this, true, tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact, blockChange: blockChange, blockRemoval: blockRemoval, noStatChange: noStatChange, noMovementCostChange: noMovementCostChange);
     }
 
     //Reduces the remaining duration of the effect by 1

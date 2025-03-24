@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Electrified
   m_EditorClassIdentifier: 
   duration: 2
-  statToEffect: []
-  amountToEffect: 
+  statToEffect:
+  - attack
+  amountToEffect: 02000000
   source: 
   tile: {fileID: 0}
   name: Electrified
