@@ -190,7 +190,7 @@ public class ReactionController : MonoBehaviour
                 return false;
 
             case "Water":
-                tile.removeEffectFromTile(effectOnTile, fromReact: true);
+                tile.removeEffectFromTile(effectOnTile, blockChange: true);
                 newEffect = Instantiate(tileEffects[5]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 return false;
