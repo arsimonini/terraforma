@@ -296,7 +296,7 @@ public class ReactionController : MonoBehaviour
                 return false;
 
             case "Water":
-                tile.removeEffectFromTile(effectOnTile);
+                tile.removeEffectFromTile(effectOnTile, blockChange: true);
                 return false;
 
             case "Earth":
@@ -370,7 +370,7 @@ public class ReactionController : MonoBehaviour
             case "Water":
                 for (int i = 0; i < tile.effectsOnTile.Count; i++){
                     if (tile.effectsOnTile[i].name == "Rocky"){
-                        tile.removeEffectFromTile(tile.effectsOnTile[i]);
+                        tile.removeEffectFromTile(tile.effectsOnTile[i], blockChange: true);
                     }
                 }
                 ClickableTile newTile = tile.map.swapTiles(tile, 2, true);
