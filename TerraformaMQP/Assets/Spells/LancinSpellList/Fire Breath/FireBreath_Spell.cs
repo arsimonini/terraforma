@@ -24,6 +24,8 @@ public class FireBreath_Spell : MonoBehaviour, Cast_Spell
     public void castSpell(List<GameObject> targets, GameObject caster)
     {
         Basic_Character_Class basicCaster = caster.GetComponent<Basic_Character_Class>();
+        Hero_Character_Class heroCaster = caster.GetComponent<Hero_Character_Class>();
+
         if (targets.Count > 0) {
             int x = 0; int y = 0;
             ClickableTile ct = targets[0].GetComponent<ClickableTile>();
@@ -38,7 +40,10 @@ public class FireBreath_Spell : MonoBehaviour, Cast_Spell
 
             //Decide attack direction (1 of 8)
             int dir = findAttackDirection(basicCaster.tileX,basicCaster.tileY,x,y);
+            
+    
             int dmg = 3;
+            if (heroCaster != null) {dmg = heroCaster.magic.moddedValue/2;}
             float acc = 1;
             string elm = "Fire";
 

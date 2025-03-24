@@ -7,6 +7,7 @@ public class ReactionController : MonoBehaviour
 
     public List<TileEffect> tileEffects;
     public List<GameObject> tilePrefabs;
+    public BuffClass joltedPrefab;
 
 
     IEnumerator Start(){
@@ -108,10 +109,10 @@ public class ReactionController : MonoBehaviour
                 checkLightForestReaction(tile, damageType, source, playerTeam);
             }
             else if(tile.gameObject.name.Contains("tileShallowWater")){
-
+                checkShallowWaterReaction(tile, damageType, source, playerTeam);
             }
             else if(tile.gameObject.name.Contains("tileDeepWater")){
-
+                checkDeepWaterReaction(tile, damageType, source, playerTeam);
             }
             else if(tile.gameObject.name.Contains("tileSand")){
 
@@ -182,13 +183,16 @@ public class ReactionController : MonoBehaviour
 
 //-------------------------------------------------------------------REACTIONS WITH OTHER EFFECTS BELOW-------------------------------------------------------------
     private bool checkBurningReaction(ClickableTile tile, string damageType, string source, TileEffect effectOnTile, bool playerTeam){
+        TileEffect newEffect;
         switch (damageType){
             case "Fire":
                 effectOnTile.duration += 2;
                 return false;
 
             case "Water":
-                tile.removeEffectFromTile(effectOnTile);
+                tile.removeEffectFromTile(effectOnTile, blockChange: true);
+                newEffect = Instantiate(tileEffects[5]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 return false;
 
             case "Earth":
@@ -210,9 +214,26 @@ public class ReactionController : MonoBehaviour
     }
 
     private bool checkSoakedReaction(ClickableTile tile, string damageType, string source, TileEffect effectOnTile, bool playerTeam){
+        TileEffect newEffect;
         switch(damageType){
             case "Fire":
+                /*
                 tile.removeEffectFromTile(effectOnTile);
+                newEffect = Instantiate(tileEffects[5]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                */
+                tile.removeEffectFromTile(effectOnTile, blockChange: true);
+                if (tile.characterOnTile != null){
+                    Debug.Log("removeEffectFromTile called at time: " + Time.time);
+                }
+                
+                newEffect = Instantiate(tileEffects[5]);
+
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                if (tile.characterOnTile != null){
+                    Debug.Log("createTileEffect called at time: " + Time.time);
+                }
+
                 return false;
 
             case "Water":
@@ -226,12 +247,43 @@ public class ReactionController : MonoBehaviour
                 return true;
 
             case "Lightning":
+                for (int i = 0; i < tile.effectsOnTile.Count; i++){
+                    if (tile.effectsOnTile[i].name == "Electrified"){
+                        tile.effectsOnTile[i].duration += 1;
+                        return true;
+                    }
+                }
+                newEffect = Instantiate(tileEffects[4]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 2, fromReact: true, blockRemoval: true);
+                joltCharacter(tile);
                 return true;
 
             case "Ice":
                 return true;
 
             case "Plant":
+                return true;
+
+            case "LightningStart":
+                UnityEngine.Debug.Log("Electrify");
+                TileMap map = tile.map;
+                for (int i = -2; i <= 2; i++){
+                    for (int j = -2; j <= 2; j++){
+                        UnityEngine.Debug.Log("Checking Tile: (" + i + " , " + j + ")");
+                        if (map.tileExists(tile.TileX + i, tile.TileY + j) && checkLightningSpread(tile.TileX + i, tile.TileY + j, tile.map) && !(i == 0 && j == 0)){
+                            map.gameObject.GetComponent<ReactionController>().checkReaction(map.clickableTiles[tile.TileX + i, tile.TileY + j], "Lightning", source, playerTeam);
+                        }
+                    }
+                }
+                for (int i = 0; i < tile.effectsOnTile.Count; i++){
+                    if (tile.effectsOnTile[i].name == "Electrified"){
+                        tile.effectsOnTile[i].duration += 1;
+                        return true;
+                    }
+                }
+                newEffect = Instantiate(tileEffects[4]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 2, fromReact: true, blockRemoval: true);
+                joltCharacter(tile);
                 return true;
         }
         return true;
@@ -244,7 +296,7 @@ public class ReactionController : MonoBehaviour
                 return false;
 
             case "Water":
-                tile.removeEffectFromTile(effectOnTile);
+                tile.removeEffectFromTile(effectOnTile, blockChange: true);
                 return false;
 
             case "Earth":
@@ -273,28 +325,28 @@ public class ReactionController : MonoBehaviour
         switch(damageType){
             case "Fire":
                 newEffect = Instantiate(tileEffects[0]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
 
             case "Water":
                 newEffect = Instantiate(tileEffects[1]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
 
             case "Earth":
                 newEffect = Instantiate(tileEffects[2]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration:4, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration:4, fromReact: true, blockRemoval: true);
                 break;
 
             case "HearthFire": //Need to do this last bit
                 newEffect = Instantiate(tileEffects[3]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
 
             case "Air":
                 break;
 
-            case "Lightning":
+            case "LightningStart":
                 break;
 
             case "Ice":
@@ -312,28 +364,28 @@ public class ReactionController : MonoBehaviour
         switch(damageType){
             case "Fire":
                 newEffect = Instantiate(tileEffects[0]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 1, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 1, fromReact: true, blockRemoval: true);
                 break;
 
             case "Water":
                 for (int i = 0; i < tile.effectsOnTile.Count; i++){
                     if (tile.effectsOnTile[i].name == "Rocky"){
-                        tile.removeEffectFromTile(tile.effectsOnTile[i]);
+                        tile.removeEffectFromTile(tile.effectsOnTile[i], blockChange: true);
                     }
                 }
                 ClickableTile newTile = tile.map.swapTiles(tile, 2, true);
                 newEffect = Instantiate(tileEffects[1]);
-                newEffect.createTileEffect(playerTeam, newTile, newSource: source, newDuration: 3, fromReact: true);
+                newEffect.createTileEffect(playerTeam, newTile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
 
             case "Earth":
                 newEffect = Instantiate(tileEffects[2]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true, blockRemoval: true);
                 break;
             
             case "HearthFire": //Need to do this last bit
                 newEffect = Instantiate(tileEffects[3]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
 
             case "Air":
@@ -360,12 +412,12 @@ public class ReactionController : MonoBehaviour
 
             case "Water":
                 newEffect = Instantiate(tileEffects[1]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
 
             case "Earth":
                 newEffect = Instantiate(tileEffects[2]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true, blockRemoval: true);
                 break;
 
             case "HearthFire": //Need to do this last bit
@@ -391,22 +443,22 @@ public class ReactionController : MonoBehaviour
         switch(damageType){
             case "Fire":
                 newEffect = Instantiate(tileEffects[0]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
 
             case "Water":
                 newEffect = Instantiate(tileEffects[1]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
 
             case "Earth":
                 newEffect = Instantiate(tileEffects[2]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true, blockRemoval: true);
                 break;
 
             case "HearthFire": //Need to do this last bit
                 newEffect = Instantiate(tileEffects[3]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
 
             case "Air":
@@ -468,17 +520,17 @@ public class ReactionController : MonoBehaviour
 
             case "Water":
                 newEffect = Instantiate(tileEffects[1]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
 
             case "Earth":
                 newEffect = Instantiate(tileEffects[2]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, fromReact: true, blockRemoval: true);
                 break;
 
             case "HearthFire": //Need to do this last bit
                 newEffect = Instantiate(tileEffects[3]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
 
             case "Air":
@@ -500,12 +552,12 @@ public class ReactionController : MonoBehaviour
         switch(damageType){
             case "Fire":
                 newEffect = Instantiate(tileEffects[0]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
 
             case "Water":
                 newEffect = Instantiate(tileEffects[1]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
 
             case "Earth":
@@ -513,7 +565,7 @@ public class ReactionController : MonoBehaviour
 
             case "HearthFire": //Need to do this last bit
                 newEffect = Instantiate(tileEffects[3]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
                 
             case "Air":
@@ -530,5 +582,159 @@ public class ReactionController : MonoBehaviour
         }
     }
 
+    private void checkDeepWaterReaction(ClickableTile tile, string damageType, string source, bool playerTeam){
+    TileEffect newEffect;
+    switch(damageType){
+        case "Fire":
+            newEffect = Instantiate(tileEffects[5]);
+            newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+            break;
+
+        case "Water":
+            break;
+
+        case "Earth":
+            break;
+
+        case "HearthFire": //Need to do this last bit
+            break;
+
+        case "Air":
+            break;
+
+        case "Lightning":
+            for (int i = 0; i < tile.effectsOnTile.Count; i++){
+                if (tile.effectsOnTile[i].name == "Electrified"){
+                    tile.effectsOnTile[i].duration += 1;
+                    break;
+                }
+            }
+            newEffect = Instantiate(tileEffects[4]);
+            newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 2, fromReact: true, blockRemoval: true);
+            joltCharacter(tile);
+            break;
+
+        case "Ice":
+            break;
+
+        case "Plant":
+            break;
+
+        case "LightningStart":
+            UnityEngine.Debug.Log("Electrify");
+            TileMap map = tile.map;
+            for (int i = -2; i <= 2; i++){
+                for (int j = -2; j <= 2; j++){
+                    UnityEngine.Debug.Log("Checking Tile: (" + i + " , " + j + ")");
+                    if (map.tileExists(tile.TileX + i, tile.TileY + j) && checkLightningSpread(tile.TileX + i, tile.TileY + j, tile.map) && !(i == 0 && j == 0)){
+                        map.gameObject.GetComponent<ReactionController>().checkReaction(map.clickableTiles[tile.TileX + i, tile.TileY + j], "Lightning", source, playerTeam);
+                    }
+                }
+            }
+            for (int i = 0; i < tile.effectsOnTile.Count; i++){
+                if (tile.effectsOnTile[i].name == "Electrified"){
+                    tile.effectsOnTile[i].duration += 1;
+                    break;
+                }
+            }
+            newEffect = Instantiate(tileEffects[4]);
+            newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 2, fromReact: true, blockRemoval: true);
+            joltCharacter(tile);
+            break;
+        
+        }
+    }
+
+    private void checkShallowWaterReaction(ClickableTile tile, string damageType, string source, bool playerTeam){
+    TileEffect newEffect;
+    switch(damageType){
+        case "Fire":
+            newEffect = Instantiate(tileEffects[5]);
+            newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+            break;
+
+        case "Water":
+            break;
+
+        case "Earth":
+            break;
+
+        case "HearthFire": //Need to do this last bit
+            break;
+
+        case "Air":
+            break;
+
+        case "Lightning":
+            for (int i = 0; i < tile.effectsOnTile.Count; i++){
+                if (tile.effectsOnTile[i].name == "Electrified"){
+                    tile.effectsOnTile[i].duration += 1;
+                    break;
+                }
+            }
+            newEffect = Instantiate(tileEffects[4]);
+            newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 2, fromReact: true, blockRemoval: true);
+            joltCharacter(tile);
+            break;
+
+        case "Ice":
+            break;
+
+        case "Plant":
+            break; 
+
+        case "LightningStart":
+            UnityEngine.Debug.Log("Electrify");
+            TileMap map = tile.map;
+            for (int i = -2; i <= 2; i++){
+                for (int j = -2; j <= 2; j++){
+                    UnityEngine.Debug.Log("Checking Tile: (" + i + " , " + j + ")");
+                    if (map.tileExists(tile.TileX + i, tile.TileY + j) && checkLightningSpread(tile.TileX + i, tile.TileY + j, tile.map) && !(i == 0 && j == 0)){
+                        map.gameObject.GetComponent<ReactionController>().checkReaction(map.clickableTiles[tile.TileX + i, tile.TileY + j], "Lightning", source, playerTeam);
+                    }
+                }
+            }
+            for (int i = 0; i < tile.effectsOnTile.Count; i++){
+                if (tile.effectsOnTile[i].name == "Electrified"){
+                    tile.effectsOnTile[i].duration += 1;
+                    break;
+                }
+            }
+            newEffect = Instantiate(tileEffects[4]);
+            newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 2, fromReact: true, blockRemoval: true);
+            joltCharacter(tile);
+            break;
+    }
+}
+
+
+
+    private bool checkLightningSpread(int x, int y, TileMap map){
+        ClickableTile tileToCheck = map.clickableTiles[x, y];
+        if (tileToCheck.gameObject.name.Contains("tileDeepWater") || tileToCheck.gameObject.name.Contains("tileShallowWater") || tileToCheck.gameObject.name.Contains("tileMud")){
+            return true;
+        }
+        else if (tileToCheck.effectsOnTile != null){
+            for (int i = 0; i < tileToCheck.effectsOnTile.Count; i++){
+                if (tileToCheck.effectsOnTile[i].name == "Soaked"){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     
+    private void joltCharacter(ClickableTile tile){
+        if (tile.characterOnTile != null){
+            Basic_Character_Class character = tile.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>();
+            for (int i = 0; i < character.buffs.Count; i++){
+                if (character.buffs[i].name == "Jolted"){
+                    character.buffs[i].duration += 1;
+                    return;
+                }
+            }
+            BuffClass newBuff = Instantiate(joltedPrefab);
+            newBuff.createBuff(true, character, 1, "ElectrifiedTile");
+        }
+    }
 }

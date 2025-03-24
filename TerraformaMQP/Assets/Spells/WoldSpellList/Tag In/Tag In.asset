@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
   m_Name: Tag In
   m_EditorClassIdentifier: 
-  manaCost: 9
+  manaCost: 7
   spellName: Tag In
   elementType: Earth
   spellPrefab: {fileID: 2394175536890139692, guid: c75ffc91fa3f2bb4ca568046b2e5129b, type: 3}

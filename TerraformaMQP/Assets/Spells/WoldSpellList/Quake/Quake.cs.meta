@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: ed7807f2d5db03a4ea03771128412b3a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - tileFireGrass: {fileID: 5296307935300308040, guid: 74736fe0684ee464f96b181620a6b05b, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

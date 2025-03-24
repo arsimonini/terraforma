@@ -37,6 +37,8 @@ public class Basic_Character_Class : MonoBehaviour
     public GameObject critPrefab;
     public GameObject missPrefab;
     public GameObject abilityPrefab;
+    public bool canTakeReactions = true;
+    public bool canTakeReactionsDefault = true;
 
     public float waitTimeBeforeReacton = 1.5f;
 
@@ -390,95 +392,8 @@ public class Basic_Character_Class : MonoBehaviour
     //Adds a status effect to the character
     //Input - Effect to add, If the effect is coming from a tile or Buff/Debuff
 
-    public void addStatus(StatusEffect effect, bool fromTile, List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false)
+    public void addStatus(StatusEffect effect, bool fromTile, List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false, bool blockChange = false, bool blockRemoval = false, bool noStatChange = false, bool noMovementCostChange = false)
     {
-        //Iterates over the list of stats that need to be effected
-        for (int i = 0; i < effect.statToEffect.Count; i++)
-        {
-            //Checks which stat to effect and then applies the change
-            switch (effect.statToEffect[i])
-            {
-                case "health":
-                    if (fromReact){
-                        increaseHealth(effect.amount[i]);    
-                    }
-                    increaseHealth(effect.amount[i]);
-                    break;
-
-                case "attack":
-                    if (fromReact){
-                        increaseAttack(effect.amount[i]);    
-                    }
-                    increaseAttack(effect.amount[i]);
-                    break;
-
-                case "speed":
-                    if (fromReact){
-                        increaseSpeed(effect.amount[i]);    
-                    }
-                    increaseSpeed(effect.amount[i]);
-                    break;
-
-                case "maxHealth":
-                    if (fromReact){
-                        increaseMaxHealth(effect.amount[i]);    
-                    }
-                    increaseMaxHealth(effect.amount[i]);
-                    break;
-
-                case "movementSpeed":
-                    if (fromReact){
-                        increaseMoveSpeed(effect.amount[i]);    
-                    }
-                    increaseMoveSpeed(effect.amount[i]);
-                    break;
-
-                case "resistence":
-                    if (fromReact){
-                        increaseResistence(effect.amount[i]);    
-                    }
-                    increaseResistence(effect.amount[i]);
-                    break;
-
-                case "defense":
-                    if (fromReact){
-                        increaseDefense(effect.amount[i]);    
-                    }
-                    increaseDefense(effect.amount[i]);
-                    break;
-
-                case "criticalChance":
-                    if (fromReact){
-                        increaseCritChance(effect.amount[i]);    
-                    }
-                    increaseCritChance(effect.amount[i]);
-                    break;
-
-                case "accuracy":
-                    if (fromReact){
-                        increaseAccuracy(effect.amount[i]);    
-                    }
-                    increaseAccuracy(effect.amount[i]);
-                    break;
-
-                case "totalActions":
-                    if (fromReact){
-                        increaseTotalActions(effect.amount[i]);    
-                    }
-                    increaseTotalActions(effect.amount[i]);
-                    break;
-
-                case "magic":
-                    if (this.gameObject.GetComponent<Hero_Character_Class>()){
-                        if (fromReact){
-                            this.gameObject.GetComponent<Hero_Character_Class>().increaseMagic(effect.amount[i]);
-                        }
-                        this.gameObject.GetComponent<Hero_Character_Class>().increaseMagic(effect.amount[i]);
-                    }
-                    break;
-
-            }
-        }
         //Checks if the effect came from a tile or a different source
         if (fromTile == false)
         {
@@ -490,19 +405,113 @@ public class Basic_Character_Class : MonoBehaviour
         else
         {
             //Checks if there was already a tileEffect on the character
-            if (tileEffect != null)
+            if (tileEffect != null && blockRemoval == false)
             {
                 //If so, removes the effect from the character by calling the removeStatus function
-                removeStatus(tileEffect, true);
+                UnityEngine.Debug.Log("Here");
+                if (tileEffect.statToEffect != null && tileEffect.statToEffect.Count > 0){
+                    UnityEngine.Debug.Log("Here too");
+                    UnityEngine.Debug.Log(tileEffect.statToEffect[0] + " : " + tileEffect.amount[0]);
+                }
+                removeStatus(tileEffect, true, fromReact);
             }
             tileEffect = effect;
+        }
+        if (!blockChange && !noStatChange){
+            //Iterates over the list of stats that need to be effected
+            for (int i = 0; i < effect.statToEffect.Count; i++)
+            {
+                //Checks which stat to effect and then applies the change
+                switch (effect.statToEffect[i])
+                {
+                    case "health":
+                        if (fromReact){
+                            //increaseHealth(effect.amount[i]);    
+                        }
+                        increaseHealth(effect.amount[i]);
+                        break;
+
+                    case "attack":
+                        if (fromReact){
+                            //increaseAttack(effect.amount[i]);    
+                        }
+                        increaseAttack(effect.amount[i]);
+                        break;
+
+                    case "speed":
+                        if (fromReact){
+                            //increaseSpeed(effect.amount[i]);    
+                        }
+                        increaseSpeed(effect.amount[i]);
+                        break;
+
+                    case "maxHealth":
+                        if (fromReact){
+                            //increaseMaxHealth(effect.amount[i]);    
+                        }
+                        increaseMaxHealth(effect.amount[i]);
+                        break;
+
+                    case "movementSpeed":
+                        if (fromReact){
+                            //increaseMoveSpeed(effect.amount[i]);    
+                        }
+                        increaseMoveSpeed(effect.amount[i]);
+                        break;
+
+                    case "resistence":
+                        if (fromReact){
+                            //increaseResistence(effect.amount[i]);    
+                        }
+                        increaseResistence(effect.amount[i]);
+                        break;
+
+                    case "defense":
+                        if (fromReact){
+                            //increaseDefense(effect.amount[i]);    
+                        }
+                        increaseDefense(effect.amount[i]);
+                        break;
+
+                    case "criticalChance":
+                        if (fromReact){
+                            //increaseCritChance(effect.amount[i]);    
+                        }
+                        increaseCritChance(effect.amount[i]);
+                        break;
+
+                    case "accuracy":
+                        if (fromReact){
+                            //increaseAccuracy(effect.amount[i]);    
+                        }
+                        increaseAccuracy(effect.amount[i]);
+                        break;
+
+                    case "totalActions":
+                        if (fromReact){
+                            //increaseTotalActions(effect.amount[i]);    
+                        }
+                        increaseTotalActions(effect.amount[i]);
+                        break;
+
+                    case "magic":
+                        if (this.gameObject.GetComponent<Hero_Character_Class>()){
+                            if (fromReact){
+                                //this.gameObject.GetComponent<Hero_Character_Class>().increaseMagic(effect.amount[i]);
+                            }
+                            this.gameObject.GetComponent<Hero_Character_Class>().increaseMagic(effect.amount[i]);
+                        }
+                        break;
+
+                }
+            }
         }
     }
 
     //Removes a Status effect from the character
     //Input - Effect to remove, If the effect was from a tile or a normal Buff/Debuff
 
-    public void removeStatus(StatusEffect effect, bool fromTile)
+    public void removeStatus(StatusEffect effect, bool fromTile, bool fromReact = false)
     {
         //Iterates over the list of stats to affect
         for (int i = 0; i < effect.statToEffect.Count; ++i)
@@ -511,47 +520,82 @@ public class Basic_Character_Class : MonoBehaviour
             switch (effect.statToEffect[i])
             {
                 case "health":
+                    if (fromReact){
+                        decreaseHealth(effect.amount[i]);
+                    }
                     decreaseHealth(effect.amount[i]);
                     break;
 
                 case "attack":
+                    if (fromReact){
+                        decreaseAttack(effect.amount[i]);
+                    }
                     UnityEngine.Debug.Log(effect.amount[i]);
                     decreaseAttack(effect.amount[i]);
                     break;
 
                 case "speed":
+                    if (fromReact){
+                        decreaseSpeed(effect.amount[i]);
+                    }
                     decreaseSpeed(effect.amount[i]);
                     break;
 
                 case "maxHealth":
+                    if (fromReact){
+                        decreaseMaxHealth(effect.amount[i]);
+                    }
                     decreaseMaxHealth(effect.amount[i]);
                     break;
 
                 case "movementSpeed":
+                    if (fromReact){
+                        decreaseMoveSpeed(effect.amount[i]);
+                    }
                     decreaseMoveSpeed(effect.amount[i]);
                     break;
 
                 case "resistence":
+                    if (fromReact){
+                        decreaseResistence(effect.amount[i]);
+                    }
                     decreaseResistence(effect.amount[i]);
                     break;
 
                 case "defense":
+                    if (fromReact){
+                        decreaseDefense(effect.amount[i]);
+                    }
                     decreaseDefense(effect.amount[i]);
                     break;
 
                 case "criticalChance":
+                    if (fromReact){
+                        decreaseCritChance(effect.amount[i]);
+                    }
                     decreaseCritChance(effect.amount[i]);
                     break;
 
                 case "accuracy":
+                    if (fromReact){
+                        decreaseAccuracy(effect.amount[i]);
+                    }
                     decreaseAccuracy(effect.amount[i]);
                     break;
 
                 case "totalActions":
+                    if (fromReact){
+                        decreaseTotalActions(effect.amount[i]);
+                    }
                     decreaseTotalActions(effect.amount[i]);
                     break;
                 
                 case "magic":
+                    if (fromReact){
+                        if (this.gameObject.GetComponent<Hero_Character_Class>()){
+                            this.gameObject.GetComponent<Hero_Character_Class>().decreaseMagic(effect.amount[i]);
+                        }
+                    }
                     if (this.gameObject.GetComponent<Hero_Character_Class>()){
                         this.gameObject.GetComponent<Hero_Character_Class>().decreaseMagic(effect.amount[i]);
                     }
@@ -564,6 +608,190 @@ public class Basic_Character_Class : MonoBehaviour
         {
             //If from another source, the effect is located within the list of effects on the character and then removed
             effects.Remove(effect);
+        }
+    }
+
+    public void reduceStats(List<string> stats, List<int> amounts){
+        //Iterates over the list of stats to affect
+        for (int i = 0; i < stats.Count; ++i)
+        {
+            //Checks which stat to effect and then applies the change
+            switch (stats[i])
+            {
+                case "health":
+                    decreaseHealth(amounts[i]);
+                    break;
+
+                case "attack":
+                    UnityEngine.Debug.Log(amounts[i]);
+                    decreaseAttack(amounts[i]);
+                    break;
+
+                case "speed":
+                    decreaseSpeed(amounts[i]);
+                    break;
+
+                case "maxHealth":
+                    decreaseMaxHealth(amounts[i]);
+                    break;
+
+                case "movementSpeed":
+                    decreaseMoveSpeed(amounts[i]);
+                    break;
+
+                case "resistence":
+                    decreaseResistence(amounts[i]);
+                    break;
+
+                case "defense":
+                    decreaseDefense(amounts[i]);
+                    break;
+
+                case "criticalChance":
+                    decreaseCritChance(amounts[i]);
+                    break;
+
+                case "accuracy":
+                    decreaseAccuracy(amounts[i]);
+                    break;
+
+                case "totalActions":
+                    decreaseTotalActions(amounts[i]);
+                    break;
+                
+                case "magic":
+                    if (this.gameObject.GetComponent<Hero_Character_Class>()){
+                        this.gameObject.GetComponent<Hero_Character_Class>().decreaseMagic(amounts[i]);
+                    }
+                    break;
+
+            }
+        }
+    }
+
+     public void increaseStats(List<string> stats, List<int> amounts){
+        List<string> oldStats = new List<string>();
+        List<int> oldAmounts = new List<int>();
+        for (int i = 0; i < tile.effectAmounts.Count; i++){
+            oldStats.Add(tile.statsToEffect[i]);
+            oldAmounts.Add(tile.effectAmounts[i]);
+        }
+        for(int i = 0; i < stats.Count; i++){
+            int index = 0;
+            switch(stats[i]){
+                case "health":
+                    index = oldStats.IndexOf("health");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "attack":
+                    UnityEngine.Debug.Log(amounts[i]);
+                    index = oldStats.IndexOf("attack");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "speed":
+                    index = oldStats.IndexOf("speed");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "maxHealth":
+                    index = oldStats.IndexOf("maxHealth");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "movementSpeed":
+                    index = oldStats.IndexOf("movementSpeed");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "resistence":
+                    index = oldStats.IndexOf("resistence");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "defense":
+                    index = oldStats.IndexOf("defense");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "criticalChance":
+                    index = oldStats.IndexOf("criticalChance");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "accuracy":
+                    index = oldStats.IndexOf("accuracy");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+
+                case "totalActions":
+                    index = oldStats.IndexOf("totalActions");
+                    oldAmounts[index] = oldAmounts[index] - amounts[i];
+                    break;
+                
+                case "magic":
+                    if (this.gameObject.GetComponent<Hero_Character_Class>()){
+                        index = oldStats.IndexOf("totalActions");
+                        this.gameObject.GetComponent<Hero_Character_Class>().decreaseMagic(amounts[i]);
+                    }
+                    break;
+            }
+        }
+        //Iterates over the list of stats to affect
+        for (int i = 0; i < oldStats.Count; ++i)
+        {
+            //Checks which stat to effect and then applies the change
+            switch (oldStats[i])
+            {
+                case "health":
+                    increaseHealth(oldAmounts[i]);
+                    break;
+
+                case "attack":
+                    UnityEngine.Debug.Log(oldAmounts[i]);
+                    increaseAttack(oldAmounts[i]);
+                    break;
+
+                case "speed":
+                    increaseSpeed(oldAmounts[i]);
+                    break;
+
+                case "maxHealth":
+                    increaseMaxHealth(oldAmounts[i]);
+                    break;
+
+                case "movementSpeed":
+                    increaseMoveSpeed(oldAmounts[i]);
+                    break;
+
+                case "resistence":
+                    increaseResistence(oldAmounts[i]);
+                    break;
+
+                case "defense":
+                    increaseDefense(oldAmounts[i]);
+                    break;
+
+                case "criticalChance":
+                    increaseCritChance(oldAmounts[i]);
+                    break;
+
+                case "accuracy":
+                    increaseAccuracy(oldAmounts[i]);
+                    break;
+
+                case "totalActions":
+                    increaseTotalActions(oldAmounts[i]);
+                    break;
+                
+                case "magic":
+                    if (this.gameObject.GetComponent<Hero_Character_Class>()){
+                        this.gameObject.GetComponent<Hero_Character_Class>().increaseMagic(oldAmounts[i]);
+                    }
+                    break;
+
+            }
         }
     }
 
@@ -645,7 +873,7 @@ public class Basic_Character_Class : MonoBehaviour
             if(reacting == true){
                 return false;
             }
-            if (targetCharacter.GetComponent<Basic_Character_Class>().health > 0){
+            if (targetCharacter.GetComponent<Basic_Character_Class>().health > 0 && targetCharacter.GetComponent<Basic_Character_Class>().canTakeReactions && checkReactionSpace(targetCharacter)){
                 StartCoroutine(pause(targetCharacter.gameObject));
             }
         } else if (targetTile != null && targetTile.isBreakable) { //Damage Tile
@@ -671,6 +899,13 @@ public class Basic_Character_Class : MonoBehaviour
         }
         //The character has no actions left
         return true;
+    }
+
+    public bool checkReactionSpace(Basic_Character_Class target){
+        if (map.clickableTiles[tileX - 1, tileY] == target.tile || map.clickableTiles[tileX + 1, tileY] == target.tile || map.clickableTiles[tileX, tileY + 1] == target.tile || map.clickableTiles[tileX, tileY - 1] == target.tile ){
+            return true;
+        }
+        return false;
     }
 
     //Checks whether the enemy will hit or dodge
@@ -1249,6 +1484,10 @@ public class Basic_Character_Class : MonoBehaviour
             }
         }
 
+        if (buff.stopReactions == true){
+            canTakeReactions = false;
+        }
+
         if (buff.movementCostsToIgnore != null){
             for (int i = 0; i < buff.movementCostsToIgnore.Count; i++){
                 addTileCostToIgnore(buff.movementCostsToIgnore[i]);
@@ -1310,6 +1549,15 @@ public class Basic_Character_Class : MonoBehaviour
                     }
                     break;
 
+            }
+        }
+
+        if (buff.stopReactions == true && canTakeReactionsDefault == true){
+            canTakeReactions = true;
+            for (int i = 0; i < buffs.Count; i++){
+                if (buffs[i] != buff && buffs[i].stopReactions == true){
+                    canTakeReactions = false;
+                }
             }
         }
 
