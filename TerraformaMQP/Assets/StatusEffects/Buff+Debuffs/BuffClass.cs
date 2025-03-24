@@ -16,6 +16,8 @@ public class BuffClass : ScriptableObject
     public List<string> movementCostsToIgnore = null;
     public bool stopReactions = false;
 
+    public bool stun = false;
+
     public bool reduceDuration(){
         if (duration > 1){
             duration--;
