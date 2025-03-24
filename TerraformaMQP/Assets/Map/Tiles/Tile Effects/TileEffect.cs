@@ -49,7 +49,7 @@ public class TileEffect : ScriptableObject
         newTile
     These are unable to be specified in the asset menu as they must be given at runtime, and so are required
     */
-    public void createTileEffect(bool newPlayerTeam, ClickableTile newTile, int newDuration = -1, List<string> newStatToEffect = null, List<int> newAmountToEffect = null, string newSource = null, string newName = null, bool fromReact = false){
+    public void createTileEffect(bool newPlayerTeam, ClickableTile newTile, int newDuration = -1, List<string> newStatToEffect = null, List<int> newAmountToEffect = null, string newSource = null, string newName = null, bool fromReact = false, bool blockRemoval = false){
         //These if statements check if the user has inputted values for the optional parameters, if not then the variables aren't changed from the base asset
         if (newDuration != -1){
             duration = newDuration;
@@ -69,13 +69,17 @@ public class TileEffect : ScriptableObject
         //Sets the required parameters
         tile = newTile;
         playerTeam = newPlayerTeam;
+        if (tile.statsToEffect != null && tile.statsToEffect.Count > 0 && tile.characterOnTile != null && (statToEffect != null && statToEffect.Count > 0)){
+            List<string> tempStats = tile.statsToEffect;
+            List<int> tempAmounts = tile.effectAmounts;
+            tile.characterOnTile.GetComponent<Basic_Character_Class>().reduceStats(tempStats, tempAmounts);
+        }
         //Calls the initializeTileEffect function to add the effect to the StatusEffectController
-        initializeTileEffect(fromReact: fromReact);
+        initializeTileEffect(fromReact: fromReact, blockRemoval: blockRemoval);
     }
 
     //Adds this to the StatusController's list of effects
-    public void initializeTileEffect(bool fromReact = false){
-        UnityEngine.Debug.Log("Created Tile Effect");
+    public void initializeTileEffect(bool fromReact = false, bool blockRemoval = false){
         //Checks if the effect should be added to the player team or enemy team effect list
         if (playerTeam == true){
             tile.map.gameObject.GetComponent<StatusEffectController>().playerTeamTileEffects.Add(this);
@@ -84,7 +88,7 @@ public class TileEffect : ScriptableObject
             tile.map.gameObject.GetComponent<StatusEffectController>().enemyTeamTileEffects.Add(this);
         }
         //Updates the tile to incorperate the new effect's stat changes
-        tile.addEffectToTile(this, fromReact: fromReact);
+        tile.addEffectToTile(this, fromReact: fromReact, blockRemoval: blockRemoval);
         GameObject newVisual = Instantiate(tileEffectPrefab);
         tileEffectPrefab = newVisual;
         newVisual.transform.position = new Vector3 (tile.transform.position.x, tile.transform.position.y + 0.52f, tile.transform.position.z);

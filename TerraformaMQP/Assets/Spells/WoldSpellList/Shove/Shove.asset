@@ -15,16 +15,16 @@ MonoBehaviour:
   manaCost: 5
   spellName: Shove
   elementType: Earth
-  spellPrefab: {fileID: 2394175536890139692, guid: 8c7fe60249eb74e9e90dbcdb13cdc3e0, type: 3}
+  spellPrefab: {fileID: 2394175536890139692, guid: 2970b092aa4bde44e87b77e872ba5e30, type: 3}
   description: Push a foe, friend, or wall, damaging foes if they hit a wall.
   targeted: 1
   range: 1
-  targetTiles: 0
-  targetAllies: 0
+  targetTiles: 1
+  targetAllies: 1
   target: {fileID: 0}
   amountOfTargets: 1
   requireDifferentTargets: 0
-  targetEnemies: 0
+  targetEnemies: 1
   hitOwnTile: 0
   hitSelf: 0
   targetWalls: 0

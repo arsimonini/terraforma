@@ -1575,12 +1575,14 @@ public class TileMap : MonoBehaviour
         }
     }
 
-    public void pushCharacter(Basic_Character_Class characterToMove, int startX, int startY, string direction, int strength){
+    public bool pushCharacter(Basic_Character_Class characterToMove, int startX, int startY, string direction, int strength){
+        bool successPush = false;
         switch (direction){
             case "Left":
                 for (int i = 1; i < strength + 1; i++){
-                    if (clickableTiles[startX - i, startY].isWalkable){
-                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX - i, startY]);
+                    if (clickableTiles[startX - 1, startY].isWalkable){
+                        successPush = true;
+                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX - 1, startY]);
                         startX -= i;
                     }
                     else {
@@ -1591,8 +1593,9 @@ public class TileMap : MonoBehaviour
             
             case "Right":
                 for (int i = 1; i < strength + 1; i++){
-                    if (clickableTiles[startX + i, startY].isWalkable){
-                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX + i, startY]);
+                    if (clickableTiles[startX + 1, startY].isWalkable){
+                        successPush = true;
+                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX + 1, startY]);
                         startX += i;
                     }
                     else {
@@ -1603,8 +1606,9 @@ public class TileMap : MonoBehaviour
             
             case "Up":
                 for (int i = 1; i < strength + 1; i++){
-                    if (clickableTiles[startX, startY + i].isWalkable){
-                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX, startY + i]);
+                    if (clickableTiles[startX, startY + 1].isWalkable){
+                        successPush = true;
+                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX, startY + 1]);
                         startY += i;
                     }
                     else {
@@ -1615,8 +1619,9 @@ public class TileMap : MonoBehaviour
             
             case "Down":
                 for (int i = 1; i < strength + 1; i++){
-                    if (clickableTiles[startX, startY - i].isWalkable){
-                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX, startY - i]);
+                    if (clickableTiles[startX, startY - 1].isWalkable){
+                        successPush = true;
+                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX, startY - 1]);
                         startY -= i;
                     }
                     else {
@@ -1627,8 +1632,9 @@ public class TileMap : MonoBehaviour
             
             case "LeftUp":
                 for (int i = 1; i < strength + 1; i++){
-                    if (clickableTiles[startX - i, startY + i].isWalkable){
-                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX - i, startY + i]);
+                    if (clickableTiles[startX - 1, startY + 1].isWalkable){
+                        successPush = true;
+                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX - 1, startY + 1]);
                         startX -= i;
                         startY += i;
                     }
@@ -1640,8 +1646,9 @@ public class TileMap : MonoBehaviour
             
             case "LeftDown":
                 for (int i = 1; i < strength + 1; i++){
-                    if (clickableTiles[startX - i, startY - i].isWalkable){
-                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX - i, startY - i]);
+                    if (clickableTiles[startX - 1, startY - 1].isWalkable){
+                        successPush = true;
+                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX - 1, startY - 1]);
                         startX -= i;
                         startY -= i;
                     }
@@ -1653,8 +1660,9 @@ public class TileMap : MonoBehaviour
 
             case "RightUp":
                 for (int i = 1; i < strength + 1; i++){
-                    if (clickableTiles[startX + i, startY + i].isWalkable){
-                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX + i, startY + i]);
+                    if (clickableTiles[startX + 1, startY + 1].isWalkable){
+                        successPush = true;
+                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX + 1, startY + 1]);
                         startX += i;
                         startY += i;
                     }
@@ -1666,8 +1674,9 @@ public class TileMap : MonoBehaviour
             
             case "RightDown":
                 for (int i = 1; i < strength + 1; i++){
-                    if (clickableTiles[startX + i, startY - i].isWalkable){
-                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX + i, startY - i]);
+                    if (clickableTiles[startX + 1, startY - 1].isWalkable){
+                        successPush = true;
+                        moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX + 1, startY - 1]);
                         startX += i;
                         startY -= i;
                     }
@@ -1677,6 +1686,8 @@ public class TileMap : MonoBehaviour
                 }
                 break;
         }
+
+        return successPush;
     }
 
     public void moveCharacterToTile(Basic_Character_Class characterToMove, ClickableTile startTile, ClickableTile endTile){

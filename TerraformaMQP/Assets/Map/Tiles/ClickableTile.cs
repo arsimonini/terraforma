@@ -171,43 +171,81 @@ public class ClickableTile : MonoBehaviour
 
     //Adds an effect to the tile
     //Takes in an effect to add
-    public void addEffectToTile(TileEffect effect, bool fromReact = false){
+    public void addEffectToTile(TileEffect effect, bool fromReact = false, bool blockRemoval = false){
         //Adds the effect to the effectsOnTile list
         effectsOnTile.Add(effect);
         List<int> tempAmounts = new List<int>();
         List<string> tempNames = new List<string>();
+        bool noStatChange = false;
+        bool noMovementCostChange = false;
         //Updates the tile's list of statsToEffect and effectAmounts by either adding new stats to effect if they aren't already within the original list, or adding the new amounts to the pre-existing amounts
-        for (int i = 0; i < effect.statToEffect.Count; i++){
-            if (statsToEffect.Contains(effect.statToEffect[i])){
-                int statLoc = checkList(effect.statToEffect[i]);
-                effectAmounts[statLoc] += effect.amountToEffect[i];
-                tempAmounts.Add(effect.amountToEffect[i]);
-                tempNames.Add(effect.statToEffect[i]);
-            }
-            else{
-                statsToEffect.Add(effect.statToEffect[i]);
-                effectAmounts.Add(effect.amountToEffect[i]);
-                tempAmounts.Add(effect.amountToEffect[i]);
-                tempNames.Add(effect.statToEffect[i]);
+        if (effect.statToEffect != null && effect.statToEffect.Count > 0){
+            for (int i = 0; i < effect.statToEffect.Count; i++){
+                if (statsToEffect.Contains(effect.statToEffect[i])){
+                    int statLoc = checkList(effect.statToEffect[i]);
+                    effectAmounts[statLoc] += effect.amountToEffect[i];
+                    tempAmounts.Add(effect.amountToEffect[i]);
+                    tempNames.Add(effect.statToEffect[i]);
+                }
+                else{
+                    statsToEffect.Add(effect.statToEffect[i]);
+                    effectAmounts.Add(effect.amountToEffect[i]);
+                    tempAmounts.Add(effect.amountToEffect[i]);
+                    tempNames.Add(effect.statToEffect[i]);
+                }
             }
         }
-        cost += effect.movementCostIncrease;
+        else {
+            noStatChange = true;
+        }
+        if (effect.movementCostIncrease != 0){
+            cost += effect.movementCostIncrease;
+        }
+        else{
+            noMovementCostChange = true;
+        }
         //If there is a character on the tile then it's tile effect is then updated to reflect the new stats
         if (characterOnTile != null){
-            updateTileEffect(tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact);
+            updateTileEffect(tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact, blockRemoval: blockRemoval, noStatChange: noStatChange, noMovementCostChange: noMovementCostChange);
         }
         //effect.tileEffectPrefab.GetComponent<tileEffectActions>().react(effectsOnTile, this, effect);
     }
 
     //Removes an effect from the tile, functions almost exactly in the same way as the addEffectToTile
     //Takes in the effect to remove
-    public void removeEffectFromTile(TileEffect effect){
+    public void removeEffectFromTile(TileEffect effect, bool fromReact = false, bool blockChange = false){
         //Removes the effect from the effectsOnTile list
         effectsOnTile.Remove(effect);
+        /*
+        for (int i = 0; i < statsToEffect.Count; i++){
+            UnityEngine.Debug.Log(statsToEffect[i]);
+        }
+        for (int i = 0; i < statsToEffect.Count; i++){
+            UnityEngine.Debug.Log(effectAmounts[i]);
+        }
+        */
         //Finds the correct stat and removes the amount that was added when the tile effect was added, if at that point the amount is 0, then the entry is the list is removed
+        if (characterOnTile != null){
+            UnityEngine.Debug.Log("Updating Character");
+            for (int i = 0; i < characterOnTile.GetComponent<Basic_Character_Class>().tileEffect.statToEffect.Count; i++){
+                UnityEngine.Debug.Log(characterOnTile.GetComponent<Basic_Character_Class>().tileEffect.statToEffect[i]);
+            }
+            updateTileEffect(fromReact: fromReact, blockChange: true);
+            if (effect.statToEffect != null && effect.statToEffect.Count > 0){
+                List<string> stats = effect.statToEffect;
+                List<int> amounts = effect.amountToEffect;
+                characterOnTile.GetComponent<Basic_Character_Class>().increaseStats(stats, amounts);
+            }
+        }
         for (int i = 0; i < effect.statToEffect.Count; i++){
             int statLoc = checkList(effect.statToEffect[i]);
+            if (characterOnTile != null){
+                UnityEngine.Debug.Log("Removing: " + effect.amountToEffect[i] + " from: " + statsToEffect[statLoc]);
+            }
             effectAmounts[statLoc] -= effect.amountToEffect[i];
+            if (characterOnTile != null){
+                UnityEngine.Debug.Log("Result: " + effectAmounts[statLoc]);
+            }
             if (effectAmounts[statLoc] == 0){
                 effectAmounts.Remove(effectAmounts[statLoc]);
                 statsToEffect.Remove(statsToEffect[statLoc]);
@@ -224,9 +262,6 @@ public class ClickableTile : MonoBehaviour
         }
         cost -= effect.movementCostIncrease;
         //If there is a character on the tile then it's tile effect is then updated to reflect the new stats
-        if (characterOnTile!= null){
-            updateTileEffect();
-        }
         effect.removeEffect();
 
         //remove from appropriate team list
@@ -235,9 +270,15 @@ public class ClickableTile : MonoBehaviour
     }
 
     //Recreates the tile effect with the current stat changes, updating the character on the tile
-    public void updateTileEffect(List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false){
+    public void updateTileEffect(List<int> tempAmounts = null, List<string> tempNames = null, bool fromReact = false, bool blockChange = false, bool blockRemoval = false, bool noStatChange = false, bool noMovementCostChange = false){
         StatusEffect newEffect = new StatusEffect();
-        newEffect.initializeTileEffect(statsToEffect, name, effectAmounts, characterOnTile, name + " Effect", tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact);
+        for (int i = 0; i < statsToEffect.Count; i++){
+            UnityEngine.Debug.Log(statsToEffect[i]);
+        }
+        for (int i = 0; i < statsToEffect.Count; i++){
+            UnityEngine.Debug.Log(effectAmounts[i]);
+        }
+        newEffect.initializeTileEffect(statsToEffect, name, effectAmounts, characterOnTile, name + " Effect", tempAmounts: tempAmounts, tempNames: tempNames, fromReact: fromReact, blockChange: blockChange, blockRemoval: blockRemoval, noStatChange: noStatChange, noMovementCostChange: noMovementCostChange);
     }
     
     //---REDUNDANT, NEED TO DESTROY---

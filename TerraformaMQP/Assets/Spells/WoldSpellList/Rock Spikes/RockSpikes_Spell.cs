@@ -39,7 +39,7 @@ public class RockSpikes_Spell : MonoBehaviour, Cast_Spell
 
             //Decide attack direction (1 of 8)
             int dir = findAttackDirection(basicCaster.tileX,basicCaster.tileY,x,y);
-            int dmg = 3;
+            int dmg = 7;
             float acc = 1;
             string elm = "Earth";
 

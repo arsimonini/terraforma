@@ -20,7 +20,7 @@ public class BuffController : MonoBehaviour
             }
             if (buffsToRemove != null){
                 for (int i = 0; i < buffsToRemove.Count; i++){
-                    playerTeamBuffs[i].character.removeBuff(playerTeamBuffs[i]);
+                    buffsToRemove[i].character.removeBuff(buffsToRemove[i]);
                     playerTeamBuffs.Remove(buffsToRemove[i]);
                 }
             }
@@ -37,7 +37,7 @@ public class BuffController : MonoBehaviour
             }
             if (buffsToRemove != null){
                 for (int i = 0; i < buffsToRemove.Count; i++){
-                    enemyTeamBuffs[i].character.removeBuff(enemyTeamBuffs[i]);
+                    buffsToRemove[i].character.removeBuff(buffsToRemove[i]);
                     enemyTeamBuffs.Remove(buffsToRemove[i]);
                 }
             }
