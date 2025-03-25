@@ -121,7 +121,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2686864926054383639}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 598416757969113007}
+        m_TargetAssemblyTypeName: ChangeCharSummonButtons, Assembly-CSharp
+        m_MethodName: summonButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Locked
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6059452389821423733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,14 +209,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e8140fab21bc84c5c8587619a5fbb853, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -410,7 +422,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4181102790893675603}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 598416757969113007}
+        m_TargetAssemblyTypeName: ChangeCharSummonButtons, Assembly-CSharp
+        m_MethodName: summonButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Urson
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8104006548718660453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,14 +510,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e8140fab21bc84c5c8587619a5fbb853, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -624,7 +648,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3918244675440114331}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 598416757969113007}
+        m_TargetAssemblyTypeName: ChangeCharSummonButtons, Assembly-CSharp
+        m_MethodName: summonButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Locked
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6357580470345496830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,7 +799,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9109493983003101792}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 598416757969113007}
+        m_TargetAssemblyTypeName: ChangeCharSummonButtons, Assembly-CSharp
+        m_MethodName: summonButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Locked
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2591393510004757246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -839,14 +887,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e8140fab21bc84c5c8587619a5fbb853, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -977,7 +1025,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4175067848572684927}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 598416757969113007}
+        m_TargetAssemblyTypeName: ChangeCharSummonButtons, Assembly-CSharp
+        m_MethodName: summonButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Sova
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &975680205854403462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1116,7 +1176,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7402251073400411070}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 598416757969113007}
+        m_TargetAssemblyTypeName: ChangeCharSummonButtons, Assembly-CSharp
+        m_MethodName: summonButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Locked
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5141847076550716698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1267,14 +1339,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e8140fab21bc84c5c8587619a5fbb853, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1295,8 +1367,9 @@ GameObject:
   - component: {fileID: 4919207456375642799}
   - component: {fileID: 6628416101822830573}
   - component: {fileID: 310025024918286426}
+  - component: {fileID: 598416757969113007}
   m_Layer: 5
-  m_Name: QuickSelectSummons
+  m_Name: LanQuickSelectSummons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1367,6 +1440,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &598416757969113007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007019163570516834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a0a9ce12e4d49178fd9a2bf2c91486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonClicked: 
+  ti: {fileID: 11400000, guid: 45495e4af3b884dd1aee831118384953, type: 2}
+  go: {fileID: 0}
+  thisGO: {fileID: 7007019163570516834}
 --- !u!1 &7586308771771147350
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,14 +1514,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e8140fab21bc84c5c8587619a5fbb853, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1563,7 +1652,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5247225706497161297}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 598416757969113007}
+        m_TargetAssemblyTypeName: ChangeCharSummonButtons, Assembly-CSharp
+        m_MethodName: summonButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Locked
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3260727763494278742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1702,7 +1803,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7457362485922490956}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 598416757969113007}
+        m_TargetAssemblyTypeName: ChangeCharSummonButtons, Assembly-CSharp
+        m_MethodName: summonButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Locked
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7676482395883714182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1778,14 +1891,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e8140fab21bc84c5c8587619a5fbb853, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

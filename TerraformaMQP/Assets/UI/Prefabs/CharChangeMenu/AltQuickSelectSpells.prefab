@@ -195,7 +195,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2140122832936092830}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Locked
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1559643940773553606
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +403,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8079526281249419966}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: RegenMana
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2023061776332362601
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +536,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3600947384605282964}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: CrasherWave
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2034784732530216996
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,7 +669,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1916859824214744299}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Locked
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2306727977834823391
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,7 +802,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2629366931502892505}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Locked
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2425079428340618934
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,7 +1010,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 952796454115505270}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Pirate'sEye
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2501168179256327068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,7 +1143,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1526638502287034401}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Flood
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2574632861187748991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,7 +1276,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8359248362575622017}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Locked
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3201853774791940778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,7 +1354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 095c1213fbd70404ea25956d6c1a1e29, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1333,7 +1429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34ae0152c35994fdea48208e9a716d83, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1463,7 +1559,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2980860076445622720}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Locked
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4264320070646969408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,7 +1692,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7889870887760915224}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Wellspring
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4272616493455246943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,7 +1770,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 446058e0c7c9147559d1286088fdf050, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1725,7 +1845,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6629eec7061c4e8cbe66e52694e7546, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1855,7 +1975,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1907250394873049700}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Mist
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4806696517058311473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,7 +2053,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f432318b4cae4b76803e3f3b2237a33, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2126,7 +2258,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2647039431790648287}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Locked
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5304441420003887367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2247,7 +2391,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5964845875631452948}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Shower
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5355449690853120324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,7 +2524,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 669096677515187143}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: LightningLance
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5991609129782659209
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,7 +2807,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9105384957658477732}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Locked
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6608246173139137831
 GameObject:
   m_ObjectHideFlags: 0
@@ -2780,7 +2960,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 961970439125945d2a6758ab7aba3ef5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2910,7 +3090,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3984639461312201824}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: BubbleBomb
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7680894918784208047
 GameObject:
   m_ObjectHideFlags: 0
@@ -2922,6 +3114,7 @@ GameObject:
   - component: {fileID: 8884364862127059385}
   - component: {fileID: 7246525576615081367}
   - component: {fileID: 7410271718884995527}
+  - component: {fileID: 2074578856778997245}
   m_Layer: 5
   m_Name: AltQuickSelectSpells
   m_TagString: Untagged
@@ -3004,6 +3197,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2074578856778997245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7680894918784208047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd39a6582b0384fdaacc698179facde2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonClicked: 
+  ti: {fileID: 11400000, guid: 45495e4af3b884dd1aee831118384953, type: 2}
+  go: {fileID: 0}
+  thisGO: {fileID: 7680894918784208047}
 --- !u!1 &7832833213651243295
 GameObject:
   m_ObjectHideFlags: 0
@@ -3124,7 +3333,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8090615049568461518}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SwiftSail
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8217651072837821431
 GameObject:
   m_ObjectHideFlags: 0
@@ -3265,7 +3486,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb2ad0a774a4c44e1826792c4386a7b0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3340,7 +3561,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8c72b3b9464294df8840dddf7fb581e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3470,7 +3691,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6101321873993563850}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2074578856778997245}
+        m_TargetAssemblyTypeName: ChangeCharSpellButtons, Assembly-CSharp
+        m_MethodName: spellButtonClicked
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Jolt
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8591233111618118315
 GameObject:
   m_ObjectHideFlags: 0
@@ -3536,7 +3769,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6731d442698814ee5af08f49d6a30dff, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3611,7 +3844,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f7a028f3071104f20935669b80cef21b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

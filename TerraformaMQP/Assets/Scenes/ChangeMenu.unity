@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 11210114}
   - component: {fileID: 11210113}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 3_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 894e5b6d89c4a492184a24f3e503b3df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8c72b3b9464294df8840dddf7fb581e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 32081847}
   - component: {fileID: 32081846}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Summon1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5dba3f9b5966c49a6a6f18a9798cd8fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -925,31 +925,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 85251498}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: setCurrPos
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 85251496}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: spellQuickChange
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &85251498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,7 +1070,7 @@ GameObject:
   - component: {fileID: 93508384}
   - component: {fileID: 93508383}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1139,7 +1115,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb2842f01103a4bff9490b21feb36cbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3205d93123e14bb7aac2270e9ed83e3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1290,7 +1266,7 @@ GameObject:
   - component: {fileID: 117271085}
   - component: {fileID: 117271084}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Summon3_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1768,7 +1744,7 @@ GameObject:
   - component: {fileID: 150354762}
   - component: {fileID: 150354761}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Summon1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2019,13 +1995,12 @@ MonoBehaviour:
   hero: Althea
   summon1: Zuli
   summon2: Ruba
-  spell1: Scald1
-  spell2: Scald2
-  spell3: Scald3
-  spell4: Scald4
-  spell5: Scald5
-  spell6: Scald6
-  sprs: []
+  spell1: RegenMana
+  spell2: BubbleBomb
+  spell3: Flood
+  spell4: LightningLance
+  spell5: Pirate'sEye
+  spell6: SwiftSail
 --- !u!1 &165490872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2183,31 +2158,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 181477786}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: setCurrPos
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 181477784}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: spellQuickChange
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &181477786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2379,7 +2330,7 @@ GameObject:
   - component: {fileID: 195945393}
   - component: {fileID: 195945392}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2424,7 +2375,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9abbfeceb2e0e476381ea0f95601382c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a1d967b20aa6540bb9e4a0ebf43494bc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3006,7 +2957,7 @@ GameObject:
   - component: {fileID: 260151235}
   - component: {fileID: 260151234}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 1_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3051,7 +3002,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9abbfeceb2e0e476381ea0f95601382c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb756cf413f5f44699bf4fb3bf037334, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3371,7 +3322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &331851943
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4014,13 +3965,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 393552964}
+  - component: {fileID: 393552965}
   m_Layer: 5
   m_Name: Menu Mode 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &393552964
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4043,6 +3995,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &393552965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393552963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf54ceb83c81f4f74bd9494b0413877b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &408994449
 GameObject:
   m_ObjectHideFlags: 0
@@ -4125,31 +4089,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 408994452}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: setCurrPos
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 408994450}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: spellQuickChange
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &408994452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4837,7 +4777,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5074,7 +5014,7 @@ GameObject:
   - component: {fileID: 497782058}
   - component: {fileID: 497782057}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 3_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5119,7 +5059,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 894e5b6d89c4a492184a24f3e503b3df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3205d93123e14bb7aac2270e9ed83e3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5921,31 +5861,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 604723069}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: setCurrPos
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 604723067}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: spellQuickChange
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &604723069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6551,7 +6467,7 @@ GameObject:
   - component: {fileID: 718953969}
   - component: {fileID: 718953968}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 2_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6596,7 +6512,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb2842f01103a4bff9490b21feb36cbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6da8d0ec6be54fe1919879ff3b26674, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6788,7 +6704,7 @@ GameObject:
   - component: {fileID: 759449474}
   - component: {fileID: 759449473}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6833,7 +6749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 894e5b6d89c4a492184a24f3e503b3df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb2ad0a774a4c44e1826792c4386a7b0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7062,7 +6978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &767844059
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7316,31 +7232,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 815173353}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: setCurrPos
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 815173351}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: summonQuickChange
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &815173353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7587,7 +7479,7 @@ GameObject:
   - component: {fileID: 859708206}
   - component: {fileID: 859708205}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7732,31 +7624,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 860338556}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: setCurrPos
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 860338554}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: spellQuickChange
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &860338556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7940,7 +7808,7 @@ GameObject:
   - component: {fileID: 878519238}
   - component: {fileID: 878519237}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 3_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7985,7 +7853,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 894e5b6d89c4a492184a24f3e503b3df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 961970439125945d2a6758ab7aba3ef5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9106,7 +8974,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9660,7 +9528,7 @@ GameObject:
   - component: {fileID: 1089660732}
   - component: {fileID: 1089660731}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 3_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9705,7 +9573,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 894e5b6d89c4a492184a24f3e503b3df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6629eec7061c4e8cbe66e52694e7546, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10071,31 +9939,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1160729488}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: setCurrPos
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1160729486}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: spellQuickChange
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1160729488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10146,7 +9990,7 @@ GameObject:
   - component: {fileID: 1162626190}
   - component: {fileID: 1162626189}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 2_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10191,7 +10035,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb2842f01103a4bff9490b21feb36cbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2bcfcd64855044e708791f0f1e6ce010, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10221,7 +10065,7 @@ GameObject:
   - component: {fileID: 1164349212}
   - component: {fileID: 1164349211}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Summon3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10266,7 +10110,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 94e5c8c7b1f9345f981c8ae2f35a31f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10341,13 +10185,12 @@ MonoBehaviour:
   hero: Lancin
   summon1: Urson
   summon2: Sova
-  spell1: Fireball
-  spell2: Fireball2
-  spell3: Fireball3
-  spell4: Fireball4
-  spell5: Fireball5
-  spell6: Fireball6
-  sprs: []
+  spell1: RegenMana
+  spell2: Fireball
+  spell3: FireLance
+  spell4: Backfire
+  spell5: SupportFlames
+  spell6: HearthFire
 --- !u!1 &1196182814
 GameObject:
   m_ObjectHideFlags: 0
@@ -11212,13 +11055,12 @@ MonoBehaviour:
   hero: Wold
   summon1: Rold
   summon2: Hold
-  spell1: Wall
-  spell2: Wall2
-  spell3: Wall3
-  spell4: Wall4
-  spell5: Wall5
-  spell6: Wall6
-  sprs: []
+  spell1: RegenMana
+  spell2: Wall
+  spell3: Shatter
+  spell4: Shove
+  spell5: FleetFootwork
+  spell6: TagIn
 --- !u!1 &1333441651
 GameObject:
   m_ObjectHideFlags: 0
@@ -12203,19 +12045,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1490060171}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: heroSlowChange
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1490060171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12394,7 +12224,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -12943,7 +12773,7 @@ GameObject:
   - component: {fileID: 1680214846}
   - component: {fileID: 1680214845}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Summon2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12988,7 +12818,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1f9e8edc9626641fea1de0b4d183a203, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13088,31 +12918,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1691440780}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: setCurrPos
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1691440778}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: summonQuickChange
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1691440780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13417,7 +13223,7 @@ GameObject:
   - component: {fileID: 1719389766}
   - component: {fileID: 1719389765}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 2_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13462,7 +13268,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb2842f01103a4bff9490b21feb36cbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 003829ba7ae294e1992c724b8265224f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13787,7 +13593,7 @@ GameObject:
   - component: {fileID: 1812066593}
   - component: {fileID: 1812066592}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 3_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13832,7 +13638,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 894e5b6d89c4a492184a24f3e503b3df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 095c1213fbd70404ea25956d6c1a1e29, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14012,7 +13818,7 @@ GameObject:
   - component: {fileID: 1833914413}
   - component: {fileID: 1833914412}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14208,7 +14014,7 @@ GameObject:
   - component: {fileID: 1869881295}
   - component: {fileID: 1869881294}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Summon2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14283,7 +14089,7 @@ GameObject:
   - component: {fileID: 1870968032}
   - component: {fileID: 1870968031}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 2_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14328,7 +14134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb2842f01103a4bff9490b21feb36cbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9be8768417af84a98a561552de8fdb34, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14742,13 +14548,113 @@ MonoBehaviour:
   spellQCAssetW: {fileID: 7680894918784208047, guid: 4ec52cb22dc024c3f967b910f6226240, type: 3}
   spellQCAssetA: {fileID: 7680894918784208047, guid: 2fec26a54653f4620a16b486bfe577d5, type: 3}
   SPQC: {fileID: 0}
-  summonQCAsset: {fileID: 7007019163570516834, guid: 178d8279ba2f948aea2c0fb6420cce6e, type: 3}
+  summonQCAssetL: {fileID: 7007019163570516834, guid: 178d8279ba2f948aea2c0fb6420cce6e, type: 3}
+  summonQCAssetW: {fileID: 7007019163570516834, guid: c13f663d467ff4d33a74be5cefe672bc, type: 3}
+  summonQCAssetA: {fileID: 7007019163570516834, guid: eaff96e09512241248006e49cf118abc, type: 3}
   SMQC: {fileID: 0}
   ti: {fileID: 11400000, guid: 45495e4af3b884dd1aee831118384953, type: 2}
   currChanging: 
   h1: {fileID: 1173670927}
   h2: {fileID: 1319926740}
   h3: {fileID: 157785097}
+  spellButtons:
+  - {fileID: 2119870623}
+  - {fileID: 1833914410}
+  - {fileID: 195945390}
+  - {fileID: 2039694240}
+  - {fileID: 2087383232}
+  - {fileID: 260151232}
+  - {fileID: 93508381}
+  - {fileID: 859708203}
+  - {fileID: 1870968029}
+  - {fileID: 718953966}
+  - {fileID: 1719389763}
+  - {fileID: 1162626187}
+  - {fileID: 497782055}
+  - {fileID: 759449471}
+  - {fileID: 878519235}
+  - {fileID: 1812066590}
+  - {fileID: 1089660729}
+  - {fileID: 11210111}
+  spellSprites:
+  - {fileID: 21300000, guid: eb2ad0a774a4c44e1826792c4386a7b0, type: 3}
+  - {fileID: 21300000, guid: b6629eec7061c4e8cbe66e52694e7546, type: 3}
+  - {fileID: 21300000, guid: 961970439125945d2a6758ab7aba3ef5, type: 3}
+  - {fileID: 21300000, guid: 3f432318b4cae4b76803e3f3b2237a33, type: 3}
+  - {fileID: 21300000, guid: 095c1213fbd70404ea25956d6c1a1e29, type: 3}
+  - {fileID: 21300000, guid: f7a028f3071104f20935669b80cef21b, type: 3}
+  - {fileID: 21300000, guid: 8c72b3b9464294df8840dddf7fb581e4, type: 3}
+  - {fileID: 21300000, guid: 34ae0152c35994fdea48208e9a716d83, type: 3}
+  - {fileID: 21300000, guid: 6731d442698814ee5af08f49d6a30dff, type: 3}
+  - {fileID: 21300000, guid: 446058e0c7c9147559d1286088fdf050, type: 3}
+  - {fileID: 21300000, guid: 52912129623874a14b681dd6142c6616, type: 3}
+  - {fileID: 21300000, guid: 3f185f757f950409cb1a4a90c1f533d4, type: 3}
+  - {fileID: 21300000, guid: 9abbfeceb2e0e476381ea0f95601382c, type: 3}
+  - {fileID: 21300000, guid: a1d967b20aa6540bb9e4a0ebf43494bc, type: 3}
+  - {fileID: 21300000, guid: bb756cf413f5f44699bf4fb3bf037334, type: 3}
+  - {fileID: 21300000, guid: 1225fd798bc434765b741c1731ea747e, type: 3}
+  - {fileID: 21300000, guid: 8114c47edf89f4b778d5675a9d16315c, type: 3}
+  - {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
+  - {fileID: 21300000, guid: f3205d93123e14bb7aac2270e9ed83e3, type: 3}
+  - {fileID: 21300000, guid: a9facd7085e294f9cb8551d02b57499d, type: 3}
+  - {fileID: 21300000, guid: 003829ba7ae294e1992c724b8265224f, type: 3}
+  - {fileID: 21300000, guid: 1146d6e67d1284e71b9d09a703371354, type: 3}
+  - {fileID: 21300000, guid: c6c311728d71740a685b8b78ddb7aacb, type: 3}
+  - {fileID: 21300000, guid: 9be8768417af84a98a561552de8fdb34, type: 3}
+  - {fileID: 21300000, guid: c6da8d0ec6be54fe1919879ff3b26674, type: 3}
+  - {fileID: 21300000, guid: fa69b2b758d5b49e3a2e5de389c80d71, type: 3}
+  - {fileID: 21300000, guid: 2bcfcd64855044e708791f0f1e6ce010, type: 3}
+  - {fileID: 21300000, guid: eb2842f01103a4bff9490b21feb36cbe, type: 3}
+  spellSpriteKeys:
+  - BubbleBomb
+  - Pirate'sEye
+  - Flood
+  - Jolt
+  - LightningLance
+  - Mist
+  - SwiftSail
+  - Shower
+  - Wellspring
+  - CrasherWave
+  - BackFire
+  - Dragon'sBreath
+  - FireBall
+  - FireLance
+  - HearthFire
+  - SearingWind
+  - SupportFlames
+  - Locked
+  - RegenMana
+  - StoneBody
+  - FleetFootwork
+  - Tremor
+  - SecondWind
+  - Shatter
+  - Shove
+  - RockySpikes
+  - TagIn
+  - Wall
+  summonButtons:
+  - {fileID: 150354759}
+  - {fileID: 32081844}
+  - {fileID: 1869881292}
+  - {fileID: 1680214843}
+  - {fileID: 117271082}
+  - {fileID: 1164349209}
+  summonSprites:
+  - {fileID: 21300000, guid: e8140fab21bc84c5c8587619a5fbb853, type: 3}
+  - {fileID: 21300000, guid: 5dba3f9b5966c49a6a6f18a9798cd8fb, type: 3}
+  - {fileID: 21300000, guid: 6eb465c820405440d88f4f812f57fabc, type: 3}
+  - {fileID: 21300000, guid: 1f9e8edc9626641fea1de0b4d183a203, type: 3}
+  - {fileID: 21300000, guid: 7b1d81810f9a644d8972c9972fae3592, type: 3}
+  - {fileID: 21300000, guid: 94e5c8c7b1f9345f981c8ae2f35a31f4, type: 3}
+  summonSpriteKeys:
+  - Urson
+  - Sova
+  - Rold
+  - Hold
+  - Zuli
+  - Ruba
 --- !u!1 &1919062205
 GameObject:
   m_ObjectHideFlags: 0
@@ -15229,7 +15135,7 @@ GameObject:
   - component: {fileID: 2039694243}
   - component: {fileID: 2039694242}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 1_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15274,7 +15180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9abbfeceb2e0e476381ea0f95601382c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 52912129623874a14b681dd6142c6616, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15562,7 +15468,7 @@ GameObject:
   - component: {fileID: 2087383235}
   - component: {fileID: 2087383234}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 1_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15607,7 +15513,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9abbfeceb2e0e476381ea0f95601382c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8114c47edf89f4b778d5675a9d16315c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15765,7 +15671,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -15916,7 +15822,7 @@ GameObject:
   - component: {fileID: 2119870626}
   - component: {fileID: 2119870625}
   m_Layer: 5
-  m_Name: Image
+  m_Name: 1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15961,7 +15867,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9abbfeceb2e0e476381ea0f95601382c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3205d93123e14bb7aac2270e9ed83e3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

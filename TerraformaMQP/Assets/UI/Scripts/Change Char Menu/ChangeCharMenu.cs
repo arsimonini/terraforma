@@ -16,7 +16,9 @@ public class ChangeCharMenu : MonoBehaviour
     public GameObject spellQCAssetA;
     public GameObject SPQC = null;
 
-    public GameObject summonQCAsset;
+    public GameObject summonQCAssetL;
+    public GameObject summonQCAssetW;
+    public GameObject summonQCAssetA;
     public GameObject SMQC = null;
 
     public TeamInfo ti;
@@ -29,6 +31,11 @@ public class ChangeCharMenu : MonoBehaviour
 
     public GameObject[] spellButtons;
     public Sprite[] spellSprites;
+    public string[] spellSpriteKeys;
+
+    public GameObject[] summonButtons;
+    public Sprite[] summonSprites;
+    public string[] summonSpriteKeys;
     
 
 
@@ -68,7 +75,32 @@ public class ChangeCharMenu : MonoBehaviour
     }
 
     public void summonQuickChange(int slot) {
+        string hero = "";
+
         //Get character in hero slot
+
+        // FOR BOTH SUMMONS BEING UNLOCKED
+        // if(slot == 1 || slot == 2) {
+        //     hero = ti.hero1;
+        //     currChanging = "Hero1_Summon" + (slot).ToString();
+        // } else if (slot == 3 || slot == 4) {
+        //     hero = ti.hero2;
+        //     currChanging = "Hero2_Summon" + (slot - 2).ToString();
+        // } else if (slot == 5 || slot == 6) {
+        //     hero = ti.hero3;
+        //     currChanging = "Hero3_Summon" + (slot - 4).ToString();
+        // }
+
+        if(slot == 1) {
+            hero = ti.hero1;
+            currChanging = "Hero1_Summon" + (slot).ToString();
+        } else if (slot == 3) {
+            hero = ti.hero2;
+            currChanging = "Hero2_Summon" + (slot - 2).ToString();
+        } else if (slot == 5) {
+            hero = ti.hero3;
+            currChanging = "Hero3_Summon" + (slot - 4).ToString();
+        }
         //Make the menu appear
         if(SMQC != null) {
             Destroy(SMQC);
@@ -77,8 +109,13 @@ public class ChangeCharMenu : MonoBehaviour
             Destroy(SPQC);
         }
 
-        SPQC = Instantiate(summonQCAsset, new Vector3(currPos.position.x, currPos.position.y - 40, currPos.position.z), Quaternion.identity, parent);
-        //fill in the blanks for the menu
+        if(hero == "Lancin") {
+            SMQC = Instantiate(summonQCAssetL, new Vector3(currPos.position.x, currPos.position.y - 25, currPos.position.z), Quaternion.identity, parent);
+        } else if(hero == "Wold") {
+            SMQC = Instantiate(summonQCAssetW, new Vector3(currPos.position.x, currPos.position.y - 25, currPos.position.z), Quaternion.identity, parent);
+        } else if(hero == "Althea") {
+            SMQC = Instantiate(summonQCAssetA, new Vector3(currPos.position.x, currPos.position.y - 25, currPos.position.z), Quaternion.identity, parent);
+        }
     }
 
     public void spellQuickChange(int slot) {
@@ -163,88 +200,83 @@ public class ChangeCharMenu : MonoBehaviour
 
     }
 
-    public void setSprites() {
-        for(int i = 0; i < spellButtons.Length; i++) {
-            //spellButtons[i].GetComponent<Image>().sprite = 
-        }
-    }
-
-    public void swapSpell(string place, string what) {
+    // public void swapSpell(string place, string what) {
         
-        switch (place) {
-            case "Hero1_Spell1":
-            ti.spell1_1 = what;
-            break;
+    //     switch (place) {
+    //         case "Hero1_Spell1":
+    //         ti.spell1_1 = what;
+    //         // setSprite(1, what);
+    //         break;
 
-            case "Hero1_Spell2":
-            ti.spell1_2 = what;
-            break;
+    //         case "Hero1_Spell2":
+    //         ti.spell1_2 = what;
+    //         break;
 
-            case "Hero1_Spell3":
-            ti.spell1_3 = what;
-            break;
+    //         case "Hero1_Spell3":
+    //         ti.spell1_3 = what;
+    //         break;
 
-            case "Hero1_Spell4":
-            ti.spell1_4 = what;
-            break;
+    //         case "Hero1_Spell4":
+    //         ti.spell1_4 = what;
+    //         break;
 
-            case "Hero1_Spell5":
-            ti.spell1_5 = what;
-            break;
+    //         case "Hero1_Spell5":
+    //         ti.spell1_5 = what;
+    //         break;
 
-            case "Hero1_Spell6":
-            ti.spell1_6 = what;
-            break;
+    //         case "Hero1_Spell6":
+    //         ti.spell1_6 = what;
+    //         break;
             
-            case "Hero2_Spell1":
-            ti.spell2_1 = what;
-            break;
+    //         case "Hero2_Spell1":
+    //         ti.spell2_1 = what;
+    //         break;
 
-            case "Hero2_Spell2":
-            ti.spell2_2 = what;
-            break;
+    //         case "Hero2_Spell2":
+    //         ti.spell2_2 = what;
+    //         break;
 
-            case "Hero2_Spell3":
-            ti.spell2_3 = what;
-            break;
+    //         case "Hero2_Spell3":
+    //         ti.spell2_3 = what;
+    //         break;
 
-            case "Hero2_Spell4":
-            ti.spell2_4 = what;
-            break;
+    //         case "Hero2_Spell4":
+    //         ti.spell2_4 = what;
+    //         break;
 
-            case "Hero2_Spell5":
-            ti.spell2_5 = what;
-            break;
+    //         case "Hero2_Spell5":
+    //         ti.spell2_5 = what;
+    //         break;
 
-            case "Hero2_Spell6":
-            ti.spell2_6 = what;
-            break;
+    //         case "Hero2_Spell6":
+    //         ti.spell2_6 = what;
+    //         break;
 
-            case "Hero3_Spell1":
-            ti.spell3_1 = what;
-            break;
+    //         case "Hero3_Spell1":
+    //         ti.spell3_1 = what;
+    //         break;
 
-            case "Hero3_Spell2":
-            ti.spell3_2 = what;
-            break;
+    //         case "Hero3_Spell2":
+    //         ti.spell3_2 = what;
+    //         break;
 
-            case "Hero3_Spell3":
-            ti.spell3_3 = what;
-            break;
+    //         case "Hero3_Spell3":
+    //         ti.spell3_3 = what;
+    //         break;
 
-            case "Hero3_Spell4":
-            ti.spell3_4 = what;
-            break;
+    //         case "Hero3_Spell4":
+    //         ti.spell3_4 = what;
+    //         break;
 
-            case "Hero3_Spell5":
-            ti.spell3_5 = what;
-            break;
+    //         case "Hero3_Spell5":
+    //         ti.spell3_5 = what;
+    //         break;
 
-            case "Hero3_Spell6":
-            ti.spell3_6 = what;
-            break;
-        }
-    }
+    //         case "Hero3_Spell6":
+    //         ti.spell3_6 = what;
+    //         break;
+    //     }
+    // }
 
 
 }

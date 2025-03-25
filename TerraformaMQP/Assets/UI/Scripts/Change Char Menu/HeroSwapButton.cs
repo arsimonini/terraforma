@@ -16,20 +16,4 @@ public class HeroSwapButton : MonoBehaviour
     public string spell4;
     public string spell5;
     public string spell6;
-
-    public Sprite[] sprs;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
