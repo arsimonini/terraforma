@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statsToEffect:
   - accuracy
-  - crit
-  amountsToEffect: 0400000002000000
+  - criticalChance
+  amountsToEffect: 0400000005000000
   duration: 3
   source: Althea
   name: Pirate's Eye
   playerTeam: 0
   character: {fileID: 0}
-  buffAsset: {fileID: 5327647445369823984, guid: 47ffddbaa29b49e408b7e0fcd6912c65, type: 3}
+  buffAsset: {fileID: 5327647445369823984, guid: f99dbe9527abfdc44ad4940a891702f3, type: 3}
   buffAnimationPrefab: {fileID: 168724785735174551, guid: 01748f657143a4fff82edef4b7d71237, type: 3}
   movementCostsToIgnore: []
+  stopReactions: 0

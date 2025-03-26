@@ -1002,6 +1002,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2289765642999952694, guid: 5c5ce5f5ab1174e98a88f75b3f0f37f9, type: 3}
   m_PrefabInstance: {fileID: 53531261}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &56075406 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7686979629199944809, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+  m_PrefabInstance: {fileID: 1833491296}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &60088480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2074,6 +2085,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1280795916125588129, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
   m_PrefabInstance: {fileID: 1833491296}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &137513801 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 521441566614050383, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+  m_PrefabInstance: {fileID: 1833491296}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137513794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eef314c587c8e24aa38801bf961afa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &137756791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6282,6 +6304,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6454572113100923874, guid: 0e3d7416a877b4d1792beb3be8aa77f9, type: 3}
   m_PrefabInstance: {fileID: 434746612}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &440939534 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6317948640324901988, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+  m_PrefabInstance: {fileID: 1833491296}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3040d4ecb2b4903a7e969f380e5b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &442890667
 GameObject:
   m_ObjectHideFlags: 0
@@ -30273,6 +30306,86 @@ PrefabInstance:
     - target: {fileID: 1280795916125588129, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
       propertyPath: m_Name
       value: Althea
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337597453217398053, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337597453217398053, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337597453217398053, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 137513801}
+    - target: {fileID: 2337597453217398053, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 56075406}
+    - target: {fileID: 2337597453217398053, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: spellButtonUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337597453217398053, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: buttonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337597453217398053, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Basic_Character_Class, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337597453217398053, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SpellButtonHover, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337597453217398053, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337597453217398053, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801294765755550169, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801294765755550169, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801294765755550169, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 137513801}
+    - target: {fileID: 2801294765755550169, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 440939534}
+    - target: {fileID: 2801294765755550169, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: spellButtonUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801294765755550169, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: buttonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801294765755550169, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Basic_Character_Class, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801294765755550169, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SpellButtonHover, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801294765755550169, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801294765755550169, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3655638616690951539, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
       propertyPath: cam
