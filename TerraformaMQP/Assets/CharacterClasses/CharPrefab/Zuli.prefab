@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6463681371827259685}
   - component: {fileID: 3790633413942918737}
   m_Layer: 0
-  m_Name: Althea Summon
+  m_Name: Zuli
   m_TagString: PlayerTeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

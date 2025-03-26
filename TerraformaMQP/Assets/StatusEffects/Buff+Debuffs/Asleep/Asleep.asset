@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9da8668d7f3cbe48babc49b4063efde, type: 3}
-  m_Name: Stunned
+  m_Name: Asleep
   m_EditorClassIdentifier: 
   statsToEffect: []
   amountsToEffect: 
-  duration: 1
+  duration: 2
   source: 
-  name: Stunned
+  name: Asleep
   playerTeam: 0
   character: {fileID: 0}
-  buffAsset: {fileID: 2408106574659915058, guid: 40337c4f67641f348b305f4aa12d8013, type: 3}
+  buffAsset: {fileID: 6315871763941938068, guid: 8f800414d66e7df41bfd34d7eabfe9f5, type: 3}
   buffAnimationPrefab: {fileID: 168724785735174551, guid: 01748f657143a4fff82edef4b7d71237, type: 3}
   movementCostsToIgnore: []
   stopReactions: 0

@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
-  m_Name: Constrict
+  m_Name: Indomitable Rest
   m_EditorClassIdentifier: 
   manaCost: 0
-  spellName: Constrict
+  spellName: Indomitable Rest
   elementType: None
-  spellPrefab: {fileID: 6785546488437148423, guid: 447f4bdae603fe7419f92c4a20c35dff, type: 3}
-  description: Stun a target causing them to lose their next turn
-  targeted: 1
-  range: 1
+  spellPrefab: {fileID: 3938666401520617086, guid: 454eed42731714647888d19b95d17679, type: 3}
+  description: Fall asleep for a turn, restoring health for each fire tile smothered
+  targeted: 0
+  range: 0
   targetTiles: 0
   targetAllies: 0
   target: {fileID: 0}
-  amountOfTargets: 1
+  amountOfTargets: 0
   requireDifferentTargets: 0
-  targetEnemies: 1
+  targetEnemies: 0
   hitOwnTile: 0
   hitSelf: 0
   targetWalls: 0

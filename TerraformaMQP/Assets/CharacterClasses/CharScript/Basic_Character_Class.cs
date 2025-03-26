@@ -204,7 +204,7 @@ public class Basic_Character_Class : MonoBehaviour
     //Increases the Health Total of the character
     //Input - Amount of health to increase by
 
-    void increaseHealth(int amount){
+    public void increaseHealth(int amount){
         health = health + amount;
         if (health > maxHealth.moddedValue) {
             health = maxHealth.moddedValue;
