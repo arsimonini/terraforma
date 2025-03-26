@@ -43,6 +43,8 @@ public class GameControllerScript : MonoBehaviour
 
     public bool treetopVisible = true;
 
+    private bool superSpeed = false;
+
 
 
     public PauseMenu pauseMenuController;
@@ -64,6 +66,18 @@ public class GameControllerScript : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && pauseMenuController.GameIsPaused == false){
+            superSpeed = !superSpeed;
+            if (phase == 3 || phase == 4){
+                if (superSpeed){
+                    Time.timeScale = 3.0f;
+                }
+                else {
+                    Time.timeScale = 1.0f;
+                }
+            }
+        }
+
         if (!endGame){
         //Removes all null values from the list of remaining enemy and player units
         enemyTeamList.RemoveAll(x => !x);
@@ -385,6 +399,9 @@ public class GameControllerScript : MonoBehaviour
                 break;
             //Sets the count of enemies remaining and how many enemies need to be moved before starting the enemy turn
             case 2:
+                if (superSpeed){
+                    Time.timeScale = 3.0f;
+                }
                 enemyCount = enemyTeamList.Count;
                 enemiesToMove = enemyCount;
                 resetEnemyTeamTurns();
@@ -442,6 +459,7 @@ public class GameControllerScript : MonoBehaviour
                 break;
             //Resets the phase to 0 and starts a new round
             case 5:
+                Time.timeScale = 1.0f;
                 //UnityEngine.Debug.Log("End of round " + round + ". Switching to phase 0");
                 round++;
                 comlog.addText("");
@@ -609,7 +627,7 @@ public class GameControllerScript : MonoBehaviour
 
     IEnumerator moveCamToEnemy(){
         waiting = true;
-        yield return new WaitForSecondsRealtime(timeToWaitBeforeNewEnemyTurn);
+        yield return new WaitForSeconds(timeToWaitBeforeNewEnemyTurn);
         UnityEngine.Debug.Log("Here");
         waiting = false;
         camera.gameObject.GetComponent<CamControl>().moveToEnemy(enemyTeamList[enemiesToMove - 1]);
@@ -618,14 +636,14 @@ public class GameControllerScript : MonoBehaviour
 
     IEnumerator waitForNewPhase(){
         startingNewPhase = true;
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSeconds(2);
         GameObject callToPrefab = Instantiate(enemyPhase);
         phase++;
         startingNewPhase = false;
     }
 
     IEnumerator waitForNewEnemyPhase(){
-        yield return new WaitForSecondsRealtime(timeToWaitBeforeNewPhase);
+        yield return new WaitForSeconds(timeToWaitBeforeNewPhase);
         phase++;
         GameObject callToPrefab = Instantiate(heroPhase);
     }

@@ -82,6 +82,8 @@ public class Basic_Character_Class : MonoBehaviour
     [SerializeField] private AudioClip[] closeAtkMenu;
     [SerializeField] private AudioClip[] missedAttack;
 
+    public bool stunned = false;
+
 
     public int startHP = 0; //This is needed for Stone Body to work, as it tracks the HP at the start of Wold's spell and
 
@@ -873,7 +875,7 @@ public class Basic_Character_Class : MonoBehaviour
             if(reacting == true){
                 return false;
             }
-            if (targetCharacter.GetComponent<Basic_Character_Class>().health > 0 && targetCharacter.GetComponent<Basic_Character_Class>().canTakeReactions && checkReactionSpace(targetCharacter)){
+            if (targetCharacter.GetComponent<Basic_Character_Class>().health > 0 && targetCharacter.GetComponent<Basic_Character_Class>().canTakeReactions && checkReactionSpace(targetCharacter) && targetCharacter.GetComponent<Basic_Character_Class>().stunned == false){
                 StartCoroutine(pause(targetCharacter.gameObject));
             }
         } else if (targetTile != null && targetTile.isBreakable) { //Damage Tile
@@ -950,7 +952,7 @@ public class Basic_Character_Class : MonoBehaviour
     }
 
     IEnumerator pause(GameObject targetCharacter){
-        yield return new WaitForSecondsRealtime(waitTimeBeforeReacton);
+        yield return new WaitForSeconds(waitTimeBeforeReacton);
         targetCharacter.GetComponent<Basic_Character_Class>().attackCharacter(this.gameObject, targetCharacter.GetComponent<Basic_Character_Class>().attack.moddedValue, true);
     }
 
@@ -1339,9 +1341,11 @@ public class Basic_Character_Class : MonoBehaviour
     //Resets the unit to take a new turn
     public void resetTurn()
     {
-        turnEnded = false;
-        renderer.material.color = color;
-        actionsLeft.moddedValue = actionsLeft.value;
+        if (stunned == false){
+            turnEnded = false;
+            renderer.material.color = color;
+            actionsLeft.moddedValue = actionsLeft.value;
+        }
     }
 
     public void moveButtonUI() {
@@ -1493,6 +1497,12 @@ public class Basic_Character_Class : MonoBehaviour
                 addTileCostToIgnore(buff.movementCostsToIgnore[i]);
             }
         }
+        
+        if (buff.stun == true){
+            stunned = true;
+            hasWalked = true;
+            totalActions.moddedValue = 0;
+        }
 
         buffs.Add(buff);
     }
@@ -1565,6 +1575,11 @@ public class Basic_Character_Class : MonoBehaviour
             for (int i = 0; i < buff.movementCostsToIgnore.Count; i++){
                 removeTileCostToIgnore(buff.movementCostsToIgnore[i]);
             }
+        }
+
+        if (buff.stun == true){
+            stunned = false;
+            totalActions.moddedValue = totalActions.value;
         }
 
         buffs.Remove(buff);
