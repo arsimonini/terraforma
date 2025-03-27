@@ -89,6 +89,8 @@ public class Basic_Character_Class : MonoBehaviour
 
     public bool traverseWalls = false;
 
+    public bool traverseWater = false;
+
 
 
 

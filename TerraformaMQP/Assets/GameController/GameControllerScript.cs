@@ -184,7 +184,8 @@ public class GameControllerScript : MonoBehaviour
 
                     }
                     //Checks if the returned object was a clickable tile, if so calling the map's MoveSelectedUnitTo function to begin moving the unit there
-                    else if(selectedCharacter != null && hit.collider.gameObject.GetComponent<ClickableTile>() != null){
+                    else if(selectedCharacter != null && (hit.collider.gameObject.GetComponent<ClickableTile>() != null)){
+                        UnityEngine.Debug.Log("here");
                         map.MoveSelectedUnitTo(hit.collider.gameObject.GetComponent<ClickableTile>().TileX, hit.collider.gameObject.GetComponent<ClickableTile>().TileY);
                     }
                 }

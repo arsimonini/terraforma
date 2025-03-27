@@ -123,6 +123,9 @@ MonoBehaviour:
   movementCostsToIgnore:
   - Soaked
   - Rocky
+  - Mud
+  - ShallowWater
+  - DeepWater
   color: {r: 0, g: 0, b: 0, a: 0}
   tileX: 12
   tileY: 8
@@ -172,6 +175,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0c9b8264f326ab04985d183d3efd6e5c, type: 3}
   stunned: 0
   startHP: 0
+  traverseWalls: 0
+  traverseWater: 1
 --- !u!212 &3564923898210920243
 SpriteRenderer:
   m_ObjectHideFlags: 0
