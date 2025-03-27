@@ -691,10 +691,8 @@ public class TileMap : MonoBehaviour
         if (clickableTiles[x, y] == null) {
             return Mathf.Infinity;
         }
-        if (clickableTiles[x, y].gameObject.name.Contains("Wall")){
-            if (selectedUnitScript.name == "Hold"){
-                return 1;
-            }
+        if (clickableTiles[x, y].gameObject.name.Contains("Wall") && selectedUnitScript.traverseWalls){
+            return 1;
         }
 
         if (!ignoreCanEnter) {
