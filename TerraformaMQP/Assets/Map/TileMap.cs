@@ -688,6 +688,15 @@ public class TileMap : MonoBehaviour
     
     public float costToEnterTile(int x, int y, bool ignoreCanEnter = false, bool noWalls = false, bool cut = false, bool realCost = false) {
 
+        if (clickableTiles[x, y] == null) {
+            return Mathf.Infinity;
+        }
+        if (clickableTiles[x, y].gameObject.name.Contains("Wall")){
+            if (selectedUnitScript.name == "Hold"){
+                return 1;
+            }
+        }
+
         if (!ignoreCanEnter) {
             if (unitCanEnterTile(x, y) == false) {
                 return Mathf.Infinity;
