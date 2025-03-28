@@ -91,6 +91,8 @@ public class Basic_Character_Class : MonoBehaviour
 
     public bool traverseWater = false;
 
+    public GameControllerScript gc;
+
 
 
 
@@ -127,7 +129,7 @@ public class Basic_Character_Class : MonoBehaviour
 
         if (charSelected == true && turnEnded == false & map.moving == false & map.moveButtonPressed == false && targeting == false)
         {
-            if(isMoving == false) {
+            if(isMoving == false && gameObject.GetComponent<Enemy_Character_Class>() == null) {
                 displayAttackMenu(true);
             }
 
@@ -1041,7 +1043,9 @@ public class Basic_Character_Class : MonoBehaviour
     //Stops targeting, removes the highlighted range, resets the attackType, attackReach variables
     public void stopTargeting()
     {
-        map.removeAOEDisplay();
+        if (gameObject.GetComponent<Enemy_Character_Class>() == null){
+            map.removeAOEDisplay();
+        }
         //Checks if the player was targeting a spell or normal attack
         if ((attackType == "Spell" || attackType == "Ability") && gameObject.GetComponent<Hero_Character_Class>() != null)
         {
@@ -1189,7 +1193,7 @@ public class Basic_Character_Class : MonoBehaviour
             }
 
             //Checks if the unit is currently selected
-            if (charSelected == false && (map.selectedUnit == null || this.gameObject.tag != map.selectedUnit.tag))
+            if (charSelected == false && (gc.selectedCharacter == null || gameObject.tag != gc.selectedCharacter.tag))
             {
                 //If not, the color is changed to the highlight color
                 renderer.material.color = Color.blue;
@@ -1209,7 +1213,7 @@ public class Basic_Character_Class : MonoBehaviour
     {
         if(pm.GameIsPaused != true) {
             //Checks if the unit is currently selected
-            if (charSelected == false && (map.selectedUnit == null || this.gameObject.tag != map.selectedUnit.tag))
+            if (charSelected == false && (gc.selectedCharacter == null || gameObject.tag != gc.selectedCharacter.tag))
             {
                 //Checks if the unit's turn has been ended
                 if (turnEnded == false)
@@ -1268,9 +1272,9 @@ public class Basic_Character_Class : MonoBehaviour
         if (gameObject.tag == "PlayerTeam")
         {
             //If the unit is part of the player team, allow the player to move it and perform actions
-            charSelected = true;
             SFXController.instance.PlayRandomSFXClip(openAtkMenu, transform, 1f);
         }
+        charSelected = true;
         //Display the health and mana of the selected unit
         displayNameplate(true);  
         //Set the unit's color to red      

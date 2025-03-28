@@ -135,7 +135,7 @@ public class GameControllerScript : MonoBehaviour
                     {
                         //Executes this code if the player isn't currently targeting and has no unit currently selected
                         //Checks if the object returned from the hit is a Unit on the player's team
-                        if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && phase == 0 && hit.collider.gameObject.tag == "PlayerTeam" && hit.collider.gameObject.GetComponent<Basic_Character_Class>().turnEnded == false)
+                        if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && phase == 0 && hit.collider.gameObject.tag == "PlayerTeam")
                         {
                             //Changes the selectedCharacter to the new unit, calls the selectedCharacter function inside the character, and checks if the unit has ended its turn
                             updateSelectedObject(hit.collider.gameObject);
@@ -150,8 +150,8 @@ public class GameControllerScript : MonoBehaviour
                         else if (hit.collider.gameObject.GetComponent<Basic_Character_Class>() != null && hit.collider.gameObject.tag == "EnemyTeam" && phase == 0)
                         {
                             //Changes the selectedCharacter to the new unit, calls the selectedCharacter function inside the character ---NOTE: SHOULD NEVER UPDATE THE MAP'S SELECTED CHARACTER---
-                            //updateSelectedObject(hit.collider.gameObject);
-                            //characterScript.selectCharacter();
+                            updateSelectedObject(hit.collider.gameObject);
+                            characterScript.selectCharacter();
                         }
                     }
                     //If the player does have a unit selected, it now checks if the returned object is another character
