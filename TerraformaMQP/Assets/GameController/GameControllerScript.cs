@@ -640,6 +640,7 @@ public class GameControllerScript : MonoBehaviour
     public void SetUpFight() {
         
         //Adds the Characters into the Player Team based on TeamInfo
+        UnityEngine.Debug.Log("SetUp Called");
         for(int i = 0; i < allPossibleRoles.Length; i++) {
             switch (allPossibleRoles[i]) {
             case "Hero1":
@@ -699,7 +700,7 @@ public class GameControllerScript : MonoBehaviour
                             
                         }
                     }
-                    allPossibleCharacters[j].GetComponent<SpellList>().spellList = new List<Basic_Spell_Class>(new Basic_Spell_Class[6]);
+                    allPossibleCharacters[j].GetComponent<Hero_Character_Class>().Start();
 
                     
                 }
