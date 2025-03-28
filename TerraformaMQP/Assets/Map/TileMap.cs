@@ -189,7 +189,9 @@ public class TileMap : MonoBehaviour
                         selectedUnitScript.tile.OnMouseExit();
                         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].characterOnTile = null;
                         //Makes the tile passable again when the unit moves off it
-                        clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = true;
+                        if (!clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].tileName.Contains("Water")){
+                            clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = true;
+                        }
 
                         selectedUnitScript.tileX = x;
                         selectedUnitScript.tileY = y;
@@ -207,7 +209,12 @@ public class TileMap : MonoBehaviour
 
                         if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile.Count > 0){
                             for(int i = 0; i < clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile.Count; i++){
-                                clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile[i].tileEffectPrefab.GetComponent<tileEffectActions>().performStepOnEffect(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY]);
+                                if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile[i].name == "Burning" && selectedUnitScript.name == "Sova"){
+                                    selectedUnit.GetComponent<TheSovaSpecial>().smother(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY]);
+                                }
+                                else{
+                                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile[i].tileEffectPrefab.GetComponent<tileEffectActions>().performStepOnEffect(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY]);
+                                }
                                 //UnityEngine.Debug.Log(selectedUnit);
                             }
                         }
@@ -428,7 +435,7 @@ public class TileMap : MonoBehaviour
             //UnityEngine.Debug.Log(x + "," + y);
 
             //TEST - replace with actual movement implementation
-            if (selectedUnit != null && clickableTiles[x, y].isWalkable)
+            if (selectedUnit != null && (clickableTiles[x, y].isWalkable || waterCheck(clickableTiles[x, y])))
             {
                 if (selectedUnitScript.targeting == true || selectedUnitScript.hasWalked)
                 {
@@ -451,6 +458,15 @@ public class TileMap : MonoBehaviour
             }
         }
 
+    }
+
+    private bool waterCheck(ClickableTile tile){
+        if (tile.tileName.Contains("Water") && selectedUnitScript.traverseWater == true){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public bool checkForTileEffect(int x, int y, string effectName) {
@@ -656,6 +672,10 @@ public class TileMap : MonoBehaviour
         if (clickableTiles[x, y] != null) {
             walkable = clickableTiles[x, y].isWalkable;
         }
+        if (clickableTiles[x, y] != null && clickableTiles[x, y].tileName.Contains("Water") && (selectedUnitScript.name == "Zuli" || selectedUnitScript.name == "Ruba")){
+            UnityEngine.Debug.Log("Here");
+            walkable = true;
+        }
         return walkable;
     }
 
@@ -682,6 +702,16 @@ public class TileMap : MonoBehaviour
 
     
     public float costToEnterTile(int x, int y, bool ignoreCanEnter = false, bool noWalls = false, bool cut = false, bool realCost = false) {
+
+        if (clickableTiles[x, y] == null) {
+            return Mathf.Infinity;
+        }
+        if (clickableTiles[x, y].gameObject.name.Contains("Wall") && selectedUnitScript.traverseWalls){
+            return 1;
+        }
+        if (clickableTiles[x, y].gameObject.name.Contains("Water") && selectedUnitScript.traverseWater){
+            return 1;
+        }
 
         if (!ignoreCanEnter) {
             if (unitCanEnterTile(x, y) == false) {

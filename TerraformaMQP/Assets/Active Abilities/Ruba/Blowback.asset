@@ -10,32 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
-  m_Name: SupportFlames
+  m_Name: Blowback
   m_EditorClassIdentifier: 
-  manaCost: 4
-  spellName: Support Flames
-  elementType: Fire
-  spellPrefab: {fileID: 1009746080516193270, guid: a264048be27bf88428fac8eca7ef95c7, type: 3}
-  description: Increase the Magic, Attack, and Speed stats of all characters standing
-    on Burning tiles in range by 2
-  targeted: 0
-  range: 3
+  manaCost: 0
+  spellName: Blowback
+  elementType: None
+  spellPrefab: {fileID: 1770892230039785955, guid: 10734f047dd1bf54aaabc422c393ee9b, type: 3}
+  description: Blast an enemy, knocking them and yourself back up to 2 tiles
+  targeted: 1
+  range: 4
   targetTiles: 0
   targetAllies: 0
   target: {fileID: 0}
-  amountOfTargets: 0
+  amountOfTargets: 1
   requireDifferentTargets: 0
-  targetEnemies: 0
+  targetEnemies: 1
   hitOwnTile: 0
   hitSelf: 0
   targetWalls: 0
   AOEsize: 0
   square: 0
   alternateAOEDisplay: 0
-  hyperSpecificTargeting: 1
+  hyperSpecificTargeting: 0
   needSpecificTiles: 0
   specificTiles: []
-  needSpecificTileEffects: 1
-  specificTileEffects:
-  - Burning
+  needSpecificTileEffects: 0
+  specificTileEffects: []
   targetBreakables: 0
