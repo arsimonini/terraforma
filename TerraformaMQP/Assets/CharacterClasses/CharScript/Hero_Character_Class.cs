@@ -27,7 +27,7 @@ public class Hero_Character_Class : MonoBehaviour
     [SerializeField] private AudioClip[] waterSpells;
 
 
-    void Start()
+    public void Start()
     {
         //Checks if the unit has a spellList attached to it
         if (this.gameObject.GetComponent<SpellList>() != null)

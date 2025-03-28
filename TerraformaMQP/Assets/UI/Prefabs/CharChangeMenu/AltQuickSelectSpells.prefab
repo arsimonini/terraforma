@@ -413,7 +413,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: RegenMana
+          m_StringArgument: Regen Mana
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &2023061776332362601
@@ -546,7 +546,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: CrasherWave
+          m_StringArgument: Crasher Wave
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &2034784732530216996
@@ -1020,7 +1020,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Pirate'sEye
+          m_StringArgument: Pirate's Eye
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &2501168179256327068
@@ -2534,7 +2534,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LightningLance
+          m_StringArgument: Lightning Lance
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &5991609129782659209
@@ -3100,7 +3100,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: BubbleBomb
+          m_StringArgument: Bubble Bomb
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &7680894918784208047
@@ -3343,7 +3343,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SwiftSail
+          m_StringArgument: Swift Sail
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &8217651072837821431

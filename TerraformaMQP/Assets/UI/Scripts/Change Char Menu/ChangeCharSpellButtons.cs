@@ -32,12 +32,8 @@ public class ChangeCharSpellButtons : MonoBehaviour
     }
 
     public void swapSpellSprite(int index, string spell) {
-        Debug.Log(index);
-        Debug.Log(spell);
         for(int i = 0; i < go.GetComponent<ChangeCharMenu>().spellSpriteKeys.Length; i++) {
             if(spell == go.GetComponent<ChangeCharMenu>().spellSpriteKeys[i]) {
-                Debug.Log(spell);
-                Debug.Log(go.GetComponent<ChangeCharMenu>().spellSpriteKeys[i]);
                 //go.GetComponent<ChangeCharMenu>().spellButtons[index].GetComponent<Image>().sprite = go.GetComponent<ChangeCharMenu>().spellSprites[i];
                 go.GetComponent<ChangeCharMenu>().spellButtons[index].GetComponent<Image>().sprite = go.GetComponent<ChangeCharMenu>().spellSprites[i];
             }

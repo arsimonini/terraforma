@@ -413,7 +413,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: RegenMana
+          m_StringArgument: Regen Mana
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &2023061776332362601
@@ -546,7 +546,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TagIn
+          m_StringArgument: Tag In
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &2034784732530216996
@@ -1020,7 +1020,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: FleetFootwork
+          m_StringArgument: Fleet Footwork
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &2501168179256327068
@@ -1702,7 +1702,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SecondWind
+          m_StringArgument: Second Wind
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &4272616493455246943
@@ -1985,7 +1985,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: RockSpikes
+          m_StringArgument: Rock Spikes
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &4806696517058311473
@@ -2401,7 +2401,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Shatter
+          m_StringArgument: Shatterpoint
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &5355449690853120324
@@ -2534,7 +2534,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Tremor
+          m_StringArgument: Quake
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &5991609129782659209
@@ -3343,7 +3343,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Stonebody
+          m_StringArgument: Stone Body
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &8217651072837821431

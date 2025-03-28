@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aed823b9fac848fab5c32383d8eb04e, type: 3}
+  m_Name: CurrentTeamInfo
+  m_EditorClassIdentifier: 
+  hero1: Lancin Bermane
+  summon1_1: Urson
+  summon1_2: Locked
+  spell1_1: Backfire
+  spell1_2: Fire Lance
+  spell1_3: Searing Wind
+  spell1_4: Support Flames
+  spell1_5: Regen Mana
+  spell1_6: Dragon's Breath
+  hero2: Wold Wold
+  summon2_1: Hold
+  summon2_2: Locked
+  spell2_1: Regen Mana
+  spell2_2: Wall
+  spell2_3: Shatterpoint
+  spell2_4: Stone Body
+  spell2_5: Fleet Footwork
+  spell2_6: Quake
+  hero3: Althea Petrik
+  summon3_1: Zuli
+  summon3_2: Locked
+  spell3_1: Regen Mana
+  spell3_2: Bubble Bomb
+  spell3_3: Flood
+  spell3_4: Lightning Lance
+  spell3_5: Bubble Bomb
+  spell3_6: Swift Sail

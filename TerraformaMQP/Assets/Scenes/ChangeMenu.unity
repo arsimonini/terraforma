@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 80993288}
   - component: {fileID: 80993287}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Spell2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3972,7 +3972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &393552964
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4007,6 +4007,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf54ceb83c81f4f74bd9494b0413877b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  go: {fileID: 1915951718}
+  currHero: 
+  currSummon1: 
+  currSummon2: 
+  currSpell1: 
+  currSpell2: 
+  currSpell3: 
+  currSpell4: 
+  currSpell5: 
+  currSpell6: 
+  menuButtonSprites:
+  - {fileID: 911998676}
+  - {fileID: 1204489817}
+  - {fileID: 476267789}
+  - {fileID: 983063106}
+  - {fileID: 80993285}
+  - {fileID: 996242204}
+  - {fileID: 766345751}
+  - {fileID: 1081674495}
+  - {fileID: 1994391042}
 --- !u!1 &408994449
 GameObject:
   m_ObjectHideFlags: 0
@@ -4939,7 +4959,7 @@ GameObject:
   - component: {fileID: 476267792}
   - component: {fileID: 476267791}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Summon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6900,7 +6920,7 @@ GameObject:
   - component: {fileID: 766345754}
   - component: {fileID: 766345753}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Spell4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6978,7 +6998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &767844059
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8368,7 +8388,7 @@ GameObject:
   - component: {fileID: 911998679}
   - component: {fileID: 911998678}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Hero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8650,7 +8670,7 @@ GameObject:
   - component: {fileID: 983063109}
   - component: {fileID: 983063108}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Spell1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8991,7 +9011,7 @@ GameObject:
   - component: {fileID: 996242207}
   - component: {fileID: 996242206}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Spell3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9308,7 +9328,7 @@ GameObject:
   - component: {fileID: 1081674498}
   - component: {fileID: 1081674497}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Spell5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10273,9 +10293,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Quit
+      - m_Target: {fileID: 1915951723}
+        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
+        m_MethodName: GoToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10335,7 +10355,7 @@ GameObject:
   - component: {fileID: 1204489820}
   - component: {fileID: 1204489819}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Summon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14606,33 +14626,33 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2bcfcd64855044e708791f0f1e6ce010, type: 3}
   - {fileID: 21300000, guid: eb2842f01103a4bff9490b21feb36cbe, type: 3}
   spellSpriteKeys:
-  - BubbleBomb
-  - Pirate'sEye
+  - Bubble Bomb
+  - Pirate's Eye
   - Flood
   - Jolt
-  - LightningLance
+  - Lightning Lance
   - Mist
-  - SwiftSail
+  - Swift Sail
   - Shower
   - Wellspring
-  - CrasherWave
-  - BackFire
-  - Dragon'sBreath
-  - FireBall
-  - FireLance
-  - HearthFire
-  - SearingWind
-  - SupportFlames
+  - Crasher Wave
+  - Backfire
+  - Dragon's Breath
+  - Fireball
+  - Fire Lance
+  - Hearthfire
+  - Searing Wind
+  - Support Flames
   - Locked
-  - RegenMana
-  - StoneBody
-  - FleetFootwork
-  - Tremor
-  - SecondWind
-  - Shatter
+  - Regen Mana
+  - Stone Body
+  - Fleet Footwork
+  - Quake
+  - Second Wind
+  - Shatterpoint
   - Shove
-  - RockySpikes
-  - TagIn
+  - Rock Spikes
+  - Tag In
   - Wall
   summonButtons:
   - {fileID: 150354759}
@@ -14648,6 +14668,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1f9e8edc9626641fea1de0b4d183a203, type: 3}
   - {fileID: 21300000, guid: 7b1d81810f9a644d8972c9972fae3592, type: 3}
   - {fileID: 21300000, guid: 94e5c8c7b1f9345f981c8ae2f35a31f4, type: 3}
+  - {fileID: 21300000, guid: 38f32c6517a0b44068f2670943d73a58, type: 3}
   summonSpriteKeys:
   - Urson
   - Sova
@@ -14655,6 +14676,7 @@ MonoBehaviour:
   - Hold
   - Zuli
   - Ruba
+  - Locked
 --- !u!1 &1919062205
 GameObject:
   m_ObjectHideFlags: 0
@@ -14783,7 +14805,7 @@ GameObject:
   - component: {fileID: 1994391045}
   - component: {fileID: 1994391044}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Spell6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
