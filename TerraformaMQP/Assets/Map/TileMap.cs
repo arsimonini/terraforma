@@ -602,6 +602,27 @@ public class TileMap : MonoBehaviour
         //showPath();
     }
 
+    public List<Node> basicPathCutoff(int range, List<Node> path, bool noWalls = false) {
+        List<Node> l = path;
+        List<Node> newPath = new List<Node>();
+
+        float costCount = 0;
+        for (int i = 1; i < l.Count-1; i++) {
+            float costToEnter = costToEnterTile(l[i].x,l[i].y, false, noWalls, false);
+            if (!clickableTiles[l[i].x,l[i].y].isWalkable) {
+                UnityEngine.Debug.Log("NEXT TILE ISNT WALKABLE???" + costToEnter);
+            }
+            UnityEngine.Debug.Log("cost to enter next: " + costToEnter);
+            if (costToEnter + costCount > range) {
+                return newPath;
+            }
+            costCount += costToEnter;
+            newPath.Add(l[i]);
+        }
+
+        return newPath;
+    }
+
     //Despite its existing name, this does a little more than that
     public List<Node> cutDownPath(int range, bool visual = false, List<Node> path = null, bool cutDown = true, bool noWalls = false) {    //This is recursive, so do take that into consideration
         //List<Node> l = currentPath;
@@ -672,10 +693,10 @@ public class TileMap : MonoBehaviour
     //     }
     // }
 
-    public float pathMovementCost(List<Node> path) {
+    public float pathMovementCost(List<Node> path, bool noWalls = false) {
         float cost = 0;
         for (int i = 1; i < path.Count; i++) {
-            cost += costToEnterTile(path[i].x,path[i].y,false, false, false, true);
+            cost += costToEnterTile(path[i].x,path[i].y,false, noWalls, false, true);
         }
         return cost;
     }
@@ -688,7 +709,7 @@ public class TileMap : MonoBehaviour
         }
 
         if (!ignoreCanEnter) {
-            if (unitCanEnterTile(x, y) == false) {
+            if ((unitCanEnterTile(x, y) == false) || Array.IndexOf(wallNums, tiles[x,y]) != -1) {
                 return Mathf.Infinity;
             }
         }
