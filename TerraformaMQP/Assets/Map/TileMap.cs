@@ -77,7 +77,7 @@ public class TileMap : MonoBehaviour
         {"tileWoldWall", 20}
     };
 
-    public int[] wallNums = {17,20};
+    public int[] wallNums = {20};
 
     public string[] coverNames = {"tileWall", "tileWoldWall"};
 
@@ -683,6 +683,10 @@ public class TileMap : MonoBehaviour
     
     public float costToEnterTile(int x, int y, bool ignoreCanEnter = false, bool noWalls = false, bool cut = false, bool realCost = false) {
 
+        if (noWalls && Array.IndexOf(wallNums, tiles[x,y]) != -1) {
+            return 1;
+        }
+
         if (!ignoreCanEnter) {
             if (unitCanEnterTile(x, y) == false) {
                 return Mathf.Infinity;
@@ -693,9 +697,6 @@ public class TileMap : MonoBehaviour
         }
         int cost = clickableTiles[x, y].cost;
         cost = checkForMovementBonuses(x, y);
-        if (noWalls && Array.IndexOf(wallNums, tiles[x,y]) != -1) {
-            cost = 1;
-        }
 
         if (cost <= 0){
             cost = 1;
