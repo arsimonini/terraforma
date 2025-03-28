@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 7607438070753348614}
   - component: {fileID: 8516254981853653317}
   - component: {fileID: 256630851586931053}
+  - component: {fileID: 983365553176035723}
   m_Layer: 5
   m_Name: Effect 11
   m_TagString: Untagged
@@ -389,6 +390,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &983365553176035723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194726002297998358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 10
+  specText: 
 --- !u!1 &220090488958652180
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +423,7 @@ GameObject:
   - component: {fileID: 4591911398970441178}
   - component: {fileID: 6662301259782558433}
   - component: {fileID: 8451369770616550041}
+  - component: {fileID: 1946686201047752774}
   m_Layer: 5
   m_Name: Effect 12
   m_TagString: Untagged
@@ -510,6 +533,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1946686201047752774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220090488958652180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 11
+  specText: 
 --- !u!1 &294866215882510547
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,6 +566,7 @@ GameObject:
   - component: {fileID: 6552498434468352858}
   - component: {fileID: 7597647238755098692}
   - component: {fileID: 8737447587227380472}
+  - component: {fileID: 8916199635779972999}
   m_Layer: 5
   m_Name: Effect 19
   m_TagString: Untagged
@@ -631,6 +676,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8916199635779972999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294866215882510547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 18
+  specText: 
 --- !u!1 &297690859887135270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,6 +1306,7 @@ GameObject:
   - component: {fileID: 3495617215142845096}
   - component: {fileID: 5815457624143988651}
   - component: {fileID: 7115452177693781483}
+  - component: {fileID: 8296281145697695773}
   m_Layer: 5
   m_Name: Effect 8
   m_TagString: Untagged
@@ -1349,6 +1416,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8296281145697695773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813383742615317650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 7
+  specText: 
 --- !u!1 &894376521212237794
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,6 +2078,7 @@ GameObject:
   - component: {fileID: 3040615597917484324}
   - component: {fileID: 750738093606852083}
   - component: {fileID: 3872910907371790197}
+  - component: {fileID: 5520882431616197129}
   m_Layer: 5
   m_Name: Effect 16
   m_TagString: Untagged
@@ -2099,6 +2188,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5520882431616197129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727567860474108373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 15
+  specText: 
 --- !u!1 &1841256602755439967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2245,6 +2355,7 @@ GameObject:
   - component: {fileID: 5044867099468411965}
   - component: {fileID: 4918509386253230074}
   - component: {fileID: 7593133576476951692}
+  - component: {fileID: 5472558262695816854}
   m_Layer: 5
   m_Name: Effect 14
   m_TagString: Untagged
@@ -2354,6 +2465,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5472558262695816854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859723842514924467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 13
+  specText: 
 --- !u!1 &1967284717777126422
 GameObject:
   m_ObjectHideFlags: 0
@@ -2977,6 +3109,7 @@ GameObject:
   - component: {fileID: 9045565905802902009}
   - component: {fileID: 3776385232564669235}
   - component: {fileID: 6758165092701577961}
+  - component: {fileID: 1360651043740398050}
   m_Layer: 5
   m_Name: Effect 2
   m_TagString: Untagged
@@ -3086,6 +3219,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1360651043740398050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2256091272304137802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 1
+  specText: 
 --- !u!1 &2272663566177695404
 GameObject:
   m_ObjectHideFlags: 0
@@ -3500,6 +3654,7 @@ GameObject:
   - component: {fileID: 9220006564974058127}
   - component: {fileID: 5370901956765606504}
   - component: {fileID: 5117688459871083719}
+  - component: {fileID: 4813638311030535440}
   m_Layer: 5
   m_Name: Effect 4
   m_TagString: Untagged
@@ -3609,6 +3764,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4813638311030535440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2427200097758365107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 3
+  specText: 
 --- !u!1 &2460143068963004270
 GameObject:
   m_ObjectHideFlags: 0
@@ -3621,6 +3797,7 @@ GameObject:
   - component: {fileID: 8440386414740251100}
   - component: {fileID: 8271036278501298281}
   - component: {fileID: 1117108556262193853}
+  - component: {fileID: 9155583087692263422}
   m_Layer: 5
   m_Name: Effect 21
   m_TagString: Untagged
@@ -3730,6 +3907,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9155583087692263422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2460143068963004270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 20
+  specText: 
 --- !u!1 &2479222424991604625
 GameObject:
   m_ObjectHideFlags: 0
@@ -4549,6 +4747,7 @@ GameObject:
   - component: {fileID: 254740235655993518}
   - component: {fileID: 7904999634111097426}
   - component: {fileID: 3435529643046001265}
+  - component: {fileID: 31308814272637998}
   m_Layer: 5
   m_Name: Effect 20
   m_TagString: Untagged
@@ -4658,6 +4857,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &31308814272637998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449165410753419314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 19
+  specText: 
 --- !u!1 &3700580726436046021
 GameObject:
   m_ObjectHideFlags: 0
@@ -4939,6 +5159,7 @@ GameObject:
   - component: {fileID: 6334692145988831173}
   - component: {fileID: 5443137361476655387}
   - component: {fileID: 4884977285140118118}
+  - component: {fileID: 2891395604263833074}
   m_Layer: 5
   m_Name: Effect 10
   m_TagString: Untagged
@@ -5048,6 +5269,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2891395604263833074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4077266794919372574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 9
+  specText: 
 --- !u!1 &4317346254828881506
 GameObject:
   m_ObjectHideFlags: 0
@@ -5941,6 +6183,7 @@ GameObject:
   - component: {fileID: 8166755776107964165}
   - component: {fileID: 650622000923316943}
   - component: {fileID: 47315469324367604}
+  - component: {fileID: 4391895759654557418}
   m_Layer: 5
   m_Name: Effect 15
   m_TagString: Untagged
@@ -6050,6 +6293,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4391895759654557418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4753393752487141757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 14
+  specText: 
 --- !u!1 &4836155775233449579
 GameObject:
   m_ObjectHideFlags: 0
@@ -6196,6 +6460,7 @@ GameObject:
   - component: {fileID: 2665640644677548815}
   - component: {fileID: 5226701512133756642}
   - component: {fileID: 1657952229849987688}
+  - component: {fileID: 8854343614714629467}
   m_Layer: 5
   m_Name: Effect
   m_TagString: Untagged
@@ -6305,6 +6570,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8854343614714629467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4913285997650520697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 0
+  specText: 
 --- !u!1 &4942961960195480283
 GameObject:
   m_ObjectHideFlags: 0
@@ -6337,6 +6623,7 @@ RectTransform:
   m_Children:
   - {fileID: 4579294531056385757}
   - {fileID: 5355730408039430135}
+  - {fileID: 9008659827851453263}
   - {fileID: 50185244612302275}
   - {fileID: 7263561152384484151}
   - {fileID: 6354325704228662000}
@@ -6400,6 +6687,7 @@ GameObject:
   - component: {fileID: 9219189716646068034}
   - component: {fileID: 3470274046955827478}
   - component: {fileID: 8406353362807052640}
+  - component: {fileID: 1330501067409008134}
   m_Layer: 5
   m_Name: Effect 18
   m_TagString: Untagged
@@ -6509,6 +6797,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1330501067409008134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4998047860907261163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 17
+  specText: 
 --- !u!1 &5037316459261121495
 GameObject:
   m_ObjectHideFlags: 0
@@ -6521,6 +6830,7 @@ GameObject:
   - component: {fileID: 5687055904937605975}
   - component: {fileID: 6741481317068887855}
   - component: {fileID: 1642176315348951653}
+  - component: {fileID: 1148949909432114742}
   m_Layer: 5
   m_Name: Effect 13
   m_TagString: Untagged
@@ -6630,6 +6940,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1148949909432114742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5037316459261121495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 12
+  specText: 
 --- !u!1 &5153681578813573922
 GameObject:
   m_ObjectHideFlags: 0
@@ -6776,6 +7107,7 @@ GameObject:
   - component: {fileID: 8633827397749193034}
   - component: {fileID: 7644878550998448782}
   - component: {fileID: 6110162676889350446}
+  - component: {fileID: 7786459251389410768}
   m_Layer: 5
   m_Name: Effect 9
   m_TagString: Untagged
@@ -6885,6 +7217,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7786459251389410768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5169334383037741989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 8
+  specText: 
 --- !u!1 &5224671068770509653
 GameObject:
   m_ObjectHideFlags: 0
@@ -7152,6 +7505,7 @@ GameObject:
   - component: {fileID: 5733787402216257249}
   - component: {fileID: 7298330479412760224}
   - component: {fileID: 5012168435867543629}
+  - component: {fileID: 6576439238213870389}
   m_Layer: 5
   m_Name: Effect 7
   m_TagString: Untagged
@@ -7261,6 +7615,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6576439238213870389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5230049622902536296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 6
+  specText: 
 --- !u!1 &5287271615775059373
 GameObject:
   m_ObjectHideFlags: 0
@@ -7872,6 +8247,7 @@ GameObject:
   - component: {fileID: 5269165606213353417}
   - component: {fileID: 2675171711764909403}
   - component: {fileID: 4571782797067808555}
+  - component: {fileID: 5385796486074370604}
   m_Layer: 5
   m_Name: Effect 6
   m_TagString: Untagged
@@ -7981,6 +8357,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5385796486074370604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5552376489707015727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 5
+  specText: 
 --- !u!1 &5630473853380807370
 GameObject:
   m_ObjectHideFlags: 0
@@ -7993,6 +8390,7 @@ GameObject:
   - component: {fileID: 3656305978846570349}
   - component: {fileID: 3497717163617424285}
   - component: {fileID: 6494849473647747337}
+  - component: {fileID: 3521936918972127013}
   m_Layer: 5
   m_Name: Effect 3
   m_TagString: Untagged
@@ -8102,6 +8500,163 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3521936918972127013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5630473853380807370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 2
+  specText: 
+--- !u!1 &5894088451236217618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1189509343015035606}
+  - component: {fileID: 5082061174262587943}
+  - component: {fileID: 6180343271791089865}
+  m_Layer: 5
+  m_Name: SmallDescrTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1189509343015035606
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5894088451236217618}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9008659827851453263}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -126, y: 0}
+  m_SizeDelta: {x: 114, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5082061174262587943
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5894088451236217618}
+  m_CullTransparentMesh: 1
+--- !u!114 &6180343271791089865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5894088451236217618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: This is a test to see how much text I can fit here with these sizes and
+    stuff I will just keep typing basically until something breaks. It seems this
+    fits a grand total of 4 lines Let's see if this fully fits, it does!
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: b80e926563996e8429ca58a9ba767949, type: 2}
+  m_sharedMaterial: {fileID: -6103306099064307319, guid: b80e926563996e8429ca58a9ba767949, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 18
+  m_fontSizeBase: 18
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: -255.1195, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5939424065630989439
 GameObject:
   m_ObjectHideFlags: 0
@@ -9395,6 +9950,7 @@ GameObject:
   - component: {fileID: 608048564060197477}
   - component: {fileID: 3075522285554211296}
   - component: {fileID: 6412998953745010770}
+  - component: {fileID: 3626586569239830435}
   m_Layer: 5
   m_Name: Effect 17
   m_TagString: Untagged
@@ -9504,6 +10060,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3626586569239830435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6872001676517132206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 16
+  specText: 
 --- !u!1 &6931521955261343718
 GameObject:
   m_ObjectHideFlags: 0
@@ -9913,6 +10490,7 @@ MonoBehaviour:
   extraEffectButton: {fileID: 352004404682205005}
   exEffectOn: 0
   nameplateIsActive: 0
+  rolloutActivated: 0
 --- !u!1 &7385716988812537115
 GameObject:
   m_ObjectHideFlags: 0
@@ -10690,6 +11268,7 @@ GameObject:
   - component: {fileID: 6975619961030154388}
   - component: {fileID: 2565636271771292700}
   - component: {fileID: 1918402642057176566}
+  - component: {fileID: 8434112853753859727}
   m_Layer: 5
   m_Name: Effect 5
   m_TagString: Untagged
@@ -10799,6 +11378,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8434112853753859727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8153002197733095705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameplate: {fileID: 6086204880388043493}
+  extraEffects: 0
+  smallDescriptor: {fileID: 8756853532850420820}
+  smallDescriptorText: {fileID: 6180343271791089865}
+  largeDescriptor: {fileID: 5428449407281687563}
+  largeDescriptorText: {fileID: 771574252445075268}
+  key: Effect
+  effectIndex: 4
+  specText: 
 --- !u!1 &8258846821525266751
 GameObject:
   m_ObjectHideFlags: 0
@@ -11142,6 +11742,82 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &8756853532850420820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9008659827851453263}
+  - component: {fileID: 6926088388178933306}
+  - component: {fileID: 4039269217311432998}
+  m_Layer: 5
+  m_Name: Smaller Descriptor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &9008659827851453263
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8756853532850420820}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1189509343015035606}
+  m_Father: {fileID: 1942625243162870474}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 369.9, y: -159.99991}
+  m_SizeDelta: {x: 370, y: 145}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6926088388178933306
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8756853532850420820}
+  m_CullTransparentMesh: 1
+--- !u!114 &4039269217311432998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8756853532850420820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5294118}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8784315631389347307
 GameObject:
   m_ObjectHideFlags: 0
