@@ -600,6 +600,10 @@ PrefabInstance:
       value: BasicEnemy (6)
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: pm
       value: 
       objectReference: {fileID: 1173448418}
@@ -3717,6 +3721,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 844204705}
+    - target: {fileID: 8307509125131471017, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
     - target: {fileID: 8307509125131471017, guid: bf3d1ecaeb3be5d459cd51e667688a8b, type: 3}
       propertyPath: pm
       value: 
@@ -8949,6 +8957,10 @@ PrefabInstance:
       value: BasicEnemy (4)
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: pm
       value: 
       objectReference: {fileID: 1173448418}
@@ -10422,6 +10434,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicEnemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: pm
       value: 
@@ -11902,6 +11918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicEnemy (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: pm
       value: 
@@ -13451,6 +13471,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicEnemy (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: pm
       value: 
@@ -16917,6 +16941,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
+    - target: {fileID: 7928607729415032659, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: pm
       value: 
       objectReference: {fileID: 1173448418}
@@ -18840,6 +18868,10 @@ PrefabInstance:
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8307509125131471017, guid: d88333c14fcde9a46b97858ae864223d, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
     - target: {fileID: 8307509125131471017, guid: d88333c14fcde9a46b97858ae864223d, type: 3}
       propertyPath: pm
       value: 
@@ -30568,6 +30600,10 @@ PrefabInstance:
       value: 1120
       objectReference: {fileID: 0}
     - target: {fileID: 521441566614050383, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
+    - target: {fileID: 521441566614050383, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
       propertyPath: pm
       value: 
       objectReference: {fileID: 1173448418}
@@ -32810,6 +32846,10 @@ PrefabInstance:
       propertyPath: waterSpells.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: f4f092b4705e042eab45c0de6bb1bac0, type: 3}
+    - target: {fileID: 7928607729415032659, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
     - target: {fileID: 7928607729415032659, guid: 30799a64fe61fd0419da1d1d81c2f562, type: 3}
       propertyPath: pm
       value: 
@@ -36070,6 +36110,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1444271549}
     - target: {fileID: 3100945852267719140, guid: 2d4e6d88b4d160a44a6dfc20c667e32a, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
+    - target: {fileID: 3100945852267719140, guid: 2d4e6d88b4d160a44a6dfc20c667e32a, type: 3}
       propertyPath: pm
       value: 
       objectReference: {fileID: 1173448418}
@@ -36174,6 +36218,10 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 1465
       objectReference: {fileID: 0}
+    - target: {fileID: 4243262464642294751, guid: fd33e06b16e83b044a411503f1c5cedb, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
     - target: {fileID: 4243262464642294751, guid: fd33e06b16e83b044a411503f1c5cedb, type: 3}
       propertyPath: pm
       value: 
@@ -36459,6 +36507,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 521441566614050383, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
     - target: {fileID: 521441566614050383, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
       propertyPath: pm
       value: 
@@ -36943,6 +36995,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2005821814}
     - target: {fileID: 3132957121668136553, guid: b02191c7246e80142a04e6538974690e, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
+    - target: {fileID: 3132957121668136553, guid: b02191c7246e80142a04e6538974690e, type: 3}
       propertyPath: pm
       value: 
       objectReference: {fileID: 1173448418}
@@ -37099,6 +37155,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1918770147}
+    - target: {fileID: 6575312550777102289, guid: 464ba8d3a9ca92f4e93f0633ba44439d, type: 3}
+      propertyPath: gc
+      value: 
+      objectReference: {fileID: 1356950529}
     - target: {fileID: 6575312550777102289, guid: 464ba8d3a9ca92f4e93f0633ba44439d, type: 3}
       propertyPath: pm
       value: 
