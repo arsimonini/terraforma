@@ -230,7 +230,7 @@ public class TileMap : MonoBehaviour
             else
             {
                 //The moving variables are set to false and the currentPath becomes null
-                if (movingEnemy == true && selectedUnitScript != null) {
+                if (movingEnemy == true && selectedUnitScript != null && !selectedUnit.GetComponent<Basic_Character_Class>().turnEnded) {
                     selectedUnit.GetComponent<Enemy_Character_Class>().attackTarget();
                 }
                 if(selectedUnitScript != null){
@@ -609,10 +609,6 @@ public class TileMap : MonoBehaviour
         float costCount = 0;
         for (int i = 1; i < l.Count-1; i++) {
             float costToEnter = costToEnterTile(l[i].x,l[i].y, false, noWalls, false);
-            if (!clickableTiles[l[i].x,l[i].y].isWalkable) {
-                UnityEngine.Debug.Log("NEXT TILE ISNT WALKABLE???" + costToEnter);
-            }
-            UnityEngine.Debug.Log("cost to enter next: " + costToEnter);
             if (costToEnter + costCount > range) {
                 return newPath;
             }
@@ -693,9 +689,11 @@ public class TileMap : MonoBehaviour
     //     }
     // }
 
-    public float pathMovementCost(List<Node> path, bool noWalls = false) {
+    public float pathMovementCost(List<Node> path, bool noWalls = false, bool ignoreLast = false) {
         float cost = 0;
-        for (int i = 1; i < path.Count; i++) {
+        int last = path.Count;
+        if (ignoreLast) last--;
+        for (int i = 1; i < last; i++) {
             cost += costToEnterTile(path[i].x,path[i].y,false, noWalls, false, true);
         }
         return cost;
