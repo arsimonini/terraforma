@@ -664,8 +664,14 @@ public class GameControllerScript : MonoBehaviour
                     allPossibleCharacters[j].GetComponent<SpellList>().spellList = new List<Basic_Spell_Class>(new Basic_Spell_Class[6]);
 
                     for(int k = 0; k < allPossibleSpells.Count; k++){
+                        UnityEngine.Debug.Log("Made it into Case Hero 1 For Loop");
+                        UnityEngine.Debug.Log(ti.spell1_1);
+                        UnityEngine.Debug.Log(allPossibleSpells[k].spellName);
                         if(ti.spell1_1 == allPossibleSpells[k].spellName) {
+                            UnityEngine.Debug.Log("Made it into Case Hero 1 Spell Hero 1");
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[0] = allPossibleSpells[k];
+                            UnityEngine.Debug.Log(ti.spell1_1);
+                            UnityEngine.Debug.Log(allPossibleCharacters[j].GetComponent<SpellList>().spellList[0]);
                         }
                         
                         if(ti.spell1_2 == allPossibleSpells[k].spellName) {
@@ -740,9 +746,9 @@ public class GameControllerScript : MonoBehaviour
             break;
 
             case "Hero2":
-            UnityEngine.Debug.Log("Made it into Case Hero 2");
+            
             for(int j = 0; j < allPossibleCharacters.Length; j++) {
-                UnityEngine.Debug.Log("Made it into I For Loop");
+                
                 if(ti.hero2 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
                     playerTeamList.Add(allPossibleCharacters[j]);
                     charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
