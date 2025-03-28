@@ -17,6 +17,9 @@ public class Enemy_Character_Class : MonoBehaviour
 
     public List<Basic_Spell_Class> spellList; //The list of spells that the character can cast
 
+    private List<Node> idealPath = null; //full path to target uninhibited by wall
+    private Node targetWallNode = null;
+
     [SerializeField] private AudioClip[] fireSpells;
     [SerializeField] private AudioClip[] earthSpells;
     [SerializeField] private AudioClip[] waterSpells;
@@ -64,12 +67,11 @@ public class Enemy_Character_Class : MonoBehaviour
         if (path != null && path.Count > 1) {
             //LOG STUFF HERE FOR MOVEMENT
             basic.comlog.addText("-> " + basic.name + " has Moved");
-            if (path[0].x == basic.tileX && path[0].y == basic.tileY) {
-                basic.endTurn();
-            }
+            //if (path[0].x == basic.tileX && path[0].y == basic.tileY) {
+            //    basic.endTurn();
+            //}
         }
         else {
-            //add stuff here about leaving if standing on fire
             if (basic.map.checkForTileEffect(basic.tileX, basic.tileY, "Burning")) {
                 if (target != null) {
                     int tileX = target.GetComponent<Basic_Character_Class>().tileX;
@@ -87,11 +89,17 @@ public class Enemy_Character_Class : MonoBehaviour
                 }
             }
 
-            basic.endTurn();
+            //basic.endTurn();
         }
-        basic.map.currentPath = path;
-        basic.path = path;
-        basic.isMoving = true;
+
+        if (target != null && ((path == null) || path.Count == 0)) {
+            basicAttack();
+        }
+        else {
+            basic.map.currentPath = path;
+            basic.path = path;
+            basic.isMoving = true;
+        }
     }
 
     public List<Node> findHero() {
@@ -101,50 +109,77 @@ public class Enemy_Character_Class : MonoBehaviour
         int minSteps = chaseSteps;
         List<Node> pathToTarget = new List<Node>();
         target = null;
-        float closestHeroCost = 20;
+        targetWallNode = null;
         bool ignoreSummon = false;
+
+        List<Node> closestNoWall = new List<Node>();
+        int minStepsNoWall = chaseSteps;
+
 
         foreach (GameObject hero in heroes) {
             int tileX = hero.GetComponent<Basic_Character_Class>().tileX;
             int tileY = hero.GetComponent<Basic_Character_Class>().tileY;
             //UnityEngine.Debug.Log("Hero: " + tileX + "," + tileY);
-            List<Node> path = basic.map.generatePathTo(tileX, tileY, false, true, setCurrent:false, cutPath:false);
+            List<Node> path = basic.map.generatePathTo(tileX, tileY, false, true, noWalls: true, setCurrent:false, cutPath:false);
             //UnityEngine.Debug.Log("step count: " + path.Count + " to hero " + hero.name);
-            if (path != null && hero.GetComponent<Hero_Character_Class>() != null) {
-                path.RemoveAt(path.Count - 1);
-                float mCost = basic.map.pathMovementCost(path);
-                if (mCost <= basic.movementSpeed.moddedValue && mCost < closestHeroCost) {
-                    target = hero;
-                    minSteps = path.Count;
-                    pathToTarget = path;
-                    ignoreSummon = true;
-                    //break;
+            
+            //breakable wall in path, check true path for hero within 2 turns
+            Node possibleWall = wallInPath(path);
+            if (possibleWall != null) {
+                int countWalls = countWallsInPath(path);
+                List<Node> truePath = basic.map.generatePathTo(tileX, tileY, false, true, noWalls: false, setCurrent:false, cutPath:false);
+                if (truePath != null && (countWalls > 1 || basic.map.pathMovementCost(truePath, false) <= basic.movementSpeed.moddedValue * 3)) {
+                    path = truePath;
+                    possibleWall = null;
                 }
             }
-            if ((path != null) && (path.Count < minSteps) && !ignoreSummon) {
+            float mCost = 1000;
+            if (path != null) mCost = basic.map.pathMovementCost(path, false, true);
+            if (path != null && hero.GetComponent<Hero_Character_Class>() != null) {
+                path.RemoveAt(path.Count - 1);
+                //float mCost = basic.map.pathMovementCost(path, false);
+                if (mCost <= basic.movementSpeed.moddedValue) {
+                    target = hero;
+                    minSteps = path.Count;
+                    minStepsNoWall = path.Count;
+                    pathToTarget = path;
+                    ignoreSummon = true;
+                    targetWallNode = possibleWall;
+                    //break;
+                    return pathToTarget;
+                }
+            }
+            if ((path != null) && ((path.Count < minSteps) && !ignoreSummon) || ((path != null) && possibleWall == null && path.Count < minStepsNoWall)) {
                 minSteps = path.Count;
                 target = hero;
-                pathToTarget = basic.map.cutDownPath(basic.movementSpeed.moddedValue, false, path);
+                targetWallNode = possibleWall;
+
+                if (possibleWall == null) {
+                    minStepsNoWall = path.Count;
+                }
+
                 //UnityEngine.Debug.Log("step count: " + path.Count + " to hero " + hero.name);
+                pathToTarget = basic.map.basicPathCutoff(basic.movementSpeed.moddedValue, path);
+                //UnityEngine.Debug.Log("step count final: " + pathToTarget.Count + " to hero " + hero.name);
             }
             
         }
-        //UnityEngine.Debug.Log("minsteps: " + minSteps);
 
         //no target selected - all heroes out of reach + chase == true, target first in list
         if (chaseFromFar == true && heroes.Length > 0) {
             if (target == null) {
-                target = heroes[0];
-                int tileX = target.GetComponent<Basic_Character_Class>().tileX;
-                int tileY = target.GetComponent<Basic_Character_Class>().tileY;
+                int tileX = heroes[0].GetComponent<Basic_Character_Class>().tileX;
+                int tileY = heroes[0].GetComponent<Basic_Character_Class>().tileY;
                 pathToTarget = basic.map.generatePathTo(tileX, tileY);
                 if (pathToTarget != null) {
+                    target = heroes[0];
                     minSteps = pathToTarget.Count;
                 }
             }
 
         }
-        return pathToTarget;
+        //UnityEngine.Debug.Log("FINAL TARGET " + target.name);
+        return basic.map.cutDownPath(basic.movementSpeed.moddedValue, false, pathToTarget, true, false);
 
     }
 
@@ -298,6 +333,43 @@ public class Enemy_Character_Class : MonoBehaviour
         return null;
     }
 
+    private Node wallInPath(List<Node> path) {
+        if (path != null) {
+            Node[] nodes = path.ToArray();
+            //UnityEngine.Debug.Log("Nodes in path: " + nodes.Length);
+            foreach (Node node in nodes) {
+                //UnityEngine.Debug.Log("Node " + node.x + "," + node.y + " has tile type " + basic.map.tiles[node.x,node.y]);
+                if (Array.IndexOf(basic.map.wallNums, basic.map.tiles[node.x,node.y]) != -1) {
+                    //UnityEngine.Debug.Log("Identified wall in way: " + node.x + "," + node.y);
+                    return node;
+                }
+            }
+        }
+        return null;
+    }
+
+    private int countWallsInPath(List<Node> path) {
+        int wallCount = 0;
+        if (path != null) {
+            Node[] nodes = path.ToArray();
+            foreach (Node node in nodes) {
+                if (Array.IndexOf(basic.map.wallNums, basic.map.tiles[node.x,node.y]) != -1) {
+                    wallCount++;
+                }
+            }
+        }
+        return wallCount;
+    }
+
+    private GameObject adjToWallInPath() {
+        if (targetWallNode != null) {
+            if (((targetWallNode.x == basic.tileX+1 || targetWallNode.x == basic.tileX-1) && (targetWallNode.y == basic.tileY)) || ((targetWallNode.y == basic.tileY+1 || targetWallNode.y == basic.tileY-1) && (targetWallNode.x == basic.tileX))) {
+                return basic.map.clickableTiles[targetWallNode.x,targetWallNode.y].gameObject;
+            }
+        }
+        return null;
+    }
+
     public void attackTarget() {
         //if hero in range do damage
         if (element == "") {
@@ -309,12 +381,17 @@ public class Enemy_Character_Class : MonoBehaviour
     }
 
     void basicAttack() {
+        UnityEngine.Debug.Log("TARGETING: " + target.name);
         basic.beginTargeting(basic.attackReach);
         if (target != null && basic.withinReach(target)) {
             UnityEngine.Debug.Log("Target within reach");
             basic.attackCharacter(target, basic.attack.moddedValue);
         }
         else {
+            GameObject targetWall = adjToWallInPath();
+            if (targetWall != null) {
+                basic.attackCharacter(targetWall, basic.attack.moddedValue);
+            }
             basic.stopTargeting();
         }
         basic.endTurn();
@@ -459,7 +536,6 @@ public class Enemy_Character_Class : MonoBehaviour
         }
         else {
             if (basic.hasWalked == false) {
-                //UnityEngine.Debug.Log("HERE?????");
                 takePath(findCover(runIfAdjToHero: true));
             }
             else
@@ -467,6 +543,7 @@ public class Enemy_Character_Class : MonoBehaviour
                 basicAttack();
             }
         }
+        if (!basic.turnEnded) basic.endTurn();
 
         //if not go towards cover, then check again (first fire in range, then Lancin)
     }

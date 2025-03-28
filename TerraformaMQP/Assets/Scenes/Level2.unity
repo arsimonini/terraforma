@@ -2622,7 +2622,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 90a2c442461124c65a51988a3a62bb3f, type: 3}
   - {fileID: 8300000, guid: f243e14623a884685a932bdb008078e3, type: 3}
   - {fileID: 8300000, guid: 08a730f1a8e49461d93432135c434e93, type: 3}
-  wallNums: 1100000014000000
+  wallNums: 14000000
   coverNames:
   - tileWall
   - tileWoldWall
