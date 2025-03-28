@@ -144,7 +144,7 @@ MonoBehaviour:
   renderer: {fileID: 4272299001614567363}
   nameplate: {fileID: 0}
   np2: {fileID: 0}
-  atkMenu: {fileID: 6279022746633800168, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+  atkMenu: {fileID: 1763618530244009723}
   spellList: {fileID: 54089115037996723}
   hasWalked: 0
   spellListIsUp: 0
@@ -169,7 +169,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7c5cf9b73201f39408a52b33bb463df6, type: 3}
   - {fileID: 8300000, guid: b4e130e79d3561f4b866c52ee35c8073, type: 3}
   - {fileID: 8300000, guid: 0c9b8264f326ab04985d183d3efd6e5c, type: 3}
+  stunned: 0
   startHP: 0
+  traverseWalls: 0
+  traverseWater: 0
 --- !u!114 &4033375274873756831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,6 +863,11 @@ PrefabInstance:
 --- !u!1 &54089115037996723 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5735925239318512032, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
+  m_PrefabInstance: {fileID: 5717935857517270803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1763618530244009723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6279022746633800168, guid: abf7bcba48e314fb8a86029d253f7b56, type: 3}
   m_PrefabInstance: {fileID: 5717935857517270803}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2933141746668148863 stripped

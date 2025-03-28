@@ -172,6 +172,7 @@ MonoBehaviour:
   stunned: 0
   startHP: 0
   traverseWalls: 1
+  traverseWater: 0
 --- !u!212 &8962400428455014090
 SpriteRenderer:
   m_ObjectHideFlags: 0
