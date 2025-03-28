@@ -33,8 +33,11 @@ public class Enemy_Character_Class : MonoBehaviour
     //Tells the enemy to take their turn ---SUBJECT TO CHANGES AS AI IS ADDED---
     public void takeTurn()
     {
-        //UnityEngine.Debug.Log("Taking turn");
         lowerWaterCooldown();
+        if (this.gameObject.GetComponent<Basic_Character_Class>().stunned == true){
+            return;
+        }
+        //UnityEngine.Debug.Log("Taking turn");
 
         if (element == "") {
             basicTurn();

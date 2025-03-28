@@ -182,14 +182,16 @@ public class TileMap : MonoBehaviour
                     else
                     {
 
-                    
+
                         SFXController.instance.PlayRandomSFXClip(movementSounds, transform, 1f);
-                
+
 
                         selectedUnitScript.tile.OnMouseExit();
                         clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].characterOnTile = null;
                         //Makes the tile passable again when the unit moves off it
-                        clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = true;
+                        if (!clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].tileName.Contains("Water")){
+                            clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].isWalkable = true;
+                        }
 
                         selectedUnitScript.tileX = x;
                         selectedUnitScript.tileY = y;
@@ -207,7 +209,12 @@ public class TileMap : MonoBehaviour
 
                         if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile.Count > 0){
                             for(int i = 0; i < clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile.Count; i++){
-                                clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile[i].tileEffectPrefab.GetComponent<tileEffectActions>().performStepOnEffect(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY]);
+                                if (clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile[i].name == "Burning" && selectedUnitScript.name == "Sova"){
+                                    selectedUnit.GetComponent<TheSovaSpecial>().smother(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY]);
+                                }
+                                else{
+                                    clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY].effectsOnTile[i].tileEffectPrefab.GetComponent<tileEffectActions>().performStepOnEffect(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY]);
+                                }
                                 //UnityEngine.Debug.Log(selectedUnit);
                             }
                         }
@@ -226,7 +233,7 @@ public class TileMap : MonoBehaviour
                     currentPath = null;
                 }
             }
-            //If the current path has no nodes left, then the path has been fully traversed 
+            //If the current path has no nodes left, then the path has been fully traversed
             else
             {
                 //The moving variables are set to false and the currentPath becomes null
@@ -243,7 +250,7 @@ public class TileMap : MonoBehaviour
                 moving = false;
                 currentPath = null;
             }
-        }     
+        }
 
     }
 
@@ -278,7 +285,7 @@ public class TileMap : MonoBehaviour
         tiles[4,3] = 1;
         tiles[5,3] = 1;
         tiles[3,4] = 1;
-        
+
     }
 
     //checks if name of object is a valid tile, returns tile arr number
@@ -361,13 +368,13 @@ public class TileMap : MonoBehaviour
                 //UnityEngine.Debug.Log(clickableTiles[x, y].isWalkable);
             }
         }
-        
+
     }
 
     void GenerateGraph() {
         graph = new Node[mapSizeX, mapSizeY];
 
-        //initialize graph 
+        //initialize graph
         for (int x = 0; x < mapSizeX; x++)
         {
             for (int y = 0; y < mapSizeY; y++)
@@ -428,7 +435,7 @@ public class TileMap : MonoBehaviour
             //UnityEngine.Debug.Log(x + "," + y);
 
             //TEST - replace with actual movement implementation
-            if (selectedUnit != null && clickableTiles[x, y].isWalkable)
+            if (selectedUnit != null && (clickableTiles[x, y].isWalkable || waterCheck(clickableTiles[x, y])))
             {
                 if (selectedUnitScript.targeting == true || selectedUnitScript.hasWalked)
                 {
@@ -451,6 +458,15 @@ public class TileMap : MonoBehaviour
             }
         }
 
+    }
+
+    private bool waterCheck(ClickableTile tile){
+        if (tile.tileName.Contains("Water") && selectedUnitScript.traverseWater == true){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public bool checkForTileEffect(int x, int y, string effectName) {
@@ -579,7 +595,7 @@ public class TileMap : MonoBehaviour
             currentPathTemp.Add(curr);
             curr = prev[curr];
         }
-        
+
         currentPathTemp.Reverse();
 
         //UnityEngine.Debug.Log("Path Count: " + currentPathTemp.Count);
@@ -626,12 +642,12 @@ public class TileMap : MonoBehaviour
         List<Node> l = path;
 
         if ((l == null) || (l.Count <= 0)) {
-            return l; //Nowhere to go 
+            return l; //Nowhere to go
         }
 
         //First calculate l's max range
         float lCutoff = 0;//l.Count - 1;
-        //Loop through each node, adding it's tile's value to 
+        //Loop through each node, adding it's tile's value to
         for (int i = 1; i < l.Count; i++) {
             int nodeX = l[i].x;
             int nodeY = l[i].y;
@@ -650,7 +666,7 @@ public class TileMap : MonoBehaviour
 
             return l;
         }
-        
+
         //If character movement isn't enough, cut down path by one layer and try again. Basically, this is so that the enemy will move in the direction they mean to go even if it's out of range
         if (range < lCutoff) {
 
@@ -672,6 +688,10 @@ public class TileMap : MonoBehaviour
         bool walkable = false;
         if (clickableTiles[x, y] != null) {
             walkable = clickableTiles[x, y].isWalkable;
+        }
+        if (clickableTiles[x, y] != null && clickableTiles[x, y].tileName.Contains("Water") && (selectedUnitScript.name == "Zuli" || selectedUnitScript.name == "Ruba")){
+            UnityEngine.Debug.Log("Here");
+            walkable = true;
         }
         return walkable;
     }
@@ -699,10 +719,19 @@ public class TileMap : MonoBehaviour
         return cost;
     }
 
-    
+
     public float costToEnterTile(int x, int y, bool ignoreCanEnter = false, bool noWalls = false, bool cut = false, bool realCost = false) {
 
         if (noWalls && Array.IndexOf(wallNums, tiles[x,y]) != -1) {
+            return 1;
+        }
+        if (clickableTiles[x, y] == null) {
+            return Mathf.Infinity;
+        }
+        if (clickableTiles[x, y].gameObject.name.Contains("Wall") && selectedUnitScript.traverseWalls){
+            return 1;
+        }
+        if (clickableTiles[x, y].gameObject.name.Contains("Water") && selectedUnitScript.traverseWater){
             return 1;
         }
 
@@ -778,7 +807,7 @@ public class TileMap : MonoBehaviour
     }
     public void visualPathTo(int x, int y) {
         if (!moveButtonPressed) {
-            
+
             return;
         }
 
@@ -852,7 +881,7 @@ public class TileMap : MonoBehaviour
             visualPath.Add(curr);
             curr = prev[curr];
         }
-        
+
         visualPath.Reverse();
 
         selectedUnitScript.path = currentPath;
@@ -862,7 +891,7 @@ public class TileMap : MonoBehaviour
             //UnityEngine.Debug.Log("BluePath Count:" + bluePath.Count);
             cutDownPath(selectedUnitScript.movementSpeed.moddedValue,true,bluePath);
         }
-        
+
     }
 
 
@@ -910,14 +939,14 @@ public class TileMap : MonoBehaviour
         {
             targetAllies = !targetAllies;
             targetEnemies = !targetEnemies;
-        } 
+        }
 
         UnityEngine.Debug.Log(width);
         UnityEngine.Debug.Log(partialWidth);
         //This for loop iterates through the columns that need to be checked for targeting, a reach of 3 means it will check through 3 columns, the width shrinking as it moves to a new column
         for (int i = 1; i < reach + 1; i++)
         {
-            //This for loop iterates up from the bottom 
+            //This for loop iterates up from the bottom
             for (int j = partialWidth; j > ((-1 * partialWidth) - 1); --j)
             {
                 if (checkIndex(selectedUnitScript.tileX + i, selectedUnitScript.tileY + j) && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j] != null)
@@ -931,7 +960,7 @@ public class TileMap : MonoBehaviour
                             //clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
                             targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);
                         }
-                        else{ 
+                        else{
                             if (targetAllies == true && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile != null && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile.gameObject.tag == "PlayerTeam"){
                                 //clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
                                 targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile.gameObject);
@@ -940,7 +969,7 @@ public class TileMap : MonoBehaviour
                             {
                                 //clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
                                 targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile.gameObject);
-                            }       
+                            }
                         }
                         if (hyperSpecificTargeting){
                             if (needSpecificTiles){
@@ -1008,7 +1037,7 @@ public class TileMap : MonoBehaviour
                             //clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
                             targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);
                         }
-                        else{ 
+                        else{
                             if (targetAllies == true && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile != null && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile.gameObject.tag == "PlayerTeam"){
                                 //clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
                                 targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].characterOnTile.gameObject);
@@ -1061,7 +1090,7 @@ public class TileMap : MonoBehaviour
                     }
                     else if (targetWalls && clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject.tag == "Wall" && hits.Length <= 1){
                         clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].highlight();
-                        targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);                    
+                        targetList.Add(clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j].gameObject);
                     }
                     //else {
                     //    behindWall(tile, clickableTiles[selectedUnitScript.tileX + i, selectedUnitScript.tileY + j]);
@@ -1083,7 +1112,7 @@ public class TileMap : MonoBehaviour
                         //clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].highlight();
                         targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].gameObject);
                     }
-                    else{ 
+                    else{
                         if (targetAllies == true && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].characterOnTile != null && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].characterOnTile.gameObject.tag == "PlayerTeam"){
                             //clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].highlight();
                             targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].characterOnTile.gameObject);
@@ -1093,7 +1122,7 @@ public class TileMap : MonoBehaviour
                             //clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].highlight();
                             targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY + i].characterOnTile.gameObject);
                         }
-                        
+
                     }
                     if (hyperSpecificTargeting){
                         if (needSpecificTiles){
@@ -1150,7 +1179,7 @@ public class TileMap : MonoBehaviour
                         //clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].highlight();
                         targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].gameObject);
                     }
-                    else{ 
+                    else{
                         if (targetAllies == true && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].characterOnTile != null && clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].characterOnTile.gameObject.tag == "PlayerTeam"){
                             //clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].highlight();
                             targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].characterOnTile.gameObject);
@@ -1160,7 +1189,7 @@ public class TileMap : MonoBehaviour
                             //clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].highlight();
                             targetList.Add(clickableTiles[selectedUnitScript.tileX, selectedUnitScript.tileY - i].characterOnTile.gameObject);
                         }
-                        
+
                     }
                     if (hyperSpecificTargeting){
                         if (needSpecificTiles){
@@ -1465,7 +1494,7 @@ public class TileMap : MonoBehaviour
     //Sets phase to match that of the gamecontroller
     public void setPhase(int p = 0) {
         //Resets all units having already walked
-        //if (phase != p) {  
+        //if (phase != p) {
         //}
 
         phase = p;
@@ -1551,10 +1580,10 @@ public class TileMap : MonoBehaviour
 
             case "Top":
                 return clickableTiles[originalTile.TileX, originalTile.TileY + 1];
-            
+
             case "Bottom":
                 return clickableTiles[originalTile.TileX, originalTile.TileY - 1];
-            
+
             case "TopLeft":
                 return clickableTiles[originalTile.TileX - 1, originalTile.TileY + 1];
 
@@ -1610,7 +1639,7 @@ public class TileMap : MonoBehaviour
                     }
                 }
                 break;
-            
+
             case "Right":
                 for (int i = 1; i < strength + 1; i++){
                     if (clickableTiles[startX + 1, startY].isWalkable){
@@ -1623,7 +1652,7 @@ public class TileMap : MonoBehaviour
                     }
                 }
                 break;
-            
+
             case "Up":
                 for (int i = 1; i < strength + 1; i++){
                     if (clickableTiles[startX, startY + 1].isWalkable){
@@ -1636,7 +1665,7 @@ public class TileMap : MonoBehaviour
                     }
                 }
                 break;
-            
+
             case "Down":
                 for (int i = 1; i < strength + 1; i++){
                     if (clickableTiles[startX, startY - 1].isWalkable){
@@ -1649,7 +1678,7 @@ public class TileMap : MonoBehaviour
                     }
                 }
                 break;
-            
+
             case "LeftUp":
                 for (int i = 1; i < strength + 1; i++){
                     if (clickableTiles[startX - 1, startY + 1].isWalkable){
@@ -1663,7 +1692,7 @@ public class TileMap : MonoBehaviour
                     }
                 }
                 break;
-            
+
             case "LeftDown":
                 for (int i = 1; i < strength + 1; i++){
                     if (clickableTiles[startX - 1, startY - 1].isWalkable){
@@ -1691,7 +1720,7 @@ public class TileMap : MonoBehaviour
                     }
                 }
                 break;
-            
+
             case "RightDown":
                 for (int i = 1; i < strength + 1; i++){
                     if (clickableTiles[startX + 1, startY - 1].isWalkable){
@@ -1940,11 +1969,9 @@ public class TileMap : MonoBehaviour
     //public void decayAllTiles() {
       //  for (int i = 0; i < clickableTiles.GetLength(0); i++) {
         //    for (int i = 0; i < clickableTiles.GetLength(0); i++) {
-            
-          //  }   
+
+          //  }
         //}
-        
+
     //}
 }
-
-

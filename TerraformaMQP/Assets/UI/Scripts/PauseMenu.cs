@@ -19,6 +19,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private AudioClip[] closePauseMenu;
     [SerializeField] private AudioClip[] flipPauseMenu;
 
+    private float currentScale = 0.0f;
+
     public void Update() {
         if(GameIsPaused == true && Input.GetKeyUp(KeyCode.R)) {
             RestartLevel();
@@ -27,7 +29,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume() {
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = currentScale;
         GameIsPaused = false;
         setDeslection(true);
         SFXController.instance.PlayRandomSFXClip(closePauseMenu, transform, 1f);
@@ -35,6 +37,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause() {
         pauseMenuUI.SetActive(true);
+        currentScale = Time.timeScale;
         Time.timeScale = 0f;
         GameIsPaused = true;
         SFXController.instance.PlayRandomSFXClip(openPauseMenu, transform, 1f);

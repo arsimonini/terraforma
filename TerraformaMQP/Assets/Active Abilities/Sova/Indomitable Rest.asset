@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
-  m_Name: SupportFlames
+  m_Name: Indomitable Rest
   m_EditorClassIdentifier: 
-  manaCost: 4
-  spellName: Support Flames
-  elementType: Fire
-  spellPrefab: {fileID: 1009746080516193270, guid: a264048be27bf88428fac8eca7ef95c7, type: 3}
-  description: Increase the Magic, Attack, and Speed stats of all characters standing
-    on Burning tiles in range by 2
+  manaCost: 0
+  spellName: Indomitable Rest
+  elementType: None
+  spellPrefab: {fileID: 3938666401520617086, guid: 454eed42731714647888d19b95d17679, type: 3}
+  description: Fall asleep for a turn, restoring health for each fire tile smothered
   targeted: 0
-  range: 3
+  range: 0
   targetTiles: 0
   targetAllies: 0
   target: {fileID: 0}
@@ -32,10 +31,9 @@ MonoBehaviour:
   AOEsize: 0
   square: 0
   alternateAOEDisplay: 0
-  hyperSpecificTargeting: 1
+  hyperSpecificTargeting: 0
   needSpecificTiles: 0
   specificTiles: []
-  needSpecificTileEffects: 1
-  specificTileEffects:
-  - Burning
+  needSpecificTileEffects: 0
+  specificTileEffects: []
   targetBreakables: 0
