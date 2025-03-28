@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu]
+
 public class TeamInfo : ScriptableObject
 {
-
-
    public string hero1;
    public string summon1_1;
    public string summon1_2;
@@ -15,9 +15,7 @@ public class TeamInfo : ScriptableObject
    public string spell1_4;
    public string spell1_5;
    public string spell1_6;
-   
-   
-   
+
    public string hero2;
    public string summon2_1;
    public string summon2_2;
@@ -28,7 +26,6 @@ public class TeamInfo : ScriptableObject
    public string spell2_5;
    public string spell2_6;
    
-
    public string hero3;
    public string summon3_1;
    public string summon3_2;
