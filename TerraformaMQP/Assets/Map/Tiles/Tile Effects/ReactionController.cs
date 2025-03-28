@@ -36,7 +36,7 @@ public class ReactionController : MonoBehaviour
                         break;
 
                     case "Foggy":
-                        //checkTile = checkFoggyReaction(tile, damageType, source, tile.effectsOnTile[i], playerTeam);
+                        checkTile = checkFoggyReaction(tile, damageType, source, tile.effectsOnTile[i], playerTeam);
                         break;
                     
                     case "Electrified":
@@ -331,6 +331,32 @@ public class ReactionController : MonoBehaviour
         return true;
     }
 
+private bool checkFoggyReaction(ClickableTile tile, string damageType, string source, TileEffect effectOnTile, bool playerTeam){
+        TileEffect newEffect;
+        switch (damageType){
+            case "Fire":
+                return true;
+
+            case "Water":
+                return true;
+
+            case "Earth":
+                return true;
+
+            case "Air":
+                return true;
+
+            case "Lightning":
+                return true;
+
+            case "Ice":
+                return true;
+
+            case "Plant":
+                return true;
+        }
+        return true;
+    }
 
 
 //------------------------------------------------------------------TILE REACTIONS BELOW-----------------------------------------------------------------------
@@ -386,6 +412,11 @@ public class ReactionController : MonoBehaviour
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 1, fromReact: true, blockRemoval: true);
                 joltCharacter(tile);
                 break;
+
+            case "Foggy":
+                newEffect = Instantiate(tileEffects[5]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                break;
         }
     }
 
@@ -440,7 +471,11 @@ public class ReactionController : MonoBehaviour
 
             case "Plant":
                 break;        
-                
+            
+            case "Foggy":
+                newEffect = Instantiate(tileEffects[5]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                break;
         }
     }
 
@@ -511,6 +546,11 @@ public class ReactionController : MonoBehaviour
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 2, fromReact: true, blockRemoval: true);
                 joltCharacter(tile);
                 break;
+
+            case "Foggy":
+                newEffect = Instantiate(tileEffects[5]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                break;
         }
     }
 
@@ -560,6 +600,11 @@ public class ReactionController : MonoBehaviour
                 break;
 
             case "Plant":
+                break;
+
+            case "Foggy":
+                newEffect = Instantiate(tileEffects[5]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
         }
     }
@@ -611,6 +656,11 @@ public class ReactionController : MonoBehaviour
 
             case "Plant":
                 break;
+
+            case "Foggy":
+                newEffect = Instantiate(tileEffects[5]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                break;
         }
     }
 
@@ -649,6 +699,11 @@ public class ReactionController : MonoBehaviour
                 break;
 
             case "Plant":
+                break;
+
+            case "Foggy":
+                newEffect = Instantiate(tileEffects[5]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
         }
     }
@@ -690,6 +745,11 @@ public class ReactionController : MonoBehaviour
                 break;
 
             case "Plant":
+                break;
+
+            case "Foggy":
+                newEffect = Instantiate(tileEffects[5]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
         }
     }
@@ -754,6 +814,10 @@ public class ReactionController : MonoBehaviour
             joltCharacter(tile);
             break;
         
+            case "Foggy":
+                newEffect = Instantiate(tileEffects[5]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                break;
         }
     }
 
@@ -816,6 +880,11 @@ public class ReactionController : MonoBehaviour
             newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 2, fromReact: true, blockRemoval: true);
             joltCharacter(tile);
             break;
+
+        case "Foggy":
+                newEffect = Instantiate(tileEffects[5]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                break;
     }
 }
 

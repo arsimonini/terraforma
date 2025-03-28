@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+
 public class GameControllerScript : MonoBehaviour
 {
 
@@ -53,8 +54,18 @@ public class GameControllerScript : MonoBehaviour
     public GameObject heroPhase;
     public GameObject enemyPhase;
 
+    public TeamInfo ti;
+    public string[] allPossibleRoles;
+    public GameObject[] allPossibleCharacters;
+    public List<string> charactersPutOnTeam;
+    public GameObject[] allSpawnPoints;
+    public List<Basic_Spell_Class> allPossibleSpells;
+
 
     void Start(){
+
+        SetUpFight();
+
         mask = LayerMask.GetMask("Default") | LayerMask.GetMask("BlockVisibility") | LayerMask.GetMask("UI");
         for (int i = 0; i < playerTeamList.Count; i++){
             if (playerTeamList[i].GetComponent<Hero_Character_Class>()){
@@ -622,6 +633,257 @@ public class GameControllerScript : MonoBehaviour
         for (int i = 0; i < playerTeamList.Count; i++){
             if (playerTeamList[i].GetComponent<Hero_Character_Class>()){
                 playerTeamList[i].GetComponent<Hero_Character_Class>().regenMana(2);
+            }
+        }
+    }
+
+    public void SetUpFight() {
+        
+        //Adds the Characters into the Player Team based on TeamInfo
+        for(int i = 0; i < allPossibleRoles.Length; i++) {
+            switch (allPossibleRoles[i]) {
+            case "Hero1":
+            //Sees if the Character is a Possible Character
+            for(int j = 0; j < allPossibleCharacters.Length; j++) {
+                if(ti.hero1 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                    //Adds them to the Player List and Team (for safety from deletion)
+                    playerTeamList.Add(allPossibleCharacters[j]);
+                    charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
+
+                    //Sets their position
+                    for(int k = 0; k < allSpawnPoints.Length; k++){
+                        if(allSpawnPoints[k].GetComponent<SpawnPoint>().key == "Hero1") {
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileX = allSpawnPoints[k].GetComponent<SpawnPoint>().tileX;
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileY = allSpawnPoints[k].GetComponent<SpawnPoint>().tileY;
+                            Vector3 newPosition = new Vector3(allSpawnPoints[k].GetComponent<SpawnPoint>().spriteX, 1.0f, allSpawnPoints[k].GetComponent<SpawnPoint>().spriteZ);
+                            allPossibleCharacters[j].transform.position = newPosition;
+                        }
+                    }
+
+                    //Sets their Spells
+                    allPossibleCharacters[j].GetComponent<SpellList>().spellList = new List<Basic_Spell_Class>(new Basic_Spell_Class[6]);
+
+                    for(int k = 0; k < allPossibleSpells.Count; k++){
+                        UnityEngine.Debug.Log("Made it into Case Hero 1 For Loop");
+                        UnityEngine.Debug.Log(ti.spell1_1);
+                        UnityEngine.Debug.Log(allPossibleSpells[k].spellName);
+                        if(ti.spell1_1 == allPossibleSpells[k].spellName) {
+                            UnityEngine.Debug.Log("Made it into Case Hero 1 Spell Hero 1");
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[0] = allPossibleSpells[k];
+                            UnityEngine.Debug.Log(ti.spell1_1);
+                            UnityEngine.Debug.Log(allPossibleCharacters[j].GetComponent<SpellList>().spellList[0]);
+                        }
+                        
+                        if(ti.spell1_2 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[1] = allPossibleSpells[k];
+                        
+                        }
+                        
+                        if(ti.spell1_3 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[2] = allPossibleSpells[k];
+                            
+                        }
+                        
+                        if(ti.spell1_4 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[3] = allPossibleSpells[k];
+                            
+                        }
+                        
+                        if(ti.spell1_5 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[4] = allPossibleSpells[k];
+                            
+                        }
+                        
+                        if(ti.spell1_6 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[5] = allPossibleSpells[k];
+                            
+                        }
+                    }
+                    allPossibleCharacters[j].GetComponent<SpellList>().spellList = new List<Basic_Spell_Class>(new Basic_Spell_Class[6]);
+
+                    
+                }
+            }
+        
+            break;
+
+            case "Summon1_1":
+            for(int j = 0; j < allPossibleCharacters.Length; j++) {
+                if(ti.summon1_1 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                    playerTeamList.Add(allPossibleCharacters[j]);
+                    charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
+
+                    //Sets there position
+                    for(int k = 0; k < allSpawnPoints.Length; k++){
+                        if(allSpawnPoints[k].GetComponent<SpawnPoint>().key == "Summon1_1") {
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileX = allSpawnPoints[k].GetComponent<SpawnPoint>().tileX;
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileY = allSpawnPoints[k].GetComponent<SpawnPoint>().tileY;
+                            Vector3 newPosition = new Vector3(allSpawnPoints[k].GetComponent<SpawnPoint>().spriteX, 1.0f, allSpawnPoints[k].GetComponent<SpawnPoint>().spriteZ);
+                            allPossibleCharacters[j].transform.position = newPosition;
+                        }
+                    }
+                }
+            }
+            break;
+
+            case "Summon1_2":
+            for(int j = 0; j < allPossibleCharacters.Length; j++) {
+                if(ti.summon1_2 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                    playerTeamList.Add(allPossibleCharacters[j]);
+                    charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
+
+                    //Sets there position
+                    for(int k = 0; k < allSpawnPoints.Length; k++){
+                        if(allSpawnPoints[k].GetComponent<SpawnPoint>().key == "Summon1_2") {
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileX = allSpawnPoints[k].GetComponent<SpawnPoint>().tileX;
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileY = allSpawnPoints[k].GetComponent<SpawnPoint>().tileY;
+                            Vector3 newPosition = new Vector3(allSpawnPoints[k].GetComponent<SpawnPoint>().spriteX, 1.0f, allSpawnPoints[k].GetComponent<SpawnPoint>().spriteZ);
+                            allPossibleCharacters[j].transform.position = newPosition;
+                        }
+                    }
+                }
+            }
+            break;
+
+            case "Hero2":
+            
+            for(int j = 0; j < allPossibleCharacters.Length; j++) {
+                
+                if(ti.hero2 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                    playerTeamList.Add(allPossibleCharacters[j]);
+                    charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
+
+                    //Sets there position
+                    for(int k = 0; k < allSpawnPoints.Length; k++){
+                        if(allSpawnPoints[k].GetComponent<SpawnPoint>().key == "Hero2") {
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileX = allSpawnPoints[k].GetComponent<SpawnPoint>().tileX;
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileY = allSpawnPoints[k].GetComponent<SpawnPoint>().tileY;
+                            Vector3 newPosition = new Vector3(allSpawnPoints[k].GetComponent<SpawnPoint>().spriteX, 1.0f, allSpawnPoints[k].GetComponent<SpawnPoint>().spriteZ);
+                            allPossibleCharacters[j].transform.position = newPosition;
+                        }
+                    }
+                }
+            }
+            break;
+
+            case "Summon2_1":
+            for(int j = 0; j < allPossibleCharacters.Length; j++) {
+                if(ti.summon2_1 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                    playerTeamList.Add(allPossibleCharacters[j]);
+                    charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
+
+                    //Sets there position
+                    for(int k = 0; k < allSpawnPoints.Length; k++){
+                        if(allSpawnPoints[k].GetComponent<SpawnPoint>().key == "Summon2_1") {
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileX = allSpawnPoints[k].GetComponent<SpawnPoint>().tileX;
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileY = allSpawnPoints[k].GetComponent<SpawnPoint>().tileY;
+                            Vector3 newPosition = new Vector3(allSpawnPoints[k].GetComponent<SpawnPoint>().spriteX, 1.0f, allSpawnPoints[k].GetComponent<SpawnPoint>().spriteZ);
+                            allPossibleCharacters[j].transform.position = newPosition;
+                        }
+                    }
+                }
+            }
+            break;
+
+            case "Summon2_2":
+            for(int j = 0; j < allPossibleCharacters.Length; j++) {
+                if(ti.summon2_2 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                    playerTeamList.Add(allPossibleCharacters[j]);
+                    charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
+
+                    //Sets there position
+                    for(int k = 0; k < allSpawnPoints.Length; k++){
+                        if(allSpawnPoints[k].GetComponent<SpawnPoint>().key == "Summon2_2") {
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileX = allSpawnPoints[k].GetComponent<SpawnPoint>().tileX;
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileY = allSpawnPoints[k].GetComponent<SpawnPoint>().tileY;
+                            Vector3 newPosition = new Vector3(allSpawnPoints[k].GetComponent<SpawnPoint>().spriteX, 1.0f, allSpawnPoints[k].GetComponent<SpawnPoint>().spriteZ);
+                            allPossibleCharacters[j].transform.position = newPosition;
+                        }
+                    }
+                }
+            }
+            break;
+
+            case "Hero3":
+            for(int j = 0; j < allPossibleCharacters.Length; j++) {
+                if(ti.hero3 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                    playerTeamList.Add(allPossibleCharacters[j]);
+                    charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
+
+                    //Sets there position
+                    for(int k = 0; k < allSpawnPoints.Length; k++){
+                        if(allSpawnPoints[k].GetComponent<SpawnPoint>().key == "Hero3") {
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileX = allSpawnPoints[k].GetComponent<SpawnPoint>().tileX;
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileY = allSpawnPoints[k].GetComponent<SpawnPoint>().tileY;
+                            Vector3 newPosition = new Vector3(allSpawnPoints[k].GetComponent<SpawnPoint>().spriteX, 1.0f, allSpawnPoints[k].GetComponent<SpawnPoint>().spriteZ);
+                            allPossibleCharacters[j].transform.position = newPosition;
+                        }
+                    }
+                }
+            }
+            break;
+
+            case "Summon3_1":
+            for(int j = 0; j < allPossibleCharacters.Length; j++) {
+                if(ti.summon3_1 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                    playerTeamList.Add(allPossibleCharacters[j]);
+                    charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
+                    
+                    //Sets there position
+                    for(int k = 0; k < allSpawnPoints.Length; k++){
+                        if(allSpawnPoints[k].GetComponent<SpawnPoint>().key == "Summon3_1") {
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileX = allSpawnPoints[k].GetComponent<SpawnPoint>().tileX;
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileY = allSpawnPoints[k].GetComponent<SpawnPoint>().tileY;
+                            Vector3 newPosition = new Vector3(allSpawnPoints[k].GetComponent<SpawnPoint>().spriteX, 1.0f, allSpawnPoints[k].GetComponent<SpawnPoint>().spriteZ);
+                            allPossibleCharacters[j].transform.position = newPosition;
+                        }
+                    }
+                }
+            }
+            break;
+
+            case "Summon3_2":
+            for(int j = 0; j < allPossibleCharacters.Length; j++) {
+                if(ti.summon3_2 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                    playerTeamList.Add(allPossibleCharacters[j]);
+                    charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
+
+                    //Sets there position
+                    for(int k = 0; k < allSpawnPoints.Length; k++){
+                        if(allSpawnPoints[k].GetComponent<SpawnPoint>().key == "Summon3_2") {
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileX = allSpawnPoints[k].GetComponent<SpawnPoint>().tileX;
+                            allPossibleCharacters[j].GetComponent<Basic_Character_Class>().tileY = allSpawnPoints[k].GetComponent<SpawnPoint>().tileY;
+                            Vector3 newPosition = new Vector3(allSpawnPoints[k].GetComponent<SpawnPoint>().spriteX, 1.0f, allSpawnPoints[k].GetComponent<SpawnPoint>().spriteZ);
+                            allPossibleCharacters[j].transform.position = newPosition;
+                        }
+                    }
+                }
+            }
+            break;
+            }
+        }
+
+        //Destroy's all Other Characters
+        for(int i = 0; i < allPossibleCharacters.Length; i++) {
+            bool isOnTeam = false;
+
+            for(int j = 0; j < charactersPutOnTeam.Count; j++) {
+                if(allPossibleCharacters[i].GetComponent<Basic_Character_Class>().name == charactersPutOnTeam[j]) {
+                    //Is Found
+                    isOnTeam = true;
+                    break;
+                }
+            }
+
+            if(!isOnTeam)
+            {
+                for(int j = 0; j < map.heroes.Count; j++) {
+                    if(allPossibleCharacters[i].GetComponent<Basic_Character_Class>().name == map.heroes[j].GetComponent<Basic_Character_Class>().name) {
+                        map.heroes.Remove(map.heroes[j]);
+                        Destroy(allPossibleCharacters[i]);
+                    }
+
+                }
             }
         }
     }
