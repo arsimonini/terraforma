@@ -693,7 +693,8 @@ public class GameControllerScript : MonoBehaviour
                             
                         }
                     }
-                    allPossibleCharacters[j].GetComponent<Hero_Character_Class>().Start();
+                    allPossibleCharacters[j].GetComponent<SpellList>().spellList = new List<Basic_Spell_Class>(new Basic_Spell_Class[6]);
+
                     
                 }
             }
