@@ -17,7 +17,7 @@ public class Fireball_Spell : MonoBehaviour, Cast_Spell
 
     public GameObject magicAnimation;
 
-    public int damageScale = 2;
+    public int damageScale = 1;
 
     void Start(){
         hittableTilesMask = LayerMask.GetMask("Default");
@@ -65,7 +65,7 @@ public class Fireball_Spell : MonoBehaviour, Cast_Spell
                     if (hitCollider.gameObject.name.StartsWith("tile")){
                         if (hitCollider.gameObject.tag != "Wall"){
                             if (hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile != null){
-                                hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(damageScale*caster.GetComponent<Hero_Character_Class>().magic.moddedValue, "Fire");
+                                hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(damageScale*caster.GetComponent<Hero_Character_Class>().magic.moddedValue/2, "Fire");
                             }
                             hitCollider.gameObject.GetComponent<ClickableTile>().map.gameObject.GetComponent<ReactionController>().checkReaction(hitCollider.gameObject.GetComponent<ClickableTile>(), caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Fireball", true);
                             //GameObject animation = Instantiate(magicAnimation);
@@ -82,7 +82,7 @@ public class Fireball_Spell : MonoBehaviour, Cast_Spell
                     if (hitCollider.gameObject.name.StartsWith("tile")){
                         if (hitCollider.gameObject.tag != "Wall"){
                             if (hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile != null){
-                                hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(damageScale*caster.GetComponent<Hero_Character_Class>().magic.moddedValue, "Fire");
+                                hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(damageScale*caster.GetComponent<Hero_Character_Class>().magic.moddedValue/2, "Fire");
                             }
                             hitCollider.gameObject.GetComponent<ClickableTile>().map.gameObject.GetComponent<ReactionController>().checkReaction(hitCollider.gameObject.GetComponent<ClickableTile>(), caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Fireball", true);
                             //GameObject animation = Instantiate(magicAnimation);

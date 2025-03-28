@@ -68,7 +68,12 @@ public class Lightning_Spell : MonoBehaviour, Cast_Spell
                 ClickableTile newCt = res.GetComponent<ClickableTile>();
 
                 if (newCt != null) {
-                    placeTileEffect(newCt,"Lightning","Lightning Lance");
+                    if (i == hits.Length -1) {
+                        placeTileEffect(newCt,"LightningStart","Lightning Lance");
+                    } else {
+                        placeTileEffect(newCt,"Lightning","Lightning Lance");
+                    }
+                    
                 }
             }
 

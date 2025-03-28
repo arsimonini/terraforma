@@ -30259,6 +30259,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 0aaad4f6f970942ed96ba88cc3a98e2c, type: 2}
+    - target: {fileID: -1378049268512954723, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
+      propertyPath: spellList.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 401ae7b358ec58241b31672043153ca6, type: 2}
     - target: {fileID: 218253888562126457, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}
       propertyPath: m_Mesh
       value: 
