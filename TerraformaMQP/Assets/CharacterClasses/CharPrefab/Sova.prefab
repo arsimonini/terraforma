@@ -78,7 +78,7 @@ MonoBehaviour:
   effects: []
   tileEffect: {fileID: 0}
   name: Sova
-  char_img: {fileID: 21300000, guid: 5dba3f9b5966c49a6a6f18a9798cd8fb, type: 3}
+  char_img: {fileID: 21300000, guid: 6a5f57a91f0d44f61bec44ef9a5e6ad8, type: 3}
   health: 34
   maxHealth:
     value: 34
@@ -173,6 +173,7 @@ MonoBehaviour:
   startHP: 0
   traverseWalls: 0
   traverseWater: 0
+  gc: {fileID: 0}
 --- !u!212 &5836961307156652308
 SpriteRenderer:
   m_ObjectHideFlags: 0

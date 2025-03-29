@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RandomRain
   m_EditorClassIdentifier: 
   manaCost: 3
-  spellName: Random Rain
+  spellName: Showers
   elementType: Water
   spellPrefab: {fileID: 3896469610843690738, guid: 54e56856f81854953a964748f0b4c591, type: 3}
   description: Soak 8 random tiles in 5x5 area
@@ -30,8 +30,10 @@ MonoBehaviour:
   targetWalls: 1
   AOEsize: 2
   square: 1
+  alternateAOEDisplay: 0
   hyperSpecificTargeting: 0
   needSpecificTiles: 0
   specificTiles: []
   needSpecificTileEffects: 0
   specificTileEffects: []
+  targetBreakables: 0
