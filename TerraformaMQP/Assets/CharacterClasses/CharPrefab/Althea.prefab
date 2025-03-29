@@ -173,6 +173,7 @@ MonoBehaviour:
   startHP: 0
   traverseWalls: 0
   traverseWater: 0
+  gc: {fileID: 0}
 --- !u!114 &4033375274873756831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +267,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7da84ed5d12d14e999dee9a3c1b7fa89, type: 3}
+  m_Sprite: {fileID: 800249880, guid: 2561b09a6a06d4bdcb6836de1b0f52c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

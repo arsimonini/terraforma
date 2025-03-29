@@ -208,7 +208,7 @@ MonoBehaviour:
   renderer: {fileID: 0}
   nameplate: {fileID: 0}
   np2: {fileID: 0}
-  atkMenu: {fileID: 0}
+  atkMenu: {fileID: 928231126409835934}
   spellList: {fileID: 0}
   hasWalked: 0
   spellListIsUp: 0
@@ -237,6 +237,7 @@ MonoBehaviour:
   startHP: 0
   traverseWalls: 0
   traverseWater: 0
+  gc: {fileID: 0}
 --- !u!1 &928231126409835934 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1763618530244009723, guid: 8a5061e6216d58347ad74c5cd0c679b7, type: 3}

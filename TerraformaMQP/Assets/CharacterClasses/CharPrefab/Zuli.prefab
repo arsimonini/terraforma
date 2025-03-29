@@ -77,7 +77,7 @@ MonoBehaviour:
   effects: []
   tileEffect: {fileID: 0}
   name: Zuli
-  char_img: {fileID: 21300000, guid: 7b1d81810f9a644d8972c9972fae3592, type: 3}
+  char_img: {fileID: 21300000, guid: 50f842b79ac854282a612533088531bc, type: 3}
   health: 21
   maxHealth:
     value: 21
@@ -176,6 +176,7 @@ MonoBehaviour:
   startHP: 0
   traverseWalls: 0
   traverseWater: 1
+  gc: {fileID: 0}
 --- !u!212 &4118142601963933562
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -217,7 +218,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7b1d81810f9a644d8972c9972fae3592, type: 3}
+  m_Sprite: {fileID: 473694736, guid: eb8c2d10132ed4110b1d1b69c0846d84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
