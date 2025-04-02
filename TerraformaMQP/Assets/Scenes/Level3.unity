@@ -937,10 +937,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Hero1
-  tileX: 3
-  tileY: 3
-  spriteX: 1
-  spriteZ: -3
+  tileX: 11
+  tileY: 12
+  spriteX: 10
+  spriteZ: 7
 --- !u!1001 &46245613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3088,7 +3088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_Name
-      value: BasicEnemy (17)
+      value: BasicEnemy12
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: gc
@@ -4449,7 +4449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_Name
-      value: BasicEnemy (15)
+      value: BasicEnemy6
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: gc
@@ -6358,7 +6358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_Name
-      value: BasicEnemy (2)
+      value: BasicEnemy10
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: gc
@@ -6467,7 +6467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_Name
-      value: BasicEnemy (8)
+      value: BasicEnemy5
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: gc
@@ -7213,7 +7213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_Name
-      value: BasicEnemy (4)
+      value: BasicEnemy7
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: gc
@@ -10817,7 +10817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_Name
-      value: BasicEnemy (12)
+      value: BasicEnemy11
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: gc
@@ -11648,7 +11648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_Name
-      value: BasicEnemy
+      value: BasicEnemy8
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: gc
@@ -12490,7 +12490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_Name
-      value: BasicEnemy (1)
+      value: BasicEnemy1
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: gc
@@ -14009,7 +14009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_Name
-      value: BasicEnemy (10)
+      value: BasicEnemy9
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: gc
@@ -16570,7 +16570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_Name
-      value: BasicEnemy (13)
+      value: BasicEnemy3
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: gc
@@ -17884,10 +17884,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Summon1_1
-  tileX: 2
-  tileY: 2
-  spriteX: 0
-  spriteZ: -4
+  tileX: 10
+  tileY: 11
+  spriteX: 9
+  spriteZ: 6
 --- !u!1001 &1317169372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19307,10 +19307,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Summon2_1
-  tileX: 3
-  tileY: 1
-  spriteX: 1
-  spriteZ: -5
+  tileX: 12
+  tileY: 11
+  spriteX: 11
+  spriteZ: 6
 --- !u!1001 &1396961549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21821,10 +21821,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Hero2
-  tileX: 4
-  tileY: 2
-  spriteX: 2
-  spriteZ: -4
+  tileX: 11
+  tileY: 10
+  spriteX: 10
+  spriteZ: 5
 --- !u!1001 &1549871864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22329,7 +22329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_Name
-      value: BasicEnemy (3)
+      value: BasicEnemy2
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: gc
@@ -24314,20 +24314,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusEffectController: {fileID: 81957703}
   enemyTeamList:
-  - {fileID: 170434066}
   - {fileID: 1710387309}
-  - {fileID: 603306876}
   - {fileID: 1617382041}
-  - {fileID: 889842020}
+  - {fileID: 1288232569}
   - {fileID: 673705285}
   - {fileID: 1282883846}
-  - {fileID: 397261567}
-  - {fileID: 946354153}
-  - {fileID: 46535479}
-  - {fileID: 1288232569}
   - {fileID: 346426566}
-  - {fileID: 0}
+  - {fileID: 889842020}
+  - {fileID: 170434066}
+  - {fileID: 397261567}
+  - {fileID: 603306876}
+  - {fileID: 46535479}
   - {fileID: 136728545}
+  - {fileID: 946354153}
   playerTeamList:
   - {fileID: 1567953308}
   camera: {fileID: 1434748658}
@@ -26736,7 +26735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009967892437524158, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: m_Name
-      value: BasicEnemy (7)
+      value: BasicEnemy4
       objectReference: {fileID: 0}
     - target: {fileID: 7448667868949999440, guid: 4be7478ea2c6a214f9b7473d2b43f947, type: 3}
       propertyPath: gc
@@ -30748,17 +30747,17 @@ SceneRoots:
   - {fileID: 992900205}
   - {fileID: 1201233130}
   - {fileID: 1441868046}
-  - {fileID: 858493569}
   - {fileID: 908326017}
-  - {fileID: 502249684}
   - {fileID: 1567579621}
-  - {fileID: 547661097}
+  - {fileID: 1195910303}
   - {fileID: 1877101186}
   - {fileID: 506925591}
-  - {fileID: 993212484}
-  - {fileID: 824657934}
-  - {fileID: 1195910303}
   - {fileID: 286440524}
+  - {fileID: 547661097}
+  - {fileID: 858493569}
+  - {fileID: 993212484}
+  - {fileID: 502249684}
+  - {fileID: 824657934}
   - {fileID: 180416954}
   - {fileID: 1029283756}
   - {fileID: 640843226}
