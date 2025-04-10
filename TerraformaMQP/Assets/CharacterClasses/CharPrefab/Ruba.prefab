@@ -177,6 +177,7 @@ MonoBehaviour:
   startHP: 0
   traverseWalls: 0
   traverseWater: 1
+  gc: {fileID: 0}
 --- !u!212 &3564923898210920243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -329,8 +330,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5168971530063550120, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
       propertyPath: m_text
-      value: Blazing Fury -  A powerful fire based melee attack that leaves fire
-        in it's wake. 3 Turns of Cooldown
+      value: 'Blowback - Blast an enemy from range, dealing attack damage and knocking
+        them and yourself back 2 tiles - Cooldown: 3'
       objectReference: {fileID: 0}
     - target: {fileID: 5168971530063550120, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
       propertyPath: m_fontSize
