@@ -665,44 +665,26 @@ public class GameControllerScript : MonoBehaviour
                     allPossibleCharacters[j].GetComponent<SpellList>().spellList = new List<Basic_Spell_Class>(new Basic_Spell_Class[6]);
 
                     for(int k = 0; k < allPossibleSpells.Count; k++){
-                        UnityEngine.Debug.Log("Made it into Case Hero 1 For Loop");
-                        UnityEngine.Debug.Log(ti.spell1_1);
-                        UnityEngine.Debug.Log(allPossibleSpells[k].spellName);
                         if(ti.spell1_1 == allPossibleSpells[k].spellName) {
-                            UnityEngine.Debug.Log("Made it into Case Hero 1 Spell Hero 1");
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[0] = allPossibleSpells[k];
-                            UnityEngine.Debug.Log(ti.spell1_1);
-                            UnityEngine.Debug.Log(allPossibleCharacters[j].GetComponent<SpellList>().spellList[0]);
                         }
-                        
                         if(ti.spell1_2 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[1] = allPossibleSpells[k];
-                        
                         }
-                        
                         if(ti.spell1_3 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[2] = allPossibleSpells[k];
-                            
                         }
-                        
                         if(ti.spell1_4 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[3] = allPossibleSpells[k];
-                            
                         }
-                        
                         if(ti.spell1_5 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[4] = allPossibleSpells[k];
-                            
                         }
-                        
                         if(ti.spell1_6 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[5] = allPossibleSpells[k];
-                            
                         }
                     }
-                    allPossibleCharacters[j].GetComponent<Hero_Character_Class>().Start();
-
-                    
+                    allPossibleCharacters[j].GetComponent<Hero_Character_Class>().Start(); 
                 }
             }
         
@@ -763,6 +745,41 @@ public class GameControllerScript : MonoBehaviour
                             allPossibleCharacters[j].transform.position = newPosition;
                         }
                     }
+
+                    //Sets their Spells
+                    allPossibleCharacters[j].GetComponent<SpellList>().spellList = new List<Basic_Spell_Class>(new Basic_Spell_Class[6]);
+
+                    for(int k = 0; k < allPossibleSpells.Count; k++){
+                        if(ti.spell2_1 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[0] = allPossibleSpells[k];
+                        }
+                        
+                        if(ti.spell2_2 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[1] = allPossibleSpells[k];
+                        
+                        }
+                        
+                        if(ti.spell2_3 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[2] = allPossibleSpells[k];
+                            
+                        }
+                        
+                        if(ti.spell2_4 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[3] = allPossibleSpells[k];
+                            
+                        }
+                        
+                        if(ti.spell2_5 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[4] = allPossibleSpells[k];
+                            
+                        }
+                        
+                        if(ti.spell2_6 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[5] = allPossibleSpells[k];
+                            
+                        }
+                    }
+                    allPossibleCharacters[j].GetComponent<Hero_Character_Class>().Start(); 
                 }
             }
             break;
@@ -820,6 +837,41 @@ public class GameControllerScript : MonoBehaviour
                             allPossibleCharacters[j].transform.position = newPosition;
                         }
                     }
+
+                    //Sets their Spells
+                    allPossibleCharacters[j].GetComponent<SpellList>().spellList = new List<Basic_Spell_Class>(new Basic_Spell_Class[6]);
+
+                    for(int k = 0; k < allPossibleSpells.Count; k++){
+                        if(ti.spell3_1 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[0] = allPossibleSpells[k];
+                        }
+                        
+                        if(ti.spell3_2 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[1] = allPossibleSpells[k];
+                        
+                        }
+                        
+                        if(ti.spell3_3 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[2] = allPossibleSpells[k];
+                            
+                        }
+                        
+                        if(ti.spell3_4 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[3] = allPossibleSpells[k];
+                            
+                        }
+                        
+                        if(ti.spell3_5 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[4] = allPossibleSpells[k];
+                            
+                        }
+                        
+                        if(ti.spell3_6 == allPossibleSpells[k].spellName) {
+                            allPossibleCharacters[j].GetComponent<SpellList>().spellList[5] = allPossibleSpells[k];
+                            
+                        }
+                    }
+                    allPossibleCharacters[j].GetComponent<Hero_Character_Class>().Start(); 
                 }
             }
             break;

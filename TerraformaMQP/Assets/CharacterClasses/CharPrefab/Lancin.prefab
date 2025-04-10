@@ -173,6 +173,7 @@ MonoBehaviour:
   startHP: 0
   traverseWalls: 0
   traverseWater: 0
+  gc: {fileID: 0}
 --- !u!114 &7585430571080152534
 MonoBehaviour:
   m_ObjectHideFlags: 0

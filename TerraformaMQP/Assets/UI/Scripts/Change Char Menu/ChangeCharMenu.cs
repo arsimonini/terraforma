@@ -22,6 +22,11 @@ public class ChangeCharMenu : MonoBehaviour
     public GameObject summonQCAssetA;
     public GameObject SMQC = null;
 
+    public GameObject heroQCAssetL;
+    public GameObject heroQCAssetW;
+    public GameObject heroQCAssetA;
+    public GameObject HQC = null;
+
     public TeamInfo ti;
 
     public string currChanging;
@@ -37,6 +42,10 @@ public class ChangeCharMenu : MonoBehaviour
     public GameObject[] summonButtons;
     public Sprite[] summonSprites;
     public string[] summonSpriteKeys;
+
+    public GameObject[] heroButtons;
+    public Sprite[] heroSprites;
+    public string[] heroSpriteKeys;
     
 
 
@@ -59,7 +68,12 @@ public class ChangeCharMenu : MonoBehaviour
                 Destroy(SMQC);
                 currChanging = "";
             }
+            if(HQC != null) {
+                Destroy(HQC);
+                
+            }
         }
+        
         else if(Input.GetKeyUp(KeyCode.Escape) && menuMode == 1){
             if(SPQC != null) {
                 Destroy(SPQC);
@@ -67,6 +81,10 @@ public class ChangeCharMenu : MonoBehaviour
             }
             if(SMQC != null) {
                 Destroy(SMQC);
+                currChanging = "";
+            }
+            if(HQC != null) {
+                Destroy(HQC);
                 currChanging = "";
             }
             if(menuMode == 1) {
@@ -112,6 +130,9 @@ public class ChangeCharMenu : MonoBehaviour
         if(SPQC != null) {
             Destroy(SPQC);
         }
+        if(HQC != null) {
+            Destroy(HQC);
+        }
 
         if(hero == "Lancin Bermane") {
             SMQC = Instantiate(summonQCAssetL, new Vector3(currPos.position.x, currPos.position.y - 25, currPos.position.z), Quaternion.identity, parent);
@@ -144,6 +165,9 @@ public class ChangeCharMenu : MonoBehaviour
         if(SMQC != null) {
             Destroy(SMQC);
         }
+        if(HQC != null) {
+            Destroy(HQC);
+        }
 
         if(hero == "Lancin Bermane") {
             SPQC = Instantiate(spellQCAssetL, new Vector3(currPos.position.x, currPos.position.y - 25, currPos.position.z), Quaternion.identity, parent);
@@ -158,6 +182,53 @@ public class ChangeCharMenu : MonoBehaviour
         
         //fill in the blanks for the menu        
     }
+    
+    public void heroQuickChange(int slot) {
+        string hero = "";
+
+        //Get character in hero slot
+        if(slot == 1) {
+            hero = ti.hero1;
+            currChanging = "Hero1";
+        } else if (slot == 2) {
+            hero = ti.hero2;
+            currChanging = "Hero2";
+        } else if (slot == 3) {
+            hero = ti.hero3;
+            currChanging = "Hero3";
+        }
+
+        //Make the menu appear
+        if(SPQC != null) {
+            Destroy(SPQC);
+        }
+        if(SMQC != null) {
+            Destroy(SMQC);
+        }
+        if(HQC != null) {
+            Debug.Log("Arrived Here");
+            Destroy(HQC);
+
+        }
+
+        if(hero == "Lancin Bermane") {
+            HQC = Instantiate(heroQCAssetL, new Vector3(currPos.position.x, currPos.position.y - 25, currPos.position.z), Quaternion.identity, parent);
+        } else if(hero == "Wold Wold") {
+            HQC = Instantiate(heroQCAssetW, new Vector3(currPos.position.x, currPos.position.y - 25, currPos.position.z), Quaternion.identity, parent);
+        } else if(hero == "Althea Petrik") {
+            HQC = Instantiate(heroQCAssetA, new Vector3(currPos.position.x, currPos.position.y - 25, currPos.position.z), Quaternion.identity, parent);
+        }
+
+        
+        
+        
+        //fill in the blanks for the menu        
+    }
+
+
+
+
+
 
     public void heroSlowChange(int slot) {
         //Open Second Menu
@@ -190,6 +261,7 @@ public class ChangeCharMenu : MonoBehaviour
         h1.spell5 = ti.spell1_5;
         h1.spell6 = ti.spell1_6;
 
+        swapHero("Hero1", h1.hero);
         swapSummon("Hero1_Summon1", h1.summon1);
         swapSummon("Hero1_Summon2", h1.summon2);
         swapSpell("Hero1_Spell1", h1.spell1);
@@ -209,6 +281,7 @@ public class ChangeCharMenu : MonoBehaviour
         h2.spell5 = ti.spell2_5;
         h2.spell6 = ti.spell2_6;
 
+        swapHero("Hero2", h2.hero);
         swapSummon("Hero2_Summon1", h2.summon1);
         swapSummon("Hero2_Summon2", h2.summon2);
         swapSpell("Hero2_Spell1", h2.spell1);
@@ -228,6 +301,7 @@ public class ChangeCharMenu : MonoBehaviour
         h3.spell5 = ti.spell3_5;
         h3.spell6 = ti.spell3_6;
 
+        swapHero("Hero3", h3.hero);
         swapSummon("Hero3_Summon1", h3.summon1);
         swapSummon("Hero3_Summon2", h3.summon2);
         swapSpell("Hero3_Spell1", h3.spell1);
@@ -437,6 +511,43 @@ public class ChangeCharMenu : MonoBehaviour
         SceneManager.LoadScene("Title");
         //Debug.Log("Quit Clicked");
         //Application.Quit();
+    }
+
+
+
+    public void swapHeroSprite(int index, string hero) {
+        for(int i = 0; i < heroSpriteKeys.Length; i++) {
+            if(hero == heroSpriteKeys[i]) {
+                //go.GetComponent<ChangeCharMenu>().spellButtons[index].GetComponent<Image>().sprite = go.GetComponent<ChangeCharMenu>().spellSprites[i];
+                heroButtons[index].GetComponent<Image>().sprite = heroSprites[i];
+            }
+        }
+
+    }
+
+
+
+    public void swapHero(string place, string what) {
+        if(what == "Locked") {
+            return;
+        }
+        switch (place) {
+            case "Hero1":
+            ti.hero1 = what;
+            swapHeroSprite(0, what);
+            break;
+
+            case "Hero2":
+            ti.hero2 = what;
+            swapHeroSprite(1, what);
+            break;
+
+            case "Hero3":
+            ti.hero3 = what;
+            swapHeroSprite(2, what);
+            break;
+
+        }
     }
 
 
