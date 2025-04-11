@@ -431,8 +431,8 @@ PrefabInstance:
       objectReference: {fileID: 8307509125131471017}
     - target: {fileID: 5168971530063550120, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
       propertyPath: m_text
-      value: Rollout -  Swap between a defensive and offensive stance for Rold. 1
-        Turns of Cooldown
+      value: Rollout -  Swap between a defensive and offensive stance for Rold -
+        No Cooldown
       objectReference: {fileID: 0}
     - target: {fileID: 6125454115303078425, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
       propertyPath: m_Pivot.x

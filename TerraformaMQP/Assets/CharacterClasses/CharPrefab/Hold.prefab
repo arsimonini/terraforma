@@ -326,8 +326,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5168971530063550120, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
       propertyPath: m_text
-      value: Blazing Fury -  A powerful fire based melee attack that leaves fire
-        in it's wake. 3 Turns of Cooldown
+      value: 'Seismic Strike - Smash the ground dealing attack damage to close enemies
+        and creating Rocky Terrain - Cooldown: 3'
       objectReference: {fileID: 0}
     - target: {fileID: 5168971530063550120, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
       propertyPath: m_fontSize
@@ -336,6 +336,10 @@ PrefabInstance:
     - target: {fileID: 5168971530063550120, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
       propertyPath: m_fontSizeBase
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5262357276579663198, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
+      propertyPath: m_text
+      value: NA
       objectReference: {fileID: 0}
     - target: {fileID: 6125454115303078425, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
       propertyPath: m_Pivot.x
