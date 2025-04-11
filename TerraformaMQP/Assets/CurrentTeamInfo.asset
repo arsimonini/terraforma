@@ -15,21 +15,21 @@ MonoBehaviour:
   hero1: Lancin Bermane
   summon1_1: Urson
   summon1_2: Locked
-  spell1_1: Backfire
-  spell1_2: Fire Lance
-  spell1_3: Searing Wind
-  spell1_4: Support Flames
-  spell1_5: Regen Mana
-  spell1_6: Dragon's Breath
+  spell1_1: Regen Mana
+  spell1_2: Fireball
+  spell1_3: Fire Lance
+  spell1_4: Backfire
+  spell1_5: Support Flames
+  spell1_6: Hearthfire
   hero2: Wold Wold
-  summon2_1: Hold
+  summon2_1: Rold
   summon2_2: Locked
   spell2_1: Regen Mana
   spell2_2: Wall
   spell2_3: Shatterpoint
-  spell2_4: Stone Body
+  spell2_4: Shove
   spell2_5: Fleet Footwork
-  spell2_6: Quake
+  spell2_6: Tag In
   hero3: Althea Petrik
   summon3_1: Zuli
   summon3_2: Locked
