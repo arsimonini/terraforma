@@ -29,6 +29,13 @@ public class Fireball_Spell : MonoBehaviour, Cast_Spell
 
     public void castSpell(List<GameObject> targets, GameObject caster)
     {
+
+        string tileEff = "Fire";
+        Lancin lancin = caster.GetComponent<Lancin>(); if (lancin != null && lancin.BlueFire == true) {
+            lancin.BlueFire = false;
+            tileEff = "BlueFire";
+        }
+
         for (int i = 0; i < targets.Count; i++)
         {
             /*
@@ -67,7 +74,7 @@ public class Fireball_Spell : MonoBehaviour, Cast_Spell
                             if (hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile != null){
                                 hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(damageScale*caster.GetComponent<Hero_Character_Class>().magic.moddedValue/2, "Fire");
                             }
-                            hitCollider.gameObject.GetComponent<ClickableTile>().map.gameObject.GetComponent<ReactionController>().checkReaction(hitCollider.gameObject.GetComponent<ClickableTile>(), caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Fireball", true);
+                            hitCollider.gameObject.GetComponent<ClickableTile>().map.gameObject.GetComponent<ReactionController>().checkReaction(hitCollider.gameObject.GetComponent<ClickableTile>(), tileEff, "Fireball", true);
                             //GameObject animation = Instantiate(magicAnimation);
                             //animation.transform.position = new Vector3(hitCollider.gameObject.transform.position.x, hitCollider.gameObject.transform.position.y, hitCollider.gameObject.transform.position.z + 0.75f);
                         }
@@ -84,7 +91,7 @@ public class Fireball_Spell : MonoBehaviour, Cast_Spell
                             if (hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile != null){
                                 hitCollider.gameObject.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(damageScale*caster.GetComponent<Hero_Character_Class>().magic.moddedValue/2, "Fire");
                             }
-                            hitCollider.gameObject.GetComponent<ClickableTile>().map.gameObject.GetComponent<ReactionController>().checkReaction(hitCollider.gameObject.GetComponent<ClickableTile>(), caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Fireball", true);
+                            hitCollider.gameObject.GetComponent<ClickableTile>().map.gameObject.GetComponent<ReactionController>().checkReaction(hitCollider.gameObject.GetComponent<ClickableTile>(), tileEff, "Fireball", true);
                             //GameObject animation = Instantiate(magicAnimation);
                             //animation.transform.position = new Vector3(hitCollider.gameObject.transform.position.x, hitCollider.gameObject.transform.position.y, hitCollider.gameObject.transform.position.z + 0.75f);
                         }

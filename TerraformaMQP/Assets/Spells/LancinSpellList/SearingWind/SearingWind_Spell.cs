@@ -11,6 +11,12 @@ public class SearingWind_Spell : MonoBehaviour, Cast_Spell
 {
 
     public void castSpell(List<GameObject> targets, GameObject caster){
+        string tileEff = "Fire";
+        Lancin lancin = caster.GetComponent<Lancin>(); if (lancin != null && lancin.BlueFire == true) {
+            lancin.BlueFire = false;
+            tileEff = "BlueFire";
+        }
+
         Basic_Character_Class casterScript = caster.GetComponent<Basic_Character_Class>();
         ClickableTile targetTile;
         if (targets[0].GetComponent<ClickableTile>()){
@@ -24,7 +30,7 @@ public class SearingWind_Spell : MonoBehaviour, Cast_Spell
         TileMap map = casterTile.map;
         ReactionController reactController = map.gameObject.GetComponent<ReactionController>();
 
-        reactController.checkReaction(targetTile, caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+        reactController.checkReaction(targetTile, tileEff, "Searing Wind", true);
         bool push = false;
         if (targetTile.characterOnTile != null){
             push = true;
@@ -32,80 +38,80 @@ public class SearingWind_Spell : MonoBehaviour, Cast_Spell
 
         switch (map.checkDirection(casterTile.gameObject.transform.position, targetTile.gameObject.transform.position, targetTile)){
             case "Right":
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY], tileEff, "Searing Wind", true);
                 if (push){
                     map.pushCharacter(targetTile.characterOnTile.GetComponent<Basic_Character_Class>(), targetTile.TileX, targetTile.TileY, "Left", 1);
                 }
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY + 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY - 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY + 1], tileEff, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY - 1], tileEff, "Searing Wind", true);
 
                 break;
 
             case "Left":
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY], tileEff, "Searing Wind", true);
                 if (push){
                     map.pushCharacter(targetTile.characterOnTile.GetComponent<Basic_Character_Class>(), targetTile.TileX, targetTile.TileY, "Right", 1);
                 }
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY + 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY - 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY + 1], tileEff, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY - 1], tileEff, "Searing Wind", true);
                 break;
 
             case "Top":
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX, targetTile.TileY - 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX, targetTile.TileY - 1], tileEff, "Searing Wind", true);
                 if (push){
                     map.pushCharacter(targetTile.characterOnTile.GetComponent<Basic_Character_Class>(), targetTile.TileX, targetTile.TileY, "Down", 1);
                 }
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY - 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY - 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY - 1], tileEff, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY - 1], tileEff, "Searing Wind", true);
                 break;
 
             case "Bottom":
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX, targetTile.TileY + 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX, targetTile.TileY + 1], tileEff, "Searing Wind", true);
                 if (push){
                     map.pushCharacter(targetTile.characterOnTile.GetComponent<Basic_Character_Class>(), targetTile.TileX, targetTile.TileY, "Up", 1);
                 }
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY + 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY + 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY + 1], tileEff, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY + 1], tileEff, "Searing Wind", true);
                 break;
             
             case "TopLeft":
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY - 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY - 1], tileEff, "Searing Wind", true);
                 if (push){
                     map.pushCharacter(targetTile.characterOnTile.GetComponent<Basic_Character_Class>(), targetTile.TileX, targetTile.TileY, "RightDown", 1);
                 }
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX, targetTile.TileY - 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY], tileEff, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX, targetTile.TileY - 1], tileEff, "Searing Wind", true);
                 break;
 
             case "TopRight":
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY - 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY - 1], tileEff, "Searing Wind", true);
                 if (push){
                     map.pushCharacter(targetTile.characterOnTile.GetComponent<Basic_Character_Class>(), targetTile.TileX, targetTile.TileY, "DownLeft", 1);
                 }
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX, targetTile.TileY - 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY], tileEff, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX, targetTile.TileY - 1], tileEff, "Searing Wind", true);
                 break;
             
             case "BottomLeft":
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY + 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY + 1], tileEff, "Searing Wind", true);
                 if (push){
                     map.pushCharacter(targetTile.characterOnTile.GetComponent<Basic_Character_Class>(), targetTile.TileX, targetTile.TileY, "RightUp", 1);
                 }
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX, targetTile.TileY + 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX + 1, targetTile.TileY], tileEff, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX, targetTile.TileY + 1], tileEff, "Searing Wind", true);
                 break;
             
             case "BottomRight":
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY + 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY + 1], tileEff, "Searing Wind", true);
                 if (push){
                     map.pushCharacter(targetTile.characterOnTile.GetComponent<Basic_Character_Class>(), targetTile.TileX, targetTile.TileY, "LeftUp", 1);
                 }
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX, targetTile.TileY + 1], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX, targetTile.TileY + 1], tileEff, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX - 1, targetTile.TileY], tileEff, "Searing Wind", true);
                 break;
 
             case "Failed To Find Direction":
-                reactController.checkReaction(map.clickableTiles[targetTile.TileX, targetTile.TileY], caster.GetComponent<Hero_Character_Class>().selectedSpell.elementType, "Searing Wind", true);
+                reactController.checkReaction(map.clickableTiles[targetTile.TileX, targetTile.TileY], tileEff, "Searing Wind", true);
                 break;
         } 
     }
