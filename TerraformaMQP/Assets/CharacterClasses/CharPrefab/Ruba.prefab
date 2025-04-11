@@ -77,7 +77,7 @@ MonoBehaviour:
   effects: []
   tileEffect: {fileID: 0}
   name: Ruba
-  char_img: {fileID: 21300000, guid: 94e5c8c7b1f9345f981c8ae2f35a31f4, type: 3}
+  char_img: {fileID: 21300000, guid: c5bdbbe06cb554af39e33578942c0807, type: 3}
   health: 19
   maxHealth:
     value: 19
@@ -177,6 +177,7 @@ MonoBehaviour:
   startHP: 0
   traverseWalls: 0
   traverseWater: 1
+  gc: {fileID: 0}
 --- !u!212 &3564923898210920243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -218,7 +219,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 94e5c8c7b1f9345f981c8ae2f35a31f4, type: 3}
+  m_Sprite: {fileID: 1712021448, guid: 0160acc38d58345efae6efa15bcb0cb7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -329,8 +330,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5168971530063550120, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
       propertyPath: m_text
-      value: Blazing Fury -  A powerful fire based melee attack that leaves fire
-        in it's wake. 3 Turns of Cooldown
+      value: 'Blowback - Blast an enemy from range, dealing attack damage and knocking
+        them and yourself back 2 tiles - Cooldown: 3'
       objectReference: {fileID: 0}
     - target: {fileID: 5168971530063550120, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
       propertyPath: m_fontSize

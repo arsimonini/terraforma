@@ -16,6 +16,7 @@ public class AbilityHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     //public int spellNum;
 
     public GameObject abilityDescription = null;
+    public GameObject cooldownDisplay = null;
     //public TextMeshProUGUI spellDescText = null;
     //public GameObject spell = null;
     //public Transform currPos;
@@ -38,12 +39,19 @@ public class AbilityHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerEnter(PointerEventData data) 
     {
-    abilityDescription.SetActive(true);
+        if(gameObject.transform.root.gameObject.GetComponent<SummonClass>().offCooldown(0)){
+            abilityDescription.SetActive(true);
+        }
+        else{
+            cooldownDisplay.transform.GetChild(0).GetComponent<setCooldownDisplay>().setDisplay(gameObject.transform.root.gameObject.GetComponent<SummonClass>().cooldowns[0]);
+            cooldownDisplay.SetActive(true);
+        }
             
     }
 
     public void OnPointerExit(PointerEventData data) {
-        abilityDescription.SetActive(false);
+            abilityDescription.SetActive(false);
+            cooldownDisplay.SetActive(false);
     }
 
     public void buttonClicked() {
