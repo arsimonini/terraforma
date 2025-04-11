@@ -23,6 +23,12 @@ public class FireBreath_Spell : MonoBehaviour, Cast_Spell
 
     public void castSpell(List<GameObject> targets, GameObject caster)
     {
+        string tileEff = "Fire";
+        Lancin lancin = caster.GetComponent<Lancin>(); if (lancin != null && lancin.BlueFire == true) {
+            lancin.BlueFire = false;
+            tileEff = "BlueFire";
+        }
+
         Basic_Character_Class basicCaster = caster.GetComponent<Basic_Character_Class>();
         Hero_Character_Class heroCaster = caster.GetComponent<Hero_Character_Class>();
 
@@ -45,7 +51,7 @@ public class FireBreath_Spell : MonoBehaviour, Cast_Spell
             int dmg = 3;
             if (heroCaster != null) {dmg = heroCaster.magic.moddedValue/2;}
             float acc = 1;
-            string elm = "Fire";
+            string elm = tileEff;
 
             switch (dir) {
                 case 0: 
@@ -183,7 +189,7 @@ public class FireBreath_Spell : MonoBehaviour, Cast_Spell
             }
 
             //affect the tiles with rocky terrain
-            placeTileEffect(tile,"Fire","Fire Breath");
+            placeTileEffect(tile,e,"Fire Breath");
             
         }
     }

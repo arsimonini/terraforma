@@ -26,7 +26,11 @@ public class FireLance_Spell : MonoBehaviour, Cast_Spell
     public void castSpell(List<GameObject> targets, GameObject caster)
     {
         Basic_Character_Class basicCaster = caster.GetComponent<Basic_Character_Class>();
-
+        string tileEff = "Fire";
+        Lancin lancin = caster.GetComponent<Lancin>(); if (lancin != null && lancin.BlueFire == true) {
+            lancin.BlueFire = false;
+            tileEff = "BlueFire";
+        }
 
         float damage = .4375f;
         Hero_Character_Class heroCaster = caster.GetComponent<Hero_Character_Class>();
@@ -69,7 +73,7 @@ public class FireLance_Spell : MonoBehaviour, Cast_Spell
                 ClickableTile newCt = res.GetComponent<ClickableTile>();
 
                 if (newCt != null) {
-                    placeTileEffect(newCt,"Fire","Fire Lance");
+                    placeTileEffect(newCt,tileEff,"Fire Lance");
                 }
             }
 
