@@ -546,7 +546,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Crasher Wave
+          m_StringArgument: Tidal Wave
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &2034784732530216996
@@ -2401,7 +2401,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Shower
+          m_StringArgument: Showers
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &5355449690853120324
@@ -3100,7 +3100,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Bubble Bomb
+          m_StringArgument: BubbleBomb
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &7680894918784208047
@@ -3343,7 +3343,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Swift Sail
+          m_StringArgument: Smooth Sailing
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &8217651072837821431
