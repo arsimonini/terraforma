@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2efde63850d607409ffe159db67317f, type: 3}
+  m_Name: BlueFire
+  m_EditorClassIdentifier: 
+  manaCost: 4
+  spellName: Blue Fire
+  elementType: Fire
+  spellPrefab: {fileID: 5642006647470111640, guid: 3ddf532e4e22ef94e94b06e8409f33d7, type: 3}
+  description: Supercharges your next attack with an even hotter blue flame.
+  targeted: 1
+  range: 0
+  targetTiles: 0
+  targetAllies: 1
+  target: {fileID: 0}
+  amountOfTargets: 1
+  requireDifferentTargets: 0
+  targetEnemies: 0
+  hitOwnTile: 0
+  hitSelf: 1
+  targetWalls: 0
+  AOEsize: 0
+  square: 0
+  alternateAOEDisplay: 0
+  hyperSpecificTargeting: 0
+  needSpecificTiles: 0
+  specificTiles: []
+  needSpecificTileEffects: 0
+  specificTileEffects: []
+  targetBreakables: 0

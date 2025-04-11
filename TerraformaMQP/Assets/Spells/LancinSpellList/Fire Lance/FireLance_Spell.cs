@@ -27,6 +27,7 @@ public class FireLance_Spell : MonoBehaviour, Cast_Spell
     {
         Basic_Character_Class basicCaster = caster.GetComponent<Basic_Character_Class>();
 
+
         float damage = .4375f;
         Hero_Character_Class heroCaster = caster.GetComponent<Hero_Character_Class>();
         if (heroCaster != null) {

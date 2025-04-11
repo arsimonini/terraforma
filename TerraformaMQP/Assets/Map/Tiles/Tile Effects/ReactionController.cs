@@ -31,6 +31,11 @@ public class ReactionController : MonoBehaviour
                         checkTile = checkBurningReaction(tile, damageType, source, tile.effectsOnTile[i], playerTeam);
                         break;
 
+                    case "BlueFire":
+                        //UnityEngine.Debug.Log("Here");
+                        checkTile = checkBlueFireReaction(tile, damageType, source, tile.effectsOnTile[i], playerTeam);
+                        break;
+
                     case "Soaked":
                         checkTile = checkSoakedReaction(tile, damageType, source, tile.effectsOnTile[i], playerTeam);
                         break;
@@ -217,6 +222,48 @@ public class ReactionController : MonoBehaviour
             case "HearthFire":
                 tile.removeEffectFromTile(effectOnTile, blockChange: true);
                 newEffect = Instantiate(tileEffects[3]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                return false;
+
+        }
+        return true;
+    }
+
+    private bool checkBlueFireReaction(ClickableTile tile, string damageType, string source, TileEffect effectOnTile, bool playerTeam){
+        TileEffect newEffect;
+        switch (damageType){
+            case "Fire":
+                effectOnTile.duration += 2;
+                return false;
+
+            case "Water":
+                tile.removeEffectFromTile(effectOnTile, blockChange: true);
+                newEffect = Instantiate(tileEffects[5]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                return false;
+
+            case "Earth":
+                return true;
+
+            case "Air":
+                return true;
+
+            case "Lightning":
+                return true;
+
+            case "Ice":
+                return true;
+
+            case "Plant":
+                return true;
+
+            case "Smother":
+                tile.removeEffectFromTile(effectOnTile, blockChange: true);
+                return false;
+            
+            case "HearthFire":
+                tile.removeEffectFromTile(effectOnTile, blockChange: true);
+                newEffect = Instantiate(tileEffects[6]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 return false;
 
@@ -417,6 +464,13 @@ private bool checkFoggyReaction(ClickableTile tile, string damageType, string so
                 newEffect = Instantiate(tileEffects[5]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
+
+            case "BlueFire":
+                if (!checkTypeExists(damageType, tile)){
+                    newEffect = Instantiate(tileEffects[6]);
+                    newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                }
+                break;
         }
     }
 
@@ -475,6 +529,11 @@ private bool checkFoggyReaction(ClickableTile tile, string damageType, string so
             case "Foggy":
                 newEffect = Instantiate(tileEffects[5]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                break;
+
+            case "BlueFire":
+                newEffect = Instantiate(tileEffects[6]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 1, fromReact: true, blockRemoval: true);
                 break;
         }
     }
@@ -551,6 +610,10 @@ private bool checkFoggyReaction(ClickableTile tile, string damageType, string so
                 newEffect = Instantiate(tileEffects[5]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
+
+            case "BlueFire":
+                this.gameObject.GetComponent<TileMap>().swapTiles(tile, 1, true);
+                break;
         }
     }
 
@@ -604,6 +667,11 @@ private bool checkFoggyReaction(ClickableTile tile, string damageType, string so
 
             case "Foggy":
                 newEffect = Instantiate(tileEffects[5]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                break;
+
+            case "BlueFire":
+                newEffect = Instantiate(tileEffects[6]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
         }
@@ -661,6 +729,11 @@ private bool checkFoggyReaction(ClickableTile tile, string damageType, string so
                 newEffect = Instantiate(tileEffects[5]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
+
+            case "BlueFire":
+                newEffect = Instantiate(tileEffects[6]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3);
+                break;
         }
     }
 
@@ -704,6 +777,9 @@ private bool checkFoggyReaction(ClickableTile tile, string damageType, string so
             case "Foggy":
                 newEffect = Instantiate(tileEffects[5]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                break;
+
+            case "BlueFire":
                 break;
         }
     }
@@ -749,6 +825,11 @@ private bool checkFoggyReaction(ClickableTile tile, string damageType, string so
 
             case "Foggy":
                 newEffect = Instantiate(tileEffects[5]);
+                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                break;
+
+            case "BlueFire":
+                newEffect = Instantiate(tileEffects[6]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
         }
@@ -818,6 +899,11 @@ private bool checkFoggyReaction(ClickableTile tile, string damageType, string so
                 newEffect = Instantiate(tileEffects[5]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
+
+            case "BlueFire":
+            newEffect = Instantiate(tileEffects[5]);
+            newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+            break;
         }
     }
 
@@ -885,6 +971,11 @@ private bool checkFoggyReaction(ClickableTile tile, string damageType, string so
                 newEffect = Instantiate(tileEffects[5]);
                 newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
                 break;
+
+        case "BlueFire":
+            newEffect = Instantiate(tileEffects[5]);
+            newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+            break;
     }
 }
 
