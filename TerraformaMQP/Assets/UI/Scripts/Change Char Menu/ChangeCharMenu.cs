@@ -31,9 +31,9 @@ public class ChangeCharMenu : MonoBehaviour
 
     public string currChanging;
 
-    public HeroSwapButton h1;
-    public HeroSwapButton h2;
-    public HeroSwapButton h3;
+    //public HeroSwapButton h1;
+    //public HeroSwapButton h2;
+    //public HeroSwapButton h3;
 
     public GameObject[] spellButtons;
     public Sprite[] spellSprites;
@@ -70,6 +70,7 @@ public class ChangeCharMenu : MonoBehaviour
             }
             if(HQC != null) {
                 Destroy(HQC);
+                currChanging = "";
                 
             }
         }
@@ -251,98 +252,38 @@ public class ChangeCharMenu : MonoBehaviour
     }
 
     public void setTeam() {
-        h1.hero = ti.hero1;
-        h1.summon1 = ti.summon1_1;
-        h1.summon2 = ti.summon1_2;
-        h1.spell1 = ti.spell1_1;
-        h1.spell2 = ti.spell1_2;
-        h1.spell3 = ti.spell1_3;
-        h1.spell4 = ti.spell1_4;
-        h1.spell5 = ti.spell1_5;
-        h1.spell6 = ti.spell1_6;
 
-        swapHero("Hero1", h1.hero);
-        swapSummon("Hero1_Summon1", h1.summon1);
-        swapSummon("Hero1_Summon2", h1.summon2);
-        swapSpell("Hero1_Spell1", h1.spell1);
-        swapSpell("Hero1_Spell2", h1.spell2);
-        swapSpell("Hero1_Spell3", h1.spell3);
-        swapSpell("Hero1_Spell4", h1.spell4);
-        swapSpell("Hero1_Spell5", h1.spell5);
-        swapSpell("Hero1_Spell6", h1.spell6);
+        swapHero("Hero1", ti.hero1);
+        swapSummon("Hero1_Summon1", ti.summon1_1);
+        swapSummon("Hero1_Summon2", ti.summon1_2);
+        swapSpell("Hero1_Spell1", ti.spell1_1);
+        swapSpell("Hero1_Spell2", ti.spell1_2);
+        swapSpell("Hero1_Spell3", ti.spell1_3);
+        swapSpell("Hero1_Spell4", ti.spell1_4);
+        swapSpell("Hero1_Spell5", ti.spell1_5);
+        swapSpell("Hero1_Spell6", ti.spell1_6);
 
-        h2.hero = ti.hero2;
-        h2.summon1 = ti.summon2_1;
-        h2.summon2 = ti.summon2_2;
-        h2.spell1 = ti.spell2_1;
-        h2.spell2 = ti.spell2_2;
-        h2.spell3 = ti.spell2_3;
-        h2.spell4 = ti.spell2_4;
-        h2.spell5 = ti.spell2_5;
-        h2.spell6 = ti.spell2_6;
+        swapHero("Hero2", ti.hero2);
+        swapSummon("Hero2_Summon1", ti.summon2_1);
+        swapSummon("Hero2_Summon2", ti.summon2_2);
+        swapSpell("Hero2_Spell1", ti.spell2_1);
+        swapSpell("Hero2_Spell2", ti.spell2_2);
+        swapSpell("Hero2_Spell3", ti.spell2_3);
+        swapSpell("Hero2_Spell4", ti.spell2_4);
+        swapSpell("Hero2_Spell5", ti.spell2_5);
+        swapSpell("Hero2_Spell6", ti.spell2_6);
 
-        swapHero("Hero2", h2.hero);
-        swapSummon("Hero2_Summon1", h2.summon1);
-        swapSummon("Hero2_Summon2", h2.summon2);
-        swapSpell("Hero2_Spell1", h2.spell1);
-        swapSpell("Hero2_Spell2", h2.spell2);
-        swapSpell("Hero2_Spell3", h2.spell3);
-        swapSpell("Hero2_Spell4", h2.spell4);
-        swapSpell("Hero2_Spell5", h2.spell5);
-        swapSpell("Hero2_Spell6", h2.spell6);
+        swapHero("Hero3", ti.hero3);
+        swapSummon("Hero3_Summon1", ti.summon3_1);
+        swapSummon("Hero3_Summon2", ti.summon3_2);
+        swapSpell("Hero3_Spell1", ti.spell3_1);
+        swapSpell("Hero3_Spell2", ti.spell3_2);
+        swapSpell("Hero3_Spell3", ti.spell3_3);
+        swapSpell("Hero3_Spell4", ti.spell3_4);
+        swapSpell("Hero3_Spell5", ti.spell3_5);
+        swapSpell("Hero3_Spell6", ti.spell3_6);
 
-        h3.hero = ti.hero3;
-        h3.summon1 = ti.summon3_1;
-        h3.summon2 = ti.summon3_2;
-        h3.spell1 = ti.spell3_1;
-        h3.spell2 = ti.spell3_2;
-        h3.spell3 = ti.spell3_3;
-        h3.spell4 = ti.spell3_4;
-        h3.spell5 = ti.spell3_5;
-        h3.spell6 = ti.spell3_6;
-
-        swapHero("Hero3", h3.hero);
-        swapSummon("Hero3_Summon1", h3.summon1);
-        swapSummon("Hero3_Summon2", h3.summon2);
-        swapSpell("Hero3_Spell1", h3.spell1);
-        swapSpell("Hero3_Spell2", h3.spell2);
-        swapSpell("Hero3_Spell3", h3.spell3);
-        swapSpell("Hero3_Spell4", h3.spell4);
-        swapSpell("Hero3_Spell5", h3.spell5);
-        swapSpell("Hero3_Spell6", h3.spell6);
-
-
-        
-        
-        // ti.hero1 = h1.hero;
-        // ti.summon1_1 = h1.summon1;
-        // ti.summon1_2 = h1.summon2;
-        // ti.spell1_1 = h1.spell1;
-        // ti.spell1_2 = h1.spell2;
-        // ti.spell1_3 = h1.spell3;
-        // ti.spell1_4 = h1.spell4;
-        // ti.spell1_5 = h1.spell5;
-        // ti.spell1_6 = h1.spell6;
-
-        // ti.hero2 = h2.hero;
-        // ti.summon2_1 = h2.summon1;
-        // ti.summon2_2 = h2.summon2;
-        // ti.spell2_1 = h2.spell1;
-        // ti.spell2_2 = h2.spell2;
-        // ti.spell2_3 = h2.spell3;
-        // ti.spell2_4 = h2.spell4;
-        // ti.spell2_5 = h2.spell5;
-        // ti.spell2_6 = h2.spell6;
-
-        // ti.hero3 = h3.hero;
-        // ti.summon3_1 = h3.summon1;
-        // ti.summon3_2 = h3.summon2;
-        // ti.spell3_1 = h3.spell1;
-        // ti.spell3_2 = h3.spell2;
-        // ti.spell3_3 = h3.spell3;
-        // ti.spell3_4 = h3.spell4;
-        // ti.spell3_5 = h3.spell5;
-        // ti.spell3_6 = h3.spell6;
+        ti.SetDirty();
 
     }
 
@@ -453,6 +394,8 @@ public class ChangeCharMenu : MonoBehaviour
             swapSpellSprite(17, what);
             break;
         }
+        // Mark the object as dirty so the data persists in Editor mode
+        // ti.MarkDirty();
     }
 
         public void swapSummonSprite(int index, string summon) {
@@ -503,10 +446,13 @@ public class ChangeCharMenu : MonoBehaviour
             break;
             
         }
+        // ti.MarkDirty();
     }
 
 
     public void GoToMenu() {
+
+
         
         SceneManager.LoadScene("Title");
         //Debug.Log("Quit Clicked");
@@ -548,6 +494,7 @@ public class ChangeCharMenu : MonoBehaviour
             break;
 
         }
+        // ti.MarkDirty();
     }
 
 
