@@ -104,24 +104,24 @@ public class ChangeCharMenu : MonoBehaviour
 
         // FOR BOTH SUMMONS BEING UNLOCKED
         // if(slot == 1 || slot == 2) {
-        //     hero = ti.hero1;
+        //     hero = TeamInfoManager.instance.hero1;
         //     currChanging = "Hero1_Summon" + (slot).ToString();
         // } else if (slot == 3 || slot == 4) {
-        //     hero = ti.hero2;
+        //     hero = TeamInfoManager.instance.hero2;
         //     currChanging = "Hero2_Summon" + (slot - 2).ToString();
         // } else if (slot == 5 || slot == 6) {
-        //     hero = ti.hero3;
+        //     hero = TeamInfoManager.instance.hero3;
         //     currChanging = "Hero3_Summon" + (slot - 4).ToString();
         // }
 
         if(slot == 1) {
-            hero = ti.hero1;
+            hero = TeamInfoManager.instance.hero1;
             currChanging = "Hero1_Summon" + (slot).ToString();
         } else if (slot == 3) {
-            hero = ti.hero2;
+            hero = TeamInfoManager.instance.hero2;
             currChanging = "Hero2_Summon" + (slot - 2).ToString();
         } else if (slot == 5) {
-            hero = ti.hero3;
+            hero = TeamInfoManager.instance.hero3;
             currChanging = "Hero3_Summon" + (slot - 4).ToString();
         }
         //Make the menu appear
@@ -149,13 +149,13 @@ public class ChangeCharMenu : MonoBehaviour
 
         //Get character in hero slot
         if(slot >= 1 && slot <= 6) {
-            hero = ti.hero1;
+            hero = TeamInfoManager.instance.hero1;
             currChanging = "Hero1_Spell" + (slot).ToString();
         } else if (slot >= 7 && slot <= 12) {
-            hero = ti.hero2;
+            hero = TeamInfoManager.instance.hero2;
             currChanging = "Hero2_Spell" + (slot - 6).ToString();
         } else if (slot >= 13 && slot <= 18) {
-            hero = ti.hero3;
+            hero = TeamInfoManager.instance.hero3;
             currChanging = "Hero3_Spell" + (slot - 12).ToString();
         }
 
@@ -189,13 +189,13 @@ public class ChangeCharMenu : MonoBehaviour
 
         //Get character in hero slot
         if(slot == 1) {
-            hero = ti.hero1;
+            hero = TeamInfoManager.instance.hero1;
             currChanging = "Hero1";
         } else if (slot == 2) {
-            hero = ti.hero2;
+            hero = TeamInfoManager.instance.hero2;
             currChanging = "Hero2";
         } else if (slot == 3) {
-            hero = ti.hero3;
+            hero = TeamInfoManager.instance.hero3;
             currChanging = "Hero3";
         }
 
@@ -253,37 +253,35 @@ public class ChangeCharMenu : MonoBehaviour
 
     public void setTeam() {
 
-        swapHero("Hero1", ti.hero1);
-        swapSummon("Hero1_Summon1", ti.summon1_1);
-        swapSummon("Hero1_Summon2", ti.summon1_2);
-        swapSpell("Hero1_Spell1", ti.spell1_1);
-        swapSpell("Hero1_Spell2", ti.spell1_2);
-        swapSpell("Hero1_Spell3", ti.spell1_3);
-        swapSpell("Hero1_Spell4", ti.spell1_4);
-        swapSpell("Hero1_Spell5", ti.spell1_5);
-        swapSpell("Hero1_Spell6", ti.spell1_6);
+        swapHero("Hero1", TeamInfoManager.instance.hero1);
+        swapSummon("Hero1_Summon1", TeamInfoManager.instance.summon1_1);
+        swapSummon("Hero1_Summon2", TeamInfoManager.instance.summon1_2);
+        swapSpell("Hero1_Spell1", TeamInfoManager.instance.spell1_1);
+        swapSpell("Hero1_Spell2", TeamInfoManager.instance.spell1_2);
+        swapSpell("Hero1_Spell3", TeamInfoManager.instance.spell1_3);
+        swapSpell("Hero1_Spell4", TeamInfoManager.instance.spell1_4);
+        swapSpell("Hero1_Spell5", TeamInfoManager.instance.spell1_5);
+        swapSpell("Hero1_Spell6", TeamInfoManager.instance.spell1_6);
 
-        swapHero("Hero2", ti.hero2);
-        swapSummon("Hero2_Summon1", ti.summon2_1);
-        swapSummon("Hero2_Summon2", ti.summon2_2);
-        swapSpell("Hero2_Spell1", ti.spell2_1);
-        swapSpell("Hero2_Spell2", ti.spell2_2);
-        swapSpell("Hero2_Spell3", ti.spell2_3);
-        swapSpell("Hero2_Spell4", ti.spell2_4);
-        swapSpell("Hero2_Spell5", ti.spell2_5);
-        swapSpell("Hero2_Spell6", ti.spell2_6);
+        swapHero("Hero2", TeamInfoManager.instance.hero2);
+        swapSummon("Hero2_Summon1", TeamInfoManager.instance.summon2_1);
+        swapSummon("Hero2_Summon2", TeamInfoManager.instance.summon2_2);
+        swapSpell("Hero2_Spell1", TeamInfoManager.instance.spell2_1);
+        swapSpell("Hero2_Spell2", TeamInfoManager.instance.spell2_2);
+        swapSpell("Hero2_Spell3", TeamInfoManager.instance.spell2_3);
+        swapSpell("Hero2_Spell4", TeamInfoManager.instance.spell2_4);
+        swapSpell("Hero2_Spell5", TeamInfoManager.instance.spell2_5);
+        swapSpell("Hero2_Spell6", TeamInfoManager.instance.spell2_6);
 
-        swapHero("Hero3", ti.hero3);
-        swapSummon("Hero3_Summon1", ti.summon3_1);
-        swapSummon("Hero3_Summon2", ti.summon3_2);
-        swapSpell("Hero3_Spell1", ti.spell3_1);
-        swapSpell("Hero3_Spell2", ti.spell3_2);
-        swapSpell("Hero3_Spell3", ti.spell3_3);
-        swapSpell("Hero3_Spell4", ti.spell3_4);
-        swapSpell("Hero3_Spell5", ti.spell3_5);
-        swapSpell("Hero3_Spell6", ti.spell3_6);
-
-        ti.SetDirty();
+        swapHero("Hero3", TeamInfoManager.instance.hero3);
+        swapSummon("Hero3_Summon1", TeamInfoManager.instance.summon3_1);
+        swapSummon("Hero3_Summon2", TeamInfoManager.instance.summon3_2);
+        swapSpell("Hero3_Spell1", TeamInfoManager.instance.spell3_1);
+        swapSpell("Hero3_Spell2", TeamInfoManager.instance.spell3_2);
+        swapSpell("Hero3_Spell3", TeamInfoManager.instance.spell3_3);
+        swapSpell("Hero3_Spell4", TeamInfoManager.instance.spell3_4);
+        swapSpell("Hero3_Spell5", TeamInfoManager.instance.spell3_5);
+        swapSpell("Hero3_Spell6", TeamInfoManager.instance.spell3_6);
 
     }
 
@@ -305,97 +303,97 @@ public class ChangeCharMenu : MonoBehaviour
         // }
         switch (place) {
             case "Hero1_Spell1":
-            ti.spell1_1 = what;
+            TeamInfoManager.instance.spell1_1 = what;
             swapSpellSprite(0, what);
             break;
 
             case "Hero1_Spell2":
-            ti.spell1_2 = what;
+            TeamInfoManager.instance.spell1_2 = what;
             swapSpellSprite(1, what);
             break;
 
             case "Hero1_Spell3":
-            ti.spell1_3 = what;
+            TeamInfoManager.instance.spell1_3 = what;
             swapSpellSprite(2, what);
             break;
 
             case "Hero1_Spell4":
-            ti.spell1_4 = what;
+            TeamInfoManager.instance.spell1_4 = what;
             swapSpellSprite(3, what);
             break;
 
             case "Hero1_Spell5":
-            ti.spell1_5 = what;
+            TeamInfoManager.instance.spell1_5 = what;
             swapSpellSprite(4, what);
             break;
 
             case "Hero1_Spell6":
-            ti.spell1_6 = what;
+            TeamInfoManager.instance.spell1_6 = what;
             swapSpellSprite(5, what);
             break;
             
             case "Hero2_Spell1":
-            ti.spell2_1 = what;
+            TeamInfoManager.instance.spell2_1 = what;
             swapSpellSprite(6, what);
             break;
 
             case "Hero2_Spell2":
-            ti.spell2_2 = what;
+            TeamInfoManager.instance.spell2_2 = what;
             swapSpellSprite(7, what);
             break;
 
             case "Hero2_Spell3":
-            ti.spell2_3 = what;
+            TeamInfoManager.instance.spell2_3 = what;
             swapSpellSprite(8, what);
             break;
 
             case "Hero2_Spell4":
-            ti.spell2_4 = what;
+            TeamInfoManager.instance.spell2_4 = what;
             swapSpellSprite(9, what);
             break;
 
             case "Hero2_Spell5":
-            ti.spell2_5 = what;
+            TeamInfoManager.instance.spell2_5 = what;
             swapSpellSprite(10, what);
             break;
 
             case "Hero2_Spell6":
-            ti.spell2_6 = what;
+            TeamInfoManager.instance.spell2_6 = what;
             swapSpellSprite(11, what);
             break;
 
             case "Hero3_Spell1":
-            ti.spell3_1 = what;
+            TeamInfoManager.instance.spell3_1 = what;
             swapSpellSprite(12, what);
             break;
 
             case "Hero3_Spell2":
-            ti.spell3_2 = what;
+            TeamInfoManager.instance.spell3_2 = what;
             swapSpellSprite(13, what);
             break;
 
             case "Hero3_Spell3":
-            ti.spell3_3 = what;
+            TeamInfoManager.instance.spell3_3 = what;
             swapSpellSprite(14, what);
             break;
 
             case "Hero3_Spell4":
-            ti.spell3_4 = what;
+            TeamInfoManager.instance.spell3_4 = what;
             swapSpellSprite(15, what);
             break;
 
             case "Hero3_Spell5":
-            ti.spell3_5 = what;
+            TeamInfoManager.instance.spell3_5 = what;
             swapSpellSprite(16, what);
             break;
 
             case "Hero3_Spell6":
-            ti.spell3_6 = what;
+            TeamInfoManager.instance.spell3_6 = what;
             swapSpellSprite(17, what);
             break;
         }
         // Mark the object as dirty so the data persists in Editor mode
-        // ti.MarkDirty();
+        // TeamInfoManager.instance.MarkDirty();
     }
 
         public void swapSummonSprite(int index, string summon) {
@@ -416,37 +414,37 @@ public class ChangeCharMenu : MonoBehaviour
         // }
         switch (place) {
             case "Hero1_Summon1":
-            ti.summon1_1 = what;
+            TeamInfoManager.instance.summon1_1 = what;
             swapSummonSprite(0, what);
             break;
 
             case "Hero1_Summon2":
-            ti.summon1_2 = what;
+            TeamInfoManager.instance.summon1_2 = what;
             swapSummonSprite(1, what);
             break;
 
             case "Hero2_Summon1":
-            ti.summon2_1 = what;
+            TeamInfoManager.instance.summon2_1 = what;
             swapSummonSprite(2, what);
             break;
 
             case "Hero2_Summon2":
-            ti.summon2_2 = what;
+            TeamInfoManager.instance.summon2_2 = what;
             swapSummonSprite(3, what);
             break;
 
             case "Hero3_Summon1":
-            ti.summon3_1 = what;
+            TeamInfoManager.instance.summon3_1 = what;
             swapSummonSprite(4, what);
             break;
 
             case "Hero3_Summon2":
-            ti.summon3_2 = what;
+            TeamInfoManager.instance.summon3_2 = what;
             swapSummonSprite(5, what);
             break;
             
         }
-        // ti.MarkDirty();
+        // TeamInfoManager.instance.MarkDirty();
     }
 
 
@@ -479,22 +477,22 @@ public class ChangeCharMenu : MonoBehaviour
         }
         switch (place) {
             case "Hero1":
-            ti.hero1 = what;
+            TeamInfoManager.instance.hero1 = what;
             swapHeroSprite(0, what);
             break;
 
             case "Hero2":
-            ti.hero2 = what;
+            TeamInfoManager.instance.hero2 = what;
             swapHeroSprite(1, what);
             break;
 
             case "Hero3":
-            ti.hero3 = what;
+            TeamInfoManager.instance.hero3 = what;
             swapHeroSprite(2, what);
             break;
 
         }
-        // ti.MarkDirty();
+        // TeamInfoManager.instance.MarkDirty();
     }
 
 
