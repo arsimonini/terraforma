@@ -18,9 +18,9 @@ MonoBehaviour:
   spellPrefab: {fileID: 5642006647470111640, guid: da246f8322409d54e9ec5691454b7625, type: 3}
   description: Cast a massive explosion to occur three turns from now.
   targeted: 1
-  range: 0
-  targetTiles: 0
-  targetAllies: 1
+  range: 5
+  targetTiles: 1
+  targetAllies: 0
   target: {fileID: 0}
   amountOfTargets: 1
   requireDifferentTargets: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statsToEffect: []
   amountsToEffect: 
-  duration: 3
+  duration: 2
   source: Solar Ball
   name: Solar Ball
   playerTeam: 0
