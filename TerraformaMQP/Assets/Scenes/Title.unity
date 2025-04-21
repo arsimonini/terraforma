@@ -2544,6 +2544,77 @@ Transform:
   - {fileID: 1067483663}
   m_Father: {fileID: 686968728}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1552708533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1552708535}
+  - component: {fileID: 1552708534}
+  m_Layer: 0
+  m_Name: TeamInfoManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1552708534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552708533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350da8531eee95144941b9f708b53420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hero1: Lancin Bermane
+  summon1_1: Urson
+  summon1_2: Locked
+  spell1_1: Regen Mana
+  spell1_2: Fireball
+  spell1_3: Fire Lance
+  spell1_4: Backfire
+  spell1_5: Support Flames
+  spell1_6: Hearthfire
+  hero2: Wold Wold
+  summon2_1: Rold
+  summon2_2: Locked
+  spell2_1: Regen Mana
+  spell2_2: Wall
+  spell2_3: Shatterpoint
+  spell2_4: Shove
+  spell2_5: Fleet Footwork
+  spell2_6: Tag In
+  hero3: Althea Petrik
+  summon3_1: Zuli
+  summon3_2: Locked
+  spell3_1: Regen Mana
+  spell3_2: Bubble Bomb
+  spell3_3: Flood
+  spell3_4: Lightning Lance
+  spell3_5: Bubble Bomb
+  spell3_6: Swift Sail
+--- !u!4 &1552708535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552708533}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.0358543, y: 4.9605193, z: -3.0517225}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1599026681
 GameObject:
   m_ObjectHideFlags: 0
@@ -3679,3 +3750,4 @@ SceneRoots:
   - {fileID: 573683513}
   - {fileID: 1599026685}
   - {fileID: 1409015507}
+  - {fileID: 1552708535}

@@ -646,7 +646,7 @@ public class GameControllerScript : MonoBehaviour
             case "Hero1":
             //Sees if the Character is a Possible Character
             for(int j = 0; j < allPossibleCharacters.Length; j++) {
-                if(ti.hero1 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                if(TeamInfoManager.instance.hero1 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
                     //Adds them to the Player List and Team (for safety from deletion)
                     playerTeamList.Add(allPossibleCharacters[j]);
                     charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
@@ -665,22 +665,22 @@ public class GameControllerScript : MonoBehaviour
                     allPossibleCharacters[j].GetComponent<SpellList>().spellList = new List<Basic_Spell_Class>(new Basic_Spell_Class[6]);
 
                     for(int k = 0; k < allPossibleSpells.Count; k++){
-                        if(ti.spell1_1 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell1_1 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[0] = allPossibleSpells[k];
                         }
-                        if(ti.spell1_2 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell1_2 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[1] = allPossibleSpells[k];
                         }
-                        if(ti.spell1_3 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell1_3 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[2] = allPossibleSpells[k];
                         }
-                        if(ti.spell1_4 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell1_4 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[3] = allPossibleSpells[k];
                         }
-                        if(ti.spell1_5 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell1_5 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[4] = allPossibleSpells[k];
                         }
-                        if(ti.spell1_6 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell1_6 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[5] = allPossibleSpells[k];
                         }
                     }
@@ -692,7 +692,7 @@ public class GameControllerScript : MonoBehaviour
 
             case "Summon1_1":
             for(int j = 0; j < allPossibleCharacters.Length; j++) {
-                if(ti.summon1_1 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                if(TeamInfoManager.instance.summon1_1 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
                     playerTeamList.Add(allPossibleCharacters[j]);
                     charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
 
@@ -711,7 +711,7 @@ public class GameControllerScript : MonoBehaviour
 
             case "Summon1_2":
             for(int j = 0; j < allPossibleCharacters.Length; j++) {
-                if(ti.summon1_2 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                if(TeamInfoManager.instance.summon1_2 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
                     playerTeamList.Add(allPossibleCharacters[j]);
                     charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
 
@@ -732,7 +732,7 @@ public class GameControllerScript : MonoBehaviour
             
             for(int j = 0; j < allPossibleCharacters.Length; j++) {
                 
-                if(ti.hero2 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                if(TeamInfoManager.instance.hero2 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
                     playerTeamList.Add(allPossibleCharacters[j]);
                     charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
 
@@ -750,31 +750,31 @@ public class GameControllerScript : MonoBehaviour
                     allPossibleCharacters[j].GetComponent<SpellList>().spellList = new List<Basic_Spell_Class>(new Basic_Spell_Class[6]);
 
                     for(int k = 0; k < allPossibleSpells.Count; k++){
-                        if(ti.spell2_1 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell2_1 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[0] = allPossibleSpells[k];
                         }
                         
-                        if(ti.spell2_2 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell2_2 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[1] = allPossibleSpells[k];
                         
                         }
                         
-                        if(ti.spell2_3 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell2_3 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[2] = allPossibleSpells[k];
                             
                         }
                         
-                        if(ti.spell2_4 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell2_4 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[3] = allPossibleSpells[k];
                             
                         }
                         
-                        if(ti.spell2_5 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell2_5 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[4] = allPossibleSpells[k];
                             
                         }
                         
-                        if(ti.spell2_6 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell2_6 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[5] = allPossibleSpells[k];
                             
                         }
@@ -786,7 +786,7 @@ public class GameControllerScript : MonoBehaviour
 
             case "Summon2_1":
             for(int j = 0; j < allPossibleCharacters.Length; j++) {
-                if(ti.summon2_1 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                if(TeamInfoManager.instance.summon2_1 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
                     playerTeamList.Add(allPossibleCharacters[j]);
                     charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
 
@@ -805,7 +805,7 @@ public class GameControllerScript : MonoBehaviour
 
             case "Summon2_2":
             for(int j = 0; j < allPossibleCharacters.Length; j++) {
-                if(ti.summon2_2 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                if(TeamInfoManager.instance.summon2_2 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
                     playerTeamList.Add(allPossibleCharacters[j]);
                     charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
 
@@ -824,7 +824,7 @@ public class GameControllerScript : MonoBehaviour
 
             case "Hero3":
             for(int j = 0; j < allPossibleCharacters.Length; j++) {
-                if(ti.hero3 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                if(TeamInfoManager.instance.hero3 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
                     playerTeamList.Add(allPossibleCharacters[j]);
                     charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
 
@@ -842,31 +842,31 @@ public class GameControllerScript : MonoBehaviour
                     allPossibleCharacters[j].GetComponent<SpellList>().spellList = new List<Basic_Spell_Class>(new Basic_Spell_Class[6]);
 
                     for(int k = 0; k < allPossibleSpells.Count; k++){
-                        if(ti.spell3_1 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell3_1 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[0] = allPossibleSpells[k];
                         }
                         
-                        if(ti.spell3_2 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell3_2 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[1] = allPossibleSpells[k];
                         
                         }
                         
-                        if(ti.spell3_3 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell3_3 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[2] = allPossibleSpells[k];
                             
                         }
                         
-                        if(ti.spell3_4 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell3_4 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[3] = allPossibleSpells[k];
                             
                         }
                         
-                        if(ti.spell3_5 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell3_5 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[4] = allPossibleSpells[k];
                             
                         }
                         
-                        if(ti.spell3_6 == allPossibleSpells[k].spellName) {
+                        if(TeamInfoManager.instance.spell3_6 == allPossibleSpells[k].spellName) {
                             allPossibleCharacters[j].GetComponent<SpellList>().spellList[5] = allPossibleSpells[k];
                             
                         }
@@ -878,7 +878,7 @@ public class GameControllerScript : MonoBehaviour
 
             case "Summon3_1":
             for(int j = 0; j < allPossibleCharacters.Length; j++) {
-                if(ti.summon3_1 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                if(TeamInfoManager.instance.summon3_1 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
                     playerTeamList.Add(allPossibleCharacters[j]);
                     charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
                     
@@ -897,7 +897,7 @@ public class GameControllerScript : MonoBehaviour
 
             case "Summon3_2":
             for(int j = 0; j < allPossibleCharacters.Length; j++) {
-                if(ti.summon3_2 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
+                if(TeamInfoManager.instance.summon3_2 == allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name) {
                     playerTeamList.Add(allPossibleCharacters[j]);
                     charactersPutOnTeam.Add(allPossibleCharacters[j].GetComponent<Basic_Character_Class>().name);
 

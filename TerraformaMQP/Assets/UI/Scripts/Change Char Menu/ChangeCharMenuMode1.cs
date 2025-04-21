@@ -40,39 +40,39 @@ public class ChangeCharMenuMode1 : MonoBehaviour
 
     public void setCurrHeroSwap() {
         if(go.GetComponent<ChangeCharMenu>().currChanging == "Hero1") {
-            currHero = go.GetComponent<ChangeCharMenu>().ti.hero1;
-            currSummon1 = go.GetComponent<ChangeCharMenu>().ti.summon1_1;
-            currSummon2 = go.GetComponent<ChangeCharMenu>().ti.summon1_2;
-            currSpell1 = go.GetComponent<ChangeCharMenu>().ti.spell1_1;
-            currSpell2 = go.GetComponent<ChangeCharMenu>().ti.spell1_2;
-            currSpell3 = go.GetComponent<ChangeCharMenu>().ti.spell1_3;
-            currSpell4 = go.GetComponent<ChangeCharMenu>().ti.spell1_4;
-            currSpell5 = go.GetComponent<ChangeCharMenu>().ti.spell1_5;
-            currSpell6 = go.GetComponent<ChangeCharMenu>().ti.spell1_6;
+            currHero = TeamInfoManager.instance.hero1;
+            currSummon1 = TeamInfoManager.instance.summon1_1;
+            currSummon2 = TeamInfoManager.instance.summon1_2;
+            currSpell1 = TeamInfoManager.instance.spell1_1;
+            currSpell2 = TeamInfoManager.instance.spell1_2;
+            currSpell3 = TeamInfoManager.instance.spell1_3;
+            currSpell4 = TeamInfoManager.instance.spell1_4;
+            currSpell5 = TeamInfoManager.instance.spell1_5;
+            currSpell6 = TeamInfoManager.instance.spell1_6;
 
 
         }
         else if(go.GetComponent<ChangeCharMenu>().currChanging == "Hero2") {
-            currHero = go.GetComponent<ChangeCharMenu>().ti.hero2;
-            currSummon1 = go.GetComponent<ChangeCharMenu>().ti.summon2_1;
-            currSummon2 = go.GetComponent<ChangeCharMenu>().ti.summon2_2;
-            currSpell1 = go.GetComponent<ChangeCharMenu>().ti.spell2_1;
-            currSpell2 = go.GetComponent<ChangeCharMenu>().ti.spell2_2;
-            currSpell3 = go.GetComponent<ChangeCharMenu>().ti.spell2_3;
-            currSpell4 = go.GetComponent<ChangeCharMenu>().ti.spell2_4;
-            currSpell5 = go.GetComponent<ChangeCharMenu>().ti.spell2_5;
-            currSpell6 = go.GetComponent<ChangeCharMenu>().ti.spell2_6;
+            currHero = TeamInfoManager.instance.hero2;
+            currSummon1 = TeamInfoManager.instance.summon2_1;
+            currSummon2 = TeamInfoManager.instance.summon2_2;
+            currSpell1 = TeamInfoManager.instance.spell2_1;
+            currSpell2 = TeamInfoManager.instance.spell2_2;
+            currSpell3 = TeamInfoManager.instance.spell2_3;
+            currSpell4 = TeamInfoManager.instance.spell2_4;
+            currSpell5 = TeamInfoManager.instance.spell2_5;
+            currSpell6 = TeamInfoManager.instance.spell2_6;
         }
         else if(go.GetComponent<ChangeCharMenu>().currChanging == "Hero3") {
-            currHero = go.GetComponent<ChangeCharMenu>().ti.hero3;
-            currSummon1 = go.GetComponent<ChangeCharMenu>().ti.summon3_1;
-            currSummon2 = go.GetComponent<ChangeCharMenu>().ti.summon3_2;
-            currSpell1 = go.GetComponent<ChangeCharMenu>().ti.spell3_1;
-            currSpell2 = go.GetComponent<ChangeCharMenu>().ti.spell3_2;
-            currSpell3 = go.GetComponent<ChangeCharMenu>().ti.spell3_3;
-            currSpell4 = go.GetComponent<ChangeCharMenu>().ti.spell3_4;
-            currSpell5 = go.GetComponent<ChangeCharMenu>().ti.spell3_5;
-            currSpell6 = go.GetComponent<ChangeCharMenu>().ti.spell3_6;
+            currHero = TeamInfoManager.instance.hero3;
+            currSummon1 = TeamInfoManager.instance.summon3_1;
+            currSummon2 = TeamInfoManager.instance.summon3_2;
+            currSpell1 = TeamInfoManager.instance.spell3_1;
+            currSpell2 = TeamInfoManager.instance.spell3_2;
+            currSpell3 = TeamInfoManager.instance.spell3_3;
+            currSpell4 = TeamInfoManager.instance.spell3_4;
+            currSpell5 = TeamInfoManager.instance.spell3_5;
+            currSpell6 = TeamInfoManager.instance.spell3_6;
         }
     }
 
