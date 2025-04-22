@@ -28,6 +28,7 @@ public class MainSystem : MonoBehaviour
     public List<DialogueAsset> assets = new List<DialogueAsset>();
     public string sceneToSendTo = "Level1";
     public GameObject arrowObj;
+    public bool paused = false;
 
 
     // Start is called before the first frame update
@@ -59,7 +60,7 @@ public class MainSystem : MonoBehaviour
         else {
             fadingOut = false;
         }
-        if (Input.GetMouseButtonDown(0) && fading == false){
+        if (Input.GetMouseButtonDown(0) && fading == false && fadingOut == false && paused == false){
             phase++;
         }
         fade.transform.SetAsLastSibling();
@@ -73,10 +74,7 @@ public class MainSystem : MonoBehaviour
             for (int i = 1; i < assets.Count; i++){
                 yield return new WaitUntil(() => phase == i);
                 if (assets[i].character == "Fade"){
-                    fadeOut();
-                    yield return new WaitForSeconds(2.0f);
-                    fadeIn();
-                    phase++;
+                    StartCoroutine(fadeOutAndIn());
                 }
                 else if (assets[i].character == "Noise"){
                     spawnNoise(assets[i].message);
@@ -88,12 +86,21 @@ public class MainSystem : MonoBehaviour
         }
         yield return new WaitUntil(() => phase == assets.Count);
         fadeOut();
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSecondsRealtime(2.0f);
         SceneManager.LoadScene(sceneToSendTo);
     }
 
     private void spawnBackground(){
         canvas.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = bg;
+    }
+
+    IEnumerator fadeOutAndIn(){
+        fadeOut();
+        paused = true;
+        yield return new WaitForSecondsRealtime(2.0f);
+        paused = false;
+        fadeIn();
+        phase++;
     }
 
     private void spawnNoise(string message){
