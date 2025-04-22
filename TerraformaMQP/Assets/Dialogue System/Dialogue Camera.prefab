@@ -110,6 +110,7 @@ MonoBehaviour:
   textBox: {fileID: 21300000, guid: 0157d697c23748d4eb792a8dcdce33cb, type: 3}
   bg: {fileID: 0}
   CharacterSprite: {fileID: 21300000, guid: 0157d697c23748d4eb792a8dcdce33cb, type: 3}
+  arrow: {fileID: 21300000, guid: 510a0bb49b328ff4c9bf01fbe1614952, type: 3}
   canvas: {fileID: 0}
   Wold:
   - {fileID: 21300000, guid: 84eeefa95b06228418dcc8dcc687b289, type: 3}
@@ -125,6 +126,7 @@ MonoBehaviour:
   fadingOut: 0
   fadeVal: 1
   assets: []
+  sceneToSendTo: Level1
 --- !u!1 &3107636707980194521
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class MainSystem : MonoBehaviour
     public Sprite textBox;
     public Sprite bg;
     public Sprite CharacterSprite;
+    public Sprite arrow;
     public Canvas canvas;
     public List<Sprite> Wold;
     public List<Sprite> Lancin;
@@ -26,6 +27,7 @@ public class MainSystem : MonoBehaviour
     public float fadeVal = 1f;
     public List<DialogueAsset> assets = new List<DialogueAsset>();
     public string sceneToSendTo = "Level1";
+    public GameObject arrowObj;
 
 
     // Start is called before the first frame update
@@ -56,9 +58,6 @@ public class MainSystem : MonoBehaviour
         }
         else {
             fadingOut = false;
-            if (fadeVal >= 1.01f){
-                SceneManager.LoadScene(sceneToSendTo);
-            }
         }
         if (Input.GetMouseButtonDown(0) && fading == false){
             phase++;
@@ -73,15 +72,65 @@ public class MainSystem : MonoBehaviour
         if(assets != null && assets.Count > 0){
             for (int i = 1; i < assets.Count; i++){
                 yield return new WaitUntil(() => phase == i);
-                StartCoroutine(newText(assets[i].character, assets[i].dir, assets[i].message, assets[i].expression));
+                if (assets[i].character == "Fade"){
+                    fadeOut();
+                    yield return new WaitForSeconds(2.0f);
+                    fadeIn();
+                    phase++;
+                }
+                else if (assets[i].character == "Noise"){
+                    spawnNoise(assets[i].message);
+                }
+                else{
+                    StartCoroutine(newText(assets[i].character, assets[i].dir, assets[i].message, assets[i].expression));
+                }
             }
         }
         yield return new WaitUntil(() => phase == assets.Count);
         fadeOut();
+        yield return new WaitForSeconds(2.0f);
+        SceneManager.LoadScene(sceneToSendTo);
     }
 
     private void spawnBackground(){
         canvas.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = bg;
+    }
+
+    private void spawnNoise(string message){
+        if (TextBox != null){
+            Destroy(TextBox);
+        }
+        GameObject text = new GameObject("Textbox");
+        text.transform.SetParent(canvas.transform, false);
+        Image img = text.AddComponent<Image>();
+        img.sprite = textBox;
+        text.GetComponent<RectTransform>().localScale = new Vector3(6f, 1.25f, 1f);
+        text.GetComponent<RectTransform>().localPosition = new Vector3(-2.5f, -120f, -610f);
+        TextBox = text;
+        GameObject newText = new GameObject("Message");
+        newText.transform.SetParent(text.transform, false);
+        TextMeshProUGUI txt = newText.AddComponent<TextMeshProUGUI>();
+        Vector3 inverseScale = new Vector3(0.3f, 0.9f, 0.3f);
+        newText.transform.localScale = inverseScale;
+        newText.transform.localPosition = new Vector3(0f, 0f, 0f);
+        txt.text = message;
+        txt.font = font;
+        txt.fontSize = 10;
+        txt.color = Color.black;
+        txt.alignment = TextAlignmentOptions.Center;
+
+        if (arrowObj != null){
+            Destroy(arrowObj);
+        }
+
+        GameObject nextArrow = new GameObject("nextArrow");
+        nextArrow.transform.SetParent(canvas.transform, false);
+        Image arrowImg = nextArrow.AddComponent<Image>();
+        arrowImg.sprite = arrow;
+        arrowImg.GetComponent<RectTransform>().localScale = new Vector3(0.53f, 0.1848f, 1.235f);
+        arrowImg.GetComponent<RectTransform>().localPosition = new Vector3(208f, -155f, -610f);
+        arrowImg.color = new Color(34f / 255f, 28f / 255f, 28f / 255f);
+        arrowObj = nextArrow;
     }
 
     IEnumerator newText(string character, string dir, string text, string mood){
@@ -124,6 +173,9 @@ public class MainSystem : MonoBehaviour
     }
 
     public void spawnText(string character, string message, string dir){
+        if (TextBox != null){
+            Destroy(TextBox);
+        }
         GameObject text = new GameObject("Textbox");
         text.transform.SetParent(canvas.transform, false);
         Image img = text.AddComponent<Image>();
@@ -140,9 +192,22 @@ public class MainSystem : MonoBehaviour
         newText.transform.localPosition = new Vector3(0f, 0f, 0f);
         txt.text = message;
         txt.font = font;
-        txt.fontSize = 12;
+        txt.fontSize = 10;
         txt.color = Color.black;
         txt.alignment = TextAlignmentOptions.Center;
+
+        if (arrowObj != null){
+            Destroy(arrowObj);
+        }
+
+        GameObject nextArrow = new GameObject("nextArrow");
+        nextArrow.transform.SetParent(canvas.transform, false);
+        Image arrowImg = nextArrow.AddComponent<Image>();
+        arrowImg.sprite = arrow;
+        arrowImg.GetComponent<RectTransform>().localScale = new Vector3(0.53f, 0.1848f, 1.235f);
+        arrowImg.GetComponent<RectTransform>().localPosition = new Vector3(208f, -155f, -610f);
+        arrowImg.color = new Color(34f / 255f, 28f / 255f, 28f / 255f);
+        arrowObj = nextArrow;
     }
 
     public void characterName(string character, string dir){
@@ -197,6 +262,21 @@ public class MainSystem : MonoBehaviour
     }
 
     public void fadeOut(){
+        if (TextBox != null){
+            Destroy(TextBox);
+        }
+        if (leftImage != null){
+            Destroy(leftImage);
+        }
+        if (rightImage != null){
+            Destroy(rightImage);
+        }
+        if (characterScroll != null){
+            Destroy(characterScroll);
+        }
+        if (arrowObj != null){
+            Destroy(arrowObj);
+        }
         fadeVal = 0.0f;
         Color newColor = fadeImage.color;
         newColor.a = fadeVal;
