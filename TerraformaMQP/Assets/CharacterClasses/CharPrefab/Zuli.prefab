@@ -329,8 +329,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5168971530063550120, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
       propertyPath: m_text
-      value: Blazing Fury -  A powerful fire based melee attack that leaves fire
-        in it's wake. 3 Turns of Cooldown
+      value: 'Constrict - Ensnare an enemy in range, dealing attack damage and stunning
+        them for a turn - Cooldown: 3'
       objectReference: {fileID: 0}
     - target: {fileID: 5168971530063550120, guid: 1d96ce8efcc3648dda3936d4df1099f7, type: 3}
       propertyPath: m_fontSize

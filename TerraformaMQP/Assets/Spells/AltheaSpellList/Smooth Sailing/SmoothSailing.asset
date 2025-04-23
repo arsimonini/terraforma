@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SmoothSailing
   m_EditorClassIdentifier: 
   manaCost: 7
-  spellName: Smooth Sailing
+  spellName: Swift Sail
   elementType: Wind
   spellPrefab: {fileID: 5642006647470111640, guid: cc035847bfe0c194c80f06bea6cb7566, type: 3}
   description: Drastically enhances an ally's movement.

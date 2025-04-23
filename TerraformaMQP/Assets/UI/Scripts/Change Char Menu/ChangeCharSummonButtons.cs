@@ -49,32 +49,32 @@ public class ChangeCharSummonButtons : MonoBehaviour
         }
         switch (place) {
             case "Hero1_Summon1":
-            ti.summon1_1 = what;
+            TeamInfoManager.instance.summon1_1 = what;
             swapSummonSprite(0, what);
             break;
 
             case "Hero1_Summon2":
-            ti.summon1_2 = what;
+            TeamInfoManager.instance.summon1_2 = what;
             swapSummonSprite(1, what);
             break;
 
             case "Hero2_Summon1":
-            ti.summon2_1 = what;
+            TeamInfoManager.instance.summon2_1 = what;
             swapSummonSprite(2, what);
             break;
 
             case "Hero2_Summon2":
-            ti.summon2_2 = what;
+            TeamInfoManager.instance.summon2_2 = what;
             swapSummonSprite(3, what);
             break;
 
             case "Hero3_Summon1":
-            ti.summon3_1 = what;
+            TeamInfoManager.instance.summon3_1 = what;
             swapSummonSprite(4, what);
             break;
 
             case "Hero3_Summon2":
-            ti.summon3_2 = what;
+            TeamInfoManager.instance.summon3_2 = what;
             swapSummonSprite(5, what);
             break;
             

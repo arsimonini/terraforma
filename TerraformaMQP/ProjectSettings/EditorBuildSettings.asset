@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: 8402a7a7af3a04312aff68c0226675ae
   - enabled: 1
+    path: Assets/Scenes/Dialogue1.unity
+    guid: 54ca2cdfde56360409abebd12688f6db
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 770a1b9ac10454388bc760cc0e37dd90
   - enabled: 1
