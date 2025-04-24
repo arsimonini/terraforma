@@ -78,7 +78,7 @@ MonoBehaviour:
   effects: []
   tileEffect: {fileID: 0}
   name: Wold Wold
-  char_img: {fileID: 21300000, guid: 2d862418c106b4e6d8af660a0a6d7e25, type: 3}
+  char_img: {fileID: 21300000, guid: fc402bd8fe8e2407194faac9430d21c2, type: 3}
   health: 22
   maxHealth:
     value: 22
