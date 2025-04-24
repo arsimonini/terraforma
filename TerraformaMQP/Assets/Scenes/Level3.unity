@@ -14419,6 +14419,18 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1233787505}
+    - target: {fileID: 5590519867409697623, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
+      propertyPath: waterSpells.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590519867409697623, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
+      propertyPath: waterSpells.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 965d4c162bb4c4eabbefbaca2c454aed, type: 3}
+    - target: {fileID: 5590519867409697623, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
+      propertyPath: waterSpells.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: f4f092b4705e042eab45c0de6bb1bac0, type: 3}
     - target: {fileID: 5909329778438177822, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
       propertyPath: m_Mesh
       value: 

@@ -300,6 +300,8 @@ public class ClickableTile : MonoBehaviour
                     map.swapTiles(map.clickableTiles[TileX,TileY],1,true);
                 } else if (tileWas == 4 || tileWas == 9) { //Shallow Water / Ice -> Shallow Water
                     map.swapTiles(map.clickableTiles[TileX,TileY],9,true); 
+                } else if (tileWas == 6) { // Wood Plank -> Deep Water
+                    map.swapTiles(map.clickableTiles[TileX,TileY],10,true); 
                 } else { //Stone -> Stone, Sand -> Sand, other things shouldn't be in this condition anyways, so this also acts as a failsafe
                     map.swapTiles(map.clickableTiles[TileX,TileY],tileWas,true); 
                 }
