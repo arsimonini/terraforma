@@ -17326,7 +17326,7 @@ PrefabInstance:
       objectReference: {fileID: 1649985110}
     - target: {fileID: 860936756721351128, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: m_VersionIndex
-      value: 1819
+      value: 1822
       objectReference: {fileID: 0}
     - target: {fileID: 2015180818333459478, guid: 3a5e3c9f0e1293342b64310d034fa100, type: 3}
       propertyPath: cam
@@ -21808,6 +21808,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ba5bc7b9192685645a96fbc2744473b9, type: 2}
   - {fileID: 11400000, guid: 690236cb67f672f4784bb3a1089e6eb2, type: 2}
   - {fileID: 11400000, guid: ab48fdef0bac3e847b5fc989982ee340, type: 2}
+  - {fileID: 11400000, guid: 6c9fbe0d92ae7184f9dcdda07080c340, type: 2}
   tilePrefabs: []
   joltedPrefab: {fileID: 11400000, guid: 936bce4200a9f914b94239ef35b356f3, type: 2}
 --- !u!114 &1297737941
@@ -22650,6 +22651,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 248ee3e37f945644c946384ca3c1b635, type: 2}
   - {fileID: 11400000, guid: aa201f79e3450ad40825d734c3069464, type: 2}
   - {fileID: 11400000, guid: 401ae7b358ec58241b31672043153ca6, type: 2}
+  - {fileID: 11400000, guid: e83b9b3ab14d27b419c5cb89b7ac38f2, type: 2}
+  - {fileID: 11400000, guid: dc28467c56c38144d9201a9ee1bddf18, type: 2}
 --- !u!4 &1356950530
 Transform:
   m_ObjectHideFlags: 0

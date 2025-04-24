@@ -27,6 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/ChangeMenu.unity
     guid: 12e6816a2fac9474db53d488f5b39261
   - enabled: 1
-    path: Assets/Scenes/Level3.unity
-    guid: 1165f2b1497534b7fb4fd1ce347e879b
+    path: Assets/Scenes/Credits.unity
+    guid: 7bd26295407394f4bb84c430c20dd6e4
   m_configObjects: {}

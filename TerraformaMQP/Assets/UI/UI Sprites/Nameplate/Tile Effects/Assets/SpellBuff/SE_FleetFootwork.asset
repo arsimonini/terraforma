@@ -16,5 +16,5 @@ MonoBehaviour:
   name: Fleet Footwork
   description: +4 Eva Until Duration is Complete
   timeRemaining: 0
-  effectVis: {fileID: 21300000, guid: b5e0f6a975a604c71a07403229354a1f, type: 3}
+  effectVis: {fileID: 21300000, guid: 220b9a43fb5ad444fb1a707c0c1a40fd, type: 3}
   type: Spell
