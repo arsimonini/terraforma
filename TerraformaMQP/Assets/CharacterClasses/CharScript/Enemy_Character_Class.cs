@@ -7,18 +7,21 @@ using Random = UnityEngine.Random;
 
 public class Enemy_Character_Class : MonoBehaviour
 {
-    GameObject target = null;
-    Basic_Character_Class basic = null;
+    public GameObject target = null;
+    public Basic_Character_Class basic = null;
     public string element = "";
     public bool chaseFromFar = false;
     public int chaseSteps = 10;
 
-    public int[] waterCooldown = new int[2]; 
+    public int[] waterCooldown = new int[2];
 
     public List<Basic_Spell_Class> spellList; //The list of spells that the character can cast
 
     private List<Node> idealPath = null; //full path to target uninhibited by wall
     private Node targetWallNode = null;
+    public bool wasMoving = false;
+
+
 
     [SerializeField] private AudioClip[] fireSpells;
     [SerializeField] private AudioClip[] earthSpells;
@@ -28,6 +31,14 @@ public class Enemy_Character_Class : MonoBehaviour
         basic = this.gameObject.GetComponent<Basic_Character_Class>();
         waterCooldown[0] = 0;
         waterCooldown[1] = 0;
+    }
+
+    void Update()
+    {
+        if (wasMoving != basic.isMoving && gameObject.name == "WaterEnemy"){
+            UnityEngine.Debug.Log("IsMoving has been changed to " + basic.isMoving);
+            wasMoving = basic.isMoving;
+        }
     }
 
     //Tells the enemy to take their turn ---SUBJECT TO CHANGES AS AI IS ADDED---
@@ -96,6 +107,7 @@ public class Enemy_Character_Class : MonoBehaviour
             basicAttack();
         }
         else {
+            UnityEngine.Debug.Log(this.gameObject.name);
             basic.map.currentPath = path;
             basic.path = path;
             basic.isMoving = true;
@@ -122,7 +134,7 @@ public class Enemy_Character_Class : MonoBehaviour
             //UnityEngine.Debug.Log("Hero: " + tileX + "," + tileY);
             List<Node> path = basic.map.generatePathTo(tileX, tileY, false, true, noWalls: true, setCurrent:false, cutPath:false);
             //UnityEngine.Debug.Log("step count: " + path.Count + " to hero " + hero.name);
-            
+
             //breakable wall in path, check true path for hero within 2 turns
             Node possibleWall = wallInPath(path);
             if (possibleWall != null) {
@@ -162,7 +174,7 @@ public class Enemy_Character_Class : MonoBehaviour
                 pathToTarget = basic.map.basicPathCutoff(basic.movementSpeed.moddedValue, path);
                 //UnityEngine.Debug.Log("step count final: " + pathToTarget.Count + " to hero " + hero.name);
             }
-            
+
         }
 
         //no target selected - all heroes out of reach + chase == true, target first in list
@@ -184,7 +196,7 @@ public class Enemy_Character_Class : MonoBehaviour
     }
 
     public List<Node> findCover(bool run = false, bool runIfAdjToHero = true) {
-        GameObject[] heroes = basic.map.heroes.ToArray(); 
+        GameObject[] heroes = basic.map.heroes.ToArray();
         //get list of spaces adjacent to walls
         int[,] tiles = basic.map.tiles;
         Node[,] graph = basic.map.graph;
@@ -199,16 +211,16 @@ public class Enemy_Character_Class : MonoBehaviour
         int endY = Math.Min(basic.tileY+5, tiles.GetLength(1));
 
         //iterate through map tiles
-        for (int i = startX; i < endX; i++) { 
-            for (int j = startY; j < endY; j++) { 
+        for (int i = startX; i < endX; i++) {
+            for (int j = startY; j < endY; j++) {
                 //if tile is wall, add adjacent non-walls to wallAdj
                 if (Array.IndexOf(wallNums, tiles[i,j]) != -1) {
                     foreach (Node n in graph[i,j].neighbors) {
                         if (!(wallAdj.Contains(n)) && (Array.IndexOf(wallNums, tiles[n.x, n.y]) == -1) && !(basic.map.checkForTileEffect(n.x, n.y, "Burning")))
                             wallAdj.Add(n);
                     }
-                } 
-            } 
+                }
+            }
         }
 
         List<Node> coverTiles = new List<Node>();
@@ -377,6 +389,7 @@ public class Enemy_Character_Class : MonoBehaviour
         }
         else {
             magicTurns();
+            if (!basic.turnEnded) basic.endTurn();
         }
     }
 
@@ -543,7 +556,6 @@ public class Enemy_Character_Class : MonoBehaviour
                 basicAttack();
             }
         }
-        //if (!basic.turnEnded) basic.endTurn();
 
         //if not go towards cover, then check again (first fire in range, then Lancin)
     }
