@@ -788,8 +788,10 @@ private bool checkFoggyReaction(ClickableTile tile, string damageType, string so
         TileEffect newEffect;
         switch(damageType){
             case "Fire":
-                newEffect = Instantiate(tileEffects[0]);
-                newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                if (!checkTypeExists(damageType, tile)){
+                    newEffect = Instantiate(tileEffects[0]);
+                    newEffect.createTileEffect(playerTeam, tile, newSource: source, newDuration: 3, fromReact: true, blockRemoval: true);
+                }
                 break;
 
             case "Water":

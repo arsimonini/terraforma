@@ -543,7 +543,7 @@ public class Enemy_Character_Class : MonoBehaviour
                 basicAttack();
             }
         }
-        if (!basic.turnEnded) basic.endTurn();
+        //if (!basic.turnEnded) basic.endTurn();
 
         //if not go towards cover, then check again (first fire in range, then Lancin)
     }
