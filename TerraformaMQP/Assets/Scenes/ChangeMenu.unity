@@ -434,6 +434,7 @@ GameObject:
   - component: {fileID: 72301491}
   - component: {fileID: 72301490}
   - component: {fileID: 72301492}
+  - component: {fileID: 72301493}
   m_Layer: 5
   m_Name: Background for Spells 1 6
   m_TagString: Untagged
@@ -567,6 +568,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &72301493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72301488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell2_6
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &80993285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,138 +1278,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118932943}
   m_CullTransparentMesh: 1
---- !u!1 &147183201
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 147183202}
-  - component: {fileID: 147183205}
-  - component: {fileID: 147183204}
-  - component: {fileID: 147183203}
-  m_Layer: 5
-  m_Name: Resume
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &147183202
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147183201}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 0.49999997}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 152019475}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: 60.49994}
-  m_SizeDelta: {x: 280, y: 60}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &147183203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147183201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 147183204}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Resume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &147183204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147183201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e78cf452dadd54e90ae40747f15c993f, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &147183205
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147183201}
-  m_CullTransparentMesh: 1
 --- !u!1 &150354759
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,10 +1381,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 147183202}
-  - {fileID: 908901340}
-  - {fileID: 979871697}
-  - {fileID: 1196182815}
+  - {fileID: 401355306}
   m_Father: {fileID: 767844059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2030,6 +1924,7 @@ GameObject:
   - component: {fileID: 227879118}
   - component: {fileID: 227879117}
   - component: {fileID: 227879119}
+  - component: {fileID: 227879120}
   m_Layer: 5
   m_Name: Background for Spells 1 5
   m_TagString: Untagged
@@ -2163,6 +2058,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &227879120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227879115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell2_5
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &228270744
 GameObject:
   m_ObjectHideFlags: 0
@@ -2360,6 +2283,7 @@ GameObject:
   - component: {fileID: 245533728}
   - component: {fileID: 245533727}
   - component: {fileID: 245533729}
+  - component: {fileID: 245533730}
   m_Layer: 5
   m_Name: Background for Spells 1 3
   m_TagString: Untagged
@@ -2493,6 +2417,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &245533730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245533725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell1_3
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &253087022
 GameObject:
   m_ObjectHideFlags: 0
@@ -3449,6 +3401,139 @@ MonoBehaviour:
   - {fileID: 766345751}
   - {fileID: 1081674495}
   - {fileID: 1994391042}
+--- !u!1 &401355305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 401355306}
+  - component: {fileID: 401355309}
+  - component: {fileID: 401355308}
+  - component: {fileID: 401355307}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &401355306
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401355305}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1558284116}
+  m_Father: {fileID: 152019475}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -271.4, y: 148.2}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &401355307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401355305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 401355308}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1915951723}
+        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
+        m_MethodName: GoToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Title
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &401355308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401355305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &401355309
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401355305}
+  m_CullTransparentMesh: 1
 --- !u!1 &408994449
 GameObject:
   m_ObjectHideFlags: 0
@@ -3778,6 +3863,7 @@ GameObject:
   - component: {fileID: 437164262}
   - component: {fileID: 437164261}
   - component: {fileID: 437164263}
+  - component: {fileID: 437164264}
   m_Layer: 5
   m_Name: Background for Spells 1 2
   m_TagString: Untagged
@@ -3911,6 +3997,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &437164264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437164259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell1_2
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &465380317
 GameObject:
   m_ObjectHideFlags: 0
@@ -4091,6 +4205,7 @@ GameObject:
   - component: {fileID: 469966702}
   - component: {fileID: 469966701}
   - component: {fileID: 469966703}
+  - component: {fileID: 469966704}
   m_Layer: 5
   m_Name: Background for Summon 3 2
   m_TagString: Untagged
@@ -4224,6 +4339,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &469966704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469966699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Summon3_2
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &471381782
 GameObject:
   m_ObjectHideFlags: 0
@@ -4236,6 +4379,7 @@ GameObject:
   - component: {fileID: 471381785}
   - component: {fileID: 471381784}
   - component: {fileID: 471381786}
+  - component: {fileID: 471381787}
   m_Layer: 5
   m_Name: Background for Spells 1 6
   m_TagString: Untagged
@@ -4369,6 +4513,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &471381787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471381782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell1_6
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &476267789
 GameObject:
   m_ObjectHideFlags: 0
@@ -4814,6 +4986,7 @@ GameObject:
   - component: {fileID: 552270726}
   - component: {fileID: 552270725}
   - component: {fileID: 552270727}
+  - component: {fileID: 552270728}
   m_Layer: 5
   m_Name: Background for Spells 1 4
   m_TagString: Untagged
@@ -4947,6 +5120,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &552270728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552270723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell1_4
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &573308248
 GameObject:
   m_ObjectHideFlags: 0
@@ -5301,6 +5502,7 @@ GameObject:
   - component: {fileID: 629734348}
   - component: {fileID: 629734347}
   - component: {fileID: 629734349}
+  - component: {fileID: 629734350}
   m_Layer: 5
   m_Name: Background for Spells 1 1
   m_TagString: Untagged
@@ -5434,6 +5636,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &629734350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629734345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell3_1
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &631874400
 GameObject:
   m_ObjectHideFlags: 0
@@ -5446,6 +5676,7 @@ GameObject:
   - component: {fileID: 631874403}
   - component: {fileID: 631874402}
   - component: {fileID: 631874404}
+  - component: {fileID: 631874405}
   m_Layer: 5
   m_Name: Background for Summon 1 1
   m_TagString: Untagged
@@ -5579,6 +5810,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &631874405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631874400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Summon1_1
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &643437774
 GameObject:
   m_ObjectHideFlags: 0
@@ -6679,6 +6938,7 @@ GameObject:
   - component: {fileID: 865296063}
   - component: {fileID: 865296062}
   - component: {fileID: 865296064}
+  - component: {fileID: 865296065}
   m_Layer: 5
   m_Name: Background for Team 3
   m_TagString: Untagged
@@ -6812,6 +7072,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &865296065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865296060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Hero3
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &878519235
 GameObject:
   m_ObjectHideFlags: 0
@@ -6899,6 +7187,7 @@ GameObject:
   - component: {fileID: 882496010}
   - component: {fileID: 882496009}
   - component: {fileID: 882496011}
+  - component: {fileID: 882496012}
   m_Layer: 5
   m_Name: Background for Spells 1 5
   m_TagString: Untagged
@@ -7032,6 +7321,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &882496012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882496007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell3_5
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &884167191
 GameObject:
   m_ObjectHideFlags: 0
@@ -7044,6 +7361,7 @@ GameObject:
   - component: {fileID: 884167194}
   - component: {fileID: 884167193}
   - component: {fileID: 884167195}
+  - component: {fileID: 884167196}
   m_Layer: 5
   m_Name: Background for Team 2
   m_TagString: Untagged
@@ -7177,6 +7495,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &884167196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884167191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Hero2
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &896011680
 GameObject:
   m_ObjectHideFlags: 0
@@ -7252,138 +7598,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896011680}
   m_CullTransparentMesh: 1
---- !u!1 &908901339
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 908901340}
-  - component: {fileID: 908901343}
-  - component: {fileID: 908901342}
-  - component: {fileID: 908901341}
-  m_Layer: 5
-  m_Name: Restart Level
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &908901340
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908901339}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 0.49999997}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 152019475}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: 15.499939}
-  m_SizeDelta: {x: 280, y: 60}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &908901341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908901339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 908901342}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: RestartLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &908901342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908901339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f4784346f9cf24e4eaac3aaa726f7602, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &908901343
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908901339}
-  m_CullTransparentMesh: 1
 --- !u!1 &911998676
 GameObject:
   m_ObjectHideFlags: 0
@@ -7458,138 +7672,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911998676}
-  m_CullTransparentMesh: 1
---- !u!1 &979871696
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 979871697}
-  - component: {fileID: 979871700}
-  - component: {fileID: 979871699}
-  - component: {fileID: 979871698}
-  m_Layer: 5
-  m_Name: Settings
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &979871697
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979871696}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 0.49999997}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 152019475}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -29.5}
-  m_SizeDelta: {x: 280, y: 60}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &979871698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979871696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 979871699}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Settings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &979871699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979871696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2a37364e3b65d48ce8a3db32bac4a255, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &979871700
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979871696}
   m_CullTransparentMesh: 1
 --- !u!1 &981478049
 GameObject:
@@ -7753,6 +7835,7 @@ GameObject:
   - component: {fileID: 992962006}
   - component: {fileID: 992962005}
   - component: {fileID: 992962007}
+  - component: {fileID: 992962008}
   m_Layer: 5
   m_Name: Background for Summon 2 2
   m_TagString: Untagged
@@ -7886,6 +7969,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &992962008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992962003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Summon2_2
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &996242204
 GameObject:
   m_ObjectHideFlags: 0
@@ -8290,6 +8401,7 @@ GameObject:
   - component: {fileID: 1085664716}
   - component: {fileID: 1085664715}
   - component: {fileID: 1085664717}
+  - component: {fileID: 1085664718}
   m_Layer: 5
   m_Name: Background for Spells 1 2
   m_TagString: Untagged
@@ -8423,6 +8535,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1085664718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085664713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell3_2
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &1089660729
 GameObject:
   m_ObjectHideFlags: 0
@@ -8631,6 +8771,7 @@ GameObject:
   - component: {fileID: 1120510158}
   - component: {fileID: 1120510157}
   - component: {fileID: 1120510159}
+  - component: {fileID: 1120510160}
   m_Layer: 5
   m_Name: Background for Spells 1 6
   m_TagString: Untagged
@@ -8764,6 +8905,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1120510160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120510155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell3_6
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &1160729485
 GameObject:
   m_ObjectHideFlags: 0
@@ -9074,138 +9243,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1196182814
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1196182815}
-  - component: {fileID: 1196182818}
-  - component: {fileID: 1196182817}
-  - component: {fileID: 1196182816}
-  m_Layer: 5
-  m_Name: Quit
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1196182815
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196182814}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 0.49999997}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 152019475}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -74.5}
-  m_SizeDelta: {x: 280, y: 60}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1196182816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196182814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1196182817}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1915951723}
-        m_TargetAssemblyTypeName: ChangeCharMenu, Assembly-CSharp
-        m_MethodName: GoToMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1196182817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196182814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb354ab0105dc44b29f46d893fbc5c5a, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1196182818
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196182814}
-  m_CullTransparentMesh: 1
 --- !u!1 &1204489817
 GameObject:
   m_ObjectHideFlags: 0
@@ -9528,6 +9565,7 @@ GameObject:
   - component: {fileID: 1274219161}
   - component: {fileID: 1274219160}
   - component: {fileID: 1274219162}
+  - component: {fileID: 1274219163}
   m_Layer: 5
   m_Name: Background for Spells 1 3
   m_TagString: Untagged
@@ -9661,6 +9699,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1274219163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274219158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell2_3
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &1297224968
 GameObject:
   m_ObjectHideFlags: 0
@@ -9748,6 +9814,7 @@ GameObject:
   - component: {fileID: 1311692456}
   - component: {fileID: 1311692455}
   - component: {fileID: 1311692457}
+  - component: {fileID: 1311692458}
   m_Layer: 5
   m_Name: Background for Spells 1 3
   m_TagString: Untagged
@@ -9881,6 +9948,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1311692458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311692453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell3_3
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &1319926738
 GameObject:
   m_ObjectHideFlags: 0
@@ -9932,6 +10027,7 @@ GameObject:
   - component: {fileID: 1333441654}
   - component: {fileID: 1333441653}
   - component: {fileID: 1333441655}
+  - component: {fileID: 1333441656}
   m_Layer: 5
   m_Name: Background for Spells 1 2
   m_TagString: Untagged
@@ -10065,6 +10161,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1333441656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333441651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell2_2
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &1345601214
 GameObject:
   m_ObjectHideFlags: 0
@@ -10319,6 +10443,7 @@ GameObject:
   - component: {fileID: 1457966726}
   - component: {fileID: 1457966725}
   - component: {fileID: 1457966727}
+  - component: {fileID: 1457966728}
   m_Layer: 5
   m_Name: Background for Spells 1 1
   m_TagString: Untagged
@@ -10452,6 +10577,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1457966728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457966723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell2_1
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &1465880766
 GameObject:
   m_ObjectHideFlags: 0
@@ -10539,6 +10692,7 @@ GameObject:
   - component: {fileID: 1471508929}
   - component: {fileID: 1471508928}
   - component: {fileID: 1471508930}
+  - component: {fileID: 1471508931}
   m_Layer: 5
   m_Name: Background for Spells 1 4
   m_TagString: Untagged
@@ -10672,6 +10826,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1471508931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471508926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell2_4
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &1490060168
 GameObject:
   m_ObjectHideFlags: 0
@@ -10805,6 +10987,7 @@ GameObject:
   - component: {fileID: 1522938244}
   - component: {fileID: 1522938243}
   - component: {fileID: 1522938245}
+  - component: {fileID: 1522938246}
   m_Layer: 5
   m_Name: Background for Summon 2 1
   m_TagString: Untagged
@@ -10938,6 +11121,168 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1522938246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522938241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Summon2_1
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
+--- !u!1 &1558284115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1558284116}
+  - component: {fileID: 1558284118}
+  - component: {fileID: 1558284117}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1558284116
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558284115}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 401355306}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.0000019073486, y: 80}
+  m_SizeDelta: {x: 90, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1558284117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558284115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190309
+  m_fontColor: {r: 0.8962264, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 15
+  m_fontSizeBase: 15
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1558284118
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558284115}
+  m_CullTransparentMesh: 1
 --- !u!1 &1658454720
 GameObject:
   m_ObjectHideFlags: 0
@@ -11071,6 +11416,7 @@ GameObject:
   - component: {fileID: 1673649072}
   - component: {fileID: 1673649071}
   - component: {fileID: 1673649073}
+  - component: {fileID: 1673649074}
   m_Layer: 5
   m_Name: Background for Spells 1 4
   m_TagString: Untagged
@@ -11204,6 +11550,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1673649074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673649069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell3_4
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &1677852973
 GameObject:
   m_ObjectHideFlags: 0
@@ -11216,6 +11590,7 @@ GameObject:
   - component: {fileID: 1677852976}
   - component: {fileID: 1677852975}
   - component: {fileID: 1677852977}
+  - component: {fileID: 1677852978}
   m_Layer: 5
   m_Name: Background for Spells 1 1
   m_TagString: Untagged
@@ -11349,6 +11724,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1677852978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677852973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell1_1
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &1678516558
 GameObject:
   m_ObjectHideFlags: 0
@@ -11678,6 +12081,7 @@ GameObject:
   - component: {fileID: 1704922068}
   - component: {fileID: 1704922067}
   - component: {fileID: 1704922069}
+  - component: {fileID: 1704922070}
   m_Layer: 5
   m_Name: Background for Team 1
   m_TagString: Untagged
@@ -11811,6 +12215,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1704922070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704922065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Hero1
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &1719389763
 GameObject:
   m_ObjectHideFlags: 0
@@ -11973,6 +12405,7 @@ GameObject:
   - component: {fileID: 1791550516}
   - component: {fileID: 1791550515}
   - component: {fileID: 1791550517}
+  - component: {fileID: 1791550518}
   m_Layer: 5
   m_Name: Background for Summon 1 2
   m_TagString: Untagged
@@ -12106,6 +12539,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1791550518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791550513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Summon1_2
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &1793411713
 GameObject:
   m_ObjectHideFlags: 0
@@ -13548,6 +14009,7 @@ GameObject:
   - component: {fileID: 2049959093}
   - component: {fileID: 2049959092}
   - component: {fileID: 2049959094}
+  - component: {fileID: 2049959095}
   m_Layer: 5
   m_Name: Background for Spells 1 5
   m_TagString: Untagged
@@ -13681,6 +14143,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2049959095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049959090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Spell1_5
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &2057972040
 GameObject:
   m_ObjectHideFlags: 0
@@ -13881,6 +14371,7 @@ GameObject:
   - component: {fileID: 2088002635}
   - component: {fileID: 2088002634}
   - component: {fileID: 2088002636}
+  - component: {fileID: 2088002637}
   m_Layer: 5
   m_Name: Background for Summon 3 1
   m_TagString: Untagged
@@ -14014,6 +14505,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2088002637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088002632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350394e7c7c534ac19affcb754191921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Summon3_1
+  chars:
+  - {fileID: 1735112487306677977, guid: b9e583dce921c4b55ab848c55f90d858, type: 3}
+  - {fileID: 1735112487306677977, guid: 3a2b753d1cf18471dbb3740a25e29945, type: 3}
+  - {fileID: 1735112487306677977, guid: c275d2709c877474a8457c9bfedcc497, type: 3}
+  - {fileID: 1735112487306677977, guid: cfb36cb8b8ca04d508c0f2c4193623f0, type: 3}
+  - {fileID: 1735112487306677977, guid: ed4c79a8a86954e1ea6ab87f8663eebf, type: 3}
+  - {fileID: 1735112487306677977, guid: d26ead885c4e74e6f8b3a6214cc86170, type: 3}
+  - {fileID: 1735112487306677977, guid: 97dd21c7a7c494e458647661ed4503ca, type: 3}
+  - {fileID: 1735112487306677977, guid: 3776d7eaccc57472e9be0422b61a007a, type: 3}
+  - {fileID: 1735112487306677977, guid: dd0decf1717cf4ca5a799ca9b8891c85, type: 3}
+  - {fileID: 1735112487306677977, guid: 6b4cbd3ae558d41ddb71f06676a3d9e7, type: 3}
+  spells: []
+  onPage: {fileID: 0}
+  parent: {fileID: 253087023}
+  spellKey: 
 --- !u!1 &2108045689
 GameObject:
   m_ObjectHideFlags: 0
