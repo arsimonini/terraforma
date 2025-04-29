@@ -53,6 +53,10 @@ public class TileMap : MonoBehaviour
 
     [SerializeField] private AudioClip[] movementSounds;
 
+    private int shipHealth = 10;
+    public GameObject risingWater = null;
+    public GameObject gameController = null;
+
     //A Dictionary the contains the tiles and their corresponding integer value used to find their type in the tileTypes array
     Dictionary<string, int> tileNames = new Dictionary<string, int>(){
         {"tileGrass", 0},
@@ -1974,4 +1978,18 @@ public class TileMap : MonoBehaviour
         //}
 
     //}
+
+    public void damageShip() {
+    //check for ship level
+    if (risingWater != null) {
+        Vector3 waterVec = new Vector3(0.0f, risingWater.transform.position.y + 0.1f, risingWater.transform.position.z);
+        risingWater.transform.position = waterVec;
+        shipHealth -= 1;
+
+        if (shipHealth <= 0 && gameController != null) {
+            //end level
+            gameController.GetComponent<GameControllerScript>().gameOver(false);
+        }
+    }
+}
 }

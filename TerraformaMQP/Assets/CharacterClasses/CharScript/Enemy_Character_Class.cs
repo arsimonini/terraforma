@@ -394,7 +394,7 @@ public class Enemy_Character_Class : MonoBehaviour
     }
 
     void basicAttack() {
-        UnityEngine.Debug.Log("TARGETING: " + target.name);
+        //UnityEngine.Debug.Log("TARGETING: " + target.name);
         basic.beginTargeting(basic.attackReach);
         if (target != null && basic.withinReach(target)) {
             UnityEngine.Debug.Log("Target within reach");
