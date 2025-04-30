@@ -99,12 +99,13 @@ public class Enemy_Character_Class : MonoBehaviour
                     path = runPath();
                 }
             }
-
-            //basic.endTurn();
         }
 
-        if (target != null && ((path == null) || path.Count == 0)) {
-            basicAttack();
+        if ((path == null) || path.Count == 0) {
+            if (target != null)
+                basicAttack();
+            else 
+                basic.endTurn();
         }
         else {
             UnityEngine.Debug.Log(this.gameObject.name);

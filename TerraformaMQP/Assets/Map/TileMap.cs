@@ -232,7 +232,10 @@ public class TileMap : MonoBehaviour
                     if(selectedUnitScript != null){
                         selectedUnitScript.isMoving = false;
                     }
-                    movingEnemy = false;
+                    if (movingEnemy) {
+                        movingEnemy = false;
+                        selectedUnitScript.endTurn();
+                    }
                     moving = false;
                     currentPath = null;
                 }
