@@ -7,8 +7,8 @@ using Random = UnityEngine.Random;
 
 public class Enemy_Character_Class : MonoBehaviour
 {
-    GameObject target = null;
-    Basic_Character_Class basic = null;
+    public GameObject target = null;
+    public Basic_Character_Class basic = null;
     public string element = "";
     public bool chaseFromFar = false;
     public int chaseSteps = 10;
@@ -19,6 +19,9 @@ public class Enemy_Character_Class : MonoBehaviour
 
     private List<Node> idealPath = null; //full path to target uninhibited by wall
     private Node targetWallNode = null;
+    public bool wasMoving = false;
+
+
 
     [SerializeField] private AudioClip[] fireSpells;
     [SerializeField] private AudioClip[] earthSpells;
@@ -28,6 +31,14 @@ public class Enemy_Character_Class : MonoBehaviour
         basic = this.gameObject.GetComponent<Basic_Character_Class>();
         waterCooldown[0] = 0;
         waterCooldown[1] = 0;
+    }
+
+    void Update()
+    {
+        if (wasMoving != basic.isMoving && gameObject.name == "WaterEnemy"){
+            UnityEngine.Debug.Log("IsMoving has been changed to " + basic.isMoving);
+            wasMoving = basic.isMoving;
+        }
     }
 
     //Tells the enemy to take their turn ---SUBJECT TO CHANGES AS AI IS ADDED---
@@ -96,6 +107,7 @@ public class Enemy_Character_Class : MonoBehaviour
             basicAttack();
         }
         else {
+            UnityEngine.Debug.Log(this.gameObject.name);
             basic.map.currentPath = path;
             basic.path = path;
             basic.isMoving = true;
@@ -377,6 +389,7 @@ public class Enemy_Character_Class : MonoBehaviour
         }
         else {
             magicTurns();
+            if (!basic.turnEnded) basic.endTurn();
         }
     }
 
@@ -544,7 +557,7 @@ public class Enemy_Character_Class : MonoBehaviour
                 basicAttack();
             }
         }
-        if (!basic.turnEnded) basic.endTurn();
+        //
 
         //if not go towards cover, then check again (first fire in range, then Lancin)
     }

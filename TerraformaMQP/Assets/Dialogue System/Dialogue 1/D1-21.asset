@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225bd0f53fcb05d4ca63ecf04fb6bf52, type: 3}
   m_Name: D1-21
   m_EditorClassIdentifier: 
-  character: Wold
+  character: Enemy
   dir: Right
-  message: Looks like those fools found us after all!
-  expression: Surprised
+  message: The Curch of White surrounds you! Hand over the artifact!
+  expression: Neutral
