@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225bd0f53fcb05d4ca63ecf04fb6bf52, type: 3}
   m_Name: D1-22
   m_EditorClassIdentifier: 
-  character: Lancin
+  character: Wold
   dir: Left
-  message: We've got to fight our way through then
+  message: We beat you once, we'll do it again!
   expression: Angry
