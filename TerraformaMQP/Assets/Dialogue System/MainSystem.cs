@@ -15,6 +15,7 @@ public class MainSystem : MonoBehaviour
     public Canvas canvas;
     public List<Sprite> Wold;
     public List<Sprite> Lancin;
+    public List<Sprite> Enemy;
     public GameObject leftImage;
     public GameObject rightImage;
     public GameObject TextBox;
@@ -143,18 +144,54 @@ public class MainSystem : MonoBehaviour
     IEnumerator newText(string character, string dir, string text, string mood){
         switch(character){
             case "Wold":
-                spawnImage(Wold[0], dir);
+                spawnImage(Wold[getImgNum(character, mood)], dir, character);
                 spawnText(character, text, dir);
                 break;     
             case "Lancin":
-                spawnImage(Lancin[0], dir);
+                spawnImage(Lancin[getImgNum(character, mood)], dir, character);
+                spawnText(character, text, dir);
+                break;
+            case "Enemy":
+                spawnImage(Enemy[getImgNum(character, mood)], dir, character);
                 spawnText(character, text, dir);
                 break;
         }
         yield break;
     }
 
-    public void spawnImage(Sprite sprite, string dir){
+    public int getImgNum(string character, string mood){
+        if (character != "Enemy"){
+            switch (mood){
+                case "Neutral":
+                    return 0;
+                case "Angry":
+                    return 1;
+                case "Happy":
+                    return 2;
+                case "Surprised":
+                    return 3;
+                default:
+                    return 0;
+            }
+        }
+        else {
+            switch (mood){
+                case "Neutral":
+                    return 0;
+                case "Angry":
+                    return 1;
+                case "Confused":
+                    return 2;
+                case "Surprised":
+                    return 3;
+                default:
+                    return 0;
+            }
+        }
+        return 0;
+    }
+
+    public void spawnImage(Sprite sprite, string dir, string character){
         GameObject image = new GameObject("Image"+dir);
         image.transform.SetParent(canvas.transform, false);
         Image img = image.AddComponent<Image>();
@@ -162,8 +199,13 @@ public class MainSystem : MonoBehaviour
             if (leftImage != null){
                 Destroy(leftImage);
             }
-            image.GetComponent<RectTransform>().localScale = new Vector3(7, 7, 1);
-            image.GetComponent<RectTransform>().localPosition = new Vector3(-550, 100, 0);
+            if (character == "Enemy"){
+                image.GetComponent<RectTransform>().localScale = new Vector3(-7, 7, 1);
+            }
+            else {
+                image.GetComponent<RectTransform>().localScale = new Vector3(7, 7, 1);
+            }
+            image.GetComponent<RectTransform>().localPosition = new Vector3(-525, 100, 0);
             leftImage = image;
             greyImage("Right");
         }
@@ -171,8 +213,13 @@ public class MainSystem : MonoBehaviour
             if (rightImage != null){
                 Destroy(rightImage);
             }
-            image.GetComponent<RectTransform>().localScale = new Vector3(-7, 7, 1);
-            image.GetComponent<RectTransform>().localPosition = new Vector3(550, 100, 0);
+            if (character == "Enemy"){
+                image.GetComponent<RectTransform>().localScale = new Vector3(7, 7, 1);
+            }
+            else {
+                image.GetComponent<RectTransform>().localScale = new Vector3(-7, 7, 1);
+            }
+            image.GetComponent<RectTransform>().localPosition = new Vector3(525, 100, 0);
             rightImage = image;
             greyImage("Left");
         }
