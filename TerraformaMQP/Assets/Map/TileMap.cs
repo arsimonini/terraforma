@@ -1266,7 +1266,7 @@ public class TileMap : MonoBehaviour
 
         for (int i = 0; i < targetList.Count; i++)
         {
-            if (targetList[i].GetComponent<ClickableTile>()){
+            if (targetList[i] != null && targetList[i].GetComponent<ClickableTile>()){
                 targetList[i].GetComponent<ClickableTile>().endHighlight();
             }
             else{
@@ -1447,7 +1447,7 @@ public class TileMap : MonoBehaviour
         }
 
         //if (tileTypes[tileNumber] == null) return;
-
+        if (tileTypes[tileNumber].tileVisualPrefab == null) return previousTile;
         GameObject newTilePrefab = Instantiate(tileTypes[tileNumber].tileVisualPrefab);
         newTilePrefab.name = tileTypes[tileNumber].tileVisualPrefab.name;
         ClickableTile newTile = newTilePrefab.GetComponent<ClickableTile>();

@@ -573,7 +573,15 @@ public class GameControllerScript : MonoBehaviour
         for (int i = 0; i < playerTeamList.Count; i++){
             if (playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile != null && playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count != 0){
                 for (int j = 0; j < playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count; j++){
-                    playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performEndOfTurnEffect(playerTeamList[i].GetComponent<Basic_Character_Class>().tile);
+                    if (playerTeamList[i] != null) {
+                        Basic_Character_Class playerBasic = playerTeamList[i].GetComponent<Basic_Character_Class>();
+                        ClickableTile pTile = playerBasic.tile;
+                        if (pTile != null && pTile.effectsOnTile[j].tileEffectPrefab != null && pTile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>() != null) {
+                            pTile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performEndOfTurnEffect(playerTeamList[i].GetComponent<Basic_Character_Class>().tile);
+                        }
+                    }
+                    
+                    //playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performEndOfTurnEffect(playerTeamList[i].GetComponent<Basic_Character_Class>().tile);
                 }
             }
         }
@@ -583,7 +591,10 @@ public class GameControllerScript : MonoBehaviour
         for (int i = 0; i < enemyTeamList.Count; i++){
             if (enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile != null && enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count != 0){
                 for (int j = 0; j < enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count; j++){
-                    enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performStartOfTurnEffect(enemyTeamList[i].GetComponent<Basic_Character_Class>().tile);
+                    ClickableTile eTile = enemyTeamList[i].GetComponent<Basic_Character_Class>().tile;
+                    if (eTile.effectsOnTile[j].tileEffectPrefab != null && eTile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>() != null) {
+                        eTile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performStartOfTurnEffect(enemyTeamList[i].GetComponent<Basic_Character_Class>().tile);
+                    }
                 }
             }
         }
@@ -593,12 +604,15 @@ public class GameControllerScript : MonoBehaviour
         for (int i = 0; i < enemyTeamList.Count; i++){
             if (enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile != null && enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count != 0){
                 for (int j = 0; j < enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count; j++){
+                    
                     if (enemyTeamList[i] != null) {
                         Basic_Character_Class enemyBasic = enemyTeamList[i].GetComponent<Basic_Character_Class>();
-                        enemyBasic.tile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performEndOfTurnEffect(enemyTeamList[i].GetComponent<Basic_Character_Class>().tile);
-
+                        ClickableTile eTile = enemyBasic.tile;
+                        if (eTile != null && eTile.effectsOnTile[j].tileEffectPrefab != null && eTile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>() != null) {
+                            eTile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performEndOfTurnEffect(enemyTeamList[i].GetComponent<Basic_Character_Class>().tile);
+                        }
                     }
-                    
+
                 }
             }
         }

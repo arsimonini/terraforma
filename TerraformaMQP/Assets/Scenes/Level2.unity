@@ -2660,6 +2660,7 @@ MonoBehaviour:
   moving: 0
   targetList: []
   mapCreated: 0
+  heroesInPlace: 0
   mapSizeX: 10
   mapSizeY: 10
   aoeDisplayTiles: []
@@ -28245,7 +28246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0, z: 0}
-  tooFarHorizontal: 17
+  tooFarHorizontal: 20
   tooFarVertical: 10
   tooNearHorizontal: -8
   tooNearVertical: -8
@@ -33216,7 +33217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0, z: 0}
-  tooFarHorizontal: 17
+  tooFarHorizontal: 20
   tooFarVertical: 22
   tooNearHorizontal: -8
   tooNearVertical: -12

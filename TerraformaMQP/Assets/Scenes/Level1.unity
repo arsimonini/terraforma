@@ -21751,6 +21751,7 @@ MonoBehaviour:
   moving: 0
   targetList: []
   mapCreated: 0
+  heroesInPlace: 0
   mapSizeX: 10
   mapSizeY: 10
   aoeDisplayTiles: []
@@ -37613,7 +37614,7 @@ PrefabInstance:
       objectReference: {fileID: 2114861591}
     - target: {fileID: 1688950375683074968, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
       propertyPath: m_VersionIndex
-      value: 1177
+      value: 1180
       objectReference: {fileID: 0}
     - target: {fileID: 3655638616690951539, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
       propertyPath: cam
@@ -37623,50 +37624,6 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1918770147}
-    - target: {fileID: 5590519867409697623, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
-      propertyPath: fireSpells.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5590519867409697623, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
-      propertyPath: earthSpells.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5590519867409697623, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
-      propertyPath: waterSpells.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5590519867409697623, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
-      propertyPath: fireSpells.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 1e563c993dce14037bb8068d36570c27, type: 3}
-    - target: {fileID: 5590519867409697623, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
-      propertyPath: fireSpells.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: d093ed5d1437d49b5ab3e9d5accf1b08, type: 3}
-    - target: {fileID: 5590519867409697623, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
-      propertyPath: fireSpells.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: ba8d78da1ec7a4fe9aaaf38725b3146c, type: 3}
-    - target: {fileID: 5590519867409697623, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
-      propertyPath: earthSpells.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: fb929a894153b4e39b132b115f4a27c0, type: 3}
-    - target: {fileID: 5590519867409697623, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
-      propertyPath: earthSpells.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 3e6a926a9289d4cb5be93ed3873a4cc4, type: 3}
-    - target: {fileID: 5590519867409697623, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
-      propertyPath: earthSpells.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: ebb88a95e6f9445879a89b7d89b1cfdd, type: 3}
-    - target: {fileID: 5590519867409697623, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
-      propertyPath: waterSpells.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 965d4c162bb4c4eabbefbaca2c454aed, type: 3}
-    - target: {fileID: 5590519867409697623, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
-      propertyPath: waterSpells.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: f4f092b4705e042eab45c0de6bb1bac0, type: 3}
     - target: {fileID: 5909329778438177822, guid: 2485aba151961493f8206a46f110bc9d, type: 3}
       propertyPath: m_Mesh
       value: 

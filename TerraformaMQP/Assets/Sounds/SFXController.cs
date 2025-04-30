@@ -45,6 +45,10 @@ public class SFXController : MonoBehaviour
         AudioSource audioSource = Instantiate(sfxObject, spawnTransform.position, Quaternion.identity);
 
         //Assign the audioClip
+        if (rand >= audioClip.Length || rand < 0) {
+            rand = 0;
+        }
+
         audioSource.clip = audioClip[rand];
 
         //assign volume
