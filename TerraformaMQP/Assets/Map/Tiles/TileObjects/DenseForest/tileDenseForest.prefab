@@ -626,6 +626,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3188892688128277277, guid: 857ca525da553d243be668d45ca3e724, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7b39c5dffc8b7d14ab187f19407ed4a7, type: 2}
     - target: {fileID: 919132149155446097, guid: 857ca525da553d243be668d45ca3e724, type: 3}
       propertyPath: m_Name
       value: Heavy tree

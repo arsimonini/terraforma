@@ -342,6 +342,13 @@ public class GameControllerScript : MonoBehaviour
                 if (obj.name == "tree top") {
                     obj.SetActive(!obj.activeSelf);
                 }
+                else if (obj.name == "trunk") {
+                    Color color = obj.GetComponent<Renderer>().material.color;
+                    if (color[3] != 0.5f)
+                        obj.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+                    else 
+                        obj.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                }
             }
         }
 
