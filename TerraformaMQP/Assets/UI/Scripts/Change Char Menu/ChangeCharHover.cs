@@ -176,10 +176,33 @@ public class ChangeCharHover : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
             onPage = Instantiate(chars[9], new Vector3(750.0f, 600.0f, 0.0f), Quaternion.identity, parent);
 
+            Transform nameObj = onPage.transform.Find("Name");
+            Transform manaObj = onPage.transform.Find("ManaCost");
+            Transform descObj = onPage.transform.Find("Description");
+            Transform durationObj = onPage.transform.Find("Duration");
+            Transform rangeObj = onPage.transform.Find("Range");
+
             //Need to get the info
             for(int i = 0; i < spells.Length; i++) {
+                
                 if(spells[i].spellName == spellKey) {
-                    onPage.transform.GetChild(0).Find("Description").GetComponent<TextMeshProUGUI>().text = spells[i].description;
+                    // UnityEngine.Debug.Log(spells[i].spellName);
+                    // UnityEngine.Debug.Log(nameObj.GetComponent<TextMeshProUGUI>().text);
+                    // UnityEngine.Debug.Log(manaObj.GetComponent<TextMeshProUGUI>().text);
+                    // UnityEngine.Debug.Log(descObj.GetComponent<TextMeshProUGUI>().text);
+                    //UnityEngine.Debug.Log(dura.transform.GetComponentInChildren<TextMeshProUGUI>().text);
+                    nameObj.GetComponent<TextMeshProUGUI>().text = spells[i].spellName;
+                    manaObj.GetComponent<TextMeshProUGUI>().text = spells[i].manaCost + " Mana";
+                    descObj.GetComponent<TextMeshProUGUI>().text = spells[i].description;
+                    rangeObj.GetComponent<TextMeshProUGUI>().text = "Range:" + spells[i].range + " Tiles";
+
+                    if(spells[i].spellName == "Pirate's Eye" || spells[i].spellName == "Smooth Sailing" || spells[i].spellName == "Blue Fire" || spells[i].spellName == "Backfire" || spells[i].spellName == "Support Flames" || spells[i].spellName == "Fleet Footwork" || spells[i].spellName == "Stone Body") {
+                        durationObj.GetComponent<TextMeshProUGUI>().text = "Duration: 3 Turns";
+                    }
+                    else {
+                        durationObj.GetComponent<TextMeshProUGUI>().text = "Duration: Instant";
+                    }
+
                 }
             }
             break;
