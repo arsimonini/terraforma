@@ -21123,11 +21123,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Kicked out of his home, Lancin Bermane has spent years searching for a
-    way to revitalize his world's withering pantheon of gods. Joined by the good
-    natured Wold Wold the pair stumbled across instructions for a ritual that might
-    be the solution. Escatic with the discovery the group made camp, oblivious to
-    the fact that they were being followed.
+  m_text: Joining up with the storm pirate Althea the duo now sails across the sea
+    in hopes of finding others blessed by the gods. However, as they travel they
+    find their boat under attack from the relentless Church of White.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b80e926563996e8429ca58a9ba767949, type: 2}
   m_sharedMaterial: {fileID: -6103306099064307319, guid: b80e926563996e8429ca58a9ba767949, type: 2}

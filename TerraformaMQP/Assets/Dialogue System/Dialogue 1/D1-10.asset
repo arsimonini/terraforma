@@ -15,4 +15,4 @@ MonoBehaviour:
   character: Wold
   dir: Right
   message: Care to let me know what it is? Only seems fair to me.
-  expression: Confused
+  expression: Surprised

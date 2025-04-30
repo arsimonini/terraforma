@@ -114,8 +114,19 @@ MonoBehaviour:
   canvas: {fileID: 0}
   Wold:
   - {fileID: 21300000, guid: 84eeefa95b06228418dcc8dcc687b289, type: 3}
+  - {fileID: 21300000, guid: d02ae71470ddc6148975596bdec176de, type: 3}
+  - {fileID: 21300000, guid: 69b8eb71e6d5cba49ac9db251b6aecef, type: 3}
+  - {fileID: 21300000, guid: bb80df9dda8b78648b18d1de632f966e, type: 3}
   Lancin:
-  - {fileID: 21300000, guid: 84eeefa95b06228418dcc8dcc687b289, type: 3}
+  - {fileID: 21300000, guid: 03d5d25600856b94591bdf5584a740b9, type: 3}
+  - {fileID: 21300000, guid: a49a1488881948141b1daad9a4b0b629, type: 3}
+  - {fileID: 21300000, guid: de4fd4d3b556b8c4981aee1fb6681713, type: 3}
+  - {fileID: 21300000, guid: d3da400965cd27f45829e5fdd08ac729, type: 3}
+  Enemy:
+  - {fileID: 21300000, guid: 5a1a0f0d1ac8607408a2eb5cc3e036a5, type: 3}
+  - {fileID: 21300000, guid: 6fce22e6721b0bf4da89202326bfc8f7, type: 3}
+  - {fileID: 21300000, guid: 4166b2061c3ef2b439d6702591ce5188, type: 3}
+  - {fileID: 21300000, guid: 00cb7b4edd6958e429ca2e28810ad238, type: 3}
   leftImage: {fileID: 0}
   rightImage: {fileID: 0}
   TextBox: {fileID: 0}
@@ -127,6 +138,8 @@ MonoBehaviour:
   fadeVal: 1
   assets: []
   sceneToSendTo: Level1
+  arrowObj: {fileID: 0}
+  paused: 0
 --- !u!1 &3107636707980194521
 GameObject:
   m_ObjectHideFlags: 0
