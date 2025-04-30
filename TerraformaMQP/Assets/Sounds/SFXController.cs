@@ -39,7 +39,7 @@ public class SFXController : MonoBehaviour
      public void PlayRandomSFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume) {
 
         //assign a random index
-        int rand = Random.Range(0, audioClip.Length);
+        int rand = Random.Range(0, audioClip.Length-1);
 
         //Spawn in gameObject
         AudioSource audioSource = Instantiate(sfxObject, spawnTransform.position, Quaternion.identity);

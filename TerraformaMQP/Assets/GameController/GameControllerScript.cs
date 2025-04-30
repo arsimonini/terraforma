@@ -65,6 +65,7 @@ public class GameControllerScript : MonoBehaviour
     void Start(){
 
         SetUpFight();
+        map.heroesInPlace = true;
 
         mask = LayerMask.GetMask("Default") | LayerMask.GetMask("BlockVisibility") | LayerMask.GetMask("UI");
         for (int i = 0; i < playerTeamList.Count; i++){
@@ -592,7 +593,12 @@ public class GameControllerScript : MonoBehaviour
         for (int i = 0; i < enemyTeamList.Count; i++){
             if (enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile != null && enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count != 0){
                 for (int j = 0; j < enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count; j++){
-                    enemyTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performEndOfTurnEffect(enemyTeamList[i].GetComponent<Basic_Character_Class>().tile);
+                    if (enemyTeamList[i] != null) {
+                        Basic_Character_Class enemyBasic = enemyTeamList[i].GetComponent<Basic_Character_Class>();
+                        enemyBasic.tile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performEndOfTurnEffect(enemyTeamList[i].GetComponent<Basic_Character_Class>().tile);
+
+                    }
+                    
                 }
             }
         }
