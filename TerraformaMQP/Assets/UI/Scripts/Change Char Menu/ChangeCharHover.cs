@@ -18,6 +18,12 @@ public class ChangeCharHover : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public Transform parent;
     public string spellKey;
 
+    public GameObject target;
+    public Vector3 targetPosition;
+
+    public void Start() {
+        targetPosition = target.transform.position;
+    }
 
     public void OnPointerEnter(PointerEventData data) 
     {
@@ -26,7 +32,7 @@ public class ChangeCharHover : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
 
     public void OnPointerExit(PointerEventData data) {
-        Destroy(onPage);
+        onPage.SetActive(false);
     }
 
     public string checkHoverLocation(string str) {
@@ -145,36 +151,45 @@ public class ChangeCharHover : MonoBehaviour, IPointerEnterHandler, IPointerExit
         switch (str)
         {
         case "Lancin Bermane":
-            onPage = Instantiate(chars[0], new Vector3(750.0f, 800.0f, 0.0f), Quaternion.identity, parent);
+            onPage = chars[0];
+            chars[0].SetActive(true);
             break;
         case "Wold Wold":
-            onPage = Instantiate(chars[1], new Vector3(750.0f, 800.0f, 0.0f), Quaternion.identity, parent);
+            onPage = chars[1];
+            chars[1].SetActive(true);
             break;
         case "Althea Petrik":
-            onPage = Instantiate(chars[2], new Vector3(750.0f, 800.0f, 0.0f), Quaternion.identity, parent);
+            onPage = chars[2];
+            chars[2].SetActive(true);
             break;
         case "Urson":
-            onPage = Instantiate(chars[3], new Vector3(750.0f, 800.0f, 0.0f), Quaternion.identity, parent);
+            onPage = chars[3];
+            chars[3].SetActive(true);
             break;
         case "Sova":
-            onPage = Instantiate(chars[4], new Vector3(750.0f, 800.0f, 0.0f), Quaternion.identity, parent);
+            onPage = chars[4];
+            chars[4].SetActive(true);
             break;
         case "Rold":
-            onPage = Instantiate(chars[5], new Vector3(750.0f, 800.0f, 0.0f), Quaternion.identity, parent);
+            onPage = chars[5];
+            chars[5].SetActive(true);
             break;
         case "Hold":
-            onPage = Instantiate(chars[6], new Vector3(750.0f, 800.0f, 0.0f), Quaternion.identity, parent);
+            onPage = chars[6];
+            chars[6].SetActive(true);
             break;
         case "Zuli":
-            onPage = Instantiate(chars[7], new Vector3(750.0f, 800.0f, 0.0f), Quaternion.identity, parent);
+            onPage = chars[7];
+            chars[7].SetActive(true);
             break;
         case "Ruba":
-            onPage = Instantiate(chars[8], new Vector3(750.0f, 800.0f, 0.0f), Quaternion.identity, parent);
+            onPage = chars[8];
+            chars[8].SetActive(true);
             break;
             
         case "Spell":
-
-            onPage = Instantiate(chars[9], new Vector3(750.0f, 600.0f, 0.0f), Quaternion.identity, parent);
+            onPage = chars[9];
+            chars[9].SetActive(true);
 
             Transform nameObj = onPage.transform.Find("Name");
             Transform manaObj = onPage.transform.Find("ManaCost");
