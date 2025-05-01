@@ -81,7 +81,9 @@ public class TileMap : MonoBehaviour
         {"tileHill", 16},
         {"tileWall", 17},
         {"tileWhiteVoid", 18},
-        {"tileWoldWall", 20}
+        {"tileWoldWall", 19},
+        {"tileWoodWall", 20},
+        {"tileAir", 21}
     };
 
     public int[] wallNums = {20};
@@ -445,7 +447,7 @@ public class TileMap : MonoBehaviour
             //UnityEngine.Debug.Log(x + "," + y);
 
             //TEST - replace with actual movement implementation
-            if (selectedUnit != null && (clickableTiles[x, y].isWalkable || waterCheck(clickableTiles[x, y])))
+            if (selectedUnit != null && (clickableTiles[x, y].isWalkable || waterCheck(clickableTiles[x, y]) || airCheck(clickableTiles[x, y])))
             {
                 if (selectedUnitScript.targeting == true || selectedUnitScript.hasWalked)
                 {
@@ -475,6 +477,15 @@ public class TileMap : MonoBehaviour
             return true;
         }
         else{
+            return false;
+        }
+    }
+
+    private bool airCheck(ClickableTile tile){
+        if (tile.tileName == "Air" && selectedUnitScript.name == "Ruba"){
+            return true;
+        }
+        else {
             return false;
         }
     }
@@ -699,7 +710,7 @@ public class TileMap : MonoBehaviour
         if (clickableTiles[x, y] != null) {
             walkable = clickableTiles[x, y].isWalkable;
         }
-        if (clickableTiles[x, y] != null && clickableTiles[x, y].tileName.Contains("Water") && (selectedUnitScript.name == "Zuli" || selectedUnitScript.name == "Ruba")){
+        if (clickableTiles[x, y] != null && ((clickableTiles[x, y].tileName.Contains("Water") && (selectedUnitScript.name == "Zuli" || selectedUnitScript.name == "Ruba")) || (clickableTiles[x, y].tileName == "Air" && selectedUnitScript.name == "Ruba"))){
             UnityEngine.Debug.Log("Here");
             walkable = true;
         }
