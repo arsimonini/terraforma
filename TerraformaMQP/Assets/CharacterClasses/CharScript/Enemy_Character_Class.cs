@@ -13,7 +13,7 @@ public class Enemy_Character_Class : MonoBehaviour
     public bool chaseFromFar = false;
     public int chaseSteps = 10;
 
-    public int[] waterCooldown = new int[2]; 
+    public int[] waterCooldown = new int[2];
 
     public List<Basic_Spell_Class> spellList; //The list of spells that the character can cast
 
@@ -99,12 +99,13 @@ public class Enemy_Character_Class : MonoBehaviour
                     path = runPath();
                 }
             }
-
-            //basic.endTurn();
         }
 
-        if (target != null && ((path == null) || path.Count == 0)) {
-            basicAttack();
+        if ((path == null) || path.Count == 0) {
+            if (target != null)
+                basicAttack();
+            else 
+                basic.endTurn();
         }
         else {
             UnityEngine.Debug.Log(this.gameObject.name);
@@ -134,7 +135,7 @@ public class Enemy_Character_Class : MonoBehaviour
             //UnityEngine.Debug.Log("Hero: " + tileX + "," + tileY);
             List<Node> path = basic.map.generatePathTo(tileX, tileY, false, true, noWalls: true, setCurrent:false, cutPath:false);
             //UnityEngine.Debug.Log("step count: " + path.Count + " to hero " + hero.name);
-            
+
             //breakable wall in path, check true path for hero within 2 turns
             Node possibleWall = wallInPath(path);
             if (possibleWall != null) {
@@ -174,7 +175,7 @@ public class Enemy_Character_Class : MonoBehaviour
                 pathToTarget = basic.map.basicPathCutoff(basic.movementSpeed.moddedValue, path);
                 //UnityEngine.Debug.Log("step count final: " + pathToTarget.Count + " to hero " + hero.name);
             }
-            
+
         }
 
         //no target selected - all heroes out of reach + chase == true, target first in list
@@ -196,7 +197,7 @@ public class Enemy_Character_Class : MonoBehaviour
     }
 
     public List<Node> findCover(bool run = false, bool runIfAdjToHero = true) {
-        GameObject[] heroes = basic.map.heroes.ToArray(); 
+        GameObject[] heroes = basic.map.heroes.ToArray();
         //get list of spaces adjacent to walls
         int[,] tiles = basic.map.tiles;
         Node[,] graph = basic.map.graph;
@@ -211,16 +212,16 @@ public class Enemy_Character_Class : MonoBehaviour
         int endY = Math.Min(basic.tileY+5, tiles.GetLength(1));
 
         //iterate through map tiles
-        for (int i = startX; i < endX; i++) { 
-            for (int j = startY; j < endY; j++) { 
+        for (int i = startX; i < endX; i++) {
+            for (int j = startY; j < endY; j++) {
                 //if tile is wall, add adjacent non-walls to wallAdj
                 if (Array.IndexOf(wallNums, tiles[i,j]) != -1) {
                     foreach (Node n in graph[i,j].neighbors) {
                         if (!(wallAdj.Contains(n)) && (Array.IndexOf(wallNums, tiles[n.x, n.y]) == -1) && !(basic.map.checkForTileEffect(n.x, n.y, "Burning")))
                             wallAdj.Add(n);
                     }
-                } 
-            } 
+                }
+            }
         }
 
         List<Node> coverTiles = new List<Node>();
@@ -394,7 +395,7 @@ public class Enemy_Character_Class : MonoBehaviour
     }
 
     void basicAttack() {
-        UnityEngine.Debug.Log("TARGETING: " + target.name);
+        //UnityEngine.Debug.Log("TARGETING: " + target.name);
         basic.beginTargeting(basic.attackReach);
         if (target != null && basic.withinReach(target)) {
             UnityEngine.Debug.Log("Target within reach");
@@ -556,7 +557,6 @@ public class Enemy_Character_Class : MonoBehaviour
                 basicAttack();
             }
         }
-        //
 
         //if not go towards cover, then check again (first fire in range, then Lancin)
     }

@@ -337,12 +337,7 @@ public class GameControllerScript : MonoBehaviour
         //toggle treetop visibility
         if (Input.GetKeyUp(KeyCode.V))
         {
-            GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>(true);
-            foreach (GameObject obj in allObjects) {
-                if (obj.name == "tree top") {
-                    obj.SetActive(!obj.activeSelf);
-                }
-            }
+            map.toggleTrees(!map.treesVisible);
         }
 
         //toggle pathfinding through fire for hero
@@ -956,11 +951,17 @@ public class GameControllerScript : MonoBehaviour
         GameObject callToPrefab = Instantiate(enemyPhase);
         phase++;
         startingNewPhase = false;
+        if (map.treesVisible) {
+            map.toggleTrees(false, true);
+        }
     }
 
     IEnumerator waitForNewEnemyPhase(){
         yield return new WaitForSeconds(timeToWaitBeforeNewPhase);
         phase++;
         GameObject callToPrefab = Instantiate(heroPhase);
+        if (map.treesVisibleBeforeEnemy) {
+            map.toggleTrees(true);
+        }
     }
 }
