@@ -795,7 +795,6 @@ GameObject:
   - component: {fileID: 8392082757264060270}
   - component: {fileID: 6459319848762722815}
   - component: {fileID: 3873154455899336829}
-  - component: {fileID: 661420180931975373}
   m_Layer: 5
   m_Name: Mana Stat
   m_TagString: Untagged
@@ -919,27 +918,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &661420180931975373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6277683080049229585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameplate: {fileID: 0}
-  extraEffects: 0
-  smallDescriptor: {fileID: 0}
-  smallDescriptorText: {fileID: 0}
-  largeDescriptor: {fileID: 0}
-  largeDescriptorText: {fileID: 0}
-  key: Mana
-  effectIndex: 0
-  specText: 
 --- !u!1 &7237583342079780040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,7 +1139,6 @@ GameObject:
   - component: {fileID: 2113570085883377620}
   - component: {fileID: 5987832414281556618}
   - component: {fileID: 2448484350858057399}
-  - component: {fileID: 8760619370949706604}
   m_Layer: 5
   m_Name: Health Stat
   m_TagString: Untagged
@@ -1285,24 +1262,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8760619370949706604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8607672773691659844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameplate: {fileID: 0}
-  extraEffects: 0
-  smallDescriptor: {fileID: 0}
-  smallDescriptorText: {fileID: 0}
-  largeDescriptor: {fileID: 0}
-  largeDescriptorText: {fileID: 0}
-  key: Health
-  effectIndex: 0
-  specText: 

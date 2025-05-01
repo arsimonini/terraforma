@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1413377786637203281}
   - component: {fileID: 1558808881296539777}
   - component: {fileID: 5989523471743184976}
-  - component: {fileID: 2213811687093232350}
   m_Layer: 5
   m_Name: Health Stat
   m_TagString: Untagged
@@ -135,27 +134,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2213811687093232350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39266467480029222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameplate: {fileID: 0}
-  extraEffects: 0
-  smallDescriptor: {fileID: 0}
-  smallDescriptorText: {fileID: 0}
-  largeDescriptor: {fileID: 0}
-  largeDescriptorText: {fileID: 0}
-  key: Health
-  effectIndex: 0
-  specText: 
 --- !u!1 &171593455949047896
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +870,6 @@ GameObject:
   - component: {fileID: 6604876182490492233}
   - component: {fileID: 1805775105069052780}
   - component: {fileID: 1370816873619475299}
-  - component: {fileID: 7379488045428528117}
   m_Layer: 5
   m_Name: Mana Stat
   m_TagString: Untagged
@@ -1016,27 +993,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7379488045428528117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7468539562091852618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 947320f9fbece42818db9dad321f05e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameplate: {fileID: 0}
-  extraEffects: 0
-  smallDescriptor: {fileID: 0}
-  smallDescriptorText: {fileID: 0}
-  largeDescriptor: {fileID: 0}
-  largeDescriptorText: {fileID: 0}
-  key: Mana
-  effectIndex: 0
-  specText: 
 --- !u!1 &8534798635149633021
 GameObject:
   m_ObjectHideFlags: 0
