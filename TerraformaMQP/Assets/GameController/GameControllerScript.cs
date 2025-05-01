@@ -563,7 +563,14 @@ public class GameControllerScript : MonoBehaviour
         for (int i = 0; i < playerTeamList.Count; i++){
             if (playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile != null && playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count != 0){
                 for (int j = 0; j < playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile.Count; j++){
-                    playerTeamList[i].GetComponent<Basic_Character_Class>().tile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performStartOfTurnEffect(playerTeamList[i].GetComponent<Basic_Character_Class>().tile);
+                    if (playerTeamList[i] != null) {
+                        Basic_Character_Class playerBasic = playerTeamList[i].GetComponent<Basic_Character_Class>();
+                        ClickableTile pTile = playerBasic.tile;
+                        if (pTile != null && pTile.effectsOnTile[j].tileEffectPrefab != null && pTile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>() != null) {
+                            pTile.effectsOnTile[j].tileEffectPrefab.GetComponent<tileEffectActions>().performStartOfTurnEffect(playerTeamList[i].GetComponent<Basic_Character_Class>().tile);
+                        }
+                    }
+
                 }
             }
         }
