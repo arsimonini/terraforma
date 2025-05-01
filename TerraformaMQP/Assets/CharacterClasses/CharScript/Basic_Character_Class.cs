@@ -102,7 +102,7 @@ public class Basic_Character_Class : MonoBehaviour
     IEnumerator Start()
     {
         //Wait for the map to be created
-        while(map.mapCreated != true){
+        while(map.mapCreated != true || map.heroesInPlace != true){
             yield return null;
         }
         //UnityEngine.Debug.Log("Character Created");

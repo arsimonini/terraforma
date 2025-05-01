@@ -25,6 +25,7 @@ public class TileMap : MonoBehaviour
     public List<GameObject> targetList = null; //Used when targeting, contains all of the possible valid targets within range of the currently being targeted spell/attack, otherwise is null
 
     public bool mapCreated = false; //If the map is fully created or not, used when instantiating the map upon level load to ensure the map is created before the units
+    public bool heroesInPlace = false;
 
     public int mapSizeX = 10; //The maximum X dimension
     public int mapSizeY = 10; //The maximum Y dimension
@@ -105,6 +106,7 @@ public class TileMap : MonoBehaviour
         //swapTiles(clickableTiles[2,3],20,true);
         mask = LayerMask.GetMask("BlockVisibility");
         findHeroes();
+        mapCreated = true;
     }
 
     //Called to create list of player controlled units + set coords for characters
@@ -141,7 +143,6 @@ public class TileMap : MonoBehaviour
         //Generates the map, then fills in the Graph with the created map, sets the mapCreated variable to true to allow the units to be created
         GenerateMapData();
         GenerateGraph();
-        mapCreated = true;
     }
 
     void Update() {
@@ -1286,7 +1287,7 @@ public class TileMap : MonoBehaviour
 
         for (int i = 0; i < targetList.Count; i++)
         {
-            if (targetList[i].GetComponent<ClickableTile>()){
+            if (targetList[i] != null && targetList[i].GetComponent<ClickableTile>()){
                 targetList[i].GetComponent<ClickableTile>().endHighlight();
             }
             else{
@@ -1466,6 +1467,8 @@ public class TileMap : MonoBehaviour
             tileNumber = 2;
         }
 
+        //if (tileTypes[tileNumber] == null) return;
+        if (tileTypes[tileNumber].tileVisualPrefab == null) return previousTile;
         GameObject newTilePrefab = Instantiate(tileTypes[tileNumber].tileVisualPrefab);
         newTilePrefab.name = tileTypes[tileNumber].tileVisualPrefab.name;
         ClickableTile newTile = newTilePrefab.GetComponent<ClickableTile>();
@@ -1657,7 +1660,7 @@ public class TileMap : MonoBehaviour
                     if (clickableTiles[startX - 1, startY].isWalkable){
                         successPush = true;
                         moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX - 1, startY]);
-                        startX -= i;
+                        startX -= 1;
                     }
                     else {
                         break;
@@ -1670,7 +1673,7 @@ public class TileMap : MonoBehaviour
                     if (clickableTiles[startX + 1, startY].isWalkable){
                         successPush = true;
                         moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX + 1, startY]);
-                        startX += i;
+                        startX += 1;
                     }
                     else {
                         break;
@@ -1683,7 +1686,7 @@ public class TileMap : MonoBehaviour
                     if (clickableTiles[startX, startY + 1].isWalkable){
                         successPush = true;
                         moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX, startY + 1]);
-                        startY += i;
+                        startY += 1;
                     }
                     else {
                         break;
@@ -1696,7 +1699,7 @@ public class TileMap : MonoBehaviour
                     if (clickableTiles[startX, startY - 1].isWalkable){
                         successPush = true;
                         moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX, startY - 1]);
-                        startY -= i;
+                        startY -= 1;
                     }
                     else {
                         break;
@@ -1709,8 +1712,8 @@ public class TileMap : MonoBehaviour
                     if (clickableTiles[startX - 1, startY + 1].isWalkable){
                         successPush = true;
                         moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX - 1, startY + 1]);
-                        startX -= i;
-                        startY += i;
+                        startX -= 1;
+                        startY += 1;
                     }
                     else {
                         break;
@@ -1723,8 +1726,8 @@ public class TileMap : MonoBehaviour
                     if (clickableTiles[startX - 1, startY - 1].isWalkable){
                         successPush = true;
                         moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX - 1, startY - 1]);
-                        startX -= i;
-                        startY -= i;
+                        startX -= 1;
+                        startY -= 1;
                     }
                     else {
                         break;
@@ -1737,8 +1740,8 @@ public class TileMap : MonoBehaviour
                     if (clickableTiles[startX + 1, startY + 1].isWalkable){
                         successPush = true;
                         moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX + 1, startY + 1]);
-                        startX += i;
-                        startY += i;
+                        startX += 1;
+                        startY += 1;
                     }
                     else {
                         break;
@@ -1751,8 +1754,8 @@ public class TileMap : MonoBehaviour
                     if (clickableTiles[startX + 1, startY - 1].isWalkable){
                         successPush = true;
                         moveCharacterToTile(characterToMove, characterToMove.tile, clickableTiles[startX + 1, startY - 1]);
-                        startX += i;
-                        startY -= i;
+                        startX += 1;
+                        startY -= 1;
                     }
                     else {
                         break;

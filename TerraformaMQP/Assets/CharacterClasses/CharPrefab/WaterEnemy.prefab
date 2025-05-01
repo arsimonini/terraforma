@@ -172,6 +172,7 @@ MonoBehaviour:
   startHP: 0
   traverseWalls: 0
   traverseWater: 0
+  gc: {fileID: 0}
 --- !u!114 &5590519867409697623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,9 +192,17 @@ MonoBehaviour:
   spellList:
   - {fileID: 11400000, guid: 93c847b5b0c264066ac7f4d1a9d72c54, type: 2}
   - {fileID: 11400000, guid: d7da6be75e8f44b2992b2a073e0dea70, type: 2}
-  fireSpells: []
-  earthSpells: []
-  waterSpells: []
+  fireSpells:
+  - {fileID: 8300000, guid: 1e563c993dce14037bb8068d36570c27, type: 3}
+  - {fileID: 8300000, guid: d093ed5d1437d49b5ab3e9d5accf1b08, type: 3}
+  - {fileID: 8300000, guid: ba8d78da1ec7a4fe9aaaf38725b3146c, type: 3}
+  earthSpells:
+  - {fileID: 8300000, guid: fb929a894153b4e39b132b115f4a27c0, type: 3}
+  - {fileID: 8300000, guid: 3e6a926a9289d4cb5be93ed3873a4cc4, type: 3}
+  - {fileID: 8300000, guid: ebb88a95e6f9445879a89b7d89b1cfdd, type: 3}
+  waterSpells:
+  - {fileID: 8300000, guid: 965d4c162bb4c4eabbefbaca2c454aed, type: 3}
+  - {fileID: 8300000, guid: f4f092b4705e042eab45c0de6bb1bac0, type: 3}
 --- !u!212 &4272299001614567363
 SpriteRenderer:
   m_ObjectHideFlags: 0

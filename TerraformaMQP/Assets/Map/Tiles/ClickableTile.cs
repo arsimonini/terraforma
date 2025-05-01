@@ -49,6 +49,13 @@ public class ClickableTile : MonoBehaviour
     }
 
     public void OnMouseEnter() {
+        //Fix shallow water bug
+        if (tileName == "ShallowWater" && characterOnTile == null) {
+            UnityEngine.Debug.Log("Shallow Water made walkable");
+            isWalkable = true;
+        }
+
+
         if (map.aoeDisplayTiles != null && map.displayingAOE == true && 
             ((map.selectedUnit.GetComponent<Hero_Character_Class>() != null && map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell != null && map.selectedUnit.GetComponent<Hero_Character_Class>().selectedSpell.targeted == true) 
             || (map.selectedUnit.GetComponent<SummonClass>() != null && map.selectedUnit.GetComponent<SummonClass>().selectedAbility != null && map.selectedUnit.GetComponent<SummonClass>().selectedAbility.targeted == true))){
