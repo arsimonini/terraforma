@@ -249,6 +249,7 @@ public class ClickableTile : MonoBehaviour
             if (characterOnTile != null){
                 UnityEngine.Debug.Log("Removing: " + effect.amountToEffect[i] + " from: " + statsToEffect[statLoc]);
             }
+            UnityEngine.Debug.Log(statLoc);
             effectAmounts[statLoc] -= effect.amountToEffect[i];
             if (characterOnTile != null){
                 UnityEngine.Debug.Log("Result: " + effectAmounts[statLoc]);

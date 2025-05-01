@@ -54,6 +54,13 @@ public class TileMap : MonoBehaviour
 
     [SerializeField] private AudioClip[] movementSounds;
 
+    private int shipHealth = 10;
+    public GameObject risingWater = null;
+    public GameObject gameController = null;
+
+    public bool treesVisible = true;
+    public bool treesVisibleBeforeEnemy = true;
+
     //A Dictionary the contains the tiles and their corresponding integer value used to find their type in the tileTypes array
     Dictionary<string, int> tileNames = new Dictionary<string, int>(){
         {"tileGrass", 0},
@@ -75,7 +82,9 @@ public class TileMap : MonoBehaviour
         {"tileHill", 16},
         {"tileWall", 17},
         {"tileWhiteVoid", 18},
-        {"tileWoldWall", 20}
+        {"tileWoldWall", 19},
+        {"tileWoodWall", 20},
+        {"tileAir", 21}
     };
 
     public int[] wallNums = {20};
@@ -229,7 +238,10 @@ public class TileMap : MonoBehaviour
                     if(selectedUnitScript != null){
                         selectedUnitScript.isMoving = false;
                     }
-                    movingEnemy = false;
+                    if (movingEnemy) {
+                        movingEnemy = false;
+                        selectedUnitScript.endTurn();
+                    }
                     moving = false;
                     currentPath = null;
                 }
@@ -436,7 +448,7 @@ public class TileMap : MonoBehaviour
             //UnityEngine.Debug.Log(x + "," + y);
 
             //TEST - replace with actual movement implementation
-            if (selectedUnit != null && (clickableTiles[x, y].isWalkable || waterCheck(clickableTiles[x, y])))
+            if (selectedUnit != null && (clickableTiles[x, y].isWalkable || waterCheck(clickableTiles[x, y]) || airCheck(clickableTiles[x, y])))
             {
                 if (selectedUnitScript.targeting == true || selectedUnitScript.hasWalked)
                 {
@@ -466,6 +478,15 @@ public class TileMap : MonoBehaviour
             return true;
         }
         else{
+            return false;
+        }
+    }
+
+    private bool airCheck(ClickableTile tile){
+        if (tile.tileName == "Air" && selectedUnitScript.name == "Ruba"){
+            return true;
+        }
+        else {
             return false;
         }
     }
@@ -690,7 +711,7 @@ public class TileMap : MonoBehaviour
         if (clickableTiles[x, y] != null) {
             walkable = clickableTiles[x, y].isWalkable;
         }
-        if (clickableTiles[x, y] != null && clickableTiles[x, y].tileName.Contains("Water") && (selectedUnitScript.name == "Zuli" || selectedUnitScript.name == "Ruba")){
+        if (clickableTiles[x, y] != null && ((clickableTiles[x, y].tileName.Contains("Water") && (selectedUnitScript.name == "Zuli" || selectedUnitScript.name == "Ruba")) || (clickableTiles[x, y].tileName == "Air" && selectedUnitScript.name == "Ruba"))){
             UnityEngine.Debug.Log("Here");
             walkable = true;
         }
@@ -1484,6 +1505,10 @@ public class TileMap : MonoBehaviour
         }
         //Destroys the old tile
         Destroy(previousTile.gameObject);
+
+        if (tileNumber == 7 || tileNumber == 8) 
+            toggleTrees(treesVisible);
+            
         return newTile;
     }
 
@@ -1977,4 +2002,38 @@ public class TileMap : MonoBehaviour
         //}
 
     //}
+
+    public void damageShip() {
+        //check for ship level
+        if (risingWater != null) {
+            Vector3 waterVec = new Vector3(0.0f, risingWater.transform.position.y + 0.1f, risingWater.transform.position.z);
+            risingWater.transform.position = waterVec;
+            shipHealth -= 1;
+
+            if (shipHealth <= 0 && gameController != null) {
+                //end level
+                gameController.GetComponent<GameControllerScript>().gameOver(false);
+            }
+        }
+    }
+
+    public void toggleTrees(bool visible, bool enemy = false) {
+        GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>(true);
+        foreach (GameObject obj in allObjects) {
+            if (obj.name == "tree top") {
+                obj.SetActive(visible);
+            }
+            else if (obj.name == "trunk") {
+                Color color = obj.GetComponent<Renderer>().material.color;
+                if (visible)
+                    obj.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                else 
+                    obj.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.6f);
+            }
+        }
+        treesVisible = visible;
+        if (!enemy) {
+            treesVisibleBeforeEnemy = visible;
+        }
+    }
 }

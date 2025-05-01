@@ -21660,7 +21660,7 @@ MonoBehaviour:
     hp: 20
     maxHp: 0
   - name: Deep Water
-    tileVisualPrefab: {fileID: 0}
+    tileVisualPrefab: {fileID: 4609658174146669432, guid: 5c5ce5f5ab1174e98a88f75b3f0f37f9, type: 3}
     isWalkable: 0
     isBreakable: 0
     cost: 1

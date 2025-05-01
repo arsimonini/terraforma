@@ -45,6 +45,15 @@ public class BurningTileEffect : tileEffectActions
         else if (tile.gameObject.name.Contains("Forest")){
             tile.map.swapTiles(tile, 1, true);
         }
+        else if (tile.gameObject.name.Contains("Wood")){
+            tile.map.swapTiles(tile, 10, false);
+
+            if (tile.characterOnTile != null && !tile.characterOnTile.name.Contains("Zuli") && !tile.characterOnTile.name.Contains("Ruba")) {
+                tile.characterOnTile.GetComponent<Basic_Character_Class>().takePhysicalDamage(1000);
+            }
+
+            tile.map.damageShip();
+        }
     }
 
     public override void performStepOnEffect(ClickableTile tile){
