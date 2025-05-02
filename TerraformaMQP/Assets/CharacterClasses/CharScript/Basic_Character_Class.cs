@@ -200,9 +200,10 @@ public class Basic_Character_Class : MonoBehaviour
 
     public void takeMagicDamage(int damage, string magicType){
         float baseLine = 20f/3f;
+        UnityEngine.Debug.Log("Unmitigated Damage =" + damage);
         float mitigatedDamage = Mathf.Round((float)damage * (baseLine/(baseLine + (float)resistence.moddedValue)));
         health = health - (int)mitigatedDamage;
-        //UnityEngine.Debug.Log("Took " + mitigatedDamage + " magic damage");
+        UnityEngine.Debug.Log("Took " + mitigatedDamage + " magic damage");
         checkHealth();
         comlog.addText("  -> " + name + " has Taken " + mitigatedDamage.ToString() + " " + magicType + " Damage");
     }

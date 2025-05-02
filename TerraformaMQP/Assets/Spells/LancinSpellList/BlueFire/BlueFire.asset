@@ -17,7 +17,7 @@ MonoBehaviour:
   elementType: Fire
   spellPrefab: {fileID: 5642006647470111640, guid: 3ddf532e4e22ef94e94b06e8409f33d7, type: 3}
   description: Supercharges your next attack with an even hotter blue flame.
-  targeted: 1
+  targeted: 0
   range: 0
   targetTiles: 0
   targetAllies: 1
