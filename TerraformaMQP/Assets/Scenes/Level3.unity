@@ -999,7 +999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Hero1
-  tileX: 11
+  tileX: 12
   tileY: 12
   spriteX: 10
   spriteZ: 7
@@ -1886,6 +1886,7 @@ MonoBehaviour:
   moving: 0
   targetList: []
   mapCreated: 0
+  heroesInPlace: 0
   mapSizeX: 10
   mapSizeY: 10
   aoeDisplayTiles: []
@@ -18830,7 +18831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Summon1_1
-  tileX: 10
+  tileX: 11
   tileY: 11
   spriteX: 9
   spriteZ: 6
@@ -20336,7 +20337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Summon2_1
-  tileX: 12
+  tileX: 13
   tileY: 11
   spriteX: 11
   spriteZ: 6
@@ -22848,7 +22849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Hero2
-  tileX: 11
+  tileX: 12
   tileY: 10
   spriteX: 10
   spriteZ: 5
@@ -25436,6 +25437,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 248ee3e37f945644c946384ca3c1b635, type: 2}
   - {fileID: 11400000, guid: aa201f79e3450ad40825d734c3069464, type: 2}
   - {fileID: 11400000, guid: 401ae7b358ec58241b31672043153ca6, type: 2}
+  - {fileID: 11400000, guid: e83b9b3ab14d27b419c5cb89b7ac38f2, type: 2}
+  - {fileID: 11400000, guid: dc28467c56c38144d9201a9ee1bddf18, type: 2}
 --- !u!4 &1690754007
 Transform:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class BlueFireTileEffect : tileEffectActions
     public override void performEndOfTurnEffect(ClickableTile tile){
         UnityEngine.Debug.Log("Proccing Burning");
         if (tile.GetComponent<ClickableTile>().characterOnTile != null){
-            tile.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(4, "Fire");
+            tile.GetComponent<ClickableTile>().characterOnTile.GetComponent<Basic_Character_Class>().takeMagicDamage(8, "Fire");
         }
     }
 
